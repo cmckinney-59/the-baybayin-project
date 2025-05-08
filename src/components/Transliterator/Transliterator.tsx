@@ -1,4 +1,5 @@
-import { useState, JSX } from "react";
+import { useState } from "react";
+import type { JSX } from "react";
 import "./Transliterator.css";
 
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
@@ -10,6 +11,7 @@ import ChDialog from "../Dialog/NewDialogs/ChDialog.tsx";
 import JDialog from "../Dialog/NewDialogs/JDialog.tsx";
 import QuDialog from "../Dialog/NewDialogs/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
+import downloadAsWord from "../Utils/SaveToWord.ts";
 
 interface TransliteratorProps {
   title: string;
@@ -420,7 +422,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
       {showDialog}
       <p> Save to... </p>
       <button>Excel</button>
-      <button>Word</button>
+      <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
       <button>Text File</button>
       <div className="dictionary-output">
         <h3>Processed Words:</h3>
