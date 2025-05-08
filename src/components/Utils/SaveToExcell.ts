@@ -1,6 +1,20 @@
-// This is where the save to excell function will live. Below is some code that may be helpful when the time comes to order words in alphabetical
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
-// const wordsAlphabeticalOrder = wordsArray.sort((a, b) => a.localeCompare(b));
-// const wordsDuplicatesRemoved = wordsAlphabeticalOrder.filter(
-//   (word, index, arr) => index === 0 || word !== arr[index - 1]
-// );
+export default function downloadAsExcel(data: { [key: string]: string }) {
+  const rows = Object.entries(data).map(([original, transliterated]) => ({
+    Original: original,
+    Transliterated: transliterated,
+  }));
+
+  const worksheet = XLSX.utils.json_to_sheet(rows);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Transliteration");
+
+  const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+  const blob = new Blob([excelBuffer], {
+    type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8",
+  });
+
+  saveAs(blob, "Transliteration.xlsx");
+}
