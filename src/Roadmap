@@ -1,0 +1,34 @@
+TRANSLITERATOR WEB APP ROADMAP
+
+PHASE 1 : MVP
+6/7
+
+    CURRENTLY WORKING ON
+    - Save to button
+        - Word
+        - Excell
+        - Txt
+
+    COMPLETE
+    - Input box
+    - Transliterate Button
+    - Question Dialog
+        - Proper nouns
+        - Ch, C, Qu, J
+    - Items must be stored in dictionary
+    - Baybayin word processor
+    - Output box
+
+PHASE 2 : UI - Color pallet - Header - Footer - Fonts - Buttons - Input boxes
+
+PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
+
+PHASE 4 : RELEASE
+
+PHASE 5 : ABOUT/ HOW TO READ
+
+PHASE 6 : DESERET
+
+PHASE 7 : AUREBESH
+
+PHASE 8 : OTHER FILIPINO ALPHABETS
