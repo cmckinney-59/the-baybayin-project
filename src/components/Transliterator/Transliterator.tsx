@@ -12,7 +12,8 @@ import JDialog from "../Dialog/NewDialogs/JDialog.tsx";
 import QuDialog from "../Dialog/NewDialogs/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import downloadAsWord from "../Utils/SaveToWord.ts";
-import downloadAsExcel from "../Utils/SaveToExcell.ts";
+import downloadAsExcel from "../Utils/SaveToExcel.ts";
+import downloadAsText from "../Utils/SaveToText.ts";
 
 interface TransliteratorProps {
   title: string;
@@ -424,7 +425,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
       <p> Save to... </p>
       <button onClick={() => downloadAsExcel(wordsDictionary)}>Excel</button>
       <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
-      <button>Text File</button>
+      <button onClick={() => downloadAsText(transliteratedText)}>Text</button>
       <div className="dictionary-output">
         <h3>Processed Words:</h3>
         <ul>
