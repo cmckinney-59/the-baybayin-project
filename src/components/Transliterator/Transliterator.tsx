@@ -75,62 +75,38 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const processWord = (word: string): void => {
     if (/[A-Z]/.test(word)) {
       const match = word.search(/[A-Z]/);
-      if (match !== -1) {
-        setCapitalIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("capital");
-        return;
-      }
+      activateDialog(match, word, "capital");
+      return;
     }
 
     if (/ch/.test(word)) {
       const match = word.indexOf("ch");
-      if (match !== -1) {
-        setChIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("ch");
-        return;
-      }
+      activateDialog(match, word, "ch");
+      return;
     }
 
     if (/c/.test(word)) {
       const match = word.indexOf("c");
-      if (match !== -1) {
-        setCIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("c");
-        return;
-      }
+      activateDialog(match, word, "c");
+      return;
     }
 
     if (/g/.test(word)) {
       const match = word.indexOf("g");
-      if (match !== -1) {
-        setGIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("g");
-        return;
-      }
+      activateDialog(match, word, "g");
+      return;
     }
 
     if (/j/.test(word)) {
       const match = word.indexOf("j");
-      if (match !== -1) {
-        setJIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("j");
-        return;
-      }
+      activateDialog(match, word, "j");
+      return;
     }
 
     if (/qu/.test(word)) {
       const match = word.indexOf("qu");
-      if (match !== -1) {
-        setQuIndex(match);
-        setWordForDialog(word);
-        setActiveDialog("qu");
-        return;
-      }
+      activateDialog(match, word, "qu");
+      return;
     }
 
     const processed = processBaybayinText(word);
@@ -427,6 +403,30 @@ export default function Transliterator({ title }: TransliteratorProps) {
     setGIndex(null);
     setJIndex(null);
     setQuIndex(null);
+  };
+
+  const activateDialog = (
+    match: number,
+    word: string,
+    dialogType: React.SetStateAction<DialogType>
+  ): void => {
+    if (match !== -1) {
+      if (dialogType == "capital") {
+        setCapitalIndex(match);
+      } else if (dialogType == "ch") {
+        setChIndex(match);
+      } else if (dialogType == "c") {
+        setCIndex(match);
+      } else if (dialogType == "g") {
+        setGIndex(match);
+      } else if (dialogType == "j") {
+        setJIndex(match);
+      } else if (dialogType == "qu") {
+        setQuIndex(match);
+      }
+      setWordForDialog(word);
+      setActiveDialog(dialogType);
+    }
   };
 
   // Main HTML Body
