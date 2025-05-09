@@ -270,7 +270,15 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const handleGSelection = (choice: string) => {
     if (gIndex === null) return;
 
-    const replacement = choice === "h" ? "h" : "diy";
+    let replacement = "";
+
+    if (choice === "g") {
+      replacement = "g";
+    } else if (choice === "h") {
+      replacement = "h";
+    } else if (choice === "diy") {
+      replacement = "diy";
+    }
 
     const before = currentWord.slice(0, gIndex);
     const after = currentWord.slice(gIndex + 1);
