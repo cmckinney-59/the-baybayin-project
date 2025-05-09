@@ -181,16 +181,8 @@ export default function Transliterator({ title }: TransliteratorProps) {
 
   const handleSkip = (): void => {
     const originalWord = wordKeys[currentWordIndex];
-    const processed = processBaybayinText(originalWord);
+    const lowercased = originalWord.toLowerCase();
 
-    const nextDictionary = {
-      ...wordsDictionary,
-      [originalWord]: processed,
-    };
-
-    setWordsDictionary(nextDictionary);
-
-    // Clear dialog state
     setActiveDialog(null);
     setCapitalIndex(null);
     setChIndex(null);
@@ -199,18 +191,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     setJIndex(null);
     setQuIndex(null);
 
-    // Move to the next word or finish
-    const nextIndex = currentWordIndex + 1;
-    if (nextIndex < wordKeys.length) {
-      const nextWord = wordKeys[nextIndex];
-      setCurrentWordIndex(nextIndex);
-      setCurrentWord(nextWord);
-    } else {
-      setIsDialogOpen(false);
-      setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => nextDictionary[word] ?? word)
-      );
-    }
+    setCurrentWord(lowercased);
   };
 
   const handleChSelection = (choice: string) => {
