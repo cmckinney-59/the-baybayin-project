@@ -4,12 +4,13 @@ import "./Transliterator.css";
 
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import React from "react";
-import StartReviewDialog from "../Dialog/NewDialogs/StartReviewDialog.tsx";
-import CapitalLetterDialog from "../Dialog/NewDialogs/CapitalLetterDialog.tsx";
-import CDialog from "../Dialog/NewDialogs/CDialog.tsx";
-import ChDialog from "../Dialog/NewDialogs/ChDialog.tsx";
-import JDialog from "../Dialog/NewDialogs/JDialog.tsx";
-import QuDialog from "../Dialog/NewDialogs/QuDialog.tsx";
+import StartReviewDialog from "../Dialog/StartReviewDialog.tsx";
+import CapitalLetterDialog from "../Dialog/CapitalLetterDialog.tsx";
+import CDialog from "../Dialog/CDialog.tsx";
+import ChDialog from "../Dialog/ChDialog.tsx";
+import GDialog from "../Dialog/GDialog.tsx";
+import JDialog from "../Dialog/JDialog.tsx";
+import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import downloadAsWord from "../Utils/SaveToWord.ts";
 import downloadAsExcel from "../Utils/SaveToExcel.ts";
@@ -31,7 +32,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const isAurebesh = title === "Aurebesh";
   const isDeseret = title === "Deseret";
 
-  type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
+  type DialogType = "start" | "capital" | "ch" | "c" | "g" | "j" | "qu" | null;
   const [activeDialog, setActiveDialog] = useState<DialogType>(null);
 
   // New State Variables
@@ -42,6 +43,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const [capitalIndex, setCapitalIndex] = useState<number | null>(null);
   const [chIndex, setChIndex] = useState<number | null>(null);
   const [cIndex, setCIndex] = useState<number | null>(null);
+  const [gIndex, setGIndex] = useState<number | null>(null);
   const [jIndex, setJIndex] = useState<number | null>(null);
   const [quIndex, setQuIndex] = useState<number | null>(null);
 
@@ -97,6 +99,16 @@ export default function Transliterator({ title }: TransliteratorProps) {
         setCIndex(match);
         setWordForDialog(word);
         setActiveDialog("c");
+        return;
+      }
+    }
+
+    if (/g/.test(word)) {
+      const match = word.indexOf("g");
+      if (match !== -1) {
+        setGIndex(match);
+        setWordForDialog(word);
+        setActiveDialog("g");
         return;
       }
     }
@@ -183,6 +195,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     setCapitalIndex(null);
     setChIndex(null);
     setCIndex(null);
+    setGIndex(null);
     setJIndex(null);
     setQuIndex(null);
 
@@ -248,6 +261,29 @@ export default function Transliterator({ title }: TransliteratorProps) {
     }));
 
     setCIndex(null);
+    setActiveDialog(null);
+
+    const updated = updatedWord;
+    setCurrentWord(updated);
+  };
+
+  const handleGSelection = (choice: string) => {
+    if (gIndex === null) return;
+
+    const replacement = choice === "h" ? "h" : "diy";
+
+    const before = currentWord.slice(0, gIndex);
+    const after = currentWord.slice(gIndex + 1);
+    const updatedWord = before + replacement + after;
+
+    const originalWord = wordKeys[currentWordIndex];
+
+    setWordsDictionary((prev) => ({
+      ...prev,
+      [originalWord]: updatedWord,
+    }));
+
+    setGIndex(null);
     setActiveDialog(null);
 
     const updated = updatedWord;
@@ -331,6 +367,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     case "ch":
       showDialog = (
         <ChDialog
+          currentWordIndex={currentWordIndex}
           numberOfWordsToReview={wordKeys.length}
           word={wordForDialog}
           onChSelection={handleChSelection}
@@ -351,9 +388,22 @@ export default function Transliterator({ title }: TransliteratorProps) {
       );
       break;
 
+    case "g":
+      showDialog = (
+        <GDialog
+          currentWordIndex={currentWordIndex}
+          numberOfWordsToReview={wordKeys.length}
+          word={wordForDialog}
+          onGSelection={handleGSelection}
+          onClose={handleClose}
+        />
+      );
+      break;
+
     case "j":
       showDialog = (
         <JDialog
+          currentWordIndex={currentWordIndex}
           numberOfWordsToReview={wordKeys.length}
           word={wordForDialog}
           onJSelection={handleJSelection}
@@ -365,6 +415,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     case "qu":
       showDialog = (
         <QuDialog
+          currentWordIndex={currentWordIndex}
           numberOfWordsToReview={wordKeys.length}
           word={wordForDialog}
           onQuSelection={handleQuSelection}

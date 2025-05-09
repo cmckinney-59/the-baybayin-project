@@ -1,5 +1,3 @@
-import React from "react";
-
 interface CDialogProps {
   word: string;
   onCSelection: (choice: "k" | "s" | "tiy") => void;

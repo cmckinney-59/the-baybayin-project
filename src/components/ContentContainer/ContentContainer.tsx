@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
+import { useState } from "react";
+import type { ChangeEvent } from "react";
 
 import "./ContentContainer.css";
 import PageContent from "../PageContent/PageContent.tsx";

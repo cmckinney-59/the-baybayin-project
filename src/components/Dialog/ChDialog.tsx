@@ -1,10 +1,9 @@
-import React from "react";
-
 interface ChDialogProps {
   word: string;
   onChSelection: (choice: "k" | "tiy") => void;
   onClose: () => void;
   numberOfWordsToReview: number;
+  currentWordIndex: number;
 }
 
 export default function ChDialog({
@@ -12,12 +11,15 @@ export default function ChDialog({
   onChSelection,
   onClose,
   numberOfWordsToReview,
+  currentWordIndex,
 }: ChDialogProps) {
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
         <h3>Word Review</h3>
-        <p>You have {numberOfWordsToReview} words to review</p>
+        <p>
+          Reviewing word {currentWordIndex + 1} of {numberOfWordsToReview}
+        </p>
         <p>
           Does the first "ch" in <strong>{word}</strong> sound like "k" or
           "tiy"?

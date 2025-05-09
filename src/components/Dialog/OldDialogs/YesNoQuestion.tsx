@@ -1,7 +1,4 @@
 // This is currently not being used. I may want to implement it once the whole app is working. As of now it adds an extra unneeded layer of complexity.
-
-import React from "react";
-
 interface YesNoQuestionProps {
   enteredText: string;
   handleIsProperNoun?: () => void;

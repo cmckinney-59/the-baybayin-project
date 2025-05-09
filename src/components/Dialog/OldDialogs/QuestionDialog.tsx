@@ -1,4 +1,3 @@
-import React from "react";
 import DialogNavButtons from "./DialogNavButtons.tsx";
 import PhoneticCharactersQuestion from "./PhoneticCharictersQuestion.tsx";
 import ProperNownQuestion from "./ProperNounQuestion.tsx";

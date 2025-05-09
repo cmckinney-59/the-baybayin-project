@@ -1,5 +1,3 @@
-import React from "react";
-
 interface DialogNavButtonsProps {
   close: () => void;
   onSkip: () => void;

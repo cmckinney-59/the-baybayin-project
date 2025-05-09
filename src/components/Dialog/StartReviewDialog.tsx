@@ -1,5 +1,3 @@
-import React from "react";
-
 interface StartReviewDialogProps {
   onClickStart: () => void;
   onClose: () => void;

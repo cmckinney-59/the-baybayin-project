@@ -1,4 +1,5 @@
-import React, { useState, JSX } from "react";
+import React, { useState } from "react";
+import type { JSX } from "react";
 
 interface ProperNownQuestionProps {
   enteredText: string;
