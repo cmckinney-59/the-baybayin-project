@@ -183,14 +183,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     const originalWord = wordKeys[currentWordIndex];
     const lowercased = originalWord.toLowerCase();
 
-    setActiveDialog(null);
-    setCapitalIndex(null);
-    setChIndex(null);
-    setCIndex(null);
-    setGIndex(null);
-    setJIndex(null);
-    setQuIndex(null);
-
+    resetAllDialogs();
     setCurrentWord(lowercased);
   };
 
@@ -424,6 +417,16 @@ export default function Transliterator({ title }: TransliteratorProps) {
         dict[word] = "";
         return dict;
       }, {});
+  };
+
+  const resetAllDialogs = (): void => {
+    setActiveDialog(null);
+    setCapitalIndex(null);
+    setChIndex(null);
+    setCIndex(null);
+    setGIndex(null);
+    setJIndex(null);
+    setQuIndex(null);
   };
 
   // Main HTML Body
