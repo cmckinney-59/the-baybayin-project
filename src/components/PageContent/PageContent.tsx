@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import "./PageContent.css";
 
 import Transliterator from "../Transliterator/Transliterator.tsx";
-import Description from "../Description/Description.tsx";
+// import Description from "../Description/Description.tsx";
 import { PAGES } from "../../pages.tsx";
 
 interface PageContentProps {
@@ -18,7 +18,7 @@ export default function PageContent({
   return (
     <div>
       {title && title !== "Home" && <Transliterator title={title} />}
-      <Description image={image} whatIs={whatIs} description={description} />
+      {/* <Description image={image} whatIs={whatIs} description={description} /> */}
     </div>
   );
 }

@@ -1,27 +1,29 @@
 .App-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #336bdb;
-    flex-direction: row;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  border-bottom: 10rem;
+  border-color: black;
 }
-  
+
 .header-content {
-    display: flex;
-    align-items: center; /* Align text and image vertically */
-    gap: 10px; /* Space between text and logo */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-  
+
 .App-Header-Text {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0; /* Remove extra margin */
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
 }
-  
+
 .App-logo {
-    width: 50px; /* Adjust size as needed */
-    height: auto;
+  width: 50px;
+  height: auto;
 }
