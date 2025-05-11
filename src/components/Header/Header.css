@@ -3,7 +3,7 @@
   justify-content: left;
   align-items: center;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(240, 238, 238);
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: black;
