@@ -27,6 +27,7 @@
 
 .transliteration-textarea,
 .transliteration-output {
+  text-align: left;
   font-size: 20px;
   border: 1px solid grey;
   width: 40%;
@@ -35,6 +36,7 @@
   background-color: #f9f9f9;
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   color: rgb(73, 72, 72);
+  padding: 10px;
 }
 
 .transliteration-output:empty::before {
