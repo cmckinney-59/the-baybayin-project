@@ -1,7 +1,13 @@
 TRANSLITERATOR WEB APP ROADMAP
 
 PHASE 1 : MVP
-7/7
+7/9
+
+TODO:
+
+- Copy
+- Make sure it is saved as the correct font
+
 COMPLETE
 
 - Input box
@@ -33,6 +39,9 @@ PHASE 2 : UI
   - Maybe make blue when available
 - Input boxes
   - Stationary sizes
+  - Gap in between
+  - Rounded Edges
+  - Output words left aligned
 
 PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
