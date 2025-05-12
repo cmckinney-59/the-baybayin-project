@@ -466,9 +466,24 @@ export default function Transliterator({ title }: TransliteratorProps) {
           />
         </div>
         <p> Save as... </p>
-        <button onClick={() => downloadAsExcel(wordsDictionary)}>Excel</button>
-        <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
-        <button onClick={() => downloadAsText(transliteratedText)}>Text</button>
+        <button
+          className={transliteratedText ? "active" : undefined}
+          onClick={() => downloadAsExcel(wordsDictionary)}
+        >
+          Excel
+        </button>
+        <button
+          className={transliteratedText ? "active" : undefined}
+          onClick={() => downloadAsWord(transliteratedText)}
+        >
+          Word
+        </button>
+        <button
+          className={transliteratedText ? "active" : undefined}
+          onClick={() => downloadAsText(transliteratedText)}
+        >
+          Text
+        </button>
       </div>
       {showDialog}
       {/* <div className="dictionary-output">
