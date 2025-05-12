@@ -457,19 +457,21 @@ export default function Transliterator({ title }: TransliteratorProps) {
           {transliteratedText || "Transliterated text..."}
         </p>
       </div>
-      <div>
-        <TransliterateButton
-          isActive={textareaHasText}
-          text={text}
-          onClick={handleTransliterateButtonClick}
-        />
+      <div className="action-buttons">
+        <div>
+          <TransliterateButton
+            isActive={textareaHasText}
+            text={text}
+            onClick={handleTransliterateButtonClick}
+          />
+        </div>
+        <p> Save to... </p>
+        <button onClick={() => downloadAsExcel(wordsDictionary)}>Excel</button>
+        <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
+        <button onClick={() => downloadAsText(transliteratedText)}>Text</button>
       </div>
       {showDialog}
-      <p> Save to... </p>
-      <button onClick={() => downloadAsExcel(wordsDictionary)}>Excel</button>
-      <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
-      <button onClick={() => downloadAsText(transliteratedText)}>Text</button>
-      <div className="dictionary-output">
+      {/* <div className="dictionary-output">
         <h3>Processed Words:</h3>
         <ul>
           {Object.entries(wordsDictionary).map(([original, processed]) => (
@@ -478,7 +480,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
