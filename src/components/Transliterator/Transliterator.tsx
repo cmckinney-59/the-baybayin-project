@@ -465,7 +465,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
             onClick={handleTransliterateButtonClick}
           />
         </div>
-        <p> Save to... </p>
+        <p> Save as... </p>
         <button onClick={() => downloadAsExcel(wordsDictionary)}>Excel</button>
         <button onClick={() => downloadAsWord(transliteratedText)}>Word</button>
         <button onClick={() => downloadAsText(transliteratedText)}>Text</button>
