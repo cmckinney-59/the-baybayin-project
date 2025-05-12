@@ -1,20 +1,21 @@
 @font-face {
-  font-family: 'Baybayin';
-  src: url('../../assets/fonts/baybayin/TagDoc93.ttf') format('truetype');
+  font-family: "Baybayin";
+  src: url("../../assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Deseret';
-  src: url('../../assets/fonts/deseret/deseret_.ttf') format('truetype');
+  font-family: "Deseret";
+  src: url("../../assets/fonts/deseret/deseret_.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Aurebesh';
-  src: url('../../assets/fonts/aurebesh/AurebeshBold-Rw1l.ttf') format('truetype');
+  font-family: "Aurebesh";
+  src: url("../../assets/fonts/aurebesh/AurebeshBold-Rw1l.ttf")
+    format("truetype");
 }
 
 .transliteration-output {
-  font-family: 'CustomFont', sans-serif;
+  font-family: "CustomFont", sans-serif;
 }
 
 .transliteration-container {
@@ -24,33 +25,34 @@
   margin-top: 20px;
 }
 
-.transliteration-textarea, 
+.transliteration-textarea,
 .transliteration-output {
   font-size: 20px;
-  border: 1px solid grey;    
+  border: 1px solid grey;
   width: 40%;
   box-sizing: border-box;
   min-height: 100px;
   background-color: #f9f9f9;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  color: rgb(73, 72, 72);
 }
 
 .transliteration-output:empty::before {
   content: "Transliterated text...";
-  font-family: 'Courier New', Courier, monospace;
-  color: gray;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  color: rgb(73, 72, 72);
 }
 
 .baybayin-font {
-  font-family: 'Baybayin', sans-serif;
+  font-family: "Baybayin", sans-serif;
 }
 
 .aurebesh-font {
-  font-family: 'Aurebesh', sans-serif;
+  font-family: "Aurebesh", sans-serif;
 }
 
 .deseret-font {
-  font-family: 'Deseret', sans-serif;
+  font-family: "Deseret", sans-serif;
 }
 
 .dialog-overlay {

@@ -28,9 +28,9 @@ img {
 }
 
 button {
-  background-color: lightgray;
-  color: black;
-  border: none;
+  background-color: white;
+  color: rgb(26, 115, 232);
+  border: 1px solid rgb(175, 175, 175);
   border-radius: 10px;
   padding: 10px 50px;
   margin: 10px;
@@ -38,6 +38,8 @@ button {
 }
 
 button.active {
-  background-color: rgb(151, 243, 151);
+  /* background-color: rgb(151, 243, 151); */
+  background-color: rgb(26, 115, 232);
+  color: white;
   border-radius: 10px;
 }
