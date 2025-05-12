@@ -15,6 +15,7 @@ import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import downloadAsWord from "../Utils/SaveToWord.ts";
 import downloadAsExcel from "../Utils/SaveToExcel.ts";
 import downloadAsText from "../Utils/SaveToText.ts";
+import copyToClipboard from "../Utils/CopyToClipboard.ts";
 
 interface TransliteratorProps {
   title: string;
@@ -483,6 +484,12 @@ export default function Transliterator({ title }: TransliteratorProps) {
           onClick={() => downloadAsText(transliteratedText)}
         >
           Text
+        </button>
+        <button
+          className={transliteratedText ? "active" : undefined}
+          onClick={() => copyToClipboard(transliteratedText)}
+        >
+          Copy
         </button>
       </div>
       {showDialog}
