@@ -17,7 +17,22 @@ COMPLETE
   - Excell
   - Txt
 
-PHASE 2 : UI - Color pallet - Header - Footer - Fonts - Buttons - Input boxes
+PHASE 2 : UI
+
+- Color pallet
+  - Add a spash of blue
+- Header
+  - Add home button
+- Footer
+  - links
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Add icons to buttons
+  - Button state
+  - Maybe make blue when available
+- Input boxes
+  - Stationary sizes
 
 PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
