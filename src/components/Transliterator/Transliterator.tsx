@@ -454,7 +454,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
               : ""
           }`}
         >
-          {transliteratedText || "Transliterated text..."}
+          {transliteratedText}
         </p>
       </div>
       <div className="action-buttons">

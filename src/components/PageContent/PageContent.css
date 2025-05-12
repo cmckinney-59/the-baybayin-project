@@ -39,12 +39,6 @@
   padding: 10px;
 }
 
-.transliteration-output:empty::before {
-  content: "Transliterated text...";
-  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-  color: rgb(73, 72, 72);
-}
-
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
