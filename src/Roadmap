@@ -37,12 +37,11 @@ PHASE 2 : UI
   - Add icons to buttons
   - Button state
   - Maybe make blue when available
-  - Change sizes
+  - Sizing of page
 - Input boxes
   - Stationary sizes
-  - Gap in between
   - Rounded Edges
-  - Output words left aligned
+  - Make taller
 
 PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
