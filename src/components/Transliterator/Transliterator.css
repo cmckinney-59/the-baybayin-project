@@ -1,7 +1,13 @@
+.transliteration-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .transliteration-input {
   font-size: 20px;
   border: 2px solid #000;
-  padding-left: 15px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
   margin-top: 20px;
