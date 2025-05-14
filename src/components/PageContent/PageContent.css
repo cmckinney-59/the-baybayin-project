@@ -14,31 +14,6 @@
     format("truetype");
 }
 
-.transliteration-output {
-  font-family: "CustomFont", sans-serif;
-}
-
-.transliteration-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.transliteration-textarea,
-.transliteration-output {
-  text-align: left;
-  font-size: 20px;
-  border: 1px solid grey;
-  width: 40%;
-  box-sizing: border-box;
-  min-height: 100px;
-  background-color: #f9f9f9;
-  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-  color: rgb(73, 72, 72);
-  padding: 10px;
-}
-
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
