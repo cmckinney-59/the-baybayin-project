@@ -13,6 +13,7 @@
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   border: 1px solid #dddbdb;
   background-color: white;
+  resize: none;
 }
 
 .transliteration-output {
