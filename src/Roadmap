@@ -26,19 +26,19 @@ COMPLETE
 
 PHASE 2 : UI
 
-- Color pallet
-  - Add a spash of blue
 - Header
   - Add home button
 - Footer
+  - Grey
   - links
-- Fonts
-  - Make fonts same as google
+    - Facebook
+    - Instagram
+    - Gmail
 - Buttons
   - Add icons to buttons
-  - Button state
-  - Maybe make blue when available
   - Sizing of page
+- Color pallet
+- Fonts
 - Input boxes
 
 Done
@@ -47,6 +47,14 @@ Done
   - Stationary sizes
   - Rounded Edges
   - Make taller
+- Color pallet
+  - Grey/white
+  - Add a spash of blue
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Button state
+  - Maybe make blue when available
 
 PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
