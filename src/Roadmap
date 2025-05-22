@@ -1,13 +1,8 @@
 TRANSLITERATOR WEB APP ROADMAP
 
 PHASE 1 : MVP
-7/8
-
-TODO:
-
-- Connect to translate
-
-Bugs (1)
+7/7
+Bugs (0/1)
 
 - Make sure it is saved as the correct font
 
@@ -23,7 +18,7 @@ COMPLETE
 - Output box
 - Save to button
   - Word
-  - Excell
+  - Excel
   - Txt
   - Copy
 
@@ -64,6 +59,8 @@ PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
 PHASE 4 : RELEASE
 
 PHASE 5 : ABOUT/ HOW TO READ
+
+- Connect to translate
 
 PHASE 6 : DESERET
 
