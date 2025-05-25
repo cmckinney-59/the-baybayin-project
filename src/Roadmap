@@ -22,8 +22,6 @@ PHASE 2 : UI / Bugs
 
 UI
 
-- Header
-  - Add home button
 - Footer
   - Grey
   - links
@@ -34,10 +32,10 @@ UI
   - Add icons to buttons
   - Sizing of page
 - Modal
-  - Asses modal
 - Color pallet
 - Fonts
 - Input boxes
+  - Make it so that it isn't outlined in black when selected
 
 BUGS ()
 
@@ -83,6 +81,8 @@ PHASE 4 : RELEASE
 
 PHASE 5 : ABOUT/ HOW TO READ
 
+- Header
+  - Add home button
 - Connect to translate
 
 PHASE 6 : DESERET
