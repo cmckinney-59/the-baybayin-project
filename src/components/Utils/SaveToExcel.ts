@@ -11,12 +11,12 @@ export default function downloadAsExcel(data: { [key: string]: string }) {
 
   const range = XLSX.utils.decode_range(worksheet["!ref"] || "");
   for (let row = range.s.r + 1; row <= range.e.r; ++row) {
-    const cellRef = XLSX.utils.encode_cell({ c: 1, r: row }); // 'Transliterated' column
+    const cellRef = XLSX.utils.encode_cell({ c: 1, r: row });
     const cell = worksheet[cellRef];
     if (cell) {
       cell.s = {
         font: {
-          name: "Tagalog Doctrina 1593", // Your desired font
+          name: "Tagalog Doctrina 1593",
           sz: 14,
           color: { rgb: "000000" },
         },

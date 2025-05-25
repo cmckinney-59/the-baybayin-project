@@ -8,7 +8,14 @@ export default function downloadAsWord(text: string) {
         properties: {},
         children: [
           new Paragraph({
-            children: [new TextRun(text)],
+            children: [
+              new TextRun({
+                text,
+                font: {
+                  name: "Tagalog Doctrina 1593",
+                },
+              }),
+            ],
           }),
         ],
       },

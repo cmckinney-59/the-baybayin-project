@@ -2,10 +2,6 @@ TRANSLITERATOR WEB APP ROADMAP
 
 PHASE 1 : MVP
 7/7
-Bugs (0/1)
-
-- Make sure it is saved as the correct font
-
 COMPLETE
 
 - Input box
@@ -22,7 +18,9 @@ COMPLETE
   - Txt
   - Copy
 
-PHASE 2 : UI
+PHASE 2 : UI / Bugs
+
+UI
 
 - Header
   - Add home button
@@ -35,9 +33,22 @@ PHASE 2 : UI
 - Buttons
   - Add icons to buttons
   - Sizing of page
+- Modal
+  - Asses modal
 - Color pallet
 - Fonts
 - Input boxes
+
+BUGS (1/3)
+
+Todo
+
+- Disable buttons until available
+- Fix modal closing
+
+Fixed
+
+- Make sure it is saved as the correct font
 
 Done
 
