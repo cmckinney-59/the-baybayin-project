@@ -43,10 +43,22 @@ BUGS (1/3)
 
 Todo
 
+CRITICAL
+
 - Disable buttons until available
 - Fix modal closing
+- Fix inital word review modal number
+- Change close button color to grey or white
+- Output not showing all words
+- Proper noun review, enter needs to be disabled until there is something in the text box
+- Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
+- Add a clear output button
+- Add a clear input button
 
-Fixed
+OPTIONAL
+
+- Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
+  Fixed
 
 - Make sure it is saved as the correct font
 
