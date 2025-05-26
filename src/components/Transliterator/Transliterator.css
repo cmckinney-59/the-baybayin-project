@@ -35,6 +35,12 @@
   overflow-y: auto;
 }
 
+.transliteration-textarea:focus {
+  outline: none;
+  border: 1px solid #dddbdb;
+  box-shadow: none;
+}
+
 .dictionary-output ul {
   list-style-type: none;
   padding: 0;
