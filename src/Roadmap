@@ -35,7 +35,6 @@ UI
 - Color pallet
 - Fonts
 - Input boxes
-  - Make it so that it isn't outlined in black when selected
 
 BUGS ()
 
@@ -66,6 +65,7 @@ Done
   - Stationary sizes
   - Rounded Edges
   - Make taller
+  - Make it so that it isn't outlined in black when selected
 - Color pallet
   - Grey/white
   - Add a spash of blue
