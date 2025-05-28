@@ -1,4 +1,4 @@
-.App-header {
+.App-footer {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -7,16 +7,16 @@
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: black;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
 }
 
-.header-content {
+.footer-content {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.App-Header-Text {
+.App-footer-Text {
   font-size: 24px;
   font-weight: bold;
   margin: 0;

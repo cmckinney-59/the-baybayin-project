@@ -36,6 +36,24 @@ UI
 - Fonts
 - Input boxes
 
+Done
+
+- Input boxes
+  - Stationary sizes
+  - Rounded Edges
+  - Make taller
+  - Make it so that it isn't outlined in black when selected
+- Color pallet
+  - Grey/white
+  - Add a spash of blue
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Button state
+  - Maybe make blue when available
+
+PHASE 3 : BUGS - Fix all critical bugs
+
 BUGS ()
 
 Todo
@@ -59,34 +77,18 @@ OPTIONAL
 
 - Make sure it is saved as the correct font
 
-Done
+PHASE 4 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
-- Input boxes
-  - Stationary sizes
-  - Rounded Edges
-  - Make taller
-  - Make it so that it isn't outlined in black when selected
-- Color pallet
-  - Grey/white
-  - Add a spash of blue
-- Fonts
-  - Make fonts same as google
-- Buttons
-  - Button state
-  - Maybe make blue when available
+PHASE 5 : RELEASE
 
-PHASE 3 : OPTIMIZE - Work with Jeremiah - Make regexs global
-
-PHASE 4 : RELEASE
-
-PHASE 5 : ABOUT/ HOW TO READ
+PHASE 6 : ABOUT/ HOW TO READ
 
 - Header
   - Add home button
 - Connect to translate
 
-PHASE 6 : DESERET
+PHASE 7 : DESERET
 
-PHASE 7 : AUREBESH
+PHASE 8 : AUREBESH
 
-PHASE 8 : OTHER FILIPINO ALPHABETS
+PHASE 9 : OTHER FILIPINO ALPHABETS
