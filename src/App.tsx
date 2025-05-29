@@ -7,13 +7,13 @@ import Footer from "./components/Footer/Footer.tsx";
 
 function App(): JSX.Element {
   return (
-    <>
+    <div className="App">
       <Header />
-      <main>
+      <main className="App-content">
         <ContentContainer />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
