@@ -12,7 +12,6 @@ export default function Footer(): JSX.Element {
         <h1 className="App-Footer-Text">The Baybayin Project</h1>
       </div>
       <ul className="footer-links-container">
-        <p>Contact us:</p>
         <li>
           <a
             href="https://www.facebook.com/profile.php?id=61558642794586"
@@ -31,8 +30,8 @@ export default function Footer(): JSX.Element {
             <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
         </li>
-        <p>the.baybayin.project@gmail.com</p>
       </ul>
+      <p>Contact us: the.baybayin.project@gmail.com</p>
     </footer>
   );
 }

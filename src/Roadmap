@@ -23,11 +23,6 @@ PHASE 2 : UI / Bugs
 UI
 
 - Footer
-  - Grey
-  - links
-    - Facebook
-    - Instagram
-    - Gmail
 - Buttons
   - Add icons to buttons
   - Sizing of page
@@ -51,6 +46,12 @@ Done
 - Buttons
   - Button state
   - Maybe make blue when available
+- Footer
+  - Grey
+  - links
+    - Facebook
+    - Instagram
+    - Gmail
 
 PHASE 3 : BUGS - Fix all critical bugs
 
