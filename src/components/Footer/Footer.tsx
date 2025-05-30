@@ -1,4 +1,6 @@
 import type { JSX } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/images/logo.png";
 import "./Footer.css";
 
@@ -10,13 +12,14 @@ export default function Footer(): JSX.Element {
         <h1 className="App-Footer-Text">The Baybayin Project</h1>
       </div>
       <ul className="footer-links-container">
+        <p>Contact us:</p>
         <li>
           <a
             href="https://www.facebook.com/profile.php?id=61558642794586"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Facebook
+            <FontAwesomeIcon icon={faFacebook} size="2x" />
           </a>
         </li>
         <li>
@@ -25,10 +28,10 @@ export default function Footer(): JSX.Element {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Instagram
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
         </li>
-        <a>Contact us: the.baybayin.project@gmail.com</a>
+        <p>the.baybayin.project@gmail.com</p>
       </ul>
     </footer>
   );
