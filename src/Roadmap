@@ -24,7 +24,6 @@ UI
 
 - Footer
 - Buttons
-  - Add icons to buttons
   - Sizing of page
 - Modal
 - Color pallet
@@ -46,6 +45,7 @@ Done
 - Buttons
   - Button state
   - Maybe make blue when available
+  - Add icons to buttons
 - Footer
   - Grey
   - links
