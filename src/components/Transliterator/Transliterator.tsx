@@ -1,5 +1,12 @@
 import { useState } from "react";
 import type { JSX } from "react";
+import {
+  AiFillFileExcel,
+  AiFillFileWord,
+  AiFillFileText,
+  AiFillCopy,
+} from "react-icons/ai";
+
 import "./Transliterator.css";
 
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
@@ -471,24 +478,28 @@ export default function Transliterator({ title }: TransliteratorProps) {
           className={transliteratedText ? "active" : undefined}
           onClick={() => downloadAsExcel(wordsDictionary)}
         >
+          <AiFillFileExcel style={{ marginRight: "5px" }} />
           Excel
         </button>
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => downloadAsWord(transliteratedText)}
         >
+          <AiFillFileWord style={{ marginRight: "5px" }} />
           Word
         </button>
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => downloadAsText(transliteratedText)}
         >
+          <AiFillFileText style={{ marginRight: "5px" }} />
           Text
         </button>
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => copyToClipboard(transliteratedText)}
         >
+          <AiFillCopy style={{ marginRight: "5px" }} />
           Copy
         </button>
       </div>

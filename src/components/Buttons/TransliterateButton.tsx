@@ -1,3 +1,5 @@
+import { AiOutlineTranslation } from "react-icons/ai";
+
 interface TransliterateButtonProps {
   onClick: () => void;
   isActive: boolean;
@@ -15,6 +17,7 @@ export default function TransliterateButton({
       onClick={onClick}
       disabled={text === null}
     >
+      <AiOutlineTranslation style={{ marginRight: "5px" }} />
       Transliterate
     </button>
   );
