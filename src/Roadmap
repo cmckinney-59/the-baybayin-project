@@ -1,22 +1,22 @@
 TRANSLITERATOR WEB APP ROADMAP
 
-PHASE 1 : MVP
-7/7
-COMPLETE
+- PHASE 1 : MVP
+  -7/7
+  -COMPLETE
 
-- Input box
-- Transliterate Button
-- Question Dialog
-  - Proper nouns
-  - Ch, C, Qu, J
-- Items must be stored in dictionary
-- Baybayin word processor
-- Output box
-- Save to button
-  - Word
-  - Excel
-  - Txt
-  - Copy
+  - Input box
+  - Transliterate Button
+  - Question Dialog
+    - Proper nouns
+    - Ch, C, Qu, J
+  - Items must be stored in dictionary
+  - Baybayin word processor
+  - Output box
+  - Save to button
+    - Word
+    - Excel
+    - Txt
+    - Copy
 
 PHASE 2 : UI / Bugs
 
