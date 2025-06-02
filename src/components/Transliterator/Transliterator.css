@@ -9,6 +9,13 @@
   margin-right: 10px;
 }
 
+@media (max-width: 720px) {
+  .transliteration-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .transliteration-textarea {
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
   border: 1px solid #dddbdb;

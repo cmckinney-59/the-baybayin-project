@@ -1,65 +1,8 @@
 TRANSLITERATOR WEB APP ROADMAP
 
-- PHASE 1 : MVP
-  -7/7
-  -COMPLETE
-
-  - Input box
-  - Transliterate Button
-  - Question Dialog
-    - Proper nouns
-    - Ch, C, Qu, J
-  - Items must be stored in dictionary
-  - Baybayin word processor
-  - Output box
-  - Save to button
-    - Word
-    - Excel
-    - Txt
-    - Copy
-
-PHASE 2 : UI / Bugs
-
-UI
-
-- Footer
-- Buttons
-  - Sizing of page
-- Modal
-- Color pallet
-- Fonts
-- Input boxes
-
-Done
-
-- Input boxes
-  - Stationary sizes
-  - Rounded Edges
-  - Make taller
-  - Make it so that it isn't outlined in black when selected
-- Color pallet
-  - Grey/white
-  - Add a spash of blue
-- Fonts
-  - Make fonts same as google
-- Buttons
-  - Button state
-  - Maybe make blue when available
-  - Add icons to buttons
-- Footer
-  - Grey
-  - links
-    - Facebook
-    - Instagram
-    - Gmail
-
 PHASE 3 : BUGS - Fix all critical bugs
 
-BUGS ()
-
-Todo
-
-CRITICAL
+CRITICAL (0/10)
 
 - Disable buttons until available
 - Fix modal closing
@@ -71,7 +14,7 @@ CRITICAL
 - Add a clear output button
 - Add a clear input button
 
-OPTIONAL
+OPTIONAL (0/2)
 
 - Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
   Fixed
@@ -93,3 +36,50 @@ PHASE 7 : DESERET
 PHASE 8 : AUREBESH
 
 PHASE 9 : OTHER FILIPINO ALPHABETS
+
+---COMPLETED PHASES---
+
+- PHASE 1 : MVP
+  -7/7
+  -COMPLETE
+
+  - Input box
+  - Transliterate Button
+  - Question Dialog
+    - Proper nouns
+    - Ch, C, Qu, J
+  - Items must be stored in dictionary
+  - Baybayin word processor
+  - Output box
+  - Save to button
+    - Word
+    - Excel
+    - Txt
+    - Copy
+
+-PHASE 2 : UI / Bugs
+
+-UI
+-Done
+
+- Input boxes
+  - Stationary sizes
+  - Rounded Edges
+  - Make taller
+  - Make it so that it isn't outlined in black when selected
+- Color pallet
+  - Grey/white
+  - Add a spash of blue
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Button state
+  - Maybe make blue when available
+  - Add icons to buttons
+  - Sizing of page
+- Footer
+  - Grey
+  - links
+    - Facebook
+    - Instagram
+    - Gmail
