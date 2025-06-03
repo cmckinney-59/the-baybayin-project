@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { JSX } from "react";
-import { AiFillFileText, AiFillCopy } from "react-icons/ai";
+import { AiFillCopy } from "react-icons/ai";
 
 import "./Transliterator.css";
 
@@ -13,10 +13,10 @@ import ChDialog from "../Dialog/ChDialog.tsx";
 import JDialog from "../Dialog/JDialog.tsx";
 import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
-import downloadAsText from "../Utils/SaveToText.ts";
 import copyToClipboard from "../Utils/CopyToClipboard.ts";
 import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
 import WordSaveButton from "../Buttons/WordSaveButton.tsx";
+import TextSaveButton from "../Buttons/TextSaveButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -420,13 +420,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
           wordsDictionary={wordsDictionary}
         />
         <WordSaveButton transliteratedText={transliteratedText} />
-        <button
-          className={transliteratedText ? "active" : undefined}
-          onClick={() => downloadAsText(transliteratedText)}
-        >
-          <AiFillFileText style={{ marginRight: "5px" }} />
-          Text
-        </button>
+        <TextSaveButton transliteratedText={transliteratedText} />
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => copyToClipboard(transliteratedText)}
