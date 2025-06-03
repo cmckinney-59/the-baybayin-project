@@ -469,8 +469,8 @@ export default function Transliterator({ title }: TransliteratorProps) {
         <div>
           <TransliterateButton
             isActive={textareaHasText}
-            text={text}
             onClick={handleTransliterateButtonClick}
+            disabled={text.trim().length === 0}
           />
         </div>
         <p> Save as... </p>
