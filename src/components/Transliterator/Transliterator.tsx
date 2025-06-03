@@ -13,10 +13,10 @@ import ChDialog from "../Dialog/ChDialog.tsx";
 import JDialog from "../Dialog/JDialog.tsx";
 import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
-import copyToClipboard from "../Utils/CopyToClipboard.ts";
 import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
 import WordSaveButton from "../Buttons/WordSaveButton.tsx";
 import TextSaveButton from "../Buttons/TextSaveButton.tsx";
+import CopyTextButton from "../Buttons/CopyTextButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -421,13 +421,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
         />
         <WordSaveButton transliteratedText={transliteratedText} />
         <TextSaveButton transliteratedText={transliteratedText} />
-        <button
-          className={transliteratedText ? "active" : undefined}
-          onClick={() => copyToClipboard(transliteratedText)}
-        >
-          <AiFillCopy style={{ marginRight: "5px" }} />
-          Copy
-        </button>
+        <CopyTextButton transliteratedText={transliteratedText} />
       </div>
       {showDialog}
       {/* <div className="dictionary-output">
