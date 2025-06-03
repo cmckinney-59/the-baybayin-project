@@ -1,11 +1,6 @@
 import { useState } from "react";
 import type { JSX } from "react";
-import {
-  AiFillFileExcel,
-  AiFillFileWord,
-  AiFillFileText,
-  AiFillCopy,
-} from "react-icons/ai";
+import { AiFillFileText, AiFillCopy } from "react-icons/ai";
 
 import "./Transliterator.css";
 
@@ -15,14 +10,13 @@ import StartReviewDialog from "../Dialog/StartReviewDialog.tsx";
 import CapitalLetterDialog from "../Dialog/CapitalLetterDialog.tsx";
 import CDialog from "../Dialog/CDialog.tsx";
 import ChDialog from "../Dialog/ChDialog.tsx";
-import GDialog from "../Dialog/GDialog.tsx";
 import JDialog from "../Dialog/JDialog.tsx";
 import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
-import downloadAsWord from "../Utils/SaveToWord.ts";
 import downloadAsText from "../Utils/SaveToText.ts";
 import copyToClipboard from "../Utils/CopyToClipboard.ts";
 import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
+import WordSaveButton from "../Buttons/WordSaveButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -51,7 +45,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const [capitalIndex, setCapitalIndex] = useState<number | null>(null);
   const [chIndex, setChIndex] = useState<number | null>(null);
   const [cIndex, setCIndex] = useState<number | null>(null);
-  // const [gIndex, setGIndex] = useState<number | null>(null);
   const [jIndex, setJIndex] = useState<number | null>(null);
   const [quIndex, setQuIndex] = useState<number | null>(null);
 
@@ -98,12 +91,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
       activateDialog(match, word, "c");
       return;
     }
-
-    // if (/g/.test(word)) {
-    //   const match = word.indexOf("g");
-    //   activateDialog(match, word, "g");
-    //   return;
-    // }
 
     if (/j/.test(word)) {
       const match = word.indexOf("j");
@@ -225,37 +212,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
     setCurrentWord(updated);
   };
 
-  // const handleGSelection = (choice: string) => {
-  //   if (gIndex === null) return;
-
-  //   let replacement = "";
-
-  //   if (choice === "g") {
-  //     replacement = "g";
-  //   } else if (choice === "h") {
-  //     replacement = "h";
-  //   } else if (choice === "diy") {
-  //     replacement = "diy";
-  //   }
-
-  //   const before = currentWord.slice(0, gIndex);
-  //   const after = currentWord.slice(gIndex + 1);
-  //   const updatedWord = before + replacement + after;
-
-  //   const originalWord = wordKeys[currentWordIndex];
-
-  //   setWordsDictionary((prev) => ({
-  //     ...prev,
-  //     [originalWord]: updatedWord,
-  //   }));
-
-  //   setGIndex(null);
-  //   setActiveDialog(null);
-
-  //   const updated = updatedWord;
-  //   setCurrentWord(updated);
-  // };
-
   const handleJSelection = (choice: string) => {
     if (jIndex === null) return;
 
@@ -354,18 +310,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
       );
       break;
 
-    // case "g":
-    //   showDialog = (
-    //     <GDialog
-    //       currentWordIndex={currentWordIndex}
-    //       numberOfWordsToReview={wordKeys.length}
-    //       word={wordForDialog}
-    //       onGSelection={handleGSelection}
-    //       onClose={handleClose}
-    //     />
-    //   );
-    //   break;
-
     case "j":
       showDialog = (
         <JDialog
@@ -408,7 +352,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
     setCapitalIndex(null);
     setChIndex(null);
     setCIndex(null);
-    // setGIndex(null);
     setJIndex(null);
     setQuIndex(null);
   };
@@ -425,8 +368,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
         setChIndex(match);
       } else if (dialogType == "c") {
         setCIndex(match);
-        // } else if (dialogType == "g") {
-        //   setGIndex(match);
       } else if (dialogType == "j") {
         setJIndex(match);
       } else if (dialogType == "qu") {
@@ -478,13 +419,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
-        <button
-          className={transliteratedText ? "active" : undefined}
-          onClick={() => downloadAsWord(transliteratedText)}
-        >
-          <AiFillFileWord style={{ marginRight: "5px" }} />
-          Word
-        </button>
+        <WordSaveButton transliteratedText={transliteratedText} />
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => downloadAsText(transliteratedText)}
