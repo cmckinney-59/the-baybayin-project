@@ -20,9 +20,9 @@ import JDialog from "../Dialog/JDialog.tsx";
 import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import downloadAsWord from "../Utils/SaveToWord.ts";
-import downloadAsExcel from "../Utils/SaveToExcel.ts";
 import downloadAsText from "../Utils/SaveToText.ts";
 import copyToClipboard from "../Utils/CopyToClipboard.ts";
+import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -474,13 +474,10 @@ export default function Transliterator({ title }: TransliteratorProps) {
           />
         </div>
         <p> Save as... </p>
-        <button
-          className={transliteratedText ? "active" : undefined}
-          onClick={() => downloadAsExcel(wordsDictionary)}
-        >
-          <AiFillFileExcel style={{ marginRight: "5px" }} />
-          Excel
-        </button>
+        <ExcelSaveButton
+          transliteratedText={transliteratedText}
+          wordsDictionary={wordsDictionary}
+        />
         <button
           className={transliteratedText ? "active" : undefined}
           onClick={() => downloadAsWord(transliteratedText)}
