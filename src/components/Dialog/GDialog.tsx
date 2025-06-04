@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface GDialogProps {
   word: string;
   onGSelection: (choice: "g" | "h" | "diy") => void;
@@ -27,9 +29,7 @@ export default function GDialog({
         <button onClick={() => onGSelection("g")}>g</button>
         <button onClick={() => onGSelection("h")}>h</button>
         <button onClick={() => onGSelection("diy")}>diy</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

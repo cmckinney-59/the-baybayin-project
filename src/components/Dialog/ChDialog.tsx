@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface ChDialogProps {
   word: string;
   onChSelection: (choice: "k" | "tiy") => void;
@@ -26,9 +28,7 @@ export default function ChDialog({
         </p>
         <button onClick={() => onChSelection("k")}>k</button>
         <button onClick={() => onChSelection("tiy")}>tiy</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

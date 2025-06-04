@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface StartReviewDialogProps {
   onClickStart: () => void;
   onClose: () => void;
@@ -15,9 +17,7 @@ export default function StartReviewDialog({
         <h3>Word Review</h3>
         <p>You have {numberOfWordsToReview} words to review</p>
         <button onClick={onClickStart}>Start</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

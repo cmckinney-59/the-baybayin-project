@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 
 interface CapitalLetterDialogProps {
   originalText: string;
@@ -43,9 +44,7 @@ export default function CapitalLetterDialog({
         />
         <button onClick={handleEnterClick}>Enter</button>
         <button onClick={onSkip}>Skip</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

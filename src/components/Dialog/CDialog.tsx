@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface CDialogProps {
   word: string;
   onCSelection: (choice: "k" | "s" | "tiy") => void;
@@ -27,9 +29,7 @@ export default function CDialog({
         <button onClick={() => onCSelection("k")}>k</button>
         <button onClick={() => onCSelection("s")}>s</button>
         <button onClick={() => onCSelection("tiy")}>tiy</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

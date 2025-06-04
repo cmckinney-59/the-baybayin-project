@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface JDialogProps {
   word: string;
   onJSelection: (choice: "h" | "diy") => void;
@@ -25,9 +27,7 @@ export default function JDialog({
         </p>
         <button onClick={() => onJSelection("h")}>h</button>
         <button onClick={() => onJSelection("diy")}>diy</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );

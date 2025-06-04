@@ -1,3 +1,5 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface QuDialogProps {
   word: string;
   onQuSelection: (choice: "k" | "kuw") => void;
@@ -27,9 +29,7 @@ export default function QuDialog({
         </p>
         <button onClick={() => onQuSelection("k")}>k</button>
         <button onClick={() => onQuSelection("kuw")}>kuw</button>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
+        <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>
   );
