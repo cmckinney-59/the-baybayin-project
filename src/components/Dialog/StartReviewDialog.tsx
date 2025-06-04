@@ -15,7 +15,9 @@ export default function StartReviewDialog({
         <h3>Word Review</h3>
         <p>You have {numberOfWordsToReview} words to review</p>
         <button onClick={onClickStart}>Start</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

@@ -26,7 +26,9 @@ export default function ChDialog({
         </p>
         <button onClick={() => onChSelection("k")}>k</button>
         <button onClick={() => onChSelection("tiy")}>tiy</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

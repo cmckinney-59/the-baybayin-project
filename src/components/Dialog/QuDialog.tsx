@@ -27,7 +27,9 @@ export default function QuDialog({
         </p>
         <button onClick={() => onQuSelection("k")}>k</button>
         <button onClick={() => onQuSelection("kuw")}>kuw</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

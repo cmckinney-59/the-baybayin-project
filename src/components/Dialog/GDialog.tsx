@@ -27,7 +27,9 @@ export default function GDialog({
         <button onClick={() => onGSelection("g")}>g</button>
         <button onClick={() => onGSelection("h")}>h</button>
         <button onClick={() => onGSelection("diy")}>diy</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

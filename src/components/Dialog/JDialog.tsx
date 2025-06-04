@@ -25,7 +25,9 @@ export default function JDialog({
         </p>
         <button onClick={() => onJSelection("h")}>h</button>
         <button onClick={() => onJSelection("diy")}>diy</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

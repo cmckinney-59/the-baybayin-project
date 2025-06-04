@@ -10,7 +10,9 @@ export default function DialogNavButtons({
   return (
     <div className="dialog-nav-buttons">
       <button onClick={onSkip}>Skip</button>
-      <button onClick={close}>Close</button>
+      <button className="close-button" onClick={close}>
+        Close
+      </button>
     </div>
   );
 }

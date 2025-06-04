@@ -1,13 +1,45 @@
 TRANSLITERATOR WEB APP ROADMAP
 
+-PHASE 2 : UI / Bugs
+
+-UI
+
+- Modal
+  - Change close button color to grey or white
+  - Add close x
+  - Stack fields
+
+-Done
+
+- Input boxes
+  - Stationary sizes
+  - Rounded Edges
+  - Make taller
+  - Make it so that it isn't outlined in black when selected
+- Color pallet
+  - Grey/white
+  - Add a spash of blue
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Button state
+  - Maybe make blue when available
+  - Add icons to buttons
+  - Sizing of page
+- Footer
+  - Grey
+  - links
+    - Facebook
+    - Instagram
+    - Gmail
+
 PHASE 3 : BUGS - Fix all critical bugs
 
-CRITICAL (0/10)
+CRITICAL (1/9)
 
 - Disable buttons until available
 - Fix modal closing
 - Fix inital word review modal number
-- Change close button color to grey or white
 - Output not showing all words
 - Proper noun review, enter needs to be disabled until there is something in the text box
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
@@ -30,6 +62,7 @@ PHASE 6 : ABOUT/ HOW TO READ
 - Header
   - Add home button
 - Connect to translate
+- Normalize all buttons
 
 PHASE 7 : DESERET
 
@@ -56,30 +89,3 @@ PHASE 9 : OTHER FILIPINO ALPHABETS
     - Excel
     - Txt
     - Copy
-
--PHASE 2 : UI / Bugs
-
--UI
--Done
-
-- Input boxes
-  - Stationary sizes
-  - Rounded Edges
-  - Make taller
-  - Make it so that it isn't outlined in black when selected
-- Color pallet
-  - Grey/white
-  - Add a spash of blue
-- Fonts
-  - Make fonts same as google
-- Buttons
-  - Button state
-  - Maybe make blue when available
-  - Add icons to buttons
-  - Sizing of page
-- Footer
-  - Grey
-  - links
-    - Facebook
-    - Instagram
-    - Gmail

@@ -27,7 +27,9 @@ export default function CDialog({
         <button onClick={() => onCSelection("k")}>k</button>
         <button onClick={() => onCSelection("s")}>s</button>
         <button onClick={() => onCSelection("tiy")}>tiy</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );

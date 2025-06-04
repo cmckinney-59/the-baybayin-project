@@ -43,7 +43,9 @@ export default function CapitalLetterDialog({
         />
         <button onClick={handleEnterClick}>Enter</button>
         <button onClick={onSkip}>Skip</button>
-        <button onClick={onClose}>Close</button>
+        <button className="close-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </dialog>
   );
