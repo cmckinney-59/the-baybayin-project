@@ -1,4 +1,5 @@
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import DialogHeader from "./DialogHeader";
 
 interface StartReviewDialogProps {
   onClickStart: () => void;
@@ -14,8 +15,11 @@ export default function StartReviewDialog({
   return (
     <dialog className="dialog-overlay">
       <div className="dialog-box">
-        <h3>Word Review</h3>
-        <p>You have {numberOfWordsToReview} words to review</p>
+        <DialogHeader
+          onClose={onClose}
+          numberOfWordsToReview={numberOfWordsToReview}
+          isStart={true}
+        />
         <button onClick={onClickStart}>Start</button>
         <CloseDialogButton onClose={onClose} />
       </div>

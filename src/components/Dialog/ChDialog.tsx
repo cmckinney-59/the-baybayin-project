@@ -1,4 +1,5 @@
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import DialogHeader from "./DialogHeader";
 
 interface ChDialogProps {
   word: string;
@@ -18,10 +19,11 @@ export default function ChDialog({
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
-        <h3>Word Review</h3>
-        <p>
-          Reviewing word {currentWordIndex + 1} of {numberOfWordsToReview}
-        </p>
+        <DialogHeader
+          onClose={onClose}
+          numberOfWordsToReview={numberOfWordsToReview}
+          currentWordIndex={currentWordIndex}
+        />
         <p>
           Does the first "ch" in <strong>{word}</strong> sound like "k" or
           "tiy"?

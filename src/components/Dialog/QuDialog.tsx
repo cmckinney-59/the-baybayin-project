@@ -1,4 +1,5 @@
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import DialogHeader from "./DialogHeader";
 
 interface QuDialogProps {
   word: string;
@@ -18,11 +19,11 @@ export default function QuDialog({
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
-        <h3>Word Review</h3>
-        <p>
-          Reviewing word {currentWordIndex + 1} of {numberOfWordsToReview}
-        </p>
-        <p>You have {numberOfWordsToReview} words to review</p>
+        <DialogHeader
+          onClose={onClose}
+          numberOfWordsToReview={numberOfWordsToReview}
+          currentWordIndex={currentWordIndex}
+        />
         <p>
           Does the first "qu" in <strong>{word}</strong> sound like "k" or
           "kuw"?

@@ -5,7 +5,6 @@ TRANSLITERATOR WEB APP ROADMAP
 -UI
 
 - Modal
-  - Change close button color to grey or white
   - Add close x
   - Stack fields
 
@@ -32,6 +31,8 @@ TRANSLITERATOR WEB APP ROADMAP
     - Facebook
     - Instagram
     - Gmail
+- Modal
+  - Change close button color to grey or white
 
 PHASE 3 : BUGS - Fix all critical bugs
 

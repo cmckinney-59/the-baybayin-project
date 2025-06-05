@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import DialogHeader from "./DialogHeader";
 
 interface CapitalLetterDialogProps {
   originalText: string;
@@ -27,10 +28,11 @@ export default function CapitalLetterDialog({
   return (
     <dialog className="dialog-overlay">
       <div className="dialog-box">
-        <h3>Word Review</h3>
-        <p>
-          Reviewing word {currentWordIndex + 1} of {numberOfWordsToReview}
-        </p>
+        <DialogHeader
+          onClose={onClose}
+          numberOfWordsToReview={numberOfWordsToReview}
+          currentWordIndex={currentWordIndex}
+        />
         <p>
           If <strong>{originalText}</strong> is a proper noun <em>and</em> is
           not spelled the way it sounds, please provide the phonetic spelling
