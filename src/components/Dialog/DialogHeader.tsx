@@ -14,7 +14,9 @@ export default function DialogHeader({
   return (
     <div className="dialog-header">
       <h3>Word Review</h3>
-      <button onClick={onClose}>X</button>
+      <button className="close-button" onClick={onClose}>
+        X
+      </button>
       {isStart ? (
         <p>You have {numberOfWordsToReview} words to review</p>
       ) : (
