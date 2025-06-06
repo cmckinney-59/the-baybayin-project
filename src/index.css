@@ -43,3 +43,20 @@ button.active {
   color: white;
   border-radius: 10px;
 }
+
+.dialog-header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dialog-header h3 {
+  margin: 0 auto;
+}
+
+.dialog-header .close-button {
+  position: absolute;
+  right: 0rem;
+  padding: 0%;
+}

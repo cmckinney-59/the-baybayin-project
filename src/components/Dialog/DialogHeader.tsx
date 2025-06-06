@@ -13,10 +13,12 @@ export default function DialogHeader({
 }: DialogHeaderProps) {
   return (
     <div className="dialog-header">
-      <h3>Word Review</h3>
-      <button className="close-button" onClick={onClose}>
-        X
-      </button>
+      <div className="dialog-header-top-row">
+        <button className="close-button" onClick={onClose}>
+          X
+        </button>
+        <h3>Word Review</h3>
+      </div>
       {isStart ? (
         <p>You have {numberOfWordsToReview} words to review</p>
       ) : (
