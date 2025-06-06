@@ -5,8 +5,9 @@ TRANSLITERATOR WEB APP ROADMAP
 -UI
 
 - Modal
-  - Add close x
-  - Stack fields
+  - Stack fields in Propernoun review
+  - Make buttons the same width?
+  - ?Update the text box in propernoun review?
 
 -Done
 
@@ -32,6 +33,7 @@ TRANSLITERATOR WEB APP ROADMAP
     - Instagram
     - Gmail
 - Modal
+  - Add close x
   - Change close button color to grey or white
 
 PHASE 3 : BUGS - Fix all critical bugs
