@@ -60,3 +60,7 @@ button.active {
   right: 0rem;
   padding: 0%;
 }
+
+.phonetic-input {
+  font-size: 20px;
+}

@@ -35,18 +35,21 @@ export default function CapitalLetterDialog({
         />
         <p>
           If <strong>{originalText}</strong> is a proper noun <em>and</em> is
-          not spelled the way it sounds, please provide the phonetic spelling
-          below.
+          not spelled the way it sounds,
         </p>
+        <p>please provide the phonetic spelling below.</p>
         <p>Otherwise, click "Skip".</p>
         <input
+          className="phonetic-input"
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button onClick={handleEnterClick}>Enter</button>
-        <button onClick={onSkip}>Skip</button>
-        <CloseDialogButton onClose={onClose} />
+        <div className="phonetic-dialog-buttons">
+          <button onClick={handleEnterClick}>Enter</button>
+          <button onClick={onSkip}>Skip</button>
+          <CloseDialogButton onClose={onClose} />
+        </div>
       </div>
     </dialog>
   );
