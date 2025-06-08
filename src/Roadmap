@@ -1,38 +1,5 @@
 TRANSLITERATOR WEB APP ROADMAP
 
--PHASE 2 : UI / Bugs
-
--UI
-
--Done
-
-- Input boxes
-  - Stationary sizes
-  - Rounded Edges
-  - Make taller
-  - Make it so that it isn't outlined in black when selected
-- Color pallet
-  - Grey/white
-  - Add a spash of blue
-- Fonts
-  - Make fonts same as google
-- Buttons
-  - Button state
-  - Maybe make blue when available
-  - Add icons to buttons
-  - Sizing of page
-- Footer
-  - Grey
-  - links
-    - Facebook
-    - Instagram
-    - Gmail
-- Modal
-  - Add close x
-  - Change close button color to grey or white
-  - Stack fields in Propernoun review
-  - ?Update the text box in propernoun review?
-
 PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (1/9)
@@ -72,7 +39,7 @@ PHASE 9 : OTHER FILIPINO ALPHABETS
 
 ---COMPLETED PHASES---
 
-- PHASE 1 : MVP
+- PHASE 1 : Features
   -7/7
   -COMPLETE
 
@@ -89,3 +56,36 @@ PHASE 9 : OTHER FILIPINO ALPHABETS
     - Excel
     - Txt
     - Copy
+
+-PHASE 2 : UI
+
+-UI
+
+-Done
+
+- Input boxes
+  - Stationary sizes
+  - Rounded Edges
+  - Make taller
+  - Make it so that it isn't outlined in black when selected
+- Color pallet
+  - Grey/white
+  - Add a spash of blue
+- Fonts
+  - Make fonts same as google
+- Buttons
+  - Button state
+  - Maybe make blue when available
+  - Add icons to buttons
+  - Sizing of page
+- Footer
+  - Grey
+  - links
+    - Facebook
+    - Instagram
+    - Gmail
+- Modal
+  - Add close x
+  - Change close button color to grey or white
+  - Stack fields in Propernoun review
+  - ?Update the text box in propernoun review?
