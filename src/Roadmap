@@ -2,25 +2,24 @@ TRANSLITERATOR WEB APP ROADMAP
 
 PHASE 3 : BUGS - Fix all critical bugs
 
-CRITICAL (3/9)
+CRITICAL (4)
 
 - Fix modal closing
 - Fix inital word review modal number
 - Output not showing all words
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
-- Add a clear output button
-- Add a clear input button
 
-OPTIONAL (0/2)
+OPTIONAL (2)
 
 - Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
-  Fixed
 
-DONE
+DONE (5)
 
 - Make sure it is saved as the correct font
 - Disable buttons until available
 - Proper noun review, enter needs to be disabled until there is something in the text box
+- Add a clear output button
+- Add a clear input button
 
 PHASE 4 : OPTIMIZE - Work with Jeremiah - Make regexs global
 

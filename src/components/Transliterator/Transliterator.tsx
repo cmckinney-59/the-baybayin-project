@@ -384,47 +384,53 @@ export default function Transliterator({ title }: TransliteratorProps) {
     <div>
       <h2>Transliterator</h2>
       <div className="transliteration-container">
-        <textarea
-          className="transliteration-textarea"
-          placeholder="Enter text to be transliterated here..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        ></textarea>
-        {text.length > 0 && (
-          <button
-            className="clear-input-button"
-            onClick={() => {
-              setText("");
-            }}
-          >
-            Clear
-          </button>
-        )}
-        <p
-          className={`transliteration-output ${
-            textareaHasText
-              ? isBaybayin
-                ? "baybayin-font"
-                : isAurebesh
-                ? "aurebesh-font"
-                : isDeseret
-                ? "deseret-font"
+        <div className="textarea-wrapper">
+          <textarea
+            className="transliteration-textarea"
+            placeholder="Enter text to be transliterated here..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          ></textarea>
+
+          {text.length > 0 && (
+            <button
+              className="clear-input-button"
+              onClick={() => {
+                setText("");
+              }}
+              aria-label="Clear input"
+            >
+              ×
+            </button>
+          )}
+        </div>
+        <div className="textarea-wrapper">
+          <div
+            className={`transliteration-output ${
+              textareaHasText
+                ? isBaybayin
+                  ? "baybayin-font"
+                  : isAurebesh
+                  ? "aurebesh-font"
+                  : isDeseret
+                  ? "deseret-font"
+                  : ""
                 : ""
-              : ""
-          }`}
-        >
-          {transliteratedText}
-        </p>
-        {transliteratedText.length > 0 && (
-          <button
-            className="clear-output-button"
-            onClick={() => {
-              setTransliteratedText("");
-            }}
+            }`}
           >
-            Clear
-          </button>
-        )}
+            {transliteratedText}
+          </div>
+          {transliteratedText.length > 0 && (
+            <button
+              className="clear-output-button"
+              onClick={() => {
+                setTransliteratedText("");
+              }}
+            >
+              ×
+            </button>
+          )}
+        </div>
       </div>
       <div className="action-buttons">
         <div>
