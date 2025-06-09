@@ -50,22 +50,12 @@
   margin: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #336bdb;
-  color: white;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.dialog-box button:hover {
-  background-color: #274bb5;
-}
-
 .dialog-box button.close-button {
   background-color: white;
   color: black;
-}
-
-.dialog-box button.close-button:hover {
-  background-color: rgb(240, 238, 238);
 }

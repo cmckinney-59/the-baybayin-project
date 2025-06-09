@@ -20,7 +20,9 @@ export default function StartReviewDialog({
           numberOfWordsToReview={numberOfWordsToReview}
           isStart={true}
         />
-        <button onClick={onClickStart}>Start</button>
+        <button className="active" onClick={onClickStart}>
+          Start
+        </button>
         <CloseDialogButton onClose={onClose} />
       </div>
     </dialog>

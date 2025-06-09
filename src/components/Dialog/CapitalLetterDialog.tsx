@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 import DialogHeader from "./DialogHeader";
+import "../../index.css";
 
 interface CapitalLetterDialogProps {
   originalText: string;
@@ -20,6 +21,8 @@ export default function CapitalLetterDialog({
   currentWordIndex,
 }: CapitalLetterDialogProps) {
   const [inputValue, setInputValue] = useState<string>("");
+
+  const inputHasText = inputValue.length > 0;
 
   const handleEnterClick = () => {
     onEnter(inputValue);
@@ -46,8 +49,16 @@ export default function CapitalLetterDialog({
           onChange={(e) => setInputValue(e.target.value)}
         />
         <div className="phonetic-dialog-buttons">
-          <button onClick={handleEnterClick}>Enter</button>
-          <button onClick={onSkip}>Skip</button>
+          <button
+            className={inputHasText ? "active" : undefined}
+            onClick={handleEnterClick}
+            disabled={!inputHasText}
+          >
+            Enter
+          </button>
+          <button className="active" onClick={onSkip}>
+            Skip
+          </button>
           <CloseDialogButton onClose={onClose} />
         </div>
       </div>
