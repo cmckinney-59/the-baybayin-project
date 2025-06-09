@@ -390,6 +390,16 @@ export default function Transliterator({ title }: TransliteratorProps) {
           value={text}
           onChange={(e) => setText(e.target.value)}
         ></textarea>
+        {text.length > 0 && (
+          <button
+            className="clear-input-button"
+            onClick={() => {
+              setText("");
+            }}
+          >
+            Clear
+          </button>
+        )}
         <p
           className={`transliteration-output ${
             textareaHasText
@@ -405,6 +415,16 @@ export default function Transliterator({ title }: TransliteratorProps) {
         >
           {transliteratedText}
         </p>
+        {transliteratedText.length > 0 && (
+          <button
+            className="clear-output-button"
+            onClick={() => {
+              setTransliteratedText("");
+            }}
+          >
+            Clear
+          </button>
+        )}
       </div>
       <div className="action-buttons">
         <div>
