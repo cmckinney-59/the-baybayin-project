@@ -41,6 +41,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const [wordKeys, setWordKeys] = useState<string[]>([]);
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
   const [currentWord, setCurrentWord] = useState<string>("");
+  const [tempWordCount, setTempWordCount] = useState<number>(0);
   const [capitalIndex, setCapitalIndex] = useState<number | null>(null);
   const [chIndex, setChIndex] = useState<number | null>(null);
   const [cIndex, setCIndex] = useState<number | null>(null);
@@ -49,27 +50,26 @@ export default function Transliterator({ title }: TransliteratorProps) {
 
   const textareaHasText = text.length > 0;
 
-  React.useEffect(() => {
-    if (currentWord) {
-      processWord(currentWord);
-    }
-  }, [currentWord]);
-
   // Handle Clicks
 
   const handleTransliterateButtonClick = (): void => {
+    const initialDict = initializeDictionary(text);
+    const keys = Object.keys(initialDict);
+
+    setWordsDictionary(initialDict);
+    setWordKeys(keys);
+    setCurrentWordIndex(0);
+    if (keys.length > 0) {
+      setCurrentWord(keys[0]);
+    }
+
+    setTempWordCount(keys.length); // NEW: store this for dialog
     setIsDialogOpen(true);
     setActiveDialog("start");
   };
 
   const handleStartButtonClick = (): void => {
-    const initialDict = initializeDictionary(text);
-    setWordsDictionary(initialDict);
-    const keys = Object.keys(initialDict);
-    setWordKeys(keys);
-    setCurrentWordIndex(0);
-    setCurrentWord(keys[0]);
-    processWord(keys[0]);
+    processWord(currentWord);
   };
 
   const processWord = (word: string): void => {
@@ -265,7 +265,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     case "start":
       showDialog = (
         <StartReviewDialog
-          numberOfWordsToReview={wordKeys.length}
+          numberOfWordsToReview={tempWordCount}
           onClickStart={handleStartButtonClick}
           onClose={handleClose}
         />
