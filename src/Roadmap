@@ -4,9 +4,9 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (4)
 
-- Fix inital word review modal number
 - Output not showing all words
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
+- Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
 
 OPTIONAL (2)
 
@@ -20,6 +20,7 @@ DONE (5)
 - Add a clear output button
 - Add a clear input button
 - Fix modal closing
+- Fix inital word review modal number
 
 PHASE 4 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
