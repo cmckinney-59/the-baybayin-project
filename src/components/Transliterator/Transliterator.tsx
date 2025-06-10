@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { JSX } from "react";
-import { AiFillCopy } from "react-icons/ai";
 
 import "./Transliterator.css";
 
