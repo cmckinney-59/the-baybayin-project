@@ -4,6 +4,7 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (4)
 
+- FIX MODAL CLOSING AFTER FIRST QUESTION
 - Output not showing all words
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
 - Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
