@@ -1,0 +1,102 @@
+.transliteration-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 720px) {
+  .transliteration-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.transliteration-textarea {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  border: 1px solid #dddbdb;
+  background-color: white;
+  resize: none;
+}
+
+.transliteration-output {
+  font-family: "Baybayin";
+  border: 1px solid #ffffff;
+  background-color: rgb(240, 238, 238);
+}
+
+.transliteration-textarea,
+.transliteration-output {
+  text-align: left;
+  font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 175px;
+  color: rgb(73, 72, 72);
+  padding: 10px;
+  border-radius: 10px;
+  overflow-y: auto;
+  display: block;
+}
+
+.transliteration-textarea:focus {
+  outline: none;
+  border: 1px solid #dddbdb;
+  box-shadow: none;
+}
+
+.dictionary-output ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dictionary-output li {
+  margin: 5px 0;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.clear-input-button,
+.clear-output-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+}
+
+.clear-output-button {
+  background: rgb(240, 238, 238);
+}
+
+.clear-input-button:hover {
+  background: rgb(240, 238, 238);
+}
+
+.clear-output-button:hover {
+  background: white;
+}
