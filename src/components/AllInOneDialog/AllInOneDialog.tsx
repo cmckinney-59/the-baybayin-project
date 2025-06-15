@@ -20,7 +20,7 @@ export default function AllInOneDialog({
           numberOfWordsToReview={numberOfWordsToReview}
           isStart={true}
         />
-        <StartReviewDialog2></StartReviewDialog2>
+        <StartReviewDialog2 onClickStart={onClickStart}></StartReviewDialog2>
       </div>
     </dialog>
   );
