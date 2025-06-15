@@ -1,7 +1,7 @@
 import DialogHeader from "../Dialog/DialogHeader.tsx";
 import StartReviewDialog2 from "./SubDialogs/StartReviewDialog2.tsx";
 
-interface StartReviewDialogProps {
+interface AllInOneDialogProps {
   onClickStart: () => void;
   onClose: () => void;
   numberOfWordsToReview: number;
@@ -11,7 +11,7 @@ export default function AllInOneDialog({
   onClickStart,
   onClose,
   numberOfWordsToReview,
-}: StartReviewDialogProps) {
+}: AllInOneDialogProps) {
   return (
     <dialog className="dialog-overlay">
       <div className="dialog-box">
