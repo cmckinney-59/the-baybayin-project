@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../index.css";
+import "../../../index.css";
 
 interface CapitalLetterDialogProps {
   originalText: string;

@@ -143,6 +143,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
 
     const updated = updatedWord;
     setCurrentWord(updated);
+    processBaybayinText(updated);
   };
 
   const handleClose = (): void => {
@@ -155,6 +156,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
 
     resetAllDialogs();
     setCurrentWord(lowercased);
+    processBaybayinText(lowercased);
   };
 
   const handleChSelection = (choice: string) => {

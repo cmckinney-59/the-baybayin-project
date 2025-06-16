@@ -5,6 +5,7 @@ import "./Transliterator2.css";
 
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import React from "react";
+import AllInOneDialog from "../AllInOneDialog/AllInOneDialog.tsx";
 import StartReviewDialog from "../Dialog/StartReviewDialog.tsx";
 import CapitalLetterDialog from "../Dialog/CapitalLetterDialog.tsx";
 import CDialog from "../Dialog/CDialog.tsx";
@@ -381,7 +382,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   return (
     <div>
-      <h2>Transliterator</h2>
+      <h2>Transliterator 2</h2>
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
