@@ -449,7 +449,19 @@ export default function Transliterator2({ title }: TransliteratorProps) {
         <TextSaveButton transliteratedText={transliteratedText} />
         <CopyTextButton transliteratedText={transliteratedText} />
       </div>
-      {showDialog}
+      {/* {showDialog} */}
+      {isDialogOpen && (
+        <AllInOneDialog
+          onClickStart={handleStartButtonClick}
+          onClose={handleClose}
+          onEnter={handleCapitalInput}
+          onSkip={handleSkip}
+          numberOfWordsToReview={tempWordCount}
+          currentWordIndex={currentWordIndex}
+          originalText={wordForDialog}
+          activeDialog={activeDialog}
+        />
+      )}
       {/* <div className="dictionary-output">
         <h3>Processed Words:</h3>
         <ul>
