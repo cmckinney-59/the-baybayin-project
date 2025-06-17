@@ -140,6 +140,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   const handleClose = (): void => {
     setActiveDialog(null);
+    setIsDialogOpen(false);
   };
 
   const handleSkip = (): void => {
