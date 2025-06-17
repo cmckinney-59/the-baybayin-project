@@ -15,13 +15,16 @@ interface AllInOneDialogProps {
   onClickStart: () => void;
   onClose: () => void;
   onSkip: () => void;
+  onChSelection: (choice: "k" | "tiy") => void;
+  onCSelection: (choice: "k" | "s" | "tiy") => void;
+  onJSelection: (choice: "h" | "diy") => void;
+  onQuSelection: (choice: "k" | "kuw") => void;
   onEnter: (replacement: string) => void;
   numberOfWordsToReview: number;
   currentWordIndex: number;
   originalText: string;
   wordForDialog: string;
   activeDialog: DialogType;
-  wordKeys: string[];
 }
 
 export default function AllInOneDialog({
@@ -29,10 +32,13 @@ export default function AllInOneDialog({
   onClose,
   onEnter,
   onSkip,
+  onCSelection,
+  onChSelection,
+  onJSelection,
+  onQuSelection,
   numberOfWordsToReview,
   currentWordIndex,
   originalText,
-  wordKeys,
   wordForDialog,
   activeDialog,
 }: AllInOneDialogProps) {
@@ -61,19 +67,19 @@ export default function AllInOneDialog({
 
     case "c":
       showDialog = (
-        <CDialog2 word={wordForDialog} onCSelection={handleCSelection} />
+        <CDialog2 word={wordForDialog} onCSelection={onCSelection} />
       );
       break;
 
     case "j":
       showDialog = (
-        <JDialog2 word={wordForDialog} onJSelection={handleJSelection} />
+        <JDialog2 word={wordForDialog} onJSelection={onJSelection} />
       );
       break;
 
     case "qu":
       showDialog = (
-        <QuDialog2 word={wordForDialog} onQuSelection={handleQuSelection} />
+        <QuDialog2 word={wordForDialog} onQuSelection={onQuSelection} />
       );
       break;
   }

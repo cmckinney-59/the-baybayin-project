@@ -56,7 +56,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setCurrentWord(keys[0]);
     }
 
-    setTempWordCount(keys.length); // NEW: store this for dialog
+    setTempWordCount(keys.length);
     setIsDialogOpen(true);
     setActiveDialog("start");
   };
@@ -370,10 +370,15 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           onClose={handleClose}
           onEnter={handleCapitalInput}
           onSkip={handleSkip}
+          onCSelection={handleCSelection}
+          onChSelection={handleChSelection}
+          onJSelection={handleJSelection}
+          onQuSelection={handleQuSelection}
           numberOfWordsToReview={tempWordCount}
           currentWordIndex={currentWordIndex}
           originalText={wordForDialog}
           activeDialog={activeDialog}
+          wordForDialog={wordForDialog}
         />
       )}
       {/* <div className="dictionary-output">
