@@ -4,6 +4,10 @@ import DialogHeader from "../Dialog/DialogHeader.tsx";
 import StartReviewDialog2 from "./SubDialogs/StartReviewDialog2.tsx";
 import CapitalLetterDialog2 from "./SubDialogs/CapitalLetterDialog2.tsx";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton.tsx";
+import ChDialog2 from "./SubDialogs/ChDialog2.tsx";
+import CDialog2 from "./SubDialogs/CDialog2.tsx";
+import JDialog2 from "./SubDialogs/JDialog2.tsx";
+import QuDialog2 from "./SubDialogs/QuDialog2.tsx";
 
 type DialogType = "start" | "capital" | "ch" | "c" | "g" | "j" | "qu" | null;
 
@@ -15,7 +19,9 @@ interface AllInOneDialogProps {
   numberOfWordsToReview: number;
   currentWordIndex: number;
   originalText: string;
+  wordForDialog: string;
   activeDialog: DialogType;
+  wordKeys: string[];
 }
 
 export default function AllInOneDialog({
@@ -26,6 +32,8 @@ export default function AllInOneDialog({
   numberOfWordsToReview,
   currentWordIndex,
   originalText,
+  wordKeys,
+  wordForDialog,
   activeDialog,
 }: AllInOneDialogProps) {
   let showDialog: JSX.Element | null = null;
@@ -42,6 +50,30 @@ export default function AllInOneDialog({
           onEnter={onEnter}
           onSkip={onSkip}
         />
+      );
+      break;
+
+    case "ch":
+      showDialog = (
+        <ChDialog2 word={wordForDialog} onChSelection={onChSelection} />
+      );
+      break;
+
+    case "c":
+      showDialog = (
+        <CDialog2 word={wordForDialog} onCSelection={handleCSelection} />
+      );
+      break;
+
+    case "j":
+      showDialog = (
+        <JDialog2 word={wordForDialog} onJSelection={handleJSelection} />
+      );
+      break;
+
+    case "qu":
+      showDialog = (
+        <QuDialog2 word={wordForDialog} onQuSelection={handleQuSelection} />
       );
       break;
   }

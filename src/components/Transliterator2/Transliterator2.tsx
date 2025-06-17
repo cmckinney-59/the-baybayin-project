@@ -1,17 +1,9 @@
 import { useState } from "react";
-import type { JSX } from "react";
 
 import "./Transliterator2.css";
-
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import React from "react";
 import AllInOneDialog from "../AllInOneDialog/AllInOneDialog.tsx";
-import StartReviewDialog from "../Dialog/StartReviewDialog.tsx";
-import CapitalLetterDialog from "../Dialog/CapitalLetterDialog.tsx";
-import CDialog from "../Dialog/CDialog.tsx";
-import ChDialog from "../Dialog/ChDialog.tsx";
-import JDialog from "../Dialog/JDialog.tsx";
-import QuDialog from "../Dialog/QuDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
 import WordSaveButton from "../Buttons/WordSaveButton.tsx";
@@ -258,83 +250,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setCurrentWord(updated);
   };
 
-  // Show Dialogs
-
-  let showDialog: JSX.Element | null = null;
-
-  switch (activeDialog) {
-    case "start":
-      showDialog = (
-        <StartReviewDialog
-          numberOfWordsToReview={tempWordCount}
-          onClickStart={handleStartButtonClick}
-          onClose={handleClose}
-        />
-      );
-      break;
-
-    case "capital":
-      showDialog = (
-        <CapitalLetterDialog
-          currentWordIndex={currentWordIndex}
-          numberOfWordsToReview={wordKeys.length}
-          originalText={wordForDialog}
-          onEnter={handleCapitalInput}
-          onClose={handleClose}
-          onSkip={handleSkip}
-        />
-      );
-      break;
-
-    case "ch":
-      showDialog = (
-        <ChDialog
-          currentWordIndex={currentWordIndex}
-          numberOfWordsToReview={wordKeys.length}
-          word={wordForDialog}
-          onChSelection={handleChSelection}
-          onClose={handleClose}
-        />
-      );
-      break;
-
-    case "c":
-      showDialog = (
-        <CDialog
-          currentWordIndex={currentWordIndex}
-          numberOfWordsToReview={wordKeys.length}
-          word={wordForDialog}
-          onCSelection={handleCSelection}
-          onClose={handleClose}
-        />
-      );
-      break;
-
-    case "j":
-      showDialog = (
-        <JDialog
-          currentWordIndex={currentWordIndex}
-          numberOfWordsToReview={wordKeys.length}
-          word={wordForDialog}
-          onJSelection={handleJSelection}
-          onClose={handleClose}
-        />
-      );
-      break;
-
-    case "qu":
-      showDialog = (
-        <QuDialog
-          currentWordIndex={currentWordIndex}
-          numberOfWordsToReview={wordKeys.length}
-          word={wordForDialog}
-          onQuSelection={handleQuSelection}
-          onClose={handleClose}
-        />
-      );
-      break;
-  }
-
   // Helper methods
 
   const initializeDictionary = (inputText: string): Dictionary => {
@@ -449,7 +364,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
         <TextSaveButton transliteratedText={transliteratedText} />
         <CopyTextButton transliteratedText={transliteratedText} />
       </div>
-      {/* {showDialog} */}
       {isDialogOpen && (
         <AllInOneDialog
           onClickStart={handleStartButtonClick}
