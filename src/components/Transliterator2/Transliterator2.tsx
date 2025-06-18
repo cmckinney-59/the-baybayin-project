@@ -26,7 +26,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const isAurebesh = title === "Aurebesh";
   const isDeseret = title === "Deseret";
 
-  type DialogType = "start" | "capital" | "ch" | "c" | "g" | "j" | "qu" | null;
+  type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
   const [activeDialog, setActiveDialog] = useState<DialogType>(null);
 
   // New State Variables
@@ -42,6 +42,38 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const [quIndex, setQuIndex] = useState<number | null>(null);
 
   const textareaHasText = text.length > 0;
+
+  const patternCheckers: {
+    type: DialogType;
+    regex: RegExp;
+    findIndex: (word: string) => number;
+  }[] = [
+    {
+      type: "capital",
+      regex: /[A-Z]/,
+      findIndex: (word) => word.search(/[A-Z]/),
+    },
+    {
+      type: "ch",
+      regex: /ch/,
+      findIndex: (word) => word.indexOf("ch"),
+    },
+    {
+      type: "c",
+      regex: /c/,
+      findIndex: (word) => word.indexOf("c"),
+    },
+    {
+      type: "j",
+      regex: /j/,
+      findIndex: (word) => word.indexOf("j"),
+    },
+    {
+      type: "qu",
+      regex: /qu/,
+      findIndex: (word) => word.indexOf("qu"),
+    },
+  ];
 
   // Handle Clicks
 
@@ -65,56 +97,40 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     processWord(currentWord);
   };
 
-  const processWord = (word: string): void => {
-    if (/[A-Z]/.test(word)) {
-      const match = word.search(/[A-Z]/);
-      activateDialog(match, word, "capital");
-      return;
-    }
-
-    if (/ch/.test(word)) {
-      const match = word.indexOf("ch");
-      activateDialog(match, word, "ch");
-      return;
-    }
-
-    if (/c/.test(word)) {
-      const match = word.indexOf("c");
-      activateDialog(match, word, "c");
-      return;
-    }
-
-    if (/j/.test(word)) {
-      const match = word.indexOf("j");
-      activateDialog(match, word, "j");
-      return;
-    }
-
-    if (/qu/.test(word)) {
-      const match = word.indexOf("qu");
-      activateDialog(match, word, "qu");
-      return;
-    }
-
-    const processed = processBaybayinText(word);
-
-    const original = wordKeys[currentWordIndex];
-    setWordsDictionary((prev) => ({
-      ...prev,
-      [original]: processed,
-    }));
-
+  const goToNextWord = () => {
     const nextIndex = currentWordIndex + 1;
     if (nextIndex < wordKeys.length) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
+      processWord(nextWord);
     } else {
       setIsDialogOpen(false);
       setTransliteratedText(
         text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
       );
     }
+  };
+
+  const processWord = (word: string): void => {
+    for (const pattern of patternCheckers) {
+      if (pattern.regex.test(word)) {
+        const matchIndex = pattern.findIndex(word);
+        activateDialog(matchIndex, word, pattern.type);
+        return;
+      }
+    }
+
+    // If we reach here, no patterns left — finalize this word
+    const processed = processBaybayinText(word);
+    const original = wordKeys[currentWordIndex];
+
+    setWordsDictionary((prev) => ({
+      ...prev,
+      [original]: processed,
+    }));
+
+    goToNextWord();
   };
 
   // Handle Selections
@@ -134,8 +150,8 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setCapitalIndex(null);
     setActiveDialog(null);
 
-    const updated = updatedWord;
-    setCurrentWord(updated);
+    setCurrentWord(updatedWord);
+    processWord(updatedWord);
   };
 
   const handleClose = (): void => {
@@ -147,8 +163,28 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     const originalWord = wordKeys[currentWordIndex];
     const lowercased = originalWord.toLowerCase();
 
+    // Save the original word (or lowercase version) as its own transliteration
+    setWordsDictionary((prev) => ({
+      ...prev,
+      [originalWord]: lowercased,
+    }));
+
     resetAllDialogs();
-    setCurrentWord(lowercased);
+    setActiveDialog(null);
+
+    // Move to next word
+    const nextIndex = currentWordIndex + 1;
+    if (nextIndex < wordKeys.length) {
+      const nextWord = wordKeys[nextIndex];
+      setCurrentWordIndex(nextIndex);
+      setCurrentWord(nextWord);
+      processWord(nextWord);
+    } else {
+      setIsDialogOpen(false);
+      setTransliteratedText(
+        text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
+      );
+    }
   };
 
   const handleChSelection = (choice: string) => {
@@ -170,8 +206,8 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setChIndex(null);
     setActiveDialog(null);
 
-    const updated = updatedWord;
-    setCurrentWord(updated);
+    setCurrentWord(updatedWord);
+    processWord(updatedWord);
   };
 
   const handleCSelection = (choice: string) => {
@@ -201,8 +237,8 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setCIndex(null);
     setActiveDialog(null);
 
-    const updated = updatedWord;
-    setCurrentWord(updated);
+    setCurrentWord(updatedWord);
+    processWord(updatedWord);
   };
 
   const handleJSelection = (choice: string) => {
@@ -224,8 +260,8 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setJIndex(null);
     setActiveDialog(null);
 
-    const updated = updatedWord;
-    setCurrentWord(updated);
+    setCurrentWord(updatedWord);
+    processWord(updatedWord);
   };
 
   const handleQuSelection = (choice: string) => {
@@ -247,8 +283,8 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setQuIndex(null);
     setActiveDialog(null);
 
-    const updated = updatedWord;
-    setCurrentWord(updated);
+    setCurrentWord(updatedWord);
+    processWord(updatedWord);
   };
 
   // Helper methods

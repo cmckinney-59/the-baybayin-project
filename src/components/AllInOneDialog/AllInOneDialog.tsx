@@ -14,17 +14,17 @@ type DialogType = "start" | "capital" | "ch" | "c" | "g" | "j" | "qu" | null;
 interface AllInOneDialogProps {
   onClickStart: () => void;
   onClose: () => void;
+  onEnter: (input: string) => void;
   onSkip: () => void;
-  onChSelection: (choice: "k" | "tiy") => void;
-  onCSelection: (choice: "k" | "s" | "tiy") => void;
-  onJSelection: (choice: "h" | "diy") => void;
-  onQuSelection: (choice: "k" | "kuw") => void;
-  onEnter: (replacement: string) => void;
+  onCSelection: (choice: string) => void;
+  onChSelection: (choice: string) => void;
+  onJSelection: (choice: string) => void;
+  onQuSelection: (choice: string) => void;
   numberOfWordsToReview: number;
   currentWordIndex: number;
   originalText: string;
-  wordForDialog: string;
   activeDialog: DialogType;
+  wordForDialog: string;
 }
 
 export default function AllInOneDialog({
@@ -91,7 +91,7 @@ export default function AllInOneDialog({
           onClose={onClose}
           numberOfWordsToReview={numberOfWordsToReview}
           currentWordIndex={currentWordIndex}
-          isStart={true}
+          isStart={activeDialog === "start"}
         />
         {showDialog}
         <CloseDialogButton onClose={onClose} />
