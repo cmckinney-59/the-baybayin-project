@@ -5,7 +5,7 @@ PHASE 3 : BUGS - Fix all critical bugs
 CRITICAL (4)
 
 - FIX MODAL CLOSING AFTER FIRST QUESTION
-- Try moving it all into one modal
+- Move all into one modal
 - Make it so that the output shows the original words as well as the unique
 - Output not showing all words
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
