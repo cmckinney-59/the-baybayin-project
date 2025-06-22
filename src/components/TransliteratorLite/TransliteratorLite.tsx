@@ -18,9 +18,6 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
-  const isBaybayin = title === "Baybayin";
-  const isAurebesh = title === "Aurebesh";
-  const isDeseret = title === "Deseret";
   const textareaHasText = text.length > 0;
 
   const handleTransliterateButtonClick = (): void => {
@@ -66,11 +63,11 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
           <div
             className={`transliteration-output ${
               textareaHasText
-                ? isBaybayin
+                ? title === "Baybayin"
                   ? "baybayin-font"
-                  : isAurebesh
+                  : title === "Aurebesh"
                   ? "aurebesh-font"
-                  : isDeseret
+                  : title === "Deseret"
                   ? "deseret-font"
                   : ""
                 : ""
