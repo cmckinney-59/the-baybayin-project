@@ -26,10 +26,15 @@ function capitalizeSubsequentVowels(text: string): string {
   );
 }
 
-// except g
+// This removed duplicate consonats EXCEPT when 'ngg'
 function removeDuplicateConsonants(text: string): string {
-  const consonantRegex = /([bcdfghjklmnpqrstvwxyz])\1+/gi;
-  return text.replace(consonantRegex, "$1");
+  const consonantRegex = /(?<!n)g{2,}|([bcdfhjklmnpqrstvwxyz])\1+/gi;
+  return text.replace(consonantRegex, (match, group1) => {
+    if (match.toLowerCase() === "gg") {
+      return "g";
+    }
+    return group1 ?? match[0];
+  });
 }
 
 function addPlusIfConsonant(text: string): string {
