@@ -26,6 +26,7 @@ function capitalizeSubsequentVowels(text: string): string {
   );
 }
 
+// except g
 function removeDuplicateConsonants(text: string): string {
   const consonantRegex = /([bcdfghjklmnpqrstvwxyz])\1+/gi;
   return text.replace(consonantRegex, "$1");
