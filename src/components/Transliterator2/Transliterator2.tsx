@@ -1,8 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import "./Transliterator2.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
-import React from "react";
 import AllInOneDialog from "../AllInOneDialog/AllInOneDialog.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
