@@ -1,5 +1,5 @@
 import { AiFillFileText } from "react-icons/ai";
-import downloadAsText from "../Utils/SaveToText";
+import downloadAsText from "../../Utils/SaveToText";
 
 interface TextSaveButtonProps {
   transliteratedText: string;

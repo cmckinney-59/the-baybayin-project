@@ -3,10 +3,7 @@ import { useState } from "react";
 import "./TransliteratorLite.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
-import ExcelSaveButton from "../Buttons/ExcelSaveButton.tsx";
-import WordSaveButton from "../Buttons/WordSaveButton.tsx";
-import TextSaveButton from "../Buttons/TextSaveButton.tsx";
-import CopyTextButton from "../Buttons/CopyTextButton.tsx";
+import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -95,14 +92,10 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             isDisabled={!textareaHasText}
           />
         </div>
-        <p> Save as... </p>
-        <ExcelSaveButton
+        <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
-        <WordSaveButton transliteratedText={transliteratedText} />
-        <TextSaveButton transliteratedText={transliteratedText} />
-        <CopyTextButton transliteratedText={transliteratedText} />
       </div>
     </div>
   );
