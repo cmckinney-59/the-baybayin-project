@@ -11,33 +11,36 @@ interface TransliteratorProps {
 }
 
 type Dictionary = { [word: string]: string };
+type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
 
 export default function Transliterator2({ title }: TransliteratorProps) {
+  // Text states
+
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
-  const [wordForDialog, setWordForDialog] = useState<string>("");
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
-  const isBaybayin = title === "Baybayin";
-  const isAurebesh = title === "Aurebesh";
-  const isDeseret = title === "Deseret";
-
-  type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
-  const [activeDialog, setActiveDialog] = useState<DialogType>(null);
-
-  // New State Variables
-
   const [wordKeys, setWordKeys] = useState<string[]>([]);
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
   const [currentWord, setCurrentWord] = useState<string>("");
   const [tempWordCount, setTempWordCount] = useState<number>(0);
+
+  // Dialog states
+  const [wordForDialog, setWordForDialog] = useState<string>("");
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const [activeDialog, setActiveDialog] = useState<DialogType>(null);
+
+  // Character index states
   const [capitalIndex, setCapitalIndex] = useState<number | null>(null);
   const [chIndex, setChIndex] = useState<number | null>(null);
   const [cIndex, setCIndex] = useState<number | null>(null);
   const [jIndex, setJIndex] = useState<number | null>(null);
   const [quIndex, setQuIndex] = useState<number | null>(null);
 
+  // Consts
   const textareaHasText = text.length > 0;
+  const isBaybayin = title === "Baybayin";
+  const isAurebesh = title === "Aurebesh";
+  const isDeseret = title === "Deseret";
 
   const patternCheckers: {
     type: DialogType;
