@@ -15,7 +15,6 @@ type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
 
 export default function Transliterator2({ title }: TransliteratorProps) {
   // Text states
-
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordKeys, setWordKeys] = useState<string[]>([]);
