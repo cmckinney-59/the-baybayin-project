@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "./Transliterator2.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import AllInOneDialog from "../AllInOneDialog/AllInOneDialog.tsx";
-import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
+import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 
 interface TransliteratorProps {
   title: string;
