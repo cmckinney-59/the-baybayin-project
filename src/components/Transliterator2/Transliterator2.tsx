@@ -95,21 +95,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     processWord(currentWord);
   };
 
-  const goToNextWord = () => {
-    const nextIndex = currentWordIndex + 1;
-    if (nextIndex < wordKeys.length) {
-      const nextWord = wordKeys[nextIndex];
-      setCurrentWordIndex(nextIndex);
-      setCurrentWord(nextWord);
-      processWord(nextWord);
-    } else {
-      setIsDialogOpen(false);
-      setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
-      );
-    }
-  };
-
   const processWord = (word: string): void => {
     for (const pattern of patternCheckers) {
       if (pattern.regex.test(word)) {
@@ -128,6 +113,21 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     }));
 
     goToNextWord();
+  };
+
+  const goToNextWord = () => {
+    const nextIndex = currentWordIndex + 1;
+    if (nextIndex < wordKeys.length) {
+      const nextWord = wordKeys[nextIndex];
+      setCurrentWordIndex(nextIndex);
+      setCurrentWord(nextWord);
+      processWord(nextWord);
+    } else {
+      setIsDialogOpen(false);
+      setTransliteratedText(
+        text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
+      );
+    }
   };
 
   // Handle Selections
