@@ -117,7 +117,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       }
     }
 
-    // If we reach here, no patterns left — finalize this word
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
 

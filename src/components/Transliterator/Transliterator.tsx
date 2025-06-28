@@ -438,7 +438,6 @@ export default function Transliterator({ title }: TransliteratorProps) {
             isDisabled={!textareaHasText}
           />
         </div>
-        <p> Save as... </p>
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
