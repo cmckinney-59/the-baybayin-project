@@ -39,7 +39,7 @@ function removeDuplicateConsonants(text: string): string {
 
 function addPlusIfConsonant(text: string): string {
   const consonantRegex = /[bcdfghjklmnpqrstvwxyz]/i;
-  const punctuationRegex = /[.,!?;-]/;
+  const punctuationRegex = /[.,!?;:-]/;
 
   if (!text.trim()) {
     return "";
