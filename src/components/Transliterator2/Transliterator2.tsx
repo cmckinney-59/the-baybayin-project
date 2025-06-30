@@ -73,6 +73,26 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     },
   ];
 
+  // function containsCapital(word: string): boolean {
+  //   return /[A-Z]/.test(word);
+  // }
+
+  // function containsCh(word: string): boolean {
+  //   return /ch/.test(word);
+  // }
+
+  // function containsC(word: string): boolean {
+  //   return /c/.test(word);
+  // }
+
+  // function containsJ(word: string): boolean {
+  //   return /j/.test(word);
+  // }
+
+  // function containsQu(word: string): boolean {
+  //   return /qu/.test(word);
+  // }
+
   // Handle Clicks
 
   //This should initialize the dictionary AND open the dialog
@@ -105,16 +125,16 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       }
     }
 
-    // Get this working.
-    // if ( word contains capital ) {
+    // //Get this working.
+    // if ( containsCapital(word) ) {
     //   setActiveDialog("capital")
-    // } else if ( word contains c ) {
-    //   setActiveDialog("c")
-    // } else if ( word contains ch ) {
+    // } else if ( containsCh(word) ) {
     //   setActiveDialog("ch")
-    // } else if ( word contains j ) {
+    // } else if ( containsC(word) ) {
+    //   setActiveDialog("c")
+    // } else if ( containsJ(word) ) {
     //   setActiveDialog("j")
-    // } else if ( word contains qu ) {
+    // } else if ( containsQu(word) ) {
     //   setActiveDialog("qu")
     // }
 
