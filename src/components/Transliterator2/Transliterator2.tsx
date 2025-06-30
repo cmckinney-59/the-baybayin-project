@@ -105,6 +105,19 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       }
     }
 
+    // Get this working.
+    // if ( word contains capital ) {
+    //   setActiveDialog("capital")
+    // } else if ( word contains c ) {
+    //   setActiveDialog("c")
+    // } else if ( word contains ch ) {
+    //   setActiveDialog("ch")
+    // } else if ( word contains j ) {
+    //   setActiveDialog("j")
+    // } else if ( word contains qu ) {
+    //   setActiveDialog("qu")
+    // }
+
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
 
