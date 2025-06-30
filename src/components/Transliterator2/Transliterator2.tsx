@@ -75,6 +75,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   // Handle Clicks
 
+  //This should initialize the dictionary AND open the dialog
   const handleTransliterateButtonClick = (): void => {
     const initialDict = initializeDictionary(text);
     const keys = Object.keys(initialDict);
