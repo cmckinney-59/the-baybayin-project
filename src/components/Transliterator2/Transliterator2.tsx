@@ -73,25 +73,25 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     },
   ];
 
-  // function containsCapital(word: string): boolean {
-  //   return /[A-Z]/.test(word);
-  // }
+  function containsCapital(word: string): boolean {
+    return /[A-Z]/.test(word);
+  }
 
-  // function containsCh(word: string): boolean {
-  //   return /ch/.test(word);
-  // }
+  function containsCh(word: string): boolean {
+    return /ch/.test(word);
+  }
 
-  // function containsC(word: string): boolean {
-  //   return /c/.test(word);
-  // }
+  function containsC(word: string): boolean {
+    return /c/.test(word);
+  }
 
-  // function containsJ(word: string): boolean {
-  //   return /j/.test(word);
-  // }
+  function containsJ(word: string): boolean {
+    return /j/.test(word);
+  }
 
-  // function containsQu(word: string): boolean {
-  //   return /qu/.test(word);
-  // }
+  function containsQu(word: string): boolean {
+    return /qu/.test(word);
+  }
 
   // Handle Clicks
 
@@ -117,26 +117,26 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const processWord = (word: string): void => {
-    for (const pattern of patternCheckers) {
-      if (pattern.regex.test(word)) {
-        const matchIndex = pattern.findIndex(word);
-        activateDialog(matchIndex, word, pattern.type);
-        return;
-      }
-    }
-
-    // //Get this working.
-    // if ( containsCapital(word) ) {
-    //   setActiveDialog("capital")
-    // } else if ( containsCh(word) ) {
-    //   setActiveDialog("ch")
-    // } else if ( containsC(word) ) {
-    //   setActiveDialog("c")
-    // } else if ( containsJ(word) ) {
-    //   setActiveDialog("j")
-    // } else if ( containsQu(word) ) {
-    //   setActiveDialog("qu")
+    // for (const pattern of patternCheckers) {
+    //   if (pattern.regex.test(word)) {
+    //     const matchIndex = pattern.findIndex(word);
+    //     activateDialog(matchIndex, word, pattern.type);
+    //     return;
+    //   }
     // }
+
+    //Get this working.
+    if (containsCapital(word)) {
+      setActiveDialog("capital");
+    } else if (containsCh(word)) {
+      setActiveDialog("ch");
+    } else if (containsC(word)) {
+      setActiveDialog("c");
+    } else if (containsJ(word)) {
+      setActiveDialog("j");
+    } else if (containsQu(word)) {
+      setActiveDialog("qu");
+    }
 
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
