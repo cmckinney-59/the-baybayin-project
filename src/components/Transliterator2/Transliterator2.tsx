@@ -200,6 +200,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       [originalWord]: lowercased,
     }));
 
+    //TODO: Re-evalutate the following 2 lines
     resetAllDialogs();
     setActiveDialog(null);
 
