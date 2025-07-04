@@ -155,6 +155,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
+      // Does this loop?
       processWord(nextWord);
     } else {
       setIsDialogOpen(false);
