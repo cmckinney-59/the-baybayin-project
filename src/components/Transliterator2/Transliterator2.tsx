@@ -158,10 +158,10 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       // Does this loop?
       processWord(nextWord);
     } else {
-      setIsDialogOpen(false);
       setTransliteratedText(
         text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
       );
+      setIsDialogOpen(false);
     }
   };
 
