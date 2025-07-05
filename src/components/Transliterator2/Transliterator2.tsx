@@ -195,15 +195,10 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     const originalWord = wordKeys[currentWordIndex];
     const lowercased = originalWord.toLowerCase();
 
-    // Save the original word (or lowercase version) as its own transliteration
     setWordsDictionary((prev) => ({
       ...prev,
       [originalWord]: lowercased,
     }));
-
-    //TODO: Re-evalutate the following 2 lines
-    resetAllDialogs();
-    setActiveDialog(null);
 
     // Move to next word
     const nextIndex = currentWordIndex + 1;
