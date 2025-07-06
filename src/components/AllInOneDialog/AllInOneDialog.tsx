@@ -22,7 +22,6 @@ interface AllInOneDialogProps {
   onQuSelection: (choice: string) => void;
   numberOfWordsToReview: number;
   currentWordIndex: number;
-  originalText: string;
   activeDialog: DialogType;
   wordForDialog: string;
 }
@@ -38,7 +37,6 @@ export default function AllInOneDialog({
   onQuSelection,
   numberOfWordsToReview,
   currentWordIndex,
-  originalText,
   wordForDialog,
   activeDialog,
 }: AllInOneDialogProps) {
@@ -52,7 +50,7 @@ export default function AllInOneDialog({
     case "capital":
       showDialog = (
         <CapitalLetterDialog2
-          originalText={originalText}
+          wordForDialog={wordForDialog}
           onEnter={onEnter}
           onSkip={onSkip}
         />

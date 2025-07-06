@@ -2,13 +2,13 @@ import { useState } from "react";
 import "../../../index.css";
 
 interface CapitalLetterDialogProps {
-  originalText: string;
+  wordForDialog: string;
   onEnter: (replacement: string) => void;
   onSkip: () => void;
 }
 
 export default function CapitalLetterDialog2({
-  originalText,
+  wordForDialog,
   onEnter,
   onSkip,
 }: CapitalLetterDialogProps) {
@@ -21,7 +21,7 @@ export default function CapitalLetterDialog2({
   return (
     <>
       <p>
-        If <strong>{originalText}</strong> is a proper noun <em>and</em> is not
+        If <strong>{wordForDialog}</strong> is a proper noun <em>and</em> is not
         spelled the way it sounds,
       </p>
       <p>please provide the phonetic spelling below.</p>

@@ -437,7 +437,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           onQuSelection={handleQuSelection}
           numberOfWordsToReview={tempWordCount}
           currentWordIndex={currentWordIndex}
-          originalText={wordForDialog}
           activeDialog={activeDialog}
           wordForDialog={wordForDialog}
         />
