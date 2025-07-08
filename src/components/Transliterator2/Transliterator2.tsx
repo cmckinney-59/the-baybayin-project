@@ -138,6 +138,9 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setActiveDialog("qu");
     }
 
+    //SOMETHING NEEDS TO GO HERE WHERE IT STOPS FOR USER INPUT BEFORE PROCEEDING
+    //ALSO NEEDS TO SET CURRENT WORD FOR DIALOG
+
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
 

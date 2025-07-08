@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../../index.css";
 
-interface CapitalLetterDialogProps {
+interface CapitalLetterDialog2Props {
   wordForDialog: string;
   onEnter: (replacement: string) => void;
   onSkip: () => void;
@@ -11,7 +11,7 @@ export default function CapitalLetterDialog2({
   wordForDialog,
   onEnter,
   onSkip,
-}: CapitalLetterDialogProps) {
+}: CapitalLetterDialog2Props) {
   const [inputValue, setInputValue] = useState<string>("");
   const inputHasText = inputValue.length > 0;
   const handleEnterClick = () => {
