@@ -128,14 +128,19 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     //Get this working.
     if (containsCapital(word)) {
       setActiveDialog("capital");
+      return;
     } else if (containsCh(word)) {
       setActiveDialog("ch");
+      return;
     } else if (containsC(word)) {
       setActiveDialog("c");
+      return;
     } else if (containsJ(word)) {
       setActiveDialog("j");
+      return;
     } else if (containsQu(word)) {
       setActiveDialog("qu");
+      return;
     }
 
     //SOMETHING NEEDS TO GO HERE WHERE IT STOPS FOR USER INPUT BEFORE PROCEEDING
