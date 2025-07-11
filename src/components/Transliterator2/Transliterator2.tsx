@@ -113,6 +113,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const handleStartButtonClick = (): void => {
+    setWordForDialog(currentWord);
     processWord(currentWord);
   };
 
@@ -127,23 +128,36 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
     //Get this working.
     if (containsCapital(word)) {
+      const matchIndex = word.search(/[A-Z]/);
+      setCapitalIndex(matchIndex);
+      setWordForDialog(word);
       setActiveDialog("capital");
       return;
     } else if (containsCh(word)) {
+      const matchIndex = word.indexOf("ch");
+      setChIndex(matchIndex);
+      setWordForDialog(word);
       setActiveDialog("ch");
       return;
     } else if (containsC(word)) {
+      const matchIndex = word.indexOf("c");
+      setCIndex(matchIndex);
+      setWordForDialog(word);
       setActiveDialog("c");
       return;
     } else if (containsJ(word)) {
+      const matchIndex = word.indexOf("j");
+      setJIndex(matchIndex);
+      setWordForDialog(word);
       setActiveDialog("j");
       return;
     } else if (containsQu(word)) {
+      const matchIndex = word.indexOf("qu");
+      setQuIndex(matchIndex);
+      setWordForDialog(word);
       setActiveDialog("qu");
       return;
     }
-
-    //ALSO NEEDS TO SET CURRENT WORD FOR DIALOG
 
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
@@ -162,11 +176,17 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
+      setWordForDialog(nextWord);
       // Does this loop?
       processWord(nextWord);
     } else {
+      // Use the updated dictionary with the current word processed
+      const updatedDict = {
+        ...wordsDictionary,
+        [wordKeys[currentWordIndex]]: processBaybayinText(currentWord),
+      };
       setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
+        text.replace(/\b\w+\b/g, (word) => updatedDict[word] ?? word)
       );
       setIsDialogOpen(false);
     }
@@ -196,6 +216,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const handleClose = (): void => {
     setActiveDialog(null);
     setIsDialogOpen(false);
+    resetAllDialogs();
   };
 
   const handleSkip = (): void => {
@@ -213,11 +234,17 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
+      setWordForDialog(nextWord);
       processWord(nextWord);
     } else {
       setIsDialogOpen(false);
+      // Use the updated dictionary with the current word processed
+      const updatedDict = {
+        ...wordsDictionary,
+        [wordKeys[currentWordIndex]]: processBaybayinText(currentWord),
+      };
       setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
+        text.replace(/\b\w+\b/g, (word) => updatedDict[word] ?? word)
       );
     }
   };
