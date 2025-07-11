@@ -2,14 +2,15 @@ import type { JSX } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BaybayinPage from "./pages/BaybayinPage";
+import RootLayout from "./Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <RootLayout />,
     children: [
       {
-        path: "/",
+        path: "/baybayin",
         element: <BaybayinPage />,
       },
     ],
