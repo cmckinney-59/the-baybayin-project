@@ -12,6 +12,7 @@ CRITICAL (4)
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
 - Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
 - Fix button ui
+- When a word like 'kulay-ube' is entered the '-' needs to be removed and the 'u' needs to be capitalized
 
 OPTIONAL (2)
 
