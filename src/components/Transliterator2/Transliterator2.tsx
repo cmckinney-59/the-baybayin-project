@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 
 import "./Transliterator2.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
@@ -35,43 +35,42 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const [jIndex, setJIndex] = useState<number | null>(null);
   const [quIndex, setQuIndex] = useState<number | null>(null);
 
-  // Consts
-  const textareaHasText = text.length > 0;
-  const isBaybayin = title === "Baybayin";
-  const isAurebesh = title === "Aurebesh";
-  const isDeseret = title === "Deseret";
+  // Memoized consts
+  const textareaHasText = useMemo(() => text.length > 0, [text]);
+  const isBaybayin = useMemo(() => title === "Baybayin", [title]);
+  const isAurebesh = useMemo(() => title === "Aurebesh", [title]);
+  const isDeseret = useMemo(() => title === "Deseret", [title]);
 
-  const patternCheckers: {
-    type: DialogType;
-    regex: RegExp;
-    findIndex: (word: string) => number;
-  }[] = [
-    {
-      type: "capital",
-      regex: /[A-Z]/,
-      findIndex: (word) => word.search(/[A-Z]/),
-    },
-    {
-      type: "ch",
-      regex: /ch/,
-      findIndex: (word) => word.indexOf("ch"),
-    },
-    {
-      type: "c",
-      regex: /c/,
-      findIndex: (word) => word.indexOf("c"),
-    },
-    {
-      type: "j",
-      regex: /j/,
-      findIndex: (word) => word.indexOf("j"),
-    },
-    {
-      type: "qu",
-      regex: /qu/,
-      findIndex: (word) => word.indexOf("qu"),
-    },
-  ];
+  const patternCheckers = useMemo(
+    () => [
+      {
+        type: "capital" as const,
+        regex: /[A-Z]/,
+        findIndex: (word: string) => word.search(/[A-Z]/),
+      },
+      {
+        type: "ch" as const,
+        regex: /ch/,
+        findIndex: (word: string) => word.indexOf("ch"),
+      },
+      {
+        type: "c" as const,
+        regex: /c/,
+        findIndex: (word: string) => word.indexOf("c"),
+      },
+      {
+        type: "j" as const,
+        regex: /j/,
+        findIndex: (word: string) => word.indexOf("j"),
+      },
+      {
+        type: "qu" as const,
+        regex: /qu/,
+        findIndex: (word: string) => word.indexOf("qu"),
+      },
+    ],
+    []
+  );
 
   function containsCapital(word: string): boolean {
     return /[A-Z]/.test(word);
@@ -96,7 +95,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   // Handle Clicks
 
   //This should initialize the dictionary AND open the dialog
-  const handleTransliterateButtonClick = (): void => {
+  const handleTransliterateButtonClick = useCallback((): void => {
     const initialDict = initializeDictionary(text);
     const keys = Object.keys(initialDict);
 
@@ -110,7 +109,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setTempWordCount(keys.length);
     setIsDialogOpen(true);
     setActiveDialog("start");
-  };
+  }, [text]);
 
   const handleStartButtonClick = (): void => {
     setWordForDialog(currentWord);
@@ -250,12 +249,12 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const handleChSelection = (choice: string) => {
-    if (chIndex === null) return;
+    if (characterIndices.ch === null) return;
 
     const replacement = choice === "k" ? "k" : "tiy";
 
-    const before = currentWord.slice(0, chIndex);
-    const after = currentWord.slice(chIndex + 2);
+    const before = currentWord.slice(0, characterIndices.ch);
+    const after = currentWord.slice(characterIndices.ch + 2);
     const updatedWord = before + replacement + after;
 
     const originalWord = wordKeys[currentWordIndex];
@@ -265,7 +264,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       [originalWord]: updatedWord,
     }));
 
-    setChIndex(null);
+    setCharacterIndices((prev) => ({ ...prev, ch: null }));
     setActiveDialog(null);
 
     setCurrentWord(updatedWord);
@@ -409,9 +408,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           {text.length > 0 && (
             <button
               className="clear-input-button"
-              onClick={() => {
-                setText("");
-              }}
+              onClick={useCallback(() => setText(""), [])}
               aria-label="Clear input"
             >
               ×
@@ -437,9 +434,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           {transliteratedText.length > 0 && (
             <button
               className="clear-output-button"
-              onClick={() => {
-                setTransliteratedText("");
-              }}
+              onClick={useCallback(() => setTransliteratedText(""), [])}
             >
               ×
             </button>

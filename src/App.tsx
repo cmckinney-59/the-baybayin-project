@@ -1,20 +1,23 @@
 import type { JSX } from "react";
-import "./App.css";
 
-import Header from "./components/Header/Header.tsx";
-import ContentContainer from "./components/ContentContainer/ContentContainer.tsx";
-import Footer from "./components/Footer/Footer.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import BaybayinPage from "./pages/BaybayinPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <BaybayinPage />,
+      },
+    ],
+  },
+]);
 
 function App(): JSX.Element {
-  return (
-    <div className="App">
-      <Header />
-      <main className="App-content">
-        <ContentContainer />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
