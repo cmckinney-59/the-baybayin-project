@@ -1,13 +1,14 @@
 .App-header {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   padding: 20px;
   background-color: rgb(240, 238, 238);
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: black;
-  border-bottom: 1px solid gray;
+  margin-left: 0px;
+  flex-shrink: 0;
 }
 
 .header-content {

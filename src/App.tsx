@@ -3,6 +3,8 @@ import type { JSX } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import BaybayinPage from "./pages/BaybayinPage";
 import RootLayout from "./Root";
+import DeseretPage from "./pages/DeseretPage";
+import AurebeshPage from "./pages/AurebeshPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
       {
         path: "/baybayin",
         element: <BaybayinPage />,
+      },
+      {
+        path: "/deseret",
+        element: <DeseretPage />,
+      },
+      {
+        path: "/aurebesh",
+        element: <AurebeshPage />,
       },
     ],
   },

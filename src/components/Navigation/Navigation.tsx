@@ -6,7 +6,6 @@ export default function Navigation(): JSX.Element {
   return (
     <nav className="App-Navigation">
       <div className="Navigation-content">
-        <h1 className="App-Navigation-Text">Navigation</h1>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -18,7 +17,7 @@ export default function Navigation(): JSX.Element {
             <Link to="/deseret">Deseret</Link>
           </li>
           <li>
-            <Link to="/aurbesh">Aurbesh</Link>
+            <Link to="/aurebesh">Aurebesh</Link>
           </li>
         </ul>
       </div>
