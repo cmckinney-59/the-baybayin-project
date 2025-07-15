@@ -35,9 +35,20 @@
   padding: 0.75rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: center;
 }
 
 .Navigation-content ul li a:hover {
   background-color: #e0e0e0;
   color: #000;
+  width: 100%;
+  text-align: center;
+}
+
+.Navigation-content ul li a:active {
+  background-color: #e0e0e0;
+  color: #000;
+  width: 100%;
+  text-align: center;
 }

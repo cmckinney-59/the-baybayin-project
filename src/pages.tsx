@@ -22,6 +22,12 @@ export const PAGES: Record<string, PageData> = {
     whatIs: "What is Baybayin?",
     description: "This is the Baybayin description",
   },
+  BaybayinLite: {
+    image: inasalImg,
+    title: "Baybayin Lite",
+    whatIs: "What is Baybayin?",
+    description: "This is the Baybayin description",
+  },
   Aurebesh: {
     image: theBoisImg,
     title: "Aurebesh",

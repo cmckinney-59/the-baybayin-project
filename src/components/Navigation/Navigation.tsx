@@ -14,6 +14,9 @@ export default function Navigation(): JSX.Element {
             <Link to="/baybayin">Baybayin</Link>
           </li>
           <li>
+            <Link to="/baybayin-lite">Baybayin Lite</Link>
+          </li>
+          <li>
             <Link to="/deseret">Deseret</Link>
           </li>
           <li>
