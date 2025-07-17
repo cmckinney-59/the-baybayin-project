@@ -4,6 +4,7 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (4)
 
+- Routing
 - FIX MODAL CLOSING AFTER FIRST QUESTION
 - DEBUG
 - Move all into one modal
