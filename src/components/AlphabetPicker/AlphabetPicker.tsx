@@ -2,12 +2,12 @@ import "./AlphabetPicker.css";
 import React from "react";
 
 interface AlphabetPickerProps {
-  selectedPage: string;
+  selectedAlphabet: string;
   handleClick: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export default function AlphabetPicker({
-  selectedPage,
+  selectedAlphabet,
   handleClick,
 }: AlphabetPickerProps) {
   const alphabets = ["Baybayin", "Baybayin Lite", "Aurebesh", "Deseret"];
@@ -15,7 +15,7 @@ export default function AlphabetPicker({
   return (
     <section>
       <label htmlFor="options">Choose an alphabet: </label>
-      <select id="options" value={selectedPage} onChange={handleClick}>
+      <select id="options" value={selectedAlphabet} onChange={handleClick}>
         <option value=""></option>
         {alphabets.map((alphabet) => (
           <option key={alphabet} value={alphabet}>

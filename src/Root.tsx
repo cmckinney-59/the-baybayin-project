@@ -12,7 +12,7 @@ function RootLayout() {
         <main className="App-content">
           <Outlet />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

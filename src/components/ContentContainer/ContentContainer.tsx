@@ -5,20 +5,36 @@ import "./ContentContainer.css";
 import PageContent from "../PageContent/PageContent.tsx";
 import AlphabetPicker from "../AlphabetPicker/AlphabetPicker.tsx";
 
-export default function ContentContainer() {
-  const [selectedPage, setSelectedPage] = useState<string>("Home");
+interface ContentContainerProps {
+  isTransliteratorPage?: boolean;
+  currentPage?: string;
+}
+
+export default function ContentContainer({
+  isTransliteratorPage = false,
+  currentPage = "Home",
+}: ContentContainerProps) {
+  const [selectedAlphabet, setSelectedAlphabet] = useState<string>("");
 
   function handleClick(event: ChangeEvent<HTMLSelectElement>) {
-    setSelectedPage(event.target.value);
+    setSelectedAlphabet(event.target.value);
   }
 
   return (
     <section>
       <div>
-        <AlphabetPicker selectedPage={selectedPage} handleClick={handleClick} />
+        {isTransliteratorPage && (
+          <AlphabetPicker
+            selectedAlphabet={selectedAlphabet}
+            handleClick={handleClick}
+          />
+        )}
       </div>
       <div className="page-content">
-        <PageContent selectedPage={selectedPage} />
+        <PageContent
+          selectedAlphabet={selectedAlphabet}
+          currentPage={currentPage}
+        />
       </div>
     </section>
   );
