@@ -1,9 +1,9 @@
-import ContentContainer from "../components/ContentContainer/ContentContainer";
+import TransliteratorLite from "../components/TransliteratorLite/TransliteratorLite";
 
 export default function BaybayinPageLite() {
   return (
     <>
-      <ContentContainer currentPage="BaybayinLite" />
+      <TransliteratorLite title="Baybayin Lite" />
     </>
   );
 }
