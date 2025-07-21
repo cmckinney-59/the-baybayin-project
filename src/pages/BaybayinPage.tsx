@@ -1,9 +1,9 @@
-import ContentContainer from "../components/ContentContainer/ContentContainer";
+import Transliterator2 from "../components/Transliterator2/Transliterator2";
 
 export default function BaybayinPage() {
   return (
     <>
-      <ContentContainer selectedAlphabet="Baybayin" />
+      <Transliterator2 title="Baybayin" />
     </>
   );
 }
