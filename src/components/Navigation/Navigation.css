@@ -35,7 +35,7 @@
   border-radius: 4px;
   transition: background-color 0.2s ease;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .Navigation-content ul li a:hover {
