@@ -5,12 +5,13 @@
   padding: 10px 20px;
   background-color: rgb(240, 238, 238);
   flex-direction: row;
-  font-size: 14px;
+  font-size: 10px;
   color: black;
   flex-shrink: 0;
   position: fixed;
   bottom: 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-content {
@@ -20,7 +21,7 @@
 }
 
 .App-footer-Text {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: bold;
   margin: 0;
 }
@@ -50,4 +51,13 @@
 
 .footer-links-container a:hover {
   color: rgb(26, 115, 232);
+}
+
+.App-footer p {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  font-size: 10px;
 }
