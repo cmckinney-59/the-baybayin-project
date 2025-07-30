@@ -395,7 +395,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   return (
     <div>
-      <h2>Transliterator 2</h2>
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea

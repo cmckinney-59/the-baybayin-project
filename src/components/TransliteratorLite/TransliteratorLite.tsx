@@ -34,7 +34,6 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
 
   return (
     <div>
-      <h2>Transliterator Lite</h2>
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
