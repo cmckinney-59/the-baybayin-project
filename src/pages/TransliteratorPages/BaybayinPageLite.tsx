@@ -1,4 +1,4 @@
-import TransliteratorLite from "../components/TransliteratorLite/TransliteratorLite";
+import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
 
 export default function BaybayinPageLite() {
   return (

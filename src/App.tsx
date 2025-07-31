@@ -1,12 +1,16 @@
 import type { JSX } from "react";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BaybayinPage from "./pages/BaybayinPage";
 import RootLayout from "./Root";
-import DeseretPage from "./pages/DeseretPage";
-import AurebeshPage from "./pages/AurebeshPage";
-import BaybayinPageLite from "./pages/BaybayinPageLite";
-import TransliteratorPage from "./pages/TransliteratorPage";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ShopPage from "./pages/ShopPage";
+import BaybayinPage from "./pages/TransliteratorPages/BaybayinPage";
+import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
+import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
+import BaybayinPageLite from "./pages/TransliteratorPages/BaybayinPageLite";
+import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 
 const router = createBrowserRouter([
   {
@@ -14,24 +18,42 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
+        path: "/home",
+        element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/projects",
+        element: <ProjectsPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
+      },
+      {
         path: "/transliterator",
         element: <TransliteratorPage />,
-      },
-      {
-        path: "/baybayin-lite",
-        element: <BaybayinPageLite />,
-      },
-      {
-        path: "/baybayin",
-        element: <BaybayinPage />,
-      },
-      {
-        path: "/deseret",
-        element: <DeseretPage />,
-      },
-      {
-        path: "/aurebesh",
-        element: <AurebeshPage />,
+        children: [
+          {
+            path: "/transliterator/baybayin",
+            element: <BaybayinPage />,
+          },
+          {
+            path: "/transliterator/baybayin-lite",
+            element: <BaybayinPageLite />,
+          },
+          {
+            path: "/transliterator/deseret",
+            element: <DeseretPage />,
+          },
+          {
+            path: "/transliterator/aurebesh",
+            element: <AurebeshPage />,
+          },
+        ],
       },
     ],
   },
