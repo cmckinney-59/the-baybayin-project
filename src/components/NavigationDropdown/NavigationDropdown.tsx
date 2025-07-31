@@ -13,12 +13,10 @@ const NavigationDropdown: React.FC = () => {
 
   return (
     <select onChange={handleChange}>
-      <option value="/">Home</option>
-      <option value="/transliterator">Transliterator</option>
-      <option value="/baybayin">Baybayin</option>
-      <option value="/baybayin-lite">Baybayin Lite</option>
-      <option value="/aurebesh">Aurebesh</option>
-      <option value="/deseret">Deseret</option>
+      <option value="/transliterator/baybayin">Baybayin</option>
+      <option value="/transliterator/baybayin-lite">Baybayin Lite</option>
+      <option value="/transliterator/aurebesh">Aurebesh</option>
+      <option value="/transliterator/deseret">Deseret</option>
     </select>
   );
 };
