@@ -11,6 +11,9 @@ export default function Navigation(): JSX.Element {
             <Link to="/home">Home</Link>
           </li>
           <li>
+            <Link to="/transliterator">Transliterator</Link>
+          </li>
+          <li>
             <Link to="/about">About</Link>
           </li>
           <li>
