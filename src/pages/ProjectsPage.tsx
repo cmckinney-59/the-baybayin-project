@@ -2,7 +2,7 @@ import React from "react";
 
 // Example imports for files in assets/projects
 // Uncomment and modify these when you add actual files:
-// import projectFile1 from '../assets/projects/your-file-1.pdf';
+import angBuhayNaCristo from "../assets/projects/17409_tgl.pdf";
 // import projectFile2 from '../assets/projects/your-file-2.zip';
 // import projectFile3 from '../assets/projects/your-file-3.docx';
 
@@ -86,14 +86,15 @@ export default function ProjectsPage() {
           <div style={styles.downloadItem}>
             <h3>Project Documentation</h3>
             <p>Complete documentation for the project.</p>
-            {/* Uncomment when you have the actual file:
-            <button 
-              onClick={() => handleDownload(projectFile1, 'project-documentation.pdf')}
+            Uncomment when you have the actual file:
+            <button
+              onClick={() =>
+                handleDownload(angBuhayNaCristo, "AngBuhayNaCristo.docx")
+              }
               style={styles.downloadButton}
             >
               Download PDF
             </button>
-            */}
             <button
               onClick={() =>
                 alert(
