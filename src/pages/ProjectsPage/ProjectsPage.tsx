@@ -21,19 +21,12 @@ export default function ProjectsPage() {
   return (
     <div className="projectsPage">
       <h1>Projects</h1>
-
       <div className="projectsContent">
-        <p>Here are some of my projects available for download:</p>
-
-        {/* Example project download links */}
+        <p>Here are some of our projects available for download:</p>
         <div className="projectDownloads">
-          <h2>Available Downloads</h2>
-
-          {/* Example 1: PDF file */}
           <div className="downloadItem">
             <h3>Project Documentation</h3>
             <p>Complete documentation for the project.</p>
-            Uncomment when you have the actual file:
             <button
               onClick={() =>
                 handleDownload(angBuhayNaCristo, "AngBuhayNaCristo.docx")
@@ -53,19 +46,16 @@ export default function ProjectsPage() {
               Download PDF (Example)
             </button>
           </div>
-
-          {/* Example 2: ZIP file */}
           <div className="downloadItem">
             <h3>Project Source Code</h3>
             <p>Complete source code package.</p>
-            {/* Uncomment when you have the actual file:
-            <button 
-              onClick={() => handleDownload(projectFile2, 'project-source.zip')}
+            Uncomment when you have the actual file:
+            <button
+              onClick={() => handleDownload(projectFile2, "project-source.zip")}
               className="downloadButton"
             >
               Download ZIP
             </button>
-            */}
             <button
               onClick={() =>
                 alert(
@@ -77,12 +67,9 @@ export default function ProjectsPage() {
               Download ZIP (Example)
             </button>
           </div>
-
-          {/* Example 3: Direct link approach */}
           <div className="downloadItem">
             <h3>Alternative Download Method</h3>
             <p>Using direct anchor tag approach:</p>
-            {/* This approach works for files in the public folder */}
             <a
               href="/your-file-in-public-folder.pdf"
               download
@@ -91,29 +78,6 @@ export default function ProjectsPage() {
               Download via Direct Link
             </a>
           </div>
-        </div>
-
-        <div className="setupInstructions">
-          <h2>How to Add Your Files</h2>
-          <ol>
-            <li>
-              Place your files in the{" "}
-              <code className="code">src/assets/projects/</code> directory
-            </li>
-            <li>Import them at the top of this component</li>
-            <li>Uncomment the download buttons above</li>
-            <li>Update the file names and descriptions</li>
-          </ol>
-
-          <h3>Supported File Types</h3>
-          <ul>
-            <li>PDF files (.pdf)</li>
-            <li>ZIP archives (.zip)</li>
-            <li>Word documents (.docx)</li>
-            <li>Text files (.txt)</li>
-            <li>Images (.jpg, .png, .gif)</li>
-            <li>And more!</li>
-          </ul>
         </div>
       </div>
     </div>
