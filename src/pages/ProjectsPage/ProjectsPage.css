@@ -1,52 +1,65 @@
+.projectsPage {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-    projectsPage {
-      padding: "20px",
-      maxWidth: "800px",
-      margin: "0 auto",
-    }
+.projectsContent {
+  margin-top: 20px;
+}
 
-    projectsContent {
-      marginTop: "20px",
-    }
-    projectDownloads {
-      marginTop: "30px",
-    }
-    downloadItem {
-      border: "1px solid #ddd",
-      borderRadius: "8px",
-      padding: "20px",
-      marginBottom: "20px",
-      backgroundColor: "#f9f9f9",
-    }
-    downloadButton {
-      backgroundColor: "#007bff",
-      color: "white",
-      border: "none",
-      padding: "10px 20px",
-      borderRadius: "5px",
-      cursor: "pointer",
-      fontSize: "14px",
-      marginTop: "10px",
-    },
-    downloadLink {
-      display: "inline-block",
-      backgroundColor: "#28a745",
-      color: "white",
-      textDecoration: "none",
-      padding: "10px 20px",
-      borderRadius: "5px",
-      marginTop: "10px",
-    }
-    setupInstructions {
-      marginTop: "40px",
-      padding: "20px",
-      backgroundColor: "#f8f9fa",
-      borderRadius: "8px",
-      border: "1px solid #e9ecef",
-    }
-    code {
-      backgroundColor: "#e9ecef",
-      padding: "2px 4px",
-      borderRadius: "3px",
-      fontFamily: "monospace",
-    }
+.projectDownloads {
+  margin-top: 30px;
+}
+
+.downloadItem {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.downloadButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.downloadButton:hover {
+  background-color: #0056b3;
+}
+
+.downloadLink {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.downloadLink:hover {
+  background-color: #1e7e34;
+}
+
+.setupInstructions {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.code {
+  background-color: #e9ecef;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+}
