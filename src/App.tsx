@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Root";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import ProjectsPage from "./pages/ProjectsPage";
+import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import ShopPage from "./pages/ShopPage";
 import BaybayinPage from "./pages/TransliteratorPages/BaybayinPage";
 import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
