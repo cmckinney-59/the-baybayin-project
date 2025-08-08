@@ -1,64 +1,11 @@
 import React from "react";
+import "./ProjectsPage.css";
 
 // Example imports for files in assets/projects
 // Uncomment and modify these when you add actual files:
 import angBuhayNaCristo from "../assets/projects/17409_tgl.pdf";
 // import projectFile2 from '../assets/projects/your-file-2.zip';
 // import projectFile3 from '../assets/projects/your-file-3.docx';
-
-// CSS styles for the projects page
-const styles = {
-  projectsPage: {
-    padding: "20px",
-    maxWidth: "800px",
-    margin: "0 auto",
-  },
-  projectsContent: {
-    marginTop: "20px",
-  },
-  projectDownloads: {
-    marginTop: "30px",
-  },
-  downloadItem: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "20px",
-    marginBottom: "20px",
-    backgroundColor: "#f9f9f9",
-  },
-  downloadButton: {
-    backgroundColor: "#007bff",
-    color: "white",
-    border: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "14px",
-    marginTop: "10px",
-  },
-  downloadLink: {
-    display: "inline-block",
-    backgroundColor: "#28a745",
-    color: "white",
-    textDecoration: "none",
-    padding: "10px 20px",
-    borderRadius: "5px",
-    marginTop: "10px",
-  },
-  setupInstructions: {
-    marginTop: "40px",
-    padding: "20px",
-    backgroundColor: "#f8f9fa",
-    borderRadius: "8px",
-    border: "1px solid #e9ecef",
-  },
-  code: {
-    backgroundColor: "#e9ecef",
-    padding: "2px 4px",
-    borderRadius: "3px",
-    fontFamily: "monospace",
-  },
-};
 
 export default function ProjectsPage() {
   // Function to handle file downloads
