@@ -10,6 +10,35 @@ body {
   padding: 0;
 }
 
+/* Fonts loaded globally so font utility classes work across pages */
+@font-face {
+  font-family: "Baybayin";
+  src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret";
+  src: url("./assets/fonts/deseret/deseret_.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh";
+  src: url("./assets/fonts/aurebesh/AurebeshBold-Rw1l.ttf") format("truetype");
+  font-display: swap;
+}
+
+.baybayin-font {
+  font-family: "Baybayin", sans-serif;
+}
+.aurebesh-font {
+  font-family: "Aurebesh", sans-serif;
+}
+.deseret-font {
+  font-family: "Deseret", sans-serif;
+}
+
 select {
   margin: 10px auto;
   padding: 8px 12px;

@@ -3,7 +3,7 @@ import TransliteratorLite from "../../components/TransliteratorLite/Transliterat
 export default function BaybayinPageLite() {
   return (
     <>
-      <TransliteratorLite title="Baybayin Lite" />
+      <TransliteratorLite title="Baybayin" />
     </>
   );
 }
