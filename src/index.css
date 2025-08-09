@@ -28,12 +28,12 @@ main {
 }
 
 .App-content.with-sidebar {
-  margin-left: 220px; /* match sidebar width when open on wide screens */
+  margin-left: 220px;
 }
 
 @media (max-width: 900px) {
   .App-content.with-sidebar {
-    margin-left: 0; /* overlay on small screens */
+    margin-left: 0;
   }
 }
 
