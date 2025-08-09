@@ -83,7 +83,7 @@ export default function AllInOneDialog({
   }
 
   return (
-    <dialog className="dialog-overlay">
+    <dialog className="dialog-overlay" open>
       <div className="dialog-box">
         <DialogHeader
           onClose={onClose}

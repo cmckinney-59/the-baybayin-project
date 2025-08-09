@@ -249,12 +249,12 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const handleChSelection = (choice: string) => {
-    if (characterIndices.ch === null) return;
+    if (chIndex === null) return;
 
     const replacement = choice === "k" ? "k" : "tiy";
 
-    const before = currentWord.slice(0, characterIndices.ch);
-    const after = currentWord.slice(characterIndices.ch + 2);
+    const before = currentWord.slice(0, chIndex);
+    const after = currentWord.slice(chIndex + 2);
     const updatedWord = before + replacement + after;
 
     const originalWord = wordKeys[currentWordIndex];
@@ -264,7 +264,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       [originalWord]: updatedWord,
     }));
 
-    setCharacterIndices((prev) => ({ ...prev, ch: null }));
+    setChIndex(null);
     setActiveDialog(null);
 
     setCurrentWord(updatedWord);
@@ -407,7 +407,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           {text.length > 0 && (
             <button
               className="clear-input-button"
-              onClick={useCallback(() => setText(""), [])}
+              onClick={() => setText("")}
               aria-label="Clear input"
             >
               ×
@@ -433,7 +433,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           {transliteratedText.length > 0 && (
             <button
               className="clear-output-button"
-              onClick={useCallback(() => setTransliteratedText(""), [])}
+              onClick={() => setTransliteratedText("")}
             >
               ×
             </button>
