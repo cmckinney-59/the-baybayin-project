@@ -24,6 +24,17 @@ main {
   width: 70%;
   height: 100%;
   margin: 0 auto;
+  transition: margin-left 0.25s ease;
+}
+
+.App-content.with-sidebar {
+  margin-left: 220px; /* match sidebar width when open on wide screens */
+}
+
+@media (max-width: 900px) {
+  .App-content.with-sidebar {
+    margin-left: 0; /* overlay on small screens */
+  }
 }
 
 code {
