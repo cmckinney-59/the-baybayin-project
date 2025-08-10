@@ -4,7 +4,7 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (4)
 
-- Routing
+- Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
 - FIX MODAL CLOSING AFTER FIRST QUESTION
 - DEBUG
 - Move all into one modal
@@ -28,6 +28,7 @@ DONE (5)
 - Add a clear input button
 - Fix modal closing
 - Fix inital word review modal number
+- Routing
 
 PHASE 4 : OPTIMIZE - Work with Jeremiah - Make regexs global
 
