@@ -176,8 +176,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
       setWordForDialog(nextWord);
-      // Does this loop?
-      processWord(nextWord);
     } else {
       // Use the updated dictionary with the current word processed
       const updatedDict = {
