@@ -117,15 +117,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const processWord = (word: string): void => {
-    // for (const pattern of patternCheckers) {
-    //   if (pattern.regex.test(word)) {
-    //     const matchIndex = pattern.findIndex(word);
-    //     activateDialog(matchIndex, word, pattern.type);
-    //     return;
-    //   }
-    // }
-
-    //Get this working.
+    // Check if word contains any special characters that need dialog interaction
     if (containsCapital(word)) {
       const matchIndex = word.search(/[A-Z]/);
       setCapitalIndex(matchIndex);
@@ -158,6 +150,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       return;
     }
 
+    // If no special characters found, automatically process the word and move to next
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
 
@@ -166,6 +159,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       [original]: processed,
     }));
 
+    // Automatically move to next word
     goToNextWord();
   };
 
@@ -467,7 +461,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
           wordForDialog={wordForDialog}
         />
       )}
-      {/* <div className="dictionary-output">
+      <div className="dictionary-output">
         <h3>Processed Words:</h3>
         <ul>
           {Object.entries(wordsDictionary).map(([original, processed]) => (
@@ -476,7 +470,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
             </li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 }
