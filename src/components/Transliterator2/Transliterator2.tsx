@@ -170,6 +170,9 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
       setWordForDialog(nextWord);
+
+      // Automatically process the next word if it doesn't need dialog interaction
+      processNextWordAutomatically(nextWord);
     } else {
       // Use the updated dictionary with the current word processed
       const updatedDict = {
@@ -181,6 +184,54 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       );
       setIsDialogOpen(false);
     }
+  };
+
+  const processNextWordAutomatically = (word: string): void => {
+    // Check if word contains any special characters that need dialog interaction
+    if (containsCapital(word)) {
+      const matchIndex = word.search(/[A-Z]/);
+      setCapitalIndex(matchIndex);
+      setWordForDialog(word);
+      setActiveDialog("capital");
+      return;
+    } else if (containsCh(word)) {
+      const matchIndex = word.indexOf("ch");
+      setChIndex(matchIndex);
+      setWordForDialog(word);
+      setActiveDialog("ch");
+      return;
+    } else if (containsC(word)) {
+      const matchIndex = word.indexOf("c");
+      setCIndex(matchIndex);
+      setWordForDialog(word);
+      setActiveDialog("c");
+      return;
+    } else if (containsJ(word)) {
+      const matchIndex = word.indexOf("j");
+      setJIndex(matchIndex);
+      setWordForDialog(word);
+      setActiveDialog("j");
+      return;
+    } else if (containsQu(word)) {
+      const matchIndex = word.indexOf("qu");
+      setQuIndex(matchIndex);
+      setWordForDialog(word);
+      setActiveDialog("qu");
+      return;
+    }
+
+    // If no special characters found, automatically process the word and move to next
+    const processed = processBaybayinText(word);
+    const currentIndex = currentWordIndex;
+    const original = wordKeys[currentIndex];
+
+    setWordsDictionary((prev) => ({
+      ...prev,
+      [original]: processed,
+    }));
+
+    // Automatically move to next word
+    goToNextWord();
   };
 
   // Handle Selections
