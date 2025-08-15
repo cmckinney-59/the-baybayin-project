@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import "./TransliteratorLite.css";
-import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 
@@ -17,7 +16,7 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
   const textareaHasText = text.length > 0;
 
-  const handleTransliterateButtonClick = (): void => {
+  const handleChange = (): void => {
     const words = text.trim().split(/\s+/);
     const newDict: Dictionary = {};
     const processedWords: string[] = [];
@@ -40,9 +39,11 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             className="transliteration-textarea"
             placeholder="Enter text to be transliterated here..."
             value={text}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => {
+              setText(e.target.value);
+              setTimeout(() => handleChange(), 0);
+            }}
           ></textarea>
-
           {text.length > 0 && (
             <button
               className="clear-input-button"
@@ -84,13 +85,6 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
         </div>
       </div>
       <div className="action-buttons">
-        <div>
-          <TransliterateButton
-            isActive={textareaHasText}
-            onClick={handleTransliterateButtonClick}
-            isDisabled={!textareaHasText}
-          />
-        </div>
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
