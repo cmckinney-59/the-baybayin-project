@@ -16,8 +16,8 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
   const textareaHasText = text.length > 0;
 
-  const handleChange = (): void => {
-    const words = text.trim().split(/\s+/);
+  const handleChange = (currentText: string): void => {
+    const words = currentText.trim().split(/\s+/);
     const newDict: Dictionary = {};
     const processedWords: string[] = [];
 
@@ -40,8 +40,9 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             placeholder="Enter text to be transliterated here..."
             value={text}
             onChange={(e) => {
-              setText(e.target.value);
-              setTimeout(() => handleChange(), 0);
+              const currentValue = e.target.value;
+              setText(currentValue);
+              handleChange(currentValue);
             }}
           ></textarea>
           {text.length > 0 && (
