@@ -7,6 +7,9 @@ export default function downloadAsExcel(data: { [key: string]: string }) {
     Transliterated: transliterated,
   }));
 
+  // Sort rows alphabetically by the Original column
+  rows.sort((a, b) => a.Original.localeCompare(b.Original));
+
   const worksheet = XLSX.utils.json_to_sheet(rows);
 
   const range = XLSX.utils.decode_range(worksheet["!ref"] || "");
