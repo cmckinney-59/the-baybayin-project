@@ -276,7 +276,10 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
-      setWordForDialog(nextWord);
+      const containsCharacterCase = characterTest(nextWord);
+      if (containsCharacterCase) {
+        setWordForDialog(nextWord);
+      }
       processWord(nextWord);
     } else {
       setIsDialogOpen(false);
@@ -290,6 +293,20 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       );
     }
   };
+
+  function characterTest(word: string) {
+    if (
+      word.includes("ch") ||
+      word.includes("c") ||
+      word.includes("j") ||
+      word.includes("qu") ||
+      /[A-Z]/.test(word)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   const handleChSelection = (choice: string) => {
     if (chIndex === null) return;
