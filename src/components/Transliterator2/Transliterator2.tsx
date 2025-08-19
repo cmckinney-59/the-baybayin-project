@@ -117,7 +117,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   };
 
   const processWord = (word: string): void => {
-    // Check if word contains any special characters that need dialog interaction
     if (containsCapital(word)) {
       const matchIndex = word.search(/[A-Z]/);
       setCapitalIndex(matchIndex);
@@ -150,7 +149,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       return;
     }
 
-    // If no special characters found, automatically process the word and move to next
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
 
@@ -159,7 +157,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       [original]: processed,
     }));
 
-    // Automatically move to next word
     goToNextWord();
   };
 
