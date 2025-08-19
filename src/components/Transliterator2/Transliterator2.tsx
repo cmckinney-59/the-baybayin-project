@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+// import React from "react";
 
 import "./Transliterator2.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
@@ -41,36 +42,60 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const isAurebesh = useMemo(() => title === "Aurebesh", [title]);
   const isDeseret = useMemo(() => title === "Deseret", [title]);
 
-  const patternCheckers = useMemo(
-    () => [
-      {
-        type: "capital" as const,
-        regex: /[A-Z]/,
-        findIndex: (word: string) => word.search(/[A-Z]/),
-      },
-      {
-        type: "ch" as const,
-        regex: /ch/,
-        findIndex: (word: string) => word.indexOf("ch"),
-      },
-      {
-        type: "c" as const,
-        regex: /c/,
-        findIndex: (word: string) => word.indexOf("c"),
-      },
-      {
-        type: "j" as const,
-        regex: /j/,
-        findIndex: (word: string) => word.indexOf("j"),
-      },
-      {
-        type: "qu" as const,
-        regex: /qu/,
-        findIndex: (word: string) => word.indexOf("qu"),
-      },
-    ],
-    []
+  // Debug logging for title and text
+  console.log(`Transliterator2 initialized with title: "${title}"`);
+  console.log(`Current text: "${text}"`);
+  console.log(
+    `Is Baybayin: ${isBaybayin}, Is Aurebesh: ${isAurebesh}, Is Deseret: ${isDeseret}`
   );
+
+  // Monitor dialog state changes
+  useEffect(() => {
+    console.log(
+      `Dialog state changed: isDialogOpen=${isDialogOpen}, activeDialog=${activeDialog}`
+    );
+  }, [isDialogOpen, activeDialog]);
+
+  useEffect(() => {
+    console.log(
+      `Current word changed: "${currentWord}" at index ${currentWordIndex}`
+    );
+  }, [currentWord, currentWordIndex]);
+
+  useEffect(() => {
+    console.log(`Words dictionary updated:`, wordsDictionary);
+  }, [wordsDictionary]);
+
+  // const patternCheckers = useMemo(
+  //   () => [
+  //     {
+  //       type: "capital" as const,
+  //       regex: /[A-Z]/,
+  //       findIndex: (word: string) => word.search(/[A-Z]/),
+  //     },
+  //     {
+  //       type: "ch" as const,
+  //       regex: /ch/,
+  //       findIndex: (word: string) => word.indexOf("ch"),
+  //     },
+  //     {
+  //       type: "c" as const,
+  //       regex: /c/,
+  //       findIndex: (word: string) => word.indexOf("c"),
+  //     },
+  //     {
+  //       type: "j" as const,
+  //       regex: /j/,
+  //       findIndex: (word: string) => word.indexOf("j"),
+  //     },
+  //     {
+  //       type: "qu" as const,
+  //       regex: /qu/,
+  //       findIndex: (word: string) => word.indexOf("qu"),
+  //     },
+  //   ],
+  //   []
+  // );
 
   function containsCapital(word: string): boolean {
     return /[A-Z]/.test(word);
@@ -96,61 +121,87 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   //This should initialize the dictionary AND open the dialog
   const handleTransliterateButtonClick = useCallback((): void => {
+    console.log(`Transliterate button clicked with text: "${text}"`);
+
+    if (!text.trim()) {
+      console.log("Text is empty, not proceeding");
+      return; // Don't proceed if text is empty
+    }
+
     const initialDict = initializeDictionary(text);
     const keys = Object.keys(initialDict);
+
+    if (keys.length === 0) {
+      console.log("No words found in text, not proceeding");
+      return; // Don't proceed if no words found
+    }
+
+    console.log(`Setting up transliteration for ${keys.length} words:`, keys);
 
     setWordsDictionary(initialDict);
     setWordKeys(keys);
     setCurrentWordIndex(0);
-    if (keys.length > 0) {
-      setCurrentWord(keys[0]);
-    }
+    setCurrentWord(keys[0]);
 
     setTempWordCount(keys.length);
     setIsDialogOpen(true);
     setActiveDialog("start");
+
+    console.log("Dialog should now be open with start state");
   }, [text]);
 
   const handleStartButtonClick = (): void => {
+    console.log(`Start button clicked. Current word: "${currentWord}"`);
     setWordForDialog(currentWord);
     processWord(currentWord);
   };
 
   const processWord = (word: string): void => {
+    console.log(`Processing word: "${word}" at index ${currentWordIndex}`);
+
     if (containsCapital(word)) {
       const matchIndex = word.search(/[A-Z]/);
+      console.log(`Found capital letter at index ${matchIndex}`);
       setCapitalIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("capital");
       return;
     } else if (containsCh(word)) {
       const matchIndex = word.indexOf("ch");
+      console.log(`Found 'ch' at index ${matchIndex}`);
       setChIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("ch");
       return;
     } else if (containsC(word)) {
       const matchIndex = word.indexOf("c");
+      console.log(`Found 'c' at index ${matchIndex}`);
       setCIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("c");
       return;
     } else if (containsJ(word)) {
       const matchIndex = word.indexOf("j");
+      console.log(`Found 'j' at index ${matchIndex}`);
       setJIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("j");
       return;
     } else if (containsQu(word)) {
       const matchIndex = word.indexOf("qu");
+      console.log(`Found 'qu' at index ${matchIndex}`);
       setQuIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("qu");
       return;
     }
 
+    // No special characters found, process normally
+    console.log(`Processing word normally: "${word}"`);
     const processed = processBaybayinText(word);
     const original = wordKeys[currentWordIndex];
+
+    console.log(`Original: "${original}", Processed: "${processed}"`);
 
     setWordsDictionary((prev) => ({
       ...prev,
@@ -162,8 +213,13 @@ export default function Transliterator2({ title }: TransliteratorProps) {
 
   const goToNextWord = () => {
     const nextIndex = currentWordIndex + 1;
+    console.log(
+      `Moving to next word. Current index: ${currentWordIndex}, Next index: ${nextIndex}, Total words: ${wordKeys.length}`
+    );
+
     if (nextIndex < wordKeys.length) {
       const nextWord = wordKeys[nextIndex];
+      console.log(`Moving to next word: "${nextWord}"`);
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
       setWordForDialog(nextWord);
@@ -171,46 +227,57 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       // Automatically process the next word if it doesn't need dialog interaction
       processNextWordAutomatically(nextWord);
     } else {
-      // Use the updated dictionary with the current word processed
-      const updatedDict = {
-        ...wordsDictionary,
-        [wordKeys[currentWordIndex]]: processBaybayinText(currentWord),
-      };
-      setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => updatedDict[word] ?? word)
+      console.log(
+        `Finished processing all words. Finalizing transliteration...`
       );
+      // Finalize the transliteration with all processed words
+      const finalText = text.replace(/\b\w+\b/g, (word) => {
+        const processed = wordsDictionary[word];
+        console.log(`Word: "${word}" -> "${processed || word}"`);
+        return processed || word;
+      });
+      setTransliteratedText(finalText);
       setIsDialogOpen(false);
     }
   };
 
   const processNextWordAutomatically = (word: string): void => {
+    console.log(`Auto-processing word: "${word}"`);
+
     // Check if word contains any special characters that need dialog interaction
     if (containsCapital(word)) {
       const matchIndex = word.search(/[A-Z]/);
+      console.log(
+        `Auto-processing found capital letter at index ${matchIndex}`
+      );
       setCapitalIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("capital");
       return;
     } else if (containsCh(word)) {
       const matchIndex = word.indexOf("ch");
+      console.log(`Auto-processing found 'ch' at index ${matchIndex}`);
       setChIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("ch");
       return;
     } else if (containsC(word)) {
       const matchIndex = word.indexOf("c");
+      console.log(`Auto-processing found 'c' at index ${matchIndex}`);
       setCIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("c");
       return;
     } else if (containsJ(word)) {
       const matchIndex = word.indexOf("j");
+      console.log(`Auto-processing found 'j' at index ${matchIndex}`);
       setJIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("j");
       return;
     } else if (containsQu(word)) {
       const matchIndex = word.indexOf("qu");
+      console.log(`Auto-processing found 'qu' at index ${matchIndex}`);
       setQuIndex(matchIndex);
       setWordForDialog(word);
       setActiveDialog("qu");
@@ -218,9 +285,14 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     }
 
     // If no special characters found, automatically process the word and move to next
+    console.log(`Auto-processing word normally: "${word}"`);
     const processed = processBaybayinText(word);
     const currentIndex = currentWordIndex;
     const original = wordKeys[currentIndex];
+
+    console.log(
+      `Auto-processing - Original: "${original}", Processed: "${processed}"`
+    );
 
     setWordsDictionary((prev) => ({
       ...prev,
@@ -280,14 +352,11 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       processWord(nextWord);
     } else {
       setIsDialogOpen(false);
-      // Use the updated dictionary with the current word processed
-      const updatedDict = {
-        ...wordsDictionary,
-        [wordKeys[currentWordIndex]]: processBaybayinText(currentWord),
-      };
-      setTransliteratedText(
-        text.replace(/\b\w+\b/g, (word) => updatedDict[word] ?? word)
-      );
+      // Finalize the transliteration with all processed words
+      const finalText = text.replace(/\b\w+\b/g, (word) => {
+        return wordsDictionary[word] || word;
+      });
+      setTransliteratedText(finalText);
     }
   };
 
@@ -408,13 +477,16 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   // Helper methods
 
   const initializeDictionary = (inputText: string): Dictionary => {
-    return inputText
-      .trim()
-      .split(/\s+/)
-      .reduce((dict: Dictionary, word: string) => {
-        dict[word] = "";
-        return dict;
-      }, {});
+    const words = inputText.trim().split(/\s+/);
+    console.log(`Initializing dictionary with words:`, words);
+
+    const dict = words.reduce((dict: Dictionary, word: string) => {
+      dict[word] = "";
+      return dict;
+    }, {});
+
+    console.log(`Initialized dictionary:`, dict);
+    return dict;
   };
 
   const resetAllDialogs = (): void => {
@@ -426,29 +498,42 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setQuIndex(null);
   };
 
-  const activateDialog = (
-    match: number,
-    word: string,
-    dialogType: React.SetStateAction<DialogType>
-  ): void => {
-    if (match !== -1) {
-      if (dialogType == "capital") {
-        setCapitalIndex(match);
-      } else if (dialogType == "ch") {
-        setChIndex(match);
-      } else if (dialogType == "c") {
-        setCIndex(match);
-      } else if (dialogType == "j") {
-        setJIndex(match);
-      } else if (dialogType == "qu") {
-        setQuIndex(match);
-      }
-      setWordForDialog(word);
-      setActiveDialog(dialogType);
-    }
-  };
+  // const activateDialog = (
+  //   match: number,
+  //   word: string,
+  //   dialogType: React.SetStateAction<DialogType>
+  // ): void => {
+  //   if (match !== -1) {
+  //     if (dialogType == "capital") {
+  //       setCapitalIndex(match);
+  //     } else if (dialogType == "ch") {
+  //       setChIndex(match);
+  //     } else if (dialogType == "c") {
+  //       setCIndex(match);
+  //     } else if (dialogType == "j") {
+  //       setJIndex(match);
+  //     } else if (dialogType == "qu") {
+  //       setQuIndex(match);
+  //     }
+  //     setWordForDialog(word);
+  //     setActiveDialog(dialogType);
+  //   }
+  // };
 
   // Main HTML Body
+
+  // Debug logging for render
+  console.log(`Rendering Transliterator2 with:`, {
+    text,
+    transliteratedText,
+    wordKeys,
+    currentWordIndex,
+    currentWord,
+    isDialogOpen,
+    activeDialog,
+    wordForDialog,
+    wordsDictionary,
+  });
 
   return (
     <div>
@@ -531,7 +616,7 @@ export default function Transliterator2({ title }: TransliteratorProps) {
         <ul>
           {Object.entries(wordsDictionary).map(([original, processed]) => (
             <li key={original}>
-              <strong>{original}</strong>: {processed}
+              <strong>{original}</strong>: {processed || "(not processed)"}
             </li>
           ))}
         </ul>

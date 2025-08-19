@@ -17,7 +17,7 @@ export default function PageContent({
   currentPage,
 }: PageContentProps): JSX.Element {
   const pageData = PAGES[selectedAlphabet] || {};
-  const { title, image, whatIs, description } = pageData;
+  const { title } = pageData;
 
   return (
     <main className="page-content">

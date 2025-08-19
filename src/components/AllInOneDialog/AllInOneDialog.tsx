@@ -9,7 +9,7 @@ import CDialog2 from "./SubDialogs/CDialog2.tsx";
 import JDialog2 from "./SubDialogs/JDialog2.tsx";
 import QuDialog2 from "./SubDialogs/QuDialog2.tsx";
 
-type DialogType = "start" | "capital" | "ch" | "c" | "g" | "j" | "qu" | null;
+type DialogType = "start" | "capital" | "ch" | "c" | "j" | "qu" | null;
 
 interface AllInOneDialogProps {
   onClickStart: () => void;

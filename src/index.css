@@ -29,6 +29,12 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Baybayin Stylized";
+  src: url("./assets/fonts/baybayin/TagalogStylized.ttf") format("truetype");
+  font-display: swap;
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }

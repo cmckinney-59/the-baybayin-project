@@ -24,7 +24,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordForDialog, setWordForDialog] = useState<string>("");
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  // const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
   const isBaybayin = title === "Baybayin";
   const isAurebesh = title === "Aurebesh";
@@ -61,7 +61,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
     }
 
     setTempWordCount(keys.length); // NEW: store this for dialog
-    setIsDialogOpen(true);
+    // setIsDialogOpen(true);
     setActiveDialog("start");
   };
 
@@ -114,7 +114,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
     } else {
-      setIsDialogOpen(false);
+      // setIsDialogOpen(false);
       setTransliteratedText(
         text.replace(/\b\w+\b/g, (word) => wordsDictionary[word] ?? word)
       );
