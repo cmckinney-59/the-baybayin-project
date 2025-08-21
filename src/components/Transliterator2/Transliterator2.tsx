@@ -223,9 +223,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
       setWordForDialog(nextWord);
-
-      // Automatically process the next word if it doesn't need dialog interaction
-      processNextWordAutomatically(nextWord);
     } else {
       console.log(
         `Finished processing all words. Finalizing transliteration...`
