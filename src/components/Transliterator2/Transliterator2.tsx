@@ -238,68 +238,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     }
   };
 
-  const processNextWordAutomatically = (word: string): void => {
-    console.log(`Auto-processing word: "${word}"`);
-
-    // Check if word contains any special characters that need dialog interaction
-    if (containsCapital(word)) {
-      const matchIndex = word.search(/[A-Z]/);
-      console.log(
-        `Auto-processing found capital letter at index ${matchIndex}`
-      );
-      setCapitalIndex(matchIndex);
-      setWordForDialog(word);
-      setActiveDialog("capital");
-      return;
-    } else if (containsCh(word)) {
-      const matchIndex = word.indexOf("ch");
-      console.log(`Auto-processing found 'ch' at index ${matchIndex}`);
-      setChIndex(matchIndex);
-      setWordForDialog(word);
-      setActiveDialog("ch");
-      return;
-    } else if (containsC(word)) {
-      const matchIndex = word.indexOf("c");
-      console.log(`Auto-processing found 'c' at index ${matchIndex}`);
-      setCIndex(matchIndex);
-      setWordForDialog(word);
-      setActiveDialog("c");
-      return;
-    } else if (containsJ(word)) {
-      const matchIndex = word.indexOf("j");
-      console.log(`Auto-processing found 'j' at index ${matchIndex}`);
-      setJIndex(matchIndex);
-      setWordForDialog(word);
-      setActiveDialog("j");
-      return;
-    } else if (containsQu(word)) {
-      const matchIndex = word.indexOf("qu");
-      console.log(`Auto-processing found 'qu' at index ${matchIndex}`);
-      setQuIndex(matchIndex);
-      setWordForDialog(word);
-      setActiveDialog("qu");
-      return;
-    }
-
-    // If no special characters found, automatically process the word and move to next
-    console.log(`Auto-processing word normally: "${word}"`);
-    const processed = processBaybayinText(word);
-    const currentIndex = currentWordIndex;
-    const original = wordKeys[currentIndex];
-
-    console.log(
-      `Auto-processing - Original: "${original}", Processed: "${processed}"`
-    );
-
-    setWordsDictionary((prev) => ({
-      ...prev,
-      [original]: processed,
-    }));
-
-    // Automatically move to next word
-    goToNextWord();
-  };
-
   // Handle Selections
 
   const handleCapitalInput = (input: string) => {
