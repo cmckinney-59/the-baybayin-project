@@ -144,10 +144,17 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setCurrentWord(keys[0]);
 
     setTempWordCount(keys.length);
-    setIsDialogOpen(true);
-    setActiveDialog("start");
 
-    console.log("Dialog should now be open with start state");
+    // Check if the first word needs user input
+    if (needsUserInput(keys[0])) {
+      setIsDialogOpen(true);
+      setActiveDialog("start");
+      console.log("Dialog should now be open with start state");
+    } else {
+      // Automatically process words that don't need input
+      console.log("First word doesn't need input, processing automatically");
+      processWordsAutomatically(keys, initialDict);
+    }
   }, [text]);
 
   const handleStartButtonClick = (): void => {
@@ -222,7 +229,27 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       console.log(`Moving to next word: "${nextWord}"`);
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
-      setWordForDialog(nextWord);
+
+      // Check if the next word needs user input
+      if (needsUserInput(nextWord)) {
+        setWordForDialog(nextWord);
+        // The dialog will remain open for user input
+      } else {
+        // Process the word automatically and continue
+        console.log(
+          `Next word "${nextWord}" doesn't need input, processing automatically`
+        );
+        const processed = processBaybayinText(nextWord);
+        const original = wordKeys[nextIndex];
+
+        setWordsDictionary((prev) => ({
+          ...prev,
+          [original]: processed,
+        }));
+
+        // Continue to the next word
+        goToNextWord();
+      }
     } else {
       console.log(
         `Finished processing all words. Finalizing transliteration...`
@@ -280,11 +307,26 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       const nextWord = wordKeys[nextIndex];
       setCurrentWordIndex(nextIndex);
       setCurrentWord(nextWord);
-      const containsCharacterCase = characterTest(nextWord);
-      if (containsCharacterCase) {
+
+      // Check if the next word needs user input
+      if (needsUserInput(nextWord)) {
         setWordForDialog(nextWord);
+        processWord(nextWord);
+      } else {
+        // Process the word automatically and continue
+        console.log(
+          `Next word "${nextWord}" doesn't need input, processing automatically`
+        );
+        const processed = processBaybayinText(nextWord);
+
+        setWordsDictionary((prev) => ({
+          ...prev,
+          [nextWord]: processed,
+        }));
+
+        // Continue to the next word
+        goToNextWord();
       }
-      processWord(nextWord);
     } else {
       setIsDialogOpen(false);
       // Finalize the transliteration with all processed words
@@ -294,20 +336,6 @@ export default function Transliterator2({ title }: TransliteratorProps) {
       setTransliteratedText(finalText);
     }
   };
-
-  function characterTest(word: string) {
-    if (
-      word.includes("ch") ||
-      word.includes("c") ||
-      word.includes("j") ||
-      word.includes("qu") ||
-      /[A-Z]/.test(word)
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   const handleChSelection = (choice: string) => {
     if (chIndex === null) return;
@@ -431,6 +459,65 @@ export default function Transliterator2({ title }: TransliteratorProps) {
     setCIndex(null);
     setJIndex(null);
     setQuIndex(null);
+  };
+
+  // Helper function to check if a word needs user input
+  const needsUserInput = (word: string): boolean => {
+    return (
+      containsCapital(word) ||
+      containsCh(word) ||
+      containsC(word) ||
+      containsJ(word) ||
+      containsQu(word)
+    );
+  };
+
+  // Helper function to automatically process words that don't need input
+  const processWordsAutomatically = (
+    keys: string[],
+    initialDict: Dictionary
+  ): void => {
+    let updatedDict = { ...initialDict };
+    let processedCount = 0;
+
+    // Process all words that don't need input
+    for (let i = 0; i < keys.length; i++) {
+      const word = keys[i];
+      if (!needsUserInput(word)) {
+        const processed = processBaybayinText(word);
+        updatedDict[word] = processed;
+        processedCount++;
+        console.log(`Automatically processed "${word}" -> "${processed}"`);
+      }
+    }
+
+    // Update the dictionary with processed words
+    setWordsDictionary(updatedDict);
+
+    // Check if any words still need user input
+    const remainingWords = keys.filter((word) => needsUserInput(word));
+
+    if (remainingWords.length === 0) {
+      // All words processed automatically, finalize
+      console.log(
+        "All words processed automatically, finalizing transliteration"
+      );
+      const finalText = text.replace(/\b\w+\b/g, (word) => {
+        return updatedDict[word] || word;
+      });
+      setTransliteratedText(finalText);
+    } else {
+      // Some words still need user input, open dialog for first one
+      console.log(
+        `${remainingWords.length} words still need user input, opening dialog`
+      );
+      setWordKeys(remainingWords);
+      setCurrentWordIndex(0);
+      setCurrentWord(remainingWords[0]);
+      setTempWordCount(remainingWords.length);
+      setIsDialogOpen(true);
+      setActiveDialog("start");
+    }
   };
 
   // const activateDialog = (
