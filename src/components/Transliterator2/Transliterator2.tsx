@@ -295,10 +295,11 @@ export default function Transliterator2({ title }: TransliteratorProps) {
   const handleSkip = (): void => {
     const originalWord = wordKeys[currentWordIndex];
     const lowercased = originalWord.toLowerCase();
+    const processed = processBaybayinText(lowercased);
 
     setWordsDictionary((prev) => ({
       ...prev,
-      [originalWord]: lowercased,
+      [originalWord]: processed,
     }));
 
     // Move to next word
