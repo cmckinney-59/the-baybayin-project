@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./TransliteratorLite.css";
 import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
+import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -29,6 +30,10 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
 
     setWordsDictionary(newDict);
     setTransliteratedText(processedWords.join(" "));
+  };
+
+  const handleTransliterateButtonClick = (): void => {
+    console.log("Transliterate button clicked");
   };
 
   return (
@@ -86,6 +91,13 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
         </div>
       </div>
       <div className="action-buttons">
+        <div>
+          <TransliterateButton
+            isActive={textareaHasText}
+            onClick={handleTransliterateButtonClick}
+            isDisabled={!textareaHasText}
+          />
+        </div>
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
