@@ -2,37 +2,24 @@ TRANSLITERATOR WEB APP ROADMAP
 
 PHASE 3 : BUGS - Fix all critical bugs
 
-CRITICAL (4)
+CRITICAL (3)
 
 - Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
-- FIX MODAL CLOSING AFTER FIRST QUESTION
-- DEBUG
-- Move all into one modal
-- Make it so that the output shows the original words as well as the unique
-- Output not showing all words
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
-- Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
-- Fix button ui
 - When a word like 'kulay-ube' is entered the '-' needs to be removed and the 'u' needs to be capitalized
-
-OPTIONAL (2)
-
-- Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
-
-DONE (5)
-
-- Make sure it is saved as the correct font
-- Disable buttons until available
-- Proper noun review, enter needs to be disabled until there is something in the text box
-- Add a clear output button
-- Add a clear input button
-- Fix modal closing
-- Fix inital word review modal number
-- Routing
-
-PHASE 4 : OPTIMIZE - Work with Jeremiah - Make regexs global
+- Fix width sizing bug
+- Fix colapse of side
+- Format side panel
 
 PHASE 5 : RELEASE
+
+RELEASE 2.0
+
+Modal
+- FIX MODAL CLOSING AFTER FIRST QUESTION
+- Move all into one modal
+- Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
+- Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
 
 PHASE 6 : ABOUT/ HOW TO READ
 
