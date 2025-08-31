@@ -10,6 +10,7 @@ CRITICAL (3)
 - Fix width sizing bug
 - Fix colapse of side
 - Format side panel
+- Make it so that the output doesn't change size
 
 PHASE 5 : RELEASE
 

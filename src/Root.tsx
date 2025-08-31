@@ -21,7 +21,7 @@ function RootLayout() {
   return (
     <>
       <div className="App">
-        <Header onToggleSidebar={toggleSidebar} />
+        <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
         <Navigation isOpen={isSidebarOpen} onNavigate={closeSidebar} />
         <main className={`App-content ${isSidebarOpen ? "with-sidebar" : ""}`}>
           <Outlet />

@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 40px;
-  width: max-content;
+  width: 220px; /* Fixed width instead of max-content */
   background-color: #f0f0f0;
   height: 100%;
   transform: translateX(0);

@@ -4,13 +4,17 @@ import "./Header.css";
 
 type HeaderProps = {
   onToggleSidebar: () => void;
+  isSidebarOpen: boolean;
 };
 
-export default function Header({ onToggleSidebar }: HeaderProps): JSX.Element {
+export default function Header({
+  onToggleSidebar,
+  isSidebarOpen,
+}: HeaderProps): JSX.Element {
   return (
     <header className="App-header">
       <button
-        className="hamburger"
+        className={`hamburger ${isSidebarOpen ? "open" : ""}`}
         aria-label="Toggle navigation"
         onClick={onToggleSidebar}
       >

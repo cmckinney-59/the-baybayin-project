@@ -60,9 +60,13 @@ main {
   height: 100%;
   margin: 0 auto;
   transition: margin-left 0.25s ease;
+  /* Ensure content doesn't get hidden behind fixed sidebar */
+  position: relative;
+  z-index: 1;
 }
 
-.App-content.with-sidebar {
+/* Remove margin shift since sidebar is position: fixed */
+/* .App-content.with-sidebar {
   margin-left: 220px;
 }
 
@@ -70,7 +74,7 @@ main {
   .App-content.with-sidebar {
     margin-left: 0;
   }
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
