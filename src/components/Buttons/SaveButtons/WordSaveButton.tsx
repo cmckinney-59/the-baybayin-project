@@ -1,5 +1,5 @@
 import { AiFillFileWord } from "react-icons/ai";
-import downloadAsWord from "../../Utils/SaveToWord";
+import downloadAsWord from "../../../utils/SaveToWord";
 
 interface WordSaveButtonProps {
   transliteratedText: string;

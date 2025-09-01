@@ -11,7 +11,7 @@ import CDialog from "../Dialog/CDialog.tsx";
 import ChDialog from "../Dialog/ChDialog.tsx";
 import JDialog from "../Dialog/JDialog.tsx";
 import QuDialog from "../Dialog/QuDialog.tsx";
-import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
+import processBaybayinText from "../../utils/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 
 interface TransliteratorProps {

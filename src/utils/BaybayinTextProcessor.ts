@@ -12,6 +12,7 @@ export default function processBaybayinText(text: string): string {
   transliteratedText = transliteratedText.replace(/ng/g, "N");
   transliteratedText = addPlusIfConsonant(transliteratedText);
   transliteratedText = removeAAfterConsonant(transliteratedText);
+  transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
   transliteratedText = capitalizeVowel(transliteratedText);
   transliteratedText = transliteratedText.replace(/-/g, "");
   return transliteratedText;
@@ -83,6 +84,13 @@ function addPlusIfConsonant(text: string): string {
 
 function removeAAfterConsonant(text: string): string {
   return text.replace(/([bcdfghjklmnpqrstvwxyz])a/gi, "$1");
+}
+
+function capitalizeVowelAfterHyphen(text: string): string {
+  return text.replace(
+    /-([aeiou])/gi,
+    (_match: string, vowel: string) => "-" + vowel.toUpperCase()
+  );
 }
 
 function capitalizeVowel(text: string): string {

@@ -5,7 +5,7 @@ import "./Transliterator2.css";
 import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 import AllInOneDialog from "../AllInOneDialog/AllInOneDialog.tsx";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
-import processBaybayinText from "../Utils/BaybayinTextProcessor.ts";
+import processBaybayinText from "../../utils/BaybayinTextProcessor.ts";
 
 interface TransliteratorProps {
   title: string;

@@ -1,5 +1,5 @@
 import { AiFillFileExcel } from "react-icons/ai";
-import downloadAsExcel from "../../Utils/SaveToExcel";
+import downloadAsExcel from "../../../utils/SaveToExcel";
 
 type Dictionary = { [word: string]: string };
 
