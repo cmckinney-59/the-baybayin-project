@@ -18,19 +18,15 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
 
-  // Auto-resize both textarea and output div to match heights
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
-      // Reset both heights to auto to get their natural scrollHeight
       textareaRef.current.style.height = "auto";
       outputRef.current.style.height = "auto";
 
-      // Get the maximum height needed
       const textareaHeight = textareaRef.current.scrollHeight;
       const outputHeight = outputRef.current.scrollHeight;
-      const maxHeight = Math.max(textareaHeight, outputHeight, 175); // Ensure minimum height
+      const maxHeight = Math.max(textareaHeight, outputHeight, 175);
 
-      // Set both to the same height
       textareaRef.current.style.height = maxHeight + "px";
       outputRef.current.style.height = maxHeight + "px";
     }
