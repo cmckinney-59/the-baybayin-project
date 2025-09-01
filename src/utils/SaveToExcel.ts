@@ -2,7 +2,11 @@ import * as XLSX from "xlsx-js-style";
 import { saveAs } from "file-saver";
 
 export default function downloadAsExcel(data: { [key: string]: string }) {
-  const rows = Object.entries(data).map(([original, transliterated]) => ({
+  const sortedEntries = Object.entries(data).sort(([keyA], [keyB]) =>
+    keyA.toLowerCase().localeCompare(keyB.toLowerCase())
+  );
+
+  const rows = sortedEntries.map(([original, transliterated]) => ({
     Original: original,
     Transliterated: transliterated,
   }));
