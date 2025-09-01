@@ -4,14 +4,14 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (3)
 
-- Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
-- Make it so that the output doesn't change size
+- Make it so that the clear (x) clears both sides
 
 Fixed
 - Fix width sizing bug
 - Fix colapse of side
 - Format side panel
 - Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
+- Make it so that the input changes size
 
 PHASE 5 : RELEASE
 

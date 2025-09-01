@@ -36,11 +36,14 @@
   width: 100%;
   box-sizing: border-box;
   min-height: 175px;
+  max-height: 600px; /* Add maximum height to prevent excessive growth */
   color: rgb(73, 72, 72);
   padding: 10px;
   border-radius: 10px;
   overflow-y: auto;
   display: block;
+  resize: vertical; /* Allow vertical resizing */
+  transition: height 0.2s ease; /* Smooth height transitions */
 }
 
 .transliteration-textarea:focus {
