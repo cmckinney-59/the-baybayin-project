@@ -4,15 +4,14 @@ PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (3)
 
-- Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
 - Fix capitalize vowel if the vowell is the first letter in a word after reviewing it
-- When a word like 'kulay-ube' is entered the '-' needs to be removed and the 'u' needs to be capitalized
 - Make it so that the output doesn't change size
 
 Fixed
 - Fix width sizing bug
 - Fix colapse of side
 - Format side panel
+- Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
 
 PHASE 5 : RELEASE
 
