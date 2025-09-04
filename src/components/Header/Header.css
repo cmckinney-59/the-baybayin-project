@@ -41,34 +41,22 @@
   top: 50%;
   transform: translateY(-50%);
   width: 28px;
-  height: 24px;
+  height: 28px;
   padding: 0;
   background: transparent;
   border: none;
   display: inline-flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: #333;
-  border-radius: 3px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* X animation when sidebar is open */
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: #333;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }

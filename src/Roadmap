@@ -3,9 +3,7 @@ TRANSLITERATOR WEB APP ROADMAP
 PHASE 3 : BUGS - Fix all critical bugs
 
 CRITICAL (3)
-
-- Make it so that the clear (x) clears both sides
-- Fix x on close side bar
+- Change name of navigation bar
 
 Fixed
 - Fix width sizing bug
@@ -13,6 +11,8 @@ Fixed
 - Format side panel
 - Baybayin text processor needs one where if a vowel is after a '-' then it needs to be capitalized
 - Make it so that the input changes size
+- Make it so that the clear (x) clears both sides
+- Fix x on close side bar
 
 PHASE 5 : RELEASE
 
