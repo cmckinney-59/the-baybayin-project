@@ -5,6 +5,7 @@ PHASE 3 : BUGS - Fix all critical bugs
 CRITICAL (3)
 
 - Make it so that the clear (x) clears both sides
+- Fix x on close side bar
 
 Fixed
 - Fix width sizing bug

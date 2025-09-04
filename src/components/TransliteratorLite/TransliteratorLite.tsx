@@ -47,6 +47,12 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
     setTransliteratedText(processedWords.join(" "));
   };
 
+  const handleClearInput = () => {
+    setText("");
+    setTransliteratedText("");
+    setWordsDictionary({});
+  };
+
   return (
     <div>
       <div className="transliteration-container">
@@ -66,7 +72,7 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             <button
               className="clear-input-button"
               onClick={() => {
-                setText("");
+                handleClearInput();
               }}
               aria-label="Clear input"
             >
@@ -95,8 +101,9 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             <button
               className="clear-output-button"
               onClick={() => {
-                setTransliteratedText("");
+                handleClearInput();
               }}
+              aria-label="Clear output"
             >
               ×
             </button>
