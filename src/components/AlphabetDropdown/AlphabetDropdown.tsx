@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const NavigationDropdown: React.FC = () => {
+const AlphabetDropdown: React.FC = () => {
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,4 +21,4 @@ const NavigationDropdown: React.FC = () => {
   );
 };
 
-export default NavigationDropdown;
+export default AlphabetDropdown;

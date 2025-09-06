@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import NavigationDropdown from "../../components/NavigationDropdown/NavigationDropdown";
+import AlphabetDropdown from "../../components/AlphabetDropdown/AlphabetDropdown";
 
 export default function TransliteratorPage() {
   return (
     <>
-      <NavigationDropdown />
+      <AlphabetDropdown />
       <Outlet />
     </>
   );
