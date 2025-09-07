@@ -9,17 +9,16 @@ import akingImage from "../../assets/images/How to read/Baybayin/aking.png";
 export default function BaybayinHowToRead() {
   return (
     <>
-      <h2>How to read Baybayin</h2>
+      <h2>How To Read</h2>
       <p>
-        Below is a chart (article linked below) of the symbols used in the
-        transliteration I made. This form of Baybayin is called “Modified
-        Baybayin” and is the most popular form of the script.
+        Below is a chart of the symbols used in "Modified Baybayin" alphabet.
+        This is the most popular form of the script.
       </p>
       <img src={baybayinAlphabetImage} alt="baybayin-alphabet-image" />
       <p>
-        The first row of symbols above are vowels. These are typically used when
-        a word starts with a vowel, like “ama”, or there are two consecutive
-        vowels, like “maaari”. See below examples:
+        The first row of symbols are vowels. These are typically used when a
+        word starts with a vowel, like “ama”, or when there are two consecutive
+        vowels, like “maaari”.
       </p>
       <img src={amaImage} alt="ama-image" />
       <img src={maaariImage} alt="maaari-image" />
