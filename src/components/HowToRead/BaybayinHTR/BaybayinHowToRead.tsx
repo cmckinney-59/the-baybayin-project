@@ -1,10 +1,11 @@
-import baybayinAlphabetImage from "../../assets/images/How to read/Baybayin/alphabet.jpg";
-import amaImage from "../../assets/images/How to read/Baybayin/ama.png";
-import maaariImage from "../../assets/images/How to read/Baybayin/maaari.png";
-import baImage from "../../assets/images/How to read/Baybayin/ba.png";
-import kaImage from "../../assets/images/How to read/Baybayin/ka.png";
-import filipinoImage from "../../assets/images/How to read/Baybayin/filipino.png";
-import akingImage from "../../assets/images/How to read/Baybayin/aking.png";
+import baybayinAlphabetImage from "../../../assets/images/How to read/Baybayin/alphabet.jpg";
+import amaImage from "../../../assets/images/How to read/Baybayin/ama.png";
+import maaariImage from "../../../assets/images/How to read/Baybayin/maaari.png";
+import baImage from "../../../assets/images/How to read/Baybayin/ba.png";
+import kaImage from "../../../assets/images/How to read/Baybayin/ka.png";
+import filipinoImage from "../../../assets/images/How to read/Baybayin/filipino.png";
+import akingImage from "../../../assets/images/How to read/Baybayin/aking.png";
+import "./BaybayinHowToRead.css";
 
 export default function BaybayinHowToRead() {
   return (
@@ -14,14 +15,22 @@ export default function BaybayinHowToRead() {
         Below is a chart of the symbols used in "Modified Baybayin" alphabet.
         This is the most popular form of the script.
       </p>
-      <img src={baybayinAlphabetImage} alt="baybayin-alphabet-image" />
+      <img
+        src={baybayinAlphabetImage}
+        alt="baybayin-alphabet-image"
+        className="baybayin-image alphabet"
+      />
       <p>
         The first row of symbols are vowels. These are typically used when a
         word starts with a vowel, like “ama”, or when there are two consecutive
         vowels, like “maaari”.
       </p>
-      <img src={amaImage} alt="ama-image" />
-      <img src={maaariImage} alt="maaari-image" />
+      <img src={amaImage} alt="ama-image" className="baybayin-image example" />
+      <img
+        src={maaariImage}
+        alt="maaari-image"
+        className="baybayin-image example"
+      />
       <p>
         The second and third row of symbols show all of the consonants. By
         default all of the consonant symbols have an “a” after the associated
@@ -29,8 +38,8 @@ export default function BaybayinHowToRead() {
         the word “ba” or “ka” they would both be the ones symbol associated with
         the respective consonant without a kudlit. See below examples.
       </p>
-      <img src={baImage} alt="ba-image" />
-      <img src={kaImage} alt="ka-image" />
+      <img src={baImage} alt="ba-image" className="baybayin-image example" />
+      <img src={kaImage} alt="ka-image" className="baybayin-image example" />
       <p>
         The final row of symbols gives examples on how the kudlits are used. If
         there is no kudlit (see above example) there is just an “a” after the
@@ -45,12 +54,20 @@ export default function BaybayinHowToRead() {
         they are followed by “i”. The last symbol will have a kudlit below
         because it is followed by an “o”. See example below:
       </p>
-      <img src={filipinoImage} alt="filipino-image" />
+      <img
+        src={filipinoImage}
+        alt="filipino-image"
+        className="baybayin-image example"
+      />
       <p>
         In the word “aking” the symbol for “ng” will have a krus kudlit below
         because it is not followed by a vowel. See example below:
       </p>
-      <img src={akingImage} alt="aking-image" />
+      <img
+        src={akingImage}
+        alt="aking-image"
+        className="baybayin-image example"
+      />
     </>
   );
 }

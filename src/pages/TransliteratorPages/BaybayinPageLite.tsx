@@ -1,4 +1,4 @@
-import BaybayinHowToRead from "../../components/HowToRead/BaybayinHowToRead";
+import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead";
 import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
 
 export default function BaybayinPageLite() {
