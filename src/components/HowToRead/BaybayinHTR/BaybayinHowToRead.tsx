@@ -1,4 +1,4 @@
-import baybayinAlphabetImage from "../../../assets/images/How to read/Baybayin/alphabet.jpg";
+import baybayinAlphabetImage from "../../../assets/images/How to read/Baybayin/alphabet.png";
 import amaImage from "../../../assets/images/How to read/Baybayin/ama.png";
 import maaariImage from "../../../assets/images/How to read/Baybayin/maaari.png";
 import baImage from "../../../assets/images/How to read/Baybayin/ba.png";
