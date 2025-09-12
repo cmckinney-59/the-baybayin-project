@@ -28,33 +28,21 @@ export default function BaybayinTable() {
           </tr>
           <tr>
             <td className="baybayin-letter">O</td>
-            <td>U</td>
-            <td>/u/</td>
+            <td>O / U</td>
+            <td>/o/ /u/</td>
             <td>ulo (head)</td>
           </tr>
           <tr>
             <td className="baybayin-letter">k</td>
-            <td>Ka</td>
-            <td>/ka/</td>
-            <td>kabayo (horse)</td>
+            <td>Ca / Ka</td>
+            <td>/ka/ /ca/</td>
+            <td>kabayo (horse) PUT EXAMPLE HERE</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">g</td>
-            <td>Ga</td>
-            <td>/ga/</td>
-            <td>gabi (night)</td>
-          </tr>
-          <tr>
-            <td className="baybayin-letter">N</td>
-            <td>Nga</td>
-            <td>/ŋa/</td>
-            <td>ngiti (smile)</td>
-          </tr>
-          <tr>
-            <td className="baybayin-letter">t</td>
-            <td>Ta</td>
-            <td>/ta/</td>
-            <td>tahanan (home)</td>
+            <td className="baybayin-letter">b</td>
+            <td>Ba / Va</td>
+            <td>/ba/ /va/</td>
+            <td>bahay (house)</td>
           </tr>
           <tr>
             <td className="baybayin-letter">d</td>
@@ -63,34 +51,22 @@ export default function BaybayinTable() {
             <td>dahon (leaf)</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">n</td>
-            <td>Na</td>
-            <td>/na/</td>
-            <td>nanay (mother)</td>
-          </tr>
-          <tr>
             <td className="baybayin-letter">p</td>
-            <td>Pa</td>
-            <td>/pa/</td>
+            <td>Fa / Pa / Pha</td>
+            <td>/fa/ /pa/</td>
             <td>pamilya (family)</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">b</td>
-            <td>Ba</td>
-            <td>/ba/</td>
-            <td>bahay (house)</td>
+            <td className="baybayin-letter">h</td>
+            <td>Ha</td>
+            <td>/ha/</td>
+            <td>halik (kiss)</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">m</td>
-            <td>Ma</td>
-            <td>/ma/</td>
-            <td>mabuti (good)</td>
-          </tr>
-          <tr>
-            <td className="baybayin-letter">y</td>
-            <td>Ya</td>
-            <td>/ja/</td>
-            <td>yaman (wealth)</td>
+            <td className="baybayin-letter">g</td>
+            <td>Ga</td>
+            <td>/ga/</td>
+            <td>gabi (night)</td>
           </tr>
           <tr>
             <td className="baybayin-letter">l</td>
@@ -99,22 +75,46 @@ export default function BaybayinTable() {
             <td>lalaki (man)</td>
           </tr>
           <tr>
+            <td className="baybayin-letter">m</td>
+            <td>Ma</td>
+            <td>/ma/</td>
+            <td>mabuti (good)</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">n</td>
+            <td>Na</td>
+            <td>/na/</td>
+            <td>nanay (mother)</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">N</td>
+            <td>Nga</td>
+            <td>/ŋa/</td>
+            <td>ngiti (smile)</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">s</td>
+            <td>Sa / Za</td>
+            <td>/sa/ /za/</td>
+            <td>salamat (thank you)</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">t</td>
+            <td>Ta</td>
+            <td>/ta/</td>
+            <td>tahanan (home)</td>
+          </tr>
+          <tr>
             <td className="baybayin-letter">w</td>
             <td>Wa</td>
             <td>/wa/</td>
             <td>walis (broom)</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">s</td>
-            <td>Sa</td>
-            <td>/sa/</td>
-            <td>salamat (thank you)</td>
-          </tr>
-          <tr>
-            <td className="baybayin-letter">h</td>
-            <td>Ha</td>
-            <td>/ha/</td>
-            <td>halik (kiss)</td>
+            <td className="baybayin-letter">y</td>
+            <td>Ya</td>
+            <td>/ja/</td>
+            <td>yaman (wealth)</td>
           </tr>
         </tbody>
       </table>
