@@ -6,6 +6,7 @@ import kaImage from "../../../assets/images/How to read/Baybayin/ka.png";
 import filipinoImage from "../../../assets/images/How to read/Baybayin/filipino.png";
 import akingImage from "../../../assets/images/How to read/Baybayin/aking.png";
 import "./BaybayinHowToRead.css";
+import BaybayinTable from "./BaybayinTable";
 
 export default function BaybayinHowToRead() {
   return (
@@ -21,121 +22,7 @@ export default function BaybayinHowToRead() {
         className="baybayin-image alphabet"
       />
 
-      <h3>Baybayin Alphabet Reference</h3>
-      <table className="baybayin-table">
-        <thead>
-          <tr>
-            <th>Baybayin Symbol</th>
-            <th>Latin Letter</th>
-            <th>Sound</th>
-            <th>Example Word</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ᜀ</td>
-            <td>A</td>
-            <td>/a/</td>
-            <td>ama (father)</td>
-          </tr>
-          <tr>
-            <td>ᜁ</td>
-            <td>I</td>
-            <td>/i/</td>
-            <td>isa (one)</td>
-          </tr>
-          <tr>
-            <td>ᜂ</td>
-            <td>U</td>
-            <td>/u/</td>
-            <td>ulo (head)</td>
-          </tr>
-          <tr>
-            <td>ᜃ</td>
-            <td>Ka</td>
-            <td>/ka/</td>
-            <td>kabayo (horse)</td>
-          </tr>
-          <tr>
-            <td>ᜄ</td>
-            <td>Ga</td>
-            <td>/ga/</td>
-            <td>gabi (night)</td>
-          </tr>
-          <tr>
-            <td>ᜅ</td>
-            <td>Nga</td>
-            <td>/ŋa/</td>
-            <td>ngiti (smile)</td>
-          </tr>
-          <tr>
-            <td>ᜆ</td>
-            <td>Ta</td>
-            <td>/ta/</td>
-            <td>tahanan (home)</td>
-          </tr>
-          <tr>
-            <td>ᜇ</td>
-            <td>Da</td>
-            <td>/da/</td>
-            <td>dahon (leaf)</td>
-          </tr>
-          <tr>
-            <td>ᜈ</td>
-            <td>Na</td>
-            <td>/na/</td>
-            <td>nanay (mother)</td>
-          </tr>
-          <tr>
-            <td>ᜉ</td>
-            <td>Pa</td>
-            <td>/pa/</td>
-            <td>pamilya (family)</td>
-          </tr>
-          <tr>
-            <td>ᜊ</td>
-            <td>Ba</td>
-            <td>/ba/</td>
-            <td>bahay (house)</td>
-          </tr>
-          <tr>
-            <td>ᜋ</td>
-            <td>Ma</td>
-            <td>/ma/</td>
-            <td>mabuti (good)</td>
-          </tr>
-          <tr>
-            <td>ᜌ</td>
-            <td>Ya</td>
-            <td>/ja/</td>
-            <td>yaman (wealth)</td>
-          </tr>
-          <tr>
-            <td>ᜎ</td>
-            <td>La</td>
-            <td>/la/</td>
-            <td>lalaki (man)</td>
-          </tr>
-          <tr>
-            <td>ᜏ</td>
-            <td>Wa</td>
-            <td>/wa/</td>
-            <td>walis (broom)</td>
-          </tr>
-          <tr>
-            <td>ᜐ</td>
-            <td>Sa</td>
-            <td>/sa/</td>
-            <td>salamat (thank you)</td>
-          </tr>
-          <tr>
-            <td>ᜑ</td>
-            <td>Ha</td>
-            <td>/ha/</td>
-            <td>halik (kiss)</td>
-          </tr>
-        </tbody>
-      </table>
+      <BaybayinTable />
       <p>
         The first row of symbols are vowels. These are typically used when a
         word starts with a vowel, like “ama”, or when there are two consecutive
