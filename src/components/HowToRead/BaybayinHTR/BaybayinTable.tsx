@@ -98,6 +98,21 @@ export default function BaybayinTable() {
             <td>Ya</td>
             <td>/ja/</td>
           </tr>
+          <tr>
+            <td className="baybayin-letter">i</td>
+            <td>E / I</td>
+            <td>/e/ /i/</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">o</td>
+            <td>O / U</td>
+            <td>/o/ /u/</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">+</td>
+            <td>Consonant</td>
+            <td>Consonant</td>
+          </tr>
         </tbody>
       </table>
     </>

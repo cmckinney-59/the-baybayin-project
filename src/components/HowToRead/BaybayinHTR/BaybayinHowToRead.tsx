@@ -1,4 +1,3 @@
-import baybayinAlphabetImage from "../../../assets/images/How to read/Baybayin/alphabet.png";
 import amaImage from "../../../assets/images/How to read/Baybayin/ama.png";
 import maaariImage from "../../../assets/images/How to read/Baybayin/maaari.png";
 import baImage from "../../../assets/images/How to read/Baybayin/ba.png";
@@ -13,20 +12,17 @@ export default function BaybayinHowToRead() {
     <>
       <h2>How To Read</h2>
       <p>
-        Below is a chart of the symbols used in "Modified Baybayin" alphabet.
+        Below is a table of the symbols used in "Modified Baybayin" alphabet.
         This is the most popular form of the script.
       </p>
-      <img
-        src={baybayinAlphabetImage}
-        alt="baybayin-alphabet-image"
-        className="baybayin-image alphabet"
-      />
-
       <BaybayinTable />
       <p>
-        The first row of symbols are vowels. These are typically used when a
+        The first three symbols in the table represent vowels. Tagalog vowels
+        originally only consisted of A, I and O. Then when borrowed words were
+        introduced from Spanish and English, E and U were added and utitilized
+        the same symbol as I and O respectively. These are typically used when a
         word starts with a vowel, like “ama”, or when there are two consecutive
-        vowels, like “maaari”.
+        vowels, like “maaari”. (see examples below)
       </p>
       <img src={amaImage} alt="ama-image" className="baybayin-image example" />
       <img
