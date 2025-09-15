@@ -51,6 +51,11 @@
   font-family: "Baybayin";
 }
 
+.baybayin-letter-red {
+  font-family: "Baybayin";
+  color: #e74c3c;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .baybayin-table {
@@ -63,6 +68,62 @@
   }
 
   .baybayin-table td:first-child {
+    font-size: 16px;
+  }
+}
+
+/* Baybayin word examples*/
+.baybayin-example {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.baybayin-example th {
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Baybayin";
+}
+
+.baybayin-example th:first-child {
+  background-color: #f8f9fa;
+}
+
+.baybayin-example td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 18px;
+}
+
+.baybayin-example td:first-child {
+  background-color: #f8f9fa;
+}
+
+.baybayin-example tr:hover {
+  background-color: #f8f9fa;
+}
+
+.baybayin-example tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .baybayin-example {
+    font-size: 12px;
+  }
+
+  .baybayin-example th,
+  .baybayin-example td {
+    padding: 8px 12px;
+  }
+
+  .baybayin-example td:first-child {
     font-size: 16px;
   }
 }

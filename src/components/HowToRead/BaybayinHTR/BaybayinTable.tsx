@@ -110,8 +110,8 @@ export default function BaybayinTable() {
           </tr>
           <tr>
             <td className="baybayin-letter">+</td>
-            <td>Consonant</td>
-            <td>Consonant</td>
+            <td>Consonant marker</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
