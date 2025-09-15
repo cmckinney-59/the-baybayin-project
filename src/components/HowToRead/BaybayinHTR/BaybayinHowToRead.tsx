@@ -161,6 +161,49 @@ export default function BaybayinHowToRead() {
         alt="aking-image"
         className="baybayin-image example"
       /> */}
+      <h2>The First Rule of Baybayin</h2>
+      <p>"Kung anong bigkas, siyang baybay."</p>
+      <p>
+        Baybayin is a phonetic alphabet meaning, words are written how they
+        sound not nessesarily as they are expressed in the latin alphabet. The
+        most common examples of this are "ng" and "mga". These two words are
+        pronounced "nang" and "manga" and should be expressed as such when
+        written in Baybayin.
+      </p>
+
+      <table className="baybayin-example">
+        <thead>
+          <tr>
+            <th className="baybayin-letter">nN+</th>
+            <th className="baybayin-letter">n</th>
+            <th className="baybayin-letter">N+</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>nang</td>
+            <td>na</td>
+            <td>ng</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table className="baybayin-example">
+        <thead>
+          <tr>
+            <th className="baybayin-letter">mN</th>
+            <th className="baybayin-letter">m</th>
+            <th className="baybayin-letter">N</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>manga</td>
+            <td>ma</td>
+            <td>nga</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Borrowed words</h2>
       <p>
@@ -172,6 +215,24 @@ export default function BaybayinHowToRead() {
         borrowed sounds and how they are expressed in Baybayin:
       </p>
       <BaybayinTableBorrowed />
+      <table className="baybayin-example">
+        <thead>
+          <tr>
+            <th className="baybayin-letter">akiN+</th>
+            <th className="baybayin-letter">a</th>
+            <th className="baybayin-letter">ki</th>
+            <th className="baybayin-letter">N+</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>aking</td>
+            <td>a</td>
+            <td>ki</td>
+            <td>ng</td>
+          </tr>
+        </tbody>
+      </table>
     </>
   );
 }
