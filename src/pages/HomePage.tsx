@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { AiOutlineTranslation, AiOutlineInfoCircle } from "react-icons/ai";
+
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -19,18 +21,29 @@ export default function HomePage() {
 
       <div className="cards-container">
         <div className="nav-card" onClick={handleTransliteratorClick}>
-          <div className="card-icon">🔤</div>
+          <AiOutlineTranslation
+            style={{
+              marginRight: "5px",
+              width: "30px",
+              height: "30px",
+              color: "#007bff",
+            }}
+          />
           <h2>Transliterator</h2>
           <p>Convert text to Baybayin.</p>
         </div>
 
         <div className="nav-card" onClick={handleAboutClick}>
-          <div className="card-icon">ℹ️</div>
+          <AiOutlineInfoCircle
+            style={{
+              marginRight: "5px",
+              width: "30px",
+              height: "30px",
+              color: "#007bff",
+            }}
+          />
           <h2>About</h2>
-          <p>
-            Learn more about The Baybayin Project and our mission to preserve
-            and share writing systems.
-          </p>
+          <p>Learn more about The Baybayin Project and our mission.</p>
         </div>
       </div>
     </div>
