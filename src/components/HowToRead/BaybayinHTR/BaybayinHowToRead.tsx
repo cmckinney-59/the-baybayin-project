@@ -1,9 +1,3 @@
-// import amaImage from "../../../assets/images/How to read/Baybayin/ama.png";
-// import maaariImage from "../../../assets/images/How to read/Baybayin/maaari.png";
-// import baImage from "../../../assets/images/How to read/Baybayin/ba.png";
-// import kaImage from "../../../assets/images/How to read/Baybayin/ka.png";
-// import filipinoImage from "../../../assets/images/How to read/Baybayin/filipino.png";
-// import akingImage from "../../../assets/images/How to read/Baybayin/aking.png";
 import "./BaybayinHowToRead.css";
 import BaybayinTable from "./BaybayinTable";
 import BaybayinTableBorrowed from "./BaybayinTableBorrowed";
@@ -215,24 +209,6 @@ export default function BaybayinHowToRead() {
         borrowed sounds and how they are expressed in Baybayin:
       </p>
       <BaybayinTableBorrowed />
-      <table className="baybayin-example">
-        <thead>
-          <tr>
-            <th className="baybayin-letter">akiN+</th>
-            <th className="baybayin-letter">a</th>
-            <th className="baybayin-letter">ki</th>
-            <th className="baybayin-letter">N+</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>aking</td>
-            <td>a</td>
-            <td>ki</td>
-            <td>ng</td>
-          </tr>
-        </tbody>
-      </table>
     </>
   );
 }
