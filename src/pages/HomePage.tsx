@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { AiOutlineTranslation, AiOutlineInfoCircle } from "react-icons/ai";
+import {
+  AiOutlineTranslation,
+  AiOutlineInfoCircle,
+  AiOutlineProject,
+} from "react-icons/ai";
 
 import "./HomePage.css";
 
@@ -12,6 +16,10 @@ export default function HomePage() {
 
   const handleAboutClick = () => {
     navigate("/about");
+  };
+
+  const handleProjectsClick = () => {
+    navigate("/projects");
   };
 
   return (
@@ -44,6 +52,19 @@ export default function HomePage() {
           />
           <h2>About</h2>
           <p>Learn more about The Baybayin Project and our mission.</p>
+        </div>
+
+        <div className="nav-card" onClick={handleProjectsClick}>
+          <AiOutlineProject
+            style={{
+              marginRight: "5px",
+              width: "30px",
+              height: "30px",
+              color: "#007bff",
+            }}
+          />
+          <h2>Projects</h2>
+          <p>See our projects.</p>
         </div>
       </div>
     </div>
