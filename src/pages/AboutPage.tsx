@@ -69,8 +69,10 @@ export default function AboutPage() {
       <p>
         Overall, I have had a great time working on these projects. I have
         learned so much from the Filipino community both within the Philippines
-        and worldwide. Maraming salamat sa inyong lahat! -Chaz
+        and worldwide.
       </p>
+      <p>Maraming salamat sa inyong lahat! - Chaz</p>
+      <p className="baybayin-font">MrmiN+ slmt+ s In+yoN+ lht+!</p>
     </>
   );
 }
