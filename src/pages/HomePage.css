@@ -46,9 +46,11 @@
   transform: translateY(-2px);
 }
 
-.card-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.nav-card-icon {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  color: #007bff;
 }
 
 .nav-card h2 {

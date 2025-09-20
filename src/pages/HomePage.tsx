@@ -29,40 +29,19 @@ export default function HomePage() {
 
       <div className="cards-container">
         <div className="nav-card" onClick={handleTransliteratorClick}>
-          <AiOutlineTranslation
-            style={{
-              marginRight: "5px",
-              width: "30px",
-              height: "30px",
-              color: "#007bff",
-            }}
-          />
+          <AiOutlineTranslation className="nav-card-icon" />
           <h2>Transliterator</h2>
           <p>Convert text to Baybayin.</p>
         </div>
 
         <div className="nav-card" onClick={handleAboutClick}>
-          <AiOutlineInfoCircle
-            style={{
-              marginRight: "5px",
-              width: "30px",
-              height: "30px",
-              color: "#007bff",
-            }}
-          />
+          <AiOutlineInfoCircle className="nav-card-icon" />
           <h2>About</h2>
           <p>Learn more about The Baybayin Project and our mission.</p>
         </div>
 
         <div className="nav-card" onClick={handleProjectsClick}>
-          <AiOutlineProject
-            style={{
-              marginRight: "5px",
-              width: "30px",
-              height: "30px",
-              color: "#007bff",
-            }}
-          />
+          <AiOutlineProject className="nav-card-icon" />
           <h2>Projects</h2>
           <p>See our projects.</p>
         </div>
