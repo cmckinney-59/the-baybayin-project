@@ -10,14 +10,6 @@ function RootLayout() {
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
 
-  // Open by default on desktop widths
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isDesktop = window.innerWidth >= 900;
-      setIsSidebarOpen(isDesktop);
-    }
-  }, []);
-
   return (
     <>
       <div className="App">
