@@ -1,6 +1,13 @@
 import type { JSX } from "react";
 import "./Navigation.css";
 import { Link } from "react-router-dom";
+import {
+  AiOutlineHome,
+  AiOutlineTranslation,
+  AiOutlineInfoCircle,
+  AiOutlineProject,
+  AiOutlineShopping,
+} from "react-icons/ai";
 
 type NavigationProps = {
   isOpen: boolean;
@@ -16,28 +23,37 @@ export default function Navigation({
       <div className="Navigation-content">
         <ul>
           <li>
-            <Link to="/home" onClick={onNavigate}>
-              Home
+            <Link to="/home" onClick={onNavigate} title="Home">
+              <AiOutlineHome className="nav-icon" />
+              <span className="nav-text">Home</span>
             </Link>
           </li>
           <li>
-            <Link to="/transliterator" onClick={onNavigate}>
-              Transliterator
+            <Link
+              to="/transliterator"
+              onClick={onNavigate}
+              title="Transliterator"
+            >
+              <AiOutlineTranslation className="nav-icon" />
+              <span className="nav-text">Transliterator</span>
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={onNavigate}>
-              About
+            <Link to="/about" onClick={onNavigate} title="About">
+              <AiOutlineInfoCircle className="nav-icon" />
+              <span className="nav-text">About</span>
             </Link>
           </li>
           <li>
-            <Link to="/projects" onClick={onNavigate}>
-              Projects
+            <Link to="/projects" onClick={onNavigate} title="Projects">
+              <AiOutlineProject className="nav-icon" />
+              <span className="nav-text">Projects</span>
             </Link>
           </li>
           <li>
-            <Link to="/shop" onClick={onNavigate}>
-              Shop
+            <Link to="/shop" onClick={onNavigate} title="Shop">
+              <AiOutlineShopping className="nav-icon" />
+              <span className="nav-text">Shop</span>
             </Link>
           </li>
         </ul>
