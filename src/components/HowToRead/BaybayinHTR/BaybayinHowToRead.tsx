@@ -16,8 +16,8 @@ export default function BaybayinHowToRead() {
       <p>
         The first three symbols in the table represent vowels. Tagalog vowels
         originally only consisted of A, I and O. Then when borrowed words were
-        introduced from Spanish and English, E and U were added and utitilized
-        the same symbol as I and O respectively. These are typically used when a
+        introduced from Spanish and English, E and U were added and utilized the
+        same symbol as I and O respectively. These are typically used when a
         word starts with a vowel, like “ama”, or when there are two consecutive
         vowels, like “maaari”. See examples below:
       </p>
@@ -37,7 +37,6 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      {/* <img src={amaImage} alt="ama-image" className="baybayin-image example" /> */}
       <table className="baybayin-example">
         <thead>
           <tr>
@@ -58,11 +57,6 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      {/* <img
-        src={maaariImage}
-        alt="maaari-image"
-        className="baybayin-image example"
-      /> */}
       <p>
         The next fourteen rows show the base symbols for consonants. By default
         all of the consonant symbols have an “a” after the associated consonant,
@@ -87,8 +81,6 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      {/* <img src={baImage} alt="ba-image" className="baybayin-image example" />
-      <img src={kaImage} alt="ka-image" className="baybayin-image example" /> */}
       <p>
         The next two symbols are called "kudlits". A kudlit is added either
         above or below a consonant symbol to modify which vowel follows. If a
@@ -121,11 +113,6 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      {/* <img
-        src={filipinoImage}
-        alt="filipino-image"
-        className="baybayin-image example"
-      /> */}
       <p>
         The final symbol in the table is the "krus" kudlit. This again modifies
         a consonant symbol by making it a standalone consonant. In the word
@@ -150,16 +137,11 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      {/* <img
-        src={akingImage}
-        alt="aking-image"
-        className="baybayin-image example"
-      /> */}
       <h2>The First Rule of Baybayin</h2>
       <p>"Kung anong bigkas, siyang baybay."</p>
       <p>
         Baybayin is a phonetic alphabet meaning, words are written how they
-        sound not nessesarily as they are expressed in the latin alphabet. The
+        sound not necessarily as they are expressed in the Latin alphabet. The
         most common examples of this are "ng" and "mga". These two words are
         pronounced "nang" and "manga" and should be expressed as such when
         written in Baybayin.
@@ -205,8 +187,8 @@ export default function BaybayinHowToRead() {
         languages. Most notably from Spanish and English. This is why, when
         transliterating modern Tagalog into Baybayin, many symbols represent two
         or more letters from the Latin alphabet OR are a combination of symbols
-        to produce a similar sound. Here is a table of the most notabale
-        borrowed sounds and how they are expressed in Baybayin:
+        to produce a similar sound. Here is a table of the most notable borrowed
+        sounds and how they are expressed in Baybayin:
       </p>
       <BaybayinTableBorrowed />
     </CollapsibleSection>
