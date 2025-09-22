@@ -1,11 +1,13 @@
-import Transliterator2 from "../../components/Transliterator2/Transliterator2";
+import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
+import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleSection";
 
 export default function AurebeshPage() {
   return (
     <>
-      <Transliterator2 title="Aurebesh" />
-      <h1>Aurebesh</h1>
-      <p>Aurebesh is a writing system used by the Aurebesh Alphabet.</p>
+      <TransliteratorLite title="Aurebesh" />
+      <CollapsibleSection title="About Aurebesh" defaultExpanded={false}>
+        <p>Aurebesh is a writing system used by the Aurebesh Alphabet.</p>
+      </CollapsibleSection>
     </>
   );
 }

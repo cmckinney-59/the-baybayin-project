@@ -1,11 +1,11 @@
 import "./BaybayinHowToRead.css";
 import BaybayinTable from "./BaybayinTable";
 import BaybayinTableBorrowed from "./BaybayinTableBorrowed";
+import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
 
 export default function BaybayinHowToRead() {
   return (
-    <>
-      <h2>How To Read</h2>
+    <CollapsibleSection title="How To Read" defaultExpanded={false}>
       <p>
         Below is a table of the symbols used in "Modified Baybayin" alphabet.
         This is the most popular form of the script.
@@ -209,6 +209,6 @@ export default function BaybayinHowToRead() {
         borrowed sounds and how they are expressed in Baybayin:
       </p>
       <BaybayinTableBorrowed />
-    </>
+    </CollapsibleSection>
   );
 }
