@@ -6,7 +6,7 @@ import {
   AiOutlineTranslation,
   AiOutlineInfoCircle,
   AiOutlineProject,
-  AiOutlineShopping,
+  // AiOutlineShopping,
 } from "react-icons/ai";
 
 type NavigationProps = {
@@ -50,12 +50,12 @@ export default function Navigation({
               <span className="nav-text">Projects</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/shop" onClick={onNavigate} title="Shop">
               <AiOutlineShopping className="nav-icon" />
               <span className="nav-text">Shop</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

@@ -15,8 +15,8 @@ export default function BaybayinHowToUse() {
         copy to clipboard.
       </p>
       <p>
-        Download and install the Baybayin font to see the script in its full
-        glory.
+        Download and install the Baybayin font to see the script in Word or
+        Excel.
       </p>
       <button onClick={handleFontDownload} className="font-download-button">
         Download Baybayin Font
