@@ -1,7 +1,7 @@
 import "./BaybayinHowToRead.css";
-import BaybayinTable from "./BaybayinTable";
-import BaybayinTableBorrowed from "./BaybayinTableBorrowed";
-import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
+import BaybayinTable from "../BaybayinTable/BaybayinTable";
+import BaybayinTableBorrowed from "../BaybayinTable/BaybayinTableBorrowed";
+import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 
 export default function BaybayinHowToRead() {
   return (

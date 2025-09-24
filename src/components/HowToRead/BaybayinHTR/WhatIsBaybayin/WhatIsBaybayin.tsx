@@ -1,5 +1,4 @@
-import "./BaybayinHowToUse.css";
-import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
+import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 
 export default function WhatIsBaybayin() {
   return (

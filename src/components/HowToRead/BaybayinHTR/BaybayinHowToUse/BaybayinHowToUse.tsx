@@ -1,6 +1,6 @@
 import "./BaybayinHowToUse.css";
-import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
-import downloadFont from "../../../utils/DownloadFont";
+import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
+import downloadFont from "../../../../utils/DownloadFont";
 
 export default function BaybayinHowToUse() {
   const handleFontDownload = () => {
