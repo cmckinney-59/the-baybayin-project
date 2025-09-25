@@ -69,7 +69,7 @@ select {
   transition: margin-left 0.25s ease;
   position: relative;
   z-index: 1;
-  padding-bottom: 60px;
+  padding-bottom: 80px;
 }
 
 code {
