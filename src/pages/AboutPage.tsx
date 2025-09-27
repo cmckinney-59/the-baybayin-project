@@ -3,8 +3,8 @@ export default function AboutPage() {
     <>
       <h1>About</h1>
       <p>
-        Hi, my name is Chaz. I am a software engineer and a husband and father.
-        I am also the founder of The Baybayin Project. I was born and raised in
+        Hi, my name is Chaz. I am a husband, a father and a software engineer. I
+        am also the founder of The Baybayin Project. I was born and raised in
         Utah. I currently live in Utah with my wife and three children.
       </p>
       <h2>How it began</h2>
