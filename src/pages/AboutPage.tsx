@@ -5,7 +5,8 @@ export default function AboutPage() {
       <p>
         Hi, my name is Chaz. I am a husband, a father and a software engineer. I
         am also the founder of The Baybayin Project. I was born and raised in
-        Utah. I currently live in Utah with my wife and three children.
+        Utah. I currently live in Alberta, Canada with my wife and three
+        children.
       </p>
       <h2>How it began</h2>
       <p>
