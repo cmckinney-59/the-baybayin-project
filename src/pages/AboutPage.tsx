@@ -11,12 +11,12 @@ export default function AboutPage() {
       <h2>How it began</h2>
       <p>
         In the summer of 2013, I opened my mission call for The Church of Jesus
-        Christ of Latter-day Saint. I was called to serve in The Philippines for
-        two years and was to learn Tagalog. This came as a huge surprise to me
-        and my family. At the time the only thing that I really knew about the
-        Philippines was that it is an archipelago in Asia. I had no idea how
+        Christ of Latter-day Saints. I was called to serve in The Philippines
+        for two years and was to learn Tagalog. This came as a huge surprise to
+        me and my family. At the time the only thing that I really knew about
+        the Philippines was that it is an archipelago in Asia. I had no idea how
         much of a positive effect the people and culture of The Philippines
-        would have on my life. On January 1, 2014 I boarded a flight to the
+        would have on my life. On January 1, 2014, I boarded a flight to the
         Philippines to attend the Missionary Training Center. There I would
         study and learn Tagalog. The days were long and grueling. Upon leaving,
         I felt like I was at the bottom of my class when it came to speaking
@@ -24,16 +24,16 @@ export default function AboutPage() {
         patient with my language learning. He taught me the importance of
         diligently studying the language every single day. Over the course of my
         mission that daily habit compounded and turned me into a fluent speaker
-        of Tagalog. At some point I discovered the Baybayin (also known as
-        Alibata) script in a Tagalog dictionary and started to learn it. Soon
-        enough I was able to effortlessly write notes back and forth with
-        friends of mine who also learned the baybayin script.
+        of Tagalog. “At some point I discovered the Baybayin script (sometimes
+        incorrectly called ‘Alibata’) in a Tagalog dictionary and began to learn
+        it. Soon enough I was able to effortlessly write notes back and forth
+        with friends of mine who also learned the baybayin script.
       </p>
       <p>
         Soon after returning home, I started working for The Church of Jesus
         Christ of Latter-day Saints in a call center for The Philippines. This
-        position gave me the opportunity to keep my language skills while also
-        continuing to work with some amazing Filipinos.
+        position allowed me to maintain my language skills while working with
+        amazing Filipinos.
       </p>
       <p>
         In 2018 I enrolled at BYU-Hawaii. This was not only a great opportunity
@@ -47,30 +47,30 @@ export default function AboutPage() {
       </p>
       <p>
         After completing a Bachelor's degree from BYUH in 2019, I returned home.
-        In April of 2020, the thought came to me that I may be able to
-        transcribe “Ang Aklat Ni Mormon” into Baybayin. I soon had a proof of
-        concept for the first chapter of ANM. Over the course of the following
-        months, I was able to transcribe, review, edit and format most of the
-        “Ang Aklat ni Mormon”. I sent two of my friends over a list of the
-        unique words (about 15,700 words) to review and a couple of months later
-        they came back to me with meaningful feedback and changes.
+        In April of 2020, the thought occurred to me that I could transcribe
+        “Ang Aklat Ni Mormon” into Baybayin. I soon had a proof of concept for
+        the first chapter of ANM. Over the course of the following months, I was
+        able to transcribe, review, edit and format most of the “Ang Aklat ni
+        Mormon”. I sent two of my friends a list of the unique words (about
+        15,700 words) to review and a couple of months later they came back to
+        me with meaningful feedback and changes.
       </p>
       <p>
         It took me nearly two years to fully implement their changes due to
         significant life changes that happened. I moved to a new country,
         married the love of my life, took on two wonderful stepdaughters,
-        started a pregnancy and was given more responsibility at work. But, “sa
-        awa ng Diyos” (through the grace of God) I was able to finish the
-        updating and editing the first draft by April 2023.
+        welcomed a pregnancy and took on more responsibility at work. But, “sa
+        awa ng Diyos” (through the grace of God) I was able to finish updating
+        and editing the first draft by April 2023.
       </p>
       <p>
         We currently have several projects in the works. For a full list of
         projects, please visit the <a href="/projects">Projects</a> page.
       </p>
       <p>
-        Overall, I have had a great time working on these projects. I have
-        learned so much from the Filipino community both within the Philippines
-        and worldwide.
+        Overall, working on these projects has been a great joy, and I have
+        learned so much from the Filipino community both in the Philippines and
+        around the world.
       </p>
       <p>Maraming salamat sa inyong lahat! - Chaz</p>
       <p className="baybayin-font">MrmiN+ slmt+ s In+yoN+ lht+!</p>
