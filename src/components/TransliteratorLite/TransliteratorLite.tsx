@@ -110,19 +110,21 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
           )}
         </div>
       </div>
-      <p className="note-paragraph">
-        Note: The letter 'c' does not render in baybayin font. Replace any c's
-        with k's or s's accordingly.
-      </p>
-      <p className="note-paragraph">
-        See the How To Read section for more information.
-      </p>
       <div className="action-buttons">
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
       </div>
+      <p className="note-paragraph">
+        * The letter 'c' does not render in baybayin font. Replace any c's with
+        k's or s's accordingly. See the How To Read section for more
+        information.
+      </p>
+      <p className="note-paragraph">
+        ** Font must be downloaded and installed to render properly in Word and
+        Excel. See the How To Use section for more information.
+      </p>
     </div>
   );
 }
