@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Root";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -12,10 +12,11 @@ import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import BaybayinPageLite from "./pages/TransliteratorPages/BaybayinPageLite";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <div>Something went wrong!</div>,
     children: [
       {
         index: true,
