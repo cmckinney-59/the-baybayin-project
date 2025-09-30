@@ -16,7 +16,7 @@ export default function SaveButtonContainter({
 }: SaveButtonContainerProps) {
   return (
     <>
-      <p> Save as... </p>
+      <p> Save as: </p>
       <ExcelSaveButton
         transliteratedText={transliteratedText}
         wordsDictionary={wordsDictionary}
