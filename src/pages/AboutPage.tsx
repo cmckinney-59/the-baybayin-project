@@ -9,6 +9,7 @@ export default function AboutPage() {
         children.
       </p>
       <h2>How it began</h2>
+      <h3>Mission Call</h3>
       <p>
         In the summer of 2013, I opened my mission call for The Church of Jesus
         Christ of Latter-day Saints. I was called to serve in The Philippines
@@ -29,6 +30,7 @@ export default function AboutPage() {
         it. Soon enough I was able to effortlessly write notes back and forth
         with friends of mine who also learned the baybayin script.
       </p>
+      <h3>After Returning Home</h3>
       <p>
         Soon after returning home, I started working for The Church of Jesus
         Christ of Latter-day Saints in a call center for The Philippines. This
@@ -45,6 +47,7 @@ export default function AboutPage() {
         begin my first project, transcribing "Ang Aklat Ni Mormon" (The Book of
         Mormon).
       </p>
+      <h3>Beginning of the Project</h3>
       <p>
         After completing a Bachelor's degree from BYUH in 2019, I returned home.
         In April of 2020, the thought occurred to me that I could transcribe
@@ -63,6 +66,7 @@ export default function AboutPage() {
         awa ng Diyos” (through the grace of God) I was able to finish updating
         and editing the first draft by April 2023.
       </p>
+      <h3>Future</h3>
       <p>
         We currently have several projects in the works. For a full list of
         projects, please visit the <a href="/projects">Projects</a> page.
