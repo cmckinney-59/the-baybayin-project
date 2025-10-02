@@ -46,7 +46,7 @@
 }
 
 .collapsible-content.expanded {
-  max-height: 5000px; /* Large enough to accommodate content */
+  max-height: 10000px; /* Increased to accommodate very long content like Baybayin guide */
 }
 
 .collapsible-content-inner {
