@@ -9,8 +9,6 @@ import {
   AiOutlineLike,
   // AiOutlineShopping,
 } from "react-icons/ai";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 type NavigationProps = {
   isOpen: boolean;
