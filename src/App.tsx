@@ -11,6 +11,7 @@ import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
 import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import BaybayinPageLite from "./pages/TransliteratorPages/BaybayinPageLite";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
+import SocialPage from "./pages/SocialPage";
 
 const router = createHashRouter([
   {
@@ -33,6 +34,10 @@ const router = createHashRouter([
       {
         path: "/projects",
         element: <ProjectsPage />,
+      },
+      {
+        path: "/social",
+        element: <SocialPage />,
       },
       // {
       //   path: "/shop",

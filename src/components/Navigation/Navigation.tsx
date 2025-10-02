@@ -6,6 +6,7 @@ import {
   AiOutlineTranslation,
   AiOutlineInfoCircle,
   AiOutlineProject,
+  AiOutlineLike,
   // AiOutlineShopping,
 } from "react-icons/ai";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -58,29 +59,11 @@ export default function Navigation({
               <span className="nav-text">Shop</span>
             </Link>
           </li> */}
-        </ul>
-        <ul className="footer-links-container">
           <li>
-            <a
-              href="https://www.facebook.com/profile.php?id=61558642794586"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Facebook"
-            >
-              <FontAwesomeIcon icon={faFacebook} className="nav-icon" />
-              <span className="nav-text">Facebook</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/the_baybayin_project/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Instagram"
-            >
-              <FontAwesomeIcon icon={faInstagram} className="nav-icon" />
-              <span className="nav-text">Instagram</span>
-            </a>
+            <Link to="/social" onClick={onNavigate} title="Social">
+              <AiOutlineLike className="nav-icon" />
+              <span className="nav-text">Social</span>
+            </Link>
           </li>
         </ul>
       </div>

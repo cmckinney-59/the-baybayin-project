@@ -1,0 +1,16 @@
+.social-container {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.social-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.social-icon {
+  font-size: 48px;
+}
