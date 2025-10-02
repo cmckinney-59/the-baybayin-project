@@ -11,7 +11,7 @@ import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
 import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import BaybayinPageLite from "./pages/TransliteratorPages/BaybayinPageLite";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
-import SocialPage from "./pages/SocialPage";
+import SocialPage from "./pages/SocialPage/SocialPage";
 
 const router = createHashRouter([
   {
