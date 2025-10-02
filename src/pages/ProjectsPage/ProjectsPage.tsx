@@ -1,9 +1,17 @@
 import "./ProjectsPage.css";
+import baybayinGuide from "../../assets/projects/BaybayinHowToReadV1.pdf";
 
 export default function ProjectsPage() {
   const handleDownload = (fileName: string) => {
     const link = document.createElement("a");
-    link.href = `/${fileName}`;
+
+    // Use the imported asset URL for assets, or public URL for public files
+    if (fileName === "BaybayinHowToReadV1.pdf") {
+      link.href = baybayinGuide;
+    } else {
+      link.href = `/${fileName}`;
+    }
+
     link.download = fileName;
     document.body.appendChild(link);
     link.click();
@@ -19,7 +27,7 @@ export default function ProjectsPage() {
           <div className="downloadItem">
             <h3>How to Read Baybayin</h3>
             <button
-              onClick={() => handleDownload("HowToReadBaybayin.pdf")}
+              onClick={() => handleDownload("BaybayinHowToReadV1.pdf")}
               className="downloadButton"
             >
               Download PDF

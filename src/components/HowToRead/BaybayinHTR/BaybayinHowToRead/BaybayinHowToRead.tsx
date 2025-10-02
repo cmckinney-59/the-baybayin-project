@@ -191,6 +191,31 @@ export default function BaybayinHowToRead() {
         sounds and how they are expressed in Baybayin:
       </p>
       <BaybayinTableBorrowed />
+      <h2>Examples</h2>
+      <p>
+        The first three symbols in the table represent vowels. Tagalog vowels
+        originally only consisted of A, I and O. Then when borrowed words were
+        introduced from Spanish and English, E and U were added and utilized the
+        same symbol as I and O respectively. These are typically used when a
+        word starts with a vowel, like “ama”, or when there are two consecutive
+        vowels, like “maaari”. See examples below:
+      </p>
+      <table className="baybayin-example">
+        <thead>
+          <tr>
+            <th className="baybayin-letter">am</th>
+            <th className="baybayin-letter">a</th>
+            <th className="baybayin-letter">m</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ama</td>
+            <td>a</td>
+            <td>ma</td>
+          </tr>
+        </tbody>
+      </table>
     </CollapsibleSection>
   );
 }
