@@ -7,13 +7,13 @@
 .homepage h1 {
   text-align: center;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .homepage > p {
   text-align: center;
   margin-bottom: 3rem;
-  color: #666;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
@@ -37,7 +37,9 @@
 }
 
 .nav-card {
-  background: #f2f3f5; /* Even lighter version of header grey */
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-card:hover {
@@ -54,17 +56,18 @@
   margin-right: 5px;
   width: 30px;
   height: 30px;
-  color: black;
+  color: var(--icon-color);
+  transition: color 0.3s ease;
 }
 
 .nav-card h2 {
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1.5rem;
 }
 
 .nav-card p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }

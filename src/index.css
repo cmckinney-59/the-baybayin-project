@@ -1,3 +1,30 @@
+/* CSS Variables for Light/Dark Mode */
+:root {
+  --bg-primary: white;
+  --bg-secondary: #f2f3f5;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --button-bg: white;
+  --button-border: rgb(175, 175, 175);
+  --icon-color: black;
+  --header-bg: #d0d5db;
+  --nav-bg: #d0d5db;
+  --nav-text: black;
+}
+
+.dark-mode {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #404040;
+  --text-primary: white;
+  --text-secondary: #b8b8b8;
+  --button-bg: #333;
+  --button-border: #555;
+  --icon-color: white;
+  --header-bg: #2d2d2d;
+  --nav-bg: #2d2d2d;
+  --nav-text: white;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -8,6 +35,9 @@ body {
   text-align: center;
   height: 100%;
   padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Fonts loaded globally so font utility classes work across pages */

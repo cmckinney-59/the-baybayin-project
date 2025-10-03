@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
   padding: 20px 20px 20px 56px; /* leave space for hamburger */
-  background-color: #d0d5db;
+  background-color: var(--header-bg);
   flex-direction: row;
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: var(--nav-text);
   margin-left: 0px;
   margin-bottom: 0;
   flex-shrink: 0;
@@ -16,6 +16,7 @@
   position: sticky;
   top: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-content {
@@ -54,9 +55,38 @@
 .icon {
   width: 24px;
   height: 24px;
-  stroke: #333;
+  stroke: var(--icon-color);
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+  transition: stroke 0.3s ease;
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode-toggle .icon {
+  stroke: var(--icon-color);
+  width: 20px;
+  height: 20px;
 }
