@@ -3,7 +3,7 @@
   left: 0;
   top: 40px;
   width: 60px; /* Collapsed width - icon only */
-  background-color: #f0f0f0;
+  background-color: #d0d5db;
   height: calc(100vh - 40px);
   transform: translateX(0);
   transition: transform 0.25s ease, width 0.25s ease;
@@ -42,7 +42,7 @@
 
 .Navigation-content ul li a {
   text-decoration: none;
-  color: #000;
+  color: white;
   display: flex;
   align-items: center;
   padding: 1rem 0.5rem;
@@ -54,19 +54,20 @@
 }
 
 .Navigation-content ul li a:hover {
-  background-color: #e0e0e0;
-  color: #007bff;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
 .Navigation-content ul li a:active {
-  background-color: #d0d0d0;
-  color: #007bff;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
 }
 
 .nav-icon {
   font-size: 24px;
   transition: transform 0.2s ease;
   flex-shrink: 0;
+  color: black;
 }
 
 .nav-text {

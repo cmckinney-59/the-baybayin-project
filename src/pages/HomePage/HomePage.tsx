@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <div className="homepage">
       <h1>Welcome to The Baybayin Project</h1>
-      <p>Choose an option to get started:</p>
+      <p>Preserving Filipino heritage through Baybayin translation</p>
 
       <div className="cards-container">
         <div className="nav-card" onClick={handleTransliteratorClick}>
@@ -39,22 +39,22 @@ export default function HomePage() {
           <p>Convert text to Baybayin.</p>
         </div>
 
-        <div className="nav-card" onClick={handleAboutClick}>
-          <AiOutlineInfoCircle className="nav-card-icon" />
-          <h2>About</h2>
-          <p>Learn more about The Baybayin Project and our mission.</p>
-        </div>
-
         <div className="nav-card" onClick={handleProjectsClick}>
           <AiOutlineProject className="nav-card-icon" />
           <h2>Projects</h2>
           <p>See our projects.</p>
         </div>
 
+        <div className="nav-card" onClick={handleAboutClick}>
+          <AiOutlineInfoCircle className="nav-card-icon" />
+          <h2>About</h2>
+          <p>Learn more about our mission.</p>
+        </div>
+
         <div className="nav-card" onClick={handleSocialClick}>
           <AiOutlineLike className="nav-card-icon" />
           <h2>Social</h2>
-          <p>See our social media platforms.</p>
+          <p>Connect with us.</p>
         </div>
       </div>
     </div>
