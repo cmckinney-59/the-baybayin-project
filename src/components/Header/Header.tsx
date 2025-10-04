@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import logo from "../../assets/images/logo.png";
 import "./Header.css";
+import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
 
 type HeaderProps = {
   onToggleSidebar: () => void;
@@ -59,28 +60,9 @@ export default function Header({
         onClick={onToggleDarkMode}
       >
         {isDarkMode ? (
-          <svg
-            className="icon"
-            viewBox="0 0 24 24"
-            width="20"
-            height="20"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <circle cx="12" cy="12" r="5" />
-            <path d="m12 1v2m0 18v2m11-11h2m-18 0H1m15.36-8.5-1.5-1.5m-10.72 10.72-1.5-1.5m12.72 0-1.5 1.5M5.64 5.64l-1.5 1.5" />
-          </svg>
+          <AiOutlineSun className="nav-card-icon" />
         ) : (
-          <svg
-            className="icon"
-            viewBox="0 0 24 24"
-            width="20"
-            height="20"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
+          <AiOutlineMoon className="nav-card-icon" />
         )}
       </button>
     </header>
