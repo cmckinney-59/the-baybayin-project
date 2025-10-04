@@ -53,7 +53,7 @@ export default function Header({
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-Header-Text">The Baybayin Project</h1>
       </div>
-      {/* <button
+      <button
         className="dark-mode-toggle"
         aria-label="Toggle dark mode"
         onClick={onToggleDarkMode}
@@ -82,7 +82,7 @@ export default function Header({
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         )}
-      </button> */}
+      </button>
     </header>
   );
 }
