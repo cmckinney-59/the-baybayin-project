@@ -18,15 +18,21 @@
 
 .transliteration-textarea {
   font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
-  border: 1px solid #dddbdb;
-  background-color: white;
+  border: 1px solid var(--button-border);
+  background-color: var(--bg-primary);
   resize: none;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .transliteration-output {
   font-family: "Baybayin";
-  border: 1px solid #ffffff;
-  background-color: rgb(240, 238, 238);
+  border: 1px solid var(--button-border);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .transliteration-textarea,
@@ -36,7 +42,6 @@
   width: 100%;
   box-sizing: border-box;
   min-height: 175px;
-  color: rgb(73, 72, 72);
   padding: 10px;
   border-radius: 10px;
   overflow-y: auto;
@@ -45,8 +50,8 @@
 
 .transliteration-textarea:focus {
   outline: none;
-  border: 1px solid #dddbdb;
-  box-shadow: none;
+  border: 1px solid var(--button-border);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .dictionary-output ul {
@@ -76,7 +81,7 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  color: black;
+  color: var(--text-primary);
   border: none;
   border-radius: 50%;
   width: 24px;
@@ -87,16 +92,20 @@
   cursor: pointer;
   padding: 0;
   z-index: 1;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .clear-output-button {
-  background: rgb(240, 238, 238);
+  background-color: var(--bg-secondary);
 }
 
 .clear-input-button:hover {
-  background: rgb(240, 238, 238);
+  background-color: var(--bg-secondary);
+  opacity: 0.8;
 }
 
 .clear-output-button:hover {
-  background: white;
+  background-color: var(--bg-primary);
+  opacity: 0.8;
 }

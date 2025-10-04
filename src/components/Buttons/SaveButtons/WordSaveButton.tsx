@@ -14,7 +14,7 @@ export default function WordSaveButton({
       onClick={() => downloadAsWord(transliteratedText)}
       disabled={transliteratedText.trim().length === 0}
     >
-      <AiFillFileWord style={{ marginRight: "5px" }} />
+      <AiFillFileWord />
       Word
     </button>
   );

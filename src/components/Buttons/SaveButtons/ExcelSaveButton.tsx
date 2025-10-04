@@ -18,7 +18,7 @@ export default function ExcelSaveButton({
       onClick={() => downloadAsExcel(wordsDictionary)}
       disabled={transliteratedText.trim().length === 0}
     >
-      <AiFillFileExcel style={{ marginRight: "5px" }} />
+      <AiFillFileExcel />
       Excel
     </button>
   );

@@ -14,7 +14,7 @@ export default function CopyTextButton({
       onClick={() => copyToClipboard(transliteratedText)}
       disabled={transliteratedText.trim().length === 0}
     >
-      <AiFillCopy style={{ marginRight: "5px" }} />
+      <AiFillCopy />
       Copy
     </button>
   );

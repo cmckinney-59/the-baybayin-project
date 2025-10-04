@@ -14,7 +14,7 @@ export default function TextSaveButton({
       onClick={() => downloadAsText(transliteratedText)}
       disabled={transliteratedText.trim().length === 0}
     >
-      <AiFillFileText style={{ marginRight: "5px" }} />
+      <AiFillFileText />
       Text
     </button>
   );

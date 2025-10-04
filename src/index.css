@@ -79,8 +79,50 @@ select {
   margin: 10px auto;
   padding: 8px 12px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--button-border);
   font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+.dark-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b8b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.dark-mode select:focus {
+  border-color: #64b5f6;
+  box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.25);
+}
+
+select option {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 8px 12px;
+}
+
+select:hover {
+  border-color: #007bff;
+}
+
+.dark-mode select:hover {
+  border-color: #64b5f6;
 }
 
 .App {
@@ -130,18 +172,60 @@ img {
 }
 
 button {
-  background-color: white;
+  background-color: var(--button-bg);
   color: rgb(26, 115, 232);
-  border: 1px solid rgb(175, 175, 175);
+  border: 1px solid var(--button-border);
   border-radius: 10px;
   padding: 10px 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dark-mode button {
+  color: #64b5f6;
 }
 
 button.active {
   background-color: rgb(26, 115, 232);
   color: white;
   border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+}
+
+.dark-mode button.active {
+  background-color: #64b5f6;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
+}
+
+button svg {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+button:hover:not(:disabled) svg {
+  transform: scale(1.1);
+}
+
+button.active svg {
+  font-size: 17px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.9;
 }
 
 .dialog-header-top-row {
