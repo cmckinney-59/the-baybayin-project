@@ -1,7 +1,7 @@
 .App-header {
   height: 60px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 20px 20px 56px; /* leave space for hamburger */
   background-color: var(--header-bg);
@@ -23,6 +23,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: 0;
+  flex: 1;
 }
 
 .App-Header-Text {
