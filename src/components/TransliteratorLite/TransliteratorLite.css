@@ -72,6 +72,13 @@
   align-items: center;
   gap: 10px;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .action-buttons {
+    gap: 5px;
+  }
 }
 
 .textarea-wrapper {

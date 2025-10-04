@@ -1,6 +1,6 @@
 import CopyTextButton from "./CopyTextButton";
 import ExcelSaveButton from "./ExcelSaveButton";
-import TextSaveButton from "./TextSaveButton";
+// import TextSaveButton from "./TextSaveButton";
 import WordSaveButton from "./WordSaveButton";
 
 type Dictionary = { [word: string]: string };
@@ -22,7 +22,7 @@ export default function SaveButtonContainter({
         wordsDictionary={wordsDictionary}
       />
       <WordSaveButton transliteratedText={transliteratedText} />
-      <TextSaveButton transliteratedText={transliteratedText} />
+      {/* <TextSaveButton transliteratedText={transliteratedText} /> */}
       <CopyTextButton transliteratedText={transliteratedText} />
     </>
   );
