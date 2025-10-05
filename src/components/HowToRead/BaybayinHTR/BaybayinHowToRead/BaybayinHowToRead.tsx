@@ -187,25 +187,39 @@ export default function BaybayinHowToRead() {
         languages. Most notably from Spanish and English. This is why, when
         transliterating modern Tagalog into Baybayin, many symbols represent two
         or more letters from the Latin alphabet OR are a combination of symbols
-        to produce a similar sound. Here is a table of the most notable borrowed
-        sounds and how they are expressed in Baybayin:
+        to produce a similar sound. Many words when expressed in Baybayin will
+        first be "Tagalized" or in other words, they are written phonetically
+        using the Roman alphabet. (more on these later) Here is a table of the
+        most notable borrowed sounds and how they are expressed in Baybayin:
       </p>
 
       <BaybayinTableBorrowed />
       <h2>Examples</h2>
       <p>
-        Some are a combination of symbols used to mimic certain sounds like siy
-        (sh) and f (ph). See examples below:
+        In the following section, each example table will contain a Baybayin, a
+        Tagalized, and an original version of the word.
+      </p>
+      <p>
+        Some are a combination of symbols used to mimic certain sounds like
+        "siy" or "sy" (informal) for "sh" and "f" for "ph". See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
           <tr>
             <th className="baybayin-letter">siym+pu</th>
-            <th className="baybayin-letter">siy</th>
+            <th className="baybayin-letter">siy | s+y</th>
             <th className="baybayin-letter">m+</th>
             <th className="baybayin-letter">pu</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>siyampu</td>
+            <td>siya | sya</td>
+            <td>m</td>
+            <td>pu</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>shampoo</td>
@@ -228,19 +242,29 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
+            <td>Filipins</td>
+            <td>Fi</td>
+            <td>li</td>
+            <td>pi</td>
+            <td>n</td>
+            <td>s</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
             <td>Philippines</td>
             <td>Phi</td>
             <td>li</td>
-            <td>p(p)i</td>
-            <td>n(e)</td>
+            <td>ppi</td>
+            <td>ne</td>
             <td>s</td>
           </tr>
         </tbody>
       </table>
       <p>
         Some letters are borrowed from both Spanish and English but make
-        different sounds according to the context. These are mainly j and qu.
-        See examples below:
+        different sounds according to the context. These are mainly "diy" or
+        "dy" (informal) for "j" and "kuw" for "qu". See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -248,18 +272,25 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">kuwes+tiOn+</th>
             <th className="baybayin-letter">kuwe</th>
             <th className="baybayin-letter">s+</th>
-            <th className="baybayin-letter">ti</th>
-            <th className="baybayin-letter">O</th>
+            <th className="baybayin-letter">tiyo</th>
             <th className="baybayin-letter">n+</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>kuwestion</td>
+            <td>kuwe</td>
+            <td>s</td>
+            <td>tiyo</td>
+            <td>n</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
             <td>question</td>
             <td>que</td>
             <td>s</td>
-            <td>ti</td>
-            <td>o</td>
+            <td>tio</td>
             <td>n</td>
           </tr>
         </tbody>
@@ -275,6 +306,14 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
+            <td>Keson</td>
+            <td>Ke</td>
+            <td>so</td>
+            <td>n</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
             <td>Quezon</td>
             <td>Que</td>
             <td>zo</td>
@@ -286,11 +325,19 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">diyesus+</th>
-            <th className="baybayin-letter">diye</th>
+            <th className="baybayin-letter">diye | d+ye</th>
             <th className="baybayin-letter">su</th>
             <th className="baybayin-letter">s+</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>Diyesus</td>
+            <td>Diye (Dye)</td>
+            <td>su</td>
+            <td>s</td>
+          </tr>
+        </tbody>
         <thead>
           <tr>
             <th className="baybayin-letter">hesus+</th>
@@ -299,6 +346,14 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">s+</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>Hesus</td>
+            <td>He</td>
+            <td>su</td>
+            <td>s</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>Jesus</td>
@@ -311,8 +366,9 @@ export default function BaybayinHowToRead() {
 
       <p>
         The letter C contributes to forming multiple different sounds in various
-        borrowed words. It can be expressed having an ‘s’, ‘k’ or ‘ch’ sound.
-        See examples below:
+        borrowed words. It can be expressed having an "s", "k" or "ch" sound.
+        Similar to "sh" and "j", the "ch" sound is expressed by "tiy" or "ty"
+        (informal). See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -324,6 +380,15 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">ro</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>sentro</td>
+            <td>se</td>
+            <td>n</td>
+            <td>t</td>
+            <td>ro</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>centro</td>
@@ -346,9 +411,18 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
-            <td>secreto</td>
+            <td>sekreto</td>
             <td>se</td>
             <td>k</td>
+            <td>re</td>
+            <td>to</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>secreto</td>
+            <td>se</td>
+            <td>c</td>
             <td>re</td>
             <td>to</td>
           </tr>
@@ -370,6 +444,16 @@ export default function BaybayinHowToRead() {
             <td>ancient</td>
             <td>a</td>
             <td>n</td>
+            <td>tiye</td>
+            <td>n</td>
+            <td>t</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>ancient</td>
+            <td>a</td>
+            <td>n</td>
             <td>cie</td>
             <td>n</td>
             <td>t</td>
@@ -378,7 +462,7 @@ export default function BaybayinHowToRead() {
       </table>
 
       <p>
-        When Ch is used it commonly is expressed as ‘ch’ or ‘k’. See examples
+        When Ch is used it commonly is expressed as "ch" or "k". See examples
         below:
       </p>
       <table className="baybayin-example">
@@ -390,6 +474,14 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">tiy+</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>tiyurtiy</td>
+            <td>tiyu</td>
+            <td>r</td>
+            <td>tiy</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>church</td>
@@ -406,23 +498,32 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">me</th>
             <th className="baybayin-letter">k</th>
             <th className="baybayin-letter">ni</th>
-            <th className="baybayin-letter">k+</th>
+            <th className="baybayin-letter">ko</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>mechanic</td>
+            <td>mekaniko</td>
+            <td>me</td>
+            <td>ka</td>
+            <td>ni</td>
+            <td>ko</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>mechanico</td>
             <td>me</td>
             <td>cha</td>
             <td>ni</td>
-            <td>c</td>
+            <td>co</td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        E and O also originally didn’t exist and are expressed in the same way
-        as I and U respectively. See examples below:
+        "e" and "o" also originally didn't exist in Tagalog and are expressed in
+        the same way as "i" and "u" respectively. See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -433,6 +534,14 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">s+</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>Hesus</td>
+            <td>He</td>
+            <td>su</td>
+            <td>s</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>Jesus</td>
@@ -452,6 +561,15 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">to</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>Ehipto</td>
+            <td>E</td>
+            <td>hi</td>
+            <td>p</td>
+            <td>to</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>Egipto</td>
@@ -480,7 +598,8 @@ export default function BaybayinHowToRead() {
       </table>
 
       <p>
-        The final borrowed consonants are V, Ph, P and Z. See examples below:
+        The final borrowed consonants are "v", "ph", "p" and "z". See examples
+        below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -492,7 +611,14 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
-            <td>vaka (baka)</td>
+            <td>baka</td>
+            <td>ba</td>
+            <td>ka</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>vaka</td>
             <td>va</td>
             <td>ka</td>
           </tr>
@@ -501,22 +627,23 @@ export default function BaybayinHowToRead() {
       <table className="baybayin-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">filipin+s+</th>
-            <th className="baybayin-letter">fi</th>
-            <th className="baybayin-letter">li</th>
-            <th className="baybayin-letter">pi</th>
+            <th className="baybayin-letter">fon</th>
+            <th className="baybayin-letter">fo</th>
             <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">s+</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Philippines</td>
-            <td>Phi</td>
-            <td>li</td>
-            <td>p(p)i</td>
-            <td>n(e)</td>
-            <td>s</td>
+            <td>fon</td>
+            <td>fo</td>
+            <td>n</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>phone</td>
+            <td>pho</td>
+            <td>ne</td>
           </tr>
         </tbody>
       </table>
@@ -547,6 +674,14 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">r</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>sebra</td>
+            <td>se</td>
+            <td>b</td>
+            <td>ra</td>
+          </tr>
+        </tbody>
         <tbody>
           <tr>
             <td>zebra</td>

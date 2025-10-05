@@ -43,8 +43,8 @@ export default function BaybayinTableBorrowed() {
             <td>Z</td>
           </tr>
           <tr>
-            <td className="baybayin-letter">siy+</td>
-            <td>Siy</td>
+            <td className="baybayin-letter">siy+ / s+y+</td>
+            <td>Siy / Sy</td>
             <td>Sh</td>
           </tr>
           <tr>
