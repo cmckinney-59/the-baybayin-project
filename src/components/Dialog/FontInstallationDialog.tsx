@@ -1,3 +1,5 @@
+import "../PageContent/PageContent.css";
+
 interface FontInstallationDialogProps {
   onClose: () => void;
   onConfirm: () => void;
@@ -12,7 +14,9 @@ export default function FontInstallationDialog({
       <div className="dialog-box">
         <div className="dialog-header">
           <div className="dialog-header-top-row">
-            <button onClick={onClose}>x</button>
+            <button className="close-button" onClick={onClose}>
+              x
+            </button>
             <h3>Font Installation Required</h3>
           </div>
         </div>
@@ -22,7 +26,7 @@ export default function FontInstallationDialog({
             Excel. See the How To Use section for more information.
           </p>
           <div className="dialog-buttons">
-            <button className="confirm-button" onClick={onConfirm}>
+            <button className="cancel-button" onClick={onConfirm}>
               Okay
             </button>
             <button className="confirm-button" onClick={onConfirm}>
