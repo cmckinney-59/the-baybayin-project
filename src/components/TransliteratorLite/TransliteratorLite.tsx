@@ -123,10 +123,6 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
           wordsDictionary={wordsDictionary}
         />
       </div>
-      <p className="note-paragraph">
-        * Font must be downloaded and installed to render properly in Word and
-        Excel. See the How To Use section for more information.
-      </p>
     </div>
   );
 }
