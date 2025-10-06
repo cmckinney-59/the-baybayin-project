@@ -19,7 +19,7 @@ export default function BaybayinHowToUse() {
         Excel.
       </p>
       <button onClick={handleFontDownload} className="font-download-button">
-        Download Baybayin Font
+        Download Font
       </button>
     </CollapsibleSection>
   );

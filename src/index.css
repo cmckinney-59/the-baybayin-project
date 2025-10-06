@@ -147,8 +147,8 @@ select:hover {
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .App-content {
-    margin-left: 80px; /* Account for navigation panel width (60px) + 20px spacing */
-    width: calc(100% - 100px); /* Adjust width to account for left margin */
+    margin-left: 80px;
+    width: calc(100% - 100px);
   }
 }
 

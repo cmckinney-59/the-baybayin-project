@@ -98,12 +98,6 @@
   transform: scale(1.1);
 }
 
-/* Footer links container - positioned at bottom */
-.footer-links-container {
-  margin-top: auto;
-  padding-bottom: 1rem;
-}
-
 @media (min-width: 900px) {
   /* On desktop, keep sidebar visible by default; collapsing will still hide it */
 }
