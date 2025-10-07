@@ -239,12 +239,6 @@ button:hover:not(:disabled) {
   margin: 0 auto;
 }
 
-.dialog-header .close-button {
-  position: absolute;
-  right: 0rem;
-  padding: 0%;
-}
-
 .phonetic-input {
   font-size: 20px;
 }

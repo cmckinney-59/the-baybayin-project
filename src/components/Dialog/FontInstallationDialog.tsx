@@ -6,7 +6,6 @@ interface FontInstallationDialogProps {
 }
 
 export default function FontInstallationDialog({
-  onClose,
   onConfirm,
 }: FontInstallationDialogProps) {
   return (
@@ -14,15 +13,12 @@ export default function FontInstallationDialog({
       <div className="dialog-box">
         <div className="dialog-header">
           <div className="dialog-header-top-row">
-            <button className="close-button" onClick={onClose}>
-              x
-            </button>
-            <h3>Font Installation Required</h3>
+            <h3>Font Required</h3>
           </div>
         </div>
         <div className="dialog-content">
           <p>
-            Font must be downloaded and installed to render properly in Word and
+            Font must be downloaded and installed to work properly in Word and
             Excel. See the How To Use section for more information.
           </p>
           <div className="dialog-buttons">
