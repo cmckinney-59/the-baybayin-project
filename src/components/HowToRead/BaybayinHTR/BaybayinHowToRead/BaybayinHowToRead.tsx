@@ -272,7 +272,7 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">kuwes+tiOn+</th>
             <th className="baybayin-letter">kuwe</th>
             <th className="baybayin-letter">s+</th>
-            <th className="baybayin-letter">tiyo</th>
+            <th className="baybayin-letter">tyo</th>
             <th className="baybayin-letter">n+</th>
           </tr>
         </thead>
@@ -281,7 +281,7 @@ export default function BaybayinHowToRead() {
             <td>kuwestion</td>
             <td>kuwe</td>
             <td>s</td>
-            <td>tiyo</td>
+            <td>tyo</td>
             <td>n</td>
           </tr>
         </tbody>
@@ -367,8 +367,8 @@ export default function BaybayinHowToRead() {
       <p>
         The letter C contributes to forming multiple different sounds in various
         borrowed words. It can be expressed having an "s", "k" or "ch" sound.
-        Similar to "sh" and "j", the "ch" sound is expressed by "tiy" or "ty"
-        (informal). See examples below:
+        Similar to "sh" and "j", the "ch" sound is expressed by "ts". See
+        examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -431,20 +431,20 @@ export default function BaybayinHowToRead() {
       <table className="baybayin-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">an+tiyen+t+</th>
+            <th className="baybayin-letter">an+tsen+t+</th>
             <th className="baybayin-letter">A</th>
             <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">tiye</th>
+            <th className="baybayin-letter">tse</th>
             <th className="baybayin-letter">n+</th>
             <th className="baybayin-letter">t+</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>ancient</td>
+            <td>antsent</td>
             <td>a</td>
             <td>n</td>
-            <td>tiye</td>
+            <td>tse</td>
             <td>n</td>
             <td>t</td>
           </tr>
@@ -468,26 +468,29 @@ export default function BaybayinHowToRead() {
       <table className="baybayin-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">tiyur+tiy+</th>
-            <th className="baybayin-letter">tiyu</th>
-            <th className="baybayin-letter">r+</th>
-            <th className="baybayin-letter">tiy+</th>
+            <th className="baybayin-letter">tsis+mis+</th>
+            <th className="baybayin-letter">tsi</th>
+            <th className="baybayin-letter">s+</th>
+            <th className="baybayin-letter">mi</th>
+            <th className="baybayin-letter">s+</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>tiyurtiy</td>
-            <td>tiyu</td>
-            <td>r</td>
-            <td>tiy</td>
+            <td>tsisims</td>
+            <td>tsi</td>
+            <td>s</td>
+            <td>mi</td>
+            <td>s</td>
           </tr>
         </tbody>
         <tbody>
           <tr>
-            <td>church</td>
-            <td>chu</td>
-            <td>r</td>
-            <td>ch</td>
+            <td>chismis</td>
+            <td>chi</td>
+            <td>s</td>
+            <td>mi</td>
+            <td>s</td>
           </tr>
         </tbody>
       </table>

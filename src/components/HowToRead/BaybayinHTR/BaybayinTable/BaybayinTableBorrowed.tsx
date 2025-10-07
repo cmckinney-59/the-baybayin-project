@@ -25,7 +25,7 @@ export default function BaybayinTableBorrowed() {
           <tr>
             <td className="baybayin-letter">k+</td>
             <td>K</td>
-            <td>C</td>
+            <td>C / Qu (Spa)</td>
           </tr>
           <tr>
             <td className="baybayin-letter">b+</td>
@@ -38,9 +38,19 @@ export default function BaybayinTableBorrowed() {
             <td>P / Ph</td>
           </tr>
           <tr>
+            <td className="baybayin-letter">h+</td>
+            <td>H</td>
+            <td>J (Spa)</td>
+          </tr>
+          <tr>
             <td className="baybayin-letter">s+</td>
             <td>S</td>
-            <td>Z</td>
+            <td>C / Z</td>
+          </tr>
+          <tr>
+            <td className="baybayin-letter">t+s+</td>
+            <td>Ts</td>
+            <td>Ch</td>
           </tr>
           <tr>
             <td className="baybayin-letter">siy+ / s+y+</td>
@@ -52,20 +62,11 @@ export default function BaybayinTableBorrowed() {
             <td>Diy / Dy</td>
             <td>J (Eng)</td>
           </tr>
-          <tr>
-            <td className="baybayin-letter">h+</td>
-            <td>H</td>
-            <td>J (Spa)</td>
-          </tr>
+
           <tr>
             <td className="baybayin-letter">kuw+</td>
             <td>Kuw</td>
             <td>Qu (Spa / Eng)</td>
-          </tr>
-          <tr>
-            <td className="baybayin-letter">k+</td>
-            <td>K</td>
-            <td>Qu (Spa)</td>
           </tr>
         </tbody>
       </table>
