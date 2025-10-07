@@ -9,10 +9,10 @@ export default function BaybayinHowToUse() {
 
   return (
     <CollapsibleSection title="How To Use" defaultExpanded={false}>
-      <p>Start typing your text to see the transliteration in real-time.</p>
+      <p>Type in text to transliterate in real-time.</p>
       <p>
-        Click a button below transliterator to save to Excel, Word, Text, or
-        copy to clipboard.
+        Click a button below transliterator to save to Excel, Word, or copy to
+        clipboard.
       </p>
       <p>
         Download and install the Baybayin font to see the script in Word or
