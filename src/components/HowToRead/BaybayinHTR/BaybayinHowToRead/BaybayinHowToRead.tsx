@@ -25,14 +25,14 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">am</th>
-            <th className="baybayin-letter">a</th>
+            <th className="baybayin-letter-red">a</th>
             <th className="baybayin-letter">m</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>ama</td>
-            <td>a</td>
+            <td className="letter-red">a</td>
             <td>ma</td>
           </tr>
         </tbody>
@@ -42,8 +42,8 @@ export default function BaybayinHowToRead() {
           <tr>
             <th className="baybayin-letter">maari</th>
             <th className="baybayin-letter">m</th>
-            <th className="baybayin-letter">a</th>
-            <th className="baybayin-letter">a</th>
+            <th className="baybayin-letter-red">a</th>
+            <th className="baybayin-letter-red">a</th>
             <th className="baybayin-letter">ri</th>
           </tr>
         </thead>
@@ -69,8 +69,8 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">bk</th>
-            <th className="baybayin-letter">b</th>
-            <th className="baybayin-letter">k</th>
+            <th className="baybayin-letter-red">b</th>
+            <th className="baybayin-letter-red">k</th>
           </tr>
         </thead>
         <tbody>
@@ -97,10 +97,10 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">filipino</th>
-            <th className="baybayin-letter">fi</th>
-            <th className="baybayin-letter">li</th>
-            <th className="baybayin-letter">pi</th>
-            <th className="baybayin-letter">no</th>
+            <th className="baybayin-letter-red">fi</th>
+            <th className="baybayin-letter-red">li</th>
+            <th className="baybayin-letter-red">pi</th>
+            <th className="baybayin-letter-red">no</th>
           </tr>
         </thead>
         <tbody>
@@ -125,7 +125,7 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">akiN+</th>
             <th className="baybayin-letter">a</th>
             <th className="baybayin-letter">ki</th>
-            <th className="baybayin-letter">N+</th>
+            <th className="baybayin-letter-red">N+</th>
           </tr>
         </thead>
         <tbody>
@@ -151,7 +151,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">nN+</th>
-            <th className="baybayin-letter">n</th>
+            <th className="baybayin-letter-red">n</th>
             <th className="baybayin-letter">N+</th>
           </tr>
         </thead>
@@ -168,7 +168,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">mN</th>
-            <th className="baybayin-letter">m</th>
+            <th className="baybayin-letter-red">m</th>
             <th className="baybayin-letter">N</th>
           </tr>
         </thead>
@@ -207,7 +207,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">siym+pu</th>
-            <th className="baybayin-letter">siy | s+y</th>
+            <th className="baybayin-letter-red">siy | s+y</th>
             <th className="baybayin-letter">m+</th>
             <th className="baybayin-letter">pu</th>
           </tr>
@@ -233,7 +233,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">filipin+s+</th>
-            <th className="baybayin-letter">fi</th>
+            <th className="baybayin-letter-red">fi</th>
             <th className="baybayin-letter">li</th>
             <th className="baybayin-letter">pi</th>
             <th className="baybayin-letter">n+</th>
@@ -270,7 +270,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">kuwes+tiOn+</th>
-            <th className="baybayin-letter">kuwe</th>
+            <th className="baybayin-letter-red">kuwe</th>
             <th className="baybayin-letter">s+</th>
             <th className="baybayin-letter">tyo</th>
             <th className="baybayin-letter">n+</th>
@@ -299,7 +299,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">kezon+</th>
-            <th className="baybayin-letter">ke</th>
+            <th className="baybayin-letter-red">ke</th>
             <th className="baybayin-letter">zo</th>
             <th className="baybayin-letter">n+</th>
           </tr>
@@ -325,7 +325,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">diyesus+</th>
-            <th className="baybayin-letter">diye | d+ye</th>
+            <th className="baybayin-letter-red">diye | d+ye</th>
             <th className="baybayin-letter">su</th>
             <th className="baybayin-letter">s+</th>
           </tr>
@@ -341,7 +341,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">hesus+</th>
-            <th className="baybayin-letter">he</th>
+            <th className="baybayin-letter-red">he</th>
             <th className="baybayin-letter">su</th>
             <th className="baybayin-letter">s+</th>
           </tr>
@@ -373,7 +373,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">sen+t+ro</th>
-            <th className="baybayin-letter">se</th>
+            <th className="baybayin-letter-red">se</th>
             <th className="baybayin-letter">n+</th>
             <th className="baybayin-letter">t+</th>
             <th className="baybayin-letter">ro</th>
@@ -403,7 +403,7 @@ export default function BaybayinHowToRead() {
           <tr>
             <th className="baybayin-letter">sek+reto</th>
             <th className="baybayin-letter">se</th>
-            <th className="baybayin-letter">k+</th>
+            <th className="baybayin-letter-red">k+</th>
             <th className="baybayin-letter">re</th>
             <th className="baybayin-letter">to</th>
           </tr>
@@ -433,7 +433,7 @@ export default function BaybayinHowToRead() {
             <th className="baybayin-letter">an+tsen+t+</th>
             <th className="baybayin-letter">A</th>
             <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">tse</th>
+            <th className="baybayin-letter-red">tse</th>
             <th className="baybayin-letter">n+</th>
             <th className="baybayin-letter">t+</th>
           </tr>
@@ -468,7 +468,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">tsis+mis+</th>
-            <th className="baybayin-letter">tsi</th>
+            <th className="baybayin-letter-red">tsi</th>
             <th className="baybayin-letter">s+</th>
             <th className="baybayin-letter">mi</th>
             <th className="baybayin-letter">s+</th>
@@ -498,7 +498,7 @@ export default function BaybayinHowToRead() {
           <tr>
             <th className="baybayin-letter">meknik+</th>
             <th className="baybayin-letter">me</th>
-            <th className="baybayin-letter">k</th>
+            <th className="baybayin-letter-red">k</th>
             <th className="baybayin-letter">ni</th>
             <th className="baybayin-letter">ko</th>
           </tr>
@@ -531,7 +531,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">hesus+</th>
-            <th className="baybayin-letter">he</th>
+            <th className="baybayin-letter-red">he</th>
             <th className="baybayin-letter">su</th>
             <th className="baybayin-letter">s+</th>
           </tr>
@@ -557,10 +557,10 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">Ehip+to</th>
-            <th className="baybayin-letter">E</th>
+            <th className="baybayin-letter-red">E</th>
             <th className="baybayin-letter">hi</th>
             <th className="baybayin-letter">p+</th>
-            <th className="baybayin-letter">to</th>
+            <th className="baybayin-letter-red">to</th>
           </tr>
         </thead>
         <tbody>
@@ -586,7 +586,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">Uso</th>
-            <th className="baybayin-letter">U</th>
+            <th className="baybayin-letter-red">U</th>
             <th className="baybayin-letter">so</th>
           </tr>
         </thead>
@@ -606,7 +606,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">bk</th>
-            <th className="baybayin-letter">b</th>
+            <th className="baybayin-letter-red">b</th>
             <th className="baybayin-letter">k</th>
           </tr>
         </thead>
@@ -629,7 +629,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">p+lno</th>
-            <th className="baybayin-letter">p+</th>
+            <th className="baybayin-letter-red">p+</th>
             <th className="baybayin-letter">l</th>
             <th className="baybayin-letter">no</th>
           </tr>
@@ -647,7 +647,7 @@ export default function BaybayinHowToRead() {
         <thead>
           <tr>
             <th className="baybayin-letter">zeb+r</th>
-            <th className="baybayin-letter">ze</th>
+            <th className="baybayin-letter-red">ze</th>
             <th className="baybayin-letter">b+</th>
             <th className="baybayin-letter">r</th>
           </tr>

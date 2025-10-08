@@ -1,13 +1,3 @@
-.baybayin-image {
-  align-self: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.baybayin-image.alphabet {
-  width: 600px;
-}
-
-.baybayin-image.example {
-  width: 300px;
+.baybayin-letter-red {
+  color: #e74c3c;
 }

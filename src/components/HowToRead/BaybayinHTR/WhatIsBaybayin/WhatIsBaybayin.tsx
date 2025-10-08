@@ -26,7 +26,15 @@ export default function WhatIsBaybayin() {
         uses "kudlit" (diacritical marks) that modify consonant characters to
         represent different vowel sounds, creating a distinctive writing system.
         To explore Baybayin further, read the "How To Read" section, or download
-        our comprehensive "How To Read Baybayin" PDF guide on the Projects page.
+        our comprehensive{" "}
+        <a
+          href="/src/assets/projects/BaybayinHowToReadV1.pdf"
+          download="HowToReadBaybayin.pdf"
+          className="link"
+        >
+          "How To Read Baybayin"
+        </a>{" "}
+        PDF guide.
       </p>
     </CollapsibleSection>
   );

@@ -59,7 +59,11 @@ export default function AboutPage() {
       <h3>Future</h3>
       <p>
         We currently have several projects in the works. For a full list of
-        projects, please visit the <a href="#/projects">Projects</a> page.
+        projects, please visit the{" "}
+        <a className="link" href="#/projects">
+          Projects
+        </a>{" "}
+        page.
       </p>
       <p>
         Overall, working on these projects has been a great joy. The people and

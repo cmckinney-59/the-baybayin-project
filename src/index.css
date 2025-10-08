@@ -242,3 +242,37 @@ button:hover:not(:disabled) {
 .phonetic-input {
   font-size: 20px;
 }
+
+.link {
+  color: var(--link-color, #2c5aa0);
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--link-color, #2c5aa0);
+  text-decoration-thickness: 2px;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  color: var(--link-hover-color, #1a3d6b);
+  text-decoration-color: var(--link-hover-color, #1a3d6b);
+}
+
+/* Light mode (default) */
+:root {
+  --link-color: #2c5aa0;
+  --link-hover-color: #1a3d6b;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link-color: #64b5f6;
+    --link-hover-color: #90caf9;
+  }
+}
+
+/* Manual dark mode class (if you have a dark mode toggle) */
+.dark-mode {
+  --link-color: #64b5f6;
+  --link-hover-color: #90caf9;
+}
