@@ -34,7 +34,41 @@ export default function ProjectsPage() {
             </button>
           </div>
         </div>
-        <h2>More to come...</h2>
+        <h2>Current Projects</h2>
+        <table className="baybayin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ang Bagong Tipan</td>
+              <td>First Draft Completed</td>
+            </tr>
+            <tr>
+              <td>Ang Aklat ni Mormon</td>
+              <td>Pending Approval</td>
+            </tr>
+            <tr>
+              <td>The Family Proclamation</td>
+              <td>Pending Approval</td>
+            </tr>
+            <tr>
+              <td>The Restoration</td>
+              <td>Pending Approval</td>
+            </tr>
+            <tr>
+              <td>The Living Christ</td>
+              <td>Second Draft Completed</td>
+            </tr>
+            <tr>
+              <td>The Articles of Faith</td>
+              <td>Second Draft Completed</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

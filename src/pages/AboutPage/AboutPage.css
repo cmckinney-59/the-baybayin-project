@@ -18,3 +18,16 @@
   object-fit: cover;
   flex-shrink: 0;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .about-intro-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .family-image {
+    width: 100%;
+    max-width: 400px;
+  }
+}
