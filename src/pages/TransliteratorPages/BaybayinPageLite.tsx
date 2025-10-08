@@ -8,8 +8,8 @@ export default function BaybayinPageLite() {
     <>
       <TransliteratorLite title="Baybayin" />
       <BaybayinHowToUse />
-      <BaybayinHowToRead />
       <WhatIsBaybayin />
+      <BaybayinHowToRead />
     </>
   );
 }

@@ -26,7 +26,7 @@ export default function FontInstallationDialog({
               Okay
             </button>
             <button className="confirm-button" onClick={onConfirm}>
-              Download Font
+              Download
             </button>
           </div>
         </div>

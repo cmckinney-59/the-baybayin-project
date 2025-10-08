@@ -367,8 +367,7 @@ export default function BaybayinHowToRead() {
       <p>
         The letter C contributes to forming multiple different sounds in various
         borrowed words. It can be expressed having an "s", "k" or "ch" sound.
-        Similar to "sh" and "j", the "ch" sound is expressed by "ts". See
-        examples below:
+        The "ch" sound is expressed by "ts". See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -462,8 +461,8 @@ export default function BaybayinHowToRead() {
       </table>
 
       <p>
-        When Ch is used it commonly is expressed as "ch" or "k". See examples
-        below:
+        When Ch is used it commonly is expressed as "ch" (ts) or "k". See
+        examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -601,8 +600,7 @@ export default function BaybayinHowToRead() {
       </table>
 
       <p>
-        The final borrowed consonants are "v", "ph", "p" and "z". See examples
-        below:
+        The final borrowed consonants are "v", "p" and "z". See examples below:
       </p>
       <table className="baybayin-example">
         <thead>
@@ -624,29 +622,6 @@ export default function BaybayinHowToRead() {
             <td>vaka</td>
             <td>va</td>
             <td>ka</td>
-          </tr>
-        </tbody>
-      </table>
-      <table className="baybayin-example">
-        <thead>
-          <tr>
-            <th className="baybayin-letter">fon</th>
-            <th className="baybayin-letter">fo</th>
-            <th className="baybayin-letter">n+</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>fon</td>
-            <td>fo</td>
-            <td>n</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>phone</td>
-            <td>pho</td>
-            <td>ne</td>
           </tr>
         </tbody>
       </table>

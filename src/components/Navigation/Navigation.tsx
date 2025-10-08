@@ -40,15 +40,15 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={onNavigate} title="About">
-              <AiOutlineInfoCircle className="nav-icon" />
-              <span className="nav-text">About</span>
-            </Link>
-          </li>
-          <li>
             <Link to="/projects" onClick={onNavigate} title="Projects">
               <AiOutlineProject className="nav-icon" />
               <span className="nav-text">Projects</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={onNavigate} title="About">
+              <AiOutlineInfoCircle className="nav-icon" />
+              <span className="nav-text">About</span>
             </Link>
           </li>
           {/* <li>
