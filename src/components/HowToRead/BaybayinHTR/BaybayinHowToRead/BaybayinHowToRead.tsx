@@ -85,7 +85,7 @@ export default function BaybayinHowToRead() {
         The next two symbols are called "kudlits". A kudlit is added either
         above or below a consonant symbol to modify which vowel follows. If a
         kudlit is added above the vowel that follows is either an "i" or an "e".
-        If a kudlit is added above the vowel that follows is either an "o" or a
+        If a kudlit is added below the vowel that follows is either an "o" or a
         "u".
       </p>
       <p>
@@ -157,7 +157,7 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
-            <td>nang</td>
+            <td>nang (ng)</td>
             <td>na</td>
             <td>ng</td>
           </tr>
@@ -174,7 +174,7 @@ export default function BaybayinHowToRead() {
         </thead>
         <tbody>
           <tr>
-            <td>manga</td>
+            <td>manga (mga)</td>
             <td>ma</td>
             <td>nga</td>
           </tr>
