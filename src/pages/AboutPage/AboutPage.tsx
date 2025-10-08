@@ -1,13 +1,19 @@
+import familyImage from "../../assets/images/family.jpg";
+import "./AboutPage.css";
+
 export default function AboutPage() {
   return (
     <>
       <h1>About</h1>
-      <p>
-        Hi, my name is Chaz. I am a husband, a father and a software engineer. I
-        am also the founder of The Baybayin Project. I was born and raised in
-        Utah. I currently live in Alberta, Canada with my wife and three
-        children.
-      </p>
+      <div className="about-intro-container">
+        <p className="about-intro-text">
+          Hi, my name is Chaz. I am a husband, a father and a software engineer.
+          I am also the founder of The Baybayin Project. I was born and raised
+          in Utah. I currently live in Alberta, Canada with my wife and three
+          children.
+        </p>
+        <img src={familyImage} alt="Family" className="family-image" />
+      </div>
       <h2>How it began</h2>
       <h3>Mission Call</h3>
       <p>

@@ -3,7 +3,7 @@ import type { JSX } from "react";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Root";
 import HomePage from "./pages/HomePage/HomePage";
-import AboutPage from "./pages/AboutPage";
+import AboutPage from "./pages/AboutPage/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 // import ShopPage from "./pages/ShopPage";
 import BaybayinPage from "./pages/TransliteratorPages/BaybayinPage";
