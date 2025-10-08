@@ -9,14 +9,9 @@ Release 1.0
 RELEASE 2.0
 
 Modal
-- FIX MODAL CLOSING AFTER FIRST QUESTION
-- Move all into one modal
-- Fix skipping word (ie if there is only one word and you opt to skip then it should still display that word)
-- Update 'Reviewing word 1 of 5' to only show the words that need to be reviewed
 
+PHASE 7 : AUREBESH
 
-PHASE 7 : DESERET
-
-PHASE 8 : AUREBESH
+PHASE 8 : DESERET
 
 PHASE 9 : OTHER FILIPINO ALPHABETS
