@@ -6,6 +6,10 @@ import TransliteratorLite from "../../components/TransliteratorLite/Transliterat
 export default function BaybayinPageLite() {
   return (
     <>
+      <p style={{ marginTop: "-10px" }}>"Kung anong bigkas, siyang baybay."</p>
+      <p style={{ marginTop: "-10px" }}>
+        - Enter text phonetically for best results.
+      </p>
       <TransliteratorLite title="Baybayin" />
       <BaybayinHowToUse />
       <WhatIsBaybayin />
