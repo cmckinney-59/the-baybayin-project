@@ -58,15 +58,15 @@
   font-weight: normal;
 }
 
-.baybayin-letter-red {
+.baybayin-letter-blue {
   font-family: "Baybayin";
   font-weight: bold;
-  color: #e74c3c !important;
+  color: #64b5f6 !important;
 }
 
-.letter-red {
+.letter-blue {
   font-weight: bold;
-  color: #e74c3c !important;
+  color: #64b5f6 !important;
 }
 
 /* Responsive */
