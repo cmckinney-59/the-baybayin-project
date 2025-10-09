@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import logo from "../../assets/images/logo.png";
+// import logo from "../../assets/images/logo.png";
 import "./Header.css";
 import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
 
@@ -51,7 +51,7 @@ export default function Header({
         )}
       </button>
       <div className="header-content">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h1 className="App-Header-Text">The Baybayin Project</h1>
       </div>
       <button

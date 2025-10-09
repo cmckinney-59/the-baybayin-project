@@ -8,7 +8,7 @@ export default function BaybayinPageLite() {
     <>
       <p style={{ marginTop: "-10px" }}>"Kung anong bigkas, siyang baybay."</p>
       <p style={{ marginTop: "-10px" }}>
-        - Enter text phonetically for best results.
+        Enter text as it sounds for best results.
       </p>
       <TransliteratorLite title="Baybayin" />
       <BaybayinHowToUse />
