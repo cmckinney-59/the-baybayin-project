@@ -28,7 +28,7 @@ export default function WhatIsBaybayin() {
         To explore Baybayin further, read the "How To Read" section, or download
         our comprehensive{" "}
         <a
-          href="/src/assets/projects/BaybayinHowToReadV1.pdf"
+          href="/src/assets/projects/BaybayinHowToReadV2.pdf"
           download="HowToReadBaybayin.pdf"
           className="link"
         >
