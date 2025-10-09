@@ -134,16 +134,17 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .baybayin-example {
-    font-size: 12px;
+  .baybayin-example th {
+    font-size: 12px !important;
+    padding: 8px 12px;
   }
 
-  .baybayin-example th,
   .baybayin-example td {
+    font-size: 12px !important;
     padding: 8px 12px;
   }
 
   .baybayin-example td:first-child {
-    font-size: 16px;
+    font-size: 12px !important;
   }
 }
