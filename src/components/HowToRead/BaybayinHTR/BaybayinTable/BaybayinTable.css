@@ -50,7 +50,7 @@
 
 .baybayin-table td:nth-child(3) {
   font-family: "Courier New", monospace;
-  color: #e74c3c;
+  color: var(--text-primary);
 }
 
 .baybayin-letter {
