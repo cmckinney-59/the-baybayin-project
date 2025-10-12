@@ -281,3 +281,8 @@ button:hover:not(:disabled) {
 #options {
   margin-top: 10px;
 }
+
+/* TransliterateButton */
+.transliterate-button-icon {
+  margin-right: 5px;
+}

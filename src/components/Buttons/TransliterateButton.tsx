@@ -17,7 +17,7 @@ export default function TransliterateButton({
       onClick={onClick}
       disabled={isDisabled}
     >
-      <AiOutlineTranslation style={{ marginRight: "5px" }} />
+      <AiOutlineTranslation className="transliterate-button-icon" />
       Transliterate
     </button>
   );
