@@ -477,3 +477,138 @@ button:hover:not(:disabled) {
   background-color: var(--bg-primary);
   opacity: 0.8;
 }
+
+/* TransliteratorLite */
+.transliteration-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 720px) {
+  .transliteration-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.transliteration-textarea {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  border: 1px solid var(--button-border);
+  background-color: var(--bg-primary);
+  resize: none;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.transliteration-output {
+  font-family: "Baybayin";
+  border: 1px solid var(--button-border);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.transliteration-textarea,
+.transliteration-output {
+  text-align: left;
+  font-size: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 175px;
+  max-height: 600px; /* Add maximum height to prevent excessive growth */
+  padding: 10px;
+  border-radius: 10px;
+  overflow-y: auto;
+  display: block;
+  resize: vertical; /* Allow vertical resizing */
+  transition: height 0.2s ease; /* Smooth height transitions */
+}
+
+.transliteration-textarea:focus {
+  outline: none;
+  border: 1px solid var(--button-border);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.dictionary-output ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dictionary-output li {
+  margin: 5px 0;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .action-buttons {
+    gap: 5px;
+  }
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.clear-input-button,
+.clear-output-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--text-primary);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clear-output-button {
+  background-color: var(--bg-secondary);
+}
+
+.clear-input-button:hover {
+  background-color: var(--bg-secondary);
+  opacity: 0.8;
+}
+
+.clear-output-button:hover {
+  background-color: var(--bg-primary);
+  opacity: 0.8;
+}
+
+.note-paragraph {
+  color: #e74c3c;
+  text-align: center;
+  margin: 10px 0;
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.dark-mode .note-paragraph {
+  color: #ff6b6b;
+}
