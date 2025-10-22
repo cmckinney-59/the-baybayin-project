@@ -1,10 +1,10 @@
-import Transliterator2 from "../../components/Transliterator2/Transliterator2";
+import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
 import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleSection";
 
 export default function DeseretPage() {
   return (
     <>
-      <Transliterator2 title="Deseret" />
+      <TransliteratorLite title="Deseret" />
       <CollapsibleSection title="About Deseret" defaultExpanded={false}>
         <p>
           Deseret is a writing system used by the Deseret Alphabet, a writing

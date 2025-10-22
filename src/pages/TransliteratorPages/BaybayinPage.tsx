@@ -1,9 +1,9 @@
-import Transliterator2 from "../../components/Transliterator2/Transliterator2";
+import Transliterator3 from "../../components/Transliterator3/Transliterator3";
 
 export default function BaybayinPage() {
   return (
     <>
-      <Transliterator2 title="Baybayin" />
+      <Transliterator3 title="Baybayin" />
     </>
   );
 }

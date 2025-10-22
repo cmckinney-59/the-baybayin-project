@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-import "./TransliteratorLite.css";
 import processBaybayinText from "../../utils/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 
