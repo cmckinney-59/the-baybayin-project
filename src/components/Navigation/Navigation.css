@@ -53,16 +53,6 @@
   gap: 12px;
 }
 
-.Navigation-content ul li a:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  color: white;
-}
-
-.Navigation-content ul li a:active {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
-}
-
 .nav-icon {
   font-size: 24px;
   transition: transform 0.2s ease, color 0.2s ease;
@@ -92,10 +82,6 @@
 /* Expanded state - show text */
 .App-Navigation.open .nav-text {
   opacity: 1;
-}
-
-.Navigation-content ul li a:hover .nav-icon {
-  transform: scale(1.1);
 }
 
 @media (min-width: 900px) {
