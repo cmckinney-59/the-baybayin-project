@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import "./Navigation.css";
 import { Link, useLocation } from "react-router-dom";
 import {
   AiOutlineHome,
