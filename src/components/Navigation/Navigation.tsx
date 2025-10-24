@@ -25,7 +25,6 @@ export default function Navigation({
 }: NavigationProps): JSX.Element {
   const location = useLocation();
 
-  // Helper function to determine if a route is active
   const isActiveRoute = (path: string): boolean => {
     if (path === "/home") {
       return location.pathname === "/" || location.pathname === "/home";
