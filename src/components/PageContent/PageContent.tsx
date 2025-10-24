@@ -1,9 +1,8 @@
 import type { JSX } from "react";
 import "./PageContent.css";
 
-import Transliterator from "../Transliterator/Transliterator.tsx";
-import Transliterator2 from "../Transliterator2/Transliterator2.tsx";
 import TransliteratorLite from "../TransliteratorLite/TransliteratorLite.tsx";
+import Transliterator3 from "../Transliterator3/Transliterator3.tsx";
 
 interface PageContentProps {
   currentPage: string;
@@ -16,11 +15,11 @@ export default function PageContent({
 }: PageContentProps): JSX.Element {
   return (
     <main className="page-content">
-      {title && title !== "Home" && <Transliterator title={title} />}
+      {title && title !== "Home" && <Transliterator3 title={title} />}
       {currentPage === "BaybayinLite" ? (
         <TransliteratorLite title="Baybayin Lite" />
       ) : (
-        <Transliterator2 title={title} />
+        <Transliterator3 title={title} />
       )}
     </main>
   );
