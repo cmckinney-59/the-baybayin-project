@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import "./PageContent.css";
 
 import TransliteratorLite from "../TransliteratorLite/TransliteratorLite.tsx";
 import Transliterator3 from "../Transliterator3/Transliterator3.tsx";
