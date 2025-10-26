@@ -908,3 +908,8 @@ button:hover:not(:disabled) {
     line-height: 1.4;
   }
 }
+
+/* Baybayin Letter Colors */
+.baybayin-letter-red {
+  color: #e74c3c;
+}

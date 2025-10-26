@@ -1,4 +1,3 @@
-import "./BaybayinHowToRead.css";
 import BaybayinTable from "../BaybayinTable/BaybayinTable";
 import BaybayinTableBorrowed from "../BaybayinTable/BaybayinTableBorrowed";
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
