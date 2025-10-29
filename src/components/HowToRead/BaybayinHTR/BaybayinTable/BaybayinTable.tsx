@@ -1,5 +1,3 @@
-import "./BaybayinTable.css";
-
 export default function BaybayinTable() {
   return (
     <>

@@ -1,5 +1,3 @@
-import "../PageContent/PageContent.css";
-
 interface FontInstallationDialogProps {
   onClose: () => void;
   onConfirm: () => void;

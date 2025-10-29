@@ -1,4 +1,3 @@
-import "./BaybayinHowToUse.css";
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 import downloadFont from "../../../../utils/DownloadFont";
 
