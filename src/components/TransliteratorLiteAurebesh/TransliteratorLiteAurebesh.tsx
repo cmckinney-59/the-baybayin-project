@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
-import TransliterateButton from "../Buttons/TransliterateButton.tsx";
 
 interface TransliteratorProps {
   title: string;
@@ -10,11 +9,29 @@ interface TransliteratorProps {
 
 type Dictionary = { [word: string]: string };
 
-export default function TransliteratorLite({ title }: TransliteratorProps) {
+export default function TransliteratorLiteAurebesh({
+  title,
+}: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
+
+  useEffect(() => {
+    if (textareaRef.current && outputRef.current) {
+      textareaRef.current.style.height = "auto";
+      outputRef.current.style.height = "auto";
+
+      const textareaHeight = textareaRef.current.scrollHeight;
+      const outputHeight = outputRef.current.scrollHeight;
+      const maxHeight = Math.max(textareaHeight, outputHeight, 175);
+
+      textareaRef.current.style.height = maxHeight + "px";
+      outputRef.current.style.height = maxHeight + "px";
+    }
+  }, [text, transliteratedText]);
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
@@ -22,7 +39,7 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
     const processedWords: string[] = [];
 
     for (const word of words) {
-      const processed = processBaybayinText(word);
+      const processed = processAurebeshText(word);
       newDict[word] = processed;
       processedWords.push(processed);
     }
@@ -31,8 +48,10 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
     setTransliteratedText(processedWords.join(" "));
   };
 
-  const handleTransliterateButtonClick = (): void => {
-    console.log("Transliterate button clicked");
+  const handleClearInput = () => {
+    setText("");
+    setTransliteratedText("");
+    setWordsDictionary({});
   };
 
   return (
@@ -40,6 +59,7 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
+            ref={textareaRef}
             className="transliteration-textarea"
             placeholder="Enter text to be transliterated here..."
             value={text}
@@ -53,7 +73,7 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             <button
               className="clear-input-button"
               onClick={() => {
-                setText("");
+                handleClearInput();
               }}
               aria-label="Clear input"
             >
@@ -63,14 +83,11 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
         </div>
         <div className="textarea-wrapper">
           <div
+            ref={outputRef}
             className={`transliteration-output ${
               textareaHasText
-                ? title === "Baybayin"
-                  ? "baybayin-font"
-                  : title === "Aurebesh"
+                ? title === "Aurebesh"
                   ? "aurebesh-font"
-                  : title === "Deseret"
-                  ? "deseret-font"
                   : ""
                 : ""
             }`}
@@ -81,8 +98,9 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
             <button
               className="clear-output-button"
               onClick={() => {
-                setTransliteratedText("");
+                handleClearInput();
               }}
+              aria-label="Clear output"
             >
               ×
             </button>
@@ -90,13 +108,6 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
         </div>
       </div>
       <div className="action-buttons">
-        <div>
-          <TransliterateButton
-            isActive={textareaHasText}
-            onClick={handleTransliterateButtonClick}
-            isDisabled={!textareaHasText}
-          />
-        </div>
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import processBaybayinText from "../../utils/BaybayinTextProcessor.ts";
+import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 
 interface TransliteratorProps {

@@ -48,19 +48,19 @@ const router = createHashRouter([
         element: <TransliteratorPage />,
         children: [
           {
-            path: "/transliterator/baybayin",
+            path: "baybayin",
             element: <BaybayinPage />,
           },
           {
-            path: "/transliterator/baybayin-lite",
+            path: "baybayin-lite",
             element: <BaybayinPageLite />,
           },
           {
-            path: "/transliterator/deseret",
+            path: "deseret",
             element: <DeseretPage />,
           },
           {
-            path: "/transliterator/aurebesh",
+            path: "aurebesh",
             element: <AurebeshPage />,
           },
         ],
