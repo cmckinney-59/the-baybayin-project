@@ -13,7 +13,10 @@ export default function BaybayinHowToUse() {
         Click a button below transliterator to save to Excel, Word, or copy to
         clipboard.
       </p>
-      <p>Download and install the font to see the script in Word or Excel.</p>
+      <p>
+        Download and install the Baybayin font to see the script in Word or
+        Excel.
+      </p>
       <button onClick={handleFontDownload} className="font-download-button">
         Download Font
       </button>
