@@ -1,5 +1,6 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 import downloadFont from "../../../../utils/DownloadFont";
+import DownloadFontButton from "../../../Buttons/DownloadFontButton";
 
 export default function AurebeshHowToUse() {
   const handleFontDownload = () => {
@@ -20,6 +21,7 @@ export default function AurebeshHowToUse() {
       <button onClick={handleFontDownload} className="font-download-button">
         Download Font
       </button>
+      <DownloadFontButton />
     </CollapsibleSection>
   );
 }
