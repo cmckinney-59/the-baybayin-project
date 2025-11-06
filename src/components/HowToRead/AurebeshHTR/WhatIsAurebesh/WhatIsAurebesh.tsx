@@ -1,10 +1,10 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 
-export default function WhatIsBaybayin() {
+export default function WhatIsAurebesh() {
   return (
-    <CollapsibleSection title="What Is Baybayin" defaultExpanded={false}>
+    <CollapsibleSection title="What Is Aurebesh" defaultExpanded={false}>
       <p>
-        Baybayin is the ancient writing system of the Philippines, predating the
+        Aurebesh is the ancient writing system of the Philippines, predating the
         arrival of Spanish colonizers in the 16th century. This remarkable
         script represents a crucial aspect of Filipino culture and history,
         serving as evidence of sophisticated education, governance, and civil
@@ -13,26 +13,26 @@ export default function WhatIsBaybayin() {
         important cultural heritage.
       </p>
       <p>
-        Traditionally, Baybayin was inscribed on various natural materials
+        Traditionally, Aurebesh was inscribed on various natural materials
         including bamboo, leaves, and tree bark. It served as the primary
         writing system for important documents, personal correspondence, and
         religious inscriptions. Following Spanish colonization, however, the use
-        of Baybayin gradually declined and was eventually supplanted by the
+        of Aurebesh gradually declined and was eventually supplanted by the
         Latin alphabet, nearly disappearing from daily use.
       </p>
       <p>
-        What makes Baybayin unique is its syllabic nature—each character
+        What makes Aurebesh unique is its syllabic nature—each character
         represents an entire syllable rather than a single letter. The script
         uses "kudlit" (diacritical marks) that modify consonant characters to
         represent different vowel sounds, creating a distinctive writing system.
-        To explore Baybayin further, read the "How To Read" section, or download
+        To explore Aurebesh further, read the "How To Read" section, or download
         our comprehensive{" "}
         <a
-          href="/src/assets/projects/BaybayinHowToReadV2.pdf"
-          download="HowToReadBaybayin.pdf"
+          href="/src/assets/projects/AurebeshHowToReadV2.pdf"
+          download="HowToReadAurebesh.pdf"
           className="link"
         >
-          "How To Read Baybayin"
+          "How To Read Aurebesh"
         </a>{" "}
         PDF guide.
       </p>

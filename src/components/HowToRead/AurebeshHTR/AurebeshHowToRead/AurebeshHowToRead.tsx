@@ -1,15 +1,15 @@
-import BaybayinTable from "../BaybayinTable/BaybayinTable";
-import BaybayinTableBorrowed from "../BaybayinTable/BaybayinTableBorrowed";
+import AurebeshTable from "../AurebeshTable/AurebeshTable";
+import AurebeshTableBorrowed from "../AurebeshTable/AurebeshTableBorrowed";
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 
-export default function BaybayinHowToRead() {
+export default function AurebeshHowToRead() {
   return (
     <CollapsibleSection title="How To Read" defaultExpanded={false}>
       <p>
-        Below is a table of the symbols used in "Modified Baybayin" alphabet.
+        Below is a table of the symbols used in "Modified Aurebesh" alphabet.
         This is the most popular form of the script.
       </p>
-      <BaybayinTable />
+      <AurebeshTable />
 
       <h2>Examples</h2>
       <p>
@@ -20,12 +20,12 @@ export default function BaybayinHowToRead() {
         word starts with a vowel, like “ama”, or when there are two consecutive
         vowels, like “maaari”. See examples below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">am</th>
-            <th className="baybayin-letter-blue">a</th>
-            <th className="baybayin-letter">m</th>
+            <th className="Aurebesh-letter">am</th>
+            <th className="Aurebesh-letter-blue">a</th>
+            <th className="Aurebesh-letter">m</th>
           </tr>
         </thead>
         <tbody>
@@ -36,14 +36,14 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">maari</th>
-            <th className="baybayin-letter">m</th>
-            <th className="baybayin-letter-blue">a</th>
-            <th className="baybayin-letter-blue">a</th>
-            <th className="baybayin-letter">ri</th>
+            <th className="Aurebesh-letter">maari</th>
+            <th className="Aurebesh-letter">m</th>
+            <th className="Aurebesh-letter-blue">a</th>
+            <th className="Aurebesh-letter-blue">a</th>
+            <th className="Aurebesh-letter">ri</th>
           </tr>
         </thead>
         <tbody>
@@ -64,12 +64,12 @@ export default function BaybayinHowToRead() {
         consonant without a mark above or below (more on that later). See
         example below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">bk</th>
-            <th className="baybayin-letter-blue">b</th>
-            <th className="baybayin-letter-blue">k</th>
+            <th className="Aurebesh-letter">bk</th>
+            <th className="Aurebesh-letter-blue">b</th>
+            <th className="Aurebesh-letter-blue">k</th>
           </tr>
         </thead>
         <tbody>
@@ -92,14 +92,14 @@ export default function BaybayinHowToRead() {
         because they are followed by “i”. The last symbol will have a kudlit
         below because it is followed by an “o”. See example below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">filipino</th>
-            <th className="baybayin-letter-blue">fi</th>
-            <th className="baybayin-letter-blue">li</th>
-            <th className="baybayin-letter-blue">pi</th>
-            <th className="baybayin-letter-blue">no</th>
+            <th className="Aurebesh-letter">filipino</th>
+            <th className="Aurebesh-letter-blue">fi</th>
+            <th className="Aurebesh-letter-blue">li</th>
+            <th className="Aurebesh-letter-blue">pi</th>
+            <th className="Aurebesh-letter-blue">no</th>
           </tr>
         </thead>
         <tbody>
@@ -118,13 +118,13 @@ export default function BaybayinHowToRead() {
         “aking” the symbol for “ng” has a krus kudlit below because it is not
         followed by a vowel. See example below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">akiN+</th>
-            <th className="baybayin-letter">a</th>
-            <th className="baybayin-letter">ki</th>
-            <th className="baybayin-letter-blue">N+</th>
+            <th className="Aurebesh-letter">akiN+</th>
+            <th className="Aurebesh-letter">a</th>
+            <th className="Aurebesh-letter">ki</th>
+            <th className="Aurebesh-letter-blue">N+</th>
           </tr>
         </thead>
         <tbody>
@@ -136,22 +136,22 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <h2>The First Rule of Baybayin</h2>
+      <h2>The First Rule of Aurebesh</h2>
       <p>"Kung anong bigkas, siyang baybay."</p>
       <p>
-        Baybayin is a phonetic alphabet meaning, words are written how they
+        Aurebesh is a phonetic alphabet meaning, words are written how they
         sound not necessarily as they are expressed in the Latin alphabet. The
         most common examples of this are "ng" and "mga". These two words are
         pronounced "nang" and "manga" and should be expressed as such when
-        written in Baybayin.
+        written in Aurebesh.
       </p>
 
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">nN+</th>
-            <th className="baybayin-letter-blue">n</th>
-            <th className="baybayin-letter">N+</th>
+            <th className="Aurebesh-letter">nN+</th>
+            <th className="Aurebesh-letter-blue">n</th>
+            <th className="Aurebesh-letter">N+</th>
           </tr>
         </thead>
         <tbody>
@@ -163,12 +163,12 @@ export default function BaybayinHowToRead() {
         </tbody>
       </table>
 
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">mN</th>
-            <th className="baybayin-letter-blue">m</th>
-            <th className="baybayin-letter">N</th>
+            <th className="Aurebesh-letter">mN</th>
+            <th className="Aurebesh-letter-blue">m</th>
+            <th className="Aurebesh-letter">N</th>
           </tr>
         </thead>
         <tbody>
@@ -184,31 +184,31 @@ export default function BaybayinHowToRead() {
       <p>
         There are many words in Tagalog that have been borrowed from other
         languages. Most notably from Spanish and English. This is why, when
-        transliterating modern Tagalog into Baybayin, many symbols represent two
+        transliterating modern Tagalog into Aurebesh, many symbols represent two
         or more letters from the Latin alphabet OR are a combination of symbols
-        to produce a similar sound. Many words when expressed in Baybayin will
+        to produce a similar sound. Many words when expressed in Aurebesh will
         first be "Tagalized" or in other words, they are written phonetically
         using the Roman alphabet. (more on these later) Here is a table of the
-        most notable borrowed sounds and how they are expressed in Baybayin:
+        most notable borrowed sounds and how they are expressed in Aurebesh:
       </p>
 
-      <BaybayinTableBorrowed />
+      <AurebeshTableBorrowed />
       <h2>Examples</h2>
       <p>
-        In the following section, each example table contains a Baybayin, a
+        In the following section, each example table contains a Aurebesh, a
         Tagalized, and an original version of each word.
       </p>
       <p>
         Some are a combination of symbols used to mimic certain sounds like
         "siy" or "sy" (informal) for "sh" and "f" for "ph". See examples below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">siym+pu</th>
-            <th className="baybayin-letter-blue">siy | s+y</th>
-            <th className="baybayin-letter">m+</th>
-            <th className="baybayin-letter">pu</th>
+            <th className="Aurebesh-letter">siym+pu</th>
+            <th className="Aurebesh-letter-blue">siy | s+y</th>
+            <th className="Aurebesh-letter">m+</th>
+            <th className="Aurebesh-letter">pu</th>
           </tr>
         </thead>
         <tbody>
@@ -228,15 +228,15 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">filipin+s+</th>
-            <th className="baybayin-letter-blue">fi</th>
-            <th className="baybayin-letter">li</th>
-            <th className="baybayin-letter">pi</th>
-            <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">s+</th>
+            <th className="Aurebesh-letter">filipin+s+</th>
+            <th className="Aurebesh-letter-blue">fi</th>
+            <th className="Aurebesh-letter">li</th>
+            <th className="Aurebesh-letter">pi</th>
+            <th className="Aurebesh-letter">n+</th>
+            <th className="Aurebesh-letter">s+</th>
           </tr>
         </thead>
         <tbody>
@@ -265,13 +265,13 @@ export default function BaybayinHowToRead() {
         different sounds according to the context. These are mainly "diy" or
         "dy" (informal) for "j" and "k" or "kuw" for "qu". See examples below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">kuwliti</th>
-            <th className="baybayin-letter-blue">kuw</th>
-            <th className="baybayin-letter">li</th>
-            <th className="baybayin-letter">ti</th>
+            <th className="Aurebesh-letter">kuwliti</th>
+            <th className="Aurebesh-letter-blue">kuw</th>
+            <th className="Aurebesh-letter">li</th>
+            <th className="Aurebesh-letter">ti</th>
           </tr>
         </thead>
         <tbody>
@@ -291,13 +291,13 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">kezon+</th>
-            <th className="baybayin-letter-blue">ke</th>
-            <th className="baybayin-letter">zo</th>
-            <th className="baybayin-letter">n+</th>
+            <th className="Aurebesh-letter">kezon+</th>
+            <th className="Aurebesh-letter-blue">ke</th>
+            <th className="Aurebesh-letter">zo</th>
+            <th className="Aurebesh-letter">n+</th>
           </tr>
         </thead>
         <tbody>
@@ -317,13 +317,13 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">diyesus+</th>
-            <th className="baybayin-letter-blue">diye | d+ye</th>
-            <th className="baybayin-letter">su</th>
-            <th className="baybayin-letter">s+</th>
+            <th className="Aurebesh-letter">diyesus+</th>
+            <th className="Aurebesh-letter-blue">diye | d+ye</th>
+            <th className="Aurebesh-letter">su</th>
+            <th className="Aurebesh-letter">s+</th>
           </tr>
         </thead>
         <tbody>
@@ -336,10 +336,10 @@ export default function BaybayinHowToRead() {
         </tbody>
         <thead>
           <tr>
-            <th className="baybayin-letter">hesus+</th>
-            <th className="baybayin-letter-blue">he</th>
-            <th className="baybayin-letter">su</th>
-            <th className="baybayin-letter">s+</th>
+            <th className="Aurebesh-letter">hesus+</th>
+            <th className="Aurebesh-letter-blue">he</th>
+            <th className="Aurebesh-letter">su</th>
+            <th className="Aurebesh-letter">s+</th>
           </tr>
         </thead>
         <tbody>
@@ -365,14 +365,14 @@ export default function BaybayinHowToRead() {
         various borrowed words. It can be expressed having an "s", "k" or "ch"
         sound. The "ch" sound is expressed by "ts". See examples below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">sen+t+ro</th>
-            <th className="baybayin-letter-blue">se</th>
-            <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">t+</th>
-            <th className="baybayin-letter">ro</th>
+            <th className="Aurebesh-letter">sen+t+ro</th>
+            <th className="Aurebesh-letter-blue">se</th>
+            <th className="Aurebesh-letter">n+</th>
+            <th className="Aurebesh-letter">t+</th>
+            <th className="Aurebesh-letter">ro</th>
           </tr>
         </thead>
         <tbody>
@@ -394,14 +394,14 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">sek+reto</th>
-            <th className="baybayin-letter">se</th>
-            <th className="baybayin-letter-blue">k+</th>
-            <th className="baybayin-letter">re</th>
-            <th className="baybayin-letter">to</th>
+            <th className="Aurebesh-letter">sek+reto</th>
+            <th className="Aurebesh-letter">se</th>
+            <th className="Aurebesh-letter-blue">k+</th>
+            <th className="Aurebesh-letter">re</th>
+            <th className="Aurebesh-letter">to</th>
           </tr>
         </thead>
         <tbody>
@@ -423,15 +423,15 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">an+tsen+t+</th>
-            <th className="baybayin-letter">A</th>
-            <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter-blue">tse</th>
-            <th className="baybayin-letter">n+</th>
-            <th className="baybayin-letter">t+</th>
+            <th className="Aurebesh-letter">an+tsen+t+</th>
+            <th className="Aurebesh-letter">A</th>
+            <th className="Aurebesh-letter">n+</th>
+            <th className="Aurebesh-letter-blue">tse</th>
+            <th className="Aurebesh-letter">n+</th>
+            <th className="Aurebesh-letter">t+</th>
           </tr>
         </thead>
         <tbody>
@@ -460,14 +460,14 @@ export default function BaybayinHowToRead() {
         When "ch" is used it commonly is expressed as "ts" or "k". See examples
         below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">t+sis+mis+</th>
-            <th className="baybayin-letter-blue">t+si</th>
-            <th className="baybayin-letter">s+</th>
-            <th className="baybayin-letter">mi</th>
-            <th className="baybayin-letter">s+</th>
+            <th className="Aurebesh-letter">t+sis+mis+</th>
+            <th className="Aurebesh-letter-blue">t+si</th>
+            <th className="Aurebesh-letter">s+</th>
+            <th className="Aurebesh-letter">mi</th>
+            <th className="Aurebesh-letter">s+</th>
           </tr>
         </thead>
         <tbody>
@@ -489,14 +489,14 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">meknik+</th>
-            <th className="baybayin-letter">me</th>
-            <th className="baybayin-letter-blue">k</th>
-            <th className="baybayin-letter">ni</th>
-            <th className="baybayin-letter">ko</th>
+            <th className="Aurebesh-letter">meknik+</th>
+            <th className="Aurebesh-letter">me</th>
+            <th className="Aurebesh-letter-blue">k</th>
+            <th className="Aurebesh-letter">ni</th>
+            <th className="Aurebesh-letter">ko</th>
           </tr>
         </thead>
         <tbody>
@@ -524,13 +524,13 @@ export default function BaybayinHowToRead() {
         expressed in the same way as "i" and "u" respectively. See examples
         below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">hesus+</th>
-            <th className="baybayin-letter-blue">he</th>
-            <th className="baybayin-letter">su</th>
-            <th className="baybayin-letter">s+</th>
+            <th className="Aurebesh-letter">hesus+</th>
+            <th className="Aurebesh-letter-blue">he</th>
+            <th className="Aurebesh-letter">su</th>
+            <th className="Aurebesh-letter">s+</th>
           </tr>
         </thead>
         <tbody>
@@ -550,14 +550,14 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">Ehip+to</th>
-            <th className="baybayin-letter-blue">E</th>
-            <th className="baybayin-letter">hi</th>
-            <th className="baybayin-letter">p+</th>
-            <th className="baybayin-letter-blue">to</th>
+            <th className="Aurebesh-letter">Ehip+to</th>
+            <th className="Aurebesh-letter-blue">E</th>
+            <th className="Aurebesh-letter">hi</th>
+            <th className="Aurebesh-letter">p+</th>
+            <th className="Aurebesh-letter-blue">to</th>
           </tr>
         </thead>
         <tbody>
@@ -579,12 +579,12 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">Uso</th>
-            <th className="baybayin-letter-blue">U</th>
-            <th className="baybayin-letter">so</th>
+            <th className="Aurebesh-letter">Uso</th>
+            <th className="Aurebesh-letter-blue">U</th>
+            <th className="Aurebesh-letter">so</th>
           </tr>
         </thead>
         <tbody>
@@ -599,12 +599,12 @@ export default function BaybayinHowToRead() {
       <p>
         The final borrowed consonants are "v", "p" and "z". See examples below:
       </p>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">bk</th>
-            <th className="baybayin-letter-blue">b</th>
-            <th className="baybayin-letter">k</th>
+            <th className="Aurebesh-letter">bk</th>
+            <th className="Aurebesh-letter-blue">b</th>
+            <th className="Aurebesh-letter">k</th>
           </tr>
         </thead>
         <tbody>
@@ -622,13 +622,13 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">p+lno</th>
-            <th className="baybayin-letter-blue">p+</th>
-            <th className="baybayin-letter">l</th>
-            <th className="baybayin-letter">no</th>
+            <th className="Aurebesh-letter">p+lno</th>
+            <th className="Aurebesh-letter-blue">p+</th>
+            <th className="Aurebesh-letter">l</th>
+            <th className="Aurebesh-letter">no</th>
           </tr>
         </thead>
         <tbody>
@@ -640,13 +640,13 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-      <table className="baybayin-example">
+      <table className="Aurebesh-example">
         <thead>
           <tr>
-            <th className="baybayin-letter">zeb+r</th>
-            <th className="baybayin-letter-blue">ze</th>
-            <th className="baybayin-letter">b+</th>
-            <th className="baybayin-letter">r</th>
+            <th className="Aurebesh-letter">zeb+r</th>
+            <th className="Aurebesh-letter-blue">ze</th>
+            <th className="Aurebesh-letter">b+</th>
+            <th className="Aurebesh-letter">r</th>
           </tr>
         </thead>
         <tbody>

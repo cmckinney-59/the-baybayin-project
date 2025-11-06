@@ -1,9 +1,9 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 import downloadFont from "../../../../utils/DownloadFont";
 
-export default function BaybayinHowToUse() {
+export default function AurebeshHowToUse() {
   const handleFontDownload = () => {
-    downloadFont("TagDoc93.ttf");
+    downloadFont("AurebeshBold-Rw1l.ttf");
   };
 
   return (
@@ -14,7 +14,7 @@ export default function BaybayinHowToUse() {
         clipboard.
       </p>
       <p>
-        Download and install the Baybayin font to see the script in Word or
+        Download and install the Aurebesh font to see the script in Word or
         Excel.
       </p>
       <button onClick={handleFontDownload} className="font-download-button">
