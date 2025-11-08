@@ -1,12 +1,7 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
-import downloadFont from "../../../../utils/DownloadFont";
 import DownloadFontButton from "../../../Buttons/DownloadFontButton";
 
 export default function AurebeshHowToUse() {
-  const handleFontDownload = () => {
-    downloadFont("AurebeshBold-Rw1l.ttf");
-  };
-
   return (
     <CollapsibleSection title="How To Use" defaultExpanded={false}>
       <p>Type in text to transliterate in real-time.</p>
@@ -18,9 +13,6 @@ export default function AurebeshHowToUse() {
         Download and install the Aurebesh font to see the script in Word or
         Excel.
       </p>
-      <button onClick={handleFontDownload} className="font-download-button">
-        Download Font
-      </button>
       <DownloadFontButton />
     </CollapsibleSection>
   );
