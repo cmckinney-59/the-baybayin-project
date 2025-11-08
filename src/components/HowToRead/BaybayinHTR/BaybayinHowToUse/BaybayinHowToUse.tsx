@@ -1,11 +1,7 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
-import downloadFont from "../../../../utils/DownloadFont";
+import DownloadFontButton from "../../../Buttons/DownloadFontButton";
 
 export default function BaybayinHowToUse() {
-  const handleFontDownload = () => {
-    downloadFont("TagDoc93.ttf");
-  };
-
   return (
     <CollapsibleSection title="How To Use" defaultExpanded={false}>
       <p>Type in text to transliterate in real-time.</p>
@@ -14,9 +10,7 @@ export default function BaybayinHowToUse() {
         clipboard.
       </p>
       <p>Download and install the font to see the script in Word or Excel.</p>
-      <button onClick={handleFontDownload} className="font-download-button">
-        Download Font
-      </button>
+      <DownloadFontButton />
     </CollapsibleSection>
   );
 }
