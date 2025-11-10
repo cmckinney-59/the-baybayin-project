@@ -1113,3 +1113,8 @@ button:hover:not(:disabled) {
     font-size: 18px !important;
   }
 }
+
+/* Quote styling */
+.quote {
+  margin-top: -10px;
+}
