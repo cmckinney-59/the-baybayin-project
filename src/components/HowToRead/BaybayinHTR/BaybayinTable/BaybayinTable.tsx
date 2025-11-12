@@ -2,7 +2,7 @@ export default function BaybayinTable() {
   return (
     <>
       <h3>Baybayin Alphabet Reference</h3>
-      <table className="baybayin-table">
+      <table className="alphabet-table">
         <thead>
           <tr>
             <th>Baybayin Symbol</th>

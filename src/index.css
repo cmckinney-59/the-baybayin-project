@@ -909,9 +909,38 @@ button:hover:not(:disabled) {
   }
 }
 
-/* Baybayin Letter Colors */
+/* Baybayin Letters */
+
+.baybayin-letter {
+  font-family: "Baybayin";
+  font-weight: normal;
+}
+
 .baybayin-letter-red {
   color: #e74c3c;
+}
+
+.baybayin-letter-blue {
+  font-family: "Baybayin";
+  font-weight: bold;
+  color: #64b5f6 !important;
+}
+
+/* Aurebesh Letters */
+
+.aurebesh-letter {
+  font-family: "Aurebesh";
+  font-weight: normal;
+}
+
+.aurebesh-letter-red {
+  color: #e74c3c;
+}
+
+.aurebesh-letter-blue {
+  font-family: "Aurebesh";
+  font-weight: bold;
+  color: #64b5f6 !important;
 }
 
 /* Baybayin how to use */
@@ -961,9 +990,9 @@ button:hover:not(:disabled) {
   outline-color: #64b5f6;
 }
 
-/* Baybayin Table */
+/* Alphabet Table */
 
-.baybayin-table {
+.alphabet-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -975,7 +1004,7 @@ button:hover:not(:disabled) {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.baybayin-table th {
+.alphabet-table th {
   background-color: var(--header-bg);
   color: var(--nav-text);
   padding: 12px 16px;
@@ -985,7 +1014,7 @@ button:hover:not(:disabled) {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.baybayin-table td {
+.alphabet-table td {
   padding: 12px 16px;
   border-bottom: 1px solid var(--button-border);
   font-size: 14px;
@@ -993,40 +1022,29 @@ button:hover:not(:disabled) {
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.baybayin-table tr:hover {
+.alphabet-table tr:hover {
   background-color: var(--bg-secondary);
 }
 
-.baybayin-table tr:last-child td {
+.alphabet-table tr:last-child td {
   border-bottom: none;
 }
 
-.baybayin-table td:first-child {
+.alphabet-table td:first-child {
   font-size: 18px;
   text-align: center;
   background-color: var(--bg-secondary);
   transition: background-color 0.3s ease;
 }
 
-.baybayin-table td:nth-child(2) {
+.alphabet-table td:nth-child(2) {
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.baybayin-table td:nth-child(3) {
+.alphabet-table td:nth-child(3) {
   font-family: "Courier New", monospace;
   color: var(--text-primary);
-}
-
-.baybayin-letter {
-  font-family: "Baybayin";
-  font-weight: normal;
-}
-
-.baybayin-letter-blue {
-  font-family: "Baybayin";
-  font-weight: bold;
-  color: #64b5f6 !important;
 }
 
 .letter-blue {
@@ -1036,16 +1054,16 @@ button:hover:not(:disabled) {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .baybayin-table {
+  .alphabet-table {
     font-size: 12px;
   }
 
-  .baybayin-table th,
-  .baybayin-table td {
+  .alphabet-table th,
+  .alphabet-table td {
     padding: 8px 12px;
   }
 
-  .baybayin-table td:first-child {
+  .alphabet-table td:first-child {
     font-size: 16px;
   }
 }

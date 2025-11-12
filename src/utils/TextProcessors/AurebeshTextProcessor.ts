@@ -1,12 +1,12 @@
 export default function processAurebeshText(text: string): string {
   let transliteratedText = text;
-  transliteratedText = transliteratedText.replace(/ch/g, "ç");
-  transliteratedText = transliteratedText.replace(/ae/g, "æ");
-  transliteratedText = transliteratedText.replace(/eo/g, "ë");
-  transliteratedText = transliteratedText.replace(/kh/g, "þ");
-  transliteratedText = transliteratedText.replace(/ng/g, "ñ");
-  transliteratedText = transliteratedText.replace(/oo/g, "ø");
-  transliteratedText = transliteratedText.replace(/sh/g, "ß");
-  transliteratedText = transliteratedText.replace(/th/g, "ð");
+  transliteratedText = transliteratedText.replace(/ch/gi, "ç");
+  transliteratedText = transliteratedText.replace(/ae/gi, "æ");
+  transliteratedText = transliteratedText.replace(/eo/gi, "ë");
+  transliteratedText = transliteratedText.replace(/kh/gi, "þ");
+  transliteratedText = transliteratedText.replace(/ng/gi, "ñ");
+  transliteratedText = transliteratedText.replace(/oo/gi, "ø");
+  transliteratedText = transliteratedText.replace(/sh/gi, "ß");
+  transliteratedText = transliteratedText.replace(/th/gi, "ð");
   return transliteratedText;
 }

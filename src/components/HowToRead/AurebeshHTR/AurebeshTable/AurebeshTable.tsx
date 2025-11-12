@@ -1,115 +1,145 @@
 export default function AurebeshTable() {
   return (
     <>
-      <h3>Aurebesh Alphabet Reference</h3>
-      <table className="Aurebesh-table">
+      <h3>Aurebesh Alphabet Basic Letters</h3>
+      <table className="alphabet-table">
         <thead>
           <tr>
             <th>Aurebesh Symbol</th>
             <th>Latin Letter</th>
-            <th>Sound</th>
+            <th>Aurebesh Name</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="Aurebesh-letter">A</td>
+            <td className="aurebesh-letter">A</td>
             <td>A</td>
-            <td>/a/</td>
+            <td>Aurek</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">I</td>
-            <td>E / I</td>
-            <td>/e/ /i/</td>
+            <td className="aurebesh-letter">B</td>
+            <td>B</td>
+            <td>Besh</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">O</td>
-            <td>O / U</td>
-            <td>/o/ /u/</td>
+            <td className="aurebesh-letter">C</td>
+            <td>C</td>
+            <td>Cresh</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">k</td>
-            <td>Ca / Ka</td>
-            <td>/ca/ /ka/</td>
+            <td className="aurebesh-letter">D</td>
+            <td>D</td>
+            <td>Dorn</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">b</td>
-            <td>Ba / Va</td>
-            <td>/ba/ /va/</td>
+            <td className="aurebesh-letter">E</td>
+            <td>E</td>
+            <td>Esk</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">d</td>
-            <td>Da</td>
-            <td>/da/</td>
+            <td className="aurebesh-letter">F</td>
+            <td>F</td>
+            <td>Forn</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">p</td>
-            <td>Fa / Pa / Pha</td>
-            <td>/fa/ /pa/</td>
+            <td className="aurebesh-letter">G</td>
+            <td>G</td>
+            <td>Grek</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">h</td>
-            <td>Ha</td>
-            <td>/ha/</td>
+            <td className="aurebesh-letter">H</td>
+            <td>H</td>
+            <td>Herf</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">g</td>
-            <td>Ga</td>
-            <td>/ga/</td>
+            <td className="aurebesh-letter">I</td>
+            <td>I</td>
+            <td>Isk</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">l</td>
-            <td>La</td>
-            <td>/la/</td>
+            <td className="aurebesh-letter">J</td>
+            <td>J</td>
+            <td>Jenth</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">m</td>
-            <td>Ma</td>
-            <td>/ma/</td>
+            <td className="aurebesh-letter">K</td>
+            <td>K</td>
+            <td>Krill</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">n</td>
-            <td>Na</td>
-            <td>/na/</td>
+            <td className="aurebesh-letter">L</td>
+            <td>L</td>
+            <td>Leth</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">N</td>
-            <td>Nga</td>
-            <td>/ŋa/</td>
+            <td className="aurebesh-letter">M</td>
+            <td>M</td>
+            <td>Mern</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">s</td>
-            <td>Sa / Za</td>
-            <td>/sa/ /za/</td>
+            <td className="aurebesh-letter">N</td>
+            <td>N</td>
+            <td>Nern</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">t</td>
-            <td>Ta</td>
-            <td>/ta/</td>
+            <td className="aurebesh-letter">O</td>
+            <td>O</td>
+            <td>Osk</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">w</td>
-            <td>Wa</td>
-            <td>/wa/</td>
+            <td className="aurebesh-letter">P</td>
+            <td>P</td>
+            <td>Peth</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">y</td>
-            <td>Ya</td>
-            <td>/ja/</td>
+            <td className="aurebesh-letter">Q</td>
+            <td>Q</td>
+            <td>Qek</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">i</td>
-            <td>E / I</td>
-            <td>/e/ /i/</td>
+            <td className="aurebesh-letter">i</td>
+            <td>R</td>
+            <td>Resh</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">o</td>
-            <td>O / U</td>
-            <td>/o/ /u/</td>
+            <td className="aurebesh-letter">S</td>
+            <td>S</td>
+            <td>Senth</td>
           </tr>
           <tr>
-            <td className="Aurebesh-letter">+</td>
-            <td>Consonant marker</td>
-            <td></td>
+            <td className="aurebesh-letter">T</td>
+            <td>T</td>
+            <td>Trill</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">U</td>
+            <td>U</td>
+            <td>Usk</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">V</td>
+            <td>V</td>
+            <td>Vev</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">W</td>
+            <td>W</td>
+            <td>Wesk</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">X</td>
+            <td>X</td>
+            <td>Xesh</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">Y</td>
+            <td>Y</td>
+            <td>Yirt</td>
+          </tr>
+          <tr>
+            <td className="aurebesh-letter">Z</td>
+            <td>Z</td>
+            <td>Zerek</td>
           </tr>
         </tbody>
       </table>

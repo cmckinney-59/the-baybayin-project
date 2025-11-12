@@ -1,7 +1,7 @@
 export default function BaybayinTableBorrowed() {
   return (
     <>
-      <table className="baybayin-table">
+      <table className="alphabet-table">
         <thead>
           <tr>
             <th>Baybayin Symbol</th>

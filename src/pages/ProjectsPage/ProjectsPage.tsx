@@ -21,7 +21,7 @@ export default function ProjectsPage() {
   return (
     <div className="projectsPage">
       <h1>Projects</h1>
-      <table className="baybayin-table">
+      <table className="alphabet-table">
         <thead>
           <tr>
             <th>Name</th>
