@@ -1,5 +1,6 @@
 import { AiFillFileExcel } from "react-icons/ai";
 import downloadAsExcel from "../../../utils/SaveToExcel";
+import { useAlphabet } from "../../../contexts/AlphabetContext";
 
 type Dictionary = { [word: string]: string };
 
@@ -14,8 +15,10 @@ export default function ExcelSaveButton({
   wordsDictionary,
   onShowDialog,
 }: ExcelSaveButtonProps) {
+  const { currentAlphabet } = useAlphabet();
+
   const handleClick = () => {
-    onShowDialog(() => downloadAsExcel(wordsDictionary));
+    onShowDialog(() => downloadAsExcel(wordsDictionary, currentAlphabet));
   };
 
   return (
