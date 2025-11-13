@@ -1,5 +1,6 @@
 import { AiFillFileWord } from "react-icons/ai";
 import downloadAsWord from "../../../utils/SaveToWord";
+import { useAlphabet } from "../../../contexts/AlphabetContext";
 
 interface WordSaveButtonProps {
   transliteratedText: string;
@@ -10,8 +11,10 @@ export default function WordSaveButton({
   transliteratedText,
   onShowDialog,
 }: WordSaveButtonProps) {
+  const { currentAlphabet } = useAlphabet();
+
   const handleClick = () => {
-    onShowDialog(() => downloadAsWord(transliteratedText));
+    onShowDialog(() => downloadAsWord(transliteratedText, currentAlphabet));
   };
 
   return (

@@ -1,7 +1,19 @@
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 
-export default function downloadAsWord(text: string) {
+function getFontName(alphabet: string): string {
+  const fontMap: { [key: string]: string } = {
+    Baybayin: "Tagalog Doctrina 1593",
+    "Baybayin Lite": "Tagalog Doctrina 1593",
+    Aurebesh: "Aurebesh",
+    Deseret: "Deseret",
+  };
+  return fontMap[alphabet] || "Tagalog Doctrina 1593";
+}
+
+export default function downloadAsWord(text: string, alphabet: string = "") {
+  const fontName = getFontName(alphabet);
+
   const doc = new Document({
     sections: [
       {
@@ -12,7 +24,7 @@ export default function downloadAsWord(text: string) {
               new TextRun({
                 text,
                 font: {
-                  name: "Tagalog Doctrina 1593",
+                  name: fontName,
                 },
               }),
             ],
