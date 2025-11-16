@@ -123,6 +123,7 @@ export default function TransliteratorWithDialog({
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
+        <button>OPEN DIALOG</button>
       </div>
     </div>
   );
