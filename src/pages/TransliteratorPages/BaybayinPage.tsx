@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Transliterator3 from "../../components/Transliterator3/Transliterator3";
+import TransliteratorWithDialog from "../../components/TransliteratorWithDialog/TransliteratorWithDialog.tsx";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 
 export default function BaybayinPage() {
@@ -11,7 +11,8 @@ export default function BaybayinPage() {
 
   return (
     <>
-      <Transliterator3 title="Baybayin" />
+      <h1>Baybayin With Dialog</h1>
+      <TransliteratorWithDialog title="Baybayin" />
     </>
   );
 }
