@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton.tsx";
 
 interface TransliteratorWithDialogProps {
   title: string;
@@ -15,6 +16,7 @@ export default function TransliteratorWithDialog({
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
@@ -123,8 +125,23 @@ export default function TransliteratorWithDialog({
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
-        <button>OPEN DIALOG</button>
+        <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
       </div>
+      {isDialogOpen && (
+        <dialog className="dialog-overlay" open>
+          <div className="dialog-box">
+            <div className="dialog-header">
+              <div className="dialog-header-top-row">
+                <h3>Dialog</h3>
+              </div>
+            </div>
+            <div className="dialog-content">
+              <p>This is a dialog opened from the transliterator component.</p>
+              <CloseDialogButton onClose={() => setIsDialogOpen(false)} />
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 }
