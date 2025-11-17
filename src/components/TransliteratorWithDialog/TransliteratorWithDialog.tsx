@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
-import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton.tsx";
+import WordReviewDialog from "../Dialog/NewWordReviewDialog/WordReviewDialog.tsx";
 
 interface TransliteratorWithDialogProps {
   title: string;
@@ -128,19 +128,7 @@ export default function TransliteratorWithDialog({
         <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
       </div>
       {isDialogOpen && (
-        <dialog className="dialog-overlay" open>
-          <div className="dialog-box">
-            <div className="dialog-header">
-              <div className="dialog-header-top-row">
-                <h3>Dialog</h3>
-              </div>
-            </div>
-            <div className="dialog-content">
-              <p>This is a dialog opened from the transliterator component.</p>
-              <CloseDialogButton onClose={() => setIsDialogOpen(false)} />
-            </div>
-          </div>
-        </dialog>
+        <WordReviewDialog onClose={() => setIsDialogOpen(false)} />
       )}
     </div>
   );
