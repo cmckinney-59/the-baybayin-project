@@ -7,6 +7,7 @@ function getFontName(alphabet: string): string {
     "Baybayin Lite": "Tagalog Doctrina 1593",
     Aurebesh: "Aurebesh",
     Deseret: "Deseret",
+    Tengwar: "Tengwar",
   };
   return fontMap[alphabet] || "Tagalog Doctrina 1593";
 }

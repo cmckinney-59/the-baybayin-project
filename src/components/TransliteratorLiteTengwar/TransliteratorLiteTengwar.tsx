@@ -1,22 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 
-import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
-import WordReviewDialog from "../Dialog/NewWordReviewDialog/WordReviewDialog.tsx";
 
-interface TransliteratorWithDialogProps {
+interface TransliteratorProps {
   title: string;
 }
 
 type Dictionary = { [word: string]: string };
 
-export default function TransliteratorWithDialog({
+export default function TransliteratorLiteTengwar({
   title,
-}: TransliteratorWithDialogProps) {
+}: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
@@ -41,7 +39,7 @@ export default function TransliteratorWithDialog({
     const processedWords: string[] = [];
 
     for (const word of words) {
-      const processed = processBaybayinText(word);
+      const processed = processTengwarText(word);
       newDict[word] = processed;
       processedWords.push(processed);
     }
@@ -88,13 +86,7 @@ export default function TransliteratorWithDialog({
             ref={outputRef}
             className={`transliteration-output ${
               textareaHasText
-                ? title === "Baybayin"
-                  ? "baybayin-font"
-                  : title === "Aurebesh"
-                  ? "aurebesh-font"
-                  : title === "Deseret"
-                  ? "deseret-font"
-                  : title === "Tengwar"
+                ? title === "Tengwar"
                   ? "tengwar-font"
                   : ""
                 : ""
@@ -115,23 +107,13 @@ export default function TransliteratorWithDialog({
           )}
         </div>
       </div>
-      {text.toLowerCase().includes("c") && (
-        <p className="note-paragraph">
-          * The letter 'c' does not show in baybayin font. Replace any c's with
-          k's or s's accordingly. See the How To Read section for more
-          information.
-        </p>
-      )}
       <div className="action-buttons">
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
-        <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
       </div>
-      {isDialogOpen && (
-        <WordReviewDialog onClose={() => setIsDialogOpen(false)} />
-      )}
     </div>
   );
 }
+

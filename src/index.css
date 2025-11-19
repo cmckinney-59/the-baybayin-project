@@ -156,6 +156,12 @@ body {
 }
 
 @font-face {
+  font-family: "Tengwar";
+  src: url("./assets/fonts/tengwar/QUENYA.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Baybayin Stylized";
   src: url("./assets/fonts/baybayin/TagalogStylized.ttf") format("truetype");
   font-display: swap;
@@ -166,6 +172,9 @@ body {
 }
 .aurebesh-font {
   font-family: "Aurebesh", sans-serif;
+}
+.tengwar-font {
+  font-family: "Tengwar", sans-serif;
 }
 .deseret-font {
   font-family: "Deseret", sans-serif;
@@ -727,12 +736,21 @@ button:hover:not(:disabled) {
     format("truetype");
 }
 
+@font-face {
+  font-family: "Tengwar";
+  src: url("../../assets/fonts/tengwar/QUENYA.TTF") format("truetype");
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
 
 .aurebesh-font {
   font-family: "Aurebesh", sans-serif;
+}
+
+.tengwar-font {
+  font-family: "Tengwar", sans-serif;
 }
 
 .deseret-font {

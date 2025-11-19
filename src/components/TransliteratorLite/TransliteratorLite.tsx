@@ -90,6 +90,8 @@ export default function TransliteratorLite({ title }: TransliteratorProps) {
                   ? "aurebesh-font"
                   : title === "Deseret"
                   ? "deseret-font"
+                  : title === "Tengwar"
+                  ? "tengwar-font"
                   : ""
                 : ""
             }`}

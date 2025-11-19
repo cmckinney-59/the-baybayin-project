@@ -9,6 +9,7 @@ export default function DownloadFontButton() {
       Baybayin: "TagDoc93.ttf",
       Aurebesh: "AurebeshBold-Rw1l.ttf",
       Deseret: "deseret_.ttf",
+      Tengwar: "QUENYA.TTF",
     };
     return fontMap[alphabet] || "TagDoc93.ttf";
   };
