@@ -12,7 +12,7 @@ export default function WordReviewDialog({
       <div className="dialog-box">
         <div className="dialog-header">
           <div className="dialog-header-top-row">
-            <h3>Dialog</h3>
+            <h3>Word Review Dialog</h3>
           </div>
         </div>
         <div className="dialog-content">
