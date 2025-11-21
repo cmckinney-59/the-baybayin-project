@@ -123,11 +123,11 @@ export default function TransliteratorWithDialog({
         </p>
       )}
       <div className="action-buttons">
+        <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
         />
-        <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
       </div>
       {isDialogOpen && (
         <WordReviewDialog onClose={() => setIsDialogOpen(false)} />
