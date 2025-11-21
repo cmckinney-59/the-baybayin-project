@@ -2,6 +2,7 @@ import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHo
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
 import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
 import HowToUse from "../../components/HowToRead/HowToUse";
+import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
 
 export default function BaybayinPageLite() {
   return (
@@ -12,6 +13,7 @@ export default function BaybayinPageLite() {
       <HowToUse />
       <WhatIsBaybayin />
       <BaybayinHowToRead />
+      <OtherAlphabets />
     </>
   );
 }
