@@ -17,6 +17,7 @@ export default function TransliteratorWithDialog({
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
@@ -58,6 +59,14 @@ export default function TransliteratorWithDialog({
 
   return (
     <div>
+      <label className="checkbox-label">
+        <input
+          type="checkbox"
+          checked={checkboxValue}
+          onChange={(e) => setCheckboxValue(e.target.checked)}
+        />
+        Text contains borrowed sounds
+      </label>
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
@@ -123,7 +132,9 @@ export default function TransliteratorWithDialog({
         </p>
       )}
       <div className="action-buttons">
-        <button onClick={() => setIsDialogOpen(true)}>OPEN DIALOG</button>
+        {checkboxValue && (
+          <button onClick={() => setIsDialogOpen(true)}>Validate</button>
+        )}
         <SaveButtonContainter
           transliteratedText={transliteratedText}
           wordsDictionary={wordsDictionary}
