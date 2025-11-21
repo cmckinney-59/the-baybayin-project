@@ -1,20 +1,20 @@
-import { AiOutlineLike } from "react-icons/ai";
 import CollapsibleSection from "../CollapsibleSection/CollapsibleSection";
 import { useNavigate } from "react-router-dom";
 
 export default function OtherAlphabets() {
   const navigate = useNavigate();
+  const transliteratorPath = "/transliterator";
 
   const handleAurebeshClick = () => {
-    navigate("/transliterator/aurebesh");
+    navigate(`${transliteratorPath}/aurebesh`);
   };
 
   const handleDeseretClick = () => {
-    navigate("/transliterator/deseret");
+    navigate(`${transliteratorPath}/deseret`);
   };
 
   const handleTengwarClick = () => {
-    navigate("/transliterator/tengwar");
+    navigate(`${transliteratorPath}/tengwar`);
   };
 
   return (
