@@ -11,7 +11,7 @@ export default function BaybayinPage() {
 
   return (
     <>
-      <h1>Baybayin With Dialog</h1>
+      <h1>With Dialog</h1>
       <TransliteratorWithDialog title="Baybayin" />
     </>
   );
