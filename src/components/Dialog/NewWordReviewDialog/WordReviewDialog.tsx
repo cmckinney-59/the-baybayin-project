@@ -16,7 +16,10 @@ export default function WordReviewDialog({
           </div>
         </div>
         <div className="dialog-content">
-          <p>This is a dialog opened from the transliterator component.</p>
+          <p>
+            This word contains a borrowed sound. Please spell it out as it
+            sounds.
+          </p>
           <CloseDialogButton onClose={onClose} />
         </div>
       </div>
