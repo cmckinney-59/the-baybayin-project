@@ -28,7 +28,7 @@ export default function OtherAlphabets() {
         <h2>Deseret</h2>
       </div>
       <div className="nav-card" onClick={handleTengwarClick}>
-        <h1 className="tengwar-font">T</h1>
+        <h1 className="tengwar-font">t</h1>
         <h2>Tengwar</h2>
       </div>
     </CollapsibleSection>
