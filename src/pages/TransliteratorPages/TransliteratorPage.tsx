@@ -1,11 +1,17 @@
 import { Outlet } from "react-router-dom";
-// import AlphabetDropdown from "../../components/AlphabetDropdown/AlphabetDropdown";
+import { useAlphabet } from "../../contexts/AlphabetContext";
 
 export default function TransliteratorPage() {
+  const { currentAlphabet } = useAlphabet();
+  let alphabet = currentAlphabet;
+
+  if (currentAlphabet !== "Baybayin") {
+    alphabet = `${currentAlphabet} `;
+  }
+
   return (
     <>
-      {/* <AlphabetDropdown /> */}
-      <h2>Transliterator</h2>
+      <h2>{alphabet}Transliterator</h2>
       <Outlet />
     </>
   );
