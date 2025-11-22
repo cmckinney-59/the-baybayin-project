@@ -20,6 +20,7 @@ export default function WordReviewDialog({
             This word contains a borrowed sound. Please spell it out as it
             sounds.
           </p>
+          <input />
           <CloseDialogButton onClose={onClose} />
         </div>
       </div>
