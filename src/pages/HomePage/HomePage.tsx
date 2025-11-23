@@ -12,7 +12,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   const handleTransliteratorClick = () => {
-    navigate("/transliterator");
+    navigate("/transliterator/baybayin-lite");
   };
 
   const handleAboutClick = () => {
