@@ -141,7 +141,12 @@ export default function TransliteratorWithDialog({
         />
       </div>
       {isDialogOpen && (
-        <WordReviewDialog onClose={() => setIsDialogOpen(false)} />
+        <WordReviewDialog
+          onClose={() => setIsDialogOpen(false)}
+          wordsWithC={Object.keys(wordsDictionary).filter((word) =>
+            word.toLowerCase().includes("c")
+          )}
+        />
       )}
     </div>
   );
