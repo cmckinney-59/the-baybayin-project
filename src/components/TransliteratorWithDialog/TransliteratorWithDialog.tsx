@@ -3,19 +3,19 @@ import { useState, useEffect, useRef } from "react";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import WordReviewDialog from "../Dialog/NewWordReviewDialog/WordReviewDialog.tsx";
+import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 
 interface TransliteratorWithDialogProps {
   title: string;
 }
-
-type Dictionary = { [word: string]: string };
 
 export default function TransliteratorWithDialog({
   title,
 }: TransliteratorWithDialogProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
-  const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const { wordsDictionary, setWordsDictionary, clearWordsDictionary } =
+    useWordsDictionary();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -38,7 +38,7 @@ export default function TransliteratorWithDialog({
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
-    const newDict: Dictionary = {};
+    const newDict: { [word: string]: string } = {};
     const processedWords: string[] = [];
 
     for (const word of words) {
@@ -54,7 +54,7 @@ export default function TransliteratorWithDialog({
   const handleClearInput = () => {
     setText("");
     setTransliteratedText("");
-    setWordsDictionary({});
+    clearWordsDictionary();
   };
 
   return (
@@ -135,10 +135,7 @@ export default function TransliteratorWithDialog({
         {checkboxValue && (
           <button onClick={() => setIsDialogOpen(true)}>Validate</button>
         )}
-        <SaveButtonContainter
-          transliteratedText={transliteratedText}
-          wordsDictionary={wordsDictionary}
-        />
+        <SaveButtonContainter transliteratedText={transliteratedText} />
       </div>
       {isDialogOpen && (
         <WordReviewDialog

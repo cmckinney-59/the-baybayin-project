@@ -5,16 +5,12 @@ import ExcelSaveButton from "./ExcelSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
 
-type Dictionary = { [word: string]: string };
-
 interface SaveButtonContainerProps {
   transliteratedText: string;
-  wordsDictionary: Dictionary;
 }
 
 export default function SaveButtonContainter({
   transliteratedText,
-  wordsDictionary,
 }: SaveButtonContainerProps) {
   const [showFontDialog, setShowFontDialog] = useState(false);
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
@@ -42,7 +38,6 @@ export default function SaveButtonContainter({
       <p> Save as: </p>
       <ExcelSaveButton
         transliteratedText={transliteratedText}
-        wordsDictionary={wordsDictionary}
         onShowDialog={handleShowDialog}
       />
       <WordSaveButton

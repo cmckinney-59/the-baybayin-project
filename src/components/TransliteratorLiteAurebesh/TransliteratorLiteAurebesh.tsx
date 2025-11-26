@@ -2,19 +2,18 @@ import { useState, useEffect, useRef } from "react";
 
 import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
+import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 
 interface TransliteratorProps {
   title: string;
 }
-
-type Dictionary = { [word: string]: string };
 
 export default function TransliteratorLiteAurebesh({
   title,
 }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
-  const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const { setWordsDictionary, clearWordsDictionary } = useWordsDictionary();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
@@ -35,7 +34,7 @@ export default function TransliteratorLiteAurebesh({
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
-    const newDict: Dictionary = {};
+    const newDict: { [word: string]: string } = {};
     const processedWords: string[] = [];
 
     for (const word of words) {
@@ -51,7 +50,7 @@ export default function TransliteratorLiteAurebesh({
   const handleClearInput = () => {
     setText("");
     setTransliteratedText("");
-    setWordsDictionary({});
+    clearWordsDictionary();
   };
 
   return (
@@ -108,10 +107,7 @@ export default function TransliteratorLiteAurebesh({
         </div>
       </div>
       <div className="action-buttons">
-        <SaveButtonContainter
-          transliteratedText={transliteratedText}
-          wordsDictionary={wordsDictionary}
-        />
+        <SaveButtonContainter transliteratedText={transliteratedText} />
       </div>
     </div>
   );
