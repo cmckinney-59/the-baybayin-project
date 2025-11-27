@@ -9,6 +9,29 @@ export default function WordReviewDialog({
   onClose = () => {},
   wordsWithC = [],
 }: WordReviewDialogProps) {
+  let paragraphContent: React.ReactNode | null = null;
+
+  if (wordsWithC.length === 0) {
+    paragraphContent = <p>All words have been reviewed.</p>;
+  } else {
+    paragraphContent = (
+      <>
+        <p>
+          This word contains a borrowed sound. Please spell it out as it sounds.
+        </p>
+        {wordsWithC.length > 0 && (
+          <p>
+            Note: The following word{wordsWithC.length > 1 ? "s" : ""} contain
+            {wordsWithC.length === 1 ? "s" : ""} the letter 'c':{" "}
+            <strong>{wordsWithC.join(", ")}</strong>
+          </p>
+        )}
+        <input />
+        <button>Submit</button>
+      </>
+    );
+  }
+
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
@@ -18,18 +41,7 @@ export default function WordReviewDialog({
           </div>
         </div>
         <div className="dialog-content">
-          <p>
-            This word contains a borrowed sound. Please spell it out as it
-            sounds.
-          </p>
-          {wordsWithC.length > 0 && (
-            <p>
-              Note: The following word{wordsWithC.length > 1 ? "s" : ""} contain
-              {wordsWithC.length === 1 ? "s" : ""} the letter 'c':{" "}
-              <strong>{wordsWithC.join(", ")}</strong>
-            </p>
-          )}
-          <input />
+          {paragraphContent}
           <CloseDialogButton onClose={onClose} />
         </div>
       </div>
