@@ -3,11 +3,13 @@ import CloseDialogButton from "../../Buttons/DialogButtons/CloseDialogButton";
 interface WordReviewDialogProps {
   onClose?: () => void;
   wordsWithC?: string[];
+  wordContainsBorrowedSound?: boolean;
 }
 
 export default function WordReviewDialog({
   onClose = () => {},
   wordsWithC = [],
+  wordContainsBorrowedSound = false,
 }: WordReviewDialogProps) {
   let paragraphContent: React.ReactNode | null = null;
 
@@ -19,10 +21,9 @@ export default function WordReviewDialog({
         <p>
           This word contains a borrowed sound. Please spell it out as it sounds.
         </p>
-        {wordsWithC.length > 0 && (
+        {wordContainsBorrowedSound && (
           <p>
-            Note: The following word{wordsWithC.length > 1 ? "s" : ""} contain
-            {wordsWithC.length === 1 ? "s" : ""} the letter 'c':{" "}
+            Note: The following word contains a borrowed sound:{" "}
             <strong>{wordsWithC.join(", ")}</strong>
           </p>
         )}

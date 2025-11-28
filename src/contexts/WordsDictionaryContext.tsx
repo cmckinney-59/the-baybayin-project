@@ -12,6 +12,7 @@ interface WordsDictionaryContextType {
   wordsDictionary: Dictionary;
   setWordsDictionary: (dictionary: Dictionary) => void;
   clearWordsDictionary: () => void;
+  wordContainsBorrowedSound: boolean;
 }
 
 const WordsDictionaryContext = createContext<
@@ -26,14 +27,33 @@ export function WordsDictionaryProvider({
   children,
 }: WordsDictionaryProviderProps) {
   const [wordsDictionary, setWordsDictionary] = useState<Dictionary>({});
+  const [wordContainsBorrowedSound, setWordContainsBorrowedSound] =
+    useState<boolean>(false);
 
   const clearWordsDictionary = () => {
     setWordsDictionary({});
   };
 
+  if (
+    Object.keys(wordsDictionary).some(
+      (word) =>
+        word.includes("c") ||
+        word.includes("ch") ||
+        word.includes("j") ||
+        word.includes("qu")
+    )
+  ) {
+    setWordContainsBorrowedSound(true);
+  }
+
   return (
     <WordsDictionaryContext.Provider
-      value={{ wordsDictionary, setWordsDictionary, clearWordsDictionary }}
+      value={{
+        wordsDictionary,
+        setWordsDictionary,
+        clearWordsDictionary,
+        wordContainsBorrowedSound,
+      }}
     >
       {children}
     </WordsDictionaryContext.Provider>
