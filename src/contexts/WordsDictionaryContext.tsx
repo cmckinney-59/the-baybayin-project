@@ -3,7 +3,7 @@
  * Tracks the dictionary mapping of original words to transliterated words
  */
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 
 export type Dictionary = { [word: string]: string };
@@ -34,17 +34,18 @@ export function WordsDictionaryProvider({
     setWordsDictionary({});
   };
 
-  if (
-    Object.keys(wordsDictionary).some(
-      (word) =>
-        word.includes("c") ||
-        word.includes("ch") ||
-        word.includes("j") ||
-        word.includes("qu")
-    )
-  ) {
-    setWordContainsBorrowedSound(true);
-  }
+  useEffect(() => {
+    const hasBorrowedSound = Object.keys(wordsDictionary).some((word) => {
+      const lowerWord = word.toLowerCase();
+      return (
+        lowerWord.includes("c") ||
+        lowerWord.includes("ch") ||
+        lowerWord.includes("j") ||
+        lowerWord.includes("qu")
+      );
+    });
+    setWordContainsBorrowedSound(hasBorrowedSound);
+  }, [wordsDictionary]);
 
   return (
     <WordsDictionaryContext.Provider
