@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CopyTextButton from "./CopyTextButton";
 import ExcelSaveButton from "./ExcelSaveButton";
-// import TextSaveButton from "./TextSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
 
@@ -44,7 +43,6 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
-      {/* <TextSaveButton transliteratedText={transliteratedText} /> */}
       <CopyTextButton
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
