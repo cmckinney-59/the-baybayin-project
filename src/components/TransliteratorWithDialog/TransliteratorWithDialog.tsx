@@ -14,8 +14,12 @@ export default function TransliteratorWithDialog({
 }: TransliteratorWithDialogProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
-  const { wordsDictionary, setWordsDictionary, clearWordsDictionary } =
-    useWordsDictionary();
+  const {
+    wordsDictionary,
+    setWordsDictionary,
+    clearWordsDictionary,
+    wordContainsBorrowedSound,
+  } = useWordsDictionary();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -140,9 +144,16 @@ export default function TransliteratorWithDialog({
       {isDialogOpen && (
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}
-          wordsWithC={Object.keys(wordsDictionary).filter((word) =>
-            word.toLowerCase().includes("c")
-          )}
+          wordsWithC={Object.keys(wordsDictionary).filter((word) => {
+            const lowerWord = word.toLowerCase();
+            return (
+              lowerWord.includes("c") ||
+              lowerWord.includes("ch") ||
+              lowerWord.includes("j") ||
+              lowerWord.includes("qu")
+            );
+          })}
+          wordContainsBorrowedSound={wordContainsBorrowedSound}
         />
       )}
     </div>
