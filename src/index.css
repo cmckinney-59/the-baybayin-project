@@ -3,7 +3,7 @@
   position: fixed;
   left: 0;
   top: 60px;
-  width: 60px; /* Collapsed width - icon only */
+  width: 60px;
   background-color: var(--nav-bg);
   height: calc(100vh - 60px);
   transform: translateX(0);
@@ -14,12 +14,12 @@
 
 .App-Navigation.collapsed {
   transform: translateX(0);
-  width: 60px; /* Keep icon-only width when collapsed */
+  width: 60px;
 }
 
 .App-Navigation.open {
   transform: translateX(0);
-  width: 220px; /* Expanded width - icon + text */
+  width: 220px;
 }
 
 .Navigation-content {
@@ -52,11 +52,6 @@
   width: 100%;
   height: 60px;
   gap: 12px;
-}
-
-.Navigation-content ul li a:active {
-  background-color: rgba(0, 0, 0, 0.2);
-  color: white;
 }
 
 .nav-icon {
