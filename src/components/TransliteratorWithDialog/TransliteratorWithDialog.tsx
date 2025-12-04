@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
-import WordReviewDialog from "../Dialog/NewWordReviewDialog/WordReviewDialog.tsx";
+import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 
 interface TransliteratorWithDialogProps {
@@ -39,6 +39,18 @@ export default function TransliteratorWithDialog({
       outputRef.current.style.height = maxHeight + "px";
     }
   }, [text, transliteratedText]);
+
+  // Update transliterated text when dictionary changes
+  useEffect(() => {
+    if (text.trim() && Object.keys(wordsDictionary).length > 0) {
+      const words = text.trim().split(/\s+/);
+      const processedWords = words.map((word) => {
+        // Use the dictionary value if it exists, otherwise process the word
+        return wordsDictionary[word] || processBaybayinText(word);
+      });
+      setTransliteratedText(processedWords.join(" "));
+    }
+  }, [wordsDictionary, text]);
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
