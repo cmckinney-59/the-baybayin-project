@@ -79,7 +79,9 @@ export default function WordReviewDialog({
           placeholder="Enter corrected spelling..."
           autoFocus
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button className="validate-button-style" onClick={handleSubmit}>
+          Submit
+        </button>
       </>
     );
   }

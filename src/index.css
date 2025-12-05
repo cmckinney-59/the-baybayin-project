@@ -867,6 +867,20 @@ button:hover:not(:disabled) {
   border-color: #42a5f5;
 }
 
+.dialog-box button.validate-button-style {
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(26, 115, 232);
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);
+}
+
+.dark-mode .dialog-box button.validate-button-style {
+  color: #64b5f6;
+}
+
 .dialog-content {
   margin: 20px 0;
   display: flex;
