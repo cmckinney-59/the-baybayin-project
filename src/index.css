@@ -875,6 +875,7 @@ button:hover:not(:disabled) {
   color: rgb(26, 115, 232);
   background-color: var(--button-bg);
   border: 1px solid var(--button-border);
+  margin-top: 10px;
 }
 
 .dark-mode .dialog-box button.validate-button-style {
