@@ -58,7 +58,7 @@ export default function WordReviewDialog({
   let paragraphContent: React.ReactNode | null = null;
 
   if (wordsWithC.length === 0) {
-    paragraphContent = <p>All words have been reviewed.</p>;
+    paragraphContent = <p>No borrowed sounds found.</p>;
   } else {
     paragraphContent = (
       <>
@@ -73,10 +73,11 @@ export default function WordReviewDialog({
         )}
         <input
           type="text"
+          className="word-review-input"
           value={inputValue}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
-          placeholder="Enter corrected spelling..."
+          placeholder="Enter phonetic spelling..."
           autoFocus
         />
         <button className="validate-button-style" onClick={handleSubmit}>
@@ -91,7 +92,7 @@ export default function WordReviewDialog({
       <div className="dialog-box">
         <div className="dialog-header">
           <div className="dialog-header-top-row">
-            <h3>Word Review Dialog</h3>
+            <h3>Borrowed Sound Review</h3>
           </div>
         </div>
         <div className="dialog-content">

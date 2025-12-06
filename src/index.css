@@ -882,6 +882,28 @@ button:hover:not(:disabled) {
   color: #64b5f6;
 }
 
+.word-review-input {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  border: 1px solid var(--button-border);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  display: block;
+}
+
+.word-review-input:focus {
+  outline: none;
+  border: 1px solid var(--button-border);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
 .dialog-content {
   margin: 20px 0;
   display: flex;
