@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import TransliteratorWithDialog from "../../components/TransliteratorWithDialog/TransliteratorWithDialog.tsx";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
+import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
+import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
+import HowToUse from "../../components/HowToRead/HowToUse";
+import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
 
 export default function BaybayinPage() {
   const { setCurrentAlphabet } = useAlphabet();
@@ -12,8 +16,13 @@ export default function BaybayinPage() {
 
   return (
     <WordsDictionaryProvider>
-      <h1>With Dialog</h1>
+      <p className="quote">"Kung anong bigkas, siyang baybay."</p>
+      <p className="quote">Enter text as it sounds for best results.</p>
       <TransliteratorWithDialog title="Baybayin" />
+      <HowToUse />
+      <WhatIsBaybayin />
+      <BaybayinHowToRead />
+      <OtherAlphabets />
     </WordsDictionaryProvider>
   );
 }

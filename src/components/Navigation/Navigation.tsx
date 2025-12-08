@@ -50,11 +50,11 @@ export default function Navigation({
           </li>
           <li>
             <Link
-              to="/transliterator/baybayin-lite"
+              to="/transliterator/baybayin"
               onClick={onNavigate}
               title="Transliterator"
             >
-              {isActiveRoute("/transliterator/baybayin-lite") ? (
+              {isActiveRoute("/transliterator/baybayin") ? (
                 <PiTranslateFill className="nav-icon" />
               ) : (
                 <PiTranslate className="nav-icon" />
