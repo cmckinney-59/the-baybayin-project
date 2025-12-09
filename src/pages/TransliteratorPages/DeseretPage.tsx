@@ -1,14 +1,24 @@
-import TransliteratorLite from "../../components/TransliteratorLite/TransliteratorLite";
-import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleSection";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
+import TransliteratorWithDialog from "../../components/TransliteratorWithDialog/TransliteratorWithDialog.tsx";
+import HowToUse from "../../components/HowToRead/HowToUse.tsx";
+import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret.tsx";
+import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead.tsx";
+import { useEffect } from "react";
+import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
 
 export default function DeseretPage() {
+  const { setCurrentAlphabet } = useAlphabet();
+
+  useEffect(() => {
+    setCurrentAlphabet("Deseret");
+  }, [setCurrentAlphabet]);
+
   return (
     <WordsDictionaryProvider>
-      <TransliteratorLite title="Deseret" />
-      <CollapsibleSection title="About Deseret" defaultExpanded={false}>
-        <p>Deseret is a writing system created by Brigham Young.</p>
-      </CollapsibleSection>
+      <TransliteratorWithDialog title="Deseret" />
+      <HowToUse />
+      <WhatIsDeseret />
+      <DeseretHowToRead />
     </WordsDictionaryProvider>
   );
 }
