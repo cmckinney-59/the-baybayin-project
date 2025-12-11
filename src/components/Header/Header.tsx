@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-// import logo from "../../assets/images/logo.png";
+import logo2 from "../../assets/images/WideLogo.jfif";
 import "./Header.css";
 import {
   AiOutlineClose,
@@ -35,7 +35,7 @@ export default function Header({
         )}
       </button>
       <div className="header-content">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <img src={logo2} className="App-logo" alt="logo" />
         <h1 className="App-Header-Text">The Baybayin Project</h1>
       </div>
       <button
