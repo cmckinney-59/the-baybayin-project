@@ -45,7 +45,6 @@ export default function TransliteratorWithDialog({
     if (text.trim() && Object.keys(wordsDictionary).length > 0) {
       const words = text.trim().split(/\s+/);
       const processedWords = words.map((word) => {
-        // Use the dictionary value if it exists, otherwise process the word
         return wordsDictionary[word] || processBaybayinText(word);
       });
       setTransliteratedText(processedWords.join(" "));
@@ -75,14 +74,16 @@ export default function TransliteratorWithDialog({
 
   return (
     <div>
-      <label className="checkbox-label">
-        <input
-          type="checkbox"
-          checked={checkboxValue}
-          onChange={(e) => setCheckboxValue(e.target.checked)}
-        />
-        Text contains borrowed sounds
-      </label>
+      {title === "Baybayin" && (
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={checkboxValue}
+            onChange={(e) => setCheckboxValue(e.target.checked)}
+          />
+          Text contains borrowed sounds
+        </label>
+      )}
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea

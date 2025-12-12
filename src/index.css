@@ -578,7 +578,7 @@ button:hover:not(:disabled) {
   opacity: 0.8;
 }
 
-/* TransliteratorLite */
+/* Transliterator */
 .transliteration-container {
   display: flex;
   flex-direction: row;
