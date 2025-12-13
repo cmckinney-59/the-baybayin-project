@@ -1,5 +1,6 @@
 import type { JSX } from "react";
-import logo2 from "../../assets/images/WideLogo.jfif";
+import lightModeLogo from "../../assets/images/TBP_Horizontal_Black.png";
+import darkModeLogo from "../../assets/images/TBP_Horizontal_White.png";
 import "./Header.css";
 import {
   AiOutlineClose,
@@ -35,8 +36,11 @@ export default function Header({
         )}
       </button>
       <div className="header-content">
-        <img src={logo2} className="App-logo" alt="logo" />
-        <h1 className="App-Header-Text">The Baybayin Project</h1>
+        <img
+          src={isDarkMode ? darkModeLogo : lightModeLogo}
+          className="App-logo"
+          alt="logo"
+        />
       </div>
       <button
         className="dark-mode-toggle"
