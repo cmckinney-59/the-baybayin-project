@@ -74,16 +74,6 @@ export default function TransliteratorWithDialog({
 
   return (
     <div>
-      {title === "Baybayin" && (
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={checkboxValue}
-            onChange={(e) => setCheckboxValue(e.target.checked)}
-          />
-          Text contains borrowed sounds
-        </label>
-      )}
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
@@ -147,6 +137,16 @@ export default function TransliteratorWithDialog({
           k's or s's accordingly. See the How To Read section for more
           information.
         </p>
+      )}
+      {title === "Baybayin" && (
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={checkboxValue}
+            onChange={(e) => setCheckboxValue(e.target.checked)}
+          />
+          Text contains borrowed sounds
+        </label>
       )}
       <div className="action-buttons">
         {checkboxValue && (

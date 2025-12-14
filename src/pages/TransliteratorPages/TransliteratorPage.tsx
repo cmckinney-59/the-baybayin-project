@@ -3,11 +3,7 @@ import { useAlphabet } from "../../contexts/AlphabetContext";
 
 export default function TransliteratorPage() {
   const { currentAlphabet } = useAlphabet();
-  let alphabet = currentAlphabet;
-
-  if (currentAlphabet !== "Baybayin") {
-    alphabet = `${currentAlphabet} `;
-  }
+  const alphabet = `${currentAlphabet} `;
 
   return (
     <>
