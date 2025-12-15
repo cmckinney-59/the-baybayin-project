@@ -713,6 +713,38 @@ button:hover:not(:disabled) {
   color: #ff6b6b;
 }
 
+.checkbox-label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: rgb(26, 115, 232);
+  border: 1px solid var(--button-border);
+  border-radius: 4px;
+  background-color: var(--button-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .checkbox-label input[type="checkbox"] {
+  accent-color: #64b5f6;
+}
+
+.checkbox-label:hover {
+  opacity: 0.9;
+}
+
 /* Page Content */
 
 @font-face {
