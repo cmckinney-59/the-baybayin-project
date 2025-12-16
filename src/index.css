@@ -1218,3 +1218,8 @@ button:hover:not(:disabled) {
 .quote {
   margin-top: -10px;
 }
+
+/* Back button */
+.back-button {
+  margin-bottom: 10px;
+}
