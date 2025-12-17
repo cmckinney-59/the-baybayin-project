@@ -5,6 +5,7 @@ import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/W
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead.tsx";
 import { useEffect } from "react";
 import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
+import BackButton from "../../components/Buttons/BackButton.tsx";
 
 export default function DeseretPage() {
   const { setCurrentAlphabet } = useAlphabet();
@@ -15,6 +16,7 @@ export default function DeseretPage() {
 
   return (
     <WordsDictionaryProvider>
+      <BackButton />
       <TransliteratorWithDialog title="Deseret" />
       <HowToUse />
       <WhatIsDeseret />
