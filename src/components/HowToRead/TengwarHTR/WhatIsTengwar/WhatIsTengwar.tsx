@@ -3,39 +3,8 @@ import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
 export default function WhatIsTengwar() {
   return (
     <CollapsibleSection title="What Is Tengwar" defaultExpanded={false}>
-      <p>
-        Tengwar is the ancient writing system of the Philippines, predating the
-        arrival of Spanish colonizers in the 16th century. This remarkable
-        script represents a crucial aspect of Filipino culture and history,
-        serving as evidence of sophisticated education, governance, and civil
-        systems that existed long before Spanish occupation. Today, scholars and
-        historians worldwide are working to learn, preserve, and revitalize this
-        important cultural heritage.
-      </p>
-      <p>
-        Traditionally, Tengwar was inscribed on various natural materials
-        including bamboo, leaves, and tree bark. It served as the primary
-        writing system for important documents, personal correspondence, and
-        religious inscriptions. Following Spanish colonization, however, the use
-        of Tengwar gradually declined and was eventually supplanted by the Latin
-        alphabet, nearly disappearing from daily use.
-      </p>
-      <p>
-        What makes Tengwar unique is its syllabic nature—each character
-        represents an entire syllable rather than a single letter. The script
-        uses "kudlit" (diacritical marks) that modify consonant characters to
-        represent different vowel sounds, creating a distinctive writing system.
-        To explore Tengwar further, read the "How To Read" section, or download
-        our comprehensive{" "}
-        <a
-          href="/src/assets/projects/TengwarHowToReadV2.pdf"
-          download="HowToReadTengwar.pdf"
-          className="link"
-        >
-          "How To Read Tengwar"
-        </a>{" "}
-        PDF guide.
-      </p>
+      <p>Tengwar is the alphabet used in the Lord of the Rings franchise.</p>
+      <p>To explore Tengwar further, read the "How To Read" section.</p>
     </CollapsibleSection>
   );
 }
