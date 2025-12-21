@@ -42,27 +42,27 @@ export default function ProjectsPage() {
           </tr>
           <tr>
             <td>Ang Bagong Tipan</td>
-            <td>First Draft Completed</td>
+            <td>First Draft In Review</td>
           </tr>
           <tr>
             <td>Ang Aklat ni Mormon</td>
             <td>Pending Approval</td>
           </tr>
           <tr>
-            <td>The Family Proclamation</td>
+            <td>Ang Pagpapahayag sa Mag-anak</td>
             <td>Pending Approval</td>
           </tr>
           <tr>
-            <td>The Restoration</td>
+            <td>Ang Pagpapanumbalik</td>
             <td>Pending Approval</td>
           </tr>
           <tr>
-            <td>The Living Christ</td>
-            <td>Second Draft Completed</td>
+            <td>Ang Buhay na Cristo</td>
+            <td>Pending Approval</td>
           </tr>
           <tr>
-            <td>The Articles of Faith</td>
-            <td>Second Draft Completed</td>
+            <td>Ang Mga Saligan ng Pananampalataya</td>
+            <td>Pending Approval</td>
           </tr>
         </tbody>
       </table>
