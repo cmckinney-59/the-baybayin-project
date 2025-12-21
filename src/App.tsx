@@ -12,12 +12,13 @@ import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import SocialPage from "./pages/SocialPage/SocialPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 const router = createHashRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <div>Something went wrong!</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

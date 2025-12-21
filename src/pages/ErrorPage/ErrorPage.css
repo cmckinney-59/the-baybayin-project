@@ -1,0 +1,126 @@
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 2rem;
+  background: var(--bg-primary, #f5f5f5);
+}
+
+.error-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 3rem;
+  background: var(--bg-secondary, white);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-title {
+  font-size: 6rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-primary, #333);
+  line-height: 1;
+}
+
+.error-subtitle {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: var(--text-primary, #333);
+}
+
+.error-message {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #666);
+  margin: 1.5rem 0 2.5rem;
+  line-height: 1.6;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.error-button:active {
+  transform: translateY(0);
+}
+
+.error-button.secondary {
+  background: var(--bg-secondary, #6c757d);
+  color: var(--text-primary, white);
+}
+
+.error-button.secondary:hover {
+  background: #5a6268;
+}
+
+.error-button-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Dark mode support */
+.dark-mode .error-page {
+  background: var(--bg-primary, #1a1a1a);
+}
+
+.dark-mode .error-content {
+  background: var(--bg-secondary, #2d2d2d);
+}
+
+.dark-mode .error-title,
+.dark-mode .error-subtitle {
+  color: var(--text-primary, #e0e0e0);
+}
+
+.dark-mode .error-message {
+  color: var(--text-secondary, #b0b0b0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .error-title {
+    font-size: 4rem;
+  }
+
+  .error-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .error-actions {
+    flex-direction: column;
+  }
+
+  .error-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
