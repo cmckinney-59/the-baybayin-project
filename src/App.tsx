@@ -13,7 +13,6 @@ import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import SocialPage from "./pages/SocialPage/SocialPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import BorrowedSoundsPage from "./pages/BorrowedSoundsPage/BorrowedSoundsPage";
 
 const router = createHashRouter([
   {
@@ -40,10 +39,6 @@ const router = createHashRouter([
       {
         path: "/social",
         element: <SocialPage />,
-      },
-      {
-        path: "/borrowed-words",
-        element: <BorrowedSoundsPage />,
       },
       // {
       //   path: "/shop",

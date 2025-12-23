@@ -145,7 +145,7 @@ export default function TransliteratorWithDialog({
             checked={checkboxValue}
             onChange={(e) => setCheckboxValue(e.target.checked)}
           />
-          Text contains borrowed sounds
+          Text contains borrowed words. See 'Borrowed Words' section below.
         </label>
       )}
       <div className="action-buttons">
