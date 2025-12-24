@@ -47,6 +47,7 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
+      <button>Parallel Transliteration</button>
       {showFontDialog && (
         <FontInstallationDialog
           onClose={handleClose}
