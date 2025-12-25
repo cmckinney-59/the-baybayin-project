@@ -47,6 +47,7 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
+      {/* TODO: Add parallel transliteration button */}
       <button>Parallel Transliteration</button>
       {showFontDialog && (
         <FontInstallationDialog
