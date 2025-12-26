@@ -3,6 +3,7 @@ import CopyTextButton from "./CopyTextButton";
 import ExcelSaveButton from "./ExcelSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
+import ParallelButton from "./ParallelButton";
 
 interface SaveButtonContainerProps {
   transliteratedText: string;
@@ -47,8 +48,10 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
-      {/* TODO: Add parallel transliteration button */}
-      <button>Parallel Transliteration</button>
+      <ParallelButton
+        transliteratedText={transliteratedText}
+        onShowDialog={handleShowDialog}
+      />
       {showFontDialog && (
         <FontInstallationDialog
           onClose={handleClose}
