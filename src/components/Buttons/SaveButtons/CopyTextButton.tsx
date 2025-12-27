@@ -1,5 +1,5 @@
 import { AiFillCopy } from "react-icons/ai";
-import copyToClipboard from "../../../utils/CopyToClipboard.ts";
+import copyToClipboard from "../../../utils/SaveActions/CopyToClipboard.ts";
 
 interface CopyTextButtonProps {
   transliteratedText: string;

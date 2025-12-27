@@ -1,5 +1,6 @@
-import { AiFillCopy } from "react-icons/ai";
-import copyToClipboard from "../../../utils/CopyToClipboard.ts";
+import { AiFillFileWord } from "react-icons/ai";
+import downloadAsWordParallel from "../../../utils/SaveActions/SaveToWordParallel";
+import { useAlphabet } from "../../../contexts/AlphabetContext";
 
 interface ParallelButtonProps {
   transliteratedText: string;
@@ -10,8 +11,12 @@ export default function ParallelButton({
   transliteratedText,
   onShowDialog,
 }: ParallelButtonProps) {
+  const { currentAlphabet } = useAlphabet();
+
   const handleClick = () => {
-    onShowDialog(() => copyToClipboard(transliteratedText));
+    onShowDialog(() =>
+      downloadAsWordParallel(transliteratedText, currentAlphabet)
+    );
   };
 
   return (
@@ -20,7 +25,7 @@ export default function ParallelButton({
       onClick={handleClick}
       disabled={transliteratedText.trim().length === 0}
     >
-      <AiFillCopy />
+      <AiFillFileWord />
       Parallel
     </button>
   );
