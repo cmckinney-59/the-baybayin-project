@@ -1,5 +1,5 @@
 import { AiFillFileExcel } from "react-icons/ai";
-import downloadAsExcel from "../../../utils/SaveToExcel";
+import downloadAsExcel from "../../../utils/SaveActions/SaveToExcel";
 import { useAlphabet } from "../../../contexts/AlphabetContext";
 import { useWordsDictionary } from "../../../contexts/WordsDictionaryContext";
 

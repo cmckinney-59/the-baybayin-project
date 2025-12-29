@@ -15,7 +15,10 @@ export default function processBaybayinText(text: string): string {
   transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
   transliteratedText = capitalizeVowel(transliteratedText);
   transliteratedText = transliteratedText.replace(/-/g, "");
-  transliteratedText = transliteratedText.replace(/'/g, "");
+  transliteratedText = transliteratedText.replace(
+    /([a-zA-Z])'([a-zA-Z])/g,
+    "$1$2"
+  );
   return transliteratedText;
 }
 

@@ -1,5 +1,5 @@
 import { AiFillFileWord } from "react-icons/ai";
-import downloadAsWord from "../../../utils/SaveToWord";
+import downloadAsWord from "../../../utils/SaveActions/SaveToWord";
 import { useAlphabet } from "../../../contexts/AlphabetContext";
 
 interface WordSaveButtonProps {
