@@ -33,6 +33,15 @@ export default function SettingsPage() {
           />
           <span className="toggle-slider"></span>
         </label>
+        <h2>Dark Mode</h2>
+        <label className="toggle-switch">
+          <input
+            type="checkbox"
+            // checked={isDarkMode}
+            // onChange={toggleDarkMode}
+          />
+          <span className="toggle-slider"></span>
+        </label>
       </div>
     </div>
   );
