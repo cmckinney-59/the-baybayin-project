@@ -40,6 +40,10 @@ const router = createHashRouter([
         path: "/social",
         element: <SocialPage />,
       },
+      {
+        path: "/settings",
+        element: <SettingsPage />,
+      },
       // {
       //   path: "/shop",
       //   element: <ShopPage />,
