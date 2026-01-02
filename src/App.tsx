@@ -13,6 +13,7 @@ import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import SocialPage from "./pages/SocialPage/SocialPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
 const router = createHashRouter([
   {
