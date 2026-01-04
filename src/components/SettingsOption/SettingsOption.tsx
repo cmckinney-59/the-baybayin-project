@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import "./SettingsPage.css";
+import "./SettingsOption.css";
 
 interface SettingsOptionProps {
   type: "checkbox" | "radio";

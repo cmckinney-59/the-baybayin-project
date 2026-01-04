@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./SettingsPage.css";
 import SettingsOption from "../../components/SettingsOption/SettingsOption";
 
 export default function SettingsPage() {
