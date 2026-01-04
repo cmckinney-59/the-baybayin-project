@@ -2,24 +2,17 @@ import type { JSX } from "react";
 import lightModeLogo from "../../assets/images/TBP_Horizontal_Black.png";
 import darkModeLogo from "../../assets/images/TBP_Horizontal_White.png";
 import "./Header.css";
-import {
-  AiOutlineClose,
-  AiOutlineMenu,
-  AiOutlineMoon,
-  AiOutlineSun,
-} from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 type HeaderProps = {
   onToggleSidebar: () => void;
   isSidebarOpen: boolean;
-  onToggleDarkMode: () => void;
   isDarkMode: boolean;
 };
 
 export default function Header({
   onToggleSidebar,
   isSidebarOpen,
-  onToggleDarkMode,
   isDarkMode,
 }: HeaderProps): JSX.Element {
   return (
