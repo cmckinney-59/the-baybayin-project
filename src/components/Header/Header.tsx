@@ -42,17 +42,6 @@ export default function Header({
           alt="logo"
         />
       </div>
-      <button
-        className="dark-mode-toggle"
-        aria-label="Toggle dark mode"
-        onClick={onToggleDarkMode}
-      >
-        {isDarkMode ? (
-          <AiOutlineSun className="nav-card-icon" />
-        ) : (
-          <AiOutlineMoon className="nav-card-icon" />
-        )}
-      </button>
     </header>
   );
 }
