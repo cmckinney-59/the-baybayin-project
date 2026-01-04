@@ -9,6 +9,8 @@ import {
   AiFillInfoCircle,
   AiFillProject,
   AiFillLike,
+  AiFillSetting,
+  AiOutlineSetting,
   // AiOutlineShopping,
 } from "react-icons/ai";
 import { PiTranslate, PiTranslateFill } from "react-icons/pi";
@@ -96,6 +98,16 @@ export default function Navigation({
                 <AiOutlineLike className="nav-icon" />
               )}
               <span className="nav-text">Social</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/settings" onClick={onNavigate} title="Settings">
+              {isActiveRoute("/settings") ? (
+                <AiFillSetting className="nav-icon" />
+              ) : (
+                <AiOutlineSetting className="nav-icon" />
+              )}
+              <span className="nav-text">Settings</span>
             </Link>
           </li>
         </ul>
