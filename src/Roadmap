@@ -1,11 +1,10 @@
 TRANSLITERATOR WEB APP ROADMAP
 
-RELEASE 2.0
-
-Modal
-
-PHASE 7 : AUREBESH
-
-PHASE 8 : DESERET
+TODO:
+- Update family picture
+- Put items behind feature flag
+    - All the other languages
+    - Validate button
+    - Parallel button
 
 PHASE 9 : OTHER FILIPINO ALPHABETS

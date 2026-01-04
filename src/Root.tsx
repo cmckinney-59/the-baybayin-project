@@ -5,14 +5,13 @@ import Navigation from "./components/Navigation/Navigation";
 
 function RootLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
+  const [isDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved ? JSON.parse(saved) : false;
   });
 
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
   const closeSidebar = () => setIsSidebarOpen(false);
-  const toggleDarkMode = () => setIsDarkMode((prev: boolean) => !prev);
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", isDarkMode);
@@ -25,7 +24,6 @@ function RootLayout() {
         <Header
           onToggleSidebar={toggleSidebar}
           isSidebarOpen={isSidebarOpen}
-          onToggleDarkMode={toggleDarkMode}
           isDarkMode={isDarkMode}
         />
         <Navigation isOpen={isSidebarOpen} onNavigate={closeSidebar} />
