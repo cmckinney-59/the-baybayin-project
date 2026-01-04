@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation/Navigation";
 
 function RootLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode] = useState(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved ? JSON.parse(saved) : false;
   });
@@ -17,6 +17,25 @@ function RootLayout() {
     document.body.classList.toggle("dark-mode", isDarkMode);
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode]);
+
+  // Sync dark mode state with body class changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const isDark = document.body.classList.contains("dark-mode");
+      setIsDarkMode(isDark);
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    // Also check on mount
+    const isDark = document.body.classList.contains("dark-mode");
+    setIsDarkMode(isDark);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
