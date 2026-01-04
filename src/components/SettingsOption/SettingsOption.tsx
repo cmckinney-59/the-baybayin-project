@@ -1,43 +1,24 @@
 import { useState, useEffect } from "react";
 import "./SettingsPage.css";
 
-export default function SettingsPage() {
-  const [showExperimentalFeatures, setShowExperimentalFeatures] = useState(
-    () => {
-      const saved = localStorage.getItem("showExperimentalFeatures");
-      return saved ? JSON.parse(saved) : false;
-    }
-  );
+interface SettingsOptionProps {
+  type: "checkbox" | "radio";
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}
 
-  useEffect(() => {
-    localStorage.setItem(
-      "showExperimentalFeatures",
-      JSON.stringify(showExperimentalFeatures)
-    );
-  }, [showExperimentalFeatures]);
-
-  const toggleExperimentalFeatures = () => {
-    setShowExperimentalFeatures((prev: boolean) => !prev);
-  };
-
+export default function SettingsOption({
+  type,
+  label,
+  checked,
+  onChange,
+}: SettingsOptionProps) {
   return (
     <div className="setting-item">
-      <h2>Show Experimental Features</h2>
+      <h2>{label}</h2>
       <label className="toggle-switch">
-        <input
-          type="checkbox"
-          checked={showExperimentalFeatures}
-          onChange={toggleExperimentalFeatures}
-        />
-        <span className="toggle-slider"></span>
-      </label>
-      <h2>Dark Mode</h2>
-      <label className="toggle-switch">
-        <input
-          type="checkbox"
-          // checked={isDarkMode}
-          // onChange={toggleDarkMode}
-        />
+        <input type={type} checked={checked} onChange={onChange} />
         <span className="toggle-slider"></span>
       </label>
     </div>
