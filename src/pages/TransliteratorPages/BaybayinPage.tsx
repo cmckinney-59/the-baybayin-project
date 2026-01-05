@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TransliteratorWithDialog from "../../components/TransliteratorWithDialog/TransliteratorWithDialog.tsx";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
@@ -10,6 +10,14 @@ import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/Baybayi
 
 export default function BaybayinPage() {
   const { setCurrentAlphabet } = useAlphabet();
+  const [showExperimentalFeatures, setShowExperimentalFeatures] =
+    useState(false);
+
+  useEffect(() => {
+    setShowExperimentalFeatures(
+      localStorage.getItem("showExperimentalFeatures") === "true"
+    );
+  }, []);
 
   useEffect(() => {
     setCurrentAlphabet("Baybayin");
@@ -24,7 +32,7 @@ export default function BaybayinPage() {
       <WhatIsBaybayin />
       <BaybayinHowToRead />
       <BaybayinBorrowedWordsCollapsible />
-      <OtherAlphabets />
+      {showExperimentalFeatures && <OtherAlphabets />}
     </WordsDictionaryProvider>
   );
 }
