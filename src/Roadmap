@@ -3,9 +3,9 @@ TRANSLITERATOR WEB APP ROADMAP
 TODO:
 - Update family picture
 - Put items behind feature flag
-    - All the other languages
     - Validate button
     - Parallel button
 - Add outline to Projects table
+- Split out transliterator components
 
 PHASE 9 : OTHER FILIPINO ALPHABETS

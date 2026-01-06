@@ -1,24 +1,10 @@
 import { useState, useEffect } from "react";
 import SettingsOption from "../../components/SettingsOption/SettingsOption";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 export default function SettingsPage() {
-  const [showExperimentalFeatures, setShowExperimentalFeatures] = useState(
-    () => {
-      const saved = localStorage.getItem("showExperimentalFeatures");
-      return saved ? JSON.parse(saved) : false;
-    }
-  );
-
-  useEffect(() => {
-    localStorage.setItem(
-      "showExperimentalFeatures",
-      JSON.stringify(showExperimentalFeatures)
-    );
-  }, [showExperimentalFeatures]);
-
-  const toggleExperimentalFeatures = () => {
-    setShowExperimentalFeatures((prev: boolean) => !prev);
-  };
+  const { showExperimentalFeatures, toggleExperimentalFeatures } =
+    useExperimentalFeatures();
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");

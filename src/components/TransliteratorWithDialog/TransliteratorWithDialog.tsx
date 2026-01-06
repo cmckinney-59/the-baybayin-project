@@ -4,6 +4,7 @@ import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcesso
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 interface TransliteratorWithDialogProps {
   title: string;
@@ -20,6 +21,7 @@ export default function TransliteratorWithDialog({
     clearWordsDictionary,
     wordContainsBorrowedSound,
   } = useWordsDictionary();
+  const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -138,7 +140,7 @@ export default function TransliteratorWithDialog({
           information.
         </p>
       )}
-      {title === "Baybayin" && (
+      {title === "Baybayin" && showExperimentalFeatures && (
         <label className="checkbox-label">
           <input
             type="checkbox"
@@ -149,7 +151,7 @@ export default function TransliteratorWithDialog({
         </label>
       )}
       <div className="action-buttons">
-        {checkboxValue && (
+        {showExperimentalFeatures && checkboxValue && (
           <button onClick={() => setIsDialogOpen(true)}>Validate</button>
         )}
         <SaveButtonContainter transliteratedText={transliteratedText} />
