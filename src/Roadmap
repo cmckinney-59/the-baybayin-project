@@ -2,9 +2,6 @@ TRANSLITERATOR WEB APP ROADMAP
 
 TODO:
 - Update family picture
-- Put items behind feature flag
-    - Validate button
-    - Parallel button
 - Add outline to Projects table
 - Split out transliterator components
 
