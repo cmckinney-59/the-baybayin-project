@@ -3,6 +3,7 @@ import CopyTextButton from "./CopyTextButton";
 import ExcelSaveButton from "./ExcelSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
+import MessageDialog from "../../Dialog/MessageDialog";
 import ParallelButton from "./ParallelButton";
 import { useExperimentalFeatures } from "../../../contexts/ExperimentalFeaturesContext";
 
@@ -14,12 +15,19 @@ export default function SaveButtonContainter({
   transliteratedText,
 }: SaveButtonContainerProps) {
   const [showFontDialog, setShowFontDialog] = useState(false);
+  const [showMessageDialog, setShowMessageDialog] = useState(false);
+  const [message, setMessage] = useState("");
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
   const { showExperimentalFeatures } = useExperimentalFeatures();
 
   const handleShowDialog = (action: () => void) => {
     setPendingAction(() => action);
     setShowFontDialog(true);
+  };
+
+  const handleShowMessageDialog = (msg: string) => {
+    setMessage(msg);
+    setShowMessageDialog(true);
   };
 
   const handleConfirm = () => {
@@ -33,6 +41,11 @@ export default function SaveButtonContainter({
   const handleClose = () => {
     setShowFontDialog(false);
     setPendingAction(null);
+  };
+
+  const handleMessageDialogClose = () => {
+    setShowMessageDialog(false);
+    setMessage("");
   };
 
   return (
@@ -53,7 +66,7 @@ export default function SaveButtonContainter({
       {showExperimentalFeatures && (
         <ParallelButton
           transliteratedText={transliteratedText}
-          onShowDialog={handleShowDialog}
+          onShowMessageDialog={handleShowMessageDialog}
         />
       )}
       {showFontDialog && (
@@ -61,6 +74,9 @@ export default function SaveButtonContainter({
           onClose={handleClose}
           onConfirm={handleConfirm}
         />
+      )}
+      {showMessageDialog && (
+        <MessageDialog message={message} onClose={handleMessageDialogClose} />
       )}
     </>
   );

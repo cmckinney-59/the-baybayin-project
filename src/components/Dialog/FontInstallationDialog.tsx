@@ -1,14 +1,18 @@
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+
 interface FontInstallationDialogProps {
   onClose: () => void;
   onConfirm: () => void;
 }
 
 export default function FontInstallationDialog({
+  onClose,
   onConfirm,
 }: FontInstallationDialogProps) {
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
+        <CloseDialogButton onClose={onClose} />
         <div className="dialog-header">
           <div className="dialog-header-top-row">
             <h3>Font Required</h3>
