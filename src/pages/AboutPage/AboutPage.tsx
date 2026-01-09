@@ -1,4 +1,4 @@
-import familyImage from "../../assets/images/family.jpg";
+import familyImage2 from "../../assets/images/family2.jpg";
 import "./AboutPage.css";
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
           in Utah. I currently live in Alberta, Canada with my wife and three
           children.
         </p>
-        <img src={familyImage} alt="Family" className="family-image" />
+        <img src={familyImage2} alt="Family" className="family-image" />
       </div>
       <h2>How it began</h2>
       <h3>Mission Call</h3>
