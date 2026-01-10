@@ -179,8 +179,6 @@ export default function BaybayinHowToRead() {
           </tr>
         </tbody>
       </table>
-
-      <BaybayinBorrowedWords />
     </CollapsibleSection>
   );
 }
