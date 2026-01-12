@@ -1,24 +1,11 @@
-import { useState, useEffect } from "react";
 import SettingsOption from "../../components/SettingsOption/SettingsOption";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 export default function SettingsPage() {
   const { showExperimentalFeatures, toggleExperimentalFeatures } =
     useExperimentalFeatures();
-
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : false;
-  });
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev: boolean) => !prev);
-  };
-
-  useEffect(() => {
-    document.body.classList.toggle("dark-mode", isDarkMode);
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <div className="settingsPage">

@@ -3,18 +3,18 @@ import lightModeLogo from "../../assets/images/TBP_Horizontal_Black.png";
 import darkModeLogo from "../../assets/images/TBP_Horizontal_White.png";
 import "./Header.css";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { useDarkMode } from "../../contexts/DarkModeContext";
 
 type HeaderProps = {
   onToggleSidebar: () => void;
   isSidebarOpen: boolean;
-  isDarkMode: boolean;
 };
 
 export default function Header({
   onToggleSidebar,
   isSidebarOpen,
-  isDarkMode,
 }: HeaderProps): JSX.Element {
+  const { isDarkMode } = useDarkMode();
   return (
     <header className="App-header">
       <button
