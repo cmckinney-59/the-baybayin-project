@@ -5,6 +5,7 @@ import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.ts
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import TransliteratorContainer from "../TransliteratorContainer/TransliteratorContainer.tsx";
 
 interface TransliteratorWithDialogProps {
   title: string;
@@ -24,9 +25,8 @@ export default function TransliteratorWithDialog({
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const outputRef = useRef<HTMLDivElement>(null);
-  const textareaHasText = text.length > 0;
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const outputRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
@@ -76,63 +76,18 @@ export default function TransliteratorWithDialog({
 
   return (
     <div>
-      <div className="transliteration-container">
-        <div className="textarea-wrapper">
-          <textarea
-            ref={textareaRef}
-            className="transliteration-textarea"
-            placeholder="Enter text to be transliterated here..."
-            value={text}
-            onChange={(e) => {
-              const currentValue = e.target.value;
-              setText(currentValue);
-              handleChange(currentValue);
-            }}
-          ></textarea>
-          {text.length > 0 && (
-            <button
-              className="clear-input-button"
-              onClick={() => {
-                handleClearInput();
-              }}
-              aria-label="Clear input"
-            >
-              ×
-            </button>
-          )}
-        </div>
-        <div className="textarea-wrapper">
-          <div
-            ref={outputRef}
-            className={`transliteration-output ${
-              textareaHasText
-                ? title === "Baybayin"
-                  ? "baybayin-font"
-                  : title === "Aurebesh"
-                  ? "aurebesh-font"
-                  : title === "Deseret"
-                  ? "deseret-font"
-                  : title === "Tengwar"
-                  ? "tengwar-font"
-                  : ""
-                : ""
-            }`}
-          >
-            {transliteratedText}
-          </div>
-          {transliteratedText.length > 0 && (
-            <button
-              className="clear-output-button"
-              onClick={() => {
-                handleClearInput();
-              }}
-              aria-label="Clear output"
-            >
-              ×
-            </button>
-          )}
-        </div>
-      </div>
+      <TransliteratorContainer
+        text={text}
+        transliteratedText={transliteratedText}
+        title={title}
+        textareaRef={textareaRef}
+        outputRef={outputRef}
+        onTextChange={(currentValue) => {
+          setText(currentValue);
+          handleChange(currentValue);
+        }}
+        onClear={handleClearInput}
+      />
       {text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
           * The letter 'c' does not show in baybayin font. Replace any c's with
