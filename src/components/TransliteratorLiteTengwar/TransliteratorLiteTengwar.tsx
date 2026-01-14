@@ -107,7 +107,10 @@ export default function TransliteratorLiteTengwar({
         </div>
       </div>
       <div className="action-buttons">
-        <SaveButtonContainter transliteratedText={transliteratedText} />
+        <SaveButtonContainter
+          originalText={text}
+          transliteratedText={transliteratedText}
+        />
       </div>
     </div>
   );

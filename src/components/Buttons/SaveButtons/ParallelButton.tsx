@@ -1,16 +1,24 @@
 import { AiFillFileWord } from "react-icons/ai";
+import downloadAsWordParallel from "../../../utils/SaveActions/SaveToWordParallel";
+import { useAlphabet } from "../../../contexts/AlphabetContext";
 
 interface ParallelButtonProps {
+  originalText: string;
   transliteratedText: string;
-  onShowMessageDialog: (message: string) => void;
+  onShowDialog: (action: () => void) => void;
 }
 
 export default function ParallelButton({
+  originalText,
   transliteratedText,
-  onShowMessageDialog,
+  onShowDialog,
 }: ParallelButtonProps) {
+  const { currentAlphabet } = useAlphabet();
+
   const handleClick = () => {
-    onShowMessageDialog("This feature is not yet functional");
+    onShowDialog(() =>
+      downloadAsWordParallel(originalText, transliteratedText, currentAlphabet)
+    );
   };
 
   return (

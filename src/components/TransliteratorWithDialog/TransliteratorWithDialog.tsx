@@ -109,7 +109,10 @@ export default function TransliteratorWithDialog({
         {showExperimentalFeatures && checkboxValue && (
           <button onClick={() => setIsDialogOpen(true)}>Validate</button>
         )}
-        <SaveButtonContainter transliteratedText={transliteratedText} />
+        <SaveButtonContainter
+          originalText={text}
+          transliteratedText={transliteratedText}
+        />
       </div>
       {isDialogOpen && (
         <WordReviewDialog

@@ -8,10 +8,12 @@ import ParallelButton from "./ParallelButton";
 import { useExperimentalFeatures } from "../../../contexts/ExperimentalFeaturesContext";
 
 interface SaveButtonContainerProps {
+  originalText: string;
   transliteratedText: string;
 }
 
 export default function SaveButtonContainter({
+  originalText,
   transliteratedText,
 }: SaveButtonContainerProps) {
   const [showFontDialog, setShowFontDialog] = useState(false);
@@ -65,8 +67,9 @@ export default function SaveButtonContainter({
       />
       {showExperimentalFeatures && (
         <ParallelButton
+          originalText={originalText}
           transliteratedText={transliteratedText}
-          onShowMessageDialog={handleShowMessageDialog}
+          onShowDialog={handleShowDialog}
         />
       )}
       {showFontDialog && (
