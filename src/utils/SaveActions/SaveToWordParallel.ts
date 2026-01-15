@@ -8,6 +8,7 @@ import {
   TableRow,
   TableCell,
   WidthType,
+  BorderStyle,
 } from "docx";
 
 function getFontName(alphabet: string): string {
@@ -37,6 +38,12 @@ export default function downloadAsWordParallel(
     const transliteratedWord =
       index < transliteratedWords.length ? transliteratedWords[index] : "";
 
+    const cellBorder = {
+      style: BorderStyle.SINGLE,
+      size: 4,
+      color: "000000",
+    };
+
     return new TableRow({
       children: [
         new TableCell({
@@ -56,6 +63,12 @@ export default function downloadAsWordParallel(
             size: 50,
             type: WidthType.PERCENTAGE,
           },
+          borders: {
+            top: cellBorder,
+            bottom: cellBorder,
+            left: cellBorder,
+            right: cellBorder,
+          },
         }),
         new TableCell({
           children: [
@@ -74,6 +87,12 @@ export default function downloadAsWordParallel(
             size: 50,
             type: WidthType.PERCENTAGE,
           },
+          borders: {
+            top: cellBorder,
+            bottom: cellBorder,
+            left: cellBorder,
+            right: cellBorder,
+          },
         }),
       ],
     });
@@ -82,7 +101,16 @@ export default function downloadAsWordParallel(
   const doc = new Document({
     sections: [
       {
-        properties: {},
+        properties: {
+          page: {
+            margin: {
+              top: 1440, // 1 inch in twips (20 * 72)
+              right: 1440,
+              bottom: 1440,
+              left: 1440,
+            },
+          },
+        },
         children: [
           new Table({
             rows: tableRows,
