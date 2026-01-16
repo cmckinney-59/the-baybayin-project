@@ -701,6 +701,62 @@ button:hover:not(:disabled) {
   opacity: 0.8;
 }
 
+.drag-drop-box {
+  border: 2px dashed var(--button-border);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 10px;
+  text-align: center;
+  background-color: var(--bg-secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.drag-drop-box:hover {
+  border-color: rgba(0, 123, 255, 0.5);
+  background-color: var(--bg-primary);
+}
+
+.drag-drop-box.drag-over {
+  border-color: rgba(0, 123, 255, 1);
+  background-color: rgba(0, 123, 255, 0.1);
+  border-style: solid;
+}
+
+.drag-drop-content {
+  pointer-events: none;
+}
+
+.drag-drop-text {
+  color: var(--text-primary);
+  font-size: 16px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.drag-drop-label {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.drag-drop-link {
+  color: rgb(26, 115, 232);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.drag-drop-link:hover {
+  color: rgb(13, 85, 200);
+}
+
+.dark-mode .drag-drop-link {
+  color: #64b5f6;
+}
+
+.dark-mode .drag-drop-link:hover {
+  color: #42a5f5;
+}
+
 .note-paragraph {
   color: #e74c3c;
   text-align: center;
