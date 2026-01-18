@@ -91,11 +91,7 @@ export default function TransliteratorLiteTengwar({
           <div
             ref={outputRef}
             className={`transliteration-output ${
-              textareaHasText
-                ? title === "Tengwar"
-                  ? "tengwar-font"
-                  : ""
-                : ""
+              textareaHasText ? (title === "Tengwar" ? "tengwar-font" : "") : ""
             }`}
           >
             {transliteratedText}
@@ -122,4 +118,3 @@ export default function TransliteratorLiteTengwar({
     </div>
   );
 }
-

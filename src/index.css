@@ -701,6 +701,84 @@ button:hover:not(:disabled) {
   opacity: 0.8;
 }
 
+.experimental-features-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background-color: #ffa500;
+  border-bottom: 2px solid #ff8c00;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.experimental-banner-visible .App-header {
+  top: 48px;
+}
+
+.experimental-banner-visible .App-Navigation {
+  top: 108px; /* 60px header + 48px banner */
+  height: calc(100vh - 108px);
+}
+
+.experimental-features-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.experimental-features-banner-text {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  padding-right: 20px;
+}
+
+.experimental-features-banner-close {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.experimental-features-banner-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+.dark-mode .experimental-features-banner {
+  background-color: #ff8c00;
+  border-bottom-color: #ff7700;
+}
+
+.dark-mode .experimental-features-banner-text {
+  color: #1a1a1a;
+}
+
+.dark-mode .experimental-features-banner-close {
+  color: #1a1a1a;
+}
+
+.dark-mode .experimental-features-banner-close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .drag-drop-box {
   border: 2px dashed var(--button-border);
   border-radius: 10px;
