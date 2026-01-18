@@ -13,8 +13,8 @@ function RootLayout() {
   return (
     <>
       <div className="App">
-        <ExperimentalFeaturesBanner />
         <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+        <ExperimentalFeaturesBanner />
         <Navigation isOpen={isSidebarOpen} onNavigate={closeSidebar} />
         <main className={`App-content ${isSidebarOpen ? "with-sidebar" : ""}`}>
           <Outlet />
