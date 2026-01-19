@@ -707,8 +707,8 @@ button:hover:not(:disabled) {
   left: 0;
   right: 0;
   z-index: 999; /* Below header (z-index: 1000) but above content */
-  background-color: #ffa500;
-  border-bottom: 2px solid #ff8c00;
+  background-color: #f5ad54;
+  border-bottom: 2px solid #ff983e;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -759,8 +759,8 @@ button:hover:not(:disabled) {
 }
 
 .dark-mode .experimental-features-banner {
-  background-color: #ff8c00;
-  border-bottom-color: #ff7700;
+  background-color: #f5ad54;
+  border-bottom-color: #ff983e;
 }
 
 .dark-mode .experimental-features-banner-text {
