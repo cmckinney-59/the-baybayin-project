@@ -704,17 +704,12 @@ button:hover:not(:disabled) {
 .experimental-features-banner {
   position: fixed;
   top: 60px; /* Below the header */
-  left: 0;
+  left: 60px; /* Start after the left navigation */
   right: 0;
   z-index: 999; /* Below header (z-index: 1000) but above content */
   background-color: #f5ad54;
   border-bottom: 2px solid #ff983e;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.experimental-banner-visible .App-Navigation {
-  top: 108px; /* 60px header + 48px banner */
-  height: calc(100vh - 108px);
 }
 
 .experimental-features-banner-content {
