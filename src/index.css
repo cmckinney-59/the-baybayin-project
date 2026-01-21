@@ -703,10 +703,10 @@ button:hover:not(:disabled) {
 
 .experimental-features-banner {
   position: fixed;
-  top: 60px; /* Below the header */
-  left: 60px; /* Start after the left navigation */
+  top: 60px;
+  left: 60px;
   right: 0;
-  z-index: 999; /* Below header (z-index: 1000) but above content */
+  z-index: 999;
   background-color: #f5ad54;
   border-bottom: 2px solid #ff983e;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
