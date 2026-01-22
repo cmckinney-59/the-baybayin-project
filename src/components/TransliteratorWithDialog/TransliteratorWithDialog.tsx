@@ -107,7 +107,7 @@ export default function TransliteratorWithDialog({
       )}
       <div className="action-buttons">
         {showExperimentalFeatures && checkboxValue && (
-          <button onClick={() => setIsDialogOpen(true)}>Validate</button>
+          <button onClick={() => setIsDialogOpen(true)} disabled={transliteratedText.trim().length === 0}>Validate</button>
         )}
         <SaveButtonContainter
           originalText={text}

@@ -27,11 +27,6 @@ export default function SaveButtonContainter({
     setShowFontDialog(true);
   };
 
-  const handleShowMessageDialog = (msg: string) => {
-    setMessage(msg);
-    setShowMessageDialog(true);
-  };
-
   const handleConfirm = () => {
     if (pendingAction) {
       pendingAction();
