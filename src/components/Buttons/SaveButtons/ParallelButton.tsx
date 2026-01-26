@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { AiFillFileWord, AiFillFilePdf } from "react-icons/ai";
 import downloadAsWordParallel from "../../../utils/SaveActions/SaveToWordParallel";
 import downloadAsPDFParallel from "../../../utils/SaveActions/SaveToPDFParallel";
@@ -15,6 +16,15 @@ export default function ParallelButton({
   onShowDialog,
 }: ParallelButtonProps) {
   const { currentAlphabet } = useAlphabet();
+  const navigate = useNavigate();
+
+  const handleViewClick = () => {
+    const params = new URLSearchParams({
+      original: originalText,
+      transliterated: transliteratedText,
+    });
+    navigate(`/parallel-view?${params.toString()}`);
+  };
 
   const handleWordClick = () => {
     onShowDialog(() =>
@@ -29,6 +39,15 @@ export default function ParallelButton({
 
   return (
     <>
+      <button
+        className={transliteratedText ? "active" : undefined}
+        onClick={handleViewClick}
+        disabled={transliteratedText.trim().length === 0}
+        title="View text side-by-side in a new page"
+      >
+        <AiFillFileWord />
+        Parallel View
+      </button>
       <button
         className={transliteratedText ? "active" : undefined}
         onClick={handleWordClick}
