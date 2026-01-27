@@ -28,19 +28,15 @@ export default function ParallelViewPage() {
 
   return (
     <div className="parallel-view-container">
-      <div className="parallel-view-header">
-        <h2>Parallel View</h2>
-        <BackButton />
-      </div>
+      <BackButton />
       <div className="parallel-view-content">
         <div className="parallel-view-panel">
-          <h3>Original Text</h3>
           <div className="parallel-view-text original-text">
             {originalText || <span className="placeholder">No text entered</span>}
           </div>
         </div>
+        <div className="parallel-view-divider"></div>
         <div className="parallel-view-panel">
-          <h3>Transliterated Text</h3>
           <div className={`parallel-view-text transliterated-text ${getFontClass()}`}>
             {transliteratedText || <span className="placeholder">No transliteration available</span>}
           </div>

@@ -46,10 +46,6 @@ const router = createHashRouter([
         path: "/settings",
         element: <SettingsPage />,
       },
-      {
-        path: "/parallel-view",
-        element: <ParallelViewPage />,
-      },
       // {
       //   path: "/shop",
       //   element: <ShopPage />,
@@ -77,6 +73,10 @@ const router = createHashRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/parallel-view",
+    element: <ParallelViewPage />,
   },
 ]);
 
