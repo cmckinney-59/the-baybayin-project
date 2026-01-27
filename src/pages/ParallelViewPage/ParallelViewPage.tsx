@@ -1,11 +1,10 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import "./ParallelViewPage.css";
 import BackButton from "../../components/Buttons/BackButton";
 
 export default function ParallelViewPage() {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const { currentAlphabet } = useAlphabet();
 
   const originalText = searchParams.get("original") || "";
