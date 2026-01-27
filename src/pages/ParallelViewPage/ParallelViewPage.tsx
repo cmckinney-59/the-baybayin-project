@@ -1,6 +1,7 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import "./ParallelViewPage.css";
+import BackButton from "../../components/Buttons/BackButton";
 
 export default function ParallelViewPage() {
   const [searchParams] = useSearchParams();
@@ -30,9 +31,7 @@ export default function ParallelViewPage() {
     <div className="parallel-view-container">
       <div className="parallel-view-header">
         <h2>Parallel View</h2>
-        <button onClick={() => navigate(-1)} className="back-button">
-          ← Back
-        </button>
+        <BackButton />
       </div>
       <div className="parallel-view-content">
         <div className="parallel-view-panel">
