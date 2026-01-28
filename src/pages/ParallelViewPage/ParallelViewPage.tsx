@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { AiOutlinePrinter } from "react-icons/ai";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import "./ParallelViewPage.css";
 import BackButton from "../../components/Buttons/BackButton";
@@ -26,9 +27,23 @@ export default function ParallelViewPage() {
     }
   };
 
+  const handlePrintToPdf = () => {
+    window.print();
+  };
+
   return (
     <div className="parallel-view-container">
       <BackButton />
+      <button
+        type="button"
+        className="print-to-pdf-button"
+        onClick={handlePrintToPdf}
+        title="Open print dialog to save as PDF"
+        aria-label="Print page to PDF"
+      >
+        <AiOutlinePrinter />
+        Print to PDF
+      </button>
       <div className="parallel-view-content">
         <div className="parallel-view-panel">
           <div className="parallel-view-text original-text">

@@ -6,6 +6,19 @@
   box-sizing: border-box;
 }
 
+.print-to-pdf-button {
+  position: fixed;
+  top: 65px;
+  right: 65px;
+  padding: 6px 12px;
+  font-size: 12px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
 .parallel-view-content {
   display: flex;
   flex: 1;
@@ -71,5 +84,22 @@
 
   .parallel-view-text {
     min-height: 250px;
+  }
+
+  .print-to-pdf-button {
+    right: 20px;
+  }
+}
+
+@media print {
+  .parallel-view-container .back-button,
+  .parallel-view-container .print-to-pdf-button {
+    display: none !important;
+  }
+
+  .parallel-view-container {
+    padding: 0;
+    height: auto;
+    min-height: 100vh;
   }
 }
