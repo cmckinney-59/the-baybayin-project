@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-import { AiOutlinePrinter } from "react-icons/ai";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import "./ParallelViewPage.css";
 import BackButton from "../../components/Buttons/BackButton";
+import PrintToPDFButton from "../../components/Buttons/SaveButtons/PrintToPDFButton";
 
 export default function ParallelViewPage() {
   const [searchParams] = useSearchParams();
@@ -27,33 +27,26 @@ export default function ParallelViewPage() {
     }
   };
 
-  const handlePrintToPdf = () => {
-    window.print();
-  };
-
   return (
     <div className="parallel-view-container">
       <BackButton />
-      <button
-        type="button"
-        className="print-to-pdf-button"
-        onClick={handlePrintToPdf}
-        title="Open print dialog to save as PDF"
-        aria-label="Print page to PDF"
-      >
-        <AiOutlinePrinter />
-        Print to PDF
-      </button>
+      <PrintToPDFButton />
       <div className="parallel-view-content">
         <div className="parallel-view-panel">
           <div className="parallel-view-text original-text">
-            {originalText || <span className="placeholder">No text entered</span>}
+            {originalText || (
+              <span className="placeholder">No text entered</span>
+            )}
           </div>
         </div>
         <div className="parallel-view-divider"></div>
         <div className="parallel-view-panel">
-          <div className={`parallel-view-text transliterated-text ${getFontClass()}`}>
-            {transliteratedText || <span className="placeholder">No transliteration available</span>}
+          <div
+            className={`parallel-view-text transliterated-text ${getFontClass()}`}
+          >
+            {transliteratedText || (
+              <span className="placeholder">No transliteration available</span>
+            )}
           </div>
         </div>
       </div>
