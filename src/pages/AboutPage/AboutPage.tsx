@@ -54,9 +54,9 @@ export default function AboutPage() {
             to continue speaking Tagalog due to all of the Filipinos that
             attended school there. During my last semester I took a class where
             we used Excel to deconstruct and analyze a chapter of a book. The
-            principles that I learned in this class would build the
-            foundational skills required to begin my first project,
-            transcribing "Ang Aklat Ni Mormon" (The Book of Mormon).
+            principles that I learned in this class would build the foundational
+            skills required to begin my first project, transcribing "Ang Aklat
+            Ni Mormon" (The Book of Mormon).
           </p>
         </div>
 
@@ -64,10 +64,10 @@ export default function AboutPage() {
           <h3 className="about-subtitle">Beginning of the Project</h3>
           <p>
             After finishing at BYUH I returned home to Utah. Soon after the
-            thought occurred to me that I could transcribe "Ang Aklat Ni
-            Mormon" into Baybayin. I soon had a proof of concept for the first
-            chapter of ANM. Over the course of the following months, I was able
-            to transcribe, review, edit and format most of the "Ang Aklat ni
+            thought occurred to me that I could transcribe "Ang Aklat Ni Mormon"
+            into Baybayin. I soon had a proof of concept for the first chapter
+            of ANM. Over the course of the following months, I was able to
+            transcribe, review, edit and format most of the "Ang Aklat ni
             Mormon" using the skills that I learned at BYUH.
           </p>
           <p>
@@ -92,8 +92,8 @@ export default function AboutPage() {
           </p>
           <p>
             Overall, working on these projects has been a great joy. The people
-            and culture of the Philippines has had a profound positive impact
-            on my life.
+            and culture of the Philippines has had a profound positive impact on
+            my life.
           </p>
         </div>
       </section>
@@ -136,11 +136,11 @@ export default function AboutPage() {
       </section>
 
       <footer className="about-sign-off">
-        <p className="about-sign-off-text">
-          Maraming salamat sa inyong lahat! — Chaz
-        </p>
         <p className="about-sign-off-baybayin baybayin-font">
           MrmiN+ slmt+ s In+yoN+ lht+!
+        </p>
+        <p className="about-sign-off-text">
+          (Maraming salamat sa inyong lahat!)
         </p>
       </footer>
     </article>
