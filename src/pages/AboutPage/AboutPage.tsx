@@ -1,3 +1,4 @@
+import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import familyImage2 from "../../assets/images/family2.jpg";
 import "./AboutPage.css";
 
@@ -5,7 +6,7 @@ export default function AboutPage() {
   return (
     <article className="about-page">
       <header className="about-header">
-        <h1 className="about-title">About</h1>
+        <h1 className="about-title">About & Social</h1>
       </header>
 
       <section className="about-intro">
@@ -95,6 +96,43 @@ export default function AboutPage() {
             on my life.
           </p>
         </div>
+      </section>
+
+      <section className="about-social">
+        <h2 className="about-section-title">Follow us</h2>
+        <ul className="about-social-list">
+          <li>
+            <a
+              href="https://www.facebook.com/profile.php?id=61558642794586"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Facebook"
+              className="about-social-link"
+            >
+              <AiFillFacebook className="about-social-icon" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/the_baybayin_project/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Instagram"
+              className="about-social-link"
+            >
+              <AiFillInstagram className="about-social-icon" />
+            </a>
+          </li>
+        </ul>
+        <h2 className="about-section-title">Contact us</h2>
+        <p className="about-contact-email">
+          <a
+            href="mailto:the.baybayin.project@gmail.com"
+            className="about-social-link"
+          >
+            the.baybayin.project@gmail.com
+          </a>
+        </p>
       </section>
 
       <footer className="about-sign-off">

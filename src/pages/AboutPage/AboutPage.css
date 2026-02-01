@@ -116,6 +116,45 @@
   color: var(--text-primary);
 }
 
+/* Social section */
+.about-social {
+  margin-bottom: 2.5rem;
+}
+
+.about-social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-social-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.about-social-link:hover {
+  opacity: 0.85;
+}
+
+.about-social-icon {
+  font-size: 2.5rem;
+}
+
+.about-contact-email {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.about-contact-email .about-social-link {
+  color: var(--text-primary);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .about-page {

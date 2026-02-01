@@ -11,7 +11,6 @@ import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
 import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
-import SocialPage from "./pages/SocialPage/SocialPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPage";
@@ -37,10 +36,6 @@ const router = createHashRouter([
       {
         path: "/projects",
         element: <ProjectsPage />,
-      },
-      {
-        path: "/social",
-        element: <SocialPage />,
       },
       {
         path: "/settings",

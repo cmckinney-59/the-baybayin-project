@@ -3,7 +3,6 @@ import {
   AiOutlineTranslation,
   AiOutlineInfoCircle,
   AiOutlineProject,
-  AiOutlineLike,
 } from "react-icons/ai";
 
 import "./HomePage.css";
@@ -21,10 +20,6 @@ export default function HomePage() {
 
   const handleProjectsClick = () => {
     navigate("/projects");
-  };
-
-  const handleSocialClick = () => {
-    navigate("/social");
   };
 
   return (
@@ -47,14 +42,8 @@ export default function HomePage() {
 
         <div className="nav-card" onClick={handleAboutClick}>
           <AiOutlineInfoCircle className="nav-card-icon" />
-          <h2>About</h2>
-          <p>Learn more about our mission.</p>
-        </div>
-
-        <div className="nav-card" onClick={handleSocialClick}>
-          <AiOutlineLike className="nav-card-icon" />
-          <h2>Social</h2>
-          <p>Connect with us.</p>
+          <h2>About & Social</h2>
+          <p>Learn more and connect with us.</p>
         </div>
       </div>
     </div>

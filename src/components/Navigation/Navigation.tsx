@@ -4,11 +4,9 @@ import {
   AiOutlineHome,
   AiOutlineInfoCircle,
   AiOutlineProject,
-  AiOutlineLike,
   AiFillHome,
   AiFillInfoCircle,
   AiFillProject,
-  AiFillLike,
   AiFillSetting,
   AiOutlineSetting,
   // AiOutlineShopping,
@@ -75,13 +73,13 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={onNavigate} title="About">
+            <Link to="/about" onClick={onNavigate} title="About & Social">
               {isActiveRoute("/about") ? (
                 <AiFillInfoCircle className="nav-icon" />
               ) : (
                 <AiOutlineInfoCircle className="nav-icon" />
               )}
-              <span className="nav-text">About</span>
+              <span className="nav-text">About & Social</span>
             </Link>
           </li>
           {/* <li>
@@ -90,16 +88,6 @@ export default function Navigation({
               <span className="nav-text">Shop</span>
             </Link>
           </li> */}
-          <li>
-            <Link to="/social" onClick={onNavigate} title="Social">
-              {isActiveRoute("/social") ? (
-                <AiFillLike className="nav-icon" />
-              ) : (
-                <AiOutlineLike className="nav-icon" />
-              )}
-              <span className="nav-text">Social</span>
-            </Link>
-          </li>
           <li>
             <Link to="/settings" onClick={onNavigate} title="Settings">
               {isActiveRoute("/settings") ? (
