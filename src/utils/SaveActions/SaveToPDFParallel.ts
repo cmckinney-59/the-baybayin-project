@@ -1,20 +1,8 @@
 import jsPDF from "jspdf";
 
-function getFontName(alphabet: string): string {
-  const fontMap: { [key: string]: string } = {
-    Baybayin: "Tagalog Doctrina 1593",
-    "Baybayin Lite": "Tagalog Doctrina 1593",
-    Aurebesh: "Aurebesh",
-    Deseret: "Deseret",
-    Tengwar: "Tengwar",
-  };
-  return fontMap[alphabet] || "Tagalog Doctrina 1593";
-}
-
 export default function downloadAsPDFParallel(
   originalText: string,
-  transliteratedText: string,
-  alphabet: string = ""
+  transliteratedText: string
 ) {
   // Split both texts into words/lines for parallel display
   const originalWords = originalText.trim().split(/\s+/);

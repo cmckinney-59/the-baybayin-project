@@ -34,7 +34,7 @@ export default function ParallelButton({
 
   const handlePDFClick = () => {
     // PDF doesn't need font dialog since it has limited font support anyway
-    downloadAsPDFParallel(originalText, transliteratedText, currentAlphabet);
+    downloadAsPDFParallel(originalText, transliteratedText);
   };
 
   return (

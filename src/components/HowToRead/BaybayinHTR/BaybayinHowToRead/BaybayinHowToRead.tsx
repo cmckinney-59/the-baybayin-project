@@ -1,6 +1,5 @@
 import BaybayinTable from "../BaybayinTable/BaybayinTable";
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
-import BaybayinBorrowedWords from "./BaybayinBorrowedWordsCollapsible";
 
 export default function BaybayinHowToRead() {
   return (
