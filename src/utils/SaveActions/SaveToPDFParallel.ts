@@ -4,64 +4,46 @@ export default function downloadAsPDFParallel(
   originalText: string,
   transliteratedText: string
 ) {
-  // Split both texts into words/lines for parallel display
-  const originalWords = originalText.trim().split(/\s+/);
-  const transliteratedWords = transliteratedText.trim().split(/\s+/);
+  const original = originalText.trim();
+  const transliterated = transliteratedText.trim();
 
-  // Create PDF
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
   const margin = 20;
-  const usableWidth = pageWidth - 2 * margin;
+  const colGap = 10;
+  const usableWidth = pageWidth - 2 * margin - colGap;
   const colWidth = usableWidth / 2;
-  let yPosition = margin + 10;
-  const lineHeight = 10;
-  const fontSize = 12;
-  const cellPadding = 3;
+  const fontSize = 11;
+  const lineHeight = 7;
 
   doc.setFontSize(fontSize);
+  doc.setFont("helvetica", "normal");
 
-  // Process each word pair
-  originalWords.forEach((originalWord, index) => {
-    const transliteratedWord =
-      index < transliteratedWords.length ? transliteratedWords[index] : "";
+  // Split each column's text into wrapped lines (preserves paragraphs via \n)
+  const originalLines = doc.splitTextToSize(original, colWidth);
+  const transliteratedLines = doc.splitTextToSize(transliterated, colWidth);
+  const maxLines = Math.max(originalLines.length, transliteratedLines.length);
 
-    // Check if we need a new page
+  let yPosition = margin + 10;
+
+  for (let i = 0; i < maxLines; i++) {
+    // New page when needed
     if (yPosition + lineHeight > pageHeight - margin) {
       doc.addPage();
       yPosition = margin + 10;
     }
 
-    const rowHeight = lineHeight;
+    const leftText = originalLines[i] ?? "";
+    const rightText = transliteratedLines[i] ?? "";
 
-    // Draw borders for cells
-    // Left cell border
-    doc.setDrawColor(0, 0, 0);
-    doc.rect(margin, yPosition - lineHeight + cellPadding, colWidth, rowHeight);
+    doc.text(leftText, margin, yPosition, { maxWidth: colWidth });
+    doc.text(rightText, margin + colWidth + colGap, yPosition, {
+      maxWidth: colWidth,
+    });
 
-    // Right cell border
-    doc.rect(
-      margin + colWidth,
-      yPosition - lineHeight + cellPadding,
-      colWidth,
-      rowHeight
-    );
+    yPosition += lineHeight;
+  }
 
-    // Left cell (original text) - using Arial/Helvetica
-    doc.setFont("helvetica", "normal");
-    doc.text(originalWord, margin + cellPadding, yPosition);
-
-    // Right cell (transliterated text)
-    // Note: jsPDF has limited font support for custom fonts
-    // The text will be saved but may display in a default font
-    // For proper font rendering, the fonts would need to be embedded
-    doc.setFont("helvetica", "normal");
-    doc.text(transliteratedWord, margin + colWidth + cellPadding, yPosition);
-
-    yPosition += rowHeight + 2;
-  });
-
-  // Save the PDF
   doc.save("transliteration-parallel.pdf");
 }
