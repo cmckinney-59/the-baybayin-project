@@ -54,7 +54,7 @@ export default function HomePage() {
         <div className="nav-card" onClick={handleSettingsClick}>
           <AiOutlineSetting className="nav-card-icon" />
           <h2>Settings</h2>
-          <p>Settings and preferences.</p>
+          <p>Manage settings.</p>
         </div>
       </div>
     </div>
