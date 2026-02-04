@@ -30,7 +30,7 @@ export default function ParallelButton({
         title="View text side-by-side in a new page"
       >
         <AiFillEye />
-        Parallel View
+        Parallel
       </button>
     </>
   );
