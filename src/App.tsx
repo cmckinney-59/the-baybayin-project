@@ -13,7 +13,7 @@ import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
-import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPage";
+import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPageNotEditable";
 
 const router = createHashRouter([
   {
@@ -41,10 +41,6 @@ const router = createHashRouter([
         path: "/settings",
         element: <SettingsPage />,
       },
-      // {
-      //   path: "/shop",
-      //   element: <ShopPage />,
-      // },
       {
         path: "/transliterator",
         element: <TransliteratorPage />,
