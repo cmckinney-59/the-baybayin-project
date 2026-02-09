@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
-import SaveButtonContainter from "../../components/Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import WordReviewDialog from "../../components/Dialog/WordReviewDialog.tsx";
 import {
   WordsDictionaryProvider,
   useWordsDictionary,
 } from "../../contexts/WordsDictionaryContext.tsx";
-import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import TransliteratorContainer from "../../components/TransliteratorContainer/TransliteratorContainer.tsx";
+import PrintToPDFButton from "../../components/Buttons/SaveButtons/PrintToPDFButton.tsx";
 
 interface ParallelViewPageEditableProps {
   title: string;
@@ -25,9 +24,7 @@ function ParallelViewPageEditableContent({
     clearWordsDictionary,
     wordContainsBorrowedSound,
   } = useWordsDictionary();
-  const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
 
@@ -91,37 +88,8 @@ function ParallelViewPageEditableContent({
         }}
         onClear={handleClearInput}
       />
-      {text.toLowerCase().includes("c") && (
-        <p className="note-paragraph">
-          * The letter 'c' does not show in baybayin font. Replace any c's with
-          k's or s's accordingly. See the How To Read section for more
-          information.
-        </p>
-      )}
-      {title === "Baybayin" && showExperimentalFeatures && (
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={checkboxValue}
-            onChange={(e) => setCheckboxValue(e.target.checked)}
-          />
-          Text contains borrowed words. See 'Borrowed Words' section below.
-        </label>
-      )}
       <div className="action-buttons">
-        {showExperimentalFeatures && checkboxValue && (
-          <button
-            onClick={() => setIsDialogOpen(true)}
-            disabled={transliteratedText.trim().length === 0}
-            className={transliteratedText.trim().length > 0 ? "active" : ""}
-          >
-            Validate
-          </button>
-        )}
-        <SaveButtonContainter
-          originalText={text}
-          transliteratedText={transliteratedText}
-        />
+        <PrintToPDFButton />
       </div>
       {isDialogOpen && (
         <WordReviewDialog
@@ -142,7 +110,9 @@ function ParallelViewPageEditableContent({
   );
 }
 
-export default function ParallelViewPageEditable(props: ParallelViewPageEditableProps) {
+export default function ParallelViewPageEditable(
+  props: ParallelViewPageEditableProps,
+) {
   return (
     <WordsDictionaryProvider>
       <ParallelViewPageEditableContent {...props} />
