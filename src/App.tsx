@@ -13,6 +13,7 @@ import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPageNotEditable";
+import ParallelViewPageEditable from "./pages/ParallelViewPage/ParallelViewPageEditable";
 
 const router = createHashRouter([
   {
@@ -67,6 +68,10 @@ const router = createHashRouter([
   {
     path: "/parallel-view",
     element: <ParallelViewPage />,
+  },
+  {
+    path: "/parallel-view-editable",
+    element: <ParallelViewPageEditable title="Parallel View Editable" />,
   },
 ]);
 

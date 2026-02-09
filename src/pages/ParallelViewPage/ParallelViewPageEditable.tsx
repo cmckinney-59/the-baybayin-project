@@ -3,17 +3,20 @@ import { useState, useEffect, useRef } from "react";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import SaveButtonContainter from "../../components/Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import WordReviewDialog from "../../components/Dialog/WordReviewDialog.tsx";
-import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
+import {
+  WordsDictionaryProvider,
+  useWordsDictionary,
+} from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import TransliteratorContainer from "../../components/TransliteratorContainer/TransliteratorContainer.tsx";
 
-interface TransliteratorWithDialogProps {
+interface ParallelViewPageEditableProps {
   title: string;
 }
 
-export default function TransliteratorWithDialog({
+function ParallelViewPageEditableContent({
   title,
-}: TransliteratorWithDialogProps) {
+}: ParallelViewPageEditableProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const {
@@ -136,5 +139,13 @@ export default function TransliteratorWithDialog({
         />
       )}
     </div>
+  );
+}
+
+export default function ParallelViewPageEditable(props: ParallelViewPageEditableProps) {
+  return (
+    <WordsDictionaryProvider>
+      <ParallelViewPageEditableContent {...props} />
+    </WordsDictionaryProvider>
   );
 }
