@@ -6,8 +6,8 @@ import {
   WordsDictionaryProvider,
   useWordsDictionary,
 } from "../../contexts/WordsDictionaryContext.tsx";
-import TransliteratorContainer from "../../components/TransliteratorContainer/TransliteratorContainer.tsx";
 import PrintToPDFButton from "../../components/Buttons/SaveButtons/PrintToPDFButton.tsx";
+import TransliteratorContainerParallel from "../../components/TransliteratorContainer/TransliteratorContainerParallel.tsx";
 
 interface ParallelViewPageEditableProps {
   title: string;
@@ -76,7 +76,7 @@ function ParallelViewPageEditableContent({
 
   return (
     <div>
-      <TransliteratorContainer
+      <TransliteratorContainerParallel
         text={text}
         transliteratedText={transliteratedText}
         title={title}
