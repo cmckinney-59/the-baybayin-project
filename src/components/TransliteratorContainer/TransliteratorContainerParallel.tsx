@@ -38,11 +38,11 @@ export default function TransliteratorContainerParallel({
   };
 
   return (
-    <div className="transliteration-container">
-      <div className="textarea-wrapper">
+    <div className="transliteration-container-parallel">
+      <div className="textarea-wrapper-parallel">
         <textarea
           ref={textareaRef}
-          className="transliteration-textarea"
+          className="transliteration-textarea-parallel"
           placeholder="Enter text to be transliterated here..."
           value={text}
           onChange={(e) => {
@@ -52,7 +52,7 @@ export default function TransliteratorContainerParallel({
         ></textarea>
         {text.length > 0 && (
           <button
-            className="clear-input-button"
+            className="clear-input-button-parallel"
             onClick={onClear}
             aria-label="Clear input"
           >
@@ -60,16 +60,16 @@ export default function TransliteratorContainerParallel({
           </button>
         )}
       </div>
-      <div className="textarea-wrapper">
+      <div className="textarea-wrapper-parallel">
         <div
           ref={outputRef}
-          className={`transliteration-output ${getFontClass()}`}
+          className={`transliteration-output-parallel ${getFontClass()}`}
         >
           {transliteratedText}
         </div>
         {transliteratedText.length > 0 && (
           <button
-            className="clear-output-button"
+            className="clear-output-button-parallel"
             onClick={onClear}
             aria-label="Clear output"
           >
