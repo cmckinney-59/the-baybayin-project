@@ -60,6 +60,7 @@ export default function TransliteratorContainerParallel({
           </button>
         )}
       </div>
+      <div className="transliteration-parallel-divider" aria-hidden="true" />
       <div className="textarea-wrapper-parallel">
         <div
           ref={outputRef}

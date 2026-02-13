@@ -469,10 +469,25 @@ button:hover:not(:disabled) {
   margin-right: 10px;
 }
 
+.transliteration-parallel-divider {
+  width: 1px;
+  min-width: 1px;
+  align-self: stretch;
+  background-color: var(--button-border);
+  flex-shrink: 0;
+}
+
 @media (max-width: 720px) {
   .transliteration-container-parallel {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .transliteration-parallel-divider {
+    width: 100%;
+    min-width: unset;
+    height: 1px;
+    min-height: 1px;
   }
 }
 
