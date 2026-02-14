@@ -520,6 +520,30 @@ button:hover:not(:disabled) {
   width: 100%;
 }
 
+.transliteration-parallel-measure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  pointer-events: none;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.transliteration-output-line {
+  display: block;
+}
+
+.transliteration-output-line + .transliteration-output-line {
+  margin-top: 0;
+}
+
 /* Transliterator */
 
 .transliteration-container {
