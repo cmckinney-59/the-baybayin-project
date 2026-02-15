@@ -75,7 +75,13 @@ function ParallelViewPageEditableContent({
   };
 
   return (
-    <div>
+    <>
+      <header>
+        <h1>Side by Side View</h1>
+        <div className="action-buttons">
+          <PrintToPDFButton />
+        </div>
+      </header>
       <TransliteratorContainerParallel
         text={text}
         transliteratedText={transliteratedText}
@@ -88,9 +94,6 @@ function ParallelViewPageEditableContent({
         }}
         onClear={handleClearInput}
       />
-      <div className="action-buttons">
-        <PrintToPDFButton />
-      </div>
       {isDialogOpen && (
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}
@@ -106,7 +109,7 @@ function ParallelViewPageEditableContent({
           wordContainsBorrowedSound={wordContainsBorrowedSound}
         />
       )}
-    </div>
+    </>
   );
 }
 
