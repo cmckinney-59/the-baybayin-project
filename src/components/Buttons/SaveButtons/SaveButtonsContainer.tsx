@@ -63,23 +63,11 @@ export default function SaveButtonContainter({
         onShowDialog={handleShowDialog}
       />
       {showExperimentalFeatures && (
-        <>
-          <ParallelButton
-            originalText={originalText}
-            transliteratedText={transliteratedText}
-            onShowDialog={handleShowDialog}
-          />
-          <ParallelButtonEditable
-            originalText={originalText}
-            transliteratedText={transliteratedText}
-            onShowDialog={handleShowDialog}
-          />
-          <WordSaveButtonParallel
-            originalText={originalText}
-            transliteratedText={transliteratedText}
-            onShowDialog={handleShowDialog}
-          />
-        </>
+        <WordSaveButtonParallel
+          originalText={originalText}
+          transliteratedText={transliteratedText}
+          onShowDialog={handleShowDialog}
+        />
       )}
       {showFontDialog && (
         <FontInstallationDialog
