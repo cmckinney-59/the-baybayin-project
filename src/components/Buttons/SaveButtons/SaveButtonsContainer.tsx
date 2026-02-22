@@ -4,8 +4,6 @@ import ExcelSaveButton from "./ExcelSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
 import MessageDialog from "../../Dialog/MessageDialog";
-import ParallelButton from "./ParallelButton";
-import ParallelButtonEditable from "./ParallelButtonEditable";
 import { useExperimentalFeatures } from "../../../contexts/ExperimentalFeaturesContext";
 import WordSaveButtonParallel from "./WordSaveButtonParallel";
 
