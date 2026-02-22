@@ -1,6 +1,26 @@
+import { useEffect } from "react";
 import { AiOutlinePrinter } from "react-icons/ai";
 
+const PRINT_TITLE = "Parallel View – Original & Transliteration";
+
 export default function PrintToPDFButton() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const onBeforePrint = () => {
+      document.title = PRINT_TITLE;
+    };
+    const onAfterPrint = () => {
+      document.title = previousTitle;
+    };
+    window.addEventListener("beforeprint", onBeforePrint);
+    window.addEventListener("afterprint", onAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", onBeforePrint);
+      window.removeEventListener("afterprint", onAfterPrint);
+      document.title = previousTitle;
+    };
+  }, []);
+
   const handlePrintToPdf = () => {
     window.print();
   };

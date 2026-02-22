@@ -76,7 +76,7 @@ function ParallelViewPageEditableContent({
 
   return (
     <>
-      <header>
+      <header className="no-print">
         <h1>Side by Side View</h1>
         <div className="action-buttons">
           <PrintToPDFButton />
