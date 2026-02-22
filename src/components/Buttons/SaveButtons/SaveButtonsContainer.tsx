@@ -7,6 +7,7 @@ import MessageDialog from "../../Dialog/MessageDialog";
 import ParallelButton from "./ParallelButton";
 import ParallelButtonEditable from "./ParallelButtonEditable";
 import { useExperimentalFeatures } from "../../../contexts/ExperimentalFeaturesContext";
+import WordSaveButtonParallel from "./WordSaveButtonParallel";
 
 interface SaveButtonContainerProps {
   originalText: string;
@@ -69,6 +70,11 @@ export default function SaveButtonContainter({
             onShowDialog={handleShowDialog}
           />
           <ParallelButtonEditable
+            originalText={originalText}
+            transliteratedText={transliteratedText}
+            onShowDialog={handleShowDialog}
+          />
+          <WordSaveButtonParallel
             originalText={originalText}
             transliteratedText={transliteratedText}
             onShowDialog={handleShowDialog}
