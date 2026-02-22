@@ -28,7 +28,7 @@ export default function WordSaveButtonParallel({
       disabled={transliteratedText.trim().length === 0}
     >
       <AiFillFileWord />
-      Word
+      Word Parallel
     </button>
   );
 }
