@@ -56,10 +56,6 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
-      <CopyTextButton
-        transliteratedText={transliteratedText}
-        onShowDialog={handleShowDialog}
-      />
       {showExperimentalFeatures && (
         <WordSaveButtonParallel
           originalText={originalText}
@@ -67,6 +63,11 @@ export default function SaveButtonContainter({
           onShowDialog={handleShowDialog}
         />
       )}
+      <CopyTextButton
+        transliteratedText={transliteratedText}
+        onShowDialog={handleShowDialog}
+      />
+
       {showFontDialog && (
         <FontInstallationDialog
           onClose={handleClose}

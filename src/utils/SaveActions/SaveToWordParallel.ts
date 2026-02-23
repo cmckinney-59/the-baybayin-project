@@ -1,5 +1,6 @@
 import { saveAs } from "file-saver";
 import {
+  BorderStyle,
   Document,
   Packer,
   Paragraph,
@@ -33,6 +34,14 @@ export default function downloadAsWordParallel(
     width: { size: 9638, type: WidthType.DXA },
     layout: TableLayoutType.FIXED,
     columnWidths: [4819, 4819],
+    borders: {
+      top: { style: BorderStyle.NONE },
+      bottom: { style: BorderStyle.NONE },
+      left: { style: BorderStyle.NONE },
+      right: { style: BorderStyle.NONE },
+      insideHorizontal: { style: BorderStyle.NONE },
+      insideVertical: { style: BorderStyle.NONE },
+    },
     rows: [
       new TableRow({
         children: [
