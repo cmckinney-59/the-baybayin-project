@@ -5,8 +5,10 @@ import {
   Paragraph,
   Table,
   TableCell,
+  TableLayoutType,
   TableRow,
   TextRun,
+  WidthType,
 } from "docx";
 
 function getFontName(alphabet: string): string {
@@ -23,13 +25,14 @@ function getFontName(alphabet: string): string {
 export default function downloadAsWordParallel(
   originalText: string,
   transliteratedText: string,
-  originalAlphabet: string = "",
   transliteratedAlphabet: string = "",
 ) {
-  const originalFontName = getFontName(originalAlphabet);
   const transliteratedFontName = getFontName(transliteratedAlphabet);
 
   const table = new Table({
+    width: { size: 9638, type: WidthType.DXA },
+    layout: TableLayoutType.FIXED,
+    columnWidths: [4819, 4819],
     rows: [
       new TableRow({
         children: [
@@ -39,7 +42,6 @@ export default function downloadAsWordParallel(
                 children: [
                   new TextRun({
                     text: originalText || " ",
-                    font: { name: originalFontName },
                   }),
                 ],
               }),
