@@ -40,7 +40,7 @@ export default function downloadAsWordParallel(
       left: { style: BorderStyle.NONE },
       right: { style: BorderStyle.NONE },
       insideHorizontal: { style: BorderStyle.NONE },
-      insideVertical: { style: BorderStyle.NONE },
+      insideVertical: { style: BorderStyle.SINGLE },
     },
     rows: [
       new TableRow({
