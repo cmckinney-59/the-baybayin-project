@@ -33,7 +33,6 @@ export default function downloadAsWordParallel(
   const table = new Table({
     width: { size: 9638, type: WidthType.DXA },
     layout: TableLayoutType.FIXED,
-    columnWidths: [4819, 4819],
     borders: {
       top: { style: BorderStyle.NONE },
       bottom: { style: BorderStyle.NONE },
