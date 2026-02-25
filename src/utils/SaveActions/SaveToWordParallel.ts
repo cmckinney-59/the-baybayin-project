@@ -41,6 +41,11 @@ export default function downloadAsWordParallel(
       insideHorizontal: { style: BorderStyle.NONE },
       insideVertical: { style: BorderStyle.SINGLE },
     },
+    /* Cell margins for all cells (in DXA: 1/20 pt; e.g. 144 = ~7pt, 288 = ~14pt) */
+    margins: {
+      left: 1000,
+      right: 1000,
+    },
     rows: [
       new TableRow({
         children: [
