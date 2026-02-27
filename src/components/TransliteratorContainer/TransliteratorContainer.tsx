@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { RefObject } from "react";
 
 interface TransliteratorContainerProps {
@@ -19,6 +20,7 @@ export default function TransliteratorContainer({
   onTextChange,
   onClear,
 }: TransliteratorContainerProps) {
+  const [isBold, setIsBold] = useState(false);
   const textareaHasText = text.length > 0;
 
   const getFontClass = () => {
@@ -42,7 +44,9 @@ export default function TransliteratorContainer({
       <div className="textarea-wrapper">
         <textarea
           ref={textareaRef}
-          className="transliteration-textarea"
+          className={`transliteration-textarea ${
+            isBold ? "transliteration-bold" : ""
+          }`}
           placeholder="Enter text to be transliterated here..."
           value={text}
           onChange={(e) => {
@@ -50,6 +54,15 @@ export default function TransliteratorContainer({
             onTextChange(currentValue);
           }}
         ></textarea>
+        <button
+          type="button"
+          className={`format-toggle-button ${isBold ? "active" : ""}`}
+          onClick={() => setIsBold((prev) => !prev)}
+          aria-pressed={isBold}
+          aria-label="Toggle bold"
+        >
+          B
+        </button>
         {text.length > 0 && (
           <button
             className="clear-input-button"
@@ -63,7 +76,9 @@ export default function TransliteratorContainer({
       <div className="textarea-wrapper">
         <div
           ref={outputRef}
-          className={`transliteration-output ${getFontClass()}`}
+          className={`transliteration-output ${getFontClass()} ${
+            isBold ? "transliteration-bold" : ""
+          }`}
         >
           {transliteratedText}
         </div>

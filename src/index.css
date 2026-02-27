@@ -659,6 +659,43 @@ button:hover:not(:disabled) {
     color 0.3s ease;
 }
 
+.format-toggle-button {
+  position: absolute;
+  top: 8px;
+  right: 40px;
+  min-width: 28px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0 6px;
+  z-index: 1;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.format-toggle-button:hover {
+  opacity: 0.9;
+}
+
+.format-toggle-button.active {
+  background-color: var(--button-primary);
+  color: var(--text-on-primary);
+  border-color: var(--button-primary);
+}
+
+.transliteration-bold {
+  font-weight: 700;
+}
+
 .clear-output-button {
   background-color: var(--bg-secondary);
 }
