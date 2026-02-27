@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { RefObject } from "react";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -21,6 +22,7 @@ export default function TransliteratorContainer({
   onClear,
 }: TransliteratorContainerProps) {
   const [isBold, setIsBold] = useState(false);
+  const { showExperimentalFeatures } = useExperimentalFeatures();
   const textareaHasText = text.length > 0;
 
   const getFontClass = () => {
@@ -54,15 +56,17 @@ export default function TransliteratorContainer({
             onTextChange(currentValue);
           }}
         ></textarea>
-        <button
-          type="button"
-          className={`format-toggle-button ${isBold ? "active" : ""}`}
-          onClick={() => setIsBold((prev) => !prev)}
-          aria-pressed={isBold}
-          aria-label="Toggle bold"
-        >
-          B
-        </button>
+        {showExperimentalFeatures && (
+          <button
+            type="button"
+            className={`format-toggle-button ${isBold ? "active" : ""}`}
+            onClick={() => setIsBold((prev) => !prev)}
+            aria-pressed={isBold}
+            aria-label="Toggle bold"
+          >
+            B
+          </button>
+        )}
         {text.length > 0 && (
           <button
             className="clear-input-button"
