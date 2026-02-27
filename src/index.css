@@ -577,7 +577,6 @@ button:hover:not(:disabled) {
 }
 
 .transliteration-output {
-  font-family: "Baybayin";
   border: 1px solid var(--button-border);
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -1323,7 +1322,8 @@ button:hover:not(:disabled) {
   }
 
   /* Column labels for editable parallel view */
-  .transliteration-container-parallel .textarea-wrapper-parallel:first-child::before {
+  .transliteration-container-parallel
+    .textarea-wrapper-parallel:first-child::before {
     content: "Original";
     display: block;
     font-size: 12px;
@@ -1336,7 +1336,8 @@ button:hover:not(:disabled) {
     border-bottom: 1px solid #ccc;
   }
 
-  .transliteration-container-parallel .textarea-wrapper-parallel:last-child::before {
+  .transliteration-container-parallel
+    .textarea-wrapper-parallel:last-child::before {
     content: "Transliteration";
     display: block;
     font-size: 12px;
