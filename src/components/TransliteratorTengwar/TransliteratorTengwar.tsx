@@ -4,21 +4,20 @@ import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import DragDropBox from "../DragDropBox/DragDropBox.tsx";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext.tsx";
 
 interface TransliteratorProps {
   title: string;
 }
 
-export default function TransliteratorTengwar({
-  title,
-}: TransliteratorProps) {
+export default function TransliteratorTengwar({ title }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const { setWordsDictionary, clearWordsDictionary } = useWordsDictionary();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
-
+  const { showExperimentalFeatures } = useExperimentalFeatures();
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
       textareaRef.current.style.height = "auto";
@@ -61,7 +60,7 @@ export default function TransliteratorTengwar({
 
   return (
     <div>
-      <DragDropBox onFileLoad={handleFileLoad} />
+      {showExperimentalFeatures && <DragDropBox onFileLoad={handleFileLoad} />}
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
