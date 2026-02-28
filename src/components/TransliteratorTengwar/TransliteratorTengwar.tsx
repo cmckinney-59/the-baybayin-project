@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 
-import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
+import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
+import DragDropBox from "../DragDropBox/DragDropBox.tsx";
 
 interface TransliteratorProps {
   title: string;
 }
 
-export default function TransliteratorLiteAurebesh({
+export default function TransliteratorTengwar({
   title,
 }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
@@ -38,7 +39,7 @@ export default function TransliteratorLiteAurebesh({
     const processedWords: string[] = [];
 
     for (const word of words) {
-      const processed = processAurebeshText(word);
+      const processed = processTengwarText(word);
       newDict[word] = processed;
       processedWords.push(processed);
     }
@@ -53,8 +54,14 @@ export default function TransliteratorLiteAurebesh({
     clearWordsDictionary();
   };
 
+  const handleFileLoad = (fileContent: string) => {
+    setText(fileContent);
+    handleChange(fileContent);
+  };
+
   return (
     <div>
+      <DragDropBox onFileLoad={handleFileLoad} />
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
@@ -84,11 +91,7 @@ export default function TransliteratorLiteAurebesh({
           <div
             ref={outputRef}
             className={`transliteration-output ${
-              textareaHasText
-                ? title === "Aurebesh"
-                  ? "aurebesh-font"
-                  : ""
-                : ""
+              textareaHasText ? (title === "Tengwar" ? "tengwar-font" : "") : ""
             }`}
           >
             {transliteratedText}

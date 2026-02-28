@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import TransliteratorLiteTengwar from "../../components/TransliteratorLiteTengwar/TransliteratorLiteTengwar";
+import TransliteratorTengwar from "../../components/TransliteratorTengwar/TransliteratorTengwar";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 import BackButton from "../../components/Buttons/BackButton.tsx";
@@ -14,7 +14,7 @@ export default function TengwarPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <TransliteratorLiteTengwar title="Tengwar" />
+      <TransliteratorTengwar title="Tengwar" />
     </WordsDictionaryProvider>
   );
 }

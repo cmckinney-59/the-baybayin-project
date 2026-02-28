@@ -4,7 +4,6 @@ import { Document, Packer, Paragraph, TextRun } from "docx";
 function getFontName(alphabet: string): string {
   const fontMap: { [key: string]: string } = {
     Baybayin: "Tagalog Doctrina 1593",
-    "Baybayin Lite": "Tagalog Doctrina 1593",
     Aurebesh: "Aurebesh",
     Deseret: "Deseret",
     Tengwar: "Tengwar",

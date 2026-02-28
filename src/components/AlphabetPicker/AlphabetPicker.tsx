@@ -10,7 +10,7 @@ export default function AlphabetPicker({
   selectedAlphabet,
   handleClick,
 }: AlphabetPickerProps) {
-  const alphabets = ["Baybayin", "Baybayin Lite", "Aurebesh", "Deseret", "Tengwar"];
+  const alphabets = ["Baybayin", "Aurebesh", "Deseret", "Tengwar"];
 
   return (
     <section>
