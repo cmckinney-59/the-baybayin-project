@@ -1,5 +1,6 @@
 import DownloadRow from "./DownloadRow";
 import "./ProjectsPage.css";
+import StatusRow from "./StatusRow";
 
 export default function ProjectsPage() {
   return (
@@ -17,36 +18,23 @@ export default function ProjectsPage() {
             name="How to Read Baybayin"
             fileName="BaybayinHowToReadV2.pdf"
           />
-
           <DownloadRow
             name="Mateo 1 (Tagalog: Baybayin)"
             fileName="Mateo-1.pdf"
           />
-
-          <tr>
-            <td>Ang Bagong Tipan</td>
-            <td>First Draft In Review</td>
-          </tr>
-          <tr>
-            <td>Ang Aklat ni Mormon</td>
-            <td>Pending Approval</td>
-          </tr>
-          <tr>
-            <td>Ang Pagpapahayag sa Mag-anak</td>
-            <td>Pending Approval</td>
-          </tr>
-          <tr>
-            <td>Ang Pagpapanumbalik</td>
-            <td>Pending Approval</td>
-          </tr>
-          <tr>
-            <td>Ang Buhay na Cristo</td>
-            <td>Pending Approval</td>
-          </tr>
-          <tr>
-            <td>Ang Mga Saligan ng Pananampalataya</td>
-            <td>Pending Approval</td>
-          </tr>
+          <StatusRow name="Ang Bagong Tipan" status="First Draft In Review" />
+          <StatusRow name="Ang Aklat ni Mormon" status="Pending Approval" />
+          <StatusRow
+            name="Ang Pagpapahayag sa Mag-anak"
+            status="Pending Approval"
+          />
+          <StatusRow name="Ang Pagpapanumbalik" status="Pending Approval" />
+          <StatusRow name="Ang Pagpapanumbalik" status="Pending Approval" />
+          <StatusRow name="Ang Buhay na Cristo" status="Pending Approval" />
+          <StatusRow
+            name="Ang Mga Saligan ng Pananampalataya"
+            status="Pending Approval"
+          />
         </tbody>
       </table>
     </div>
