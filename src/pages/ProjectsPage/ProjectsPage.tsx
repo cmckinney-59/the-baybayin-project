@@ -1,23 +1,7 @@
+import DownloadRow from "./DownloadRow";
 import "./ProjectsPage.css";
-import baybayinGuide from "../../assets/projects/BaybayinHowToReadV2.pdf";
 
 export default function ProjectsPage() {
-  const handleDownload = (fileName: string) => {
-    const link = document.createElement("a");
-
-    // Use the imported asset URL for assets, or public URL for public files
-    if (fileName === "BaybayinHowToReadV2.pdf") {
-      link.href = baybayinGuide;
-    } else {
-      link.href = `/${fileName}`;
-    }
-
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="projectsPage">
       <h1>Projects</h1>
@@ -29,17 +13,16 @@ export default function ProjectsPage() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>How to Read Baybayin</td>
-            <td>
-              <button
-                onClick={() => handleDownload("BaybayinHowToReadV2.pdf")}
-                className="downloadButton"
-              >
-                Download PDF
-              </button>
-            </td>
-          </tr>
+          <DownloadRow
+            name="How to Read Baybayin"
+            fileName="BaybayinHowToReadV2.pdf"
+          />
+
+          <DownloadRow
+            name="Mateo 1 (Tagalog: Baybayin)"
+            fileName="Mateo-1.pdf"
+          />
+
           <tr>
             <td>Ang Bagong Tipan</td>
             <td>First Draft In Review</td>
