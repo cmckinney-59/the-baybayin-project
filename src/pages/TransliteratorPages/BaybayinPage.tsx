@@ -8,6 +8,7 @@ import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayi
 import HowToUse from "../../components/HowToRead/HowToUse";
 import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible.tsx";
+import TransliteratorWithRichText from "../../components/TransliteratorWithRichText/TransliteratorWithRichText.tsx";
 
 export default function BaybayinPage() {
   const { setCurrentAlphabet } = useAlphabet();
@@ -22,6 +23,9 @@ export default function BaybayinPage() {
       <p className="quote">"Kung anong bigkas, siyang baybay."</p>
       <p className="quote">Enter text as it sounds for best results.</p>
       <TransliteratorWithDialog title="Baybayin" />
+      {showExperimentalFeatures && (
+        <TransliteratorWithRichText title="Baybayin" />
+      )}
       <HowToUse />
       <WhatIsBaybayin />
       <BaybayinHowToRead />
