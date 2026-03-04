@@ -608,6 +608,12 @@ button:hover:not(:disabled) {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+/* Rich text (contenteditable) input - placeholder when empty */
+.transliteration-rich-textarea[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-secondary, #6c757d);
+}
+
 .textarea-wrapper {
   position: relative;
   width: 100%;

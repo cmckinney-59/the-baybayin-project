@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { RefObject } from "react";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
@@ -6,10 +6,11 @@ interface TransliteratorContainerProps {
   text: string;
   transliteratedText: string;
   title: string;
-  textareaRef: RefObject<HTMLTextAreaElement | null>;
+  textareaRef: RefObject<HTMLTextAreaElement | HTMLDivElement | null>;
   outputRef: RefObject<HTMLDivElement | null>;
   onTextChange: (value: string) => void;
   onClear: () => void;
+  useRichTextInput?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -20,10 +21,31 @@ export default function TransliteratorContainer({
   outputRef,
   onTextChange,
   onClear,
+  useRichTextInput = false,
 }: TransliteratorContainerProps) {
   const [isBold, setIsBold] = useState(false);
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const textareaHasText = text.length > 0;
+
+  // When using rich text, clear the contenteditable when parent clears
+  useEffect(() => {
+    if (useRichTextInput && text === "" && textareaRef.current && "innerHTML" in textareaRef.current) {
+      textareaRef.current.innerHTML = "";
+    }
+  }, [text, useRichTextInput, textareaRef]);
+
+  // Sync initial text into rich text area when parent has value (e.g. on load)
+  useEffect(() => {
+    if (
+      useRichTextInput &&
+      text.length > 0 &&
+      textareaRef.current &&
+      "innerText" in textareaRef.current &&
+      textareaRef.current.innerText === ""
+    ) {
+      textareaRef.current.innerText = text;
+    }
+  }, [useRichTextInput, textareaRef, text]);
 
   const getFontClass = () => {
     if (!textareaHasText) return "";
@@ -44,18 +66,41 @@ export default function TransliteratorContainer({
   return (
     <div className="transliteration-container">
       <div className="textarea-wrapper">
-        <textarea
-          ref={textareaRef}
-          className={`transliteration-textarea ${
-            isBold ? "transliteration-bold" : ""
-          }`}
-          placeholder="Enter text to be transliterated here..."
-          value={text}
-          onChange={(e) => {
-            const currentValue = e.target.value;
-            onTextChange(currentValue);
-          }}
-        ></textarea>
+        {useRichTextInput ? (
+          <div
+            ref={textareaRef as RefObject<HTMLDivElement | null>}
+            className={`transliteration-textarea transliteration-rich-textarea ${
+              isBold ? "transliteration-bold" : ""
+            }`}
+            contentEditable
+            suppressContentEditableWarning
+            data-placeholder="Enter text to be transliterated here..."
+            onInput={(e) => {
+              const plainText = (e.currentTarget as HTMLDivElement).innerText ?? "";
+              onTextChange(plainText);
+            }}
+            onPaste={(e) => {
+              e.preventDefault();
+              const plainText = e.clipboardData.getData("text/plain");
+              document.execCommand("insertText", false, plainText);
+              onTextChange((e.currentTarget as HTMLDivElement).innerText ?? "");
+            }}
+          />
+        ) : (
+          <textarea
+            ref={textareaRef as RefObject<HTMLTextAreaElement | null>}
+            className={`transliteration-textarea ${
+              isBold ? "transliteration-bold" : ""
+            }`}
+            placeholder="Enter text to be transliterated here..."
+            value={text}
+            onChange={(e) => {
+              const currentValue = e.target.value;
+              onTextChange(currentValue);
+            }}
+          />
+        )}
+        
         {showExperimentalFeatures && (
           <button
             type="button"
