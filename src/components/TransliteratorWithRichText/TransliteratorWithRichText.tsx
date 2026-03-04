@@ -25,7 +25,7 @@ export default function TransliteratorWithRichText({
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
-  const textareaRef = useRef<HTMLDivElement | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement | HTMLDivElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function TransliteratorWithRichText({
           handleChange(currentValue);
         }}
         onClear={handleClearInput}
-        useRichTextInput
+        useRichTextInput={showExperimentalFeatures}
       />
       {text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
