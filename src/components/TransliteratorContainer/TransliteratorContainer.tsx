@@ -29,7 +29,12 @@ export default function TransliteratorContainer({
 
   // When using rich text, clear the contenteditable when parent clears
   useEffect(() => {
-    if (useRichTextInput && text === "" && textareaRef.current && "innerHTML" in textareaRef.current) {
+    if (
+      useRichTextInput &&
+      text === "" &&
+      textareaRef.current &&
+      "innerHTML" in textareaRef.current
+    ) {
       textareaRef.current.innerHTML = "";
     }
   }, [text, useRichTextInput, textareaRef]);
@@ -63,20 +68,66 @@ export default function TransliteratorContainer({
     }
   };
 
+  const applyFormat = (command: string) => {
+    document.execCommand(command, false);
+    const el = textareaRef.current;
+    if (el && "innerText" in el) {
+      onTextChange((el as HTMLDivElement).innerText ?? "");
+    }
+  };
+
   return (
     <div className="transliteration-container">
       <div className="textarea-wrapper">
         {useRichTextInput ? (
-          <div
+          <>
+            <div className="rich-text-toolbar" role="toolbar" aria-label="Text formatting">
+              <button
+                type="button"
+                className="rich-text-toolbar-button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  applyFormat("bold");
+                }}
+                aria-label="Bold"
+                title="Bold"
+              >
+                B
+              </button>
+              <button
+                type="button"
+                className="rich-text-toolbar-button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  applyFormat("italic");
+                }}
+                aria-label="Italic"
+                title="Italic"
+              >
+                I
+              </button>
+              <button
+                type="button"
+                className="rich-text-toolbar-button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  applyFormat("underline");
+                }}
+                aria-label="Underline"
+                title="Underline"
+              >
+                U
+              </button>
+            </div>
+            <div
             ref={textareaRef as RefObject<HTMLDivElement | null>}
-            className={`transliteration-textarea transliteration-rich-textarea ${
-              isBold ? "transliteration-bold" : ""
-            }`}
+            className="transliteration-textarea transliteration-rich-textarea"
             contentEditable
             suppressContentEditableWarning
-            data-placeholder="Enter text to be transliterated here..."
+            data-placeholder="rich text input"
             onInput={(e) => {
-              const plainText = (e.currentTarget as HTMLDivElement).innerText ?? "";
+              const plainText =
+                (e.currentTarget as HTMLDivElement).innerText ?? "";
               onTextChange(plainText);
             }}
             onPaste={(e) => {
@@ -86,6 +137,7 @@ export default function TransliteratorContainer({
               onTextChange((e.currentTarget as HTMLDivElement).innerText ?? "");
             }}
           />
+          </>
         ) : (
           <textarea
             ref={textareaRef as RefObject<HTMLTextAreaElement | null>}
@@ -100,8 +152,8 @@ export default function TransliteratorContainer({
             }}
           />
         )}
-        
-        {showExperimentalFeatures && (
+
+        {showExperimentalFeatures && !useRichTextInput && (
           <button
             type="button"
             className={`format-toggle-button ${isBold ? "active" : ""}`}

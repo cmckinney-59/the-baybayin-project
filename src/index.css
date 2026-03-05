@@ -608,10 +608,57 @@ button:hover:not(:disabled) {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+/* Rich text toolbar */
+.rich-text-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border: 1px solid var(--button-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background-color: var(--bg-secondary);
+}
+
+.rich-text-toolbar-button {
+  min-width: 32px;
+  height: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0 8px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.rich-text-toolbar-button:hover {
+  background-color: var(--bg-primary);
+  border-color: var(--button-border);
+}
+
+.rich-text-toolbar-button:focus {
+  outline: none;
+  border-color: var(--button-primary);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
 /* Rich text (contenteditable) input - placeholder when empty */
 .transliteration-rich-textarea[data-placeholder]:empty::before {
   content: attr(data-placeholder);
   color: var(--text-secondary, #6c757d);
+}
+
+/* Connect editor to toolbar when toolbar is above */
+.rich-text-toolbar + .transliteration-rich-textarea {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .textarea-wrapper {
