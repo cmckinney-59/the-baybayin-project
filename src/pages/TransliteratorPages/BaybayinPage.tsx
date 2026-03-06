@@ -30,7 +30,7 @@ export default function BaybayinPage() {
       <WhatIsBaybayin />
       <BaybayinHowToRead />
       <BaybayinBorrowedWordsCollapsible />
-      {showExperimentalFeatures && <OtherAlphabets />}
+      <OtherAlphabets />
     </WordsDictionaryProvider>
   );
 }
