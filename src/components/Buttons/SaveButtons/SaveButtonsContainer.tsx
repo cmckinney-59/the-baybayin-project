@@ -4,7 +4,6 @@ import ExcelSaveButton from "./ExcelSaveButton";
 import WordSaveButton from "./WordSaveButton";
 import FontInstallationDialog from "../../Dialog/FontInstallationDialog";
 import MessageDialog from "../../Dialog/MessageDialog";
-import { useExperimentalFeatures } from "../../../contexts/ExperimentalFeaturesContext";
 import WordSaveButtonParallel from "./WordSaveButtonParallel";
 
 interface SaveButtonContainerProps {
@@ -20,7 +19,6 @@ export default function SaveButtonContainter({
   const [showMessageDialog, setShowMessageDialog] = useState(false);
   const [message, setMessage] = useState("");
   const [pendingAction, setPendingAction] = useState<(() => void) | null>(null);
-  const { showExperimentalFeatures } = useExperimentalFeatures();
 
   const handleShowDialog = (action: () => void) => {
     setPendingAction(() => action);
@@ -56,18 +54,15 @@ export default function SaveButtonContainter({
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
-      {showExperimentalFeatures && (
-        <WordSaveButtonParallel
-          originalText={originalText}
-          transliteratedText={transliteratedText}
-          onShowDialog={handleShowDialog}
-        />
-      )}
+      <WordSaveButtonParallel
+        originalText={originalText}
+        transliteratedText={transliteratedText}
+        onShowDialog={handleShowDialog}
+      />
       <CopyTextButton
         transliteratedText={transliteratedText}
         onShowDialog={handleShowDialog}
       />
-
       {showFontDialog && (
         <FontInstallationDialog
           onClose={handleClose}

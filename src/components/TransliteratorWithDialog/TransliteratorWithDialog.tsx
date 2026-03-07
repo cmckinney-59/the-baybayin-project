@@ -107,8 +107,8 @@ export default function TransliteratorWithDialog({
       )}
       <div className="action-buttons">
         {showExperimentalFeatures && checkboxValue && (
-          <button 
-            onClick={() => setIsDialogOpen(true)} 
+          <button
+            onClick={() => setIsDialogOpen(true)}
             disabled={transliteratedText.trim().length === 0}
             className={transliteratedText.trim().length > 0 ? "active" : ""}
           >
