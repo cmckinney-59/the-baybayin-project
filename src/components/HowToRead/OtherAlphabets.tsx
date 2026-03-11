@@ -19,6 +19,10 @@ export default function OtherAlphabets() {
     navigate(`${transliteratorPath}/tengwar`);
   };
 
+  const handlePlqadClick = () => {
+    navigate(`${transliteratorPath}/plqad`);
+  };
+
   return (
     <CollapsibleSection title="Other Alphabets" defaultExpanded={false}>
       <div className="nav-card" onClick={handleAurebeshClick}>
@@ -34,6 +38,10 @@ export default function OtherAlphabets() {
           <div className="nav-card" onClick={handleTengwarClick}>
             <h1 className="tengwar-font">t</h1>
             <h2>Tengwar</h2>
+          </div>
+          <div className="nav-card" onClick={handlePlqadClick}>
+            <h1 className="plqad-font">p</h1>
+            <h2>Plqad</h2>
           </div>
         </>
       )}

@@ -175,6 +175,12 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Plqad";
+  src: url("./assets/fonts/klingon/klingon font.ttf") format("truetype");
+  font-display: swap;
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
@@ -186,6 +192,9 @@ body {
 }
 .deseret-font {
   font-family: "Deseret", sans-serif;
+}
+.plqad-font {
+  font-family: "Plqad", sans-serif;
 }
 
 select {

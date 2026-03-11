@@ -14,6 +14,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPageNotEditable";
 import ParallelViewPageEditable from "./pages/ParallelViewPage/ParallelViewPageEditable";
+import PlqadPage from "./pages/TransliteratorPages/PlqadPage";
 
 const router = createHashRouter([
   {
@@ -60,6 +61,10 @@ const router = createHashRouter([
           {
             path: "tengwar",
             element: <TengwarPage />,
+          },
+          {
+            path: "plqad",
+            element: <PlqadPage />,
           },
         ],
       },
