@@ -81,7 +81,11 @@ export default function TransliteratorContainer({
       <div className="textarea-wrapper">
         {useRichTextInput ? (
           <>
-            <div className="rich-text-toolbar" role="toolbar" aria-label="Text formatting">
+            <div
+              className="rich-text-toolbar"
+              role="toolbar"
+              aria-label="Text formatting"
+            >
               <button
                 type="button"
                 className="rich-text-toolbar-button"
@@ -120,23 +124,25 @@ export default function TransliteratorContainer({
               </button>
             </div>
             <div
-            ref={textareaRef as RefObject<HTMLDivElement | null>}
-            className="transliteration-textarea transliteration-rich-textarea"
-            contentEditable
-            suppressContentEditableWarning
-            data-placeholder="rich text input"
-            onInput={(e) => {
-              const plainText =
-                (e.currentTarget as HTMLDivElement).innerText ?? "";
-              onTextChange(plainText);
-            }}
-            onPaste={(e) => {
-              e.preventDefault();
-              const plainText = e.clipboardData.getData("text/plain");
-              document.execCommand("insertText", false, plainText);
-              onTextChange((e.currentTarget as HTMLDivElement).innerText ?? "");
-            }}
-          />
+              ref={textareaRef as RefObject<HTMLDivElement | null>}
+              className="transliteration-textarea transliteration-rich-textarea"
+              contentEditable
+              suppressContentEditableWarning
+              data-placeholder="rich text input"
+              onInput={(e) => {
+                const plainText =
+                  (e.currentTarget as HTMLDivElement).innerText ?? "";
+                onTextChange(plainText);
+              }}
+              onPaste={(e) => {
+                e.preventDefault();
+                const plainText = e.clipboardData.getData("text/plain");
+                document.execCommand("insertText", false, plainText);
+                onTextChange(
+                  (e.currentTarget as HTMLDivElement).innerText ?? "",
+                );
+              }}
+            />
           </>
         ) : (
           <textarea
@@ -151,18 +157,6 @@ export default function TransliteratorContainer({
               onTextChange(currentValue);
             }}
           />
-        )}
-
-        {showExperimentalFeatures && !useRichTextInput && (
-          <button
-            type="button"
-            className={`format-toggle-button ${isBold ? "active" : ""}`}
-            onClick={() => setIsBold((prev) => !prev)}
-            aria-pressed={isBold}
-            aria-label="Toggle bold"
-          >
-            B
-          </button>
         )}
         {text.length > 0 && (
           <button
