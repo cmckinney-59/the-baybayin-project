@@ -1,9 +1,10 @@
-import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
-import HowToUse from "../../components/HowToRead/HowToUse.tsx";
 import { useEffect } from "react";
+
+import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
+import HowToUse from "../../components/HowToRead/HowToUse.tsx";
 import BackButton from "../../components/Buttons/BackButton.tsx";
-import TransliteratorPlqad from "../../components/TransliteratorPlqad/TransliteratorPlqad.tsx";
+import Transliterator from "../../components/Transliterator/Transliterator";
 
 export default function PlqadPage() {
   const { setCurrentAlphabet } = useAlphabet();
@@ -15,7 +16,7 @@ export default function PlqadPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <TransliteratorPlqad title="Plqad" />
+      <Transliterator title="Plqad" />
       <HowToUse />
     </WordsDictionaryProvider>
   );

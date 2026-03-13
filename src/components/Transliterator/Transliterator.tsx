@@ -1,23 +1,33 @@
 import { useState, useEffect, useRef } from "react";
 
-import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
-import DragDropBox from "../DragDropBox/DragDropBox.tsx";
-import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext.tsx";
+import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
+import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
+import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
+import processPlqadText from "../../utils/TextProcessors/PlqadTextProcessor.ts";
+
+const processors: Record<string, (word: string) => string> = {
+  Aurebesh: processAurebeshText,
+  Baybayin: processBaybayinText,
+  Deseret: processDeseretText,
+  Tengwar: processTengwarText,
+  Plqad: processPlqadText,
+};
 
 interface TransliteratorProps {
   title: string;
 }
 
-export default function TransliteratorTengwar({ title }: TransliteratorProps) {
+export default function Transliterator({ title }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const { setWordsDictionary, clearWordsDictionary } = useWordsDictionary();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const textareaHasText = text.length > 0;
-  const { showExperimentalFeatures } = useExperimentalFeatures();
+
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
       textareaRef.current.style.height = "auto";
@@ -37,10 +47,13 @@ export default function TransliteratorTengwar({ title }: TransliteratorProps) {
     const newDict: { [word: string]: string } = {};
     const processedWords: string[] = [];
 
-    for (const word of words) {
-      const processed = processTengwarText(word);
-      newDict[word] = processed;
-      processedWords.push(processed);
+    const processWord = processors[title];
+    if (processWord) {
+      for (const word of words) {
+        const processed = processWord(word);
+        newDict[word] = processed;
+        processedWords.push(processed);
+      }
     }
 
     setWordsDictionary(newDict);
@@ -53,14 +66,25 @@ export default function TransliteratorTengwar({ title }: TransliteratorProps) {
     clearWordsDictionary();
   };
 
-  const handleFileLoad = (fileContent: string) => {
-    setText(fileContent);
-    handleChange(fileContent);
+  const getFontClass = () => {
+    switch (title) {
+      case "Aurebesh":
+        return "aurebesh-font";
+      case "Baybayin":
+        return "baybayin-font";
+      case "Deseret":
+        return "deseret-font";
+      case "Tengwar":
+        return "tengwar-font";
+      case "Plqad":
+        return "plqad-font";
+      default:
+        return "";
+    }
   };
 
   return (
     <div>
-      {showExperimentalFeatures && <DragDropBox onFileLoad={handleFileLoad} />}
       <div className="transliteration-container">
         <div className="textarea-wrapper">
           <textarea
@@ -90,7 +114,7 @@ export default function TransliteratorTengwar({ title }: TransliteratorProps) {
           <div
             ref={outputRef}
             className={`transliteration-output ${
-              textareaHasText ? (title === "Tengwar" ? "tengwar-font" : "") : ""
+              textareaHasText ? getFontClass() : ""
             }`}
           >
             {transliteratedText}

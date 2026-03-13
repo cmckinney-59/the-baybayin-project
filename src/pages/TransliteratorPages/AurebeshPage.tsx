@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import TransliteratorAurebesh from "../../components/TransliteratorAurebesh/TransliteratorAurebesh";
+import Transliterator from "../../components/Transliterator/Transliterator";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 import AurebeshHowToRead from "../../components/HowToRead/AurebeshHTR/AurebeshHowToRead/AurebeshHowToRead";
@@ -17,7 +17,7 @@ export default function AurebeshPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <TransliteratorAurebesh title="Aurebesh" />
+      <Transliterator title="Aurebesh" />
       <HowToUse />
       <WhatIsAurebesh />
       <AurebeshHowToRead />

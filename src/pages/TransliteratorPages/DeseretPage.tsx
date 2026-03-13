@@ -1,11 +1,12 @@
+import { useEffect } from "react";
+
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
+import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
 import HowToUse from "../../components/HowToRead/HowToUse.tsx";
 import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret.tsx";
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead.tsx";
-import { useEffect } from "react";
-import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
 import BackButton from "../../components/Buttons/BackButton.tsx";
-import TransliteratorDeseret from "../../components/TransliteratorDeseret/TransliteratorDeseret";
+import Transliterator from "../../components/Transliterator/Transliterator";
 
 export default function DeseretPage() {
   const { setCurrentAlphabet } = useAlphabet();
@@ -17,7 +18,7 @@ export default function DeseretPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <TransliteratorDeseret title="Deseret" />
+      <Transliterator title="Deseret" />
       <HowToUse />
       <WhatIsDeseret />
       <DeseretHowToRead />
