@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-import TransliteratorWithDialog from "../TransliteratorWithDialog/TransliteratorWithDialog.tsx";
+import Transliterator from "../Transliterator/Transliterator.tsx";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 
 interface PageContentProps {
@@ -12,7 +12,7 @@ export default function PageContent({ title }: PageContentProps): JSX.Element {
     <WordsDictionaryProvider>
       <main className="page-content">
         {title && title !== "Home" && (
-          <TransliteratorWithDialog title={title} />
+          <Transliterator title={title} />
         )}
       </main>
     </WordsDictionaryProvider>

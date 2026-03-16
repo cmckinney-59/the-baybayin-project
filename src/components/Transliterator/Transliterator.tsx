@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
+import TransliteratorContainer from "../TransliteratorContainer/TransliteratorContainer.tsx";
+import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
@@ -23,10 +26,17 @@ interface TransliteratorProps {
 export default function Transliterator({ title }: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
-  const { setWordsDictionary, clearWordsDictionary } = useWordsDictionary();
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const outputRef = useRef<HTMLDivElement>(null);
-  const textareaHasText = text.length > 0;
+  const {
+    wordsDictionary,
+    setWordsDictionary,
+    clearWordsDictionary,
+    wordContainsBorrowedSound,
+  } = useWordsDictionary();
+  const { showExperimentalFeatures } = useExperimentalFeatures();
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const outputRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
@@ -41,6 +51,21 @@ export default function Transliterator({ title }: TransliteratorProps) {
       outputRef.current.style.height = maxHeight + "px";
     }
   }, [text, transliteratedText]);
+
+  // Baybayin only: update transliterated text when dictionary changes (e.g. from dialog)
+  useEffect(() => {
+    if (
+      title === "Baybayin" &&
+      text.trim() &&
+      Object.keys(wordsDictionary).length > 0
+    ) {
+      const words = text.trim().split(/\s+/);
+      const processedWords = words.map((word) => {
+        return wordsDictionary[word] || processBaybayinText(word);
+      });
+      setTransliteratedText(processedWords.join(" "));
+    }
+  }, [title, wordsDictionary, text]);
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
@@ -66,78 +91,70 @@ export default function Transliterator({ title }: TransliteratorProps) {
     clearWordsDictionary();
   };
 
-  const getFontClass = () => {
-    switch (title) {
-      case "Aurebesh":
-        return "aurebesh-font";
-      case "Baybayin":
-        return "baybayin-font";
-      case "Deseret":
-        return "deseret-font";
-      case "Tengwar":
-        return "tengwar-font";
-      case "Plqad":
-        return "plqad-font";
-      default:
-        return "";
-    }
-  };
+  const isBaybayin = title === "Baybayin";
 
   return (
     <div>
-      <div className="transliteration-container">
-        <div className="textarea-wrapper">
-          <textarea
-            ref={textareaRef}
-            className="transliteration-textarea"
-            placeholder="Enter text to be transliterated here..."
-            value={text}
-            onChange={(e) => {
-              const currentValue = e.target.value;
-              setText(currentValue);
-              handleChange(currentValue);
-            }}
-          ></textarea>
-          {text.length > 0 && (
-            <button
-              className="clear-input-button"
-              onClick={() => {
-                handleClearInput();
-              }}
-              aria-label="Clear input"
-            >
-              ×
-            </button>
-          )}
-        </div>
-        <div className="textarea-wrapper">
-          <div
-            ref={outputRef}
-            className={`transliteration-output ${
-              textareaHasText ? getFontClass() : ""
-            }`}
-          >
-            {transliteratedText}
-          </div>
-          {transliteratedText.length > 0 && (
-            <button
-              className="clear-output-button"
-              onClick={() => {
-                handleClearInput();
-              }}
-              aria-label="Clear output"
-            >
-              ×
-            </button>
-          )}
-        </div>
-      </div>
+      <TransliteratorContainer
+        text={text}
+        transliteratedText={transliteratedText}
+        title={title}
+        textareaRef={textareaRef}
+        outputRef={outputRef}
+        onTextChange={(currentValue) => {
+          setText(currentValue);
+          handleChange(currentValue);
+        }}
+        onClear={handleClearInput}
+      />
+      {isBaybayin && text.toLowerCase().includes("c") && (
+        <p className="note-paragraph">
+          * The letter &apos;c&apos; does not show in baybayin font. Replace any
+          c&apos;s with k&apos;s or s&apos;s accordingly. See the How To Read
+          section for more information.
+        </p>
+      )}
+      {isBaybayin && showExperimentalFeatures && (
+        <label className="checkbox-label">
+          <input
+            type="checkbox"
+            checked={checkboxValue}
+            onChange={(e) => setCheckboxValue(e.target.checked)}
+          />
+          Text contains borrowed words. See &apos;Borrowed Words&apos; section
+          below.
+        </label>
+      )}
       <div className="action-buttons">
+        {isBaybayin && showExperimentalFeatures && checkboxValue && (
+          <button
+            onClick={() => setIsDialogOpen(true)}
+            disabled={transliteratedText.trim().length === 0}
+            className={transliteratedText.trim().length > 0 ? "active" : ""}
+          >
+            Validate
+          </button>
+        )}
         <SaveButtonContainter
           originalText={text}
           transliteratedText={transliteratedText}
         />
       </div>
+      {isBaybayin && isDialogOpen && (
+        <WordReviewDialog
+          onClose={() => setIsDialogOpen(false)}
+          wordsWithC={Object.keys(wordsDictionary).filter((word) => {
+            const lowerWord = word.toLowerCase();
+            return (
+              lowerWord.includes("c") ||
+              lowerWord.includes("ch") ||
+              lowerWord.includes("j") ||
+              lowerWord.includes("qu")
+            );
+          })}
+          wordContainsBorrowedSound={wordContainsBorrowedSound}
+        />
+      )}
     </div>
   );
 }

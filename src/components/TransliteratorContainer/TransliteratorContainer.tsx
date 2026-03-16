@@ -63,6 +63,8 @@ export default function TransliteratorContainer({
         return "deseret-font";
       case "Tengwar":
         return "tengwar-font";
+      case "Plqad":
+        return "plqad-font";
       default:
         return "";
     }
