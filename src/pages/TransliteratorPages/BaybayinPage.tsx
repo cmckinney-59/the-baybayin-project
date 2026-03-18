@@ -10,7 +10,7 @@ import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible.tsx";
 
 export default function BaybayinPage() {
-  const { setCurrentAlphabet } = useAlphabet();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   useEffect(() => {
     setCurrentAlphabet("Baybayin");
@@ -20,7 +20,7 @@ export default function BaybayinPage() {
     <WordsDictionaryProvider>
       <p className="quote">"Kung anong bigkas, siyang baybay."</p>
       <p className="quote">Enter text as it sounds for best results.</p>
-      <Transliterator title="Baybayin" />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
       <WhatIsBaybayin />
       <BaybayinHowToRead />

@@ -8,7 +8,7 @@ import HowToUse from "../../components/HowToRead/HowToUse";
 import BackButton from "../../components/Buttons/BackButton.tsx";
 
 export default function AurebeshPage() {
-  const { setCurrentAlphabet } = useAlphabet();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   useEffect(() => {
     setCurrentAlphabet("Aurebesh");
@@ -17,7 +17,7 @@ export default function AurebeshPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <Transliterator title="Aurebesh" />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
       <WhatIsAurebesh />
       <AurebeshHowToRead />

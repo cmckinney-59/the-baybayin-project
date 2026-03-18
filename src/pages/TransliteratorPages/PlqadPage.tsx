@@ -7,7 +7,7 @@ import BackButton from "../../components/Buttons/BackButton.tsx";
 import Transliterator from "../../components/Transliterator/Transliterator";
 
 export default function PlqadPage() {
-  const { setCurrentAlphabet } = useAlphabet();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   useEffect(() => {
     setCurrentAlphabet("Plqad");
@@ -16,7 +16,7 @@ export default function PlqadPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <Transliterator title="Plqad" />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
     </WordsDictionaryProvider>
   );

@@ -20,10 +20,12 @@ const processors: Record<string, (word: string) => string> = {
 };
 
 interface TransliteratorProps {
-  title: string;
+  currentAlphabet: string;
 }
 
-export default function Transliterator({ title }: TransliteratorProps) {
+export default function Transliterator({
+  currentAlphabet,
+}: TransliteratorProps) {
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const {
@@ -55,7 +57,7 @@ export default function Transliterator({ title }: TransliteratorProps) {
   // Baybayin only: update transliterated text when dictionary changes (e.g. from dialog)
   useEffect(() => {
     if (
-      title === "Baybayin" &&
+      currentAlphabet === "Baybayin" &&
       text.trim() &&
       Object.keys(wordsDictionary).length > 0
     ) {
@@ -65,14 +67,14 @@ export default function Transliterator({ title }: TransliteratorProps) {
       });
       setTransliteratedText(processedWords.join(" "));
     }
-  }, [title, wordsDictionary, text]);
+  }, [currentAlphabet, wordsDictionary, text]);
 
   const handleChange = (currentText: string): void => {
     const words = currentText.trim().split(/\s+/);
     const newDict: { [word: string]: string } = {};
     const processedWords: string[] = [];
 
-    const processWord = processors[title];
+    const processWord = processors[currentAlphabet];
     if (processWord) {
       for (const word of words) {
         const processed = processWord(word);
@@ -91,14 +93,14 @@ export default function Transliterator({ title }: TransliteratorProps) {
     clearWordsDictionary();
   };
 
-  const isBaybayin = title === "Baybayin";
+  const isBaybayin = currentAlphabet === "Baybayin";
 
   return (
     <div>
       <TransliteratorContainer
         text={text}
         transliteratedText={transliteratedText}
-        title={title}
+        currentAlphabet={currentAlphabet}
         textareaRef={textareaRef}
         outputRef={outputRef}
         onTextChange={(currentValue) => {

@@ -5,7 +5,7 @@ import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesCont
 interface TransliteratorContainerProps {
   text: string;
   transliteratedText: string;
-  title: string;
+  currentAlphabet: string;
   textareaRef: RefObject<HTMLTextAreaElement | HTMLDivElement | null>;
   outputRef: RefObject<HTMLDivElement | null>;
   onTextChange: (value: string) => void;
@@ -16,7 +16,7 @@ interface TransliteratorContainerProps {
 export default function TransliteratorContainer({
   text,
   transliteratedText,
-  title,
+  currentAlphabet,
   textareaRef,
   outputRef,
   onTextChange,
@@ -54,7 +54,7 @@ export default function TransliteratorContainer({
 
   const getFontClass = () => {
     if (!textareaHasText) return "";
-    switch (title) {
+    switch (currentAlphabet) {
       case "Baybayin":
         return "baybayin-font";
       case "Aurebesh":

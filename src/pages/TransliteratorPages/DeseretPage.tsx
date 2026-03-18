@@ -9,7 +9,7 @@ import BackButton from "../../components/Buttons/BackButton.tsx";
 import Transliterator from "../../components/Transliterator/Transliterator";
 
 export default function DeseretPage() {
-  const { setCurrentAlphabet } = useAlphabet();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   useEffect(() => {
     setCurrentAlphabet("Deseret");
@@ -18,7 +18,7 @@ export default function DeseretPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <Transliterator title="Deseret" />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
       <WhatIsDeseret />
       <DeseretHowToRead />

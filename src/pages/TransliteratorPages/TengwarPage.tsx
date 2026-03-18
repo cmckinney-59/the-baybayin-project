@@ -7,7 +7,7 @@ import BackButton from "../../components/Buttons/BackButton.tsx";
 import HowToUse from "../../components/HowToRead/HowToUse.tsx";
 
 export default function TengwarPage() {
-  const { setCurrentAlphabet } = useAlphabet();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   useEffect(() => {
     setCurrentAlphabet("Tengwar");
@@ -16,7 +16,7 @@ export default function TengwarPage() {
   return (
     <WordsDictionaryProvider>
       <BackButton />
-      <Transliterator title="Tengwar" />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
     </WordsDictionaryProvider>
   );
