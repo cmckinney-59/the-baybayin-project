@@ -1,4 +1,3 @@
-import "./AlphabetPicker.css";
 import React from "react";
 
 interface AlphabetPickerProps {
@@ -10,7 +9,7 @@ export default function AlphabetPicker({
   selectedAlphabet,
   handleClick,
 }: AlphabetPickerProps) {
-  const alphabets = ["Baybayin", "Aurebesh", "Deseret", "Tengwar"];
+  const alphabets = ["Baybayin", "Aurebesh", "Deseret", "Tengwar", "Plqad"];
 
   return (
     <section>

@@ -1,13 +1,36 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useAlphabet } from "../../contexts/AlphabetContext";
+import AlphabetPicker from "../../components/AlphabetPicker/AlphabetPicker";
 
 export default function TransliteratorPage() {
-  const { currentAlphabet } = useAlphabet();
-  const alphabet = `${currentAlphabet} `;
+  const navigate = useNavigate();
+  const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
+
+  const alphabetRouteMap: Record<string, string> = {
+    Baybayin: "baybayin",
+    Aurebesh: "aurebesh",
+    Deseret: "deseret",
+    Tengwar: "tengwar",
+    Plqad: "plqad",
+  };
+
+  const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedAlphabet = event.target.value;
+    setCurrentAlphabet(selectedAlphabet);
+
+    const route = alphabetRouteMap[selectedAlphabet];
+    if (route) {
+      navigate(`/transliterator/${route}`);
+    }
+  };
 
   return (
     <>
-      <h2>{alphabet}Transliterator</h2>
+      <h2>Transliterator</h2>
+      <AlphabetPicker
+        selectedAlphabet={currentAlphabet}
+        handleClick={handleClick}
+      />
       <Outlet />
     </>
   );

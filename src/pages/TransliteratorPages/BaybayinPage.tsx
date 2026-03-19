@@ -6,7 +6,7 @@ import Transliterator from "../../components/Transliterator/Transliterator.tsx";
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
 import HowToUse from "../../components/HowToRead/HowToUse";
-import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
+// import OtherAlphabets from "../../components/HowToRead/OtherAlphabets";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible.tsx";
 
 export default function BaybayinPage() {
@@ -25,7 +25,7 @@ export default function BaybayinPage() {
       <WhatIsBaybayin />
       <BaybayinHowToRead />
       <BaybayinBorrowedWordsCollapsible />
-      <OtherAlphabets />
+      {/* <OtherAlphabets /> */}
     </WordsDictionaryProvider>
   );
 }
