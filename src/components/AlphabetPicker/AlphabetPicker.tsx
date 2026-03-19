@@ -21,7 +21,6 @@ export default function AlphabetPicker({
     <section>
       <label htmlFor="options">Choose an alphabet: </label>
       <select id="options" value={selectedAlphabet} onChange={handleClick}>
-        <option value=""></option>
         {alphabets.map((alphabet) => (
           <option key={alphabet} value={alphabet}>
             {alphabet}

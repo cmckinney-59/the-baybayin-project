@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import type { RefObject } from "react";
-import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -23,8 +22,7 @@ export default function TransliteratorContainer({
   onClear,
   useRichTextInput = false,
 }: TransliteratorContainerProps) {
-  const [isBold, setIsBold] = useState(false);
-  const { showExperimentalFeatures } = useExperimentalFeatures();
+  const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
 
   // When using rich text, clear the contenteditable when parent clears

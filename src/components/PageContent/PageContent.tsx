@@ -4,15 +4,17 @@ import Transliterator from "../Transliterator/Transliterator.tsx";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 
 interface PageContentProps {
-  title: string;
+  currentAlphabet: string;
 }
 
-export default function PageContent({ title }: PageContentProps): JSX.Element {
+export default function PageContent({
+  currentAlphabet,
+}: PageContentProps): JSX.Element {
   return (
     <WordsDictionaryProvider>
       <main className="page-content">
-        {title && title !== "Home" && (
-          <Transliterator title={title} />
+        {currentAlphabet && currentAlphabet !== "Home" && (
+          <Transliterator currentAlphabet={currentAlphabet} />
         )}
       </main>
     </WordsDictionaryProvider>
