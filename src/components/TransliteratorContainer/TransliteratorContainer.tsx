@@ -63,6 +63,14 @@ export default function TransliteratorContainer({
         return "tengwar-font";
       case "Plqad":
         return "plqad-font";
+      case "Matoran":
+        return "matoran-font";
+      case "Unown":
+        return "unown-font";
+      case "Gallifreyan":
+        return "gallifreyan-font";
+      case "Atlantean":
+        return "atlantean-font";
       default:
         return "";
     }

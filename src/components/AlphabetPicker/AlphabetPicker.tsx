@@ -9,12 +9,16 @@ export default function AlphabetPicker({
   selectedAlphabet,
   handleClick,
 }: AlphabetPickerProps) {
-  const alphabets = [
-    "Baybayin",
-    "Aurebesh",
-    "Deseret (Experimental)",
-    "Tengwar (Experimental)",
-    "Plqad (Experimental)",
+  const alphabets: Array<{ value: string; label: string }> = [
+    { value: "Baybayin", label: "Baybayin" },
+    { value: "Aurebesh", label: "Aurebesh" },
+    { value: "Deseret", label: "Deseret (Experimental)" },
+    { value: "Tengwar", label: "Tengwar (Experimental)" },
+    { value: "Plqad", label: "Plqad (Experimental)" },
+    { value: "Matoran", label: "Matoran (Experimental)" },
+    { value: "Unown", label: "Unown (Experimental)" },
+    { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
+    { value: "Atlantean", label: "Atlantean (Experimental)" },
   ];
 
   return (
@@ -22,8 +26,8 @@ export default function AlphabetPicker({
       <label htmlFor="options">Choose an alphabet: </label>
       <select id="options" value={selectedAlphabet} onChange={handleClick}>
         {alphabets.map((alphabet) => (
-          <option key={alphabet} value={alphabet}>
-            {alphabet}
+          <option key={alphabet.value} value={alphabet.value}>
+            {alphabet.label}
           </option>
         ))}
       </select>

@@ -10,6 +10,10 @@ import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcesso
 import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
 import processPlqadText from "../../utils/TextProcessors/PlqadTextProcessor.ts";
+import processMatoranText from "../../utils/TextProcessors/MatoranTextProcessor.ts";
+import processUnownText from "../../utils/TextProcessors/UnownTextProcessor.ts";
+import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextProcessor.ts";
+import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string> = {
   Aurebesh: processAurebeshText,
@@ -17,6 +21,10 @@ const processors: Record<string, (word: string) => string> = {
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
   Plqad: processPlqadText,
+  Matoran: processMatoranText,
+  Unown: processUnownText,
+  Gallifreyan: processGallifreyanText,
+  Atlantean: processAtlanteanText,
 };
 
 interface TransliteratorProps {

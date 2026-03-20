@@ -15,6 +15,10 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ParallelViewPage from "./pages/ParallelViewPage/ParallelViewPageNotEditable";
 import ParallelViewPageEditable from "./pages/ParallelViewPage/ParallelViewPageEditable";
 import PlqadPage from "./pages/TransliteratorPages/PlqadPage";
+import MatoranPage from "./pages/TransliteratorPages/MatoranPage";
+import UnownPage from "./pages/TransliteratorPages/UnownPage";
+import GallifreyanPage from "./pages/TransliteratorPages/GallifreyanPage";
+import AtlanteanPage from "./pages/TransliteratorPages/AtlanteanPage";
 
 const router = createHashRouter([
   {
@@ -65,6 +69,22 @@ const router = createHashRouter([
           {
             path: "plqad",
             element: <PlqadPage />,
+          },
+          {
+            path: "matoran",
+            element: <MatoranPage />,
+          },
+          {
+            path: "unown",
+            element: <UnownPage />,
+          },
+          {
+            path: "gallifreyan",
+            element: <GallifreyanPage />,
+          },
+          {
+            path: "atlantean",
+            element: <AtlanteanPage />,
           },
         ],
       },

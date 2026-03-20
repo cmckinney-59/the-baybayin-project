@@ -181,6 +181,31 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Matoran";
+  src: url("./assets/fonts/matoran/Matoran.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unown";
+  src: url("./assets/fonts/unown/Unown.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gallifreyan";
+  src: url("./assets/fonts/gallifreyan/ws_simple_gallifreyan.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atlantean";
+  src: url("./assets/fonts/atlantean/Atlantean Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
@@ -195,6 +220,18 @@ body {
 }
 .plqad-font {
   font-family: "Plqad", sans-serif;
+}
+.matoran-font {
+  font-family: "Matoran", sans-serif;
+}
+.unown-font {
+  font-family: "Unown", sans-serif;
+}
+.gallifreyan-font {
+  font-family: "Gallifreyan", sans-serif;
+}
+.atlantean-font {
+  font-family: "Atlantean", sans-serif;
 }
 
 select {

@@ -12,6 +12,10 @@ export default function TransliteratorPage() {
     Deseret: "deseret",
     Tengwar: "tengwar",
     Plqad: "plqad",
+    Matoran: "matoran",
+    Unown: "unown",
+    Gallifreyan: "gallifreyan",
+    Atlantean: "atlantean",
   };
 
   const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {
