@@ -25,7 +25,6 @@ export default function TransliteratorContainer({
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
 
-  // When using rich text, clear the contenteditable when parent clears
   useEffect(() => {
     if (
       useRichTextInput &&
@@ -37,7 +36,6 @@ export default function TransliteratorContainer({
     }
   }, [text, useRichTextInput, textareaRef]);
 
-  // Sync initial text into rich text area when parent has value (e.g. on load)
   useEffect(() => {
     if (
       useRichTextInput &&
@@ -158,7 +156,7 @@ export default function TransliteratorContainer({
             className={`transliteration-textarea ${
               isBold ? "transliteration-bold" : ""
             }`}
-            placeholder="Enter text to be transliterated here..."
+            placeholder="Enter text here..."
             value={text}
             onChange={(e) => {
               const currentValue = e.target.value;
