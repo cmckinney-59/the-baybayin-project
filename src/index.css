@@ -110,6 +110,8 @@
   --nav-text: black;
   --link-color: #2c5aa0;
   --link-hover-color: #1a3d6b;
+  /* Space from sticky header to first line of main content (page titles) */
+  --page-content-padding-top: 2rem;
 }
 
 .dark-mode {
@@ -125,6 +127,26 @@
   --nav-text: white;
   --link-color: #64b5f6;
   --link-hover-color: #90caf9;
+}
+
+/* Page titles — consistent typography and spacing across main pages */
+.page-title {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-content-padding-top: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
 }
 
 body {
@@ -302,7 +324,17 @@ select:hover {
   transition: margin-left 0.25s ease;
   position: relative;
   z-index: 1;
+  padding-top: var(--page-content-padding-top);
   padding-bottom: 80px;
+  box-sizing: border-box;
+}
+
+/* Full-window routes that skip RootLayout (e.g. parallel-view-editable) */
+.page-standalone {
+  box-sizing: border-box;
+  padding-top: var(--page-content-padding-top);
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Mobile responsive adjustments */

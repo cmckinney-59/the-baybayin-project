@@ -77,7 +77,7 @@ function ParallelViewPageEditableContent({
   return (
     <>
       <header className="no-print">
-        <h1>Side by Side View</h1>
+        <h1 className="page-title">Side by Side View</h1>
         <div className="action-buttons">
           <PrintToPDFButton />
         </div>
@@ -118,7 +118,9 @@ export default function ParallelViewPageEditable(
 ) {
   return (
     <WordsDictionaryProvider>
-      <ParallelViewPageEditableContent {...props} />
+      <div className="page-standalone">
+        <ParallelViewPageEditableContent {...props} />
+      </div>
     </WordsDictionaryProvider>
   );
 }

@@ -30,7 +30,7 @@ export default function TransliteratorPage() {
 
   return (
     <>
-      <h2>Transliterator</h2>
+      <h1 className="page-title">Transliterator</h1>
       <AlphabetPicker
         selectedAlphabet={currentAlphabet}
         handleClick={handleClick}

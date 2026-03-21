@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <article className="about-page">
       <header className="about-header">
-        <h1 className="about-title">About & Social</h1>
+        <h1 className="page-title">About & Social</h1>
       </header>
 
       <section className="about-intro">

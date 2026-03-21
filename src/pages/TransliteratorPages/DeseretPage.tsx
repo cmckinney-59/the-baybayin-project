@@ -4,7 +4,6 @@ import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.t
 import { useAlphabet } from "../../contexts/AlphabetContext.tsx";
 import HowToUse from "../../components/HowToRead/HowToUse.tsx";
 import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret.tsx";
-import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead.tsx";
 import BackButton from "../../components/Buttons/BackButton.tsx";
 import Transliterator from "../../components/Transliterator/Transliterator";
 
@@ -21,7 +20,6 @@ export default function DeseretPage() {
       <Transliterator currentAlphabet={currentAlphabet} />
       <HowToUse />
       <WhatIsDeseret />
-      <DeseretHowToRead />
     </WordsDictionaryProvider>
   );
 }

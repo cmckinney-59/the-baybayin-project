@@ -5,7 +5,7 @@ import StatusRow from "./StatusRow";
 export default function ProjectsPage() {
   return (
     <div className="projectsPage">
-      <h1>Projects</h1>
+      <h1 className="page-title">Projects</h1>
       <table className="alphabet-table">
         <thead>
           <tr>

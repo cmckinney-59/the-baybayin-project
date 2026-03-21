@@ -29,8 +29,7 @@ export default function HomePage() {
 
   return (
     <div className="homepage">
-      <h1>Welcome</h1>
-      <p>Preserving Filipino heritage through Baybayin transliteration</p>
+      <h1 className="page-title">Welcome</h1>
 
       <div className="cards-container">
         <div className="nav-card" onClick={handleTransliteratorClick}>
