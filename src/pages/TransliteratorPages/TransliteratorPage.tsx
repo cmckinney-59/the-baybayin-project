@@ -25,6 +25,8 @@ export default function TransliteratorPage() {
     const route = alphabetRouteMap[selectedAlphabet];
     if (route) {
       navigate(`/transliterator/${route}`);
+    } else {
+      navigate("/transliterator");
     }
   };
 
