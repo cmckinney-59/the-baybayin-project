@@ -10,6 +10,11 @@ export default function DownloadFontButton() {
       Aurebesh: "AurebeshBold-Rw1l.ttf",
       Deseret: "deseret_.ttf",
       Tengwar: "QUENYA.TTF",
+      Plqad: "klingon font.ttf",
+      Matoran: "Matoran.ttf",
+      Unown: "Unown.ttf",
+      Gallifreyan: "ws_simple_gallifreyan.ttf",
+      Atlantean: "Atlantean Regular.ttf",
     };
     return fontMap[alphabet] || "TagDoc93.ttf";
   };

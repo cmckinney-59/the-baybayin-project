@@ -62,7 +62,6 @@ export default function Transliterator({
     }
   }, [text, transliteratedText]);
 
-  // Baybayin only: update transliterated text when dictionary changes (e.g. from dialog)
   useEffect(() => {
     if (
       currentAlphabet === "Baybayin" &&
