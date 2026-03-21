@@ -16,7 +16,6 @@ import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextPr
 import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string> = {
-  Aurebesh: processAurebeshText,
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
@@ -44,7 +43,12 @@ export default function Transliterator({
   } = useWordsDictionary();
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [checkboxValue, setCheckboxValue] = useState<boolean>(false);
+  const [textContainsBorrowedWords, setTextContainsBorrowedWords] =
+    useState<boolean>(false);
+  const [reverseCapitalLetters, setReverseCapitalLetters] =
+    useState<boolean>(false);
+  const [includeCombinedCharacters, setIncludeCombinedCharacters] =
+    useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,8 +84,19 @@ export default function Transliterator({
     const words = currentText.trim().split(/\s+/);
     const newDict: { [word: string]: string } = {};
     const processedWords: string[] = [];
+    let processWord: (word: string) => string;
 
-    const processWord = processors[currentAlphabet];
+    if (isAurebesh) {
+      processWord = (word: string) =>
+        processAurebeshText(
+          word,
+          reverseCapitalLetters,
+          includeCombinedCharacters,
+        );
+    } else {
+      processWord = processors[currentAlphabet];
+    }
+
     if (processWord) {
       for (const word of words) {
         const processed = processWord(word);
@@ -101,6 +116,7 @@ export default function Transliterator({
   };
 
   const isBaybayin = currentAlphabet === "Baybayin";
+  const isAurebesh = currentAlphabet === "Aurebesh";
 
   return (
     <div>
@@ -127,22 +143,44 @@ export default function Transliterator({
         <label className="checkbox-label">
           <input
             type="checkbox"
-            checked={checkboxValue}
-            onChange={(e) => setCheckboxValue(e.target.checked)}
+            checked={textContainsBorrowedWords}
+            onChange={(e) => setTextContainsBorrowedWords(e.target.checked)}
           />
           Text contains borrowed words.
         </label>
       )}
+      {isAurebesh && showExperimentalFeatures && (
+        <>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={reverseCapitalLetters}
+              onChange={(e) => setReverseCapitalLetters(e.target.checked)}
+            />
+            Reverse capital letters.
+          </label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={includeCombinedCharacters}
+              onChange={(e) => setIncludeCombinedCharacters(e.target.checked)}
+            />
+            Include combined characters.
+          </label>
+        </>
+      )}
       <div className="action-buttons">
-        {isBaybayin && showExperimentalFeatures && checkboxValue && (
-          <button
-            onClick={() => setIsDialogOpen(true)}
-            disabled={transliteratedText.trim().length === 0}
-            className={transliteratedText.trim().length > 0 ? "active" : ""}
-          >
-            Validate
-          </button>
-        )}
+        {isBaybayin &&
+          showExperimentalFeatures &&
+          textContainsBorrowedWords && (
+            <button
+              onClick={() => setIsDialogOpen(true)}
+              disabled={transliteratedText.trim().length === 0}
+              className={transliteratedText.trim().length > 0 ? "active" : ""}
+            >
+              Validate
+            </button>
+          )}
         <SaveButtonContainter
           originalText={text}
           transliteratedText={transliteratedText}

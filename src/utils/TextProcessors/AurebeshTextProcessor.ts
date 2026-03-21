@@ -1,45 +1,51 @@
-export default function processAurebeshText(text: string): string {
-  let transliteratedText = text;
-  // CH
-  transliteratedText = transliteratedText.replace(/CH/g, "Ç");
-  transliteratedText = transliteratedText.replace(/Ch/g, "Ç");
-  transliteratedText = transliteratedText.replace(/ch/gi, "ç");
+const COMBINED_SMALL: ReadonlyArray<[RegExp, string]> = [
+  [/ch/gi, "ç"],
+  [/ae/gi, "æ"],
+  [/eo/gi, "ë"],
+  [/kh/gi, "þ"],
+  [/ng/gi, "ñ"],
+  [/oo/gi, "ø"],
+  [/sh/gi, "ß"],
+  [/th/gi, "ð"],
+];
 
-  // AE
-  transliteratedText = transliteratedText.replace(/AE/g, "Æ");
-  transliteratedText = transliteratedText.replace(/Ae/g, "Æ");
-  transliteratedText = transliteratedText.replace(/ae/gi, "æ");
+const COMBINED_CAPITAL: ReadonlyArray<{
+  allCaps: RegExp;
+  titleCase: RegExp;
+  out: string;
+}> = [
+  { allCaps: /CH/g, titleCase: /Ch/g, out: "Ç" },
+  { allCaps: /AE/g, titleCase: /Ae/g, out: "Æ" },
+  { allCaps: /EO/g, titleCase: /Eo/g, out: "Ë" },
+  { allCaps: /KH/g, titleCase: /Kh/g, out: "Þ" },
+  { allCaps: /NG/g, titleCase: /Ng/g, out: "Ñ" },
+  { allCaps: /OO/g, titleCase: /Oo/g, out: "Ø" },
+  { allCaps: /SH/g, titleCase: /Sh/g, out: "ẞ" },
+  { allCaps: /TH/g, titleCase: /Th/g, out: "Ð" },
+];
 
-  // EO
-  transliteratedText = transliteratedText.replace(/EO/g, "Ë");
-  transliteratedText = transliteratedText.replace(/Eo/g, "Ë");
-  transliteratedText = transliteratedText.replace(/eo/gi, "ë");
+function applyCombinedSmall(s: string): string {
+  return COMBINED_SMALL.reduce((acc, [re, rep]) => acc.replace(re, rep), s);
+}
 
-  // KH
-  transliteratedText = transliteratedText.replace(/KH/g, "Þ");
-  transliteratedText = transliteratedText.replace(/Kh/g, "Þ");
-  transliteratedText = transliteratedText.replace(/kh/gi, "þ");
+function applyCombinedCapital(s: string): string {
+  return COMBINED_CAPITAL.reduce(
+    (acc, { allCaps, titleCase, out }) =>
+      acc.replace(allCaps, out).replace(titleCase, out),
+    s,
+  );
+}
 
-  // NG
-  transliteratedText = transliteratedText.replace(/NG/g, "Ñ");
-  transliteratedText = transliteratedText.replace(/Ng/g, "Ñ");
-  transliteratedText = transliteratedText.replace(/ng/gi, "ñ");
-
-  // OO
-  transliteratedText = transliteratedText.replace(/OO/g, "Ø");
-  transliteratedText = transliteratedText.replace(/Oo/g, "Ø");
-  transliteratedText = transliteratedText.replace(/oo/gi, "ø");
-
-  // SH
-  transliteratedText = transliteratedText.replace(/SH/g, "ẞ");
-  transliteratedText = transliteratedText.replace(/Sh/g, "ẞ");
-  transliteratedText = transliteratedText.replace(/sh/gi, "ß");
-  2;
-
-  // TH
-  transliteratedText = transliteratedText.replace(/TH/g, "Ð");
-  transliteratedText = transliteratedText.replace(/Th/g, "Ð");
-  transliteratedText = transliteratedText.replace(/th/gi, "ð");
-
-  return transliteratedText;
+export default function processAurebeshText(
+  text: string,
+  reverseCapitalLetters: boolean,
+  includeCombinedCharacters: boolean,
+): string {
+  if (!includeCombinedCharacters) {
+    return reverseCapitalLetters ? text : text.toLowerCase();
+  }
+  if (reverseCapitalLetters) {
+    return applyCombinedSmall(applyCombinedCapital(text));
+  }
+  return applyCombinedSmall(text);
 }
