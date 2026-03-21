@@ -150,7 +150,7 @@ export default function Transliterator({
         </label>
       )}
       {isAurebesh && showExperimentalFeatures && (
-        <>
+        <div className="checkbox-label-row">
           <label className="checkbox-label">
             <input
               type="checkbox"
@@ -167,7 +167,7 @@ export default function Transliterator({
             />
             Include combined characters.
           </label>
-        </>
+        </div>
       )}
       <div className="action-buttons">
         {isBaybayin &&

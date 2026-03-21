@@ -980,6 +980,20 @@ button:hover:not(:disabled) {
   color: #ff6b6b;
 }
 
+.checkbox-label-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin: 10px 0;
+}
+
+.checkbox-label-row .checkbox-label {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .checkbox-label {
   margin-top: 10px;
   margin-bottom: 10px;
