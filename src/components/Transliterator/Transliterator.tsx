@@ -130,8 +130,7 @@ export default function Transliterator({
             checked={checkboxValue}
             onChange={(e) => setCheckboxValue(e.target.checked)}
           />
-          Text contains borrowed words. See &apos;Borrowed Words&apos; section
-          below.
+          Text contains borrowed words.
         </label>
       )}
       <div className="action-buttons">
