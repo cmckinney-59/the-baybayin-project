@@ -20,7 +20,7 @@ const COMBINED_CAPITAL: ReadonlyArray<{
   { allCaps: /KH/g, titleCase: /Kh/g, out: "Þ" },
   { allCaps: /NG/g, titleCase: /Ng/g, out: "Ñ" },
   { allCaps: /OO/g, titleCase: /Oo/g, out: "Ø" },
-  { allCaps: /SH/g, titleCase: /Sh/g, out: "ẞ" },
+  { allCaps: /SH/g, titleCase: /Sh/g, out: "ß" },
   { allCaps: /TH/g, titleCase: /Th/g, out: "Ð" },
 ];
 
