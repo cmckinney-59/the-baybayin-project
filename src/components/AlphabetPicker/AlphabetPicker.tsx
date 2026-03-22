@@ -10,15 +10,15 @@ export default function AlphabetPicker({
   handleClick,
 }: AlphabetPickerProps) {
   const alphabets: Array<{ value: string; label: string }> = [
-    { value: "Baybayin", label: "Baybayin" },
     { value: "Aurebesh", label: "Aurebesh" },
+    { value: "Baybayin", label: "Baybayin" },
+    { value: "Atlantean", label: "Atlantean" },
     { value: "Deseret", label: "Deseret (Experimental)" },
-    { value: "Tengwar", label: "Tengwar (Experimental)" },
-    { value: "Plqad", label: "Plqad (Experimental)" },
-    { value: "Matoran", label: "Matoran (Experimental)" },
-    { value: "Unown", label: "Unown (Experimental)" },
     { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
-    { value: "Atlantean", label: "Atlantean (Experimental)" },
+    { value: "Matoran", label: "Matoran (Experimental)" },
+    { value: "Plqad", label: "Plqad (Experimental)" },
+    { value: "Tengwar", label: "Tengwar (Experimental)" },
+    { value: "Unown", label: "Unown (Experimental)" },
   ];
 
   return (
