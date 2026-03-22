@@ -151,7 +151,10 @@ export default function Transliterator({
       )}
       {isAurebesh && (
         <div className="checkbox-label-row">
-          <label className="checkbox-label">
+          <label
+            className="checkbox-label"
+            title="Some Aurebesh users prefer to backwards letters for uppercase."
+          >
             <input
               type="checkbox"
               checked={reverseCapitalLetters}
@@ -159,7 +162,10 @@ export default function Transliterator({
             />
             Reverse capital letters.
           </label>
-          <label className="checkbox-label">
+          <label
+            className="checkbox-label"
+            title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
+          >
             <input
               type="checkbox"
               checked={includeCombinedCharacters}
