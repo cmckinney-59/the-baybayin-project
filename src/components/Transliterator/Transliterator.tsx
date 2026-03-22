@@ -149,7 +149,7 @@ export default function Transliterator({
           Text contains borrowed words.
         </label>
       )}
-      {isAurebesh && showExperimentalFeatures && (
+      {isAurebesh && (
         <div className="checkbox-label-row">
           <label className="checkbox-label">
             <input
