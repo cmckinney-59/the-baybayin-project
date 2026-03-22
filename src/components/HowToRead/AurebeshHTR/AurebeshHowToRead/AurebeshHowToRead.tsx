@@ -3,7 +3,7 @@ import AurebeshTable from "../AurebeshTable/AurebeshTable";
 import AurebeshTableCombined from "../AurebeshTable/AurebeshTableCombined";
 import AurebeshTablePunctuation from "../AurebeshTable/AurebeshTablePunctuation";
 import AurebeshTableNumbers from "../AurebeshTable/AurebeshTableNumbers";
-import AurebeshTableLowerCase from "../AurebeshTable/AurebeshTableLowerCase";
+import AurebeshTableUpperCase from "../AurebeshTable/AurebeshTableUpperCase";
 
 export default function AurebeshHowToRead() {
   return (
@@ -12,7 +12,7 @@ export default function AurebeshHowToRead() {
       <AurebeshTableCombined />
       <AurebeshTablePunctuation />
       <AurebeshTableNumbers />
-      <AurebeshTableLowerCase />
+      <AurebeshTableUpperCase />
     </CollapsibleSection>
   );
 }
