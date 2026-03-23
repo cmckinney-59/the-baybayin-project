@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import BaybayinPage from "./pages/TransliteratorPages/BaybayinPage";
 import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
+import SteelPage from "./pages/TransliteratorPages/SteelPage";
 import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
 import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
@@ -83,6 +84,10 @@ const router = createHashRouter([
           {
             path: "atlantean",
             element: <AtlanteanPage />,
+          },
+          {
+            path: "steel",
+            element: <SteelPage />,
           },
         ],
       },

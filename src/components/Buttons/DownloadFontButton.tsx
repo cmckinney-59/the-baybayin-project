@@ -15,6 +15,7 @@ export default function DownloadFontButton() {
       Unown: "Unown.ttf",
       Gallifreyan: "ws_simple_gallifreyan.ttf",
       Atlantean: "Atlantean Regular.ttf",
+      Steel: "steelAlphabet - Aligned.ttf",
     };
     return fontMap[alphabet] || "TagDoc93.ttf";
   };

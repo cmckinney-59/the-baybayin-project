@@ -12,11 +12,11 @@ export default function ExcelSaveButton({
   transliteratedText,
   onShowDialog,
 }: ExcelSaveButtonProps) {
-  const { currentAlphabet } = useAlphabet();
+  const { currentFontName } = useAlphabet();
   const { wordsDictionary } = useWordsDictionary();
 
   const handleClick = () => {
-    onShowDialog(() => downloadAsExcel(wordsDictionary, currentAlphabet));
+    onShowDialog(() => downloadAsExcel(wordsDictionary, currentFontName));
   };
 
   return (

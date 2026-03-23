@@ -228,6 +228,13 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Steel";
+  src: url("./assets/fonts/steel/steelAlphabet - Aligned.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
@@ -254,6 +261,9 @@ body {
 }
 .atlantean-font {
   font-family: "Atlantean", sans-serif;
+}
+.steel-font {
+  font-family: "Steel", sans-serif;
 }
 
 select {

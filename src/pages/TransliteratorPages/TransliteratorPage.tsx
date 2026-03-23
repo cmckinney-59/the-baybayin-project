@@ -16,6 +16,7 @@ export default function TransliteratorPage() {
     Unown: "unown",
     Gallifreyan: "gallifreyan",
     Atlantean: "atlantean",
+    Steel: "steel",
   };
 
   const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {

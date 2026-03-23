@@ -69,6 +69,8 @@ export default function TransliteratorContainer({
         return "gallifreyan-font";
       case "Atlantean":
         return "atlantean-font";
+      case "Steel":
+        return "steel-font";
       default:
         return "";
     }

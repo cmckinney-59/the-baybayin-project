@@ -12,22 +12,11 @@ import {
   WidthType,
 } from "docx";
 
-function getFontName(alphabet: string): string {
-  const fontMap: { [key: string]: string } = {
-    Baybayin: "Tagalog Doctrina 1593",
-    Aurebesh: "Aurebesh",
-    Deseret: "Deseret",
-    Tengwar: "Tengwar",
-  };
-  return fontMap[alphabet] || "Tagalog Doctrina 1593";
-}
-
 export default function downloadAsWordParallel(
   originalText: string,
   transliteratedText: string,
-  transliteratedAlphabet: string = "",
+  transliteratedFontName: string,
 ) {
-  const transliteratedFontName = getFontName(transliteratedAlphabet);
 
   const table = new Table({
     width: { size: 9638, type: WidthType.DXA },

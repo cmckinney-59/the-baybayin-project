@@ -13,11 +13,15 @@ export default function WordSaveButtonParallel({
   transliteratedText,
   onShowDialog,
 }: WordSaveButtonParallelProps) {
-  const { currentAlphabet } = useAlphabet();
+  const { currentFontName } = useAlphabet();
 
   const handleClick = () => {
     onShowDialog(() =>
-      downloadAsWordParallel(originalText, transliteratedText, currentAlphabet),
+      downloadAsWordParallel(
+        originalText,
+        transliteratedText,
+        currentFontName,
+      ),
     );
   };
 

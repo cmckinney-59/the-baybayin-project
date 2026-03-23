@@ -17,6 +17,7 @@ export default function AlphabetPicker({
     { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
     { value: "Matoran", label: "Matoran (Experimental)" },
     { value: "Plqad", label: "Plqad (Experimental)" },
+    { value: "Steel", label: "Steel (Experimental)" },
     { value: "Tengwar", label: "Tengwar (Experimental)" },
     { value: "Unown", label: "Unown (Experimental)" },
   ];

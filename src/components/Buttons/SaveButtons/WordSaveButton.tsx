@@ -11,10 +11,10 @@ export default function WordSaveButton({
   transliteratedText,
   onShowDialog,
 }: WordSaveButtonProps) {
-  const { currentAlphabet } = useAlphabet();
+  const { currentFontName } = useAlphabet();
 
   const handleClick = () => {
-    onShowDialog(() => downloadAsWord(transliteratedText, currentAlphabet));
+    onShowDialog(() => downloadAsWord(transliteratedText, currentFontName));
   };
 
   return (

@@ -14,6 +14,7 @@ import processMatoranText from "../../utils/TextProcessors/MatoranTextProcessor.
 import processUnownText from "../../utils/TextProcessors/UnownTextProcessor.ts";
 import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextProcessor.ts";
 import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
+import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string> = {
   Baybayin: processBaybayinText,
@@ -24,6 +25,7 @@ const processors: Record<string, (word: string) => string> = {
   Unown: processUnownText,
   Gallifreyan: processGallifreyanText,
   Atlantean: processAtlanteanText,
+  Steel: processSteelText,
 };
 
 interface TransliteratorProps {
