@@ -6,16 +6,16 @@ export default function DownloadFontButton() {
 
   const getFontFileName = (alphabet: string): string => {
     const fontMap: { [key: string]: string } = {
-      Baybayin: "TagDoc93.ttf",
-      Aurebesh: "AurebeshBold-Rw1l.ttf",
+      Atlantean: "atlantean-regular_xMmTX.zip",
+      Aurebesh: "aurebesh-font.zip",
+      Baybayin: "tagalog-stylized-font.zip",
       Deseret: "deseret_.ttf",
-      Tengwar: "QUENYA.TTF",
-      Plqad: "klingon font.ttf",
-      Matoran: "Matoran.ttf",
-      Unown: "Unown.ttf",
-      Gallifreyan: "ws_simple_gallifreyan.ttf",
-      Atlantean: "Atlantean Regular.ttf",
-      Steel: "steelAlphabet - Aligned.ttf",
+      Gallifreyan: "ws_simple_gallifreyan.zip",
+      Matoran: "matoran.zip",
+      Plqad: "klingon.zip",
+      Steel: "steel alphabet font - aligned.zip",
+      Tengwar: "tengwar_quenya.zip",
+      Unown: "unown.zip",
     };
     return fontMap[alphabet] || "TagDoc93.ttf";
   };

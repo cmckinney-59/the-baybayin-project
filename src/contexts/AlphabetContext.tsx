@@ -7,16 +7,16 @@ import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 const ALPHABET_OFFICE_FONT_MAP: Record<string, string> = {
-  Baybayin: "Tagalog Doctrina 1593",
-  Aurebesh: "Aurebesh",
-  Deseret: "Deseret",
-  Tengwar: "Tengwar",
-  Plqad: "Plqad",
-  Matoran: "Matoran",
-  Unown: "Unown",
-  Gallifreyan: "Gallifreyan",
   Atlantean: "Atlantean",
-  Steel: "Steel",
+  Aurebesh: "Aurebesh",
+  Baybayin: "Tagalog Doctrina 1593",
+  Deseret: "Deseret",
+  Gallifreyan: "WS Simple Gallifreyan",
+  Matoran: "Matoran",
+  Plqad: "klingon font",
+  Steel: "steelAlphabet",
+  Tengwar: "Tengwar Quenya",
+  Unown: "Unown",
 };
 
 const DEFAULT_OFFICE_FONT = "Tagalog Doctrina 1593";
@@ -34,7 +34,7 @@ interface AlphabetContextType {
 }
 
 const AlphabetContext = createContext<AlphabetContextType | undefined>(
-  undefined
+  undefined,
 );
 
 interface AlphabetProviderProps {
