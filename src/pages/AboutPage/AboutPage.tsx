@@ -33,10 +33,10 @@ export default function AboutPage() {
           <p>
             I served a two year mission for the Church of Jesus Christ of
             Latter-day Saints in the Philippines from 2013 to 2015. Over the
-            course of my mission I learned to speak Tagalog fluently. At one
-            point I stumbled upon the Baybayin script in a Tagalog dictionary
-            and began to learn it. A group of friends and I often sent notes
-            back and forth in Baybayin.
+            course of my mission I learned how to speak Tagalog. At one point I
+            stumbled upon the Baybayin script in a Tagalog dictionary and began
+            to learn it. A group of friends and I often sent notes back and
+            forth in Baybayin.
           </p>
         </div>
 
