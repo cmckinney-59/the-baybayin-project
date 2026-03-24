@@ -35,7 +35,7 @@ export default function HomePage() {
         <div className="nav-card" onClick={handleTransliteratorClick}>
           <AiOutlineTranslation className="nav-card-icon" />
           <h2>Transliterator</h2>
-          <p>Convert text to Baybayin.</p>
+          <p>Convert text to various alphabets.</p>
         </div>
 
         <div className="nav-card" onClick={handleProjectsClick}>

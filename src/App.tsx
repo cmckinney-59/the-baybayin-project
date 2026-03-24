@@ -5,19 +5,20 @@ import RootLayout from "./Root";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
-import BaybayinPage from "./pages/TransliteratorPages/BaybayinPage";
-import DeseretPage from "./pages/TransliteratorPages/DeseretPage";
-import SteelPage from "./pages/TransliteratorPages/SteelPage";
-import AurebeshPage from "./pages/TransliteratorPages/AurebeshPage";
-import TengwarPage from "./pages/TransliteratorPages/TengwarPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
-import PlqadPage from "./pages/TransliteratorPages/PlqadPage";
-import MatoranPage from "./pages/TransliteratorPages/MatoranPage";
-import UnownPage from "./pages/TransliteratorPages/UnownPage";
-import GallifreyanPage from "./pages/TransliteratorPages/GallifreyanPage";
-import AtlanteanPage from "./pages/TransliteratorPages/AtlanteanPage";
+
+import AtlanteanPage from "./pages/TransliteratorPages/Atlantean/AtlanteanPage";
+import AurebeshPage from "./pages/TransliteratorPages/Aurebesh/AurebeshPage";
+import BaybayinPage from "./pages/TransliteratorPages/Baybayin/BaybayinPage";
+import DeseretPage from "./pages/TransliteratorPages/Deseret/DeseretPage";
+import GallifreyanPage from "./pages/TransliteratorPages/Gallifreyan/GallifreyanPage";
+import MatoranPage from "./pages/TransliteratorPages/Matoran/MatoranPage";
+import PlqadPage from "./pages/TransliteratorPages/Plqad/PlqadPage";
+import SteelPage from "./pages/TransliteratorPages/Steel/SteelPage";
+import TengwarPage from "./pages/TransliteratorPages/Tengwar/TengwarPage";
+import UnownPage from "./pages/TransliteratorPages/Unown/UnownPage";
 
 const router = createHashRouter([
   {
@@ -50,6 +51,14 @@ const router = createHashRouter([
         element: <TransliteratorPage />,
         children: [
           {
+            path: "atlantean",
+            element: <AtlanteanPage />,
+          },
+          {
+            path: "aurebesh",
+            element: <AurebeshPage />,
+          },
+          {
             path: "baybayin",
             element: <BaybayinPage />,
           },
@@ -58,36 +67,28 @@ const router = createHashRouter([
             element: <DeseretPage />,
           },
           {
-            path: "aurebesh",
-            element: <AurebeshPage />,
-          },
-          {
-            path: "tengwar",
-            element: <TengwarPage />,
-          },
-          {
-            path: "plqad",
-            element: <PlqadPage />,
+            path: "gallifreyan",
+            element: <GallifreyanPage />,
           },
           {
             path: "matoran",
             element: <MatoranPage />,
           },
           {
-            path: "unown",
-            element: <UnownPage />,
-          },
-          {
-            path: "gallifreyan",
-            element: <GallifreyanPage />,
-          },
-          {
-            path: "atlantean",
-            element: <AtlanteanPage />,
+            path: "plqad",
+            element: <PlqadPage />,
           },
           {
             path: "steel",
             element: <SteelPage />,
+          },
+          {
+            path: "tengwar",
+            element: <TengwarPage />,
+          },
+          {
+            path: "unown",
+            element: <UnownPage />,
           },
         ],
       },
