@@ -168,14 +168,8 @@ body {
 
 /* Fonts loaded globally so font utility classes work across pages */
 @font-face {
-  font-family: "Baybayin";
-  src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Deseret";
-  src: url("./assets/fonts/deseret/deseret_.ttf") format("truetype");
+  font-family: "Atlantean";
+  src: url("./assets/fonts/atlantean/Atlantean Regular.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -186,8 +180,8 @@ body {
 }
 
 @font-face {
-  font-family: "Tengwar";
-  src: url("./assets/fonts/tengwar/QUENYA.TTF") format("truetype");
+  font-family: "Baybayin";
+  src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -198,20 +192,8 @@ body {
 }
 
 @font-face {
-  font-family: "Plqad";
-  src: url("./assets/fonts/klingon/klingon font.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Matoran";
-  src: url("./assets/fonts/matoran/Matoran.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Unown";
-  src: url("./assets/fonts/unown/Unown.ttf") format("truetype");
+  font-family: "Deseret";
+  src: url("./assets/fonts/deseret/deseret_.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -223,8 +205,20 @@ body {
 }
 
 @font-face {
-  font-family: "Atlantean";
-  src: url("./assets/fonts/atlantean/Atlantean Regular.ttf") format("truetype");
+  font-family: "Maras Eye";
+  src: url("./assets/fonts/maras-eye/MarasEye-EOyl.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Matoran";
+  src: url("./assets/fonts/matoran/Matoran.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plqad";
+  src: url("./assets/fonts/klingon/klingon font.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -235,35 +229,50 @@ body {
   font-display: swap;
 }
 
-.baybayin-font {
-  font-family: "Baybayin", sans-serif;
+@font-face {
+  font-family: "Tengwar";
+  src: url("./assets/fonts/tengwar/QUENYA.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unown";
+  src: url("./assets/fonts/unown/Unown.ttf") format("truetype");
+  font-display: swap;
+}
+
+.atlantean-font {
+  font-family: "Atlantean", sans-serif;
 }
 .aurebesh-font {
   font-family: "Aurebesh", sans-serif;
 }
-.tengwar-font {
-  font-family: "Tengwar", sans-serif;
+.baybayin-font {
+  font-family: "Baybayin", sans-serif;
 }
 .deseret-font {
   font-family: "Deseret", sans-serif;
 }
-.plqad-font {
-  font-family: "Plqad", sans-serif;
+.gallifreyan-font {
+  font-family: "Gallifreyan", sans-serif;
+}
+.maras-eye-font {
+  font-family: "Maras Eye", sans-serif;
 }
 .matoran-font {
   font-family: "Matoran", sans-serif;
 }
-.unown-font {
-  font-family: "Unown", sans-serif;
-}
-.gallifreyan-font {
-  font-family: "Gallifreyan", sans-serif;
-}
-.atlantean-font {
-  font-family: "Atlantean", sans-serif;
+.plqad-font {
+  font-family: "Plqad", sans-serif;
 }
 .steel-font {
   font-family: "Steel", sans-serif;
+}
+.tengwar-font {
+  font-family: "Tengwar", sans-serif;
+}
+.unown-font {
+  font-family: "Unown", sans-serif;
 }
 
 select {

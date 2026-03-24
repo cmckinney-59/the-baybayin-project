@@ -15,6 +15,7 @@ export default function AlphabetPicker({
     { value: "Atlantean", label: "Atlantean (Experimental)" },
     { value: "Deseret", label: "Deseret (Experimental)" },
     { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
+    { value: "MarasEye", label: "Maras Eye (Experimental)" },
     { value: "Matoran", label: "Matoran (Experimental)" },
     { value: "Plqad", label: "Plqad (Experimental)" },
     { value: "Steel", label: "Steel (Experimental)" },

@@ -11,6 +11,7 @@ export default function DownloadFontButton() {
       Baybayin: "tagalog-stylized-font.zip",
       Deseret: "deseret_.ttf",
       Gallifreyan: "ws_simple_gallifreyan.zip",
+      MarasEye: "maras-eye-font.zip",
       Matoran: "matoran.zip",
       Plqad: "klingon.zip",
       Steel: "steel alphabet font - aligned.zip",

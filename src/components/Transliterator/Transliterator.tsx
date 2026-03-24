@@ -15,12 +15,14 @@ import processUnownText from "../../utils/TextProcessors/UnownTextProcessor.ts";
 import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextProcessor.ts";
 import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
 import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
+import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string> = {
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
   Plqad: processPlqadText,
+  MarasEye: processMarasEyeText,
   Matoran: processMatoranText,
   Unown: processUnownText,
   Gallifreyan: processGallifreyanText,

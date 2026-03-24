@@ -14,6 +14,7 @@ import AurebeshPage from "./pages/TransliteratorPages/Aurebesh/AurebeshPage";
 import BaybayinPage from "./pages/TransliteratorPages/Baybayin/BaybayinPage";
 import DeseretPage from "./pages/TransliteratorPages/Deseret/DeseretPage";
 import GallifreyanPage from "./pages/TransliteratorPages/Gallifreyan/GallifreyanPage";
+import MarasEyePage from "./pages/TransliteratorPages/MarasEye/MarasEyePage";
 import MatoranPage from "./pages/TransliteratorPages/Matoran/MatoranPage";
 import PlqadPage from "./pages/TransliteratorPages/Plqad/PlqadPage";
 import SteelPage from "./pages/TransliteratorPages/Steel/SteelPage";
@@ -69,6 +70,10 @@ const router = createHashRouter([
           {
             path: "gallifreyan",
             element: <GallifreyanPage />,
+          },
+          {
+            path: "maras-eye",
+            element: <MarasEyePage />,
           },
           {
             path: "matoran",

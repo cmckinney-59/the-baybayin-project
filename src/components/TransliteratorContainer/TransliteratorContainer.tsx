@@ -61,6 +61,8 @@ export default function TransliteratorContainer({
         return "tengwar-font";
       case "Plqad":
         return "plqad-font";
+      case "MarasEye":
+        return "maras-eye-font";
       case "Matoran":
         return "matoran-font";
       case "Unown":

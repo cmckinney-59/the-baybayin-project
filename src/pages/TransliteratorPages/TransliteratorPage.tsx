@@ -12,6 +12,7 @@ export default function TransliteratorPage() {
     Deseret: "deseret",
     Tengwar: "tengwar",
     Plqad: "plqad",
+    MarasEye: "maras-eye",
     Matoran: "matoran",
     Unown: "unown",
     Gallifreyan: "gallifreyan",

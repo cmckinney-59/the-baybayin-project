@@ -12,6 +12,7 @@ const ALPHABET_OFFICE_FONT_MAP: Record<string, string> = {
   Baybayin: "Tagalog Doctrina 1593",
   Deseret: "Deseret",
   Gallifreyan: "WS Simple Gallifreyan",
+  MarasEye: "Maras Eye",
   Matoran: "Matoran",
   Plqad: "klingon font",
   Steel: "steelAlphabet",
