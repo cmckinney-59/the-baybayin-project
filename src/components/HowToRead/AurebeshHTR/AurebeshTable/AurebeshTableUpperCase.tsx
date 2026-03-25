@@ -2,7 +2,10 @@ export default function AurebeshTableUpperCase() {
   return (
     <>
       <h2>Uppercase Letters</h2>
-      <p>Some Aurebesh users prefer to backwards letters for uppercase.</p>
+      <p>
+        Although not canon, some Aurebesh users prefer to backwards letters for
+        uppercase.
+      </p>
       <table className="alphabet-table">
         <thead>
           <tr>

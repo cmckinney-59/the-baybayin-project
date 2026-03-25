@@ -9,9 +9,9 @@ export default function AurebeshHowToRead() {
   return (
     <CollapsibleSection title="How To Read" defaultExpanded={false}>
       <AurebeshTable />
-      <AurebeshTableCombined />
       <AurebeshTablePunctuation />
       <AurebeshTableNumbers />
+      <AurebeshTableCombined />
       <AurebeshTableUpperCase />
     </CollapsibleSection>
   );

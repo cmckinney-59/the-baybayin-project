@@ -2,7 +2,10 @@ export default function AurebeshTableCombined() {
   return (
     <>
       <h2>Combination Symbols (Ligatures)</h2>
-      <p>Some sounds are expressed with a single symbol. See examples below:</p>
+      <p>
+        There are some canon Aurebesh tables that contain the following symbols.
+        This however is not (if ever) used in any official Aurebesh text.
+      </p>
       <table className="alphabet-table">
         <thead>
           <tr>
