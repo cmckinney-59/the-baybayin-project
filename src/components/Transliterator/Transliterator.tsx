@@ -53,6 +53,7 @@ export default function Transliterator({
     useState<boolean>(false);
   const [includeCombinedCharacters, setIncludeCombinedCharacters] =
     useState<boolean>(false);
+  const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
 
@@ -135,6 +136,7 @@ export default function Transliterator({
           handleChange(currentValue);
         }}
         onClear={handleClearInput}
+        aurebeshTechNumbers={useTechNumbers}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
@@ -176,6 +178,17 @@ export default function Transliterator({
               onChange={(e) => setIncludeCombinedCharacters(e.target.checked)}
             />
             Include combined characters.
+          </label>
+          <label
+            className="checkbox-label"
+            title="Use tech numbers instead of Arabic."
+          >
+            <input
+              type="checkbox"
+              checked={useTechNumbers}
+              onChange={(e) => setUseTechNumbers(e.target.checked)}
+            />
+            Use tech numbers.
           </label>
         </div>
       )}

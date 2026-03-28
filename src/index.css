@@ -180,6 +180,13 @@ body {
 }
 
 @font-face {
+  font-family: "Aurebesh Tech Numbers";
+  src: url("./assets/fonts/aurebesh/AurebeshAF-CanonTech.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Baybayin";
   src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
   font-display: swap;
@@ -246,6 +253,9 @@ body {
 }
 .aurebesh-font {
   font-family: "Aurebesh", sans-serif;
+}
+.aurebesh-font-tech-numbers {
+  font-family: "Aurebesh Tech Numbers", sans-serif;
 }
 .baybayin-font {
   font-family: "Baybayin", sans-serif;

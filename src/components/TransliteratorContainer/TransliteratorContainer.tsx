@@ -10,6 +10,7 @@ interface TransliteratorContainerProps {
   onTextChange: (value: string) => void;
   onClear: () => void;
   useRichTextInput?: boolean;
+  aurebeshTechNumbers?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -21,6 +22,7 @@ export default function TransliteratorContainer({
   onTextChange,
   onClear,
   useRichTextInput = false,
+  aurebeshTechNumbers = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -54,7 +56,9 @@ export default function TransliteratorContainer({
       case "Baybayin":
         return "baybayin-font";
       case "Aurebesh":
-        return "aurebesh-font";
+        return aurebeshTechNumbers
+          ? "aurebesh-font-tech-numbers"
+          : "aurebesh-font";
       case "Deseret":
         return "deseret-font";
       case "Tengwar":
