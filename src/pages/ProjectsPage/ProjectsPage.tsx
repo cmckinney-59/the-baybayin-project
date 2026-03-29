@@ -1,6 +1,6 @@
-import DownloadRow from "./DownloadRow";
+import { PROJECTS_DATA } from "./PROJECTS_DATA";
 import "./ProjectsPage.css";
-import StatusRow from "./StatusRow";
+import ProjectsRow from "./ProjectsRow";
 
 export default function ProjectsPage() {
   return (
@@ -14,27 +14,9 @@ export default function ProjectsPage() {
           </tr>
         </thead>
         <tbody>
-          <DownloadRow
-            name="How to Read Baybayin"
-            fileName="BaybayinHowToReadV2.pdf"
-          />
-          <DownloadRow
-            name="Mateo 1 (Tagalog: Baybayin)"
-            fileName="Mateo-1.pdf"
-          />
-          <StatusRow name="Ang Bagong Tipan" status="First Draft In Review" />
-          <StatusRow name="Ang Aklat ni Mormon" status="Pending Approval" />
-          <StatusRow
-            name="Ang Pagpapahayag sa Mag-anak"
-            status="Pending Approval"
-          />
-          <StatusRow name="Ang Pagpapanumbalik" status="Pending Approval" />
-          <StatusRow name="Ang Pagpapanumbalik" status="Pending Approval" />
-          <StatusRow name="Ang Buhay na Cristo" status="Pending Approval" />
-          <StatusRow
-            name="Ang Mga Saligan ng Pananampalataya"
-            status="Pending Approval"
-          />
+          {PROJECTS_DATA.map((project) => (
+            <ProjectsRow key={project.name} {...project} />
+          ))}
         </tbody>
       </table>
     </div>
