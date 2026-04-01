@@ -17,7 +17,10 @@ import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProces
 import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
 import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
 
-const processors: Record<string, (word: string) => string> = {
+const processors: Record<
+  string,
+  (word: string) => string | Promise<string>
+> = {
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
@@ -85,11 +88,10 @@ export default function Transliterator({
     }
   }, [currentAlphabet, wordsDictionary, text]);
 
-  const handleChange = (currentText: string): void => {
+  const handleChange = async (currentText: string): Promise<void> => {
     const words = currentText.trim().split(/\s+/);
     const newDict: { [word: string]: string } = {};
-    const processedWords: string[] = [];
-    let processWord: (word: string) => string;
+    let processWord: ((word: string) => string | Promise<string>) | undefined;
 
     if (isAurebesh) {
       processWord = (word: string) =>
@@ -103,15 +105,18 @@ export default function Transliterator({
     }
 
     if (processWord) {
-      for (const word of words) {
-        const processed = processWord(word);
-        newDict[word] = processed;
-        processedWords.push(processed);
-      }
+      const processedWords = await Promise.all(
+        words.map((word) => Promise.resolve(processWord!(word))),
+      );
+      words.forEach((word, i) => {
+        newDict[word] = processedWords[i];
+      });
+      setWordsDictionary(newDict);
+      setTransliteratedText(processedWords.join(" "));
+    } else {
+      setWordsDictionary({});
+      setTransliteratedText("");
     }
-
-    setWordsDictionary(newDict);
-    setTransliteratedText(processedWords.join(" "));
   };
 
   const handleClearInput = () => {
@@ -133,7 +138,7 @@ export default function Transliterator({
         outputRef={outputRef}
         onTextChange={(currentValue) => {
           setText(currentValue);
-          handleChange(currentValue);
+          void handleChange(currentValue);
         }}
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
