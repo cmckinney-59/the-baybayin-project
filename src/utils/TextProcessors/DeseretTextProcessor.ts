@@ -6,5 +6,7 @@ registerDeseret();
 export default async function processDeseretText(
   text: string,
 ): Promise<string> {
-  return translate(text, { format: "deseret" });
+  let transliteratedText = await translate(text, { format: "deseret" });
+  transliteratedText = transliteratedText.replace(/𐑄/g, "Ê");
+  return transliteratedText;
 }
