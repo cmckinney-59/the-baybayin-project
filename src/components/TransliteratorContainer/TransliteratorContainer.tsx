@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import type { RefObject } from "react";
 
+/** [useCombinedCharacters][aurebeshTechNumbers] */
+const AUREBESH_FONT_CLASSES = [
+  ["aurebesh-font-canon", "aurebesh-font-canon-tech"],
+  ["aurebesh-font-legends", "aurebesh-font-legends-tech"],
+] as const;
+
 interface TransliteratorContainerProps {
   text: string;
   transliteratedText: string;
@@ -11,6 +17,7 @@ interface TransliteratorContainerProps {
   onClear: () => void;
   useRichTextInput?: boolean;
   aurebeshTechNumbers?: boolean;
+  useCombinedCharacters?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -23,9 +30,14 @@ export default function TransliteratorContainer({
   onClear,
   useRichTextInput = false,
   aurebeshTechNumbers = false,
+  useCombinedCharacters = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
+  const aurebeshFontClass =
+    AUREBESH_FONT_CLASSES[Number(useCombinedCharacters)][
+      Number(aurebeshTechNumbers)
+    ];
 
   useEffect(() => {
     if (
@@ -56,9 +68,7 @@ export default function TransliteratorContainer({
       case "Baybayin":
         return "baybayin-font";
       case "Aurebesh":
-        return aurebeshTechNumbers
-          ? "aurebesh-font-tech-numbers"
-          : "aurebesh-font";
+        return aurebeshFontClass;
       case "Deseret":
         return "deseret-font";
       case "Tengwar":

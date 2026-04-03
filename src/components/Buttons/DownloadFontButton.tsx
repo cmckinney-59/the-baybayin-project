@@ -19,10 +19,10 @@ export default function DownloadFontButton() {
       case "Aurebesh":
         return {
           url: new URL(
-            "../../assets/fonts/aurebesh/aurebesh-font.zip",
+            "../../assets/fonts/aurebesh/aurebesh.zip",
             import.meta.url,
           ).href,
-          downloadName: "aurebesh-font.zip",
+          downloadName: "aurebesh.zip",
         };
       case "Baybayin":
         return {

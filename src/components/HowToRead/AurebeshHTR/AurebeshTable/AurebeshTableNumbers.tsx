@@ -17,43 +17,43 @@ export default function AurebeshTableNumbers() {
         <tbody>
           <tr>
             <td className="aurebesh-letter">0</td>
-            <td className="aurebesh-font-tech-numbers">0</td>
+            <td className="aurebesh-letter-tech">0</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">1</td>
-            <td className="aurebesh-font-tech-numbers">1</td>
+            <td className="aurebesh-letter-tech">1</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">2</td>
-            <td className="aurebesh-font-tech-numbers">2</td>
+            <td className="aurebesh-letter-tech">2</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">3</td>
-            <td className="aurebesh-font-tech-numbers">3</td>
+            <td className="aurebesh-letter-tech">3</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">4</td>
-            <td className="aurebesh-font-tech-numbers">4</td>
+            <td className="aurebesh-letter-tech">4</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">5</td>
-            <td className="aurebesh-font-tech-numbers">5</td>
+            <td className="aurebesh-letter-tech">5</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">6</td>
-            <td className="aurebesh-font-tech-numbers">6</td>
+            <td className="aurebesh-letter-tech">6</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">7</td>
-            <td className="aurebesh-font-tech-numbers">7</td>
+            <td className="aurebesh-letter-tech">7</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">8</td>
-            <td className="aurebesh-font-tech-numbers">8</td>
+            <td className="aurebesh-letter-tech">8</td>
           </tr>
           <tr>
             <td className="aurebesh-letter">9</td>
-            <td className="aurebesh-font-tech-numbers">9</td>
+            <td className="aurebesh-letter-tech">9</td>
           </tr>
         </tbody>
       </table>

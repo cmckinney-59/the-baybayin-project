@@ -174,14 +174,27 @@ body {
 }
 
 @font-face {
-  font-family: "Aurebesh";
-  src: url("./assets/fonts/aurebesh/AurebeshBold-Rw1l.ttf") format("truetype");
+  font-family: "Aurebesh Canon";
+  src: url("./assets/fonts/aurebesh/AurebeshAF-Canon.otf") format("opentype");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Aurebesh Tech Numbers";
+  font-family: "Aurebesh Canon Tech";
   src: url("./assets/fonts/aurebesh/AurebeshAF-CanonTech.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh Legends";
+  src: url("./assets/fonts/aurebesh/AurebeshAF-Legends.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh Legends Tech";
+  src: url("./assets/fonts/aurebesh/AurebeshAF-LegendsTech.otf")
     format("opentype");
   font-display: swap;
 }
@@ -251,11 +264,17 @@ body {
 .atlantean-font {
   font-family: "Atlantean", sans-serif;
 }
-.aurebesh-font {
-  font-family: "Aurebesh", sans-serif;
+.aurebesh-font-canon {
+  font-family: "Aurebesh Canon", sans-serif;
 }
-.aurebesh-font-tech-numbers {
-  font-family: "Aurebesh Tech Numbers", sans-serif;
+.aurebesh-font-canon-tech {
+  font-family: "Aurebesh Canon Tech", sans-serif;
+}
+.aurebesh-font-legends {
+  font-family: "Aurebesh Legends", sans-serif;
+}
+.aurebesh-font-legends-tech {
+  font-family: "Aurebesh Legends Tech", sans-serif;
 }
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
@@ -283,6 +302,28 @@ body {
 }
 .unown-font {
   font-family: "Unown", sans-serif;
+}
+
+.aurebesh-font-canon,
+.aurebesh-font-canon-tech,
+.aurebesh-font-legends,
+.aurebesh-font-legends-tech {
+  font-feature-settings:
+    "calt" 1,
+    "liga" 1,
+    "clig" 1,
+    "dlig" 1;
+  font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  -webkit-font-feature-settings:
+    "calt" 1,
+    "liga" 1,
+    "clig" 1,
+    "dlig" 1;
+  -moz-font-feature-settings:
+    "calt" 1,
+    "liga" 1,
+    "clig" 1,
+    "dlig" 1;
 }
 
 select {
@@ -1286,7 +1327,12 @@ button:hover:not(:disabled) {
 /* Aurebesh Letters */
 
 .aurebesh-letter {
-  font-family: "Aurebesh";
+  font-family: "Aurebesh Legends";
+  font-weight: normal;
+}
+
+.aurebesh-letter-tech {
+  font-family: "Aurebesh Legends Tech";
   font-weight: normal;
 }
 
@@ -1295,7 +1341,7 @@ button:hover:not(:disabled) {
 }
 
 .aurebesh-letter-blue {
-  font-family: "Aurebesh";
+  font-family: "Aurebesh Legends";
   font-weight: bold;
   color: #64b5f6 !important;
 }

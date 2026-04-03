@@ -17,10 +17,7 @@ import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProces
 import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
 import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
 
-const processors: Record<
-  string,
-  (word: string) => string | Promise<string>
-> = {
+const processors: Record<string, (word: string) => string | Promise<string>> = {
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
@@ -52,9 +49,7 @@ export default function Transliterator({
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [textContainsBorrowedWords, setTextContainsBorrowedWords] =
     useState<boolean>(false);
-  const [reverseCapitalLetters, setReverseCapitalLetters] =
-    useState<boolean>(false);
-  const [includeCombinedCharacters, setIncludeCombinedCharacters] =
+  const [useCombinedCharacters, setUseCombinedCharacters] =
     useState<boolean>(false);
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -93,17 +88,7 @@ export default function Transliterator({
     const newDict: { [word: string]: string } = {};
     let processWord: ((word: string) => string | Promise<string>) | undefined;
 
-    if (isAurebesh) {
-      processWord = (word: string) =>
-        processAurebeshText(
-          word,
-          reverseCapitalLetters,
-          includeCombinedCharacters,
-        );
-    } else {
-      processWord = processors[currentAlphabet];
-    }
-
+    processWord = processors[currentAlphabet];
     if (processWord) {
       const processedWords = await Promise.all(
         words.map((word) => Promise.resolve(processWord!(word))),
@@ -142,6 +127,7 @@ export default function Transliterator({
         }}
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
+        useCombinedCharacters={useCombinedCharacters}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
@@ -164,23 +150,12 @@ export default function Transliterator({
         <div className="checkbox-label-row">
           <label
             className="checkbox-label"
-            title="Some Aurebesh users prefer to backwards letters for uppercase."
-          >
-            <input
-              type="checkbox"
-              checked={reverseCapitalLetters}
-              onChange={(e) => setReverseCapitalLetters(e.target.checked)}
-            />
-            Reverse capital letters.
-          </label>
-          <label
-            className="checkbox-label"
             title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
           >
             <input
               type="checkbox"
-              checked={includeCombinedCharacters}
-              onChange={(e) => setIncludeCombinedCharacters(e.target.checked)}
+              checked={useCombinedCharacters}
+              onChange={(e) => setUseCombinedCharacters(e.target.checked)}
             />
             Include combined characters.
           </label>
