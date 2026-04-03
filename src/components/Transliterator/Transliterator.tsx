@@ -18,6 +18,7 @@ import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
 import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string | Promise<string>> = {
+  Aurebesh: processAurebeshText,
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
   Tengwar: processTengwarText,
