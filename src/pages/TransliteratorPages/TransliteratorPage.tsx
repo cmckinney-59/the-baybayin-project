@@ -1,6 +1,8 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAlphabet } from "../../contexts/AlphabetContext";
+import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 import AlphabetPicker from "../../components/AlphabetPicker/AlphabetPicker";
+import Transliterator from "../../components/Transliterator/Transliterator.tsx";
 
 export default function TransliteratorPage() {
   const navigate = useNavigate();
@@ -34,13 +36,14 @@ export default function TransliteratorPage() {
   };
 
   return (
-    <>
+    <WordsDictionaryProvider>
       <h1 className="page-title">Transliterator</h1>
       <AlphabetPicker
         selectedAlphabet={currentAlphabet}
         handleClick={handleClick}
       />
+      <Transliterator currentAlphabet={currentAlphabet} />
       <Outlet />
-    </>
+    </WordsDictionaryProvider>
   );
 }

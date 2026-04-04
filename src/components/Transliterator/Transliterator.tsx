@@ -107,6 +107,12 @@ export default function Transliterator({
     }
   };
 
+  // Re-process when alphabet changes while keeping the same input text.
+  useEffect(() => {
+    void handleChange(text);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only when alphabet changes
+  }, [currentAlphabet]);
+
   const handleClearInput = () => {
     setText("");
     setTransliteratedText("");
