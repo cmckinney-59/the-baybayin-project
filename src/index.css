@@ -213,7 +213,8 @@ body {
 
 @font-face {
   font-family: "Deseret";
-  src: url("./assets/fonts/deseret/deseret_.ttf") format("truetype");
+  src: url("./assets/fonts/deseret/noto-sans-deseret-deseret-400-normal.ttf")
+    format("truetype");
   font-display: swap;
 }
 

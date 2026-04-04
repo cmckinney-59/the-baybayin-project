@@ -35,10 +35,10 @@ export default function DownloadFontButton() {
       case "Deseret":
         return {
           url: new URL(
-            "../../assets/fonts/deseret/deseret_.ttf",
+            "../../assets/fonts/deseret/deseret.zip",
             import.meta.url,
           ).href,
-          downloadName: "deseret_.ttf",
+          downloadName: "deseret.zip",
         };
       case "Gallifreyan":
         return {
