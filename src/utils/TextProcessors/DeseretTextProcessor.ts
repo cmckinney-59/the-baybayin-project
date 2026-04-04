@@ -27,5 +27,9 @@ export default async function processDeseretText(
   transliteratedText = transliteratedText.replace(/𐐃/g, "Œ");
   transliteratedText = transliteratedText.replace(/𐐫/g, "œ");
 
+  // oh
+  transliteratedText = transliteratedText.replace(/𐐄/g, "Ø");
+  transliteratedText = transliteratedText.replace(/𐐬/g, "ø");
+
   return transliteratedText;
 }
