@@ -9,6 +9,7 @@ import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
+import AncientsPage from "./pages/TransliteratorPages/Ancients/AncientsPage";
 import AtlanteanPage from "./pages/TransliteratorPages/Atlantean/AtlanteanPage";
 import AurebeshPage from "./pages/TransliteratorPages/Aurebesh/AurebeshPage";
 import BaybayinPage from "./pages/TransliteratorPages/Baybayin/BaybayinPage";
@@ -51,6 +52,10 @@ const router = createHashRouter([
         path: "/transliterator",
         element: <TransliteratorPage />,
         children: [
+          {
+            path: "ancients",
+            element: <AncientsPage />,
+          },
           {
             path: "atlantean",
             element: <AtlanteanPage />,

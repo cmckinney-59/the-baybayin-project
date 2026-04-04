@@ -8,6 +8,14 @@ export default function DownloadFontButton() {
     alphabet: string,
   ): { url: string; downloadName: string } | null => {
     switch (alphabet) {
+      case "Ancients":
+        return {
+          url: new URL(
+            "../../assets/fonts/ancients/ancients.zip",
+            import.meta.url,
+          ).href,
+          downloadName: "ancients.zip",
+        };
       case "Atlantean":
         return {
           url: new URL(

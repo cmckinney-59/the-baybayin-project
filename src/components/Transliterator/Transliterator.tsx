@@ -5,30 +5,32 @@ import TransliteratorContainer from "../TransliteratorContainer/TransliteratorCo
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import processAncientsText from "../../utils/TextProcessors/AncientsTextProcessor.ts";
+import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
 import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
-import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
-import processPlqadText from "../../utils/TextProcessors/PlqadTextProcessor.ts";
-import processMatoranText from "../../utils/TextProcessors/MatoranTextProcessor.ts";
-import processUnownText from "../../utils/TextProcessors/UnownTextProcessor.ts";
 import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextProcessor.ts";
-import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
-import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
 import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
+import processMatoranText from "../../utils/TextProcessors/MatoranTextProcessor.ts";
+import processPlqadText from "../../utils/TextProcessors/PlqadTextProcessor.ts";
+import processSteelText from "../../utils/TextProcessors/SteelTextProcessor.ts";
+import processTengwarText from "../../utils/TextProcessors/TengwarTextProcessor.ts";
+import processUnownText from "../../utils/TextProcessors/UnownTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string | Promise<string>> = {
+  Ancients: processAncientsText,
+  Atlantean: processAtlanteanText,
   Aurebesh: processAurebeshText,
   Baybayin: processBaybayinText,
   Deseret: processDeseretText,
-  Tengwar: processTengwarText,
-  Plqad: processPlqadText,
+  Gallifreyan: processGallifreyanText,
   MarasEye: processMarasEyeText,
   Matoran: processMatoranText,
-  Unown: processUnownText,
-  Gallifreyan: processGallifreyanText,
-  Atlantean: processAtlanteanText,
+  Plqad: processPlqadText,
   Steel: processSteelText,
+  Tengwar: processTengwarText,
+  Unown: processUnownText,
 };
 
 interface TransliteratorProps {

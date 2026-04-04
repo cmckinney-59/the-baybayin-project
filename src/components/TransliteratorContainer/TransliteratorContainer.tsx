@@ -65,28 +65,30 @@ export default function TransliteratorContainer({
   const getFontClass = () => {
     if (!textareaHasText) return "";
     switch (currentAlphabet) {
-      case "Baybayin":
-        return "baybayin-font";
+      case "Ancients":
+        return "ancients-font";
+      case "Atlantean":
+        return "atlantean-font";
       case "Aurebesh":
         return aurebeshFontClass;
+      case "Baybayin":
+        return "baybayin-font";
       case "Deseret":
         return "deseret-font";
-      case "Tengwar":
-        return "tengwar-font";
-      case "Plqad":
-        return "plqad-font";
+      case "Gallifreyan":
+        return "gallifreyan-font";
       case "MarasEye":
         return "maras-eye-font";
       case "Matoran":
         return "matoran-font";
-      case "Unown":
-        return "unown-font";
-      case "Gallifreyan":
-        return "gallifreyan-font";
-      case "Atlantean":
-        return "atlantean-font";
+      case "Plqad":
+        return "plqad-font";
       case "Steel":
         return "steel-font";
+      case "Tengwar":
+        return "tengwar-font";
+      case "Unown":
+        return "unown-font";
       default:
         return "";
     }

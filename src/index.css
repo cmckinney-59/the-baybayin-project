@@ -168,6 +168,12 @@ body {
 
 /* Fonts loaded globally so font utility classes work across pages */
 @font-face {
+  font-family: "Ancients";
+  src: url("./assets/fonts/ancients/sg_anq.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Atlantean";
   src: url("./assets/fonts/atlantean/Atlantean Regular.ttf") format("truetype");
   font-display: swap;
@@ -262,6 +268,9 @@ body {
   font-display: swap;
 }
 
+.ancients-font {
+  font-family: "Ancients", sans-serif;
+}
 .atlantean-font {
   font-family: "Atlantean", sans-serif;
 }

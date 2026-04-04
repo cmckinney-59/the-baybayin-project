@@ -7,6 +7,7 @@ import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 
 const ALPHABET_OFFICE_FONT_MAP: Record<string, string> = {
+  Ancients: "Ancients",
   Atlantean: "Atlantean",
   Aurebesh: "Aurebesh",
   Baybayin: "Tagalog Doctrina 1593",

@@ -7,17 +7,18 @@ export default function TransliteratorPage() {
   const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
   const alphabetRouteMap: Record<string, string> = {
-    Baybayin: "baybayin",
+    Ancients: "ancients",
+    Atlantean: "atlantean",
     Aurebesh: "aurebesh",
+    Baybayin: "baybayin",
     Deseret: "deseret",
-    Tengwar: "tengwar",
-    Plqad: "plqad",
+    Gallifreyan: "gallifreyan",
     MarasEye: "maras-eye",
     Matoran: "matoran",
+    Plqad: "plqad",
     Unown: "unown",
-    Gallifreyan: "gallifreyan",
-    Atlantean: "atlantean",
     Steel: "steel",
+    Tengwar: "tengwar",
   };
 
   const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {

@@ -12,6 +12,7 @@ export default function AlphabetPicker({
   const alphabets: Array<{ value: string; label: string }> = [
     { value: "Aurebesh", label: "Aurebesh" },
     { value: "Baybayin", label: "Baybayin" },
+    { value: "Ancients", label: "Ancients (Experimental)" },
     { value: "Atlantean", label: "Atlantean (Experimental)" },
     { value: "Deseret", label: "Deseret (Experimental)" },
     { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
