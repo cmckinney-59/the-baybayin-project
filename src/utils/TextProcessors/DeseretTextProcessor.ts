@@ -19,5 +19,13 @@ export default async function processDeseretText(
   transliteratedText = transliteratedText.replace(/𐐁/g, "Å");
   transliteratedText = transliteratedText.replace(/𐐩/g, "å");
 
+  // a
+  transliteratedText = transliteratedText.replace(/𐐂/g, "Æ");
+  transliteratedText = transliteratedText.replace(/𐐪/g, "æ");
+
+  // aw
+  transliteratedText = transliteratedText.replace(/𐐃/g, "Œ");
+  transliteratedText = transliteratedText.replace(/𐐫/g, "œ");
+
   return transliteratedText;
 }
