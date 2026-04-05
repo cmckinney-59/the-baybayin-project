@@ -40,6 +40,14 @@ export default function DownloadFontButton() {
           ).href,
           downloadName: "tagalog-stylized-font.zip",
         };
+      case "Cirth":
+        return {
+          url: new URL(
+            "../../assets/fonts/cirth/cirth-erebor.zip",
+            import.meta.url,
+          ).href,
+          downloadName: "cirth-erebor.zip",
+        };
       case "Deseret":
         return {
           url: new URL(

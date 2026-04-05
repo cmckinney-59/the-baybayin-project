@@ -9,7 +9,6 @@ import {
   AiFillProject,
   AiFillSetting,
   AiOutlineSetting,
-  // AiOutlineShopping,
 } from "react-icons/ai";
 import { PiTranslate, PiTranslateFill } from "react-icons/pi";
 
@@ -82,12 +81,6 @@ export default function Navigation({
               <span className="nav-text">About & Social</span>
             </Link>
           </li>
-          {/* <li>
-            <Link to="/shop" onClick={onNavigate} title="Shop">
-              <AiOutlineShopping className="nav-icon" />
-              <span className="nav-text">Shop</span>
-            </Link>
-          </li> */}
           <li>
             <Link to="/settings" onClick={onNavigate} title="Settings">
               {isActiveRoute("/settings") ? (

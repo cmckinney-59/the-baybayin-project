@@ -73,6 +73,8 @@ export default function TransliteratorContainer({
         return aurebeshFontClass;
       case "Baybayin":
         return "baybayin-font";
+      case "Cirth":
+        return "cirth-font";
       case "Deseret":
         return "deseret-font";
       case "Gallifreyan":

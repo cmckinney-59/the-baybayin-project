@@ -9,6 +9,7 @@ import processAncientsText from "../../utils/TextProcessors/AncientsTextProcesso
 import processAtlanteanText from "../../utils/TextProcessors/AtlanteanTextProcessor.ts";
 import processAurebeshText from "../../utils/TextProcessors/AurebeshTextProcessor.ts";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processCirthText from "../../utils/TextProcessors/CirthTextProcessor.ts";
 import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import processGallifreyanText from "../../utils/TextProcessors/GallifreyanTextProcessor.ts";
 import processMarasEyeText from "../../utils/TextProcessors/MarasEyeTextProcessor.ts";
@@ -23,6 +24,7 @@ const processors: Record<string, (word: string) => string | Promise<string>> = {
   Atlantean: processAtlanteanText,
   Aurebesh: processAurebeshText,
   Baybayin: processBaybayinText,
+  Cirth: processCirthText,
   Deseret: processDeseretText,
   Gallifreyan: processGallifreyanText,
   MarasEye: processMarasEyeText,

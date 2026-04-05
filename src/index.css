@@ -218,6 +218,12 @@ body {
 }
 
 @font-face {
+  font-family: "Cirth";
+  src: url("./assets/fonts/cirth/Erebor.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Deseret";
   src: url("./assets/fonts/deseret/noto-sans-deseret-deseret-400-normal.ttf")
     format("truetype");
@@ -288,6 +294,9 @@ body {
 }
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
+}
+.cirth-font {
+  font-family: "Cirth", sans-serif;
 }
 .deseret-font {
   font-family: "Deseret", sans-serif;

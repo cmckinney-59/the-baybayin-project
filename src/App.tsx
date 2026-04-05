@@ -21,6 +21,7 @@ import PlqadPage from "./pages/TransliteratorPages/Plqad/PlqadPage";
 import SteelPage from "./pages/TransliteratorPages/Steel/SteelPage";
 import TengwarPage from "./pages/TransliteratorPages/Tengwar/TengwarPage";
 import UnownPage from "./pages/TransliteratorPages/Unown/UnownPage";
+import CirthPage from "./pages/TransliteratorPages/Cirth/CirthPage";
 
 const router = createHashRouter([
   {
@@ -67,6 +68,10 @@ const router = createHashRouter([
           {
             path: "baybayin",
             element: <BaybayinPage />,
+          },
+          {
+            path: "cirth",
+            element: <CirthPage />,
           },
           {
             path: "deseret",

@@ -11,6 +11,7 @@ const ALPHABET_OFFICE_FONT_MAP: Record<string, string> = {
   Atlantean: "Atlantean",
   Aurebesh: "Aurebesh",
   Baybayin: "Tagalog Doctrina 1593",
+  Cirth: "Cirth Erebor",
   Deseret: "Deseret",
   Gallifreyan: "WS Simple Gallifreyan",
   MarasEye: "Maras Eye",

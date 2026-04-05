@@ -13,14 +13,15 @@ export default function TransliteratorPage() {
     Atlantean: "atlantean",
     Aurebesh: "aurebesh",
     Baybayin: "baybayin",
+    Cirth: "cirth",
     Deseret: "deseret",
     Gallifreyan: "gallifreyan",
     MarasEye: "maras-eye",
     Matoran: "matoran",
     Plqad: "plqad",
-    Unown: "unown",
     Steel: "steel",
     Tengwar: "tengwar",
+    Unown: "unown",
   };
 
   const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {

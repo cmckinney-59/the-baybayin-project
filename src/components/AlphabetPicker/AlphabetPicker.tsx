@@ -14,6 +14,7 @@ export default function AlphabetPicker({
     { value: "Baybayin", label: "Baybayin" },
     { value: "Ancients", label: "Ancients (Experimental)" },
     { value: "Atlantean", label: "Atlantean (Experimental)" },
+    { value: "Cirth", label: "Cirth (Experimental)" },
     { value: "Deseret", label: "Deseret (Experimental)" },
     { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
     { value: "MarasEye", label: "Maras Eye (Experimental)" },
