@@ -1,10 +1,14 @@
 export default function processPlqadText(text: string): string {
-  // Tengwar fonts typically map directly to Latin characters
-  // The font itself handles the visual transformation
-  // We can add specific transformations here if needed
   let transliteratedText = text;
-
-  // Basic transformations can be added here for Tengwar-specific rules
-  // For now, we'll pass through the text as Tengwar fonts handle the mapping
+  transliteratedText = transliteratedText.replace(/ch/g, "c");
+  transliteratedText = transliteratedText.replace(/gh/g, "g");
+  transliteratedText = transliteratedText.replace(/ng/g, "f");
+  transliteratedText = transliteratedText.replace(/tlh/g, "z");
+  transliteratedText = transliteratedText.replace(/Q/g, "k");
+  transliteratedText = transliteratedText.replace(/c/gi, "");
+  transliteratedText = transliteratedText.replace(/g/gi, "");
+  transliteratedText = transliteratedText.replace(/k/gi, "");
+  transliteratedText = transliteratedText.replace(/x/gi, "");
+  transliteratedText = transliteratedText.replace(/z/gi, "");
   return transliteratedText;
 }

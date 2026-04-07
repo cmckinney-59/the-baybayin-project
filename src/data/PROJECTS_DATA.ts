@@ -1,5 +1,5 @@
-import howToReadBaybayinPdf from "../../assets/projects/HowToReadBaybayin.pdf";
-import mateo1Pdf from "../../assets/projects/Mateo-1.pdf";
+import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
+import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
 
 export type DownloadableProject = {
   name: string;
