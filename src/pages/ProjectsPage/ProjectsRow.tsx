@@ -1,4 +1,4 @@
-import type { ProjectRow } from "./PROJECTS_DATA";
+import type { ProjectRow } from "../../data/PROJECTS_DATA";
 
 export default function ProjectsRow(project: ProjectRow) {
   let row: React.ReactNode = null;

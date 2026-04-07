@@ -1,4 +1,4 @@
-import { PROJECTS_DATA } from "./PROJECTS_DATA";
+import { PROJECTS_DATA } from "../../data/PROJECTS_DATA";
 import "./ProjectsPage.css";
 import ProjectsRow from "./ProjectsRow";
 
