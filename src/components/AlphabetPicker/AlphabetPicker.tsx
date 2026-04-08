@@ -1,4 +1,5 @@
 import React from "react";
+import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 
 interface AlphabetPickerProps {
   selectedAlphabet: string;
@@ -9,29 +10,18 @@ export default function AlphabetPicker({
   selectedAlphabet,
   handleClick,
 }: AlphabetPickerProps) {
-  const alphabets: Array<{ value: string; label: string }> = [
-    { value: "Aurebesh", label: "Aurebesh" },
-    { value: "Baybayin", label: "Baybayin" },
-    { value: "Ancients", label: "Ancients (Experimental)" },
-    { value: "Atlantean", label: "Atlantean (Experimental)" },
-    { value: "Cirth", label: "Cirth (Experimental)" },
-    { value: "Deseret", label: "Deseret (Experimental)" },
-    { value: "Gallifreyan", label: "Gallifreyan (Experimental)" },
-    { value: "MarasEye", label: "Maras Eye (Experimental)" },
-    { value: "Matoran", label: "Matoran (Experimental)" },
-    { value: "Plqad", label: "Plqad (Experimental)" },
-    { value: "Steel", label: "Steel (Experimental)" },
-    { value: "Tengwar", label: "Tengwar (Experimental)" },
-    { value: "Unown", label: "Unown (Experimental)" },
-  ];
+  const stableAlphabets = ALPHABETS_DATA.filter((a) => !a.experimental);
+  const experimentalAlphabets = ALPHABETS_DATA.filter((a) => a.experimental);
+  const alphabets = [...stableAlphabets, ...experimentalAlphabets];
 
   return (
     <section>
       <select id="options" value={selectedAlphabet} onChange={handleClick}>
         <option value="">Select an alphabet</option>
         {alphabets.map((alphabet) => (
-          <option key={alphabet.value} value={alphabet.value}>
-            {alphabet.label}
+          <option key={alphabet.name} value={alphabet.name}>
+            {alphabet.name}
+            {alphabet.experimental ? " (Experimental)" : ""}
           </option>
         ))}
       </select>
