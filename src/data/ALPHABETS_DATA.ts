@@ -4,7 +4,6 @@ export type Alphabet = {
   experimental: boolean;
   fictional: boolean;
   fontName: string;
-  downloadUrl: string;
   downloadName: string;
 };
 
@@ -15,7 +14,6 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Ancients",
-    downloadUrl: "https://www.google.com",
     downloadName: "ancients.zip",
   },
   {
@@ -24,8 +22,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Atlantean",
-    downloadUrl: "https://www.google.com",
-    downloadName: "atlantean.zip",
+    downloadName: "atlantean-regular_xMmTX.zip",
   },
   {
     name: "Aurebesh",
@@ -33,7 +30,6 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: false,
     fictional: true,
     fontName: "Aurebesh",
-    downloadUrl: "https://www.google.com",
     downloadName: "aurebesh.zip",
   },
   {
@@ -42,8 +38,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: false,
     fictional: false,
     fontName: "Baybayin",
-    downloadUrl: "https://www.google.com",
-    downloadName: "baybayin.zip",
+    downloadName: "tagalog-stylized-font.zip",
   },
   {
     name: "Cirth",
@@ -51,8 +46,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Cirth",
-    downloadUrl: "https://www.google.com",
-    downloadName: "cirth.zip",
+    downloadName: "cirth-erebor.zip",
   },
   {
     name: "Deseret",
@@ -60,7 +54,6 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: false,
     fontName: "Deseret",
-    downloadUrl: "https://www.google.com",
     downloadName: "deseret.zip",
   },
   {
@@ -69,8 +62,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Gallifreyan",
-    downloadUrl: "https://www.google.com",
-    downloadName: "gallifreyan.zip",
+    downloadName: "ws_simple_gallifreyan.zip",
   },
   {
     name: "MarasEye",
@@ -78,8 +70,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "MarasEye",
-    downloadUrl: "https://www.google.com",
-    downloadName: "maras-eye.zip",
+    downloadName: "maras-eye-font.zip",
   },
   {
     name: "Matoran",
@@ -87,7 +78,6 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Matoran",
-    downloadUrl: "https://www.google.com",
     downloadName: "matoran.zip",
   },
   {
@@ -96,8 +86,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Plqad",
-    downloadUrl: "https://www.google.com",
-    downloadName: "plqad.zip",
+    downloadName: "klingon.zip",
   },
   {
     name: "Steel",
@@ -105,8 +94,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Steel",
-    downloadUrl: "https://www.google.com",
-    downloadName: "steel.zip",
+    downloadName: "steel alphabet font - aligned.zip",
   },
   {
     name: "Tengwar",
@@ -114,8 +102,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Tengwar",
-    downloadUrl: "https://www.google.com",
-    downloadName: "tengwar.zip",
+    downloadName: "tengwar_quenya.zip",
   },
   {
     name: "Unown",
@@ -123,7 +110,6 @@ export const ALPHABETS_DATA: Alphabet[] = [
     experimental: true,
     fictional: true,
     fontName: "Unown",
-    downloadUrl: "https://www.google.com",
     downloadName: "unown.zip",
   },
 ];
