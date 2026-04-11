@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import type { RefObject } from "react";
-
-/** [useCombinedCharacters][aurebeshTechNumbers] */
-const AUREBESH_FONT_CLASSES = [
-  ["aurebesh-font-canon", "aurebesh-font-canon-tech"],
-  ["aurebesh-font-legends", "aurebesh-font-legends-tech"],
-] as const;
+import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -34,10 +29,7 @@ export default function TransliteratorContainer({
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
-  const aurebeshFontClass =
-    AUREBESH_FONT_CLASSES[Number(useCombinedCharacters)][
-      Number(aurebeshTechNumbers)
-    ];
+  const alphabetEntry = ALPHABETS_DATA.find((a) => a.name === currentAlphabet);
 
   useEffect(() => {
     if (
@@ -63,37 +55,12 @@ export default function TransliteratorContainer({
   }, [useRichTextInput, textareaRef, text]);
 
   const getFontClass = () => {
-    if (!textareaHasText) return "";
-    switch (currentAlphabet) {
-      case "Ancients":
-        return "ancients-font";
-      case "Atlantean":
-        return "atlantean-font";
-      case "Aurebesh":
-        return aurebeshFontClass;
-      case "Baybayin":
-        return "baybayin-font";
-      case "Cirth":
-        return "cirth-font";
-      case "Deseret":
-        return "deseret-font";
-      case "Gallifreyan":
-        return "gallifreyan-font";
-      case "MarasEye":
-        return "maras-eye-font";
-      case "Matoran":
-        return "matoran-font";
-      case "Plqad":
-        return "plqad-font";
-      case "Steel":
-        return "steel-font";
-      case "Tengwar":
-        return "tengwar-font";
-      case "Unown":
-        return "unown-font";
-      default:
-        return "";
+    if (!textareaHasText || !alphabetEntry) return "";
+    const matrix = alphabetEntry.outputFontClassMatrix;
+    if (matrix) {
+      return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
     }
+    return alphabetEntry.outputFontClass;
   };
 
   const applyFormat = (command: string) => {

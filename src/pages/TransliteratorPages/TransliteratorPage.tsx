@@ -3,37 +3,24 @@ import { useAlphabet } from "../../contexts/AlphabetContext";
 import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.tsx";
 import AlphabetPicker from "../../components/AlphabetPicker/AlphabetPicker";
 import Transliterator from "../../components/Transliterator/Transliterator.tsx";
+import { alphabetNameToRouteSegment } from "../../data/ALPHABETS_DATA";
 
 export default function TransliteratorPage() {
   const navigate = useNavigate();
   const { currentAlphabet, setCurrentAlphabet } = useAlphabet();
 
-  const alphabetRouteMap: Record<string, string> = {
-    Ancients: "ancients",
-    Atlantean: "atlantean",
-    Aurebesh: "aurebesh",
-    Baybayin: "baybayin",
-    Cirth: "cirth",
-    Deseret: "deseret",
-    Gallifreyan: "gallifreyan",
-    MarasEye: "maras-eye",
-    Matoran: "matoran",
-    Plqad: "plqad",
-    Steel: "steel",
-    Tengwar: "tengwar",
-    Unown: "unown",
-  };
-
   const handleClick = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedAlphabet = event.target.value;
     setCurrentAlphabet(selectedAlphabet);
 
-    const route = alphabetRouteMap[selectedAlphabet];
-    if (route) {
-      navigate(`/transliterator/${route}`);
-    } else {
+    if (!selectedAlphabet) {
       navigate("/transliterator");
+      return;
     }
+
+    navigate(
+      `/transliterator/${alphabetNameToRouteSegment(selectedAlphabet)}`,
+    );
   };
 
   return (

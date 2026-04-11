@@ -5,34 +5,12 @@
 
 import { createContext, useContext, useMemo, useState } from "react";
 import type { ReactNode } from "react";
-
-const ALPHABET_OFFICE_FONT_MAP: Record<string, string> = {
-  Ancients: "Ancients",
-  Atlantean: "Atlantean",
-  Aurebesh: "Aurebesh",
-  Baybayin: "Tagalog Doctrina 1593",
-  Cirth: "Cirth Erebor",
-  Deseret: "Deseret",
-  Gallifreyan: "WS Simple Gallifreyan",
-  MarasEye: "Maras Eye",
-  Matoran: "Matoran",
-  Plqad: "klingon font",
-  Steel: "steelAlphabet",
-  Tengwar: "Tengwar Quenya",
-  Unown: "Unown",
-};
-
-const DEFAULT_OFFICE_FONT = "Tagalog Doctrina 1593";
-
-/** Office / export font name for a transliterator alphabet key (e.g. Word, Excel). */
-export function fontNameForAlphabet(alphabet: string): string {
-  return ALPHABET_OFFICE_FONT_MAP[alphabet] ?? DEFAULT_OFFICE_FONT;
-}
+import { exportFontNameForAlphabet } from "../data/ALPHABETS_DATA";
+export { exportFontNameForAlphabet as fontNameForAlphabet };
 
 interface AlphabetContextType {
   currentAlphabet: string;
   setCurrentAlphabet: (alphabet: string) => void;
-  /** Font name for exports (Word/Excel) for the current alphabet. */
   currentFontName: string;
 }
 
@@ -48,7 +26,7 @@ export function AlphabetProvider({ children }: AlphabetProviderProps) {
   const [currentAlphabet, setCurrentAlphabet] = useState<string>("");
 
   const currentFontName = useMemo(
-    () => fontNameForAlphabet(currentAlphabet),
+    () => exportFontNameForAlphabet(currentAlphabet),
     [currentAlphabet],
   );
 
