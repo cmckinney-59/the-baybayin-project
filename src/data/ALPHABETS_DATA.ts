@@ -8,6 +8,8 @@ export type OutputFontClassMatrix = readonly [
   readonly [string, string],
 ];
 
+export type OutputFontClassMatrixBinary = readonly [string, string];
+
 export type Alphabet = {
   name: string;
   description: string;
@@ -18,6 +20,7 @@ export type Alphabet = {
   processor: (word: string) => string | Promise<string>;
   outputFontClass: string;
   outputFontClassMatrix?: OutputFontClassMatrix;
+  outputFontClassMatrixBinary?: OutputFontClassMatrixBinary;
 };
 
 export const ALPHABETS_DATA: Alphabet[] = [
@@ -124,6 +127,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     downloadName: "klingon.zip",
     processor: processPlqadText,
     outputFontClass: "plqad-font",
+    outputFontClassMatrixBinary: ["plqad-font", "plqad-font-klinzhai"],
   },
   {
     name: "Steel",

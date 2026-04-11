@@ -89,6 +89,18 @@
 }
 
 @font-face {
+  font-family: "Plqad Klinzhai";
+  src: url("./assets/fonts/klingon/Klinzhai.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plqad Mandel";
+  src: url("./assets/fonts/klingon/Klingon-pIqaD-Mandel.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Steel";
   src: url("./assets/fonts/steel/steelAlphabet - Aligned.ttf")
     format("truetype");
@@ -145,6 +157,12 @@
 }
 .plqad-font {
   font-family: "Plqad", sans-serif;
+}
+.plqad-font-klinzhai {
+  font-family: "Plqad Klinzhai", sans-serif;
+}
+.plqad-font-mandel {
+  font-family: "Plqad Mandel", sans-serif;
 }
 .steel-font {
   font-family: "Steel", sans-serif;

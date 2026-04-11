@@ -13,6 +13,7 @@ interface TransliteratorContainerProps {
   useRichTextInput?: boolean;
   aurebeshTechNumbers?: boolean;
   useCombinedCharacters?: boolean;
+  useKlinzhai?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -26,6 +27,7 @@ export default function TransliteratorContainer({
   useRichTextInput = false,
   aurebeshTechNumbers = false,
   useCombinedCharacters = false,
+  useKlinzhai = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -59,6 +61,10 @@ export default function TransliteratorContainer({
     const matrix = alphabetEntry.outputFontClassMatrix;
     if (matrix) {
       return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
+    }
+    const matrixBinary = alphabetEntry.outputFontClassMatrixBinary;
+    if (matrixBinary) {
+      return matrixBinary[Number(useKlinzhai)];
     }
     return alphabetEntry.outputFontClass;
   };

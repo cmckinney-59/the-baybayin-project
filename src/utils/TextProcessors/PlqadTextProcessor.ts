@@ -12,3 +12,8 @@ export default function processPlqadText(text: string): string {
   transliteratedText = transliteratedText.replace(/z/gi, "");
   return transliteratedText;
 }
+
+export function processPlqadTextKlinzhai(text: string): string {
+  let transliteratedText = text.toLowerCase();
+  return transliteratedText;
+}
