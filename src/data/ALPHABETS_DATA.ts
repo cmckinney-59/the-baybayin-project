@@ -1,16 +1,7 @@
-import processAncientsText from "../utils/TextProcessors/AncientsTextProcessor";
-import processAtlanteanText from "../utils/TextProcessors/AtlanteanTextProcessor";
-import processAurebeshText from "../utils/TextProcessors/AurebeshTextProcessor";
 import processBaybayinText from "../utils/TextProcessors/BaybayinTextProcessor";
-import processCirthText from "../utils/TextProcessors/CirthTextProcessor";
 import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
-import processGallifreyanText from "../utils/TextProcessors/GallifreyanTextProcessor";
-import processMarasEyeText from "../utils/TextProcessors/MarasEyeTextProcessor";
-import processMatoranText from "../utils/TextProcessors/MatoranTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
-import processSteelText from "../utils/TextProcessors/SteelTextProcessor";
-import processTengwarText from "../utils/TextProcessors/TengwarTextProcessor";
-import processUnownText from "../utils/TextProcessors/UnownTextProcessor";
+import processText from "../utils/TextProcessors/DefaultTextProcessor";
 
 export type OutputFontClassMatrix = readonly [
   readonly [string, string],
@@ -37,7 +28,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Ancients",
     downloadName: "ancients.zip",
-    processor: processAncientsText,
+    processor: processText,
     outputFontClass: "ancients-font",
   },
   {
@@ -47,7 +38,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Atlantean",
     downloadName: "atlantean-regular_xMmTX.zip",
-    processor: processAtlanteanText,
+    processor: processText,
     outputFontClass: "atlantean-font",
   },
   {
@@ -57,7 +48,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Aurebesh",
     downloadName: "aurebesh.zip",
-    processor: processAurebeshText,
+    processor: processText,
     outputFontClassMatrix: [
       ["aurebesh-font-canon", "aurebesh-font-canon-tech"],
       ["aurebesh-font-legends", "aurebesh-font-legends-tech"],
@@ -81,7 +72,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Cirth Erebor",
     downloadName: "cirth-erebor.zip",
-    processor: processCirthText,
+    processor: processText,
     outputFontClass: "cirth-font",
   },
   {
@@ -101,7 +92,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "WS Simple Gallifreyan",
     downloadName: "ws_simple_gallifreyan.zip",
-    processor: processGallifreyanText,
+    processor: processText,
     outputFontClass: "gallifreyan-font",
   },
   {
@@ -111,7 +102,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Maras Eye",
     downloadName: "maras-eye-font.zip",
-    processor: processMarasEyeText,
+    processor: processText,
     outputFontClass: "maras-eye-font",
   },
   {
@@ -121,7 +112,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Matoran",
     downloadName: "matoran.zip",
-    processor: processMatoranText,
+    processor: processText,
     outputFontClass: "matoran-font",
   },
   {
@@ -141,7 +132,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "steelAlphabet",
     downloadName: "steel alphabet font - aligned.zip",
-    processor: processSteelText,
+    processor: processText,
     outputFontClass: "steel-font",
   },
   {
@@ -151,7 +142,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Tengwar Quenya",
     downloadName: "tengwar_quenya.zip",
-    processor: processTengwarText,
+    processor: processText,
     outputFontClass: "tengwar-font",
   },
   {
@@ -161,7 +152,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Unown",
     downloadName: "unown.zip",
-    processor: processUnownText,
+    processor: processText,
     outputFontClass: "unown-font",
   },
 ];
