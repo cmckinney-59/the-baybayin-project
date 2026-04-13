@@ -5,16 +5,22 @@ export default function DeseretTable() {
       <table className="alphabet-table">
         <thead>
           <tr>
-            <th>Deseret Symbol</th>
-            <th>Latin Letter</th>
-            <th>Deseret Name</th>
+            <th>Letter</th>
+            <th>IPA</th>
+            <th>Sound</th>
+            <th>Name</th>
+            <th>Example</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="deseret-letter">A</td>
-            <td>A</td>
-            <td>Aurek</td>
+            <td className="deseret-letter">𐐀</td>
+            <td>/i/</td>
+            <td>ee</td>
+            <td>Long I</td>
+            <td>
+              <i>e</i>at
+            </td>
           </tr>
           <tr>
             <td className="deseret-letter">B</td>
