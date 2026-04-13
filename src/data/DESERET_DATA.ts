@@ -14,4 +14,11 @@ export const DESERET_DATA: DeseretData[] = [
     name: "Long I",
     example: "<i>e</i>at",
   },
+  {
+    letter: "𐐁",
+    IPA: "/ei/",
+    sound: "ey",
+    name: "Long E",
+    example: "<i>a</i>te",
+  },
 ];
