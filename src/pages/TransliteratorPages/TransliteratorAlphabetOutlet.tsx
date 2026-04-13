@@ -15,6 +15,7 @@ import {
   ALPHABETS_DATA,
   alphabetNameToRouteSegment,
 } from "../../data/ALPHABETS_DATA";
+import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
 
 type AlphabetName = (typeof ALPHABETS_DATA)[number]["name"];
 
@@ -32,7 +33,12 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
       <BaybayinBorrowedWordsCollapsible />
     </>
   ),
-  Deseret: WhatIsDeseret,
+  Deseret: () => (
+    <>
+      <WhatIsDeseret />
+      <DeseretHowToRead />
+    </>
+  ),
   Tengwar: WhatIsTengwar,
 };
 
