@@ -83,6 +83,12 @@
 }
 
 @font-face {
+  font-family: "Ogham";
+  src: url("./assets/fonts/ogham/NotoSansOgham-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Plqad";
   src: url("./assets/fonts/klingon/klingon font.ttf") format("truetype");
   font-display: swap;
@@ -154,6 +160,9 @@
 }
 .matoran-font {
   font-family: "Matoran", sans-serif;
+}
+.ogham-font {
+  font-family: "Ogham", sans-serif;
 }
 .plqad-font {
   font-family: "Plqad", sans-serif;

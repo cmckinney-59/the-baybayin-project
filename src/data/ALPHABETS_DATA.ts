@@ -1,5 +1,6 @@
 import processBaybayinText from "../utils/TextProcessors/BaybayinTextProcessor";
 import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
+import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
 import processText from "../utils/TextProcessors/DefaultTextProcessor";
 
@@ -117,6 +118,16 @@ export const ALPHABETS_DATA: Alphabet[] = [
     downloadName: "matoran.zip",
     processor: processText,
     outputFontClass: "matoran-font",
+  },
+  {
+    name: "Ogham",
+    description: "An ancient Irish alphabet",
+    experimental: true,
+    fictional: false,
+    fontName: "Ogham",
+    downloadName: "Noto_Sans_Ogham.zip",
+    processor: processOghamText,
+    outputFontClass: "ogham-font",
   },
   {
     name: "Plqad",
