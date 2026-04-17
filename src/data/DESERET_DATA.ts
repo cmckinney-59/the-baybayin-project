@@ -1,31 +1,81 @@
 export type DeseretData = {
   letter: string;
-  IPA: string;
-  sound: string;
   name: string;
+  sound: string;
   example: string;
 };
 
 export const DESERET_DATA: DeseretData[] = [
   {
     letter: "𐐀",
-    IPA: "/i/",
+    name: "Long E",
     sound: "ee",
-    name: "Long I",
     example: "<i>e</i>at",
   },
   {
     letter: "𐐁",
-    IPA: "/ei/",
+    name: "Long A",
     sound: "ey",
-    name: "Long E",
     example: "<i>a</i>te",
   },
   {
     letter: "𐐂",
-    IPA: "/a/",
+    name: "Long Ah",
     sound: "ah",
-    name: "Long A",
     example: "<i>a</i>rt",
+  },
+  {
+    letter: "𐐃",
+    name: "Long Aw",
+    sound: "aw",
+    example: "<i>aw</i>esome",
+  },
+  {
+    letter: "𐐄",
+    name: "Long O",
+    sound: "oh",
+    example: "<i>o</i>cean",
+  },
+  {
+    letter: "𐐅",
+    name: "Long OO",
+    sound: "oo",
+    example: "<i>oo</i>f",
+  },
+  {
+    letter: "𐐆",
+    name: "Short I",
+    sound: "ih",
+    example: "<i>i</i>t",
+  },
+  {
+    letter: "𐐇",
+    name: "Short E",
+    sound: "eh",
+    example: "g<i>e</i>t",
+  },
+  {
+    letter: "𐐈",
+    name: "Short A",
+    sound: "ah",
+    example: "<i>a</i>t",
+  },
+  {
+    letter: "𐐉",
+    name: "Short O",
+    sound: "oh",
+    example: "<i>o</i>t",
+  },
+  {
+    letter: "𐐊",
+    name: "Short U",
+    sound: "uh",
+    example: "b<i>u</i>t",
+  },
+  {
+    letter: "𐐋",
+    name: "Short OO",
+    sound: "oo",
+    example: "b<i>oo</i>k",
   },
 ];
