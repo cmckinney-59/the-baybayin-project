@@ -1,3 +1,5 @@
+import { AUREBESH_DATA } from "../../../../data/AUREBESH_DATA";
+
 export default function AurebeshTableCombined() {
   return (
     <>
@@ -17,46 +19,15 @@ export default function AurebeshTableCombined() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="aurebesh-letter">CH</td>
-            <td>CH</td>
-            <td>Cherek</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">AE</td>
-            <td>AE</td>
-            <td>Enth</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">EO</td>
-            <td>EO</td>
-            <td>Onith</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">KH</td>
-            <td>KH</td>
-            <td>Krenth</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">NG</td>
-            <td>NG</td>
-            <td>Nen</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">OO</td>
-            <td>OO</td>
-            <td>Orenth</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">SH</td>
-            <td>SH</td>
-            <td>Shen</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">TH</td>
-            <td>TH</td>
-            <td>Thesh</td>
-          </tr>
+          {AUREBESH_DATA.filter((letter) => letter.type === "combined").map(
+            (letter) => (
+              <tr key={letter.letter}>
+                <td className="aurebesh-letter">{letter.letter}</td>
+                <td>{letter.letter}</td>
+                <td>{letter.name}</td>
+              </tr>
+            ),
+          )}
         </tbody>
       </table>
     </>

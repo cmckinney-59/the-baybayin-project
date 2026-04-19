@@ -13,13 +13,15 @@ export default function AurebeshTable() {
           </tr>
         </thead>
         <tbody>
-          {AUREBESH_DATA.map((letter) => (
-            <tr key={letter.letter}>
-              <td className="aurebesh-letter">{letter.letter}</td>
-              <td>{letter.letter}</td>
-              <td>{letter.name}</td>
-            </tr>
-          ))}
+          {AUREBESH_DATA.filter((letter) => letter.type === "basic").map(
+            (letter) => (
+              <tr key={letter.letter}>
+                <td className="aurebesh-letter">{letter.letter}</td>
+                <td>{letter.letter}</td>
+                <td>{letter.name}</td>
+              </tr>
+            ),
+          )}
         </tbody>
       </table>
     </>
