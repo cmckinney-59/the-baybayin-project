@@ -175,4 +175,54 @@ export const AUREBESH_DATA: AurebeshData[] = [
     name: "Thesh",
     type: "combined",
   },
+  {
+    letter: "0",
+    name: "Zero",
+    type: "number",
+  },
+  {
+    letter: "1",
+    name: "One",
+    type: "number",
+  },
+  {
+    letter: "2",
+    name: "Two",
+    type: "number",
+  },
+  {
+    letter: "3",
+    name: "Three",
+    type: "number",
+  },
+  {
+    letter: "4",
+    name: "Four",
+    type: "number",
+  },
+  {
+    letter: "5",
+    name: "Five",
+    type: "number",
+  },
+  {
+    letter: "6",
+    name: "Six",
+    type: "number",
+  },
+  {
+    letter: "7",
+    name: "Seven",
+    type: "number",
+  },
+  {
+    letter: "8",
+    name: "Eight",
+    type: "number",
+  },
+  {
+    letter: "9",
+    name: "Nine",
+    type: "number",
+  },
 ];

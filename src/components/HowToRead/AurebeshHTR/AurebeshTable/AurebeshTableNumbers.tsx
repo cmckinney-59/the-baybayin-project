@@ -1,3 +1,5 @@
+import { AUREBESH_DATA } from "../../../../data/AUREBESH_DATA";
+
 export default function AurebeshTableNumbers() {
   return (
     <>
@@ -15,46 +17,14 @@ export default function AurebeshTableNumbers() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="aurebesh-letter">0</td>
-            <td className="aurebesh-letter-tech">0</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">1</td>
-            <td className="aurebesh-letter-tech">1</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">2</td>
-            <td className="aurebesh-letter-tech">2</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">3</td>
-            <td className="aurebesh-letter-tech">3</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">4</td>
-            <td className="aurebesh-letter-tech">4</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">5</td>
-            <td className="aurebesh-letter-tech">5</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">6</td>
-            <td className="aurebesh-letter-tech">6</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">7</td>
-            <td className="aurebesh-letter-tech">7</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">8</td>
-            <td className="aurebesh-letter-tech">8</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">9</td>
-            <td className="aurebesh-letter-tech">9</td>
-          </tr>
+          {AUREBESH_DATA.filter((letter) => letter.type === "number").map(
+            (letter) => (
+              <tr key={letter.letter}>
+                <td className="aurebesh-letter">{letter.letter}</td>
+                <td className="aurebesh-letter-tech">{letter.letter}</td>
+              </tr>
+            ),
+          )}
         </tbody>
       </table>
     </>
