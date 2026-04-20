@@ -225,4 +225,64 @@ export const AUREBESH_DATA: AurebeshData[] = [
     name: "Nine",
     type: "number",
   },
+  {
+    letter: ",",
+    name: "Comma",
+    type: "punctuation",
+  },
+  {
+    letter: ".",
+    name: "Period",
+    type: "punctuation",
+  },
+  {
+    letter: "!",
+    name: "Exclamation Mark",
+    type: "punctuation",
+  },
+  {
+    letter: "?",
+    name: "Question Mark",
+    type: "punctuation",
+  },
+  {
+    letter: ":",
+    name: "Colon",
+    type: "punctuation",
+  },
+  {
+    letter: ";",
+    name: "Semicolon",
+    type: "punctuation",
+  },
+  {
+    letter: "-",
+    name: "Hyphen",
+    type: "punctuation",
+  },
+  {
+    letter: "\u201C \u201D",
+    name: "Double Quote",
+    type: "punctuation",
+  },
+  {
+    letter: "\u2018 \u2019",
+    name: "Single Quote",
+    type: "punctuation",
+  },
+  {
+    letter: "( )",
+    name: "Parentheses",
+    type: "punctuation",
+  },
+  {
+    letter: "/",
+    name: "Slash",
+    type: "punctuation",
+  },
+  {
+    letter: "$",
+    name: "Dollar Sign",
+    type: "punctuation",
+  },
 ];

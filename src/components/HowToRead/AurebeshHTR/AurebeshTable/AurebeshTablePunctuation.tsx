@@ -1,3 +1,5 @@
+import { AUREBESH_DATA } from "../../../../data/AUREBESH_DATA";
+
 export default function AurebeshTablePunctuation() {
   return (
     <>
@@ -6,66 +8,18 @@ export default function AurebeshTablePunctuation() {
         <thead>
           <tr>
             <th>Aurebesh Symbol</th>
-            <th>Latin Letter</th>
+            <th>Punctuation</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="aurebesh-letter">,</td>
-            <td>,</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">.</td>
-            <td>.</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">!</td>
-            <td>!</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">?</td>
-            <td>?</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">:</td>
-            <td>:</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">;</td>
-            <td>;</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">
-              {"\u201C"} {"\u201D"}
-            </td>
-            <td>
-              {"\u201C"} {"\u201D"}
-            </td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">
-              {"\u2018"} {"\u2019"}
-            </td>
-            <td>
-              {"\u2018"} {"\u2019"}
-            </td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">( )</td>
-            <td>( )</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">/</td>
-            <td>/</td>
-          </tr>
-          <tr>
-            <td className="aurebesh-letter">$</td>
-            <td>$</td>
-          </tr>
+          {AUREBESH_DATA.filter((letter) => letter.type === "punctuation").map(
+            (letter) => (
+              <tr key={letter.letter}>
+                <td className="aurebesh-letter">{letter.letter}</td>
+                <td>{letter.letter}</td>
+              </tr>
+            ),
+          )}
         </tbody>
       </table>
     </>
