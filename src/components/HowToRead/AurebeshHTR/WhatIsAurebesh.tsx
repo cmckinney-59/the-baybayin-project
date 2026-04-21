@@ -1,4 +1,4 @@
-import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
+import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
 
 export default function WhatIsAurebesh() {
   return (

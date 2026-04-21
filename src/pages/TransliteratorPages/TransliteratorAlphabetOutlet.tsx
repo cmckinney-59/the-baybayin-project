@@ -3,8 +3,8 @@ import type { ComponentType } from "react";
 import { Navigate, useParams } from "react-router-dom";
 
 import { useAlphabet } from "../../contexts/AlphabetContext";
-import AurebeshHowToRead from "../../components/HowToRead/AurebeshHTR/AurebeshHowToRead/AurebeshHowToRead";
-import WhatIsAurebesh from "../../components/HowToRead/AurebeshHTR/WhatIsAurebesh/WhatIsAurebesh";
+import AurebeshHowToRead from "../../components/HowToRead/AurebeshHTR/AurebeshHowToRead";
+import WhatIsAurebesh from "../../components/HowToRead/AurebeshHTR/WhatIsAurebesh";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible";
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
