@@ -32,7 +32,9 @@ export default function AurebeshTable({
               <tr key={letter.letter}>
                 <td className="aurebesh-letter">{letter.letter}</td>
                 <td>{letter.letter}</td>
-                <td>{letter.name}</td>
+                {type !== "number" && type !== "punctuation" ? (
+                  <td>{letter.name}</td>
+                ) : null}
               </tr>
             ))}
         </tbody>
