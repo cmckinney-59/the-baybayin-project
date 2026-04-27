@@ -90,4 +90,10 @@ export const DESERET_DATA: DeseretData[] = [
     sound: "ou/ow",
     example: "<i>ou</i>t",
   },
+  {
+    letter: "𐐎",
+    name: "Woo",
+    sound: "w/woo",
+    example: "<i>w</i>oo",
+  },
 ];
