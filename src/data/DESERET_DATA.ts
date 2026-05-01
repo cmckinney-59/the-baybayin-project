@@ -114,4 +114,10 @@ export const DESERET_DATA: DeseretData[] = [
     sound: "p",
     example: "<i>p</i>lease",
   },
+  {
+    letter: "𐐒",
+    name: "Bee",
+    sound: "b/bee",
+    example: "<i>b</i>eautiful",
+  },
 ];
