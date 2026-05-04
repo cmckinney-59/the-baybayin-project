@@ -132,4 +132,10 @@ export const DESERET_DATA: DeseretData[] = [
     sound: "th (hard)",
     example: "<i>th</i>is",
   },
+  {
+    letter: "𐐝",
+    name: "Ess",
+    sound: "s",
+    example: "<i>s</i>it",
+  },
 ];
