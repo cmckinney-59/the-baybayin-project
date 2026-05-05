@@ -156,4 +156,46 @@ export const DESERET_DATA: DeseretData[] = [
     sound: "zh",
     example: "vi<i>s</i>ion",
   },
+  {
+    letter: "𐐡",
+    name: "r",
+    sound: "r",
+    example: "<i>r</i>esearch",
+  },
+  {
+    letter: "𐐢",
+    name: "L",
+    sound: "l",
+    example: "<i>l</i>ife",
+  },
+  {
+    letter: "𐐣",
+    name: "M",
+    sound: "m",
+    example: "<i>m</i>ountain",
+  },
+  {
+    letter: "𐐤",
+    name: "N",
+    sound: "n",
+    example: "<i>n</i>ature",
+  },
+  {
+    letter: "𐐥",
+    name: "Ng",
+    sound: "ng",
+    example: "bei<i>ng</i>",
+  },
+  {
+    letter: "𐐦",
+    name: "Oi",
+    sound: "oi",
+    example: "<i>oi</i>l",
+  },
+  {
+    letter: "𐐧",
+    name: "You",
+    sound: "ou",
+    example: "<i>u</i>niversity",
+  },
 ];
