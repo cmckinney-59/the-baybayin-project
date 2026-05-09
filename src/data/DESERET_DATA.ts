@@ -147,7 +147,7 @@ export const DESERET_DATA: DeseretData[] = [
   {
     letter: "𐐟",
     name: "Sh",
-    sound: "She",
+    sound: "sh",
     example: "she",
   },
   {
