@@ -8,8 +8,7 @@ export default function DeseretTable() {
         <thead>
           <tr>
             <th>Letter</th>
-            <th>IPA</th>
-            <th>Name</th>
+            <th>Sound</th>
             <th>Example</th>
           </tr>
         </thead>
@@ -18,7 +17,6 @@ export default function DeseretTable() {
             <tr key={letter.letter}>
               <td className="deseret-letter">{letter.letter}</td>
               <td>{letter.sound}</td>
-              <td>{letter.name}</td>
               <td>{letter.example}</td>
             </tr>
           ))}

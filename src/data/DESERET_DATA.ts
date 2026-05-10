@@ -57,13 +57,13 @@ export const DESERET_DATA: DeseretData[] = [
   {
     letter: "𐐈",
     name: "Short A",
-    sound: "ah",
+    sound: "a",
     example: "at",
   },
   {
     letter: "𐐉",
     name: "Short O",
-    sound: "oh",
+    sound: "ah",
     example: "ot",
   },
   {
