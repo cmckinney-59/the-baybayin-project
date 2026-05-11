@@ -4,6 +4,10 @@ export default function DeseretTable() {
   return (
     <>
       <h3>Deseret Alphabet Letters</h3>
+      <p>
+        Deseret is phonetic, meaning that the letters are pronounced as they are
+        written.
+      </p>
       <table className="alphabet-table">
         <thead>
           <tr>
