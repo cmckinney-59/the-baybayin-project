@@ -28,19 +28,19 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐃",
     name: "Long Aw",
     sound: "aw",
-    example: "awesome",
+    example: "awe",
   },
   {
     letter: "𐐄",
     name: "Long O",
     sound: "oh",
-    example: "ocean",
+    example: "oat",
   },
   {
     letter: "𐐅",
     name: "Long OO",
     sound: "oo",
-    example: "oof",
+    example: "too",
   },
   {
     letter: "𐐆",
@@ -64,7 +64,7 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐉",
     name: "Short O",
     sound: "ah",
-    example: "ot",
+    example: "hot",
   },
   {
     letter: "𐐊",
@@ -94,13 +94,13 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐎",
     name: "Woo",
     sound: "w/woo",
-    example: "woo",
+    example: "with",
   },
   {
     letter: "𐐏",
     name: "Yee",
     sound: "y/yee",
-    example: "yeet",
+    example: "yes",
   },
   {
     letter: "𐐐",
@@ -112,13 +112,13 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐑",
     name: "Pee",
     sound: "p",
-    example: "please",
+    example: "put",
   },
   {
     letter: "𐐒",
     name: "Bee",
     sound: "b/bee",
-    example: "beautiful",
+    example: "book",
   },
   {
     letter: "𐐛",
@@ -160,7 +160,7 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐡",
     name: "r",
     sound: "r",
-    example: "research",
+    example: "red",
   },
   {
     letter: "𐐢",
@@ -172,13 +172,13 @@ export const DESERET_DATA: DeseretData[] = [
     letter: "𐐣",
     name: "M",
     sound: "m",
-    example: "mountain",
+    example: "man",
   },
   {
     letter: "𐐤",
     name: "N",
     sound: "n",
-    example: "nature",
+    example: "not",
   },
   {
     letter: "𐐥",
@@ -195,7 +195,7 @@ export const DESERET_DATA: DeseretData[] = [
   {
     letter: "𐐧",
     name: "You",
-    sound: "ou",
-    example: "university",
+    sound: "you",
+    example: "youth",
   },
 ];
