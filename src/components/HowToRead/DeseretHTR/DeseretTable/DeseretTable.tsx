@@ -5,8 +5,8 @@ export default function DeseretTable() {
     <>
       <h3>Deseret Alphabet Letters</h3>
       <p>
-        Deseret is phonetic, meaning that the letters are pronounced as they are
-        written.
+        Deseret is phonetic, meaning each letter has a unique sound and words
+        are written as they sound.
       </p>
       <table className="alphabet-table">
         <thead>
