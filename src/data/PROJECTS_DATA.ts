@@ -1,5 +1,8 @@
 import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
 import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
+import philippinesNationalAnthemPdf from "../assets/projects/NationalAnthem_TagalogDoctrina.pdf";
+import philippinesNationalAnthemBagwisPdf from "../assets/projects/NationalAnthem_Bagwis.pdf";
+import philippinesNationalAnthemBagwisXPdf from "../assets/projects/NationalAnthem_Bagwis_X.pdf";
 
 export type DownloadableProject = {
   name: string;
@@ -27,6 +30,24 @@ export const PROJECTS_DATA: ProjectRow[] = [
     status: "Downloadable",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
+  },
+  {
+    name: "Philippines National Anthem",
+    status: "Downloadable",
+    fileUrl: philippinesNationalAnthemPdf,
+    fileName: "NationalAnthem_TagalogDoctrina.pdf",
+  },
+  {
+    name: "Philippines National Anthem: Bagwis Font",
+    status: "Downloadable",
+    fileUrl: philippinesNationalAnthemBagwisPdf,
+    fileName: "NationalAnthem_Bagwis.pdf",
+  },
+  {
+    name: "Philippines National Anthem: Bagwis Font With X",
+    status: "Downloadable",
+    fileUrl: philippinesNationalAnthemBagwisXPdf,
+    fileName: "NationalAnthem_Bagwis_X.pdf",
   },
   {
     name: "Ang Bagong Tipan",
