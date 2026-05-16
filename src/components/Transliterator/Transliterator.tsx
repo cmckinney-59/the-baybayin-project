@@ -143,14 +143,24 @@ export default function Transliterator({
         </label>
       )}
       {isBaybayin && showExperimentalFeatures && (
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={textContainsBorrowedWords}
-            onChange={(e) => setTextContainsBorrowedWords(e.target.checked)}
-          />
-          Text contains borrowed words.
-        </label>
+        <>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={textContainsBorrowedWords}
+              onChange={(e) => setTextContainsBorrowedWords(e.target.checked)}
+            />
+            Text contains borrowed words.
+          </label>
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              checked={useCombinedCharacters}
+              onChange={(e) => setUseBagwisFont(e.target.checked)}
+            />
+            Bagwis font.
+          </label>
+        </>
       )}
       {isAurebesh && (
         <div className="checkbox-label-row">
