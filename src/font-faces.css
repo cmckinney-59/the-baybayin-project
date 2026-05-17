@@ -45,6 +45,13 @@
 }
 
 @font-face {
+  font-family: "Bagwis Baybayin";
+  src: url("./assets/fonts/baybayin/BagwisBaybayinFontRegular-ZV3MK.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Baybayin Stylized";
   src: url("./assets/fonts/baybayin/TagalogStylized.ttf") format("truetype");
   font-display: swap;
@@ -145,6 +152,9 @@
 }
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
+}
+.bagwis-font {
+  font-family: "Bagwis Baybayin", "Baybayin", sans-serif;
 }
 .cirth-font {
   font-family: "Cirth", sans-serif;

@@ -34,6 +34,7 @@ export default function Transliterator({
     useState<boolean>(false);
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
+  const [useBagwisFont, setUseBagwisFont] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
@@ -123,6 +124,7 @@ export default function Transliterator({
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
+        useBagwisFont={useBagwisFont}
         useKlinzhai={useKlinzhai}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
@@ -155,7 +157,7 @@ export default function Transliterator({
           <label className="checkbox-label">
             <input
               type="checkbox"
-              checked={useCombinedCharacters}
+              checked={useBagwisFont}
               onChange={(e) => setUseBagwisFont(e.target.checked)}
             />
             Bagwis font.

@@ -14,6 +14,7 @@ interface TransliteratorContainerProps {
   aurebeshTechNumbers?: boolean;
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
+  useBagwisFont?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -28,6 +29,7 @@ export default function TransliteratorContainer({
   aurebeshTechNumbers = false,
   useCombinedCharacters = false,
   useKlinzhai = false,
+  useBagwisFont = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -64,7 +66,9 @@ export default function TransliteratorContainer({
     }
     const matrixBinary = alphabetEntry.outputFontClassMatrixBinary;
     if (matrixBinary) {
-      return matrixBinary[Number(useKlinzhai)];
+      const useAlternateFont =
+        alphabetEntry.name === "Baybayin" ? useBagwisFont : useKlinzhai;
+      return matrixBinary[Number(useAlternateFont)];
     }
     return alphabetEntry.outputFontClass;
   };
