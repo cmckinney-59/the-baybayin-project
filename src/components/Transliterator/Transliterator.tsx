@@ -7,6 +7,7 @@ import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
+import Checkbox from "../CheckBox/Checkbox.tsx";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -35,6 +36,7 @@ export default function Transliterator({
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
   const [useBagwisFont, setUseBagwisFont] = useState<boolean>(false);
+  const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
@@ -135,59 +137,47 @@ export default function Transliterator({
         </p>
       )}
       {isPlqad && (
-        <label className="checkbox-label">
-          <input
-            type="checkbox"
-            checked={useKlinzhai}
-            onChange={(e) => setUseKlinzhai(e.target.checked)}
-          />
-          Input language is English.
-        </label>
+        <Checkbox
+          checked={useKlinzhai}
+          onChange={(checked) => setUseKlinzhai(checked)}
+          label="Input language is English."
+        />
       )}
       {isBaybayin && showExperimentalFeatures && (
         <>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={textContainsBorrowedWords}
-              onChange={(e) => setTextContainsBorrowedWords(e.target.checked)}
+          <Checkbox
+            checked={textContainsBorrowedWords}
+            onChange={(checked) => setTextContainsBorrowedWords(checked)}
+            label="Text contains borrowed words."
+          />
+          <Checkbox
+            checked={useBagwisFont}
+            onChange={(checked) => setUseBagwisFont(checked)}
+            label="Bagwis font."
+          />
+          {useBagwisFont && (
+            <Checkbox
+              checked={useXVowelKiller}
+              onChange={(checked) => setUseXVowelKiller(checked)}
+              label='Use "x" vowel killer.'
             />
-            Text contains borrowed words.
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={useBagwisFont}
-              onChange={(e) => setUseBagwisFont(e.target.checked)}
-            />
-            Bagwis font.
-          </label>
+          )}
         </>
       )}
       {isAurebesh && (
         <div className="checkbox-label-row">
-          <label
-            className="checkbox-label"
+          <Checkbox
+            checked={useCombinedCharacters}
+            onChange={(checked) => setUseCombinedCharacters(checked)}
+            label="Include combined characters."
             title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
-          >
-            <input
-              type="checkbox"
-              checked={useCombinedCharacters}
-              onChange={(e) => setUseCombinedCharacters(e.target.checked)}
-            />
-            Include combined characters.
-          </label>
-          <label
-            className="checkbox-label"
+          />
+          <Checkbox
+            checked={useTechNumbers}
+            onChange={(checked) => setUseTechNumbers(checked)}
+            label="Use tech numbers."
             title="Use tech numbers instead of Arabic."
-          >
-            <input
-              type="checkbox"
-              checked={useTechNumbers}
-              onChange={(e) => setUseTechNumbers(e.target.checked)}
-            />
-            Use tech numbers.
-          </label>
+          />
         </div>
       )}
       <div className="action-buttons">
