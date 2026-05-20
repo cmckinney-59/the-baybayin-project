@@ -3,6 +3,7 @@ import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
 import philippinesNationalAnthemPdf from "../assets/projects/NationalAnthem_TagalogDoctrina.pdf";
 import philippinesNationalAnthemBagwisPdf from "../assets/projects/NationalAnthem_Bagwis.pdf";
 import philippinesNationalAnthemBagwisXPdf from "../assets/projects/NationalAnthem_Bagwis_X.pdf";
+import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf";
 
 export type DownloadableProject = {
   name: string;
@@ -30,6 +31,12 @@ export const PROJECTS_DATA: ProjectRow[] = [
     status: "Downloadable",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
+  },
+  {
+    name: "Ang Buhay na Kristo",
+    status: "Downloadable",
+    fileUrl: angBuhayNaKristoPdf,
+    fileName: "AngBuhayNaKristo-Alpha4.pdf",
   },
   {
     name: "Philippines National Anthem",
