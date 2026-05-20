@@ -137,9 +137,18 @@ export default function Transliterator({
       )}
       <CheckBoxContainer
         currentAlphabet={currentAlphabet}
-        checked={useKlinzhai}
-        onChange={(checked) => setUseKlinzhai(checked)}
-        label="Input language is English."
+        useCombinedCharacters={useCombinedCharacters}
+        useTechNumbers={useTechNumbers}
+        useKlinzhai={useKlinzhai}
+        useBagwisFont={useBagwisFont}
+        useXVowelKiller={useXVowelKiller}
+        textContainsBorrowedWords={textContainsBorrowedWords}
+        setUseCombinedCharacters={setUseCombinedCharacters}
+        setUseTechNumbers={setUseTechNumbers}
+        setUseKlinzhai={setUseKlinzhai}
+        setUseBagwisFont={setUseBagwisFont}
+        setUseXVowelKiller={setUseXVowelKiller}
+        setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       />
       <div className="action-buttons">
         {isBaybayin &&

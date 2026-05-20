@@ -1,34 +1,52 @@
 import Checkbox from "../CheckBox/Checkbox";
+import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 interface CheckboxContainerProps {
   currentAlphabet: string;
-  checked: boolean;
-  onChange: (checked: boolean) => void;
-  label: string;
-  title?: string;
+  useCombinedCharacters: boolean;
+  useTechNumbers: boolean;
+  useKlinzhai: boolean;
+  useBagwisFont: boolean;
+  useXVowelKiller: boolean;
+  textContainsBorrowedWords: boolean;
+  setUseCombinedCharacters: (checked: boolean) => void;
+  setUseTechNumbers: (checked: boolean) => void;
+  setUseKlinzhai: (checked: boolean) => void;
+  setUseBagwisFont: (checked: boolean) => void;
+  setUseXVowelKiller: (checked: boolean) => void;
+  setTextContainsBorrowedWords: (checked: boolean) => void;
 }
 
 export default function CheckboxContainer({
   currentAlphabet,
-  checked,
-  onChange,
-  label,
-  title,
+  useCombinedCharacters,
+  useTechNumbers,
+  useKlinzhai,
+  useBagwisFont,
+  useXVowelKiller,
+  textContainsBorrowedWords,
+  setUseCombinedCharacters,
+  setUseTechNumbers,
+  setUseKlinzhai,
+  setUseBagwisFont,
+  setUseXVowelKiller,
+  setTextContainsBorrowedWords,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
+  const { showExperimentalFeatures } = useExperimentalFeatures();
 
   if (currentAlphabet === "Aurebesh") {
     checkBoxes = (
       <>
         <Checkbox
           checked={useCombinedCharacters}
-          onChange={(checked) => setUseCombinedCharacters(checked)}
+          onChange={setUseCombinedCharacters}
           label="Include combined characters."
           title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
         />
         <Checkbox
           checked={useTechNumbers}
-          onChange={(checked) => setUseTechNumbers(checked)}
+          onChange={setUseTechNumbers}
           label="Use tech numbers."
           title="Use tech numbers instead of Arabic."
         />
@@ -40,7 +58,7 @@ export default function CheckboxContainer({
     checkBoxes = (
       <Checkbox
         checked={useKlinzhai}
-        onChange={(checked) => setUseKlinzhai(checked)}
+        onChange={setUseKlinzhai}
         label="Input language is English."
       />
     );
@@ -51,18 +69,18 @@ export default function CheckboxContainer({
       <>
         <Checkbox
           checked={textContainsBorrowedWords}
-          onChange={(checked) => setTextContainsBorrowedWords(checked)}
+          onChange={setTextContainsBorrowedWords}
           label="Text contains borrowed words."
         />
         <Checkbox
           checked={useBagwisFont}
-          onChange={(checked) => setUseBagwisFont(checked)}
+          onChange={setUseBagwisFont}
           label="Bagwis font."
         />
         {useBagwisFont && (
           <Checkbox
             checked={useXVowelKiller}
-            onChange={(checked) => setUseXVowelKiller(checked)}
+            onChange={setUseXVowelKiller}
             label='Use "x" vowel killer.'
           />
         )}
