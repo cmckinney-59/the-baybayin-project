@@ -1,9 +1,9 @@
 import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
 import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
+import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf";
 import philippinesNationalAnthemPdf from "../assets/projects/NationalAnthem_TagalogDoctrina.pdf";
 import philippinesNationalAnthemBagwisPdf from "../assets/projects/NationalAnthem_Bagwis.pdf";
 import philippinesNationalAnthemBagwisXPdf from "../assets/projects/NationalAnthem_Bagwis_X.pdf";
-import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf";
 
 export type DownloadableProject = {
   name: string;
