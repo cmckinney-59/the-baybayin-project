@@ -7,7 +7,7 @@ import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
-import Checkbox from "../CheckBox/Checkbox.tsx";
+import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -40,7 +40,6 @@ export default function Transliterator({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
-  const isAurebesh = currentAlphabet === "Aurebesh";
   const isPlqad = currentAlphabet === "Plqad";
 
   useEffect(() => {
@@ -136,50 +135,12 @@ export default function Transliterator({
           section for more information.
         </p>
       )}
-      {isPlqad && (
-        <Checkbox
-          checked={useKlinzhai}
-          onChange={(checked) => setUseKlinzhai(checked)}
-          label="Input language is English."
-        />
-      )}
-      {isBaybayin && showExperimentalFeatures && (
-        <>
-          <Checkbox
-            checked={textContainsBorrowedWords}
-            onChange={(checked) => setTextContainsBorrowedWords(checked)}
-            label="Text contains borrowed words."
-          />
-          <Checkbox
-            checked={useBagwisFont}
-            onChange={(checked) => setUseBagwisFont(checked)}
-            label="Bagwis font."
-          />
-          {useBagwisFont && (
-            <Checkbox
-              checked={useXVowelKiller}
-              onChange={(checked) => setUseXVowelKiller(checked)}
-              label='Use "x" vowel killer.'
-            />
-          )}
-        </>
-      )}
-      {isAurebesh && (
-        <div className="checkbox-label-row">
-          <Checkbox
-            checked={useCombinedCharacters}
-            onChange={(checked) => setUseCombinedCharacters(checked)}
-            label="Include combined characters."
-            title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
-          />
-          <Checkbox
-            checked={useTechNumbers}
-            onChange={(checked) => setUseTechNumbers(checked)}
-            label="Use tech numbers."
-            title="Use tech numbers instead of Arabic."
-          />
-        </div>
-      )}
+      <CheckBoxContainer
+        currentAlphabet={currentAlphabet}
+        checked={useKlinzhai}
+        onChange={(checked) => setUseKlinzhai(checked)}
+        label="Input language is English."
+      />
       <div className="action-buttons">
         {isBaybayin &&
           showExperimentalFeatures &&
