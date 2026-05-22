@@ -8,6 +8,7 @@ import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesCont
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
+import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -59,7 +60,8 @@ export default function Transliterator({
   useEffect(() => {
     if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
       const words = text.trim().split(/\s+/);
-      const baybayinProcessor = processors.Baybayin;
+      const baybayinProcessor = (word: string) =>
+        processBaybayinText(word, useXVowelKiller);
       const processedWords = words.map((word) => {
         return wordsDictionary[word] || baybayinProcessor(word);
       });
@@ -75,6 +77,10 @@ export default function Transliterator({
     processWord = processors[currentAlphabet];
     if (isPlqad && useKlinzhai) {
       processWord = processPlqadTextKlinzhai;
+    }
+    if (isBaybayin) {
+      processWord = (word: string) =>
+        processBaybayinText(word, useXVowelKiller);
     }
     if (processWord) {
       const processedWords = await Promise.all(
@@ -103,6 +109,13 @@ export default function Transliterator({
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror alphabet effect; handleChange uses latest text from closure
   }, [useKlinzhai]);
+
+  // Re-process Baybayin when vowel killer mode toggles.
+  useEffect(() => {
+    if (!isBaybayin) return;
+    void handleChange(text);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror useKlinzhai effect; handleChange uses latest text from closure
+  }, [useXVowelKiller]);
 
   const handleClearInput = () => {
     setText("");
