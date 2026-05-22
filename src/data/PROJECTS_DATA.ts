@@ -4,6 +4,7 @@ import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf"
 import philippinesNationalAnthemPdf from "../assets/projects/NationalAnthem_TagalogDoctrina.pdf";
 import philippinesNationalAnthemBagwisPdf from "../assets/projects/NationalAnthem_Bagwis.pdf";
 import philippinesNationalAnthemBagwisXPdf from "../assets/projects/NationalAnthem_Bagwis_X.pdf";
+import philippinesNationalAnthemParallelPdf from "../assets/projects/NationalAnthem_TagalogDoctrina_Parallel.pdf";
 
 export type DownloadableProject = {
   name: string;
@@ -55,6 +56,12 @@ export const PROJECTS_DATA: ProjectRow[] = [
     status: "Downloadable",
     fileUrl: philippinesNationalAnthemBagwisXPdf,
     fileName: "NationalAnthem_Bagwis_X.pdf",
+  },
+  {
+    name: "Philippines National Anthem: Parallel Version",
+    status: "Downloadable",
+    fileUrl: philippinesNationalAnthemParallelPdf,
+    fileName: "NationalAnthem_TagalogDoctrina_Parallel.pdf",
   },
   {
     name: "Ang Bagong Tipan",

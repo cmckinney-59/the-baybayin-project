@@ -1,6 +1,6 @@
 export default function processBaybayinText(
   text: string,
-  useXVowelKiller: boolean,
+  useXVowelKiller = false,
 ): string {
   let transliteratedText = text.toLowerCase();
   transliteratedText = transliteratedText.replace(/sh/g, "siy");

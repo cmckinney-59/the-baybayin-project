@@ -183,6 +183,7 @@ export default function Transliterator({
       {isBaybayin && isDialogOpen && (
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}
+          useXVowelKiller={useXVowelKiller}
           wordsWithC={Object.keys(wordsDictionary).filter((word) => {
             const lowerWord = word.toLowerCase();
             return (

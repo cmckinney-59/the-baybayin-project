@@ -7,12 +7,14 @@ interface WordReviewDialogProps {
   onClose?: () => void;
   wordsWithC?: string[];
   wordContainsBorrowedSound?: boolean;
+  useXVowelKiller?: boolean;
 }
 
 export default function WordReviewDialog({
   onClose = () => {},
   wordsWithC = [],
   wordContainsBorrowedSound = false,
+  useXVowelKiller = false,
 }: WordReviewDialogProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
@@ -27,7 +29,10 @@ export default function WordReviewDialog({
     }
 
     // Process the input through baybayintextprocessor
-    const processedValue = processBaybayinText(inputValue.trim());
+    const processedValue = processBaybayinText(
+      inputValue.trim(),
+      useXVowelKiller,
+    );
 
     // Update the dictionary with the processed value
     const updatedDictionary = {
