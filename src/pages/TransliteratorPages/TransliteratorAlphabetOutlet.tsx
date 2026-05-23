@@ -16,6 +16,7 @@ import {
   alphabetNameToRouteSegment,
 } from "../../data/ALPHABETS_DATA";
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
+import MoreResources from "../../components/MoreResources/MoreResources";
 
 type AlphabetName = (typeof ALPHABETS_DATA)[number]["name"];
 
@@ -37,6 +38,7 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
     <>
       <WhatIsDeseret />
       <DeseretHowToRead />
+      <MoreResources />
     </>
   ),
   Tengwar: WhatIsTengwar,
