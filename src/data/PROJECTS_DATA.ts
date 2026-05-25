@@ -1,16 +1,13 @@
 import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
 import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
 import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf";
-import philippinesNationalAnthemPdf from "../assets/projects/NationalAnthem_TagalogDoctrina.pdf";
-import philippinesNationalAnthemBagwisPdf from "../assets/projects/NationalAnthem_Bagwis.pdf";
-import philippinesNationalAnthemBagwisXPdf from "../assets/projects/NationalAnthem_Bagwis_X.pdf";
-import philippinesNationalAnthemParallelPdf from "../assets/projects/NationalAnthem_TagalogDoctrina_Parallel.pdf";
+import lupangHinirangZip from "../assets/projects/LupangHinirang/LupangHinirang.zip";
 
 export type DownloadableProject = {
   name: string;
-  status: "Downloadable";
   fileUrl: string;
   fileName: string;
+  fileType: "pdf" | "zip";
 };
 
 export type StatusOnlyProject = {
@@ -23,45 +20,27 @@ export type ProjectRow = DownloadableProject | StatusOnlyProject;
 export const PROJECTS_DATA: ProjectRow[] = [
   {
     name: "How to Read Baybayin",
-    status: "Downloadable",
     fileUrl: howToReadBaybayinPdf,
     fileName: "HowToReadBaybayin.pdf",
+    fileType: "pdf",
   },
   {
     name: "Mateo 1 (Tagalog: Baybayin)",
-    status: "Downloadable",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
+    fileType: "pdf",
   },
   {
     name: "Ang Buhay na Kristo",
-    status: "Downloadable",
     fileUrl: angBuhayNaKristoPdf,
     fileName: "AngBuhayNaKristo-Alpha4.pdf",
+    fileType: "pdf",
   },
   {
-    name: "Philippines National Anthem",
-    status: "Downloadable",
-    fileUrl: philippinesNationalAnthemPdf,
-    fileName: "NationalAnthem_TagalogDoctrina.pdf",
-  },
-  {
-    name: "Philippines National Anthem: Bagwis Font",
-    status: "Downloadable",
-    fileUrl: philippinesNationalAnthemBagwisPdf,
-    fileName: "NationalAnthem_Bagwis.pdf",
-  },
-  {
-    name: "Philippines National Anthem: Bagwis Font With X",
-    status: "Downloadable",
-    fileUrl: philippinesNationalAnthemBagwisXPdf,
-    fileName: "NationalAnthem_Bagwis_X.pdf",
-  },
-  {
-    name: "Philippines National Anthem: Parallel Version",
-    status: "Downloadable",
-    fileUrl: philippinesNationalAnthemParallelPdf,
-    fileName: "NationalAnthem_TagalogDoctrina_Parallel.pdf",
+    name: "Lupang Hinirang",
+    fileUrl: lupangHinirangZip,
+    fileName: "LupangHinirang.zip",
+    fileType: "zip",
   },
   {
     name: "Ang Bagong Tipan",
@@ -69,22 +48,18 @@ export const PROJECTS_DATA: ProjectRow[] = [
   },
   {
     name: "Ang Aklat ni Mormon",
-    status: "Pending Approval",
+    status: "Second Draft In Review",
   },
   {
     name: "Ang Pagpapahayag sa Mag-anak",
-    status: "Pending Approval",
+    status: "Final Draft In Review",
   },
   {
     name: "Ang Pagpapanumbalik",
-    status: "Pending Approval",
-  },
-  {
-    name: "Ang Buhay na Cristo",
-    status: "Pending Approval",
+    status: "Final Draft In Review",
   },
   {
     name: "Ang Mga Saligan ng Pananampalataya",
-    status: "Pending Approval",
+    status: "Final Draft In Review",
   },
 ];

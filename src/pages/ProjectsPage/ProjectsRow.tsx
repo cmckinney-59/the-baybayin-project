@@ -12,6 +12,9 @@ export default function ProjectsRow(project: ProjectRow) {
     document.body.removeChild(link);
   };
 
+  const normalizedFileType =
+    "fileType" in project ? project.fileType.toUpperCase() : "";
+
   if ("fileUrl" in project) {
     row = (
       <tr>
@@ -22,7 +25,7 @@ export default function ProjectsRow(project: ProjectRow) {
             onClick={handleDownload}
             className="downloadButton"
           >
-            Download PDF
+            Download {normalizedFileType}
           </button>
         </td>
       </tr>

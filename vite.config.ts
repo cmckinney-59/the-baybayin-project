@@ -6,6 +6,7 @@ import path from "node:path";
 export default defineConfig({
   plugins: [react()],
   base: "/the-baybayin-project",
+  assetsInclude: ["**/*.zip"],
   build: {
     rollupOptions: {
       output: {
