@@ -12,10 +12,10 @@ export default function AboutPage() {
       <section className="about-intro">
         <div className="about-intro-content">
           <p className="about-intro-text">
-            Hi, my name is Chaz. I am a husband, a father and a software
-            engineer. I am also the founder of The Baybayin Project. I was born
-            and raised in Utah. I currently live in Alberta, Canada with my wife
-            and three children.
+            Hi, my name is Chaz. I am a husband, father and software engineer. I
+            am also the founder of The Baybayin Project. I was born and raised
+            in Utah. I currently live in Alberta, Canada with my wife and three
+            children.
           </p>
           <img
             src={familyImage2}

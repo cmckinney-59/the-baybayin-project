@@ -19,6 +19,7 @@ export default function ProjectsRow(project: ProjectRow) {
     row = (
       <tr>
         <td>{project.name}</td>
+        <td>Preview</td>
         <td>
           <button
             type="button"
