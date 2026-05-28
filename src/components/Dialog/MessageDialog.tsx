@@ -19,7 +19,7 @@ export default function MessageDialog({
           <p>{message}</p>
           <div className="dialog-buttons">
             <button className="confirm-button" onClick={onClose}>
-              Okay
+              Close
             </button>
           </div>
         </div>

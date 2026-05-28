@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { ProjectRow } from "../../data/PROJECTS_DATA";
 import MessageDialog from "../../components/Dialog/MessageDialog";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import PreviewDialog from "../../components/Dialog/PreviewDialog";
 
 export default function ProjectsRow(project: ProjectRow) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -48,9 +49,9 @@ export default function ProjectsRow(project: ProjectRow) {
             Download {normalizedFileType}
           </button>
         </td>
-        {isPreviewOpen && (
-          <MessageDialog
-            message="Preview"
+        {isPreviewOpen && "fileUrl" in project && (
+          <PreviewDialog
+            fileUrl={project.fileUrl}
             onClose={() => setIsPreviewOpen(false)}
           />
         )}
