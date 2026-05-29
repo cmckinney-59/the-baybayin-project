@@ -28,41 +28,42 @@ export default function ProjectsRow(project: ProjectRow) {
 
   if ("fileUrl" in project) {
     row = (
-      <tr>
-        <td>{project.name}</td>
-        <td>
-          {(normalizedFileType === "PDF" || normalizedFileType === "ZIP") &&
-            showExperimentalFeatures && (
-              <button
-                type="button"
-                onClick={handlePreview}
-                className="previewButton"
-              >
-                Preview
-              </button>
-            )}
-          <button
-            type="button"
-            onClick={handleDownload}
-            className="downloadButton"
-          >
-            Download {normalizedFileType}
-          </button>
-        </td>
-        {isPreviewOpen && "fileUrl" in project && (
+      <>
+        <tr>
+          <td>{project.name}</td>
+          <td>
+            {(normalizedFileType === "PDF" || normalizedFileType === "ZIP") &&
+              showExperimentalFeatures && (
+                <button
+                  type="button"
+                  onClick={handlePreview}
+                  className="previewButton"
+                >
+                  Preview
+                </button>
+              )}
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="downloadButton"
+            >
+              Download {normalizedFileType}
+            </button>
+          </td>
+        </tr>
+        {isPreviewOpen && (
           <PreviewDialog
             fileUrl={project.fileUrl}
             onClose={() => setIsPreviewOpen(false)}
           />
         )}
-      </tr>
+      </>
     );
   } else {
     row = (
       <tr>
         <td>{project.name}</td>
         <td>{project.status}</td>
-        <td></td>
       </tr>
     );
   }
