@@ -1,6 +1,5 @@
 import { useState } from "react";
 import type { ProjectRow } from "../../data/PROJECTS_DATA";
-import MessageDialog from "../../components/Dialog/MessageDialog";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import PreviewDialog from "../../components/Dialog/PreviewDialog";
 

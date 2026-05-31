@@ -1,6 +1,7 @@
 import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
 import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
-import angBuhayNaKristoPdf from "../assets/projects/AngBuhayNaKristo-Alpha4.pdf";
+import angBuhayNaCristoPdf from "../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo.pdf";
+import angBuhayNaCristoParallelPdf from "../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
 import lupangHinirangZip from "../assets/projects/LupangHinirang/LupangHinirang.zip";
 
 export type DownloadableProject = {
@@ -31,9 +32,15 @@ export const PROJECTS_DATA: ProjectRow[] = [
     fileType: "pdf",
   },
   {
-    name: "Ang Buhay na Kristo",
-    fileUrl: angBuhayNaKristoPdf,
-    fileName: "AngBuhayNaKristo-Alpha4.pdf",
+    name: "Ang Buhay Na Cristo",
+    fileUrl: angBuhayNaCristoPdf,
+    fileName: "AngBuhayNaCristo.pdf",
+    fileType: "pdf",
+  },
+  {
+    name: "Ang Buhay Na Cristo: Parallel",
+    fileUrl: angBuhayNaCristoParallelPdf,
+    fileName: "AngBuhayNaCristo_Parallel.pdf",
     fileType: "pdf",
   },
   {
