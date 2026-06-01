@@ -7,6 +7,7 @@ import {
 } from "react-icons/ai";
 
 import "./HomePage.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function HomePage() {
 
   return (
     <div className="homepage">
-      <h1 className="page-title">Welcome</h1>
+      <PageTitle title="Welcome" />
 
       <div className="cards-container">
         <div className="nav-card" onClick={handleTransliteratorClick}>

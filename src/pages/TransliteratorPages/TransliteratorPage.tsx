@@ -4,6 +4,7 @@ import { WordsDictionaryProvider } from "../../contexts/WordsDictionaryContext.t
 import AlphabetPicker from "../../components/AlphabetPicker/AlphabetPicker";
 import Transliterator from "../../components/Transliterator/Transliterator.tsx";
 import { alphabetNameToRouteSegment } from "../../data/ALPHABETS_DATA";
+import PageTitle from "../../components/PageTitle/PageTitle.tsx";
 
 export default function TransliteratorPage() {
   const navigate = useNavigate();
@@ -18,14 +19,12 @@ export default function TransliteratorPage() {
       return;
     }
 
-    navigate(
-      `/transliterator/${alphabetNameToRouteSegment(selectedAlphabet)}`,
-    );
+    navigate(`/transliterator/${alphabetNameToRouteSegment(selectedAlphabet)}`);
   };
 
   return (
     <WordsDictionaryProvider>
-      <h1 className="page-title">Transliterator</h1>
+      <PageTitle title="Transliterator" />
       <AlphabetPicker
         selectedAlphabet={currentAlphabet}
         handleClick={handleClick}

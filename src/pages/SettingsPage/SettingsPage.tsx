@@ -2,6 +2,7 @@ import SettingsOption from "../../components/SettingsOption/SettingsOption";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 import "./SettingsPage.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function SettingsPage() {
   const { showExperimentalFeatures, toggleExperimentalFeatures } =
@@ -10,7 +11,7 @@ export default function SettingsPage() {
 
   return (
     <div className="settingsPage">
-      <h1 className="page-title">Settings</h1>
+      <PageTitle title="Settings" />
       <SettingsOption
         type="checkbox"
         label="Show Experimental Features"

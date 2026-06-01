@@ -1,13 +1,12 @@
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import familyImage2 from "../../assets/images/family2.jpg";
 import "./AboutPage.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function AboutPage() {
   return (
     <article className="about-page">
-      <header className="about-header">
-        <h1 className="page-title">About & Social</h1>
-      </header>
+      <PageTitle title="About & Social" />
 
       <section className="about-intro">
         <div className="about-intro-content">
