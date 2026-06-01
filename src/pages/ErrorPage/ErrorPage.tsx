@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { AiOutlineHome, AiOutlineReload } from "react-icons/ai";
 import "./ErrorPage.css";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -23,9 +24,7 @@ export default function ErrorPage() {
   return (
     <div className="error-page">
       <div className="error-content">
-        <h1 className="error-title">
-          {errorStatus ? `${errorStatus}` : "Oops!"}
-        </h1>
+        <PageTitle title={errorStatus ? `${errorStatus}` : "Oops!"} />
         <h2 className="error-subtitle">
           {errorStatus === 404 ? "Page Not Found" : "Something went wrong"}
         </h2>
