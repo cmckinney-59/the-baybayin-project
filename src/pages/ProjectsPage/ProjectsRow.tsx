@@ -30,6 +30,7 @@ export default function ProjectsRow(project: ProjectRow) {
       <>
         <tr>
           <td>{project.name}</td>
+          {showExperimentalFeatures && <td>{project.description}</td>}
           <td>
             {(normalizedFileType === "PDF" || normalizedFileType === "ZIP") &&
               showExperimentalFeatures && (
@@ -62,6 +63,7 @@ export default function ProjectsRow(project: ProjectRow) {
     row = (
       <tr>
         <td>{project.name}</td>
+        {showExperimentalFeatures && <td>{project.description}</td>}
         <td>{project.status}</td>
       </tr>
     );
