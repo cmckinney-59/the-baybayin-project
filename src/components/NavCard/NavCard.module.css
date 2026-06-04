@@ -1,0 +1,60 @@
+.navCard {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition:
+    all 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.navCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
+}
+
+.navCard:active {
+  transform: translateY(-2px);
+}
+
+.navCardIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.navCardIcon svg {
+  width: 30px;
+  height: 30px;
+  color: var(--icon-color);
+  transition: color 0.3s ease;
+}
+
+.navCardTitle {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.navCardDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .navCard {
+    padding: 1.5rem;
+  }
+
+  .navCardIcon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

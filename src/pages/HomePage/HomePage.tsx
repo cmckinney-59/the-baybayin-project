@@ -8,6 +8,7 @@ import {
 
 import "./HomePage.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
+import NavCard from "../../components/NavCard/NavCard";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -33,29 +34,33 @@ export default function HomePage() {
       <PageTitle title="Welcome" />
 
       <div className="cards-container">
-        <div className="nav-card" onClick={handleTransliteratorClick}>
-          <AiOutlineTranslation className="nav-card-icon" />
-          <h2>Transliterator</h2>
-          <p>Convert text to various alphabets.</p>
-        </div>
+        <NavCard
+          title="Transliterator"
+          description="Convert text to various alphabets."
+          icon={<AiOutlineTranslation />}
+          onClick={handleTransliteratorClick}
+        />
 
-        <div className="nav-card" onClick={handleProjectsClick}>
-          <AiOutlineProject className="nav-card-icon" />
-          <h2>Projects</h2>
-          <p>See our projects.</p>
-        </div>
+        <NavCard
+          title="Projects"
+          description="See our projects."
+          icon={<AiOutlineProject />}
+          onClick={handleProjectsClick}
+        />
 
-        <div className="nav-card" onClick={handleAboutClick}>
-          <AiOutlineInfoCircle className="nav-card-icon" />
-          <h2>About</h2>
-          <p>Learn more and connect with us.</p>
-        </div>
+        <NavCard
+          title="About"
+          description="Learn more and connect with us."
+          icon={<AiOutlineInfoCircle />}
+          onClick={handleAboutClick}
+        />
 
-        <div className="nav-card" onClick={handleSettingsClick}>
-          <AiOutlineSetting className="nav-card-icon" />
-          <h2>Settings</h2>
-          <p>Manage settings.</p>
-        </div>
+        <NavCard
+          title="Settings"
+          description="Manage settings."
+          icon={<AiOutlineSetting />}
+          onClick={handleSettingsClick}
+        />
       </div>
     </div>
   );
