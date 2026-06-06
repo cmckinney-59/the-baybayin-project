@@ -1,5 +1,3 @@
-import ProjectsRow from "../../pages/ProjectsPage/ProjectsRow";
-
 interface TableProps {
   data: any[];
   headers: string[];
