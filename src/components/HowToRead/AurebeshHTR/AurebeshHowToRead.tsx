@@ -1,6 +1,6 @@
 import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
 import AurebeshTable from "./AurebeshTable";
-import { AUREBESH_DATA } from "../../../data/AUREBESH_DATA";
+import { AUREBESH_DATA } from "../../../data/AurebeshData/AUREBESH_DATA";
 
 export default function AurebeshHowToRead() {
   return (

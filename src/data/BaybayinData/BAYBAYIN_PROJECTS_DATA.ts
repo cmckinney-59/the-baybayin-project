@@ -29,7 +29,7 @@ export const PROJECTS_DATA: ProjectRow[] = [
     description: "A quick guide to reading the Baybayin alphabet.",
   },
   {
-    name: "Mateo 1 (Tagalog: Baybayin)",
+    name: "Mateo 1",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
     fileType: "pdf",

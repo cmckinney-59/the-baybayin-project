@@ -1,4 +1,4 @@
-import { BAYBAYIN_DATA } from "../../../../data/BAYBAYIN_DATA";
+import { BAYBAYIN_DATA } from "../../../../data/BaybayinData/BAYBAYIN_DATA";
 
 export default function BaybayinTable() {
   return (

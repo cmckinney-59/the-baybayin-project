@@ -1,4 +1,4 @@
-import { AUREBESH_DATA } from "../../../data/AUREBESH_DATA";
+import { AUREBESH_DATA } from "../../../data/AurebeshData/AUREBESH_DATA";
 
 interface AurebeshTableProps {
   type: "basic" | "combined" | "punctuation" | "number";
