@@ -1,7 +1,7 @@
 interface TableProps {
-  data: any[];
+  data: { name: string }[];
   headers: string[];
-  rows: any[];
+  rows: string[][];
 }
 
 export default function Table({ data, headers, rows }: TableProps) {
@@ -15,10 +15,10 @@ export default function Table({ data, headers, rows }: TableProps) {
         </tr>
       </thead>
       <tbody>
-        {data.map((row) => (
-          <tr key={row.name}>
-            {headers.map((header) => (
-              <td key={header}>{row[header]}</td>
+        {rows.map((cells, index) => (
+          <tr key={data[index]?.name ?? index}>
+            {cells.map((cell, cellIndex) => (
+              <td key={cellIndex}>{cell}</td>
             ))}
           </tr>
         ))}
