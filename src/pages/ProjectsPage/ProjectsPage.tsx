@@ -1,4 +1,4 @@
-import { PROJECTS_DATA } from "../../data/PROJECTS_DATA";
+import { PROJECTS_DATA } from "../../data/AurebeshData/AUREBESH_PROJECTS_DATA";
 import "./ProjectsPage.css";
 import ProjectsRow from "./ProjectsRow";
 import PageTitle from "../../components/PageTitle/PageTitle";
