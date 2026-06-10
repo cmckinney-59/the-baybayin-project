@@ -1,8 +1,8 @@
-import howToReadBaybayinPdf from "../assets/projects/HowToReadBaybayin.pdf";
-import mateo1Pdf from "../assets/projects/Mateo-1.pdf";
-import angBuhayNaCristoPdf from "../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo.pdf";
-import angBuhayNaCristoParallelPdf from "../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
-import lupangHinirangZip from "../assets/projects/LupangHinirang/LupangHinirang.zip";
+import howToReadBaybayinPdf from "../../assets/projects/HowToReadBaybayin.pdf";
+import mateo1Pdf from "../../assets/projects/Mateo-1.pdf";
+import angBuhayNaCristoPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo.pdf";
+import angBuhayNaCristoParallelPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
+import lupangHinirangZip from "../../assets/projects/LupangHinirang/LupangHinirang.zip";
 
 export type DownloadableProject = {
   name: string;

@@ -1,10 +1,11 @@
-import { PROJECTS_DATA } from "../../data/AurebeshData/AUREBESH_PROJECTS_DATA";
 import "./ProjectsPage.css";
 import ProjectsRow from "./ProjectsRow";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import Table from "../../components/Table/Table";
 import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleSection";
+import { PROJECTS_DATA as BAYBAYIN_PROJECTS_DATA } from "../../data/BaybayinData/BAYBAYIN_PROJECTS_DATA";
+import { PROJECTS_DATA as AUREBESH_PROJECTS_DATA } from "../../data/AurebeshData/AUREBESH_PROJECTS_DATA";
 
 export default function ProjectsPage() {
   const { showExperimentalFeatures } = useExperimentalFeatures();
@@ -14,9 +15,9 @@ export default function ProjectsPage() {
 
       <CollapsibleSection title="Baybayin" defaultExpanded={false}>
         <Table
-          data={PROJECTS_DATA}
+          data={BAYBAYIN_PROJECTS_DATA}
           headers={["Name", "Description", "Status"]}
-          rows={PROJECTS_DATA.map((project) => [
+          rows={BAYBAYIN_PROJECTS_DATA.map((project) => [
             project.name,
             project.description,
             "status" in project ? project.status : "",
@@ -25,9 +26,9 @@ export default function ProjectsPage() {
       </CollapsibleSection>
       <CollapsibleSection title="Aurebesh" defaultExpanded={false}>
         <Table
-          data={PROJECTS_DATA}
+          data={AUREBESH_PROJECTS_DATA}
           headers={["Name", "Description", "Status"]}
-          rows={PROJECTS_DATA.map((project) => [
+          rows={AUREBESH_PROJECTS_DATA.map((project) => [
             project.name,
             project.description,
             "status" in project ? project.status : "",
@@ -43,7 +44,7 @@ export default function ProjectsPage() {
           </tr>
         </thead>
         <tbody>
-          {PROJECTS_DATA.map((project) => (
+          {BAYBAYIN_PROJECTS_DATA.map((project) => (
             <ProjectsRow key={project.name} {...project} />
           ))}
         </tbody>
