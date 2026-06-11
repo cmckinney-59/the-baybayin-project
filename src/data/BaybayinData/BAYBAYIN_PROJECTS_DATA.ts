@@ -4,25 +4,21 @@ import angBuhayNaCristoPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhay
 import angBuhayNaCristoParallelPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
 import lupangHinirangZip from "../../assets/projects/LupangHinirang/LupangHinirang.zip";
 
-export type DownloadableProject = {
-  name: string;
-  fileUrl: string;
-  fileName: string;
-  fileType: "pdf" | "zip";
-  description?: string;
-};
-
-export type StatusOnlyProject = {
+export type Project = {
   name: string;
   status: string;
+  fileUrl?: string;
+  fileName?: string;
+  fileType?: "pdf" | "zip";
   description?: string;
 };
 
-export type ProjectRow = DownloadableProject | StatusOnlyProject;
+export type ProjectRow = Project;
 
 export const PROJECTS_DATA: ProjectRow[] = [
   {
     name: "How to Read Baybayin",
+    status: "Downloadable",
     fileUrl: howToReadBaybayinPdf,
     fileName: "HowToReadBaybayin.pdf",
     fileType: "pdf",
@@ -30,6 +26,7 @@ export const PROJECTS_DATA: ProjectRow[] = [
   },
   {
     name: "Mateo 1",
+    status: "Downloadable",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
     fileType: "pdf",
@@ -37,6 +34,7 @@ export const PROJECTS_DATA: ProjectRow[] = [
   },
   {
     name: "Ang Buhay Na Cristo",
+    status: "Downloadable",
     fileUrl: angBuhayNaCristoPdf,
     fileName: "AngBuhayNaCristo.pdf",
     fileType: "pdf",
@@ -45,6 +43,7 @@ export const PROJECTS_DATA: ProjectRow[] = [
   },
   {
     name: "Ang Buhay Na Cristo: Parallel",
+    status: "Downloadable",
     fileUrl: angBuhayNaCristoParallelPdf,
     fileName: "AngBuhayNaCristo_Parallel.pdf",
     fileType: "pdf",
@@ -52,6 +51,7 @@ export const PROJECTS_DATA: ProjectRow[] = [
   },
   {
     name: "Lupang Hinirang",
+    status: "Downloadable",
     fileUrl: lupangHinirangZip,
     fileName: "LupangHinirang.zip",
     fileType: "zip",
