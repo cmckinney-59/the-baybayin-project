@@ -35,20 +35,6 @@ export default function ProjectsPage() {
           ])}
         />
       </CollapsibleSection>
-      <table className="alphabet-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            {showExperimentalFeatures && <th>Description</th>}
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {BAYBAYIN_PROJECTS_DATA.map((project) => (
-            <ProjectsRow key={project.name} {...project} />
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
