@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 interface TableProps {
   data: { name: string }[];
   headers: string[];
-  rows: string[][];
+  rows: ReactNode[][];
 }
 
 export default function Table({ data, headers, rows }: TableProps) {

@@ -1,24 +1,22 @@
-export type DownloadableProject = {
-  name: string;
-  fileUrl?: string;
-  fileName: string;
-  fileType: "pdf" | "zip";
-  description?: string;
-};
+import type { Project } from "../../models/models";
+import theFamilyCanonPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Canon.pdf";
+import theFamilyLegendsPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Legends.pdf";
 
-export type StatusOnlyProject = {
-  name: string;
-  status: string;
-  description?: string;
-};
-
-export type ProjectRow = DownloadableProject | StatusOnlyProject;
-
-export const PROJECTS_DATA: ProjectRow[] = [
+export const PROJECTS_DATA: Project[] = [
   {
-    name: "The Family",
-    fileName: "HowToReadBaybayin.pdf",
+    name: "The Family (Canon)",
+    status: "Downloadable",
+    fileUrl: theFamilyCanonPdf,
+    fileName: "TheFamily_Aurebesh_Canon.pdf",
     fileType: "pdf",
-    description: "A quick guide to reading the Baybayin alphabet.",
+    description: "The Family Proclamation in Canon Aurebesh.",
+  },
+  {
+    name: "The Family (Legends)",
+    status: "Downloadable",
+    fileUrl: theFamilyLegendsPdf,
+    fileName: "TheFamily_Aurebesh_Legends.pdf",
+    fileType: "pdf",
+    description: "The Family Proclamation in Legends Aurebesh.",
   },
 ];
