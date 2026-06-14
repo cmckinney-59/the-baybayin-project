@@ -19,4 +19,9 @@ export const PROJECTS_DATA: Project[] = [
     fileType: "pdf",
     description: "The Family Proclamation in Legends Aurebesh.",
   },
+  {
+    name: "The Book of Mormon",
+    status: "Second Draft Being Formatted",
+    description: "English Book of Mormon in Aurebesh.",
+  },
 ];
