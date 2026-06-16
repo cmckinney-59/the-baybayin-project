@@ -58,6 +58,13 @@
 }
 
 @font-face {
+  font-family: "Noto Sans Baybayin";
+  src: url("./assets/fonts/baybayin/NotoSansTagalog-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Cirth";
   src: url("./assets/fonts/cirth/Erebor.ttf") format("truetype");
   font-display: swap;
@@ -155,6 +162,9 @@
 }
 .bagwis-font {
   font-family: "Bagwis Baybayin", "Baybayin", sans-serif;
+}
+.noto-sans-baybayin {
+  font-family: "Noto Sans Baybayin", sans-serif;
 }
 .cirth-font {
   font-family: "Cirth", sans-serif;

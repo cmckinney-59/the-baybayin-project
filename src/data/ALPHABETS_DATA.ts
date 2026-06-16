@@ -68,7 +68,11 @@ export const ALPHABETS_DATA: Alphabet[] = [
     downloadName: "tagalog-stylized-font.zip",
     processor: processBaybayinText,
     outputFontClass: "baybayin-font",
-    outputFontClassMatrixBinary: ["baybayin-font", "bagwis-font"],
+    outputFontClassMatrixBinary: [
+      "baybayin-font",
+      "bagwis-font",
+      "noto-sans-baybayin",
+    ],
   },
   {
     name: "Cirth",
