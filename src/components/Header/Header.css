@@ -1,20 +1,23 @@
 .App-header {
-  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 20px 56px; /* leave space for hamburger */
+  padding: 20px max(20px, env(safe-area-inset-right)) 20px
+    max(56px, calc(12px + env(safe-area-inset-left)));
   background-color: var(--header-bg);
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: var(--nav-text);
-  margin-left: 0px;
-  margin-bottom: 0;
+  margin: 0;
   flex-shrink: 0;
   border-bottom: 1px solid rgb(175, 175, 175);
   z-index: 1000;
-  position: sticky;
-  top: 0;
   box-sizing: border-box;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -41,7 +44,7 @@
 
 .hamburger {
   position: absolute;
-  left: 12px;
+  left: max(12px, calc(12px + env(safe-area-inset-left)));
   top: 50%;
   transform: translateY(-50%);
   width: 28px;
