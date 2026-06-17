@@ -1,18 +1,23 @@
 import Checkbox from "../CheckBox/Checkbox";
+import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import {
+  getBaybayinFontById,
+  type BaybayinFontId,
+} from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 
 interface CheckboxContainerProps {
   currentAlphabet: string;
   useCombinedCharacters: boolean;
   useTechNumbers: boolean;
   useKlinzhai: boolean;
-  useBagwisFont: boolean;
+  selectedBaybayinFont: BaybayinFontId;
   useXVowelKiller: boolean;
   textContainsBorrowedWords: boolean;
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
-  setUseBagwisFont: (checked: boolean) => void;
+  setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
   setTextContainsBorrowedWords: (checked: boolean) => void;
 }
@@ -22,18 +27,19 @@ export default function CheckboxContainer({
   useCombinedCharacters,
   useTechNumbers,
   useKlinzhai,
-  useBagwisFont,
+  selectedBaybayinFont,
   useXVowelKiller,
   textContainsBorrowedWords,
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
-  setUseBagwisFont,
+  setSelectedBaybayinFont,
   setUseXVowelKiller,
   setTextContainsBorrowedWords,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
   const { showExperimentalFeatures } = useExperimentalFeatures();
+  const selectedBaybayinFontEntry = getBaybayinFontById(selectedBaybayinFont);
 
   if (currentAlphabet === "Aurebesh") {
     checkBoxes = (
@@ -64,25 +70,28 @@ export default function CheckboxContainer({
     );
   }
 
-  if (currentAlphabet === "Baybayin" && showExperimentalFeatures) {
+  if (currentAlphabet === "Baybayin") {
     checkBoxes = (
       <>
-        <Checkbox
-          checked={textContainsBorrowedWords}
-          onChange={setTextContainsBorrowedWords}
-          label="Text contains borrowed words."
+        <BaybayinFontSelector
+          selectedFontId={selectedBaybayinFont}
+          onChange={setSelectedBaybayinFont}
         />
-        <Checkbox
-          checked={useBagwisFont}
-          onChange={setUseBagwisFont}
-          label="Bagwis font."
-        />
-        {useBagwisFont && (
-          <Checkbox
-            checked={useXVowelKiller}
-            onChange={setUseXVowelKiller}
-            label='Use "x" vowel killer.'
-          />
+        {showExperimentalFeatures && (
+          <>
+            <Checkbox
+              checked={textContainsBorrowedWords}
+              onChange={setTextContainsBorrowedWords}
+              label="Text contains borrowed words."
+            />
+            {selectedBaybayinFontEntry.supportsXVowelKiller && (
+              <Checkbox
+                checked={useXVowelKiller}
+                onChange={setUseXVowelKiller}
+                label='Use "x" vowel killer.'
+              />
+            )}
+          </>
         )}
       </>
     );

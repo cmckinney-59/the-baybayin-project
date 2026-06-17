@@ -9,6 +9,10 @@ import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import {
+  DEFAULT_BAYBAYIN_FONT_ID,
+  type BaybayinFontId,
+} from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -36,7 +40,8 @@ export default function Transliterator({
     useState<boolean>(false);
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
-  const [useBagwisFont, setUseBagwisFont] = useState<boolean>(false);
+  const [selectedBaybayinFont, setSelectedBaybayinFont] =
+    useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
@@ -138,7 +143,7 @@ export default function Transliterator({
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
-        useBagwisFont={useBagwisFont}
+        selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
@@ -153,13 +158,13 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         useTechNumbers={useTechNumbers}
         useKlinzhai={useKlinzhai}
-        useBagwisFont={useBagwisFont}
+        selectedBaybayinFont={selectedBaybayinFont}
         useXVowelKiller={useXVowelKiller}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
         setUseTechNumbers={setUseTechNumbers}
         setUseKlinzhai={setUseKlinzhai}
-        setUseBagwisFont={setUseBagwisFont}
+        setSelectedBaybayinFont={setSelectedBaybayinFont}
         setUseXVowelKiller={setUseXVowelKiller}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       />

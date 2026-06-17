@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import type { RefObject } from "react";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
+import {
+  getBaybayinFontClass,
+  type BaybayinFontId,
+} from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -14,7 +18,7 @@ interface TransliteratorContainerProps {
   aurebeshTechNumbers?: boolean;
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
-  useBagwisFont?: boolean;
+  selectedBaybayinFont?: BaybayinFontId;
 }
 
 export default function TransliteratorContainer({
@@ -29,7 +33,7 @@ export default function TransliteratorContainer({
   aurebeshTechNumbers = false,
   useCombinedCharacters = false,
   useKlinzhai = false,
-  useBagwisFont = false,
+  selectedBaybayinFont,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -64,11 +68,12 @@ export default function TransliteratorContainer({
     if (matrix) {
       return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
     }
+    if (alphabetEntry.name === "Baybayin" && selectedBaybayinFont) {
+      return getBaybayinFontClass(selectedBaybayinFont);
+    }
     const matrixBinary = alphabetEntry.outputFontClassMatrixBinary;
     if (matrixBinary) {
-      const useAlternateFont =
-        alphabetEntry.name === "Baybayin" ? useBagwisFont : useKlinzhai;
-      return matrixBinary[Number(useAlternateFont)];
+      return matrixBinary[Number(useKlinzhai)];
     }
     return alphabetEntry.outputFontClass;
   };
