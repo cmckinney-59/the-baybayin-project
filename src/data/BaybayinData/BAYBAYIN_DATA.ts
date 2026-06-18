@@ -7,7 +7,7 @@ export type BaybayinData = {
 
 export const BAYBAYIN_DATA: BaybayinData[] = [
   {
-    symbol: "A",
+    symbol: "ᜀ",
     letter: "A",
     sound: "/a/",
     type: "letter",
