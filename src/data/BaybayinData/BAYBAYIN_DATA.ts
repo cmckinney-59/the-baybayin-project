@@ -5,9 +5,46 @@ export type BaybayinData = {
   type: "letter" | "punctuation";
 };
 
+var consonants = {
+  B: "\u170A",
+  K: "\u1703",
+  D: "\u1707",
+  G: "\u1704",
+  H: "\u1711",
+  L: "\u170E",
+  M: "\u170B",
+  N: "\u1708",
+  NG: "\u1705",
+  P: "\u1709",
+  R: "\u170D",
+  S: "\u1710",
+  T: "\u1706",
+  W: "\u170F",
+  Y: "\u170C",
+};
+var consonants_no_ra = __assign({}, consonants);
+consonants_no_ra["R"] = consonants_no_ra["D"];
+var vowels = {
+  A: "\u1700",
+  E: "\u1701",
+  I: "\u1701",
+  O: "\u1702",
+  U: "\u1702",
+};
+var kudlit = { A: null, E: "\u1712", I: "\u1712", O: "\u1713", U: "\u1713" };
+var kudlit_hollow = {
+  A: null,
+  E: "\u1712\ufe00",
+  I: "\u1712",
+  O: "\u1713\ufe00",
+  U: "\u1713",
+};
+var virama = "\u1714";
+var pamudpod = "\u1734";
+
 export const BAYBAYIN_DATA: BaybayinData[] = [
   {
-    symbol: "ᜀ",
+    symbol: vowels.A,
     letter: "A",
     sound: "/a/",
     type: "letter",
