@@ -50,7 +50,7 @@ export const BAYBAYIN_DATA: BaybayinData[] = [
     type: "letter",
   },
   {
-    symbol: "I",
+    symbol: vowels.E,
     letter: "E / I",
     sound: "/e/ /i/",
     type: "letter",
