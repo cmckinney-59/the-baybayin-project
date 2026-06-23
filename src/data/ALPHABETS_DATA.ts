@@ -3,6 +3,7 @@ import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
 import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
 import processText from "../utils/TextProcessors/DefaultTextProcessor";
+import { DEFAULT_BAYBAYIN_FONT_ID } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
 
 export type OutputFontClassMatrix = readonly [
   readonly [string, string],
@@ -66,7 +67,8 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: false,
     fontName: "Tagalog Doctrina 1593",
     downloadName: "tagalog-stylized-font.zip",
-    processor: processBaybayinText,
+    processor: (word: string) =>
+      processBaybayinText(word, false, DEFAULT_BAYBAYIN_FONT_ID),
     outputFontClass: "baybayin-font",
   },
   {

@@ -66,7 +66,7 @@ export default function Transliterator({
     if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
       const words = text.trim().split(/\s+/);
       const baybayinProcessor = (word: string) =>
-        processBaybayinText(word, useXVowelKiller);
+        processBaybayinText(word, useXVowelKiller, selectedBaybayinFont);
       const processedWords = words.map((word) => {
         return wordsDictionary[word] || baybayinProcessor(word);
       });
@@ -85,7 +85,7 @@ export default function Transliterator({
     }
     if (isBaybayin) {
       processWord = (word: string) =>
-        processBaybayinText(word, useXVowelKiller);
+        processBaybayinText(word, useXVowelKiller, selectedBaybayinFont);
     }
     if (processWord) {
       const processedWords = await Promise.all(

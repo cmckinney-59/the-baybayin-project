@@ -28,6 +28,7 @@ export default function processBaybayinText(
     /([a-zA-Z])'([a-zA-Z])/g,
     "$1$2",
   );
+  console.log(fontId);
   if (fontId === "noto-sans") {
     return replaceLettersWithSymbols(transliteratedText);
   }

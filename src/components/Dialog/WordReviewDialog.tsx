@@ -2,6 +2,7 @@ import { useState } from "react";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor";
+import { DEFAULT_BAYBAYIN_FONT_ID } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 
 interface WordReviewDialogProps {
   onClose?: () => void;
@@ -32,6 +33,7 @@ export default function WordReviewDialog({
     const processedValue = processBaybayinText(
       inputValue.trim(),
       useXVowelKiller,
+      DEFAULT_BAYBAYIN_FONT_ID,
     );
 
     // Update the dictionary with the processed value
