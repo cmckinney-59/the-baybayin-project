@@ -7,7 +7,9 @@ export default function processBaybayinText(
   fontId: BaybayinFontId,
 ): string {
   let transliteratedText = text.toLowerCase();
-
+  if (fontId === "noto-sans") {
+    return replaceLettersWithSymbols(transliteratedText);
+  }
   transliteratedText = transliteratedText.replace(/sh/g, "siy");
   transliteratedText = transliteratedText.replace(/ph/g, "f");
   transliteratedText = transliteratedText.replace(/th/g, "t");
@@ -28,10 +30,6 @@ export default function processBaybayinText(
     /([a-zA-Z])'([a-zA-Z])/g,
     "$1$2",
   );
-  console.log(fontId);
-  if (fontId === "noto-sans") {
-    return replaceLettersWithSymbols(transliteratedText);
-  }
   return transliteratedText;
 }
 
@@ -127,8 +125,13 @@ function capitalizeVowel(text: string): string {
 }
 
 function replaceLettersWithSymbols(text: string): string {
-  return text.replace(/[a-zA-Z]/gi, (letter: string) => {
-    const symbol = BAYBAYIN_DATA.find((data) => data.letter === letter)?.symbol;
-    return symbol ?? letter;
-  }) as string;
+  text = text.replace(
+    /a/g,
+    BAYBAYIN_DATA.find((data) => data.letter === "A")?.symbol ?? text,
+  );
+  text = text.replace(
+    /b/g,
+    BAYBAYIN_DATA.find((data) => data.letter === "B")?.symbol ?? text,
+  );
+  return text;
 }
