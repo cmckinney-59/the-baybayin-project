@@ -146,13 +146,13 @@ export const BAYBAYIN_DATA: BaybayinData[] = [
     type: "letter",
   },
   {
-    symbol: vowels.I,
+    symbol: kudlit.I,
     letter: "E / I",
     sound: "/e/ /i/",
     type: "letter",
   },
   {
-    symbol: vowels.O,
+    symbol: kudlit.O,
     letter: "O / U",
     sound: "/o/ /u/",
     type: "letter",
