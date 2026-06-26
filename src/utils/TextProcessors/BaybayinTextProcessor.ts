@@ -1,10 +1,16 @@
-import { BAYBAYIN_DATA } from "../../data/BaybayinData/BAYBAYIN_DATA";
+import {
+  BAYBAYIN_CONSONANTS as _consonants,
+  BAYBAYIN_VOWELS as _vowels,
+  BAYBAYIN_KUDLITS as _kudlits,
+  BAYBAYIN_KUDLITS_HOLLOW as _kudlitsHollow,
+} from "../../data/BaybayinData/BAYBAYIN_DATA";
 import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 
 export default function processBaybayinText(
   text: string,
   useXVowelKiller = false,
   fontId: BaybayinFontId,
+  hollowKudlits = false,
 ): string {
   let transliteratedText = text.toLowerCase();
   if (fontId === "noto-sans") {
@@ -125,13 +131,83 @@ function capitalizeVowel(text: string): string {
 }
 
 function replaceLettersWithSymbols(text: string): string {
-  text = text.replace(
-    /a/g,
-    BAYBAYIN_DATA.find((data) => data.letter === "A")?.symbol ?? text,
-  );
-  text = text.replace(
-    /b/g,
-    BAYBAYIN_DATA.find((data) => data.letter === "B")?.symbol ?? text,
-  );
+  // Handle consonants followed by 'a'
+  text = text.replace(/ba/g, _consonants.B);
+  text = text.replace(/ka/g, _consonants.K);
+  text = text.replace(/da/g, _consonants.D);
+  text = text.replace(/fa/g, _consonants.P);
+  text = text.replace(/ha/g, _consonants.H);
+  text = text.replace(/ga/g, _consonants.G);
+  text = text.replace(/la/g, _consonants.L);
+  text = text.replace(/ma/g, _consonants.M);
+  text = text.replace(/na/g, _consonants.N);
+  text = text.replace(/nga/g, _consonants.NG);
+  text = text.replace(/sa/g, _consonants.S);
+  text = text.replace(/ta/g, _consonants.T);
+  text = text.replace(/wa/g, _consonants.W);
+  text = text.replace(/ya/g, _consonants.Y);
+
+  // Handle consonants followed by 'e'
+  text = text.replace(/be/g, _consonants.B + _kudlitsHollow.E);
+  text = text.replace(/ke/g, _consonants.K + _kudlitsHollow.E);
+  text = text.replace(/de/g, _consonants.D + _kudlitsHollow.E);
+  text = text.replace(/fe/g, _consonants.P + _kudlitsHollow.E);
+  text = text.replace(/he/g, _consonants.H + _kudlitsHollow.E);
+  text = text.replace(/ge/g, _consonants.G + _kudlitsHollow.E);
+  text = text.replace(/le/g, _consonants.L + _kudlitsHollow.E);
+  text = text.replace(/me/g, _consonants.M + _kudlitsHollow.E);
+  text = text.replace(/ne/g, _consonants.N + _kudlitsHollow.E);
+  text = text.replace(/ng/g, _consonants.NG + _kudlitsHollow.E);
+  text = text.replace(/se/g, _consonants.S + _kudlitsHollow.E);
+  text = text.replace(/te/g, _consonants.T + _kudlitsHollow.E);
+  text = text.replace(/we/g, _consonants.W + _kudlitsHollow.E);
+  text = text.replace(/ye/g, _consonants.Y + _kudlitsHollow.E);
+
+  // Handle consonants followed by 'o'
+
+  text = text.replace(/bo/g, _consonants.B + _kudlitsHollow.O);
+  text = text.replace(/ko/g, _consonants.K + _kudlitsHollow.O);
+  text = text.replace(/d/g, _consonants.D + _kudlitsHollow.O);
+  text = text.replace(/po/g, _consonants.P + _kudlitsHollow.O);
+  text = text.replace(/ho/g, _consonants.H + _kudlitsHollow.O);
+  text = text.replace(/go/g, _consonants.G + _kudlitsHollow.O);
+  text = text.replace(/lo/g, _consonants.L + _kudlitsHollow.O);
+  text = text.replace(/mo/g, _consonants.M + _kudlitsHollow.O);
+  text = text.replace(/no/g, _consonants.N + _kudlitsHollow.O);
+  text = text.replace(/ngo/g, _consonants.NG + _kudlitsHollow.O);
+  text = text.replace(/so/g, _consonants.S + _kudlitsHollow.O);
+  text = text.replace(/to/g, _consonants.T + _kudlitsHollow.O);
+  text = text.replace(/wo/g, _consonants.W + _kudlitsHollow.O);
+  text = text.replace(/yo/g, _consonants.Y + _kudlitsHollow.O);
+
+  // text = text.replace(/be/g, _consonants.B + _kudlits.E);
+  // text = text.replace(/ke/g, _consonants.K + _kudlits.I);
+  // text = text.replace(/de/g, _consonants.D + _kudlits.E);
+  // text = text.replace(/fe/g, _consonants.P + _kudlits.E);
+  // text = text.replace(/he/g, _consonants.H + _kudlits.E);
+  // text = text.replace(/ge/g, _consonants.G + _kudlits.E);
+  // text = text.replace(/le/g, _consonants.L + _kudlits.E);
+  // text = text.replace(/me/g, _consonants.M + _kudlits.E);
+  // text = text.replace(/ne/g, _consonants.N + _kudlits.E);
+  // text = text.replace(/ng/g, _consonants.NG + _kudlits.E);
+  // text = text.replace(/se/g, _consonants.S + _kudlits.E);
+  // text = text.replace(/te/g, _consonants.T + _kudlits.E);
+  // text = text.replace(/we/g, _consonants.W + _kudlits.E);
+  // text = text.replace(/ye/g, _consonants.Y + _kudlits.E);
+
+  // Handle consonants followed by 'i'
+  text = text.replace(/bi/g, _consonants.B);
+
+  // Handle consonants followed by 'o'
+  text = text.replace(/bo/g, _consonants.B);
+
+  // Handle consonants followed by 'u'
+  text = text.replace(/bu/g, _consonants.B);
+
+  // Handle vowels
+  text = text.replace(/a/g, _vowels.A);
+
+  // Handle consonants
+  text = text.replace(/b/g, _consonants.B);
   return text;
 }

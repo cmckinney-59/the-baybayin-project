@@ -5,7 +5,7 @@ export type BaybayinData = {
   type: "letter" | "punctuation";
 };
 
-var consonants = {
+export const BAYBAYIN_CONSONANTS = {
   B: "\u170A",
   K: "\u1703",
   D: "\u1707",
@@ -22,17 +22,23 @@ var consonants = {
   W: "\u170F",
   Y: "\u170C",
 };
-var consonants_no_ra = { ...consonants };
+var consonants_no_ra = { ...BAYBAYIN_CONSONANTS };
 consonants_no_ra["R"] = consonants_no_ra["D"];
-var vowels = {
+export const BAYBAYIN_VOWELS = {
   A: "\u1700",
   E: "\u1701",
   I: "\u1701",
   O: "\u1702",
   U: "\u1702",
 };
-var kudlit = { A: null, E: "\u1712", I: "\u1712", O: "\u1713", U: "\u1713" };
-var kudlit_hollow = {
+export const BAYBAYIN_KUDLITS = {
+  A: null,
+  E: "\u1712",
+  I: "\u1712",
+  O: "\u1713",
+  U: "\u1713",
+};
+export const BAYBAYIN_KUDLITS_HOLLOW = {
   A: null,
   E: "\u1712\ufe00",
   I: "\u1712",
@@ -44,115 +50,115 @@ var pamudpod = "\u1734";
 
 export const BAYBAYIN_DATA: BaybayinData[] = [
   {
-    symbol: vowels.A,
+    symbol: BAYBAYIN_VOWELS.A,
     letter: "A",
     sound: "/a/",
     type: "letter",
   },
   {
-    symbol: vowels.E,
+    symbol: BAYBAYIN_VOWELS.E,
     letter: "E / I",
     sound: "/e/ /i/",
     type: "letter",
   },
   {
-    symbol: vowels.O,
+    symbol: BAYBAYIN_VOWELS.O,
     letter: "O / U",
     sound: "/o/ /u/",
     type: "letter",
   },
   {
-    symbol: consonants.K,
+    symbol: BAYBAYIN_CONSONANTS.K,
     letter: "Ca / Ka",
     sound: "/ca/ /ka/",
     type: "letter",
   },
   {
-    symbol: consonants.B,
+    symbol: BAYBAYIN_CONSONANTS.B,
     letter: "Ba / Va",
     sound: "/ba/ /va/",
     type: "letter",
   },
   {
-    symbol: consonants.D,
+    symbol: BAYBAYIN_CONSONANTS.D,
     letter: "Da",
     sound: "/da/",
     type: "letter",
   },
   {
-    symbol: consonants.P,
+    symbol: BAYBAYIN_CONSONANTS.P,
     letter: "Fa / Pa / Pha",
     sound: "/fa/ /pa/",
     type: "letter",
   },
   {
-    symbol: consonants.H,
+    symbol: BAYBAYIN_CONSONANTS.H,
     letter: "Ha",
     sound: "/ha/",
     type: "letter",
   },
   {
-    symbol: consonants.G,
+    symbol: BAYBAYIN_CONSONANTS.G,
     letter: "Ga",
     sound: "/ga/",
     type: "letter",
   },
   {
-    symbol: consonants.L,
+    symbol: BAYBAYIN_CONSONANTS.L,
     letter: "La",
     sound: "/la/",
     type: "letter",
   },
   {
-    symbol: consonants.M,
+    symbol: BAYBAYIN_CONSONANTS.M,
     letter: "Ma",
     sound: "/ma/",
     type: "letter",
   },
   {
-    symbol: consonants.N,
+    symbol: BAYBAYIN_CONSONANTS.N,
     letter: "Na",
     sound: "/na/",
     type: "letter",
   },
   {
-    symbol: consonants.NG,
+    symbol: BAYBAYIN_CONSONANTS.NG,
     letter: "Nga",
     sound: "/ŋa/",
     type: "letter",
   },
   {
-    symbol: consonants.S,
+    symbol: BAYBAYIN_CONSONANTS.S,
     letter: "Sa / Za",
     sound: "/sa/ /za/",
     type: "letter",
   },
   {
-    symbol: consonants.T,
+    symbol: BAYBAYIN_CONSONANTS.T,
     letter: "Ta",
     sound: "/ta/",
     type: "letter",
   },
   {
-    symbol: consonants.W,
+    symbol: BAYBAYIN_CONSONANTS.W,
     letter: "Wa",
     sound: "/wa/",
     type: "letter",
   },
   {
-    symbol: consonants.Y,
+    symbol: BAYBAYIN_CONSONANTS.Y,
     letter: "Ya",
     sound: "/ja/",
     type: "letter",
   },
   {
-    symbol: kudlit.I,
+    symbol: BAYBAYIN_KUDLITS.I,
     letter: "E / I",
     sound: "/e/ /i/",
     type: "letter",
   },
   {
-    symbol: kudlit.O,
+    symbol: BAYBAYIN_KUDLITS.O,
     letter: "O / U",
     sound: "/o/ /u/",
     type: "letter",
