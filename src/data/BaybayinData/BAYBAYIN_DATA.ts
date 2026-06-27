@@ -45,8 +45,10 @@ export const BAYBAYIN_KUDLITS_HOLLOW = {
   O: "\u1713\ufe00",
   U: "\u1713",
 };
-var virama = "\u1714";
-var pamudpod = "\u1734";
+export const BAYBAYIN_VOWEL_KILLERS = {
+  VIRAMA: "\u1714",
+  PAMUDPOD: "\u1734",
+};
 
 export const BAYBAYIN_DATA: BaybayinData[] = [
   {
