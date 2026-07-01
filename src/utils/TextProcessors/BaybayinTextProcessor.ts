@@ -154,11 +154,11 @@ function removeAAfterConsonantUnicode(text: string): string {
   text = text.replace(/nga/g, _consonants.NG);
   text = text.replace(/sha/g, _consonants.S + _kudlits.I + _consonants.Y);
   text = text.replace(/pha/g, _consonants.P);
+  text = text.replace(/tha/g, _consonants.T);
   text = text.replace(/ba/g, _consonants.B);
   text = text.replace(/ka/g, _consonants.K);
   text = text.replace(/da/g, _consonants.D);
   text = text.replace(/fa/g, _consonants.P);
-
   text = text.replace(/ga/g, _consonants.G);
   text = text.replace(/ha/g, _consonants.H);
   text = text.replace(/la/g, _consonants.L);
@@ -186,6 +186,7 @@ function replaceEWithFilledKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlits.E,
   );
   text = text.replace(/phe/g, _consonants.P + _kudlits.E);
+  text = text.replace(/the/g, _consonants.T + _kudlits.E);
   text = text.replace(/be/g, _consonants.B + _kudlits.E);
   text = text.replace(/ke/g, _consonants.K + _kudlits.E);
   text = text.replace(/de/g, _consonants.D + _kudlits.E);
@@ -217,6 +218,7 @@ function replaceEWithHollowKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlitsHollow.E,
   );
   text = text.replace(/phe/g, _consonants.P + _kudlitsHollow.E);
+  text = text.replace(/the/g, _consonants.T + _kudlitsHollow.E);
   text = text.replace(/be/g, _consonants.B + _kudlitsHollow.E);
   text = text.replace(/ke/g, _consonants.K + _kudlitsHollow.E);
   text = text.replace(/de/g, _consonants.D + _kudlitsHollow.E);
@@ -248,6 +250,7 @@ function replaceIWithKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlits.I,
   );
   text = text.replace(/phi/g, _consonants.P + _kudlits.I);
+  text = text.replace(/thi/g, _consonants.T + _kudlits.I);
   text = text.replace(/bi/g, _consonants.B + _kudlits.I);
   text = text.replace(/ki/g, _consonants.K + _kudlits.I);
   text = text.replace(/di/g, _consonants.D + _kudlits.I);
@@ -279,6 +282,7 @@ function replaceOWithFilledKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlits.O,
   );
   text = text.replace(/pho/g, _consonants.P + _kudlits.O);
+  text = text.replace(/tho/g, _consonants.T + _kudlits.O);
   text = text.replace(/bo/g, _consonants.B + _kudlits.O);
   text = text.replace(/ko/g, _consonants.K + _kudlits.O);
   text = text.replace(/do/g, _consonants.D + _kudlits.O);
@@ -310,6 +314,7 @@ function replaceOWithHollowKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlitsHollow.O,
   );
   text = text.replace(/pho/g, _consonants.P + _kudlitsHollow.O);
+  text = text.replace(/tho/g, _consonants.T + _kudlitsHollow.O);
   text = text.replace(/bo/g, _consonants.B + _kudlitsHollow.O);
   text = text.replace(/ko/g, _consonants.K + _kudlitsHollow.O);
   text = text.replace(/do/g, _consonants.D + _kudlitsHollow.O);
@@ -341,6 +346,7 @@ function replaceUWithKudlitUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _kudlits.U,
   );
   text = text.replace(/phu/g, _consonants.P + _kudlits.U);
+  text = text.replace(/thu/g, _consonants.T + _kudlits.U);
   text = text.replace(/bu/g, _consonants.B + _kudlits.U);
   text = text.replace(/ku/g, _consonants.K + _kudlits.U);
   text = text.replace(/du/g, _consonants.D + _kudlits.U);
@@ -381,6 +387,7 @@ function replaceStandaloneConsonantsUnicode(text: string): string {
     _consonants.S + _kudlits.I + _consonants.Y + _vowelKillers.VIRAMA,
   );
   text = text.replace(/ph/g, _consonants.P + _vowelKillers.VIRAMA);
+  text = text.replace(/th/g, _consonants.T + _vowelKillers.VIRAMA);
   text = text.replace(/b/g, _consonants.B + _vowelKillers.VIRAMA);
   text = text.replace(/k/g, _consonants.K + _vowelKillers.VIRAMA);
   text = text.replace(/d/g, _consonants.D + _vowelKillers.VIRAMA);
