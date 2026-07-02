@@ -14,30 +14,39 @@ export default function processBaybayinText(
   useHollowKudlits = true,
 ): string {
   let transliteratedText = text.toLowerCase();
+
   if (fontId === "noto-sans") {
     return replaceLettersWithUnicode(transliteratedText, useHollowKudlits);
+  } else {
+    return replaceLettersWithLatinAlphabet(transliteratedText);
   }
-  transliteratedText = transliteratedText.replace(/sh/g, "siy");
-  transliteratedText = transliteratedText.replace(/ph/g, "f");
-  transliteratedText = transliteratedText.replace(/th/g, "t");
-  transliteratedText = transliteratedText.replace(/x/g, "k+s");
-  transliteratedText = capitalizeSubsequentVowels(transliteratedText);
-  transliteratedText = removeDuplicateConsonants(transliteratedText);
-  transliteratedText = transliteratedText
-    .replace(/\bng\b/g, "naN")
-    .replace(/\bmga\b/g, "maNa");
-  transliteratedText = transliteratedText.replace(/ng/g, "N");
-  transliteratedText = addPlusIfConsonant(transliteratedText, useXVowelKiller);
 
-  transliteratedText = removeAAfterConsonant(transliteratedText);
-  transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
-  transliteratedText = capitalizeVowel(transliteratedText);
-  transliteratedText = transliteratedText.replace(/-/g, "");
-  transliteratedText = transliteratedText.replace(
-    /([a-zA-Z])'([a-zA-Z])/g,
-    "$1$2",
-  );
-  return transliteratedText;
+  function replaceLettersWithLatinAlphabet(transliteratedText: string): string {
+    transliteratedText = transliteratedText.replace(/sh/g, "siy");
+    transliteratedText = transliteratedText.replace(/ph/g, "f");
+    transliteratedText = transliteratedText.replace(/th/g, "t");
+    transliteratedText = transliteratedText.replace(/x/g, "k+s");
+    transliteratedText = capitalizeSubsequentVowels(transliteratedText);
+    transliteratedText = removeDuplicateConsonants(transliteratedText);
+    transliteratedText = transliteratedText
+      .replace(/\bng\b/g, "naN")
+      .replace(/\bmga\b/g, "maNa");
+    transliteratedText = transliteratedText.replace(/ng/g, "N");
+    transliteratedText = addPlusIfConsonant(
+      transliteratedText,
+      useXVowelKiller,
+    );
+
+    transliteratedText = removeAAfterConsonant(transliteratedText);
+    transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
+    transliteratedText = capitalizeVowel(transliteratedText);
+    transliteratedText = transliteratedText.replace(/-/g, "");
+    transliteratedText = transliteratedText.replace(
+      /([a-zA-Z])'([a-zA-Z])/g,
+      "$1$2",
+    );
+    return transliteratedText;
+  }
 }
 
 function capitalizeSubsequentVowels(text: string): string {
