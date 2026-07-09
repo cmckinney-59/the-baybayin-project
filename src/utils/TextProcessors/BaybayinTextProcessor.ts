@@ -40,11 +40,7 @@ export default function processBaybayinText(
     transliteratedText = removeAAfterConsonant(transliteratedText);
     transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
     transliteratedText = capitalizeVowel(transliteratedText);
-    transliteratedText = transliteratedText.replace(/-/g, "");
-    transliteratedText = transliteratedText.replace(
-      /([a-zA-Z])'([a-zA-Z])/g,
-      "$1$2",
-    );
+    transliteratedText = removeHyphensAndApostrophes(transliteratedText);
     return transliteratedText;
   }
 }
@@ -140,10 +136,17 @@ function capitalizeVowel(text: string): string {
   );
 }
 
+function removeHyphensAndApostrophes(text: string): string {
+  text = text.replace(/-/g, "");
+  text = text.replace(/'/g, "");
+  return text;
+}
+
 function replaceLettersWithUnicode(
   text: string,
   useHollowKudlits: boolean,
 ): string {
+  text = replaceNgAndMgaUnicode(text);
   text = removeAAfterConsonantUnicode(text);
   if (useHollowKudlits) {
     text = replaceEWithHollowKudlitUnicode(text);
@@ -156,6 +159,16 @@ function replaceLettersWithUnicode(
   text = replaceUWithKudlitUnicode(text);
   text = replaceStandaloneVowelsUnicode(text);
   text = replaceStandaloneConsonantsUnicode(text);
+  text = removeHyphensAndApostrophes(text);
+  return text;
+}
+
+function replaceNgAndMgaUnicode(text: string): string {
+  text = text.replace(
+    /\bng\b/g,
+    _consonants.N + _consonants.NG + _vowelKillers.VIRAMA,
+  );
+  text = text.replace(/\bmga\b/g, _consonants.M + _consonants.NG);
   return text;
 }
 
