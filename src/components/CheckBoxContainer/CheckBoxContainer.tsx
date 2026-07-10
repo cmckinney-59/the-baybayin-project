@@ -14,12 +14,14 @@ interface CheckboxContainerProps {
   selectedBaybayinFont: BaybayinFontId;
   useXVowelKiller: boolean;
   textContainsBorrowedWords: boolean;
+  useHollowKudlits: boolean;
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
   setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
   setTextContainsBorrowedWords: (checked: boolean) => void;
+  setUseHollowKudlits: (checked: boolean) => void;
 }
 
 export default function CheckboxContainer({
@@ -30,12 +32,14 @@ export default function CheckboxContainer({
   selectedBaybayinFont,
   useXVowelKiller,
   textContainsBorrowedWords,
+  useHollowKudlits,
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
   setSelectedBaybayinFont,
   setUseXVowelKiller,
   setTextContainsBorrowedWords,
+  setUseHollowKudlits,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
   const { showExperimentalFeatures } = useExperimentalFeatures();
@@ -77,6 +81,14 @@ export default function CheckboxContainer({
           selectedFontId={selectedBaybayinFont}
           onChange={setSelectedBaybayinFont}
         />
+        {selectedBaybayinFont === "noto-sans" && (
+          <Checkbox
+            checked={useHollowKudlits}
+            onChange={setUseHollowKudlits}
+            label="Use hollow kudlits."
+            title="Use hollow kudlit marks for e/o (vs filled marks for i/u)."
+          />
+        )}
         {showExperimentalFeatures && (
           <>
             <Checkbox

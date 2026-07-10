@@ -43,6 +43,7 @@ export default function Transliterator({
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
+  const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
@@ -66,13 +67,25 @@ export default function Transliterator({
     if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
       const words = text.trim().split(/\s+/);
       const baybayinProcessor = (word: string) =>
-        processBaybayinText(word, useXVowelKiller, selectedBaybayinFont);
+        processBaybayinText(
+          word,
+          useXVowelKiller,
+          selectedBaybayinFont,
+          useHollowKudlits,
+        );
       const processedWords = words.map((word) => {
         return wordsDictionary[word] || baybayinProcessor(word);
       });
       setTransliteratedText(processedWords.join(" "));
     }
-  }, [isBaybayin, wordsDictionary, text]);
+  }, [
+    isBaybayin,
+    wordsDictionary,
+    text,
+    useXVowelKiller,
+    selectedBaybayinFont,
+    useHollowKudlits,
+  ]);
 
   const handleChange = async (currentText: string): Promise<void> => {
     const words = currentText.trim().split(/\s+/);
@@ -85,7 +98,12 @@ export default function Transliterator({
     }
     if (isBaybayin) {
       processWord = (word: string) =>
-        processBaybayinText(word, useXVowelKiller, selectedBaybayinFont);
+        processBaybayinText(
+          word,
+          useXVowelKiller,
+          selectedBaybayinFont,
+          useHollowKudlits,
+        );
     }
     if (processWord) {
       const processedWords = await Promise.all(
@@ -115,12 +133,12 @@ export default function Transliterator({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror alphabet effect; handleChange uses latest text from closure
   }, [useKlinzhai]);
 
-  // Re-process Baybayin when vowel killer mode toggles.
+  // Re-process Baybayin when font or kudlit/vowel-killer options change.
   useEffect(() => {
     if (!isBaybayin) return;
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror useKlinzhai effect; handleChange uses latest text from closure
-  }, [useXVowelKiller]);
+  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont]);
 
   const handleClearInput = () => {
     setText("");
@@ -160,12 +178,14 @@ export default function Transliterator({
         useKlinzhai={useKlinzhai}
         selectedBaybayinFont={selectedBaybayinFont}
         useXVowelKiller={useXVowelKiller}
+        useHollowKudlits={useHollowKudlits}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
         setUseTechNumbers={setUseTechNumbers}
         setUseKlinzhai={setUseKlinzhai}
         setSelectedBaybayinFont={setSelectedBaybayinFont}
         setUseXVowelKiller={setUseXVowelKiller}
+        setUseHollowKudlits={setUseHollowKudlits}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       />
       <div className="action-buttons">
