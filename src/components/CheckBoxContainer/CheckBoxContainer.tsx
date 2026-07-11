@@ -13,6 +13,7 @@ interface CheckboxContainerProps {
   useKlinzhai: boolean;
   selectedBaybayinFont: BaybayinFontId;
   useXVowelKiller: boolean;
+  useUnicode: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
   setUseCombinedCharacters: (checked: boolean) => void;
@@ -22,6 +23,7 @@ interface CheckboxContainerProps {
   setUseXVowelKiller: (checked: boolean) => void;
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
+  setUseUnicode: (checked: boolean) => void;
 }
 
 export default function CheckboxContainer({
@@ -33,6 +35,7 @@ export default function CheckboxContainer({
   useXVowelKiller,
   textContainsBorrowedWords,
   useHollowKudlits,
+  useUnicode,
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
@@ -40,6 +43,7 @@ export default function CheckboxContainer({
   setUseXVowelKiller,
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
+  setUseUnicode,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
   const { showExperimentalFeatures } = useExperimentalFeatures();
@@ -81,7 +85,7 @@ export default function CheckboxContainer({
           selectedFontId={selectedBaybayinFont}
           onChange={setSelectedBaybayinFont}
         />
-        {selectedBaybayinFont === "noto-sans" && (
+        {(selectedBaybayinFont === "noto-sans" || useUnicode) && (
           <Checkbox
             checked={useHollowKudlits}
             onChange={setUseHollowKudlits}
@@ -91,6 +95,14 @@ export default function CheckboxContainer({
         )}
         {showExperimentalFeatures && (
           <>
+            {selectedBaybayinFont !== "noto-sans" && (
+              <Checkbox
+                checked={useUnicode}
+                onChange={setUseUnicode}
+                label="Use Unicode"
+                title="Output real Baybayin Unicode characters (uses Noto Sans for display)."
+              />
+            )}
             <Checkbox
               checked={textContainsBorrowedWords}
               onChange={setTextContainsBorrowedWords}

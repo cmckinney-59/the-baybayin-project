@@ -12,10 +12,11 @@ export default function processBaybayinText(
   useXVowelKiller = false,
   fontId: BaybayinFontId,
   useHollowKudlits = true,
+  useUnicode = false,
 ): string {
   let transliteratedText = text.toLowerCase();
 
-  if (fontId === "noto-sans") {
+  if (fontId === "noto-sans" || useUnicode) {
     return replaceLettersWithUnicode(transliteratedText, useHollowKudlits);
   } else {
     return replaceLettersWithLatinAlphabet(transliteratedText);

@@ -44,6 +44,7 @@ export default function Transliterator({
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
+  const [useUnicode, setUseUnicode] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
@@ -72,6 +73,7 @@ export default function Transliterator({
           useXVowelKiller,
           selectedBaybayinFont,
           useHollowKudlits,
+          useUnicode,
         );
       const processedWords = words.map((word) => {
         return wordsDictionary[word] || baybayinProcessor(word);
@@ -85,6 +87,7 @@ export default function Transliterator({
     useXVowelKiller,
     selectedBaybayinFont,
     useHollowKudlits,
+    useUnicode,
   ]);
 
   const handleChange = async (currentText: string): Promise<void> => {
@@ -103,6 +106,7 @@ export default function Transliterator({
           useXVowelKiller,
           selectedBaybayinFont,
           useHollowKudlits,
+          useUnicode,
         );
     }
     if (processWord) {
@@ -138,7 +142,7 @@ export default function Transliterator({
     if (!isBaybayin) return;
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror useKlinzhai effect; handleChange uses latest text from closure
-  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont]);
+  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode]);
 
   const handleClearInput = () => {
     setText("");
@@ -163,6 +167,7 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
+        useUnicode={useUnicode}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
@@ -179,6 +184,7 @@ export default function Transliterator({
         selectedBaybayinFont={selectedBaybayinFont}
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
+        useUnicode={useUnicode}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
         setUseTechNumbers={setUseTechNumbers}
@@ -186,6 +192,7 @@ export default function Transliterator({
         setSelectedBaybayinFont={setSelectedBaybayinFont}
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
+        setUseUnicode={setUseUnicode}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       />
       <div className="action-buttons">

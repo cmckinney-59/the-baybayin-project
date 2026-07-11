@@ -19,6 +19,7 @@ interface TransliteratorContainerProps {
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
   selectedBaybayinFont?: BaybayinFontId;
+  useUnicode?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -34,6 +35,7 @@ export default function TransliteratorContainer({
   useCombinedCharacters = false,
   useKlinzhai = false,
   selectedBaybayinFont,
+  useUnicode = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -69,6 +71,10 @@ export default function TransliteratorContainer({
       return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
     }
     if (alphabetEntry.name === "Baybayin" && selectedBaybayinFont) {
+      // Custom Baybayin fonts are Latin-mapped; Unicode output needs Noto Sans.
+      if (useUnicode) {
+        return getBaybayinFontClass("noto-sans");
+      }
       return getBaybayinFontClass(selectedBaybayinFont);
     }
     const matrixBinary = alphabetEntry.outputFontClassMatrixBinary;
