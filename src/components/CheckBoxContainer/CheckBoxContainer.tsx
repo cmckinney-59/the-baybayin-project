@@ -85,7 +85,7 @@ export default function CheckboxContainer({
           selectedFontId={selectedBaybayinFont}
           onChange={setSelectedBaybayinFont}
         />
-        {(selectedBaybayinFont === "noto-sans" || useUnicode) && (
+        {selectedBaybayinFont === "noto-sans" && (
           <Checkbox
             checked={useHollowKudlits}
             onChange={setUseHollowKudlits}
@@ -100,7 +100,7 @@ export default function CheckboxContainer({
                 checked={useUnicode}
                 onChange={setUseUnicode}
                 label="Use Unicode"
-                title="Output real Baybayin Unicode characters (uses Noto Sans for display)."
+                title="Output real Baybayin Unicode characters while keeping the selected font."
               />
             )}
             <Checkbox

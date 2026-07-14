@@ -167,7 +167,6 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
-        useUnicode={useUnicode}
       />
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
