@@ -4,6 +4,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./Root";
 import HomePage from "./pages/HomePage/HomePage";
 import AboutPage from "./pages/AboutPage/AboutPage";
+import DadsBooksPage from "./pages/DadsBooksPage/DadsBooksPage";
 import ProjectsPage from "./pages/ProjectsPage/ProjectsPage";
 import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import TransliteratorAlphabetOutlet from "./pages/TransliteratorPages/TransliteratorAlphabetOutlet";
@@ -27,6 +28,10 @@ const router = createHashRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/dads-books",
+        element: <DadsBooksPage />,
       },
       {
         path: "/projects",
