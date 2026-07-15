@@ -2,6 +2,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import styles from "./DadsBooksPage.module.css";
 import EnterBookForm from "../../components/DadsBooksComponents/EnterBookForm/EnterBookForm";
 import BookList from "../../components/DadsBooksComponents/BookList/BookList";
+import BooksAnalytics from "../../components/DadsBooksComponents/BooksAnalytics/BooksAnalytics";
 import BooksTabs from "../../components/DadsBooksComponents/BooksTabs/BooksTabs";
 
 export default function DadsBooksPage() {
@@ -12,6 +13,7 @@ export default function DadsBooksPage() {
         tabs={[
           { id: "enter", label: "Enter Book", content: <EnterBookForm /> },
           { id: "list", label: "Book List", content: <BookList /> },
+          { id: "analytics", label: "Analytics", content: <BooksAnalytics /> },
         ]}
       />
     </article>

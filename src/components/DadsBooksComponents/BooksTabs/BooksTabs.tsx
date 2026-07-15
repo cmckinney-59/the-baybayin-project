@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import styles from "./BooksTabs.module.css";
 
-type TabId = "enter" | "list";
+type TabId = string;
 
 type Tab = {
   id: TabId;
