@@ -31,3 +31,34 @@
   outline: 2px solid var(--button-border);
   outline-offset: 1px;
 }
+
+.submit {
+  align-self: flex-start;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.message,
+.error {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.message {
+  color: var(--text-secondary);
+}
+
+.error {
+  color: #b42318;
+}

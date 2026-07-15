@@ -4,34 +4,21 @@ export type Book = {
   dateRead: string;
 };
 
-export const DUMMY_BOOKS: Book[] = [
-  {
-    name: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    dateRead: "2024-03-12",
-  },
-  {
-    name: "Dune",
-    author: "Frank Herbert",
-    dateRead: "2024-06-01",
-  },
-  {
-    name: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    dateRead: "2025-01-18",
-  },
-  {
-    name: "1984",
-    author: "George Orwell",
-    dateRead: "2025-09-22",
-  },
-  {
-    name: "The Catcher in the Rye",
-    author: "J.D. Salinger",
-    dateRead: "",
-  },
-];
-
 export function isBookRead(book: Book): boolean {
   return book.dateRead.trim().length > 0;
+}
+
+export function formatDateRead(value: string | number | Date): string {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10);
+  }
+  if (typeof value === "number") {
+    // Google Sheets may serialize dates as serial numbers or timestamps.
+    const asDate = new Date(value);
+    if (!Number.isNaN(asDate.getTime()) && value > 10_000) {
+      return asDate.toISOString().slice(0, 10);
+    }
+    return String(value);
+  }
+  return String(value ?? "").trim();
 }

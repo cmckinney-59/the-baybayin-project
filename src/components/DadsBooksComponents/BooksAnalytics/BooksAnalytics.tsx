@@ -1,9 +1,21 @@
-import { DUMMY_BOOKS, isBookRead } from "../booksData";
+import { isBookRead, type Book } from "../booksData";
 import styles from "./BooksAnalytics.module.css";
 
-export default function BooksAnalytics() {
-  const totalBooks = DUMMY_BOOKS.length;
-  const booksRead = DUMMY_BOOKS.filter(isBookRead).length;
+type BooksAnalyticsProps = {
+  books: Book[];
+  isLoading?: boolean;
+};
+
+export default function BooksAnalytics({
+  books,
+  isLoading = false,
+}: BooksAnalyticsProps) {
+  if (isLoading) {
+    return <p>Loading analytics...</p>;
+  }
+
+  const totalBooks = books.length;
+  const booksRead = books.filter(isBookRead).length;
 
   return (
     <div className={styles.analytics}>
