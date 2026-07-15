@@ -1,4 +1,6 @@
 .container {
+  width: 100%;
+  box-sizing: border-box;
   background-color: var(--bg-secondary);
   border: 1px solid var(--button-border);
   border-radius: 12px;
@@ -13,6 +15,7 @@
 
 .tab {
   flex: 1;
+  min-width: 0;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
   font-weight: 600;
@@ -38,7 +41,10 @@
 }
 
 .panel {
+  width: 100%;
+  box-sizing: border-box;
   padding: 1.25rem;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {
