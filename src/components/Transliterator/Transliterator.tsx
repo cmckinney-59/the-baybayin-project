@@ -9,6 +9,7 @@ import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
   type BaybayinFontId,
@@ -16,6 +17,8 @@ import {
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
+
+const DESERET_DEBOUNCE_MS = 350;
 
 interface TransliteratorProps {
   currentAlphabet: string;
@@ -47,8 +50,13 @@ export default function Transliterator({
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
+  const deseretDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const deseretRequestIdRef = useRef(0);
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
+  const isDeseret = currentAlphabet === "Deseret";
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
@@ -91,6 +99,45 @@ export default function Transliterator({
   ]);
 
   const handleChange = async (currentText: string): Promise<void> => {
+    // Deseret uses a remote API — translate the whole string once (not per word),
+    // and debounce while typing.
+    if (isDeseret) {
+      if (deseretDebounceRef.current) {
+        clearTimeout(deseretDebounceRef.current);
+      }
+
+      const requestId = ++deseretRequestIdRef.current;
+      deseretDebounceRef.current = setTimeout(() => {
+        void (async () => {
+          const trimmed = currentText.trim();
+          if (!trimmed) {
+            if (requestId !== deseretRequestIdRef.current) return;
+            setWordsDictionary({});
+            setTransliteratedText("");
+            return;
+          }
+
+          try {
+            const deseretText = await processDeseretText(trimmed);
+            if (requestId !== deseretRequestIdRef.current) return;
+
+            const englishWords = trimmed.split(/\s+/);
+            const deseretWords = deseretText.trim().split(/\s+/);
+            const newDict: { [word: string]: string } = {};
+            englishWords.forEach((word, i) => {
+              newDict[word] = deseretWords[i] ?? "";
+            });
+            setWordsDictionary(newDict);
+            setTransliteratedText(deseretText);
+          } catch {
+            if (requestId !== deseretRequestIdRef.current) return;
+            setTransliteratedText("");
+          }
+        })();
+      }, DESERET_DEBOUNCE_MS);
+      return;
+    }
+
     const words = currentText.trim().split(/\s+/);
     const newDict: { [word: string]: string } = {};
     let processWord: ((word: string) => string | Promise<string>) | undefined;
@@ -124,6 +171,14 @@ export default function Transliterator({
     }
   };
 
+  useEffect(() => {
+    return () => {
+      if (deseretDebounceRef.current) {
+        clearTimeout(deseretDebounceRef.current);
+      }
+    };
+  }, []);
+
   // Re-process when alphabet changes while keeping the same input text.
   useEffect(() => {
     void handleChange(text);
@@ -145,6 +200,10 @@ export default function Transliterator({
   }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode]);
 
   const handleClearInput = () => {
+    if (deseretDebounceRef.current) {
+      clearTimeout(deseretDebounceRef.current);
+    }
+    deseretRequestIdRef.current += 1;
     setText("");
     setTransliteratedText("");
     clearWordsDictionary();
