@@ -11,13 +11,9 @@ export default async function processDeseretText(
   text: string,
 ): Promise<string> {
   const translated = await translate(text, { format: "deseret" });
-  let cased = applyDeseretCasing(text, translated);
-  cased = cased.replace(/𐐱/g, "𐐪").replace(/𐐉/g, "𐐂");
-  cased = cased
-    .replace(/(?<![\u{10400}-\u{1044F}])𐑄𐐪(?![\u{10400}-\u{1044F}])/gu, "𐑄")
-    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐪(?![\u{10400}-\u{1044F}])/gu, "𐐜")
-    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐂(?![\u{10400}-\u{1044F}])/gu, "𐐜");
-  return cased;
+  const cased = applyDeseretCasing(text, translated);
+  const postfixed = replacePostfixes(cased);
+  return postfixed;
 }
 
 /** ingglish always returns Deseret small letters; restore casing from the English input. */
@@ -77,4 +73,13 @@ function toDeseretUpper(char: string): string {
     return char;
   }
   return String.fromCodePoint(char.codePointAt(0)! - DESERET_CASE_OFFSET);
+}
+
+function replacePostfixes(text: string): string {
+  text = text.replace(/𐐱/g, "𐐪").replace(/𐐉/g, "𐐂");
+  text = text
+    .replace(/(?<![\u{10400}-\u{1044F}])𐑄𐐪(?![\u{10400}-\u{1044F}])/gu, "𐑄")
+    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐪(?![\u{10400}-\u{1044F}])/gu, "𐐜")
+    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐂(?![\u{10400}-\u{1044F}])/gu, "𐐜");
+  return text;
 }
