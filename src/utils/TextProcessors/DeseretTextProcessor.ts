@@ -1,96 +1,74 @@
-const configuredUrl = (
-  import.meta.env.VITE_DESERET_TRANSLATION_URL as string | undefined
-)?.trim();
+import { registerDeseret } from "@ingglish/deseret";
+import { translate } from "ingglish";
 
-const baseUrl = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+registerDeseret();
 
-// In local dev, prefer the Vite proxy (faster than Apps Script → 2deseret).
-const DESERET_API_URL = import.meta.env.DEV
-  ? `${baseUrl}api/deseret/json/translation`
-  : configuredUrl || `${baseUrl}api/deseret/json/translation`;
-
-type DeseretTranslationResponse = {
-  deseret?: string;
-  english?: string;
-  error?: string;
-};
-
-const translationCache = new Map<string, string>();
-const inFlight = new Map<string, Promise<string>>();
-
-function isAppsScriptProxy(url: string): boolean {
-  return url.includes("script.google.com");
-}
+const DESERET_SMALL_START = 0x10428;
+const DESERET_SMALL_END = 0x1044f;
+const DESERET_CASE_OFFSET = 0x28;
 
 export default async function processDeseretText(
   text: string,
 ): Promise<string> {
-  if (!text.trim()) {
-    return text;
-  }
-
-  const cached = translationCache.get(text);
-  if (cached !== undefined) {
-    return cached;
-  }
-
-  const pending = inFlight.get(text);
-  if (pending) {
-    return pending;
-  }
-
-  const request = translateViaApi(text)
-    .then((deseret) => {
-      translationCache.set(text, deseret);
-      return deseret;
-    })
-    .finally(() => {
-      inFlight.delete(text);
-    });
-
-  inFlight.set(text, request);
-  return request;
+  const translated = await translate(text, { format: "deseret" });
+  return applyDeseretCasing(text, translated);
 }
 
-async function translateViaApi(text: string): Promise<string> {
-  // Match 2deseret.com by calling their translation endpoint through a proxy:
-  // - Local: Vite proxies /api/deseret → https://2deseret.com
-  // - Production: set VITE_DESERET_TRANSLATION_URL to an Apps Script /exec URL
-  const response = isAppsScriptProxy(DESERET_API_URL)
-    ? await fetchAppsScript(text)
-    : await fetchJsonPost(text);
+/** ingglish always returns Deseret small letters; restore casing from the English input. */
+function applyDeseretCasing(english: string, deseret: string): string {
+  const englishWords = english.match(/\S+/g) ?? [];
+  const deseretWords = deseret.match(/\S+/g) ?? [];
 
-  if (!response.ok) {
-    throw new Error(`Deseret translation failed (${response.status}).`);
-  }
-
-  const payload = (await response.json()) as DeseretTranslationResponse;
-  if (typeof payload.deseret !== "string") {
-    throw new Error(
-      payload.error ?? "Unexpected response from Deseret translation API.",
+  if (englishWords.length > 0 && englishWords.length === deseretWords.length) {
+    let wordIndex = 0;
+    return deseret.replace(/\S+/g, (deseretWord) =>
+      applyWordCasing(englishWords[wordIndex++], deseretWord),
     );
   }
 
-  return payload.deseret;
+  return applyWordCasing(english, deseret);
 }
 
-async function fetchJsonPost(text: string): Promise<Response> {
-  return fetch(DESERET_API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ english: text }),
-  });
+function applyWordCasing(englishWord: string, deseretWord: string): string {
+  const letters = [...englishWord].filter((char) => /\p{L}/u.test(char));
+  if (letters.length === 0) {
+    return deseretWord;
+  }
+
+  const chars = [...deseretWord];
+  const allUpper = letters.every(isUppercaseLetter);
+
+  if (allUpper) {
+    return chars.map(toDeseretUpper).join("");
+  }
+
+  if (isUppercaseLetter(letters[0])) {
+    const firstDeseretIndex = chars.findIndex(isDeseretSmallLetter);
+    if (firstDeseretIndex >= 0) {
+      chars[firstDeseretIndex] = toDeseretUpper(chars[firstDeseretIndex]);
+    }
+    return chars.join("");
+  }
+
+  return deseretWord;
 }
 
-async function fetchAppsScript(text: string): Promise<Response> {
-  const url = new URL(DESERET_API_URL);
-  url.searchParams.set("english", text);
-  return fetch(url.toString(), {
-    method: "GET",
-    redirect: "follow",
-  });
+function isUppercaseLetter(char: string): boolean {
+  return char !== char.toLowerCase() && char === char.toUpperCase();
+}
+
+function isDeseretSmallLetter(char: string): boolean {
+  const codePoint = char.codePointAt(0);
+  return (
+    codePoint !== undefined &&
+    codePoint >= DESERET_SMALL_START &&
+    codePoint <= DESERET_SMALL_END
+  );
+}
+
+function toDeseretUpper(char: string): string {
+  if (!isDeseretSmallLetter(char)) {
+    return char;
+  }
+  return String.fromCodePoint(char.codePointAt(0)! - DESERET_CASE_OFFSET);
 }

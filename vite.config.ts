@@ -7,17 +7,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/the-baybayin-project",
   assetsInclude: ["**/*.zip"],
-  server: {
-    proxy: {
-      // Avoid browser CORS by proxying 2deseret.com in local development.
-      "/the-baybayin-project/api/deseret": {
-        target: "https://2deseret.com",
-        changeOrigin: true,
-        rewrite: (requestPath) =>
-          requestPath.replace(/^\/the-baybayin-project\/api\/deseret/, ""),
-      },
-    },
-  },
   build: {
     rollupOptions: {
       output: {
