@@ -5,6 +5,25 @@ export type DeseretData = {
   example: string;
 };
 
+export const DESERET_CONSONANTS = {
+  B: "\u169F",
+  D: "\u16A0",
+  H: "\u16A1",
+  K: "\u16A2",
+  L: "\u16A3",
+  M: "\u16A4",
+  N: "\u16A5",
+  P: "\u16A6",
+  Q: "\u16A7",
+  R: "\u16A8",
+  S: "\u16A9",
+  T: "\u16AA",
+  V: "\u16AB",
+  W: "\u16AC",
+  X: "\u16AD",
+  Y: "\u16AE",
+};
+
 export const DESERET_DATA: DeseretData[] = [
   {
     letter: "𐐀",

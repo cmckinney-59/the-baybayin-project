@@ -1,85 +1,36 @@
-import { registerDeseret } from "@ingglish/deseret";
-import { translate } from "ingglish";
+import {
+  isDictionaryLoaded,
+  loadDictionary,
+  lookupPronunciation,
+} from "@ingglish/dictionary";
 
-registerDeseret();
+let dictionaryLoad: Promise<unknown> | null = null;
 
-const DESERET_SMALL_START = 0x10428;
-const DESERET_SMALL_END = 0x1044f;
-const DESERET_CASE_OFFSET = 0x28;
+async function ensureDictionaryLoaded(): Promise<void> {
+  if (isDictionaryLoaded()) {
+    return;
+  }
+  dictionaryLoad ??= loadDictionary();
+  await dictionaryLoad;
+}
 
+/**
+ * Pull ARPAbet pronunciations from ingglish's CMU dictionary.
+ * Words not in the dictionary are left unchanged.
+ *
+ * Example: "family" -> "F AE1 M AH0 L IY0"
+ */
 export default async function processDeseretText(
   text: string,
 ): Promise<string> {
-  const translated = await translate(text, { format: "deseret" });
-  const cased = applyDeseretCasing(text, translated);
-  const postfixed = replacePostfixes(cased);
-  return postfixed;
+  await ensureDictionaryLoaded();
+
+  return text.replace(/[A-Za-z']+/g, (word) => {
+    const phonemes = lookupPronunciation(word);
+    return phonemes ? phonemes.join(" ") : word;
+  });
 }
 
-/** ingglish always returns Deseret small letters; restore casing from the English input. */
-function applyDeseretCasing(english: string, deseret: string): string {
-  const englishWords = english.match(/\S+/g) ?? [];
-  const deseretWords = deseret.match(/\S+/g) ?? [];
-
-  if (englishWords.length > 0 && englishWords.length === deseretWords.length) {
-    let wordIndex = 0;
-    return deseret.replace(/\S+/g, (deseretWord) =>
-      applyWordCasing(englishWords[wordIndex++], deseretWord),
-    );
-  }
-
-  return applyWordCasing(english, deseret);
-}
-
-function applyWordCasing(englishWord: string, deseretWord: string): string {
-  const letters = [...englishWord].filter((char) => /\p{L}/u.test(char));
-  if (letters.length === 0) {
-    return deseretWord;
-  }
-
-  const chars = [...deseretWord];
-  const allUpper = letters.every(isUppercaseLetter);
-
-  if (allUpper) {
-    return chars.map(toDeseretUpper).join("");
-  }
-
-  if (isUppercaseLetter(letters[0])) {
-    const firstDeseretIndex = chars.findIndex(isDeseretSmallLetter);
-    if (firstDeseretIndex >= 0) {
-      chars[firstDeseretIndex] = toDeseretUpper(chars[firstDeseretIndex]);
-    }
-    return chars.join("");
-  }
-
-  return deseretWord;
-}
-
-function isUppercaseLetter(char: string): boolean {
-  return char !== char.toLowerCase() && char === char.toUpperCase();
-}
-
-function isDeseretSmallLetter(char: string): boolean {
-  const codePoint = char.codePointAt(0);
-  return (
-    codePoint !== undefined &&
-    codePoint >= DESERET_SMALL_START &&
-    codePoint <= DESERET_SMALL_END
-  );
-}
-
-function toDeseretUpper(char: string): string {
-  if (!isDeseretSmallLetter(char)) {
-    return char;
-  }
-  return String.fromCodePoint(char.codePointAt(0)! - DESERET_CASE_OFFSET);
-}
-
-function replacePostfixes(text: string): string {
-  text = text.replace(/𐐱/g, "𐐪").replace(/𐐉/g, "𐐂");
-  text = text
-    .replace(/(?<![\u{10400}-\u{1044F}])𐑄𐐪(?![\u{10400}-\u{1044F}])/gu, "𐑄")
-    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐪(?![\u{10400}-\u{1044F}])/gu, "𐐜")
-    .replace(/(?<![\u{10400}-\u{1044F}])𐐜𐐂(?![\u{10400}-\u{1044F}])/gu, "𐐜");
-  return text;
+function swapCharacters(text: string): string {
+  return text.replace();
 }

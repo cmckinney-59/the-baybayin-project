@@ -1,4 +1,4 @@
-import { DESERET_DATA } from "../../../../data/DESERET_DATA";
+import { DESERET_DATA } from "../../../../data/DeseretData/DESERET_DATA";
 
 export default function DeseretTable() {
   return (
