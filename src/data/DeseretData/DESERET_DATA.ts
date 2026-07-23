@@ -60,17 +60,17 @@ export const DESERET_CONSONANTS_LOWER = {
 };
 
 export const DESERET_VOWELS_UPPER = {
-  LI: "𐐀",
-  LE: "𐐁",
-  LA: "𐐂",
-  LAH: "𐐃",
+  LE: "𐐀",
+  LA: "𐐁",
+  LAH: "𐐂",
+  LAW: "𐐃",
   LO: "𐐄",
   LOO: "𐐅",
   SI: "𐐆",
   SE: "𐐇",
   SA: "𐐈",
-  SAH: "𐐉",
-  SO: "𐐊",
+  SO: "𐐉",
+  SU: "𐐊",
   SOO: "𐐋",
   EYE: "𐐌",
   OW: "𐐍",
@@ -79,17 +79,17 @@ export const DESERET_VOWELS_UPPER = {
 };
 
 export const DESERET_VOWELS_LOWER = {
-  li: "𐐨",
-  le: "𐐩",
-  la: "𐐪",
-  lah: "𐐫",
+  le: "𐐨",
+  la: "𐐩",
+  lah: "𐐪",
+  law: "𐐫",
   lo: "𐐬",
   loo: "𐐭",
   si: "𐐮",
   se: "𐐯",
   sa: "𐐰",
-  sah: "𐐱",
-  so: "𐐲",
+  so: "𐐱",
+  su: "𐐲",
   soo: "𐐳",
   eye: "𐐴",
   ow: "𐐵",
@@ -99,25 +99,25 @@ export const DESERET_VOWELS_LOWER = {
 
 export const DESERET_DATA: DeseretData[] = [
   {
-    letter: DESERET_VOWELS_UPPER.LI,
+    letter: DESERET_VOWELS_UPPER.LE,
     name: "Long E",
     sound: "ee",
     example: "eat",
   },
   {
-    letter: DESERET_VOWELS_UPPER.LE,
+    letter: DESERET_VOWELS_UPPER.LA,
     name: "Long A",
     sound: "ey",
     example: "ate",
   },
   {
-    letter: DESERET_VOWELS_UPPER.LA,
+    letter: DESERET_VOWELS_UPPER.LAH,
     name: "Long Ah",
     sound: "ah",
     example: "art",
   },
   {
-    letter: DESERET_VOWELS_UPPER.LAH,
+    letter: DESERET_VOWELS_UPPER.LAW,
     name: "Long Aw",
     sound: "aw",
     example: "awe",
@@ -153,13 +153,13 @@ export const DESERET_DATA: DeseretData[] = [
     example: "at",
   },
   {
-    letter: DESERET_VOWELS_UPPER.SAH,
+    letter: DESERET_VOWELS_UPPER.SO,
     name: "Short O",
     sound: "ah",
     example: "hot",
   },
   {
-    letter: DESERET_VOWELS_UPPER.SO,
+    letter: DESERET_VOWELS_UPPER.SU,
     name: "Short U",
     sound: "uh",
     example: "but",
