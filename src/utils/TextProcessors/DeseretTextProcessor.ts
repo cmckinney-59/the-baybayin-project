@@ -108,11 +108,10 @@ function removeToneNumbers(
   sound: string,
   replacement: string,
 ): string {
-  text = text.replace(sound + "0", replacement);
-  text = text.replace(sound + "1", replacement);
-  text = text.replace(sound + "2", replacement);
-  text = text.replace(sound, replacement);
-  return text;
+  // Global replace — plain replace() only swaps the first match, so words
+  // like "test" (T EH1 S T) would leave the second T as Latin.
+  const escaped = sound.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return text.replace(new RegExp(`${escaped}[012]?`, "g"), replacement);
 }
 
 function removeExtraSpaces(text: string): string {
