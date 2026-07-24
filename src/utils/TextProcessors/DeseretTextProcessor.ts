@@ -33,14 +33,16 @@ export default async function processDeseretText(
 
   return text.replace(/[A-Za-z']+/g, (word) => {
     const phonemes = lookupPronunciation(word);
-    console.log("phonemes", phonemes);
-    let processedWord = replaceER(phonemes?.join(" ") ?? "");
-    processedWord = replaceVowels(processedWord);
-    processedWord = replaceLigatures(processedWord);
-    processedWord = replaceConsonants(processedWord);
-    processedWord = removeToneNumbers(processedWord, "0", "");
-    processedWord = removeExtraSpaces(processedWord);
-    return processedWord ?? word;
+    if (phonemes) {
+      let processedWord = replaceER(phonemes?.join(" ") ?? "");
+      processedWord = replaceVowels(processedWord);
+      processedWord = replaceLigatures(processedWord);
+      processedWord = replaceConsonants(processedWord);
+      processedWord = removeExtraSpaces(processedWord);
+      return processedWord;
+    } else {
+      return word;
+    }
   });
 }
 
