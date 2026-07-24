@@ -5,9 +5,7 @@ import {
 } from "@ingglish/dictionary";
 import {
   DESERET_CONSONANTS_UPPER as _consonantsUpper,
-  DESERET_CONSONANTS_LOWER as _consonantsLower,
   DESERET_VOWELS_UPPER as _vowelsUpper,
-  DESERET_VOWELS_LOWER as _vowelsLower,
 } from "../../data/DeseretData/DESERET_DATA";
 
 let dictionaryLoad: Promise<unknown> | null = null;
@@ -21,10 +19,10 @@ async function ensureDictionaryLoaded(): Promise<void> {
 }
 
 /**
- * Pull ARPAbet pronunciations from ingglish's CMU dictionary.
- * Words not in the dictionary are left unchanged.
+ * Pull ARPAbet pronunciations from ingglish's CMU dictionary,
+ * map them to Deseret, then restore casing from the English input.
  *
- * Example: "family" -> "F AE1 M AH0 L IY0"
+ * Example: "family" -> "𐑁𐐰𐑋𐐲𐑊𐐨"
  */
 export default async function processDeseretText(
   text: string,
@@ -33,16 +31,16 @@ export default async function processDeseretText(
 
   return text.replace(/[A-Za-z']+/g, (word) => {
     const phonemes = lookupPronunciation(word);
-    if (phonemes) {
-      let processedWord = replaceER(phonemes?.join(" ") ?? "");
-      processedWord = replaceVowels(processedWord);
-      processedWord = replaceLigatures(processedWord);
-      processedWord = replaceConsonants(processedWord);
-      processedWord = removeExtraSpaces(processedWord);
-      return processedWord;
-    } else {
+    if (!phonemes) {
       return word;
     }
+
+    let processedWord = replaceER(phonemes.join(" "));
+    processedWord = replaceVowels(processedWord);
+    processedWord = replaceLigatures(processedWord);
+    processedWord = replaceConsonants(processedWord);
+    processedWord = removeExtraSpaces(processedWord);
+    return applyWordCasing(word, processedWord);
   });
 }
 
@@ -120,4 +118,63 @@ function removeToneNumbers(
 function removeExtraSpaces(text: string): string {
   text = text.replace(/\s+/g, "");
   return text;
+}
+
+const DESERET_CAPITAL_START = 0x10400;
+const DESERET_CAPITAL_END = 0x10427;
+const DESERET_CASE_OFFSET = 0x28;
+
+/** Map Deseret capitals down to small letters based on English word casing. */
+function applyWordCasing(englishWord: string, deseretWord: string): string {
+  const letters = [...englishWord].filter((char) => /\p{L}/u.test(char));
+  if (letters.length === 0) {
+    return deseretWord;
+  }
+
+  const chars = [...deseretWord];
+  const allUpper = letters.every(isUppercaseLetter);
+
+  if (allUpper) {
+    return deseretWord;
+  }
+
+  if (isUppercaseLetter(letters[0])) {
+    // Title case: keep the first Deseret letter capital, lower the rest.
+    let sawFirstDeseret = false;
+    return chars
+      .map((char) => {
+        if (!isDeseretCapitalLetter(char)) {
+          return char;
+        }
+        if (!sawFirstDeseret) {
+          sawFirstDeseret = true;
+          return char;
+        }
+        return toDeseretLower(char);
+      })
+      .join("");
+  }
+
+  // All lowercase English → all lowercase Deseret.
+  return chars.map(toDeseretLower).join("");
+}
+
+function isUppercaseLetter(char: string): boolean {
+  return char !== char.toLowerCase() && char === char.toUpperCase();
+}
+
+function isDeseretCapitalLetter(char: string): boolean {
+  const codePoint = char.codePointAt(0);
+  return (
+    codePoint !== undefined &&
+    codePoint >= DESERET_CAPITAL_START &&
+    codePoint <= DESERET_CAPITAL_END
+  );
+}
+
+function toDeseretLower(char: string): string {
+  if (!isDeseretCapitalLetter(char)) {
+    return char;
+  }
+  return String.fromCodePoint(char.codePointAt(0)! + DESERET_CASE_OFFSET);
 }
