@@ -3,6 +3,7 @@ import {
   loadDictionary,
   lookupPronunciation,
 } from "@ingglish/dictionary";
+import { wordToArpabet } from "@ingglish/g2p";
 import {
   DESERET_CONSONANTS_UPPER as _consonantsUpper,
   DESERET_VOWELS_UPPER as _vowelsUpper,
@@ -21,6 +22,7 @@ async function ensureDictionaryLoaded(): Promise<void> {
 /**
  * Pull ARPAbet pronunciations from ingglish's CMU dictionary,
  * map them to Deseret, then restore casing from the English input.
+ * Unknown words fall back to rule-based G2P (same as ingglish's pipeline).
  *
  * Example: "family" -> "𐑁𐐰𐑋𐐲𐑊𐐨"
  */
@@ -30,8 +32,8 @@ export default async function processDeseretText(
   await ensureDictionaryLoaded();
 
   return text.replace(/[A-Za-z']+/g, (word) => {
-    const phonemes = lookupPronunciation(word);
-    if (!phonemes) {
+    const phonemes = getPronunciation(word);
+    if (!phonemes.length) {
       return word;
     }
 
@@ -42,6 +44,11 @@ export default async function processDeseretText(
     processedWord = removeExtraSpaces(processedWord);
     return applyWordCasing(word, processedWord);
   });
+}
+
+/** Prefer CMU; if missing, estimate phonemes with G2P letter-to-sound rules. */
+function getPronunciation(word: string): string[] {
+  return lookupPronunciation(word) ?? wordToArpabet(word);
 }
 
 function replaceConsonants(text: string): string {
