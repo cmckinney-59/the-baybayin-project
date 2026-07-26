@@ -32,6 +32,11 @@ export default async function processDeseretText(
   await ensureDictionaryLoaded();
 
   return text.replace(/[A-Za-z']+/g, (word) => {
+    const standaloneLetter = mapStandaloneLetterWord(word);
+    if (standaloneLetter) {
+      return standaloneLetter;
+    }
+
     const phonemes = getPronunciation(word);
     if (!phonemes.length) {
       return word;
@@ -49,6 +54,29 @@ export default async function processDeseretText(
 /** Prefer CMU; if missing, estimate phonemes with G2P letter-to-sound rules. */
 function getPronunciation(word: string): string[] {
   return lookupPronunciation(word) ?? wordToArpabet(word);
+}
+
+/** Words that map to a single Deseret letter (e.g. "the" → DH, "bee" → B). */
+const STANDALONE_LETTER_WORDS: Record<string, string> = {
+  the: _consonantsUpper.DH,
+  bee: _consonantsUpper.B,
+};
+
+function mapStandaloneLetterWord(word: string): string | null {
+  const capital = STANDALONE_LETTER_WORDS[word.toLowerCase()];
+  if (!capital) {
+    return null;
+  }
+
+  const letters = [...word].filter((char) => /\p{L}/u.test(char));
+  if (letters.length === 0) {
+    return null;
+  }
+
+  if (isUppercaseLetter(letters[0])) {
+    return capital;
+  }
+  return toDeseretLower(capital);
 }
 
 function replaceConsonants(text: string): string {
