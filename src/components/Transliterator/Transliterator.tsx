@@ -3,9 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import TransliteratorContainer from "../TransliteratorContainer/TransliteratorContainer.tsx";
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
+import Keyboard from "../Keyboard/Keyboard.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
+import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
@@ -49,6 +51,7 @@ export default function Transliterator({
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
+  const isDeseret = currentAlphabet === "Deseret";
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
@@ -150,6 +153,39 @@ export default function Transliterator({
     clearWordsDictionary();
   };
 
+  const applyTextAtCursor = (nextText: string, nextCursor: number) => {
+    setText(nextText);
+    void handleChange(nextText);
+    requestAnimationFrame(() => {
+      const el = textareaRef.current;
+      if (!el) return;
+      el.focus();
+      el.setSelectionRange(nextCursor, nextCursor);
+    });
+  };
+
+  const handleKeyboardInsert = (value: string) => {
+    const el = textareaRef.current;
+    const start = el?.selectionStart ?? text.length;
+    const end = el?.selectionEnd ?? text.length;
+    const nextText = text.slice(0, start) + value + text.slice(end);
+    applyTextAtCursor(nextText, start + value.length);
+  };
+
+  const handleKeyboardBackspace = () => {
+    const el = textareaRef.current;
+    const start = el?.selectionStart ?? text.length;
+    const end = el?.selectionEnd ?? text.length;
+    if (start !== end) {
+      const nextText = text.slice(0, start) + text.slice(end);
+      applyTextAtCursor(nextText, start);
+      return;
+    }
+    if (start === 0) return;
+    const nextText = text.slice(0, start - 1) + text.slice(start);
+    applyTextAtCursor(nextText, start - 1);
+  };
+
   return (
     <div>
       <TransliteratorContainer
@@ -168,6 +204,15 @@ export default function Transliterator({
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
       />
+      {isDeseret && (
+        <Keyboard
+          layout={DESERET_KEYBOARD_LAYOUT}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() => handleKeyboardInsert("\n")}
+          fontClass="deseret-font"
+        />
+      )}
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
           * The letter &apos;c&apos; does not show in baybayin font. Replace any
