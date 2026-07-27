@@ -131,7 +131,7 @@ function replaceVowels(text: string): string {
 
 function replaceER(text: string): string {
   // OG
-  text = removeToneNumbers(text, "ER", _vowelsUpper.SO + _consonantsUpper.R);
+  // text = removeToneNumbers(text, "ER", _vowelsUpper.SO + _consonantsUpper.R);
 
   // New
   text = removeToneNumbers(text, "ER", _vowelsUpper.SU + _consonantsUpper.R);
