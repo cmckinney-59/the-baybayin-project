@@ -43,6 +43,7 @@ export default async function processDeseretText(
     }
 
     let processedWord = replaceER(phonemes.join(" "));
+    processedWord = replaceYou(processedWord);
     processedWord = replaceVowels(processedWord);
     processedWord = replaceLigatures(processedWord);
     processedWord = replaceConsonants(processedWord);
@@ -135,6 +136,11 @@ function replaceER(text: string): string {
 
   // New
   text = removeToneNumbers(text, "ER", _vowelsUpper.SU + _consonantsUpper.R);
+  return text;
+}
+
+function replaceYou(text: string): string {
+  text = removeToneNumbers(text, "Y UW", _vowelsUpper.EW);
   return text;
 }
 
