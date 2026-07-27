@@ -33,7 +33,7 @@
   font-size: 1.15rem;
   font-weight: 400;
   line-height: 1;
-  color: white;
+  color: var(--text-primary);
   background-color: var(--bg-primary);
   border: 1px solid var(--button-border);
   border-radius: 8px;
@@ -51,7 +51,7 @@
 
 /* Beat global `button` / `.dark-mode button` blue text + bold weight */
 .keyboard .key {
-  color: white;
+  color: var(--text-primary);
   font-weight: 400;
 }
 
