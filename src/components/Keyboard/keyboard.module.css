@@ -12,10 +12,16 @@
   border-radius: 12px;
 }
 
-.row {
+.row,
+.rowLetters {
   display: flex;
   gap: 0.35rem;
   width: 100%;
+}
+
+.rowLetters .keyLetter {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .key {
@@ -25,17 +31,28 @@
   min-height: 2.6rem;
   padding: 0.35rem 0.25rem;
   font-size: 1.15rem;
+  font-weight: 400;
   line-height: 1;
-  color: var(--text-primary);
+  color: white;
   background-color: var(--bg-primary);
   border: 1px solid var(--button-border);
   border-radius: 8px;
+  box-shadow: none;
+  text-shadow: none;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
   cursor: pointer;
   user-select: none;
   transition:
     background-color 0.15s ease,
     border-color 0.15s ease,
     transform 0.05s ease;
+}
+
+/* Beat global `button` / `.dark-mode button` blue text + bold weight */
+.keyboard .key {
+  color: white;
+  font-weight: 400;
 }
 
 .key:hover {

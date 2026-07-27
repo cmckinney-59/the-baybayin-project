@@ -59,12 +59,6 @@ export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
     letterKey("ch", DESERET_CONSONANTS_LOWER.ch, DESERET_CONSONANTS_UPPER.CH),
   ],
   [
-    {
-      id: "caps",
-      label: "Caps",
-      action: "caps",
-      width: 1.4,
-    },
     letterKey("j", DESERET_CONSONANTS_LOWER.j, DESERET_CONSONANTS_UPPER.J),
     letterKey("k", DESERET_CONSONANTS_LOWER.k, DESERET_CONSONANTS_UPPER.K),
     letterKey("g", DESERET_CONSONANTS_LOWER.g, DESERET_CONSONANTS_UPPER.G),
@@ -75,31 +69,37 @@ export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
     letterKey("m", DESERET_CONSONANTS_LOWER.m, DESERET_CONSONANTS_UPPER.M),
     letterKey("n", DESERET_CONSONANTS_LOWER.n, DESERET_CONSONANTS_UPPER.N),
     letterKey("ng", DESERET_CONSONANTS_LOWER.ng, DESERET_CONSONANTS_UPPER.NG),
-    {
-      id: "backspace",
-      label: "⌫",
-      action: "backspace",
-      width: 1.4,
-    },
   ],
   [
+    {
+      id: "caps",
+      label: "Caps",
+      action: "caps",
+      width: 1.2,
+    },
     {
       id: "shift",
       label: "Shift",
       action: "shift",
-      width: 1.6,
+      width: 1.2,
     },
     {
       id: "space",
       label: "Space",
       action: "space",
-      width: 6,
+      width: 5,
     },
     {
       id: "enter",
       label: "Enter",
       action: "enter",
-      width: 1.6,
+      width: 1.2,
+    },
+    {
+      id: "backspace",
+      label: "⌫",
+      action: "backspace",
+      width: 1.2,
     },
   ],
 ];
