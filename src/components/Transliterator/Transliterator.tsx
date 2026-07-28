@@ -204,7 +204,7 @@ export default function Transliterator({
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
       />
-      {isDeseret && (
+      {isDeseret && showExperimentalFeatures && (
         <Keyboard
           layout={DESERET_KEYBOARD_LAYOUT}
           onInsert={handleKeyboardInsert}

@@ -57,27 +57,23 @@ function getPronunciation(word: string): string[] {
   return lookupPronunciation(word) ?? wordToArpabet(word);
 }
 
-/** Words that map to a single Deseret letter (e.g. "the" → DH, "bee" → B). */
-const STANDALONE_LETTER_WORDS: Record<string, string> = {
+/**
+ * Words with a fixed Deseret spelling (stored in capitals; casing applied from English).
+ * e.g. "the" → DH, "and" → SA+N+D (𐐰𐑌𐐼).
+ */
+const FIXED_DESERET_WORDS: Record<string, string> = {
   the: _consonantsUpper.DH,
   bee: _consonantsUpper.B,
+  gay: _consonantsUpper.G,
+  and: _vowelsUpper.SA + _consonantsUpper.N + _consonantsUpper.D,
 };
 
 function mapStandaloneLetterWord(word: string): string | null {
-  const capital = STANDALONE_LETTER_WORDS[word.toLowerCase()];
+  const capital = FIXED_DESERET_WORDS[word.toLowerCase()];
   if (!capital) {
     return null;
   }
-
-  const letters = [...word].filter((char) => /\p{L}/u.test(char));
-  if (letters.length === 0) {
-    return null;
-  }
-
-  if (isUppercaseLetter(letters[0])) {
-    return capital;
-  }
-  return toDeseretLower(capital);
+  return applyWordCasing(word, capital);
 }
 
 function replaceConsonants(text: string): string {

@@ -11,6 +11,8 @@ import {
   AiOutlineSetting,
 } from "react-icons/ai";
 import { PiTranslate, PiTranslateFill } from "react-icons/pi";
+import { useAlphabet } from "../../contexts/AlphabetContext";
+import { alphabetNameToRouteSegment } from "../../data/ALPHABETS_DATA";
 
 type NavigationProps = {
   isOpen: boolean;
@@ -22,6 +24,10 @@ export default function Navigation({
   onNavigate,
 }: NavigationProps): JSX.Element {
   const location = useLocation();
+  const { currentAlphabet } = useAlphabet();
+  const transliteratorPath = currentAlphabet
+    ? `/transliterator/${alphabetNameToRouteSegment(currentAlphabet)}`
+    : "/transliterator";
 
   const isActiveRoute = (path: string): boolean => {
     if (path === "/home") {
@@ -49,7 +55,7 @@ export default function Navigation({
           </li>
           <li>
             <Link
-              to="/transliterator"
+              to={transliteratorPath}
               onClick={onNavigate}
               title="Transliterator"
             >
