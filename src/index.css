@@ -260,9 +260,26 @@ select:hover {
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  .App-Navigation.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .App-Navigation.open {
+    transform: translateX(0);
+    width: 220px;
+  }
+
   .App-content {
-    margin-left: var(--nav-width-collapsed);
-    width: calc(100% - var(--nav-width-collapsed));
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .experimental-features-banner {
+    left: 0;
+  }
+
+  .back-button {
+    left: 5px;
   }
 }
 
