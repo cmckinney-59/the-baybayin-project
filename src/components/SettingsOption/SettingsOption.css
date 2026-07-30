@@ -8,6 +8,7 @@
   border-radius: 8px;
   background-color: var(--bg-secondary, #f8f9fa);
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  gap: 16px;
 }
 
 .dark-mode .setting-item {
@@ -19,6 +20,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 500;
+  text-align: left;
 }
 
 .toggle-switch {
@@ -27,6 +29,7 @@
   width: 50px;
   height: 26px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .toggle-switch input {
@@ -77,4 +80,59 @@
 
 .dark-mode .toggle-switch input:focus + .toggle-slider {
   box-shadow: 0 0 1px #64b5f6;
+}
+
+.key-size-options {
+  display: inline-flex;
+  flex-shrink: 0;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.key-size-option {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  border-right: 1px solid var(--button-border);
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.key-size-option:last-child {
+  border-right: none;
+}
+
+.key-size-option:hover {
+  background-color: color-mix(in srgb, var(--bg-primary) 70%, var(--button-border));
+}
+
+.key-size-option.active {
+  background-color: rgb(26, 115, 232);
+  color: white;
+}
+
+.dark-mode .key-size-option.active {
+  background-color: #64b5f6;
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .key-size-options {
+    width: 100%;
+  }
+
+  .key-size-option {
+    flex: 1;
+  }
 }

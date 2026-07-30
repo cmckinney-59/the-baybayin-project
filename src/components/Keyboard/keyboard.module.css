@@ -73,6 +73,59 @@
   border-color: var(--text-primary);
 }
 
+/* Key size variants */
+.sizeSmall {
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.sizeSmall .row,
+.sizeSmall .rowLetters {
+  gap: 0.2rem;
+}
+
+.sizeSmall .key {
+  min-height: 2rem;
+  padding: 0.2rem 0.15rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.sizeSmall .keyAction {
+  font-size: 0.65rem;
+}
+
+.sizeMedium .key {
+  min-height: 2.6rem;
+  padding: 0.35rem 0.25rem;
+  font-size: 1.15rem;
+}
+
+.sizeMedium .keyAction {
+  font-size: 0.8rem;
+}
+
+.sizeLarge {
+  gap: 0.5rem;
+  padding: 0.85rem;
+}
+
+.sizeLarge .row,
+.sizeLarge .rowLetters {
+  gap: 0.45rem;
+}
+
+.sizeLarge .key {
+  min-height: 3.25rem;
+  padding: 0.45rem 0.3rem;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+
+.sizeLarge .keyAction {
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .keyboard {
     padding: 0.5rem;
@@ -83,12 +136,30 @@
     gap: 0.25rem;
   }
 
-  .key {
+  .sizeSmall .key {
+    min-height: 1.85rem;
+    font-size: 0.8rem;
+  }
+
+  .sizeSmall .keyAction {
+    font-size: 0.6rem;
+  }
+
+  .sizeMedium .key {
     min-height: 2.35rem;
     font-size: 1rem;
   }
 
-  .keyAction {
+  .sizeMedium .keyAction {
     font-size: 0.7rem;
+  }
+
+  .sizeLarge .key {
+    min-height: 2.85rem;
+    font-size: 1.2rem;
+  }
+
+  .sizeLarge .keyAction {
+    font-size: 0.8rem;
   }
 }

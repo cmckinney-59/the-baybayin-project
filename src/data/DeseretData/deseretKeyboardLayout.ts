@@ -5,18 +5,27 @@ import {
   DESERET_VOWELS_LOWER,
   DESERET_VOWELS_UPPER,
 } from "./DESERET_DATA";
+import {
+  DESERET_KEYBOARD_PHONETIC_TOKEN,
+  toPhoneticInput,
+} from "./deseretPhoneticMap";
 
+/**
+ * Show Deseret glyphs on the key; insert slash-delimited phonetic sound
+ * into the Latin input (e.g. 𐐭 → "/oo/"). Shift/caps capitalizes the token.
+ */
 function letterKey(
   id: string,
-  lower: string,
-  upper: string,
+  lowerGlyph: string,
+  upperGlyph: string,
 ): KeyboardLayout[number][number] {
+  const token = DESERET_KEYBOARD_PHONETIC_TOKEN[id] ?? id;
   return {
     id,
-    label: lower,
-    value: lower,
-    shiftLabel: upper,
-    shiftValue: upper,
+    label: lowerGlyph,
+    value: toPhoneticInput(token, false),
+    shiftLabel: upperGlyph,
+    shiftValue: toPhoneticInput(token, true),
   };
 }
 
