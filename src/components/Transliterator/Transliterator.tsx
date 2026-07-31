@@ -47,6 +47,7 @@ export default function Transliterator({
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
+  const [useSingleLineInput, setUseSingleLineInput] = useState<boolean>(true);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
@@ -55,6 +56,13 @@ export default function Transliterator({
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
+      const isMobile = window.matchMedia("(max-width: 720px)").matches;
+      if (isMobile && useSingleLineInput) {
+        textareaRef.current.style.height = "";
+        outputRef.current.style.height = "";
+        return;
+      }
+
       textareaRef.current.style.height = "auto";
       outputRef.current.style.height = "auto";
 
@@ -65,7 +73,7 @@ export default function Transliterator({
       textareaRef.current.style.height = maxHeight + "px";
       outputRef.current.style.height = maxHeight + "px";
     }
-  }, [text, transliteratedText]);
+  }, [text, transliteratedText, useSingleLineInput]);
 
   useEffect(() => {
     if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
@@ -182,6 +190,17 @@ export default function Transliterator({
       return;
     }
     if (start === 0) return;
+
+    // Delete a whole slash phoneme (e.g. "/oo/") when the caret sits after one.
+    const before = text.slice(0, start);
+    const phonemeMatch = before.match(/\/[^/\n]+\/$/u);
+    if (phonemeMatch) {
+      const deleteCount = phonemeMatch[0].length;
+      const nextText = text.slice(0, start - deleteCount) + text.slice(start);
+      applyTextAtCursor(nextText, start - deleteCount);
+      return;
+    }
+
     const nextText = text.slice(0, start - 1) + text.slice(start);
     applyTextAtCursor(nextText, start - 1);
   };
@@ -203,6 +222,7 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
+        useSingleLineInput={useSingleLineInput}
       />
       {isDeseret && showExperimentalFeatures && (
         <Keyboard
@@ -229,6 +249,7 @@ export default function Transliterator({
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
         useUnicode={useUnicode}
+        useSingleLineInput={useSingleLineInput}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
         setUseTechNumbers={setUseTechNumbers}
@@ -237,6 +258,7 @@ export default function Transliterator({
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
         setUseUnicode={setUseUnicode}
+        setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       />
       <div className="action-buttons">

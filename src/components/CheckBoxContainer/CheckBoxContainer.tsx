@@ -24,6 +24,8 @@ interface CheckboxContainerProps {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
+  useSingleLineInput: boolean;
+  setUseSingleLineInput: (checked: boolean) => void;
 }
 
 export default function CheckboxContainer({
@@ -36,6 +38,7 @@ export default function CheckboxContainer({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
+  useSingleLineInput,
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
@@ -44,6 +47,7 @@ export default function CheckboxContainer({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
+  setUseSingleLineInput,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
   const { showExperimentalFeatures } = useExperimentalFeatures();
@@ -123,7 +127,17 @@ export default function CheckboxContainer({
 
   return (
     <>
-      <div className="checkbox-label-row">{checkBoxes}</div>
+      <div className="checkbox-label-row">
+        <span className="mobile-only-control">
+          <Checkbox
+            checked={useSingleLineInput}
+            onChange={setUseSingleLineInput}
+            label="Single-line input"
+            title="Use single-line input and output boxes on mobile."
+          />
+        </span>
+        {checkBoxes}
+      </div>
     </>
   );
 }

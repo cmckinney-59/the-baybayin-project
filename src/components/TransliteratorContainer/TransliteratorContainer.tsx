@@ -19,6 +19,7 @@ interface TransliteratorContainerProps {
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
   selectedBaybayinFont?: BaybayinFontId;
+  useSingleLineInput?: boolean;
 }
 
 export default function TransliteratorContainer({
@@ -34,6 +35,7 @@ export default function TransliteratorContainer({
   useCombinedCharacters = false,
   useKlinzhai = false,
   selectedBaybayinFont,
+  useSingleLineInput = false,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -87,7 +89,11 @@ export default function TransliteratorContainer({
   };
 
   return (
-    <div className="transliteration-container">
+    <div
+      className={`transliteration-container${
+        useSingleLineInput ? " single-line-mode" : ""
+      }`}
+    >
       <div className="textarea-wrapper">
         {useRichTextInput ? (
           <>
@@ -161,6 +167,7 @@ export default function TransliteratorContainer({
               isBold ? "transliteration-bold" : ""
             }`}
             placeholder="Enter text here..."
+            rows={1}
             value={text}
             onChange={(e) => {
               const currentValue = e.target.value;

@@ -8,6 +8,7 @@ import {
   DESERET_CONSONANTS_UPPER as _consonantsUpper,
   DESERET_VOWELS_UPPER as _vowelsUpper,
 } from "../../data/DeseretData/DESERET_DATA";
+import { replacePhoneticSlashTokens } from "../../data/DeseretData/deseretPhoneticMap";
 
 let dictionaryLoad: Promise<unknown> | null = null;
 
@@ -24,14 +25,21 @@ async function ensureDictionaryLoaded(): Promise<void> {
  * map them to Deseret, then restore casing from the English input.
  * Unknown words fall back to rule-based G2P (same as ingglish's pipeline).
  *
+ * Slash-delimited phonemes (e.g. `/oo/`, `/th/`) map directly to Deseret
+ * letters before English word lookup — similar to explicit sound overrides
+ * on https://www.2deseret.com/
+ *
  * Example: "family" -> "𐑁𐐰𐑋𐐲𐑊𐐨"
+ * Example: "/b//oo//k/" -> "𐐺𐐭𐐿"
  */
 export default async function processDeseretText(
   text: string,
 ): Promise<string> {
   await ensureDictionaryLoaded();
 
-  return text.replace(/[A-Za-z']+/g, (word) => {
+  const withPhonetics = replacePhoneticSlashTokens(text);
+
+  return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
     const standaloneLetter = mapStandaloneLetterWord(word);
     if (standaloneLetter) {
       return standaloneLetter;

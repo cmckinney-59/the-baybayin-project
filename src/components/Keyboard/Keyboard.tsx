@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./keyboard.module.css";
+import { useKeyboardKeySize } from "../../contexts/KeyboardKeySizeContext";
 
 export type KeyboardKeyAction =
   | "shift"
@@ -45,6 +46,7 @@ export default function Keyboard({
 }: KeyboardProps) {
   const [shift, setShift] = useState(false);
   const [caps, setCaps] = useState(false);
+  const { keySize } = useKeyboardKeySize();
   const useShifted = shift || caps;
 
   const handleKey = (key: KeyboardKey) => {
@@ -80,46 +82,57 @@ export default function Keyboard({
     if (shift) setShift(false);
   };
 
+  const sizeClass =
+    keySize === "small"
+      ? styles.sizeSmall
+      : keySize === "large"
+        ? styles.sizeLarge
+        : styles.sizeMedium;
+
   return (
-    <div className={`${styles.keyboard} ${className}`.trim()} role="group" aria-label="On-screen keyboard">
+    <div
+      className={`${styles.keyboard} ${sizeClass} ${className}`.trim()}
+      role="group"
+      aria-label="On-screen keyboard"
+    >
       {layout.map((row, rowIndex) => {
         const isLetterRow = row.every((key) => !key.action);
         return (
-        <div
-          key={rowIndex}
-          className={isLetterRow ? styles.rowLetters : styles.row}
-        >
-          {row.map((key) => {
-            const label = useShifted
-              ? (key.shiftLabel ?? key.label)
-              : key.label;
-            const isActive =
-              (key.action === "shift" && shift) ||
-              (key.action === "caps" && caps);
-            const isLetterKey = !key.action;
+          <div
+            key={rowIndex}
+            className={isLetterRow ? styles.rowLetters : styles.row}
+          >
+            {row.map((key) => {
+              const label = useShifted
+                ? (key.shiftLabel ?? key.label)
+                : key.label;
+              const isActive =
+                (key.action === "shift" && shift) ||
+                (key.action === "caps" && caps);
+              const isLetterKey = !key.action;
 
-            return (
-              <button
-                key={key.id}
-                type="button"
-                className={`${styles.key} ${isActive ? styles.keyActive : ""} ${
-                  key.action ? styles.keyAction : styles.keyLetter
-                } ${fontClass}`.trim()}
-                style={isLetterKey ? undefined : { flex: key.width ?? 1 }}
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={() => handleKey(key)}
-                aria-label={key.action ?? label}
-                aria-pressed={
-                  key.action === "shift" || key.action === "caps"
-                    ? isActive
-                    : undefined
-                }
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+              return (
+                <button
+                  key={key.id}
+                  type="button"
+                  className={`${styles.key} ${isActive ? styles.keyActive : ""} ${
+                    key.action ? styles.keyAction : styles.keyLetter
+                  } ${fontClass}`.trim()}
+                  style={isLetterKey ? undefined : { flex: key.width ?? 1 }}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => handleKey(key)}
+                  aria-label={key.action ?? label}
+                  aria-pressed={
+                    key.action === "shift" || key.action === "caps"
+                      ? isActive
+                      : undefined
+                  }
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
         );
       })}
     </div>

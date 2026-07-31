@@ -260,9 +260,26 @@ select:hover {
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
+  .App-Navigation.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .App-Navigation.open {
+    transform: translateX(0);
+    width: 220px;
+  }
+
   .App-content {
-    margin-left: var(--nav-width-collapsed);
-    width: calc(100% - var(--nav-width-collapsed));
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .experimental-features-banner {
+    left: 0;
+  }
+
+  .back-button {
+    left: 5px;
   }
 }
 
@@ -626,6 +643,21 @@ button:hover:not(:disabled) {
   transition: height 0.2s ease;
 }
 
+@media (max-width: 720px) {
+  .transliteration-container.single-line-mode .transliteration-textarea,
+  .transliteration-container.single-line-mode .transliteration-output {
+    min-height: 44px;
+    height: 44px;
+    max-height: 44px;
+    resize: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    line-height: 1.2;
+    transition: none;
+  }
+}
+
 .transliteration-textarea:focus {
   outline: none;
   border: 1px solid var(--button-border);
@@ -933,6 +965,16 @@ button:hover:not(:disabled) {
   justify-content: center;
   gap: 0.75rem 1.5rem;
   margin: 10px 0;
+}
+
+.mobile-only-control {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .mobile-only-control {
+    display: contents;
+  }
 }
 
 .checkbox-label-row .checkbox-label {
