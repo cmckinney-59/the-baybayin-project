@@ -4,6 +4,7 @@ import Table from "../../components/Table/Table";
 import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleSection";
 import { PROJECTS_DATA as BAYBAYIN_PROJECTS_DATA } from "../../data/BaybayinData/BAYBAYIN_PROJECTS_DATA";
 import { PROJECTS_DATA as AUREBESH_PROJECTS_DATA } from "../../data/AurebeshData/AUREBESH_PROJECTS_DATA";
+import { PROJECTS_DATA as DESERET_PROJECTS_DATA } from "../../data/DeseretData/DESERET_PROJECTS_DATA";
 import ProjectStatusCell from "./ProjectStatusCell";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
@@ -39,6 +40,23 @@ export default function ProjectsPage() {
           data={AUREBESH_PROJECTS_DATA}
           headers={headers}
           rows={AUREBESH_PROJECTS_DATA.map((project) => [
+            project.name,
+            ...(showExperimentalFeatures ? [project.description ?? ""] : []),
+            <ProjectStatusCell
+              key={project.name}
+              status={project.status}
+              fileUrl={project.fileUrl}
+              fileName={project.fileName}
+              fileType={project.fileType}
+            />,
+          ])}
+        />
+      </CollapsibleSection>
+      <CollapsibleSection title="Deseret" defaultExpanded={false}>
+        <Table
+          data={DESERET_PROJECTS_DATA}
+          headers={headers}
+          rows={DESERET_PROJECTS_DATA.map((project) => [
             project.name,
             ...(showExperimentalFeatures ? [project.description ?? ""] : []),
             <ProjectStatusCell
