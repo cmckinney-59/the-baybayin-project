@@ -84,7 +84,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
   {
     name: "Deseret",
     description: "An alphabet created by Brigham Young",
-    experimental: true,
+    experimental: false,
     fictional: false,
     fontName: "Deseret",
     downloadName: "deseret.zip",
