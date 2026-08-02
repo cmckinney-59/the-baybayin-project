@@ -15,6 +15,7 @@ import {
   DEFAULT_BAYBAYIN_FONT_ID,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import { BAYBAYIN_KEYBOARD_LAYOUT } from "../../data/BaybayinData/baybayinKeyboardLayout";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -231,6 +232,15 @@ export default function Transliterator({
           onBackspace={handleKeyboardBackspace}
           onEnter={() => handleKeyboardInsert("\n")}
           fontClass="deseret-font"
+        />
+      )}
+      {isBaybayin && showExperimentalFeatures && (
+        <Keyboard
+          layout={BAYBAYIN_KEYBOARD_LAYOUT}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() => handleKeyboardInsert("\n")}
+          fontClass="baybayin-font"
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (
