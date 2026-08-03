@@ -3,11 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import TransliteratorContainer from "../TransliteratorContainer/TransliteratorContainer.tsx";
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
-import Keyboard from "../Keyboard/Keyboard.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
-import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
@@ -15,6 +13,9 @@ import {
   DEFAULT_BAYBAYIN_FONT_ID,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+
+import Keyboard from "../Keyboard/Keyboard.tsx";
+import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { BAYBAYIN_KEYBOARD_LAYOUT } from "../../data/BaybayinData/baybayinKeyboardLayout";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
