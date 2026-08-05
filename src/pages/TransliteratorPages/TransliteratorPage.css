@@ -1,0 +1,21 @@
+.transliteratorPage {
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .transliteratorPage {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .transliteratorPage #options {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .transliteratorPage .transliteration-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
