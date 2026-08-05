@@ -262,11 +262,15 @@ select:hover {
 @media (max-width: 768px) {
   .App-Navigation.collapsed {
     transform: translateX(-100%);
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .App-Navigation.open {
     transform: translateX(0);
     width: 220px;
+    pointer-events: auto;
+    visibility: visible;
   }
 
   .App-content {
