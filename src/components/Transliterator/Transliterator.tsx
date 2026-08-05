@@ -50,15 +50,30 @@ export default function Transliterator({
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
   const [useSingleLineInput, setUseSingleLineInput] = useState<boolean>(true);
+  const [outputOnlyMode, setOutputOnlyMode] = useState<boolean>(false);
+  const [keyboardCursor, setKeyboardCursor] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLDivElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
+  const showOnScreenKeyboard =
+    showExperimentalFeatures && (isDeseret || isBaybayin);
+
+  useEffect(() => {
+    if (!showOnScreenKeyboard && outputOnlyMode) {
+      setOutputOnlyMode(false);
+    }
+  }, [showOnScreenKeyboard, outputOnlyMode]);
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
       const isMobile = window.matchMedia("(max-width: 720px)").matches;
+      if (outputOnlyMode) {
+        textareaRef.current.style.height = "";
+        outputRef.current.style.height = "";
+        return;
+      }
       if (isMobile && useSingleLineInput) {
         textareaRef.current.style.height = "";
         outputRef.current.style.height = "";
@@ -75,7 +90,7 @@ export default function Transliterator({
       textareaRef.current.style.height = maxHeight + "px";
       outputRef.current.style.height = maxHeight + "px";
     }
-  }, [text, transliteratedText, useSingleLineInput]);
+  }, [text, transliteratedText, useSingleLineInput, outputOnlyMode]);
 
   useEffect(() => {
     if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
@@ -160,32 +175,48 @@ export default function Transliterator({
   const handleClearInput = () => {
     setText("");
     setTransliteratedText("");
+    setKeyboardCursor(0);
     clearWordsDictionary();
   };
 
   const applyTextAtCursor = (nextText: string, nextCursor: number) => {
     setText(nextText);
+    setKeyboardCursor(nextCursor);
     void handleChange(nextText);
     requestAnimationFrame(() => {
       const el = textareaRef.current;
       if (!el) return;
-      el.focus();
       el.setSelectionRange(nextCursor, nextCursor);
+
+      // Output-only mode: never focus the input so the phone keyboard stays closed.
+      if (outputOnlyMode) {
+        el.blur();
+        return;
+      }
+
+      el.focus();
     });
   };
 
-  const handleKeyboardInsert = (value: string) => {
+  const getKeyboardSelection = () => {
     const el = textareaRef.current;
-    const start = el?.selectionStart ?? text.length;
-    const end = el?.selectionEnd ?? text.length;
+    if (el && document.activeElement === el) {
+      return {
+        start: el.selectionStart ?? keyboardCursor,
+        end: el.selectionEnd ?? keyboardCursor,
+      };
+    }
+    return { start: keyboardCursor, end: keyboardCursor };
+  };
+
+  const handleKeyboardInsert = (value: string) => {
+    const { start, end } = getKeyboardSelection();
     const nextText = text.slice(0, start) + value + text.slice(end);
     applyTextAtCursor(nextText, start + value.length);
   };
 
   const handleKeyboardBackspace = () => {
-    const el = textareaRef.current;
-    const start = el?.selectionStart ?? text.length;
-    const end = el?.selectionEnd ?? text.length;
+    const { start, end } = getKeyboardSelection();
     if (start !== end) {
       const nextText = text.slice(0, start) + text.slice(end);
       applyTextAtCursor(nextText, start);
@@ -217,6 +248,7 @@ export default function Transliterator({
         outputRef={outputRef}
         onTextChange={(currentValue) => {
           setText(currentValue);
+          setKeyboardCursor(currentValue.length);
           void handleChange(currentValue);
         }}
         onClear={handleClearInput}
@@ -225,8 +257,11 @@ export default function Transliterator({
         selectedBaybayinFont={selectedBaybayinFont}
         useKlinzhai={useKlinzhai}
         useSingleLineInput={useSingleLineInput}
+        outputOnlyMode={outputOnlyMode}
+        suppressSoftKeyboard={outputOnlyMode}
+        onCursorChange={setKeyboardCursor}
       />
-      {isDeseret && showExperimentalFeatures && (
+      {isDeseret && showOnScreenKeyboard && (
         <Keyboard
           layout={DESERET_KEYBOARD_LAYOUT}
           onInsert={handleKeyboardInsert}
@@ -235,7 +270,7 @@ export default function Transliterator({
           fontClass="deseret-font"
         />
       )}
-      {isBaybayin && showExperimentalFeatures && (
+      {isBaybayin && showOnScreenKeyboard && (
         <Keyboard
           layout={BAYBAYIN_KEYBOARD_LAYOUT}
           onInsert={handleKeyboardInsert}
@@ -271,6 +306,9 @@ export default function Transliterator({
         setUseUnicode={setUseUnicode}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
+        showOutputOnlyOption={showOnScreenKeyboard}
+        outputOnlyMode={outputOnlyMode}
+        setOutputOnlyMode={setOutputOnlyMode}
       />
       <div className="action-buttons">
         {isBaybayin &&

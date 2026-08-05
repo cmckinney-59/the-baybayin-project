@@ -26,6 +26,9 @@ interface CheckboxContainerProps {
   setUseUnicode: (checked: boolean) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
+  showOutputOnlyOption?: boolean;
+  outputOnlyMode: boolean;
+  setOutputOnlyMode: (checked: boolean) => void;
 }
 
 export default function CheckboxContainer({
@@ -48,6 +51,9 @@ export default function CheckboxContainer({
   setUseHollowKudlits,
   setUseUnicode,
   setUseSingleLineInput,
+  showOutputOnlyOption = false,
+  outputOnlyMode,
+  setOutputOnlyMode,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
   const { showExperimentalFeatures } = useExperimentalFeatures();
@@ -136,6 +142,14 @@ export default function CheckboxContainer({
             title="Use single-line input and output boxes on mobile."
           />
         </span>
+        {showOutputOnlyOption && (
+          <Checkbox
+            checked={outputOnlyMode}
+            onChange={setOutputOnlyMode}
+            label="Output only"
+            title="Hide the Latin input and type with the on-screen keyboard. The phone keyboard stays closed."
+          />
+        )}
         {checkBoxes}
       </div>
     </>

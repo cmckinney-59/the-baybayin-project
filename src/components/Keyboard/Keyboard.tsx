@@ -119,7 +119,11 @@ export default function Keyboard({
                     key.action ? styles.keyAction : styles.keyLetter
                   } ${fontClass}`.trim()}
                   style={isLetterKey ? undefined : { flex: key.width ?? 1 }}
-                  onMouseDown={(event) => event.preventDefault()}
+                  onPointerDown={(event) => {
+                    // Keep focus off the device soft keyboard / avoid stealing
+                    // caret focus from the input on touch devices.
+                    event.preventDefault();
+                  }}
                   onClick={() => handleKey(key)}
                   aria-label={key.action ?? label}
                   aria-pressed={

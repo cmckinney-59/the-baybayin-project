@@ -722,6 +722,24 @@ button:hover:not(:disabled) {
   width: 100%;
 }
 
+.transliteration-container.output-only-mode .textarea-wrapper.input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  pointer-events: none;
+}
+
+.transliteration-output[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-secondary, #6c757d);
+}
+
 .dictionary-output ul {
   list-style-type: none;
   padding: 0;

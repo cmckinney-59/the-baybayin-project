@@ -20,6 +20,11 @@ interface TransliteratorContainerProps {
   useKlinzhai?: boolean;
   selectedBaybayinFont?: BaybayinFontId;
   useSingleLineInput?: boolean;
+  /** Hide the Latin input and show only the transliterated output. */
+  outputOnlyMode?: boolean;
+  /** Hide the device soft keyboard (e.g. in output-only mode). */
+  suppressSoftKeyboard?: boolean;
+  onCursorChange?: (cursor: number) => void;
 }
 
 export default function TransliteratorContainer({
@@ -36,6 +41,9 @@ export default function TransliteratorContainer({
   useKlinzhai = false,
   selectedBaybayinFont,
   useSingleLineInput = false,
+  outputOnlyMode = false,
+  suppressSoftKeyboard = false,
+  onCursorChange,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -92,9 +100,12 @@ export default function TransliteratorContainer({
     <div
       className={`transliteration-container${
         useSingleLineInput ? " single-line-mode" : ""
-      }`}
+      }${outputOnlyMode ? " output-only-mode" : ""}`}
     >
-      <div className="textarea-wrapper">
+      <div
+        className={`textarea-wrapper${outputOnlyMode ? " input-hidden" : ""}`}
+        aria-hidden={outputOnlyMode || undefined}
+      >
         {useRichTextInput ? (
           <>
             <div
@@ -169,13 +180,22 @@ export default function TransliteratorContainer({
             placeholder="Enter text here..."
             rows={1}
             value={text}
+            tabIndex={outputOnlyMode ? -1 : undefined}
+            inputMode={suppressSoftKeyboard ? "none" : undefined}
+            readOnly={suppressSoftKeyboard}
             onChange={(e) => {
               const currentValue = e.target.value;
               onTextChange(currentValue);
             }}
+            onSelect={(e) => {
+              onCursorChange?.(e.currentTarget.selectionStart ?? 0);
+            }}
+            onBlur={(e) => {
+              onCursorChange?.(e.currentTarget.selectionStart ?? 0);
+            }}
           />
         )}
-        {text.length > 0 && (
+        {text.length > 0 && !outputOnlyMode && (
           <button
             className="clear-input-button"
             onClick={onClear}
@@ -191,6 +211,9 @@ export default function TransliteratorContainer({
           className={`transliteration-output ${getFontClass()} ${
             isBold ? "transliteration-bold" : ""
           }`}
+          data-placeholder={
+            outputOnlyMode && !transliteratedText ? "Output appears here..." : undefined
+          }
         >
           {transliteratedText}
         </div>
