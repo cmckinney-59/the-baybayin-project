@@ -70,3 +70,29 @@ export function toPhoneticInput(token: string, capitalize = false): string {
   const body = capitalize ? token.toUpperCase() : token.toLowerCase();
   return `/${body}/`;
 }
+
+/** Glyph → primary keyboard phonetic token. */
+const BAYBAYIN_GLYPH_TO_TOKEN: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const [id, glyph] of Object.entries(BAYBAYIN_KEYBOARD_GLYPH)) {
+    if (!glyph) continue;
+    const token = BAYBAYIN_KEYBOARD_PHONETIC_TOKEN[id];
+    if (!token) continue;
+    if (!map[glyph]) map[glyph] = token;
+  }
+  return map;
+})();
+
+/**
+ * Map Baybayin output text back to slash-phonetic Latin input
+ * (e.g. ᜊᜓᜃ → "/b//u//k/").
+ */
+export function phoneticFromBaybayinText(text: string): string {
+  return [...text]
+    .map((char) => {
+      const token = BAYBAYIN_GLYPH_TO_TOKEN[char];
+      if (!token) return char;
+      return toPhoneticInput(token, false);
+    })
+    .join("");
+}

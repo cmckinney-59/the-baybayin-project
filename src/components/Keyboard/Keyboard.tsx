@@ -28,7 +28,8 @@ export type KeyboardLayout = KeyboardKey[][];
 
 type KeyboardProps = {
   layout: KeyboardLayout;
-  onInsert: (value: string) => void;
+  /** Called with Latin/phonetic text for the input field and the glyph for the output field. */
+  onInsert: (payload: { inputValue: string; outputValue: string }) => void;
   onBackspace?: () => void;
   onEnter?: () => void;
   /** Optional font class for key labels (e.g. deseret-font). */
@@ -68,16 +69,19 @@ export default function Keyboard({
       return;
     }
     if (key.action === "space") {
-      onInsert(" ");
+      onInsert({ inputValue: " ", outputValue: " " });
       if (shift) setShift(false);
       return;
     }
 
-    const value = useShifted
+    const inputValue = useShifted
       ? (key.shiftValue ?? key.value ?? "")
       : (key.value ?? "");
-    if (value) {
-      onInsert(value);
+    const outputValue = useShifted
+      ? (key.shiftLabel ?? key.label)
+      : key.label;
+    if (inputValue || outputValue) {
+      onInsert({ inputValue, outputValue });
     }
     if (shift) setShift(false);
   };

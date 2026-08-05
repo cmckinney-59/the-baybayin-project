@@ -163,3 +163,41 @@ export function replacePhoneticSlashTokens(text: string): string {
     return deseretFromPhoneticToken(token) ?? match;
   });
 }
+
+/** Glyph → primary keyboard phonetic token (lowercase). */
+const DESERET_GLYPH_TO_TOKEN: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const [id, token] of Object.entries(DESERET_KEYBOARD_PHONETIC_TOKEN)) {
+    const upper = DESERET_PHONETIC_TO_UPPER[token];
+    if (!upper) continue;
+    // Prefer the first (primary) token if multiple phonemes map to one letter.
+    if (!map[upper]) map[upper] = token;
+    const lower = toDeseretLower(upper);
+    if (!map[lower]) map[lower] = token;
+    void id;
+  }
+  return map;
+})();
+
+function isDeseretCapitalLetter(char: string): boolean {
+  const codePoint = char.codePointAt(0);
+  return (
+    codePoint !== undefined &&
+    codePoint >= DESERET_CAPITAL_START &&
+    codePoint <= DESERET_CAPITAL_END
+  );
+}
+
+/**
+ * Map Deseret output text back to slash-phonetic Latin input
+ * (e.g. 𐐺𐐭𐐿 → "/b//oo//k/").
+ */
+export function phoneticFromDeseretText(text: string): string {
+  return [...text]
+    .map((char) => {
+      const token = DESERET_GLYPH_TO_TOKEN[char];
+      if (!token) return char;
+      return toPhoneticInput(token, isDeseretCapitalLetter(char));
+    })
+    .join("");
+}

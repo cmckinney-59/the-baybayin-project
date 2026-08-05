@@ -13,6 +13,8 @@ import {
   DEFAULT_BAYBAYIN_FONT_ID,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
+import { phoneticFromBaybayinText } from "../../data/BaybayinData/baybayinPhoneticMap";
 
 import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
@@ -51,9 +53,11 @@ export default function Transliterator({
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
   const [useSingleLineInput, setUseSingleLineInput] = useState<boolean>(true);
   const [outputOnlyMode, setOutputOnlyMode] = useState<boolean>(false);
-  const [keyboardCursor, setKeyboardCursor] = useState(0);
+  const [activeField, setActiveField] = useState<"input" | "output">("input");
+  const [inputCursor, setInputCursor] = useState(0);
+  const [outputCursor, setOutputCursor] = useState(0);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const outputRef = useRef<HTMLDivElement | null>(null);
+  const outputRef = useRef<HTMLTextAreaElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
@@ -65,6 +69,12 @@ export default function Transliterator({
       setOutputOnlyMode(false);
     }
   }, [showOnScreenKeyboard, outputOnlyMode]);
+
+  useEffect(() => {
+    if (outputOnlyMode) {
+      setActiveField("output");
+    }
+  }, [outputOnlyMode]);
 
   useEffect(() => {
     if (textareaRef.current && outputRef.current) {
@@ -92,31 +102,11 @@ export default function Transliterator({
     }
   }, [text, transliteratedText, useSingleLineInput, outputOnlyMode]);
 
-  useEffect(() => {
-    if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
-      const words = text.trim().split(/\s+/);
-      const baybayinProcessor = (word: string) =>
-        processBaybayinText(
-          word,
-          useXVowelKiller,
-          selectedBaybayinFont,
-          useHollowKudlits,
-          useUnicode,
-        );
-      const processedWords = words.map((word) => {
-        return wordsDictionary[word] || baybayinProcessor(word);
-      });
-      setTransliteratedText(processedWords.join(" "));
-    }
-  }, [
-    isBaybayin,
-    wordsDictionary,
-    text,
-    useXVowelKiller,
-    selectedBaybayinFont,
-    useHollowKudlits,
-    useUnicode,
-  ]);
+  const reverseOutputToInput = (output: string): string | null => {
+    if (isDeseret) return phoneticFromDeseretText(output);
+    if (isBaybayin) return phoneticFromBaybayinText(output);
+    return null;
+  };
 
   const handleChange = async (currentText: string): Promise<void> => {
     const words = currentText.trim().split(/\s+/);
@@ -145,10 +135,22 @@ export default function Transliterator({
         newDict[word] = processedWords[i];
       });
       setWordsDictionary(newDict);
-      setTransliteratedText(processedWords.join(" "));
+      const nextOutput = processedWords.join(" ");
+      setTransliteratedText(nextOutput);
+      setOutputCursor(nextOutput.length);
     } else {
       setWordsDictionary({});
       setTransliteratedText("");
+      setOutputCursor(0);
+    }
+  };
+
+  const syncInputFromOutput = (output: string) => {
+    setTransliteratedText(output);
+    const reversed = reverseOutputToInput(output);
+    if (reversed !== null) {
+      setText(reversed);
+      setInputCursor(reversed.length);
     }
   };
 
@@ -162,80 +164,159 @@ export default function Transliterator({
   useEffect(() => {
     if (!isPlqad) return;
     void handleChange(text);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror alphabet effect; handleChange uses latest text from closure
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [useKlinzhai]);
 
   // Re-process Baybayin when font or kudlit/vowel-killer options change.
   useEffect(() => {
     if (!isBaybayin) return;
     void handleChange(text);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- mirror useKlinzhai effect; handleChange uses latest text from closure
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode]);
+
+  // Keep Baybayin dictionary-driven output in sync when reviewing borrowed words.
+  useEffect(() => {
+    if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
+      const words = text.trim().split(/\s+/);
+      const baybayinProcessor = (word: string) =>
+        processBaybayinText(
+          word,
+          useXVowelKiller,
+          selectedBaybayinFont,
+          useHollowKudlits,
+          useUnicode,
+        );
+      const processedWords = words.map((word) => {
+        return wordsDictionary[word] || baybayinProcessor(word);
+      });
+      setTransliteratedText(processedWords.join(" "));
+    }
+  }, [
+    isBaybayin,
+    wordsDictionary,
+    text,
+    useXVowelKiller,
+    selectedBaybayinFont,
+    useHollowKudlits,
+    useUnicode,
+  ]);
 
   const handleClearInput = () => {
     setText("");
     setTransliteratedText("");
-    setKeyboardCursor(0);
+    setInputCursor(0);
+    setOutputCursor(0);
     clearWordsDictionary();
   };
 
-  const applyTextAtCursor = (nextText: string, nextCursor: number) => {
+  const applyInputAtCursor = (nextText: string, nextCursor: number) => {
     setText(nextText);
-    setKeyboardCursor(nextCursor);
+    setInputCursor(nextCursor);
     void handleChange(nextText);
     requestAnimationFrame(() => {
       const el = textareaRef.current;
       if (!el) return;
       el.setSelectionRange(nextCursor, nextCursor);
-
-      // Output-only mode: never focus the input so the phone keyboard stays closed.
       if (outputOnlyMode) {
         el.blur();
         return;
       }
-
       el.focus();
     });
   };
 
-  const getKeyboardSelection = () => {
-    const el = textareaRef.current;
-    if (el && document.activeElement === el) {
-      return {
-        start: el.selectionStart ?? keyboardCursor,
-        end: el.selectionEnd ?? keyboardCursor,
-      };
-    }
-    return { start: keyboardCursor, end: keyboardCursor };
+  const applyOutputAtCursor = (nextText: string, nextCursor: number) => {
+    syncInputFromOutput(nextText);
+    setOutputCursor(nextCursor);
+    requestAnimationFrame(() => {
+      const el = outputRef.current;
+      if (!el) return;
+      el.setSelectionRange(nextCursor, nextCursor);
+      if (outputOnlyMode) {
+        el.blur();
+        return;
+      }
+      el.focus();
+    });
   };
 
-  const handleKeyboardInsert = (value: string) => {
-    const { start, end } = getKeyboardSelection();
+  const getFieldSelection = (
+    field: "input" | "output",
+  ): { start: number; end: number } => {
+    const el = field === "input" ? textareaRef.current : outputRef.current;
+    const fallback = field === "input" ? inputCursor : outputCursor;
+    if (el && document.activeElement === el) {
+      return {
+        start: el.selectionStart ?? fallback,
+        end: el.selectionEnd ?? fallback,
+      };
+    }
+    return { start: fallback, end: fallback };
+  };
+
+  const targetField: "input" | "output" = outputOnlyMode
+    ? "output"
+    : activeField;
+
+  const handleKeyboardInsert = (payload: {
+    inputValue: string;
+    outputValue: string;
+  }) => {
+    if (targetField === "output") {
+      const { start, end } = getFieldSelection("output");
+      const value = payload.outputValue;
+      const nextText =
+        transliteratedText.slice(0, start) +
+        value +
+        transliteratedText.slice(end);
+      applyOutputAtCursor(nextText, start + value.length);
+      return;
+    }
+
+    const { start, end } = getFieldSelection("input");
+    const value = payload.inputValue;
     const nextText = text.slice(0, start) + value + text.slice(end);
-    applyTextAtCursor(nextText, start + value.length);
+    applyInputAtCursor(nextText, start + value.length);
   };
 
   const handleKeyboardBackspace = () => {
-    const { start, end } = getKeyboardSelection();
+    if (targetField === "output") {
+      const { start, end } = getFieldSelection("output");
+      if (start !== end) {
+        const nextText =
+          transliteratedText.slice(0, start) + transliteratedText.slice(end);
+        applyOutputAtCursor(nextText, start);
+        return;
+      }
+      if (start === 0) return;
+      const before = transliteratedText.slice(0, start);
+      const chars = [...before];
+      chars.pop();
+      const nextBefore = chars.join("");
+      const nextText = nextBefore + transliteratedText.slice(start);
+      applyOutputAtCursor(nextText, nextBefore.length);
+      return;
+    }
+
+    const { start, end } = getFieldSelection("input");
     if (start !== end) {
       const nextText = text.slice(0, start) + text.slice(end);
-      applyTextAtCursor(nextText, start);
+      applyInputAtCursor(nextText, start);
       return;
     }
     if (start === 0) return;
 
-    // Delete a whole slash phoneme (e.g. "/oo/") when the caret sits after one.
     const before = text.slice(0, start);
     const phonemeMatch = before.match(/\/[^/\n]+\/$/u);
     if (phonemeMatch) {
       const deleteCount = phonemeMatch[0].length;
       const nextText = text.slice(0, start - deleteCount) + text.slice(start);
-      applyTextAtCursor(nextText, start - deleteCount);
+      applyInputAtCursor(nextText, start - deleteCount);
       return;
     }
 
     const nextText = text.slice(0, start - 1) + text.slice(start);
-    applyTextAtCursor(nextText, start - 1);
+    applyInputAtCursor(nextText, start - 1);
   };
 
   return (
@@ -248,8 +329,12 @@ export default function Transliterator({
         outputRef={outputRef}
         onTextChange={(currentValue) => {
           setText(currentValue);
-          setKeyboardCursor(currentValue.length);
+          setInputCursor(currentValue.length);
           void handleChange(currentValue);
+        }}
+        onOutputChange={(currentValue) => {
+          syncInputFromOutput(currentValue);
+          setOutputCursor(currentValue.length);
         }}
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
@@ -259,14 +344,19 @@ export default function Transliterator({
         useSingleLineInput={useSingleLineInput}
         outputOnlyMode={outputOnlyMode}
         suppressSoftKeyboard={outputOnlyMode}
-        onCursorChange={setKeyboardCursor}
+        onInputFocus={() => setActiveField("input")}
+        onOutputFocus={() => setActiveField("output")}
+        onInputCursorChange={setInputCursor}
+        onOutputCursorChange={setOutputCursor}
       />
       {isDeseret && showOnScreenKeyboard && (
         <Keyboard
           layout={DESERET_KEYBOARD_LAYOUT}
           onInsert={handleKeyboardInsert}
           onBackspace={handleKeyboardBackspace}
-          onEnter={() => handleKeyboardInsert("\n")}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
           fontClass="deseret-font"
         />
       )}
@@ -275,7 +365,9 @@ export default function Transliterator({
           layout={BAYBAYIN_KEYBOARD_LAYOUT}
           onInsert={handleKeyboardInsert}
           onBackspace={handleKeyboardBackspace}
-          onEnter={() => handleKeyboardInsert("\n")}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
           fontClass="baybayin-font"
         />
       )}

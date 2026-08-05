@@ -11,8 +11,9 @@ interface TransliteratorContainerProps {
   transliteratedText: string;
   currentAlphabet: string;
   textareaRef: RefObject<HTMLTextAreaElement | HTMLDivElement | null>;
-  outputRef: RefObject<HTMLDivElement | null>;
+  outputRef: RefObject<HTMLTextAreaElement | null>;
   onTextChange: (value: string) => void;
+  onOutputChange: (value: string) => void;
   onClear: () => void;
   useRichTextInput?: boolean;
   aurebeshTechNumbers?: boolean;
@@ -24,7 +25,10 @@ interface TransliteratorContainerProps {
   outputOnlyMode?: boolean;
   /** Hide the device soft keyboard (e.g. in output-only mode). */
   suppressSoftKeyboard?: boolean;
-  onCursorChange?: (cursor: number) => void;
+  onInputFocus?: () => void;
+  onOutputFocus?: () => void;
+  onInputCursorChange?: (cursor: number) => void;
+  onOutputCursorChange?: (cursor: number) => void;
 }
 
 export default function TransliteratorContainer({
@@ -34,6 +38,7 @@ export default function TransliteratorContainer({
   textareaRef,
   outputRef,
   onTextChange,
+  onOutputChange,
   onClear,
   useRichTextInput = false,
   aurebeshTechNumbers = false,
@@ -43,7 +48,10 @@ export default function TransliteratorContainer({
   useSingleLineInput = false,
   outputOnlyMode = false,
   suppressSoftKeyboard = false,
-  onCursorChange,
+  onInputFocus,
+  onOutputFocus,
+  onInputCursorChange,
+  onOutputCursorChange,
 }: TransliteratorContainerProps) {
   const [isBold] = useState(false);
   const textareaHasText = text.length > 0;
@@ -73,7 +81,7 @@ export default function TransliteratorContainer({
   }, [useRichTextInput, textareaRef, text]);
 
   const getFontClass = () => {
-    if (!textareaHasText || !alphabetEntry) return "";
+    if ((!textareaHasText && !transliteratedText) || !alphabetEntry) return "";
     const matrix = alphabetEntry.outputFontClassMatrix;
     if (matrix) {
       return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
@@ -187,11 +195,14 @@ export default function TransliteratorContainer({
               const currentValue = e.target.value;
               onTextChange(currentValue);
             }}
+            onFocus={() => {
+              onInputFocus?.();
+            }}
             onSelect={(e) => {
-              onCursorChange?.(e.currentTarget.selectionStart ?? 0);
+              onInputCursorChange?.(e.currentTarget.selectionStart ?? 0);
             }}
             onBlur={(e) => {
-              onCursorChange?.(e.currentTarget.selectionStart ?? 0);
+              onInputCursorChange?.(e.currentTarget.selectionStart ?? 0);
             }}
           />
         )}
@@ -206,17 +217,29 @@ export default function TransliteratorContainer({
         )}
       </div>
       <div className="textarea-wrapper">
-        <div
+        <textarea
           ref={outputRef}
-          className={`transliteration-output ${getFontClass()} ${
-            isBold ? "transliteration-bold" : ""
-          }`}
-          data-placeholder={
-            outputOnlyMode && !transliteratedText ? "Output appears here..." : undefined
-          }
-        >
-          {transliteratedText}
-        </div>
+          className={`transliteration-output ${
+            transliteratedText ? getFontClass() : ""
+          } ${isBold ? "transliteration-bold" : ""}`}
+          placeholder="Output appears here..."
+          rows={1}
+          value={transliteratedText}
+          inputMode={suppressSoftKeyboard ? "none" : undefined}
+          aria-label="Transliterated output"
+          onChange={(e) => {
+            onOutputChange(e.target.value);
+          }}
+          onFocus={() => {
+            onOutputFocus?.();
+          }}
+          onSelect={(e) => {
+            onOutputCursorChange?.(e.currentTarget.selectionStart ?? 0);
+          }}
+          onBlur={(e) => {
+            onOutputCursorChange?.(e.currentTarget.selectionStart ?? 0);
+          }}
+        />
         {transliteratedText.length > 0 && (
           <button
             className="clear-output-button"
