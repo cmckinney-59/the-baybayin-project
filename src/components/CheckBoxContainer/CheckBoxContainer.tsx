@@ -142,6 +142,7 @@ export default function CheckboxContainer({
             title="Use single-line input and output boxes on mobile."
           />
         </span>
+        {checkBoxes}
         {showOutputOnlyOption && (
           <Checkbox
             checked={outputOnlyMode}
@@ -150,7 +151,6 @@ export default function CheckboxContainer({
             title="Hide the Latin input and type with the on-screen keyboard. The phone keyboard stays closed."
           />
         )}
-        {checkBoxes}
       </div>
     </>
   );
