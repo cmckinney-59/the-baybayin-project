@@ -6,6 +6,7 @@ import {
   BAYBAYIN_VOWEL_KILLERS as _vowelKillers,
 } from "../../data/BaybayinData/BAYBAYIN_DATA";
 import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import { baybayinFromPhoneticToken } from "../../data/BaybayinData/baybayinPhoneticMap";
 
 export default function processBaybayinText(
   text: string,
@@ -14,36 +15,82 @@ export default function processBaybayinText(
   useHollowKudlits = true,
   useUnicode = false,
 ): string {
+  const phoneticOptions = {
+    fontId,
+    useUnicode,
+    useHollowKudlits,
+    useXVowelKiller,
+  };
+
+  // Convert keyboard slash tokens (`/b/`, `/a/`, …) first so the Latin/Unicode
+  // pipelines don't mangle them (same pattern as Deseret).
+  let result = "";
+  const slashToken = /\/([^/\n]+)\//gu;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = slashToken.exec(text)) !== null) {
+    const plain = text.slice(lastIndex, match.index);
+    if (plain) {
+      result += processPlainBaybayin(
+        plain,
+        useXVowelKiller,
+        fontId,
+        useHollowKudlits,
+        useUnicode,
+      );
+    }
+    result += baybayinFromPhoneticToken(match[1], phoneticOptions) ?? match[0];
+    lastIndex = slashToken.lastIndex;
+  }
+  const trailing = text.slice(lastIndex);
+  if (trailing) {
+    result += processPlainBaybayin(
+      trailing,
+      useXVowelKiller,
+      fontId,
+      useHollowKudlits,
+      useUnicode,
+    );
+  }
+  return result;
+}
+
+function processPlainBaybayin(
+  text: string,
+  useXVowelKiller: boolean,
+  fontId: BaybayinFontId,
+  useHollowKudlits: boolean,
+  useUnicode: boolean,
+): string {
   let transliteratedText = text.toLowerCase();
 
   if (fontId === "noto-sans" || useUnicode) {
     return replaceLettersWithUnicode(transliteratedText, useHollowKudlits);
-  } else {
-    return replaceLettersWithLatinAlphabet(transliteratedText);
   }
+  return replaceLettersWithLatinAlphabet(transliteratedText, useXVowelKiller);
+}
 
-  function replaceLettersWithLatinAlphabet(transliteratedText: string): string {
-    transliteratedText = transliteratedText.replace(/sh/g, "siy");
-    transliteratedText = transliteratedText.replace(/ph/g, "f");
-    transliteratedText = transliteratedText.replace(/th/g, "t");
-    transliteratedText = transliteratedText.replace(/x/g, "k+s");
-    transliteratedText = capitalizeSubsequentVowels(transliteratedText);
-    transliteratedText = removeDuplicateConsonants(transliteratedText);
-    transliteratedText = transliteratedText
-      .replace(/\bng\b/g, "naN")
-      .replace(/\bmga\b/g, "maNa");
-    transliteratedText = transliteratedText.replace(/ng/g, "N");
-    transliteratedText = addPlusIfConsonant(
-      transliteratedText,
-      useXVowelKiller,
-    );
+function replaceLettersWithLatinAlphabet(
+  transliteratedText: string,
+  useXVowelKiller: boolean,
+): string {
+  transliteratedText = transliteratedText.replace(/sh/g, "siy");
+  transliteratedText = transliteratedText.replace(/ph/g, "f");
+  transliteratedText = transliteratedText.replace(/th/g, "t");
+  transliteratedText = transliteratedText.replace(/x/g, "k+s");
+  transliteratedText = capitalizeSubsequentVowels(transliteratedText);
+  transliteratedText = removeDuplicateConsonants(transliteratedText);
+  transliteratedText = transliteratedText
+    .replace(/\bng\b/g, "naN")
+    .replace(/\bmga\b/g, "maNa");
+  transliteratedText = transliteratedText.replace(/ng/g, "N");
+  transliteratedText = addPlusIfConsonant(transliteratedText, useXVowelKiller);
 
-    transliteratedText = removeAAfterConsonant(transliteratedText);
-    transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
-    transliteratedText = capitalizeVowel(transliteratedText);
-    transliteratedText = removeHyphensAndApostrophes(transliteratedText);
-    return transliteratedText;
-  }
+  transliteratedText = removeAAfterConsonant(transliteratedText);
+  transliteratedText = capitalizeVowelAfterHyphen(transliteratedText);
+  transliteratedText = capitalizeVowel(transliteratedText);
+  transliteratedText = removeHyphensAndApostrophes(transliteratedText);
+  return transliteratedText;
 }
 
 function capitalizeSubsequentVowels(text: string): string {
@@ -114,8 +161,7 @@ function addPlusIfConsonant(text: string, useXVowelKiller: boolean): string {
 
       return transformedWord;
     })
-    .join(" ")
-    .trim();
+    .join(" ");
 }
 
 function removeAAfterConsonant(text: string): string {
@@ -159,9 +205,36 @@ function replaceLettersWithUnicode(
   text = replaceIWithKudlitUnicode(text);
   text = replaceUWithKudlitUnicode(text);
   text = replaceStandaloneVowelsUnicode(text);
+  text = replaceExplicitPlusViramaUnicode(text);
   text = replaceStandaloneConsonantsUnicode(text);
+  text = text.replace(/\+/g, _vowelKillers.VIRAMA);
   text = removeHyphensAndApostrophes(text);
   return text;
+}
+
+/** Map Latin `b+` / `ng+` vowel-killer forms to a single Unicode consonant + virama. */
+function replaceExplicitPlusViramaUnicode(text: string): string {
+  text = text.replace(/ng\+/gi, _consonants.NG + _vowelKillers.VIRAMA);
+  const byLetter: Record<string, string> = {
+    b: _consonants.B,
+    k: _consonants.K,
+    d: _consonants.D,
+    g: _consonants.G,
+    h: _consonants.H,
+    l: _consonants.L,
+    m: _consonants.M,
+    n: _consonants.N,
+    p: _consonants.P,
+    r: _consonants.R,
+    s: _consonants.S,
+    t: _consonants.T,
+    w: _consonants.W,
+    y: _consonants.Y,
+  };
+  return text.replace(/([bcdfghlkmnprstwyz])\+/gi, (_match, letter: string) => {
+    const glyph = byLetter[letter.toLowerCase()];
+    return glyph ? glyph + _vowelKillers.VIRAMA : _match;
+  });
 }
 
 function replaceNgAndMgaUnicode(text: string): string {

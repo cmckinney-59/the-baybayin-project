@@ -2,20 +2,21 @@ import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
 import {
   BAYBAYIN_KEYBOARD_GLYPH,
   BAYBAYIN_KEYBOARD_PHONETIC_TOKEN,
-  toPhoneticInput,
 } from "./baybayinPhoneticMap";
 
 /**
- * Show Baybayin glyphs on the key; insert slash-delimited phonetic sound
- * into the Latin input (e.g. ᜀ → "/a/").
+ * Show Baybayin glyphs on the key; insert plain Latin phonetic text
+ * into the input (e.g. ᜀ → "a", ᜊ → "b").
  */
 function letterKey(id: string): KeyboardLayout[number][number] {
   const token = BAYBAYIN_KEYBOARD_PHONETIC_TOKEN[id] ?? id;
   const glyph = BAYBAYIN_KEYBOARD_GLYPH[id] ?? id;
+  // Virama is "+" in Latin-mapped fonts (not "x", which the processor maps to "k+s").
+  const value = id === "virama" || id === "pamudpod" ? "+" : token;
   return {
     id,
     label: glyph,
-    value: toPhoneticInput(token, false),
+    value,
   };
 }
 

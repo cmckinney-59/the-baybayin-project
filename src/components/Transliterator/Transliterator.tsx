@@ -14,7 +14,10 @@ import {
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
-import { phoneticFromBaybayinText } from "../../data/BaybayinData/baybayinPhoneticMap";
+import {
+  baybayinFromPhoneticToken,
+  phoneticFromBaybayinText,
+} from "../../data/BaybayinData/baybayinPhoneticMap";
 
 import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
@@ -264,7 +267,20 @@ export default function Transliterator({
   }) => {
     if (targetField === "output") {
       const { start, end } = getFieldSelection("output");
-      const value = payload.outputValue;
+      let value = payload.outputValue;
+      if (isBaybayin && payload.inputValue && payload.inputValue !== "\n") {
+        const token =
+          payload.inputValue === "+"
+            ? "x"
+            : payload.inputValue;
+        value =
+          baybayinFromPhoneticToken(token, {
+            fontId: selectedBaybayinFont,
+            useUnicode,
+            useHollowKudlits,
+            useXVowelKiller,
+          }) ?? payload.outputValue;
+      }
       const nextText =
         transliteratedText.slice(0, start) +
         value +
@@ -274,7 +290,10 @@ export default function Transliterator({
     }
 
     const { start, end } = getFieldSelection("input");
-    const value = payload.inputValue;
+    const value =
+      isBaybayin && useXVowelKiller && payload.inputValue === "+"
+        ? "x"
+        : payload.inputValue;
     const nextText = text.slice(0, start) + value + text.slice(end);
     applyInputAtCursor(nextText, start + value.length);
   };
@@ -307,11 +326,18 @@ export default function Transliterator({
     if (start === 0) return;
 
     const before = text.slice(0, start);
+    // Deseret slash-phonemes delete as one unit.
     const phonemeMatch = before.match(/\/[^/\n]+\/$/u);
     if (phonemeMatch) {
       const deleteCount = phonemeMatch[0].length;
       const nextText = text.slice(0, start - deleteCount) + text.slice(start);
       applyInputAtCursor(nextText, start - deleteCount);
+      return;
+    }
+    // Baybayin "ng" deletes as one unit.
+    if (isBaybayin && /ng$/i.test(before)) {
+      const nextText = text.slice(0, start - 2) + text.slice(start);
+      applyInputAtCursor(nextText, start - 2);
       return;
     }
 
@@ -340,6 +366,7 @@ export default function Transliterator({
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
+        useUnicode={useUnicode}
         useKlinzhai={useKlinzhai}
         useSingleLineInput={useSingleLineInput}
         outputOnlyMode={outputOnlyMode}
@@ -368,7 +395,7 @@ export default function Transliterator({
           onEnter={() =>
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
-          fontClass="baybayin-font"
+          fontClass="noto-sans-baybayin"
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (

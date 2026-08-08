@@ -2,8 +2,10 @@ import {
   BAYBAYIN_CONSONANTS,
   BAYBAYIN_VOWELS,
   BAYBAYIN_KUDLITS,
+  BAYBAYIN_KUDLITS_HOLLOW,
   BAYBAYIN_VOWEL_KILLERS,
 } from "./BAYBAYIN_DATA";
+import type { BaybayinFontId } from "./BAYBAYIN_FONTS_DATA";
 
 /** Primary phonetic token inserted by the on-screen keyboard for each key id. */
 export const BAYBAYIN_KEYBOARD_PHONETIC_TOKEN: Record<string, string> = {
@@ -35,7 +37,7 @@ export const BAYBAYIN_KEYBOARD_PHONETIC_TOKEN: Record<string, string> = {
   pamudpod: "x",
 };
 
-/** Glyph shown on each keyboard key. */
+/** Glyph shown on each keyboard key (Unicode Baybayin). */
 export const BAYBAYIN_KEYBOARD_GLYPH: Record<string, string> = {
   a: BAYBAYIN_VOWELS.A,
   e: BAYBAYIN_VOWELS.E,
@@ -65,6 +67,95 @@ export const BAYBAYIN_KEYBOARD_GLYPH: Record<string, string> = {
   pamudpod: BAYBAYIN_VOWEL_KILLERS.PAMUDPOD,
 };
 
+/**
+ * Latin-mapped font output for each phonetic token (Tagalog Doctrina / Bagwis / Stylized).
+ * Consonants are inherent-a forms (`b` = ba); kudlits are trailing vowel letters.
+ */
+const BAYBAYIN_PHONETIC_TO_LATIN: Record<string, string> = {
+  a: "A",
+  e: "e",
+  i: "I",
+  o: "o",
+  u: "U",
+  b: "b",
+  d: "d",
+  g: "g",
+  h: "h",
+  k: "k",
+  l: "l",
+  m: "m",
+  n: "n",
+  ng: "N",
+  p: "p",
+  r: "r",
+  s: "s",
+  t: "t",
+  w: "w",
+  y: "y",
+  x: "+",
+};
+
+export type BaybayinPhoneticOptions = {
+  fontId: BaybayinFontId;
+  useUnicode?: boolean;
+  useHollowKudlits?: boolean;
+  useXVowelKiller?: boolean;
+};
+
+function usesUnicodeOutput(options: BaybayinPhoneticOptions): boolean {
+  return options.fontId === "noto-sans" || !!options.useUnicode;
+}
+
+/**
+ * Map a slash token body (without slashes) to Baybayin output for the active font.
+ * Matches the glyph shown on the on-screen keyboard (inherent-a consonants, not virama forms).
+ */
+export function baybayinFromPhoneticToken(
+  token: string,
+  options: BaybayinPhoneticOptions,
+): string | null {
+  const key = token.toLowerCase();
+
+  if (usesUnicodeOutput(options)) {
+    if (key === "e" || key === "kudlit_e") {
+      return options.useHollowKudlits
+        ? (BAYBAYIN_KUDLITS_HOLLOW.E ?? BAYBAYIN_KUDLITS.E ?? "")
+        : (BAYBAYIN_KUDLITS.E ?? "");
+    }
+    if (key === "o" || key === "kudlit_o") {
+      return options.useHollowKudlits
+        ? (BAYBAYIN_KUDLITS_HOLLOW.O ?? BAYBAYIN_KUDLITS.O ?? "")
+        : (BAYBAYIN_KUDLITS.O ?? "");
+    }
+    if (key === "x" || key === "virama") {
+      return BAYBAYIN_VOWEL_KILLERS.VIRAMA;
+    }
+    if (key === "pamudpod") {
+      return BAYBAYIN_VOWEL_KILLERS.PAMUDPOD;
+    }
+    const glyph = BAYBAYIN_KEYBOARD_GLYPH[key];
+    return glyph || null;
+  }
+
+  if (key === "x" || key === "virama" || key === "pamudpod") {
+    return options.useXVowelKiller ? "x" : "+";
+  }
+  return BAYBAYIN_PHONETIC_TO_LATIN[key] ?? null;
+}
+
+/**
+ * Replace `/a/`, `/b/`, `/ng/`, etc. with Baybayin output for the active font.
+ * Unknown `/tokens/` are left as-is.
+ */
+export function replacePhoneticSlashTokens(
+  text: string,
+  options: BaybayinPhoneticOptions,
+): string {
+  return text.replace(/\/([^/\n]+)\//gu, (match, token: string) => {
+    return baybayinFromPhoneticToken(token, options) ?? match;
+  });
+}
+
 /** Wrap a phonetic token for Latin input, e.g. "a" → "/a/". */
 export function toPhoneticInput(token: string, capitalize = false): string {
   const body = capitalize ? token.toUpperCase() : token.toLowerCase();
@@ -84,15 +175,14 @@ const BAYBAYIN_GLYPH_TO_TOKEN: Record<string, string> = (() => {
 })();
 
 /**
- * Map Baybayin output text back to slash-phonetic Latin input
- * (e.g. ᜊᜓᜃ → "/b//u//k/").
+ * Map Baybayin output text back to plain Latin phonetic input
+ * (e.g. ᜊᜓᜃ → "buk").
  */
 export function phoneticFromBaybayinText(text: string): string {
   return [...text]
     .map((char) => {
       const token = BAYBAYIN_GLYPH_TO_TOKEN[char];
-      if (!token) return char;
-      return toPhoneticInput(token, false);
+      return token ?? char;
     })
     .join("");
 }
