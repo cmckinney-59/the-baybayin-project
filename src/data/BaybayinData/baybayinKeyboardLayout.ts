@@ -22,7 +22,7 @@ function letterKey(id: string): KeyboardLayout[number][number] {
 
 /** On-screen Baybayin alphabet layout. */
 export const BAYBAYIN_KEYBOARD_LAYOUT: KeyboardLayout = [
-  [letterKey("a"), letterKey("i"), letterKey("u")],
+  [],
   [
     letterKey("b"),
     letterKey("k"),
@@ -32,15 +32,20 @@ export const BAYBAYIN_KEYBOARD_LAYOUT: KeyboardLayout = [
     letterKey("l"),
     letterKey("m"),
     letterKey("n"),
-    letterKey("ng"),
-    letterKey("p"),
   ],
   [
+    letterKey("ng"),
+    letterKey("p"),
     letterKey("r"),
     letterKey("s"),
     letterKey("t"),
     letterKey("w"),
     letterKey("y"),
+  ],
+  [
+    letterKey("a"),
+    letterKey("i"),
+    letterKey("u"),
     letterKey("kudlit_e"),
     letterKey("kudlit_o"),
     letterKey("virama"),
