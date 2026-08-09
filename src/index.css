@@ -622,7 +622,8 @@ button:hover:not(:disabled) {
 }
 
 .transliteration-output {
-  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+  /* Font comes from alphabet classes (e.g. .baybayin-font); do not set
+     font-family here or it overrides those with equal specificity. */
   border: 1px solid var(--button-border);
   background-color: var(--bg-secondary);
   color: var(--text-primary);
