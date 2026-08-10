@@ -16,6 +16,7 @@ import {
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
 import {
   baybayinFromPhoneticToken,
+  mergeBaybayinKudlit,
   phoneticFromBaybayinText,
 } from "../../data/BaybayinData/baybayinPhoneticMap";
 
@@ -265,6 +266,37 @@ export default function Transliterator({
     inputValue: string;
     outputValue: string;
   }) => {
+    if (payload.inputValue === "\n") {
+      if (targetField === "output") {
+        const { start, end } = getFieldSelection("output");
+        const nextText =
+          transliteratedText.slice(0, start) +
+          "\n" +
+          transliteratedText.slice(end);
+        applyOutputAtCursor(nextText, start + 1);
+      } else {
+        applyInputAtCursor(text.slice(0, inputCursor) + "\n" + text.slice(inputCursor), inputCursor + 1);
+      }
+      return;
+    }
+
+    if (isBaybayin && payload.inputValue !== "\n") {
+      const insert =
+        useXVowelKiller && payload.inputValue === "+"
+          ? "x"
+          : payload.inputValue;
+      const sel = outputOnlyMode
+        ? { start: inputCursor, end: inputCursor }
+        : getFieldSelection("input");
+      const before = text.slice(0, sel.start);
+      const after = text.slice(sel.end);
+      const merged = mergeBaybayinKudlit(before, insert);
+      const inserted = merged ?? before + insert;
+      const nextText = inserted + after;
+      applyInputAtCursor(nextText, inserted.length);
+      return;
+    }
+
     if (targetField === "output") {
       const { start, end } = getFieldSelection("output");
       let value = payload.outputValue;
@@ -334,8 +366,24 @@ export default function Transliterator({
       applyInputAtCursor(nextText, start - deleteCount);
       return;
     }
-    // Baybayin "ng" deletes as one unit.
-    if (isBaybayin && /ng$/i.test(before)) {
+    // Baybayin inherent-a syllable from keyboard (ba, ka, nga, …).
+    if (isBaybayin && /nga$/i.test(before)) {
+      const nextText = text.slice(0, start - 3) + text.slice(start);
+      applyInputAtCursor(nextText, start - 3);
+      return;
+    }
+    if (isBaybayin && /[bcdfghjklmnpqrstwxy]a$/i.test(before)) {
+      const nextText = text.slice(0, start - 2) + text.slice(start);
+      applyInputAtCursor(nextText, start - 2);
+      return;
+    }
+    // Baybayin kudlit syllable (be, bi, nge, …).
+    if (isBaybayin && /ng[eiou]$/i.test(before)) {
+      const nextText = text.slice(0, start - 3) + text.slice(start);
+      applyInputAtCursor(nextText, start - 3);
+      return;
+    }
+    if (isBaybayin && /[bcdfghjklmnpqrstwxy][eiou]$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
       return;

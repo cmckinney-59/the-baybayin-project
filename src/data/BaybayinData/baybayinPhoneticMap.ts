@@ -67,6 +67,60 @@ export const BAYBAYIN_KEYBOARD_GLYPH: Record<string, string> = {
   pamudpod: BAYBAYIN_VOWEL_KILLERS.PAMUDPOD,
 };
 
+/** Consonant keys on the keyboard represent inherent-a syllables (ba, ka, …). */
+const INHERENT_A_CONSONANT_IDS = new Set([
+  "b",
+  "k",
+  "d",
+  "g",
+  "h",
+  "l",
+  "m",
+  "n",
+  "ng",
+  "p",
+  "r",
+  "s",
+  "t",
+  "w",
+  "y",
+]);
+
+/** Latin input inserted when a keyboard key is pressed. */
+export function baybayinKeyboardInputValue(id: string, token: string): string {
+  if (id === "virama" || id === "pamudpod") {
+    return "+";
+  }
+  if (INHERENT_A_CONSONANT_IDS.has(id)) {
+    return `${token}a`;
+  }
+  return token;
+}
+
+const KUDLIT_VOWELS = /^[eiou]$/i;
+
+/**
+ * When a kudlit vowel is typed after an inherent-a syllable (ba, ka, nga, …),
+ * replace the trailing `a` instead of appending (ba + e → be, nga + i → ngi).
+ * Returns null when the insert should be appended as-is.
+ */
+export function mergeBaybayinKudlit(
+  before: string,
+  vowel: string,
+): string | null {
+  if (!KUDLIT_VOWELS.test(vowel)) {
+    return null;
+  }
+  const v = vowel.toLowerCase();
+  if (/nga$/i.test(before)) {
+    return before.slice(0, -1) + v;
+  }
+  if (/[bcdfghjklmnpqrstwxy]a$/i.test(before)) {
+    return before.slice(0, -1) + v;
+  }
+  return null;
+}
+
 /**
  * Latin-mapped font output for each phonetic token (Tagalog Doctrina / Bagwis / Stylized).
  * Consonants are inherent-a forms (`b` = ba); kudlits are trailing vowel letters.
