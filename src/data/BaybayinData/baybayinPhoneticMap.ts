@@ -97,26 +97,26 @@ export function baybayinKeyboardInputValue(id: string, token: string): string {
   return token;
 }
 
-const KUDLIT_VOWELS = /^[eiou]$/i;
+const KUDLIT_MARKS = /^[eioux+]$/i;
 
 /**
- * When a kudlit vowel is typed after an inherent-a syllable (ba, ka, nga, …),
- * replace the trailing `a` instead of appending (ba + e → be, nga + i → ngi).
+ * When a kudlit or virama is typed after an inherent-a syllable (ba, ka, nga, …),
+ * replace the trailing `a` instead of appending (ba + e → be, ba + + → b+).
  * Returns null when the insert should be appended as-is.
  */
 export function mergeBaybayinKudlit(
   before: string,
-  vowel: string,
+  mark: string,
 ): string | null {
-  if (!KUDLIT_VOWELS.test(vowel)) {
+  if (!KUDLIT_MARKS.test(mark)) {
     return null;
   }
-  const v = vowel.toLowerCase();
+  const replacement = mark.toLowerCase();
   if (/nga$/i.test(before)) {
-    return before.slice(0, -1) + v;
+    return before.slice(0, -1) + replacement;
   }
   if (/[bcdfghjklmnpqrstwxy]a$/i.test(before)) {
-    return before.slice(0, -1) + v;
+    return before.slice(0, -1) + replacement;
   }
   return null;
 }

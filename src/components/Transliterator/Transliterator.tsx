@@ -377,13 +377,13 @@ export default function Transliterator({
       applyInputAtCursor(nextText, start - 2);
       return;
     }
-    // Baybayin kudlit syllable (be, bi, nge, …).
-    if (isBaybayin && /ng[eiou]$/i.test(before)) {
+    // Baybayin kudlit / virama syllable (be, bi, b+, nge, ng+, …).
+    if (isBaybayin && /ng[eioux+]$/i.test(before)) {
       const nextText = text.slice(0, start - 3) + text.slice(start);
       applyInputAtCursor(nextText, start - 3);
       return;
     }
-    if (isBaybayin && /[bcdfghjklmnpqrstwxy][eiou]$/i.test(before)) {
+    if (isBaybayin && /[bcdfghjklmnpqrstwxy][eioux+]$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
       return;
