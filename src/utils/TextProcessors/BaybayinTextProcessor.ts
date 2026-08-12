@@ -208,6 +208,8 @@ function replaceLettersWithUnicode(
   text = replaceExplicitPlusViramaUnicode(text);
   text = replaceStandaloneConsonantsUnicode(text);
   text = text.replace(/\+/g, _vowelKillers.VIRAMA);
+  text = text.replace(/,/g, "\u1735");
+  text = text.replace(/\./g, "\u1736");
   text = removeHyphensAndApostrophes(text);
   return text;
 }

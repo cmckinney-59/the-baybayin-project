@@ -50,6 +50,12 @@ export const BAYBAYIN_VOWEL_KILLERS = {
   PAMUDPOD: "\u1734",
 };
 
+/** Philippine single (comma) and double (period) punctuation — vertical lines. */
+export const BAYBAYIN_PUNCTUATION = {
+  SINGLE: "\u1735", // ᜵ — one vertical line (comma / pause)
+  DOUBLE: "\u1736", // ᜶ — two vertical lines (period / full stop)
+};
+
 export const BAYBAYIN_DATA: BaybayinData[] = [
   {
     symbol: BAYBAYIN_VOWELS.A,
@@ -172,13 +178,13 @@ export const BAYBAYIN_DATA: BaybayinData[] = [
     type: "punctuation",
   },
   {
-    symbol: ",",
+    symbol: BAYBAYIN_PUNCTUATION.SINGLE,
     letter: ",",
     sound: "",
     type: "punctuation",
   },
   {
-    symbol: ".",
+    symbol: BAYBAYIN_PUNCTUATION.DOUBLE,
     letter: ".",
     sound: "",
     type: "punctuation",

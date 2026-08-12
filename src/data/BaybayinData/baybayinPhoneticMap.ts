@@ -4,6 +4,7 @@ import {
   BAYBAYIN_KUDLITS,
   BAYBAYIN_KUDLITS_HOLLOW,
   BAYBAYIN_VOWEL_KILLERS,
+  BAYBAYIN_PUNCTUATION,
 } from "./BAYBAYIN_DATA";
 import type { BaybayinFontId } from "./BAYBAYIN_FONTS_DATA";
 
@@ -35,6 +36,8 @@ export const BAYBAYIN_KEYBOARD_PHONETIC_TOKEN: Record<string, string> = {
   kudlit_u: "u",
   virama: "x",
   pamudpod: "x",
+  comma: ",",
+  period: ".",
 };
 
 /** Glyph shown on each keyboard key (Unicode Baybayin). */
@@ -65,6 +68,8 @@ export const BAYBAYIN_KEYBOARD_GLYPH: Record<string, string> = {
   kudlit_u: BAYBAYIN_KUDLITS.U ?? "",
   virama: BAYBAYIN_VOWEL_KILLERS.VIRAMA,
   pamudpod: BAYBAYIN_VOWEL_KILLERS.PAMUDPOD,
+  comma: BAYBAYIN_PUNCTUATION.SINGLE,
+  period: BAYBAYIN_PUNCTUATION.DOUBLE,
 };
 
 /** Consonant keys on the keyboard represent inherent-a syllables (ba, ka, …). */
@@ -90,6 +95,9 @@ const INHERENT_A_CONSONANT_IDS = new Set([
 export function baybayinKeyboardInputValue(id: string, token: string): string {
   if (id === "virama" || id === "pamudpod") {
     return "+";
+  }
+  if (id === "comma" || id === "period") {
+    return token;
   }
   if (INHERENT_A_CONSONANT_IDS.has(id)) {
     return `${token}a`;
@@ -187,12 +195,24 @@ export function baybayinFromPhoneticToken(
     if (key === "pamudpod") {
       return BAYBAYIN_VOWEL_KILLERS.PAMUDPOD;
     }
+    if (key === "," || key === "comma") {
+      return BAYBAYIN_PUNCTUATION.SINGLE;
+    }
+    if (key === "." || key === "period") {
+      return BAYBAYIN_PUNCTUATION.DOUBLE;
+    }
     const glyph = BAYBAYIN_KEYBOARD_GLYPH[key];
     return glyph || null;
   }
 
   if (key === "x" || key === "virama" || key === "pamudpod") {
     return options.useXVowelKiller ? "x" : "+";
+  }
+  if (key === "," || key === "comma") {
+    return ",";
+  }
+  if (key === "." || key === "period") {
+    return ".";
   }
   return BAYBAYIN_PHONETIC_TO_LATIN[key] ?? null;
 }
