@@ -13,6 +13,11 @@ export type BaybayinFont = {
 
 export const BAYBAYIN_FONTS: BaybayinFont[] = [
   {
+    id: "noto-sans",
+    label: "Noto Sans Baybayin",
+    outputFontClass: "noto-sans-baybayin",
+  },
+  {
     id: "tagalog-doctrina",
     label: "Tagalog Doctrina 1593",
     outputFontClass: "baybayin-font",
@@ -28,14 +33,9 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     label: "Tagalog Stylized",
     outputFontClass: "baybayin-stylized-font",
   },
-  {
-    id: "noto-sans",
-    label: "Noto Sans Baybayin",
-    outputFontClass: "noto-sans-baybayin",
-  },
 ];
 
-export const DEFAULT_BAYBAYIN_FONT_ID: BaybayinFontId = "tagalog-doctrina";
+export const DEFAULT_BAYBAYIN_FONT_ID: BaybayinFontId = "noto-sans";
 
 export function getBaybayinFontById(id: BaybayinFontId): BaybayinFont {
   return (

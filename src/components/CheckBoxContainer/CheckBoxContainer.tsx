@@ -91,10 +91,6 @@ export default function CheckboxContainer({
   if (currentAlphabet === "Baybayin") {
     checkBoxes = (
       <>
-        <BaybayinFontSelector
-          selectedFontId={selectedBaybayinFont}
-          onChange={setSelectedBaybayinFont}
-        />
         {selectedBaybayinFont === "noto-sans" && (
           <Checkbox
             checked={useHollowKudlits}
@@ -133,6 +129,14 @@ export default function CheckboxContainer({
 
   return (
     <>
+      {currentAlphabet === "Baybayin" && (
+        <div className="baybayin-font-selector-row">
+          <BaybayinFontSelector
+            selectedFontId={selectedBaybayinFont}
+            onChange={setSelectedBaybayinFont}
+          />
+        </div>
+      )}
       <div className="checkbox-label-row">
         <span className="mobile-only-control">
           <Checkbox

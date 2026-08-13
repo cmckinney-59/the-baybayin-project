@@ -1002,6 +1002,13 @@ button:hover:not(:disabled) {
   margin-bottom: 0;
 }
 
+.baybayin-font-selector-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 0;
+}
+
 .baybayin-font-selector {
   display: inline-flex;
   align-items: center;

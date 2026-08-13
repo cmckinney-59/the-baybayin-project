@@ -208,6 +208,10 @@ export function baybayinFromPhoneticToken(
   if (key === "x" || key === "virama" || key === "pamudpod") {
     return options.useXVowelKiller ? "x" : "+";
   }
+  if (key === "kudlit_e") return "e";
+  if (key === "kudlit_i") return "i";
+  if (key === "kudlit_o") return "o";
+  if (key === "kudlit_u") return "u";
   if (key === "," || key === "comma") {
     return ",";
   }

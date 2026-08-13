@@ -11,6 +11,7 @@ import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
+  getBaybayinFontClass,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
@@ -22,7 +23,7 @@ import {
 
 import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
-import { BAYBAYIN_KEYBOARD_LAYOUT } from "../../data/BaybayinData/baybayinKeyboardLayout";
+import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -437,13 +438,22 @@ export default function Transliterator({
       )}
       {isBaybayin && showOnScreenKeyboard && (
         <Keyboard
-          layout={BAYBAYIN_KEYBOARD_LAYOUT}
+          layout={getBaybayinKeyboardLayout({
+            fontId: selectedBaybayinFont,
+            useUnicode,
+            useHollowKudlits,
+            useXVowelKiller,
+          })}
           onInsert={handleKeyboardInsert}
           onBackspace={handleKeyboardBackspace}
           onEnter={() =>
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
-          fontClass="noto-sans-baybayin"
+          fontClass={
+            useUnicode || selectedBaybayinFont === "noto-sans"
+              ? getBaybayinFontClass("noto-sans")
+              : getBaybayinFontClass(selectedBaybayinFont)
+          }
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (

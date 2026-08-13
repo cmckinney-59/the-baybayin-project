@@ -121,7 +121,7 @@ export default function Keyboard({
                   type="button"
                   className={`${styles.key} ${isActive ? styles.keyActive : ""} ${
                     key.action ? styles.keyAction : styles.keyLetter
-                  } ${fontClass}`.trim()}
+                  } ${isLetterKey ? fontClass : ""}`.trim()}
                   style={isLetterKey ? undefined : { flex: key.width ?? 1 }}
                   onPointerDown={(event) => {
                     // Keep focus off the device soft keyboard / avoid stealing
