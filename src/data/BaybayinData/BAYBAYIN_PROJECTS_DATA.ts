@@ -1,8 +1,10 @@
-import howToReadBaybayinPdf from "../../assets/projects/HowToReadBaybayin.pdf";
-import mateo1Pdf from "../../assets/projects/Mateo-1.pdf";
-import angBuhayNaCristoPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo.pdf";
-import angBuhayNaCristoParallelPdf from "../../assets/projects/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
-import lupangHinirangZip from "../../assets/projects/LupangHinirang/LupangHinirang.zip";
+import howToReadBaybayinPdf from "../../assets/projects/Baybayin/HowToReadBaybayin.pdf";
+import lupangHinirangZip from "../../assets/projects/Baybayin/LupangHinirang/LupangHinirang.zip";
+import mateo1Pdf from "../../assets/projects/Baybayin/Mateo-1.pdf";
+import angBuhayNaCristoPdf from "../../assets/projects/Baybayin/AngBuhayNaCristo/AngBuhayNaCristo.pdf";
+import angBuhayNaCristoParallelPdf from "../../assets/projects/Baybayin/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
+import angPagpapanumbalikPdf from "../../assets/projects/Baybayin/AngPagpapanumbalik/AngPagpapanumbalik.pdf";
+import angPagpapanumbalikParallelPdf from "../../assets/projects/Baybayin/AngPagpapanumbalik/AngPagpapanumbalik_Parallel.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [
@@ -13,6 +15,14 @@ export const PROJECTS_DATA: Project[] = [
     fileName: "HowToReadBaybayin.pdf",
     fileType: "pdf",
     description: "A quick guide to reading the Baybayin alphabet.",
+  },
+  {
+    name: "Lupang Hinirang",
+    status: "Downloadable",
+    fileUrl: lupangHinirangZip,
+    fileName: "LupangHinirang.zip",
+    fileType: "zip",
+    description: "Various Baybayinversions of the Philippine National Anthem.",
   },
   {
     name: "Mateo 1",
@@ -40,12 +50,22 @@ export const PROJECTS_DATA: Project[] = [
     description: "Ang Buhay Na Cristo: Tagalog - Baybayin Parallel",
   },
   {
-    name: "Lupang Hinirang",
+    name: "Ang Pagpapanumbalik",
     status: "Downloadable",
-    fileUrl: lupangHinirangZip,
-    fileName: "LupangHinirang.zip",
-    fileType: "zip",
-    description: "Various Baybayinversions of the Philippine National Anthem.",
+    fileUrl: angPagpapanumbalikPdf,
+    fileName: "AngPagpapanumbalik.pdf",
+    fileType: "pdf",
+    description:
+      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
+  },
+  {
+    name: "Ang Pagpapanumbalik: Parallel",
+    status: "Downloadable",
+    fileUrl: angPagpapanumbalikParallelPdf,
+    fileName: "AngPagpapanumbalik_Parallel.pdf",
+    fileType: "pdf",
+    description:
+      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
   {
     name: "Ang Bagong Tipan",
@@ -58,13 +78,7 @@ export const PROJECTS_DATA: Project[] = [
     description: "Tagalog Book of Mormon",
   },
   {
-    name: "Ang Pagpapahayag sa Mag-anak",
-    status: "Final Draft In Review",
-    description:
-      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
-  },
-  {
-    name: "Ang Pagpapanumbalik",
+    name: "Ang Mag-anak",
     status: "Final Draft In Review",
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",

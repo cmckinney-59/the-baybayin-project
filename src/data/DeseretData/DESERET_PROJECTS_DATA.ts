@@ -1,5 +1,5 @@
-import theFamilyPdf from "../../assets/projects/Deseret_TheFamily/The Family_Deseret.pdf";
-import theFamilyParallelPdf from "../../assets/projects/Deseret_TheFamily/The Family_Deseret_Parallel.pdf";
+import theFamilyPdf from "../../assets/projects/Deseret/TheFamily/The Family_Deseret.pdf";
+import theFamilyParallelPdf from "../../assets/projects/Deseret/TheFamily/The Family_Deseret_Parallel.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [

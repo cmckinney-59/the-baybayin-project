@@ -1,8 +1,8 @@
 import type { Project } from "../../models/models";
-import theFamilyCanonPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Canon.pdf";
-import theFamilyCanonParallelPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Canon_Parallel.pdf";
-import theFamilyLegendsPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Legends.pdf";
-import theFamilyLegendsParallelPdf from "../../assets/projects/Aurebesh_TheFamily/TheFamily_Aurebesh_Legends_Parallel.pdf";
+import theFamilyCanonPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Canon.pdf";
+import theFamilyCanonParallelPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Canon_Parallel.pdf";
+import theFamilyLegendsPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Legends.pdf";
+import theFamilyLegendsParallelPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Legends_Parallel.pdf";
 
 export const PROJECTS_DATA: Project[] = [
   {

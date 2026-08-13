@@ -1,4 +1,5 @@
 import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
+import howToReadBaybayinPdf from "../../../../assets/projects/Baybayin/HowToReadBaybayin.pdf";
 
 export default function WhatIsBaybayin() {
   return (
@@ -28,7 +29,7 @@ export default function WhatIsBaybayin() {
         To explore Baybayin further, read the "How To Read" section, or download
         our comprehensive{" "}
         <a
-          href="/src/assets/projects/BaybayinHowToReadV2.pdf"
+          href={howToReadBaybayinPdf}
           download="HowToReadBaybayin.pdf"
           className="link"
         >
