@@ -16,7 +16,6 @@ import {
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
 import {
-  baybayinFromPhoneticToken,
   mergeBaybayinKudlit,
   phoneticFromBaybayinText,
 } from "../../data/BaybayinData/baybayinPhoneticMap";
@@ -300,20 +299,8 @@ export default function Transliterator({
 
     if (targetField === "output") {
       const { start, end } = getFieldSelection("output");
-      let value = payload.outputValue;
-      if (isBaybayin && payload.inputValue && payload.inputValue !== "\n") {
-        const token =
-          payload.inputValue === "+"
-            ? "x"
-            : payload.inputValue;
-        value =
-          baybayinFromPhoneticToken(token, {
-            fontId: selectedBaybayinFont,
-            useUnicode,
-            useHollowKudlits,
-            useXVowelKiller,
-          }) ?? payload.outputValue;
-      }
+      // Key labels are already font/kudlit-aware (incl. hollow vs solid).
+      const value = payload.outputValue;
       const nextText =
         transliteratedText.slice(0, start) +
         value +

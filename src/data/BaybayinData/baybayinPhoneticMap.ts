@@ -179,15 +179,22 @@ export function baybayinFromPhoneticToken(
   const key = token.toLowerCase();
 
   if (usesUnicodeOutput(options)) {
-    if (key === "e" || key === "kudlit_e") {
+    // Hollow kudlits (e/o) vs solid kudlits (i/u) when the option is on.
+    if (key === "kudlit_e" || key === "e") {
       return options.useHollowKudlits
         ? (BAYBAYIN_KUDLITS_HOLLOW.E ?? BAYBAYIN_KUDLITS.E ?? "")
         : (BAYBAYIN_KUDLITS.E ?? "");
     }
-    if (key === "o" || key === "kudlit_o") {
+    if (key === "kudlit_i") {
+      return BAYBAYIN_KUDLITS.I ?? "";
+    }
+    if (key === "kudlit_o" || key === "o") {
       return options.useHollowKudlits
         ? (BAYBAYIN_KUDLITS_HOLLOW.O ?? BAYBAYIN_KUDLITS.O ?? "")
         : (BAYBAYIN_KUDLITS.O ?? "");
+    }
+    if (key === "kudlit_u") {
+      return BAYBAYIN_KUDLITS.U ?? "";
     }
     if (key === "x" || key === "virama") {
       return BAYBAYIN_VOWEL_KILLERS.VIRAMA;
