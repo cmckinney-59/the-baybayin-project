@@ -101,14 +101,12 @@ export default function CheckboxContainer({
         )}
         {showExperimentalFeatures && (
           <>
-            {selectedBaybayinFont !== "noto-sans" && (
-              <Checkbox
-                checked={useUnicode}
-                onChange={setUseUnicode}
-                label="Use Unicode"
-                title="Output real Baybayin Unicode characters while keeping the selected font."
-              />
-            )}
+            <Checkbox
+              checked={useUnicode}
+              onChange={setUseUnicode}
+              label="Use Unicode"
+              title="Output real Baybayin Unicode characters while keeping the selected font."
+            />
             <Checkbox
               checked={textContainsBorrowedWords}
               onChange={setTextContainsBorrowedWords}
