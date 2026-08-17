@@ -66,8 +66,7 @@ export default function Transliterator({
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
-  const showOnScreenKeyboard =
-    showExperimentalFeatures && (isDeseret || isBaybayin);
+  const showOnScreenKeyboard = isDeseret || isBaybayin;
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
     selectedBaybayinFont,
     useUnicode,

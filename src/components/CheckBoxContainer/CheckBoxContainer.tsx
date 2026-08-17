@@ -1,6 +1,5 @@
 import Checkbox from "../CheckBox/Checkbox";
 import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
-import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import {
   baybayinSupportsUnicodeOption,
   getBaybayinFontById,
@@ -57,7 +56,6 @@ export default function CheckboxContainer({
   setOutputOnlyMode,
 }: CheckboxContainerProps) {
   let checkBoxes = null;
-  const { showExperimentalFeatures } = useExperimentalFeatures();
   const selectedBaybayinFontEntry = getBaybayinFontById(selectedBaybayinFont);
 
   if (currentAlphabet === "Aurebesh") {
@@ -100,29 +98,25 @@ export default function CheckboxContainer({
             title="Use hollow kudlit marks for e/o (vs filled marks for i/u)."
           />
         )}
-        {showExperimentalFeatures && (
-          <>
-            {baybayinSupportsUnicodeOption(selectedBaybayinFont) && (
-              <Checkbox
-                checked={useUnicode}
-                onChange={setUseUnicode}
-                label="Use Unicode"
-                title="Output real Baybayin Unicode characters while keeping the selected font."
-              />
-            )}
-            <Checkbox
-              checked={textContainsBorrowedWords}
-              onChange={setTextContainsBorrowedWords}
-              label="Text contains borrowed words."
-            />
-            {selectedBaybayinFontEntry.supportsXVowelKiller && (
-              <Checkbox
-                checked={useXVowelKiller}
-                onChange={setUseXVowelKiller}
-                label='Use "x" vowel killer.'
-              />
-            )}
-          </>
+        {baybayinSupportsUnicodeOption(selectedBaybayinFont) && (
+          <Checkbox
+            checked={useUnicode}
+            onChange={setUseUnicode}
+            label="Use Unicode"
+            title="Output real Baybayin Unicode characters while keeping the selected font."
+          />
+        )}
+        <Checkbox
+          checked={textContainsBorrowedWords}
+          onChange={setTextContainsBorrowedWords}
+          label="Text contains borrowed words."
+        />
+        {selectedBaybayinFontEntry.supportsXVowelKiller && (
+          <Checkbox
+            checked={useXVowelKiller}
+            onChange={setUseXVowelKiller}
+            label='Use "x" vowel killer.'
+          />
         )}
       </>
     );
