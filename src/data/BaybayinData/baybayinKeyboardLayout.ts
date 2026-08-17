@@ -25,16 +25,15 @@ function letterKey(
 }
 
 /**
- * On-screen Baybayin layout whose key labels match the active font
- * (Unicode glyphs for Noto / Use Unicode; Latin-mapped letters otherwise).
- * When hollow kudlits are enabled, e/o (hollow) and i/u (solid) each get a key.
+ * On-screen Baybayin layout whose key labels always match the selected font.
+ * When hollow kudlits are enabled, e/o (hollow) and i/u (solid) each get a key
+ * only for the Unicode-capable Noto Sans Baybayin font.
  */
 export function getBaybayinKeyboardLayout(
   options: BaybayinPhoneticOptions,
 ): KeyboardLayout {
   const showSeparateHollowKudlits =
-    options.useHollowKudlits &&
-    (options.fontId === "noto-sans" || !!options.useUnicode);
+    options.useHollowKudlits && options.fontId === "noto-sans";
 
   const kudlitKeys = showSeparateHollowKudlits
     ? [

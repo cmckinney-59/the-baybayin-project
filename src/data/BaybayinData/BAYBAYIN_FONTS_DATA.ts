@@ -8,6 +8,8 @@ export type BaybayinFont = {
   id: BaybayinFontId;
   label: string;
   outputFontClass: string;
+  /** When true, the user can toggle Latin-mapped vs Unicode output. */
+  supportsUnicodeOption?: boolean;
   supportsXVowelKiller?: boolean;
 };
 
@@ -21,6 +23,7 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     id: "tagalog-doctrina",
     label: "Tagalog Doctrina 1593",
     outputFontClass: "baybayin-font",
+    supportsUnicodeOption: true,
   },
   {
     id: "bagwis",
@@ -32,8 +35,24 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     id: "stylized",
     label: "Tagalog Stylized",
     outputFontClass: "baybayin-stylized-font",
+    supportsUnicodeOption: true,
   },
 ];
+
+/** Fonts that expose the "Use Unicode" checkbox (Tagalog Doctrina, Tagalog Stylized). */
+export function baybayinSupportsUnicodeOption(fontId: BaybayinFontId): boolean {
+  return !!getBaybayinFontById(fontId).supportsUnicodeOption;
+}
+
+/** Whether Baybayin output should use Unicode glyphs for the active font + option. */
+export function baybayinUsesUnicodeOutput(
+  fontId: BaybayinFontId,
+  useUnicodeOption: boolean,
+): boolean {
+  if (fontId === "noto-sans") return true;
+  if (fontId === "bagwis") return false;
+  return useUnicodeOption;
+}
 
 export const DEFAULT_BAYBAYIN_FONT_ID: BaybayinFontId = "noto-sans";
 

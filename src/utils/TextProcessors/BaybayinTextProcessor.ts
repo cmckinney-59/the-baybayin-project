@@ -5,7 +5,10 @@ import {
   BAYBAYIN_KUDLITS_HOLLOW as _kudlitsHollow,
   BAYBAYIN_VOWEL_KILLERS as _vowelKillers,
 } from "../../data/BaybayinData/BAYBAYIN_DATA";
-import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import {
+  baybayinUsesUnicodeOutput,
+  type BaybayinFontId,
+} from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { baybayinFromPhoneticToken } from "../../data/BaybayinData/baybayinPhoneticMap";
 
 export default function processBaybayinText(
@@ -64,7 +67,7 @@ function processPlainBaybayin(
 ): string {
   let transliteratedText = text.toLowerCase();
 
-  if (fontId === "noto-sans" || useUnicode) {
+  if (baybayinUsesUnicodeOutput(fontId, useUnicode)) {
     return replaceLettersWithUnicode(transliteratedText, useHollowKudlits);
   }
   return replaceLettersWithLatinAlphabet(transliteratedText, useXVowelKiller);

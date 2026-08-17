@@ -6,7 +6,10 @@ import {
   BAYBAYIN_VOWEL_KILLERS,
   BAYBAYIN_PUNCTUATION,
 } from "./BAYBAYIN_DATA";
-import type { BaybayinFontId } from "./BAYBAYIN_FONTS_DATA";
+import {
+  baybayinUsesUnicodeOutput,
+  type BaybayinFontId,
+} from "./BAYBAYIN_FONTS_DATA";
 
 /** Primary phonetic token inserted by the on-screen keyboard for each key id. */
 export const BAYBAYIN_KEYBOARD_PHONETIC_TOKEN: Record<string, string> = {
@@ -165,7 +168,10 @@ export type BaybayinPhoneticOptions = {
 };
 
 function usesUnicodeOutput(options: BaybayinPhoneticOptions): boolean {
-  return options.fontId === "noto-sans" || !!options.useUnicode;
+  return baybayinUsesUnicodeOutput(
+    options.fontId,
+    !!options.useUnicode,
+  );
 }
 
 /**

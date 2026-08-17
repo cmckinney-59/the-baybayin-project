@@ -11,6 +11,7 @@ import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
+  baybayinUsesUnicodeOutput,
   getBaybayinFontClass,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
@@ -67,6 +68,10 @@ export default function Transliterator({
   const isDeseret = currentAlphabet === "Deseret";
   const showOnScreenKeyboard =
     showExperimentalFeatures && (isDeseret || isBaybayin);
+  const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
+    selectedBaybayinFont,
+    useUnicode,
+  );
 
   useEffect(() => {
     if (!showOnScreenKeyboard && outputOnlyMode) {
@@ -128,7 +133,7 @@ export default function Transliterator({
           useXVowelKiller,
           selectedBaybayinFont,
           useHollowKudlits,
-          useUnicode,
+          baybayinUnicodeOutput,
         );
     }
     if (processWord) {
@@ -188,7 +193,7 @@ export default function Transliterator({
           useXVowelKiller,
           selectedBaybayinFont,
           useHollowKudlits,
-          useUnicode,
+          baybayinUnicodeOutput,
         );
       const processedWords = words.map((word) => {
         return wordsDictionary[word] || baybayinProcessor(word);
@@ -402,7 +407,6 @@ export default function Transliterator({
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
-        useUnicode={useUnicode}
         useKlinzhai={useKlinzhai}
         useSingleLineInput={useSingleLineInput}
         outputOnlyMode={outputOnlyMode}
@@ -427,7 +431,7 @@ export default function Transliterator({
         <Keyboard
           layout={getBaybayinKeyboardLayout({
             fontId: selectedBaybayinFont,
-            useUnicode,
+            useUnicode: false,
             useHollowKudlits,
             useXVowelKiller,
           })}
@@ -436,11 +440,7 @@ export default function Transliterator({
           onEnter={() =>
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
-          fontClass={
-            useUnicode || selectedBaybayinFont === "noto-sans"
-              ? getBaybayinFontClass("noto-sans")
-              : getBaybayinFontClass(selectedBaybayinFont)
-          }
+          fontClass={getBaybayinFontClass(selectedBaybayinFont)}
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (

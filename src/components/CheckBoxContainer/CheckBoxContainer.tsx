@@ -2,6 +2,7 @@ import Checkbox from "../CheckBox/Checkbox";
 import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import {
+  baybayinSupportsUnicodeOption,
   getBaybayinFontById,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
@@ -101,12 +102,14 @@ export default function CheckboxContainer({
         )}
         {showExperimentalFeatures && (
           <>
-            <Checkbox
-              checked={useUnicode}
-              onChange={setUseUnicode}
-              label="Use Unicode"
-              title="Output real Baybayin Unicode characters while keeping the selected font."
-            />
+            {baybayinSupportsUnicodeOption(selectedBaybayinFont) && (
+              <Checkbox
+                checked={useUnicode}
+                onChange={setUseUnicode}
+                label="Use Unicode"
+                title="Output real Baybayin Unicode characters while keeping the selected font."
+              />
+            )}
             <Checkbox
               checked={textContainsBorrowedWords}
               onChange={setTextContainsBorrowedWords}
