@@ -1,5 +1,6 @@
 import CollapsibleSection from "../CollapsibleSection/CollapsibleSection";
 import DownloadFontButton from "../Buttons/DownloadFontButton";
+import FontsTable from "./FontsTable";
 
 export default function HowToUse() {
   return (
@@ -11,6 +12,7 @@ export default function HowToUse() {
       </p>
       <p>Download and install the font to see it in Word or Excel.</p>
       <DownloadFontButton />
+      <FontsTable />
     </CollapsibleSection>
   );
 }

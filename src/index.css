@@ -1422,6 +1422,17 @@ button:hover:not(:disabled) {
   color: var(--text-primary);
 }
 
+.fonts-table td:first-child {
+  font-size: 14px;
+  text-align: left;
+  background-color: transparent;
+}
+
+.fonts-table-sample {
+  font-size: 1.35rem;
+  text-align: center;
+}
+
 .letter-blue {
   font-weight: bold;
   color: #64b5f6 !important;
