@@ -6,7 +6,16 @@ export type FontTableRow = {
   name: string;
   fontClass: string;
   sample: string;
+  /** Path under `src/assets/fonts/`. */
+  downloadPath: string;
+  downloadName: string;
 };
+
+const FONT_ASSETS = import.meta.glob("../assets/fonts/**/*.{zip,ttf,otf,TTF,OTF}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
 
 const AUREBESH_FONT_ROWS: FontTableRow[] = [
   {
@@ -14,24 +23,32 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     name: "Aurebesh Canon",
     fontClass: "aurebesh-font-canon",
     sample: "Aurek",
+    downloadPath: "aurebesh/AurebeshAF-Canon.otf",
+    downloadName: "AurebeshAF-Canon.otf",
   },
   {
     id: "canon-tech",
     name: "Aurebesh Canon Tech",
     fontClass: "aurebesh-font-canon-tech",
     sample: "1138",
+    downloadPath: "aurebesh/AurebeshAF-CanonTech.otf",
+    downloadName: "AurebeshAF-CanonTech.otf",
   },
   {
     id: "legends",
     name: "Aurebesh Legends",
     fontClass: "aurebesh-font-legends",
     sample: "Aurek",
+    downloadPath: "aurebesh/AurebeshAF-Legends.otf",
+    downloadName: "AurebeshAF-Legends.otf",
   },
   {
     id: "legends-tech",
     name: "Aurebesh Legends Tech",
     fontClass: "aurebesh-font-legends-tech",
     sample: "1138",
+    downloadPath: "aurebesh/AurebeshAF-LegendsTech.otf",
+    downloadName: "AurebeshAF-LegendsTech.otf",
   },
 ];
 
@@ -41,32 +58,79 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     name: "Plqad (pIqaD)",
     fontClass: "plqad-font",
     sample: "tlhIngan",
+    downloadPath: "klingon/klingon.zip",
+    downloadName: "klingon.zip",
   },
   {
     id: "klinzhai",
     name: "Plqad Klinzhai",
     fontClass: "plqad-font-klinzhai",
     sample: "Hello",
+    downloadPath: "klingon/Klinzhai.ttf",
+    downloadName: "Klinzhai.ttf",
   },
 ];
 
-/** Preview text shown for each Baybayin font in the fonts table. */
-const BAYBAYIN_FONT_SAMPLE: Record<string, string> = {
-  "noto-sans": "ᜀᜊᜃ",
-  "tagalog-doctrina": "Aba",
-  bagwis: "Aba",
-  stylized: "Aba",
+const BAYBAYIN_FONT_DOWNLOAD: Record<
+  string,
+  { downloadPath: string; downloadName: string; sample: string }
+> = {
+  "noto-sans": {
+    sample: "ᜋᜊᜓᜑᜌ᜔",
+    downloadPath: "baybayin/NotoSansTagalog-Regular.ttf",
+    downloadName: "NotoSansTagalog-Regular.ttf",
+  },
+  "tagalog-doctrina": {
+    sample: "Mbuhy+",
+    downloadPath: "baybayin/TagDoc93.ttf",
+    downloadName: "TagDoc93.ttf",
+  },
+  bagwis: {
+    sample: "Mabuhayx",
+    downloadPath: "baybayin/bagwis-baybayin-font.zip",
+    downloadName: "bagwis-baybayin-font.zip",
+  },
+  stylized: {
+    sample: "Mbuhy+",
+    downloadPath: "baybayin/tagalog-stylized-font.zip",
+    downloadName: "tagalog-stylized-font.zip",
+  },
 };
+
+const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
+  Ancients: "ancients/ancients.zip",
+  Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
+  Cirth: "cirth/cirth-erebor.zip",
+  Deseret: "deseret/deseret.zip",
+  Gallifreyan: "gallifreyan/ws_simple_gallifreyan.zip",
+  MarasEye: "maras-eye/maras-eye-font.zip",
+  Matoran: "matoran/matoran.zip",
+  Ogham: "ogham/Noto_Sans_Ogham.zip",
+  Steel: "steel/steel alphabet font - aligned.zip",
+  Tengwar: "tengwar/tengwar_quenya.zip",
+  Unown: "unown/unown.zip",
+};
+
+/** Resolve a path under `src/assets/fonts/` to a Vite asset URL. */
+export function getFontDownloadUrl(downloadPath: string): string | undefined {
+  const key = `../assets/fonts/${downloadPath}`;
+  return FONT_ASSETS[key];
+}
 
 /** Fonts available for the transliterator alphabet shown in How To Use. */
 export function getFontTableRows(alphabetName: string): FontTableRow[] {
   if (alphabetName === "Baybayin") {
-    return BAYBAYIN_FONTS.map((font) => ({
-      id: font.id,
-      name: font.label,
-      fontClass: font.outputFontClass,
-      sample: BAYBAYIN_FONT_SAMPLE[font.id] ?? "Aba",
-    }));
+    return BAYBAYIN_FONTS.map((font) => {
+      const download = BAYBAYIN_FONT_DOWNLOAD[font.id];
+      return {
+        id: font.id,
+        name: font.label,
+        fontClass: font.outputFontClass,
+        sample: download?.sample ?? "Aba",
+        downloadPath: download?.downloadPath ?? "",
+        downloadName: download?.downloadName ?? "",
+      };
+    });
   }
 
   if (alphabetName === "Aurebesh") {
@@ -82,12 +146,18 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
     return [];
   }
 
+  const downloadPath =
+    ALPHABET_DOWNLOAD_PATH[alphabetName] ??
+    `${alphabetName.toLowerCase()}/${entry.downloadName}`;
+
   return [
     {
       id: entry.name.toLowerCase(),
       name: entry.fontName,
       fontClass: entry.outputFontClass,
       sample: getDefaultSample(alphabetName),
+      downloadPath,
+      downloadName: entry.downloadName,
     },
   ];
 }
