@@ -32,6 +32,8 @@ export default function FontsTable() {
             <tr>
               <th>Font</th>
               <th>Sample</th>
+              <th>Unicode</th>
+              <th>License</th>
               <th>Download</th>
             </tr>
           </thead>
@@ -44,6 +46,8 @@ export default function FontsTable() {
                   <td className={`fonts-table-sample ${row.fontClass}`}>
                     {row.sample}
                   </td>
+                  <td>{row.supportsUnicode ? "Yes" : "No"}</td>
+                  <td>{row.licensedForPersonalUse ? "Yes" : "No"}</td>
                   <td>
                     <button
                       type="button"

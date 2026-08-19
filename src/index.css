@@ -1428,8 +1428,11 @@ button:hover:not(:disabled) {
   background-color: transparent;
 }
 
-.fonts-table td:nth-child(3) {
+.fonts-table td:nth-child(3),
+.fonts-table td:nth-child(4),
+.fonts-table td:nth-child(5) {
   font-family: inherit;
+  font-weight: 400;
 }
 
 .fonts-table-sample {

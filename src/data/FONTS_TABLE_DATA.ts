@@ -9,6 +9,8 @@ export type FontTableRow = {
   /** Path under `src/assets/fonts/`. */
   downloadPath: string;
   downloadName: string;
+  supportsUnicode: string;
+  license: string;
 };
 
 const FONT_ASSETS = import.meta.glob("../assets/fonts/**/*.{zip,ttf,otf,TTF,OTF}", {
@@ -25,6 +27,8 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     sample: "Aurek",
     downloadPath: "aurebesh/AurebeshAF-Canon.otf",
     downloadName: "AurebeshAF-Canon.otf",
+    supportsUnicode: "No",
+    license: "Personal",
   },
   {
     id: "canon-tech",
@@ -33,6 +37,8 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     sample: "1138",
     downloadPath: "aurebesh/AurebeshAF-CanonTech.otf",
     downloadName: "AurebeshAF-CanonTech.otf",
+    supportsUnicode: "No",
+    license: "Yes",
   },
   {
     id: "legends",
@@ -41,6 +47,8 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     sample: "Aurek",
     downloadPath: "aurebesh/AurebeshAF-Legends.otf",
     downloadName: "AurebeshAF-Legends.otf",
+    supportsUnicode: "No",
+    license: "Yes",
   },
   {
     id: "legends-tech",
@@ -49,6 +57,8 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     sample: "1138",
     downloadPath: "aurebesh/AurebeshAF-LegendsTech.otf",
     downloadName: "AurebeshAF-LegendsTech.otf",
+    supportsUnicode: false,
+    license: true,
   },
 ];
 
@@ -60,6 +70,8 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     sample: "tlhIngan",
     downloadPath: "klingon/klingon.zip",
     downloadName: "klingon.zip",
+    supportsUnicode: false,
+    license: true,
   },
   {
     id: "klinzhai",
@@ -68,34 +80,52 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     sample: "Hello",
     downloadPath: "klingon/Klinzhai.ttf",
     downloadName: "Klinzhai.ttf",
+    supportsUnicode: false,
+    license: true,
   },
 ];
 
 const BAYBAYIN_FONT_DOWNLOAD: Record<
   string,
-  { downloadPath: string; downloadName: string; sample: string }
+  {
+    downloadPath: string;
+    downloadName: string;
+    sample: string;
+    supportsUnicode: boolean;
+    license: boolean;
+  }
 > = {
   "noto-sans": {
     sample: "ᜋᜊᜓᜑᜌ᜔",
     downloadPath: "baybayin/NotoSansTagalog-Regular.ttf",
     downloadName: "NotoSansTagalog-Regular.ttf",
+    supportsUnicode: true,
+    license: true,
   },
   "tagalog-doctrina": {
     sample: "Mbuhy+",
     downloadPath: "baybayin/TagDoc93.ttf",
     downloadName: "TagDoc93.ttf",
+    supportsUnicode: true,
+    license: true,
   },
   bagwis: {
     sample: "Mabuhayx",
     downloadPath: "baybayin/bagwis-baybayin-font.zip",
     downloadName: "bagwis-baybayin-font.zip",
+    supportsUnicode: false,
+    license: true,
   },
   stylized: {
     sample: "Mbuhy+",
     downloadPath: "baybayin/tagalog-stylized-font.zip",
     downloadName: "tagalog-stylized-font.zip",
+    supportsUnicode: true,
+    lincense: true,
   },
 };
+
+const UNICODE_ALPHABETS = new Set(["Deseret", "Ogham"]);
 
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Ancients: "ancients/ancients.zip",
@@ -129,6 +159,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
         sample: download?.sample ?? "Aba",
         downloadPath: download?.downloadPath ?? "",
         downloadName: download?.downloadName ?? "",
+        supportsUnicode: download?.supportsUnicode ?? false,
+        lincense: download?.lincense ?? true,
       };
     });
   }
@@ -158,6 +190,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       sample: getDefaultSample(alphabetName),
       downloadPath,
       downloadName: entry.downloadName,
+      supportsUnicode: UNICODE_ALPHABETS.has(alphabetName),
+      lincense: true,
     },
   ];
 }
