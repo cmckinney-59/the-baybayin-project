@@ -106,7 +106,7 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     sample: "Mbuhy+",
     downloadPath: "baybayin/TagDoc93.ttf",
     downloadName: "TagDoc93.ttf",
-    supportsUnicode: "Yes",
+    supportsUnicode: "Both",
     license: "Personal",
   },
   bagwis: {
@@ -120,7 +120,7 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     sample: "Mbuhy+",
     downloadPath: "baybayin/tagalog-stylized-font.zip",
     downloadName: "tagalog-stylized-font.zip",
-    supportsUnicode: "Yes",
+    supportsUnicode: "Both",
     license: "Personal",
   },
 };

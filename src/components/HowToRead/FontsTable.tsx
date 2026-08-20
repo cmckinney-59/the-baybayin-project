@@ -46,7 +46,7 @@ export default function FontsTable() {
                   <td className={`fonts-table-sample ${row.fontClass}`}>
                     {row.sample}
                   </td>
-                  <td>{row.supportsUnicode ? "Yes" : "No"}</td>
+                  <td>{row.supportsUnicode}</td>
                   <td>{row.license}</td>
                   <td>
                     <button
