@@ -57,8 +57,8 @@ const AUREBESH_FONT_ROWS: FontTableRow[] = [
     sample: "1138",
     downloadPath: "aurebesh/AurebeshAF-LegendsTech.otf",
     downloadName: "AurebeshAF-LegendsTech.otf",
-    supportsUnicode: false,
-    license: true,
+    supportsUnicode: "No",
+    license: "Personal",
   },
 ];
 
@@ -70,8 +70,8 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     sample: "tlhIngan",
     downloadPath: "klingon/klingon.zip",
     downloadName: "klingon.zip",
-    supportsUnicode: false,
-    license: true,
+    supportsUnicode: "No",
+    license: "Personal",
   },
   {
     id: "klinzhai",
@@ -80,8 +80,8 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     sample: "Hello",
     downloadPath: "klingon/Klinzhai.ttf",
     downloadName: "Klinzhai.ttf",
-    supportsUnicode: false,
-    license: true,
+    supportsUnicode: "No",
+    license: "Personal",
   },
 ];
 
@@ -91,37 +91,37 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     downloadPath: string;
     downloadName: string;
     sample: string;
-    supportsUnicode: boolean;
-    license: boolean;
+    supportsUnicode: string;
+    license: string;
   }
 > = {
   "noto-sans": {
     sample: "ᜋᜊᜓᜑᜌ᜔",
     downloadPath: "baybayin/NotoSansTagalog-Regular.ttf",
     downloadName: "NotoSansTagalog-Regular.ttf",
-    supportsUnicode: true,
-    license: true,
+    supportsUnicode: "Yes",
+    license: "Personal",
   },
   "tagalog-doctrina": {
     sample: "Mbuhy+",
     downloadPath: "baybayin/TagDoc93.ttf",
     downloadName: "TagDoc93.ttf",
-    supportsUnicode: true,
-    license: true,
+    supportsUnicode: "Yes",
+    license: "Personal",
   },
   bagwis: {
     sample: "Mabuhayx",
     downloadPath: "baybayin/bagwis-baybayin-font.zip",
     downloadName: "bagwis-baybayin-font.zip",
-    supportsUnicode: false,
-    license: true,
+    supportsUnicode: "No",
+    license: "Personal",
   },
   stylized: {
     sample: "Mbuhy+",
     downloadPath: "baybayin/tagalog-stylized-font.zip",
     downloadName: "tagalog-stylized-font.zip",
-    supportsUnicode: true,
-    lincense: true,
+    supportsUnicode: "Yes",
+    license: "Personal",
   },
 };
 
@@ -159,8 +159,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
         sample: download?.sample ?? "Aba",
         downloadPath: download?.downloadPath ?? "",
         downloadName: download?.downloadName ?? "",
-        supportsUnicode: download?.supportsUnicode ?? false,
-        lincense: download?.lincense ?? true,
+        supportsUnicode: download?.supportsUnicode ?? "No",
+        license: download?.license ?? "Personal",
       };
     });
   }
@@ -190,8 +190,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       sample: getDefaultSample(alphabetName),
       downloadPath,
       downloadName: entry.downloadName,
-      supportsUnicode: UNICODE_ALPHABETS.has(alphabetName),
-      lincense: true,
+      supportsUnicode: UNICODE_ALPHABETS.has(alphabetName) ? "Yes" : "No",
+      license: "Personal",
     },
   ];
 }
