@@ -100,7 +100,7 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     downloadPath: "baybayin/NotoSansTagalog-Regular.ttf",
     downloadName: "NotoSansTagalog-Regular.ttf",
     supportsUnicode: "Yes",
-    license: "Personal",
+    license: "Free",
   },
   "tagalog-doctrina": {
     sample: "Mbuhy+",
