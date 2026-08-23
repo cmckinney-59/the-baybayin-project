@@ -13,11 +13,14 @@ export type FontTableRow = {
   license: string;
 };
 
-const FONT_ASSETS = import.meta.glob("../assets/fonts/**/*.{zip,ttf,otf,TTF,OTF}", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
+const FONT_ASSETS = import.meta.glob(
+  "../assets/fonts/**/*.{zip,ttf,otf,TTF,OTF}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+) as Record<string, string>;
 
 const AUREBESH_FONT_ROWS: FontTableRow[] = [
   {
@@ -107,7 +110,7 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     downloadPath: "baybayin/TagDoc93.ttf",
     downloadName: "TagDoc93.ttf",
     supportsUnicode: "Both",
-    license: "Personal",
+    license: "Free",
   },
   bagwis: {
     sample: "Mabuhayx",
@@ -173,7 +176,9 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
     return PLQAD_FONT_ROWS;
   }
 
-  const entry = ALPHABETS_DATA.find((alphabet) => alphabet.name === alphabetName);
+  const entry = ALPHABETS_DATA.find(
+    (alphabet) => alphabet.name === alphabetName,
+  );
   if (!entry) {
     return [];
   }
