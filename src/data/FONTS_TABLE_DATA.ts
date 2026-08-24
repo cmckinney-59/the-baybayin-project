@@ -117,14 +117,14 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     downloadPath: "baybayin/bagwis-baybayin-font.zip",
     downloadName: "bagwis-baybayin-font.zip",
     supportsUnicode: "No",
-    license: "Personal",
+    license: "Free",
   },
   stylized: {
     sample: "Mbuhy+",
     downloadPath: "baybayin/tagalog-stylized-font.zip",
     downloadName: "tagalog-stylized-font.zip",
     supportsUnicode: "Both",
-    license: "Personal",
+    license: "Free",
   },
 };
 
