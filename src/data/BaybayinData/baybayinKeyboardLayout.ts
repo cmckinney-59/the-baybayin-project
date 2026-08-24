@@ -80,13 +80,13 @@ export function getBaybayinKeyboardLayout(
     [
       {
         id: "space",
-        label: "⎵",
+        label: "Space",
         action: "space",
         width: 5,
       },
       {
         id: "enter",
-        label: "↵",
+        label: "Enter",
         action: "enter",
         width: 1.2,
       },
