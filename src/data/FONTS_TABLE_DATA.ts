@@ -126,6 +126,13 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
     supportsUnicode: "Both",
     license: "Free",
   },
+  robotika: {
+    sample: "Mbuhy+",
+    downloadPath: "baybayin/BaybayinRobotika.ttf",
+    downloadName: "BaybayinRobotika.ttf",
+    supportsUnicode: "No",
+    license: "Free",
+  },
 };
 
 const UNICODE_ALPHABETS = new Set(["Deseret", "Ogham"]);

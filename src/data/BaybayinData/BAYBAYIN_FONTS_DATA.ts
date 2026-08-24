@@ -2,7 +2,8 @@ export type BaybayinFontId =
   | "tagalog-doctrina"
   | "bagwis"
   | "stylized"
-  | "noto-sans";
+  | "noto-sans"
+  | "robotika";
 
 export type BaybayinFont = {
   id: BaybayinFontId;
@@ -37,6 +38,11 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     outputFontClass: "baybayin-stylized-font",
     supportsUnicodeOption: true,
   },
+  {
+    id: "robotika",
+    label: "Baybayin Robotika",
+    outputFontClass: "baybayin-robotika-font",
+  },
 ];
 
 /** Fonts that expose the "Use Unicode" checkbox (Tagalog Doctrina, Tagalog Stylized). */
@@ -50,8 +56,8 @@ export function baybayinUsesUnicodeOutput(
   useUnicodeOption: boolean,
 ): boolean {
   if (fontId === "noto-sans") return true;
-  if (fontId === "bagwis") return false;
-  return useUnicodeOption;
+  if (baybayinSupportsUnicodeOption(fontId)) return useUnicodeOption;
+  return false;
 }
 
 export const DEFAULT_BAYBAYIN_FONT_ID: BaybayinFontId = "noto-sans";

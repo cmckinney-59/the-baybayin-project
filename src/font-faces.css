@@ -65,6 +65,12 @@
 }
 
 @font-face {
+  font-family: "Baybayin Robotika";
+  src: url("./assets/fonts/baybayin/BaybayinRobotika.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Cirth";
   src: url("./assets/fonts/cirth/Erebor.ttf") format("truetype");
   font-display: swap;
@@ -168,6 +174,9 @@
 }
 .noto-sans-baybayin {
   font-family: "Noto Sans Baybayin", sans-serif;
+}
+.baybayin-robotika-font {
+  font-family: "Baybayin Robotika", sans-serif;
 }
 .cirth-font {
   font-family: "Cirth", sans-serif;
