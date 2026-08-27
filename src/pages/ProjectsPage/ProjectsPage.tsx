@@ -5,11 +5,14 @@ import CollapsibleSection from "../../components/CollapsibleSection/CollapsibleS
 import { PROJECTS_DATA as BAYBAYIN_PROJECTS_DATA } from "../../data/BaybayinData/BAYBAYIN_PROJECTS_DATA";
 import { PROJECTS_DATA as AUREBESH_PROJECTS_DATA } from "../../data/AurebeshData/AUREBESH_PROJECTS_DATA";
 import { PROJECTS_DATA as DESERET_PROJECTS_DATA } from "../../data/DeseretData/DESERET_PROJECTS_DATA";
+import { getCurrentProjects } from "../../data/projectsData";
 import ProjectStatusCell from "./ProjectStatusCell";
+import ProjectProgressList from "./ProjectProgressList";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 
 export default function ProjectsPage() {
   const { showExperimentalFeatures } = useExperimentalFeatures();
+  const currentProjects = getCurrentProjects();
   const headers = showExperimentalFeatures
     ? ["Name", "Description", "Status"]
     : ["Name", "Status"];
@@ -17,6 +20,10 @@ export default function ProjectsPage() {
   return (
     <div className="projectsPage">
       <PageTitle title="Projects" />
+
+      <CollapsibleSection title="Current Projects" defaultExpanded={true}>
+        <ProjectProgressList projects={currentProjects} />
+      </CollapsibleSection>
 
       <CollapsibleSection title="Baybayin" defaultExpanded={false}>
         <Table

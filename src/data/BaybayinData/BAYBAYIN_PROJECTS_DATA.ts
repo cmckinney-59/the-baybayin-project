@@ -70,22 +70,26 @@ export const PROJECTS_DATA: Project[] = [
   {
     name: "Ang Bagong Tipan",
     status: "First Draft In Review",
+    progress: 30,
     description: "Tagalog New Testament",
   },
   {
     name: "Ang Aklat ni Mormon",
     status: "Second Draft In Review",
+    progress: 55,
     description: "Tagalog Book of Mormon",
   },
   {
     name: "Ang Mag-anak",
     status: "Final Draft In Review",
+    progress: 85,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
   {
     name: "Ang Mga Saligan ng Pananampalataya",
     status: "Final Draft In Review",
+    progress: 85,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
