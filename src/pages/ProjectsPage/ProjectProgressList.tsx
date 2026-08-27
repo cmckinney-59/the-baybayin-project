@@ -61,6 +61,44 @@ function CircularProgress({ progress, label }: CircularProgressProps) {
   );
 }
 
+function groupProjectsByAlphabet(
+  projects: ProjectEntry[],
+): { alphabet: string; projects: ProjectEntry[] }[] {
+  const groups = new Map<string, ProjectEntry[]>();
+
+  for (const project of projects) {
+    const existing = groups.get(project.alphabet);
+    if (existing) {
+      existing.push(project);
+    } else {
+      groups.set(project.alphabet, [project]);
+    }
+  }
+
+  return Array.from(groups.entries()).map(([alphabet, alphabetProjects]) => ({
+    alphabet,
+    projects: alphabetProjects,
+  }));
+}
+
+type ProjectProgressTileProps = {
+  project: ProjectEntry;
+};
+
+function ProjectProgressTile({ project }: ProjectProgressTileProps) {
+  const progress = getProjectProgress(project);
+
+  return (
+    <li className="projectProgressTile">
+      <CircularProgress progress={progress} label={project.name} />
+      <div className="projectProgressTileHeader">
+        <p className="projectProgressName">{project.name}</p>
+        <p className="projectProgressDraft">{project.draft}</p>
+      </div>
+    </li>
+  );
+}
+
 export default function ProjectProgressList({
   projects,
 }: ProjectProgressListProps) {
@@ -68,23 +106,23 @@ export default function ProjectProgressList({
     return <p className="projectProgressEmpty">No projects in progress.</p>;
   }
 
-  return (
-    <ul className="projectProgressList">
-      {projects.map((project) => {
-        const progress = getProjectProgress(project);
+  const sections = groupProjectsByAlphabet(projects);
 
-        return (
-          <li
-            key={`${project.alphabet}-${project.name}`}
-            className="projectProgressTile"
-          >
-            <CircularProgress progress={progress} label={project.name} />
-            <p className="projectProgressName">{project.name}</p>
-            <p className="projectProgressAlphabet">{project.alphabet}</p>
-            <p className="projectProgressDraft">{project.draft}</p>
-          </li>
-        );
-      })}
-    </ul>
+  return (
+    <div className="projectProgressSections">
+      {sections.map(({ alphabet, projects: alphabetProjects }) => (
+        <section key={alphabet} className="projectProgressSection">
+          <h3 className="projectProgressSectionTitle">{alphabet}</h3>
+          <ul className="projectProgressList">
+            {alphabetProjects.map((project) => (
+              <ProjectProgressTile
+                key={`${project.alphabet}-${project.name}`}
+                project={project}
+              />
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
   );
 }
