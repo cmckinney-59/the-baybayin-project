@@ -69,27 +69,27 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Bagong Tipan",
-    status: "First Draft In Review",
-    progress: 30,
+    status: "Second Draft In Progress",
+    progress: 40,
     description: "Tagalog New Testament",
   },
   {
     name: "Ang Aklat ni Mormon",
-    status: "Second Draft In Review",
-    progress: 55,
+    status: "Third Draft In Progress",
+    progress: 30,
     description: "Tagalog Book of Mormon",
   },
   {
     name: "Ang Mag-anak",
     status: "Final Draft In Review",
-    progress: 85,
+    progress: 99,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
   {
     name: "Ang Mga Saligan ng Pananampalataya",
     status: "Final Draft In Review",
-    progress: 85,
+    progress: 90,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
