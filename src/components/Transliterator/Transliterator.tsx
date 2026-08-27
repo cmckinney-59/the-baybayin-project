@@ -24,6 +24,10 @@ import {
 import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
+import {
+  getAurebeshFontClass,
+  getAurebeshKeyboardLayout,
+} from "../../data/AurebeshData/aurebeshKeyboardLayout";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
@@ -66,7 +70,8 @@ export default function Transliterator({
   const isBaybayin = currentAlphabet === "Baybayin";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
-  const showOnScreenKeyboard = isDeseret || isBaybayin;
+  const isAurebesh = currentAlphabet === "Aurebesh";
+  const showOnScreenKeyboard = isDeseret || isBaybayin || isAurebesh;
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
     selectedBaybayinFont,
     useUnicode,
@@ -113,6 +118,8 @@ export default function Transliterator({
   const reverseOutputToInput = (output: string): string | null => {
     if (isDeseret) return phoneticFromDeseretText(output);
     if (isBaybayin) return phoneticFromBaybayinText(output);
+    // Aurebesh is a Latin font cipher — output text is already Latin.
+    if (isAurebesh) return output;
     return null;
   };
 
@@ -333,6 +340,14 @@ export default function Transliterator({
       }
       if (start === 0) return;
       const before = transliteratedText.slice(0, start);
+      // Aurebesh digraphs are two Latin chars that render as one glyph.
+      if (isAurebesh && /(ae|ch|eo|kh|ng|oo|sh|th)$/i.test(before)) {
+        const nextText =
+          transliteratedText.slice(0, start - 2) +
+          transliteratedText.slice(start);
+        applyOutputAtCursor(nextText, start - 2);
+        return;
+      }
       const chars = [...before];
       chars.pop();
       const nextBefore = chars.join("");
@@ -376,6 +391,12 @@ export default function Transliterator({
       return;
     }
     if (isBaybayin && /[bcdfghjklmnpqrstwxy][eioux+]$/i.test(before)) {
+      const nextText = text.slice(0, start - 2) + text.slice(start);
+      applyInputAtCursor(nextText, start - 2);
+      return;
+    }
+    // Aurebesh combined digraphs from keyboard (ae, ch, th, …).
+    if (isAurebesh && /(ae|ch|eo|kh|ng|oo|sh|th)$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
       return;
@@ -440,6 +461,22 @@ export default function Transliterator({
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
           fontClass={getBaybayinFontClass(selectedBaybayinFont)}
+        />
+      )}
+      {isAurebesh && showOnScreenKeyboard && (
+        <Keyboard
+          layout={getAurebeshKeyboardLayout({
+            useCombinedCharacters,
+          })}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
+          fontClass={getAurebeshFontClass(
+            useCombinedCharacters,
+            useTechNumbers,
+          )}
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (
