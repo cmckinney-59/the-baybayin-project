@@ -14,8 +14,8 @@ export default function ProjectsPage() {
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const currentProjects = getCurrentProjects();
   const headers = showExperimentalFeatures
-    ? ["Name", "Description", "Status"]
-    : ["Name", "Status"];
+    ? ["Name", "Description", "Draft"]
+    : ["Name", "Draft"];
 
   return (
     <div className="projectsPage">
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             ...(showExperimentalFeatures ? [project.description ?? ""] : []),
             <ProjectStatusCell
               key={project.name}
-              status={project.status}
+              draft={project.draft}
               fileUrl={project.fileUrl}
               fileName={project.fileName}
               fileType={project.fileType}
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
             ...(showExperimentalFeatures ? [project.description ?? ""] : []),
             <ProjectStatusCell
               key={project.name}
-              status={project.status}
+              draft={project.draft}
               fileUrl={project.fileUrl}
               fileName={project.fileName}
               fileType={project.fileType}
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
             ...(showExperimentalFeatures ? [project.description ?? ""] : []),
             <ProjectStatusCell
               key={project.name}
-              status={project.status}
+              draft={project.draft}
               fileUrl={project.fileUrl}
               fileName={project.fileName}
               fileType={project.fileType}

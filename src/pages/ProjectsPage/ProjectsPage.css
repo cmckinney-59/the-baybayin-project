@@ -11,68 +11,68 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
 }
 
-.projectProgressItem {
-  padding: 1rem;
+.projectProgressTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 1rem;
   border: 1px solid var(--button-border);
   border-radius: 8px;
   background-color: var(--bg-primary);
 }
 
-.projectProgressHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin-bottom: 0.35rem;
+.projectProgressCircle {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.projectProgressCircleTrack {
+  stroke: color-mix(in srgb, var(--button-border) 35%, var(--bg-secondary));
+}
+
+.projectProgressCircleFill {
+  stroke: #007bff;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.dark-mode .projectProgressCircleFill {
+  stroke: #64b5f6;
+}
+
+.projectProgressCircleText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  fill: var(--text-primary);
 }
 
 .projectProgressName {
+  margin: 0 0 0.25rem;
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .projectProgressAlphabet {
+  margin: 0 0 0.15rem;
   font-size: 0.85rem;
   color: var(--text-secondary);
-  white-space: nowrap;
 }
 
-.projectProgressStatus {
-  margin: 0 0 0.75rem;
-  font-size: 0.9rem;
+.projectProgressDraft {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
   color: var(--text-secondary);
-}
-
-.projectProgressBarTrack {
-  width: 100%;
-  height: 0.65rem;
-  border-radius: 999px;
-  background-color: color-mix(in srgb, var(--button-border) 35%, var(--bg-secondary));
-  overflow: hidden;
-}
-
-.projectProgressBarFill {
-  height: 100%;
-  border-radius: inherit;
-  background-color: #007bff;
-  transition: width 0.3s ease;
-}
-
-.dark-mode .projectProgressBarFill {
-  background-color: #64b5f6;
-}
-
-.projectProgressPercent {
-  display: block;
-  margin-top: 0.35rem;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .projectProgressEmpty {
@@ -85,10 +85,8 @@
     padding: 0 0.5rem 1rem;
   }
 
-  .projectProgressHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+  .projectProgressList {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 
   .projectsPage .alphabet-table {

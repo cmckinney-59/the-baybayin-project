@@ -7,11 +7,11 @@ export type ProjectEntry = Project & {
   alphabet: string;
 };
 
-const STATUS_PROGRESS: Record<string, number> = {
-  "First Draft In Review": 30,
-  "Second Draft In Review": 55,
-  "Second Draft Being Formatted": 65,
-  "Final Draft In Review": 85,
+const DRAFT_DEFAULT_PROGRESS: Record<string, number> = {
+  "First Draft": 30,
+  "Second Draft": 55,
+  "Third Draft": 45,
+  Final: 85,
 };
 
 export const ALL_PROJECTS: ProjectEntry[] = [
@@ -30,14 +30,17 @@ export const ALL_PROJECTS: ProjectEntry[] = [
 ];
 
 export function isDownloadableProject(project: Project): boolean {
-  return project.status === "Downloadable";
+  return project.draft == null;
 }
 
 export function getProjectProgress(project: Project): number {
   if (project.progress != null) {
     return Math.min(100, Math.max(0, project.progress));
   }
-  return STATUS_PROGRESS[project.status] ?? 0;
+  if (project.draft != null) {
+    return DRAFT_DEFAULT_PROGRESS[project.draft] ?? 0;
+  }
+  return 0;
 }
 
 export function getCurrentProjects(): ProjectEntry[] {

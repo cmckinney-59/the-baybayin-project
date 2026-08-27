@@ -10,7 +10,6 @@ import type { Project } from "../../models/models";
 export const PROJECTS_DATA: Project[] = [
   {
     name: "How to Read Baybayin",
-    status: "Downloadable",
     fileUrl: howToReadBaybayinPdf,
     fileName: "HowToReadBaybayin.pdf",
     fileType: "pdf",
@@ -18,7 +17,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Lupang Hinirang",
-    status: "Downloadable",
     fileUrl: lupangHinirangZip,
     fileName: "LupangHinirang.zip",
     fileType: "zip",
@@ -26,7 +24,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Mateo 1",
-    status: "Downloadable",
     fileUrl: mateo1Pdf,
     fileName: "Mateo-1.pdf",
     fileType: "pdf",
@@ -34,7 +31,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Buhay Na Cristo",
-    status: "Downloadable",
     fileUrl: angBuhayNaCristoPdf,
     fileName: "AngBuhayNaCristo.pdf",
     fileType: "pdf",
@@ -43,7 +39,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Buhay Na Cristo: Parallel",
-    status: "Downloadable",
     fileUrl: angBuhayNaCristoParallelPdf,
     fileName: "AngBuhayNaCristo_Parallel.pdf",
     fileType: "pdf",
@@ -51,7 +46,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Pagpapanumbalik",
-    status: "Downloadable",
     fileUrl: angPagpapanumbalikPdf,
     fileName: "AngPagpapanumbalik.pdf",
     fileType: "pdf",
@@ -60,7 +54,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Pagpapanumbalik: Parallel",
-    status: "Downloadable",
     fileUrl: angPagpapanumbalikParallelPdf,
     fileName: "AngPagpapanumbalik_Parallel.pdf",
     fileType: "pdf",
@@ -69,26 +62,26 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Bagong Tipan",
-    status: "Second Draft In Progress",
+    draft: "Second Draft",
     progress: 40,
     description: "Tagalog New Testament",
   },
   {
     name: "Ang Aklat ni Mormon",
-    status: "Third Draft In Progress",
+    draft: "Third Draft",
     progress: 30,
     description: "Tagalog Book of Mormon",
   },
   {
     name: "Ang Mag-anak",
-    status: "Final Draft In Review",
+    draft: "Final",
     progress: 99,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
   {
     name: "Ang Mga Saligan ng Pananampalataya",
-    status: "Final Draft In Review",
+    draft: "Final",
     progress: 90,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",

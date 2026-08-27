@@ -7,7 +7,6 @@ import theFamilyLegendsParallelPdf from "../../assets/projects/Aurebesh/TheFamil
 export const PROJECTS_DATA: Project[] = [
   {
     name: "The Family (Canon)",
-    status: "Downloadable",
     fileUrl: theFamilyCanonPdf,
     fileName: "TheFamily_Aurebesh_Canon.pdf",
     fileType: "pdf",
@@ -15,7 +14,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "The Family Parallel (Canon)",
-    status: "Downloadable",
     fileUrl: theFamilyCanonParallelPdf,
     fileName: "TheFamily_Aurebesh_Canon_Parallel.pdf",
     fileType: "pdf",
@@ -23,7 +21,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "The Family (Legends)",
-    status: "Downloadable",
     fileUrl: theFamilyLegendsPdf,
     fileName: "TheFamily_Aurebesh_Legends.pdf",
     fileType: "pdf",
@@ -31,7 +28,6 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "The Family Parallel (Legends)",
-    status: "Downloadable",
     fileUrl: theFamilyLegendsParallelPdf,
     fileName: "TheFamily_Aurebesh_Legends_Parallel.pdf",
     fileType: "pdf",
@@ -39,7 +35,7 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "The Book of Mormon",
-    status: "Second Draft In Progress",
+    draft: "Second Draft",
     progress: 60,
     description: "English Book of Mormon in Aurebesh.",
   },

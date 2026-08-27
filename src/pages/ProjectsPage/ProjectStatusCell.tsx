@@ -3,14 +3,14 @@ import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesCont
 import PreviewDialog from "../../components/Dialog/PreviewDialog";
 
 type ProjectStatusCellProps = {
-  status: string;
+  draft?: string;
   fileUrl?: string;
   fileName?: string;
   fileType?: "pdf" | "zip";
 };
 
 export default function ProjectStatusCell({
-  status,
+  draft,
   fileUrl,
   fileName,
   fileType,
@@ -30,7 +30,7 @@ export default function ProjectStatusCell({
     document.body.removeChild(link);
   };
 
-  if (status === "Downloadable" && fileUrl && fileName) {
+  if (fileUrl && fileName) {
     const fileTypeLabel = fileType?.toUpperCase() ?? "";
     const canPreview =
       fileTypeLabel === "PDF" || fileTypeLabel === "ZIP";
@@ -63,5 +63,5 @@ export default function ProjectStatusCell({
     );
   }
 
-  return status;
+  return draft ?? "";
 }
