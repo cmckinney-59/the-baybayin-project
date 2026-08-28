@@ -137,6 +137,10 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
 
 const UNICODE_ALPHABETS = new Set(["Deseret", "Ogham"]);
 
+const ALPHABET_LICENSE: Record<string, string> = {
+  Deseret: "Free",
+};
+
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Ancients: "ancients/ancients.zip",
   Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
@@ -203,7 +207,7 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       downloadPath,
       downloadName: entry.downloadName,
       supportsUnicode: UNICODE_ALPHABETS.has(alphabetName) ? "Yes" : "No",
-      license: "Personal",
+      license: ALPHABET_LICENSE[alphabetName] ?? "Personal",
     },
   ];
 }
