@@ -97,6 +97,13 @@
 }
 
 @font-face {
+  font-family: "Hanunoo";
+  src: url("./assets/fonts/hanunoo/Noto_Sans_Hanunoo/NotoSansHanunoo-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Matoran";
   src: url("./assets/fonts/matoran/Matoran.ttf") format("truetype");
   font-display: swap;
@@ -186,6 +193,9 @@
 }
 .gallifreyan-font {
   font-family: "Gallifreyan", sans-serif;
+}
+.hanunoo-font {
+  font-family: "Hanunoo", sans-serif;
 }
 .maras-eye-font {
   font-family: "Maras Eye", sans-serif;

@@ -1,5 +1,6 @@
 import processBaybayinText from "../utils/TextProcessors/BaybayinTextProcessor";
 import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
+import processHanunooText from "../utils/TextProcessors/HanunooTextProcessor";
 import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
 import processText from "../utils/TextProcessors/DefaultTextProcessor";
@@ -100,6 +101,16 @@ export const ALPHABETS_DATA: Alphabet[] = [
     downloadName: "ws_simple_gallifreyan.zip",
     processor: processText,
     outputFontClass: "gallifreyan-font",
+  },
+  {
+    name: "Hanunoo",
+    description: "A traditional Filipino script used by the Hanunuo people",
+    experimental: true,
+    fictional: false,
+    fontName: "Noto Sans Hanunoo",
+    downloadName: "Noto_Sans_Hanunoo.zip",
+    processor: processHanunooText,
+    outputFontClass: "hanunoo-font",
   },
   {
     name: "MarasEye",

@@ -9,6 +9,7 @@ import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/Baybayi
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
 import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret";
+import WhatIsHanunoo from "../../components/HowToRead/HanunooHTR/WhatIsHanunoo/WhatIsHanunoo";
 import WhatIsTengwar from "../../components/HowToRead/TengwarHTR/WhatIsTengwar/WhatIsTengwar";
 import HowToUse from "../../components/HowToRead/HowToUse";
 import {
@@ -16,6 +17,7 @@ import {
   alphabetNameToRouteSegment,
 } from "../../data/ALPHABETS_DATA";
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
+import HanunooHowToRead from "../../components/HowToRead/HanunooHTR/HanunooHowToRead/HanunooHowToRead";
 import MoreResources from "../../components/MoreResources/MoreResources";
 
 type AlphabetName = (typeof ALPHABETS_DATA)[number]["name"];
@@ -39,6 +41,12 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
       <WhatIsDeseret />
       <DeseretHowToRead />
       <MoreResources />
+    </>
+  ),
+  Hanunoo: () => (
+    <>
+      <WhatIsHanunoo />
+      <HanunooHowToRead />
     </>
   ),
   Tengwar: WhatIsTengwar,

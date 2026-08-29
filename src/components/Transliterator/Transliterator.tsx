@@ -25,6 +25,10 @@ import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
 import {
+  HANUNOO_KEYBOARD_LAYOUT,
+  phoneticFromHanunooText,
+} from "../../data/HanunooData/hanunooKeyboardLayout";
+import {
   getAurebeshFontClass,
   getAurebeshKeyboardLayout,
 } from "../../data/AurebeshData/aurebeshKeyboardLayout";
@@ -68,10 +72,13 @@ export default function Transliterator({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLTextAreaElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
+  const isHanunoo = currentAlphabet === "Hanunoo";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
   const isAurebesh = currentAlphabet === "Aurebesh";
-  const showOnScreenKeyboard = isDeseret || isBaybayin || isAurebesh;
+  const usesSyllabicKeyboard = isBaybayin || isHanunoo;
+  const showOnScreenKeyboard =
+    isDeseret || usesSyllabicKeyboard || isAurebesh;
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
     selectedBaybayinFont,
     useUnicode,
@@ -118,6 +125,7 @@ export default function Transliterator({
   const reverseOutputToInput = (output: string): string | null => {
     if (isDeseret) return phoneticFromDeseretText(output);
     if (isBaybayin) return phoneticFromBaybayinText(output);
+    if (isHanunoo) return phoneticFromHanunooText(output);
     // Aurebesh is a Latin font cipher — output text is already Latin.
     if (isAurebesh) return output;
     return null;
@@ -291,9 +299,9 @@ export default function Transliterator({
       return;
     }
 
-    if (isBaybayin && payload.inputValue !== "\n") {
+    if (usesSyllabicKeyboard && payload.inputValue !== "\n") {
       const insert =
-        useXVowelKiller && payload.inputValue === "+"
+        isBaybayin && useXVowelKiller && payload.inputValue === "+"
           ? "x"
           : payload.inputValue;
       const sel = outputOnlyMode
@@ -373,24 +381,24 @@ export default function Transliterator({
       applyInputAtCursor(nextText, start - deleteCount);
       return;
     }
-    // Baybayin inherent-a syllable from keyboard (ba, ka, nga, …).
-    if (isBaybayin && /nga$/i.test(before)) {
+    // Baybayin / Hanunoo inherent-a syllable from keyboard (ba, ka, nga, …).
+    if (usesSyllabicKeyboard && /nga$/i.test(before)) {
       const nextText = text.slice(0, start - 3) + text.slice(start);
       applyInputAtCursor(nextText, start - 3);
       return;
     }
-    if (isBaybayin && /[bcdfghjklmnpqrstwxy]a$/i.test(before)) {
+    if (usesSyllabicKeyboard && /[bcdfghjklmnpqrstwxy]a$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
       return;
     }
-    // Baybayin kudlit / virama syllable (be, bi, b+, nge, ng+, …).
-    if (isBaybayin && /ng[eioux+]$/i.test(before)) {
+    // Baybayin / Hanunoo kudlit / virama syllable (be, bi, b+, nge, ng+, …).
+    if (usesSyllabicKeyboard && /ng[eioux+]$/i.test(before)) {
       const nextText = text.slice(0, start - 3) + text.slice(start);
       applyInputAtCursor(nextText, start - 3);
       return;
     }
-    if (isBaybayin && /[bcdfghjklmnpqrstwxy][eioux+]$/i.test(before)) {
+    if (usesSyllabicKeyboard && /[bcdfghjklmnpqrstwxy][eioux+]$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
       return;
@@ -445,6 +453,17 @@ export default function Transliterator({
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
           fontClass="deseret-font"
+        />
+      )}
+      {isHanunoo && showOnScreenKeyboard && (
+        <Keyboard
+          layout={HANUNOO_KEYBOARD_LAYOUT}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
+          fontClass="hanunoo-font"
         />
       )}
       {isBaybayin && showOnScreenKeyboard && (

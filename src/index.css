@@ -1290,6 +1290,11 @@ button:hover:not(:disabled) {
   color: #64b5f6 !important;
 }
 
+.hanunoo-letter {
+  font-family: "Hanunoo", sans-serif;
+  font-weight: normal;
+}
+
 /* Aurebesh Letters */
 
 .aurebesh-letter {
