@@ -1,3 +1,5 @@
+import type { PhilippineAbugidaConfig } from "../../utils/TextProcessors/philippineAbugidaUnicode";
+
 export type BaybayinData = {
   symbol: string;
   letter: string;
@@ -54,6 +56,18 @@ export const BAYBAYIN_VOWEL_KILLERS = {
 export const BAYBAYIN_PUNCTUATION = {
   SINGLE: "\u1735", // ᜵ — one vertical line (comma / pause)
   DOUBLE: "\u1736", // ᜶ — two vertical lines (period / full stop)
+};
+
+export const BAYBAYIN_ABUGIDA_CONFIG: PhilippineAbugidaConfig = {
+  consonants: BAYBAYIN_CONSONANTS,
+  vowels: BAYBAYIN_VOWELS,
+  kudlits: BAYBAYIN_KUDLITS,
+  kudlitsHollow: BAYBAYIN_KUDLITS_HOLLOW,
+  virama: BAYBAYIN_VOWEL_KILLERS.VIRAMA,
+  punctuation: {
+    comma: BAYBAYIN_PUNCTUATION.SINGLE,
+    period: BAYBAYIN_PUNCTUATION.DOUBLE,
+  },
 };
 
 export const BAYBAYIN_DATA: BaybayinData[] = [

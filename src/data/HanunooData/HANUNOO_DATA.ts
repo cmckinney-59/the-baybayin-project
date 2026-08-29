@@ -1,3 +1,5 @@
+import type { PhilippineAbugidaConfig } from "../../utils/TextProcessors/philippineAbugidaUnicode";
+
 export type HanunooData = {
   symbol: string;
   letter: string;
@@ -35,6 +37,28 @@ export const HANUNOO_KUDLITS = {
 };
 
 export const HANUNOO_VOWEL_KILLER = "\u1734";
+
+const HANUNOO_ABUGIDA_VOWELS = {
+  A: HANUNOO_VOWELS.A,
+  E: HANUNOO_VOWELS.I,
+  I: HANUNOO_VOWELS.I,
+  O: HANUNOO_VOWELS.U,
+  U: HANUNOO_VOWELS.U,
+};
+
+const HANUNOO_ABUGIDA_KUDLITS = {
+  E: HANUNOO_KUDLITS.I,
+  I: HANUNOO_KUDLITS.I,
+  O: HANUNOO_KUDLITS.U,
+  U: HANUNOO_KUDLITS.U,
+};
+
+export const HANUNOO_ABUGIDA_CONFIG: PhilippineAbugidaConfig = {
+  consonants: HANUNOO_CONSONANTS,
+  vowels: HANUNOO_ABUGIDA_VOWELS,
+  kudlits: HANUNOO_ABUGIDA_KUDLITS,
+  virama: HANUNOO_VOWEL_KILLER,
+};
 
 export const HANUNOO_DATA: HanunooData[] = [
   {
