@@ -11,6 +11,7 @@ import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayi
 import WhatIsBuhid from "../../components/HowToRead/BuhidHTR/WhatIsBuhid/WhatIsBuhid";
 import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret";
 import WhatIsHanunoo from "../../components/HowToRead/HanunooHTR/WhatIsHanunoo/WhatIsHanunoo";
+import WhatIsTagbanwa from "../../components/HowToRead/TagbanwaHTR/WhatIsTagbanwa/WhatIsTagbanwa";
 import WhatIsTengwar from "../../components/HowToRead/TengwarHTR/WhatIsTengwar/WhatIsTengwar";
 import HowToUse from "../../components/HowToRead/HowToUse";
 import {
@@ -20,6 +21,7 @@ import {
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
 import BuhidHowToRead from "../../components/HowToRead/BuhidHTR/BuhidHowToRead/BuhidHowToRead";
 import HanunooHowToRead from "../../components/HowToRead/HanunooHTR/HanunooHowToRead/HanunooHowToRead";
+import TagbanwaHowToRead from "../../components/HowToRead/TagbanwaHTR/TagbanwaHowToRead/TagbanwaHowToRead";
 import MoreResources from "../../components/MoreResources/MoreResources";
 
 type AlphabetName = (typeof ALPHABETS_DATA)[number]["name"];
@@ -55,6 +57,12 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
     <>
       <WhatIsHanunoo />
       <HanunooHowToRead />
+    </>
+  ),
+  Tagbanwa: () => (
+    <>
+      <WhatIsTagbanwa />
+      <TagbanwaHowToRead />
     </>
   ),
   Tengwar: WhatIsTengwar,

@@ -148,6 +148,13 @@
 }
 
 @font-face {
+  font-family: "Tagbanwa";
+  src: url("./assets/fonts/tagbanwa/Noto_Sans_Tagbanwa/NotoSansTagbanwa-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Tengwar";
   src: url("./assets/fonts/tengwar/QUENYA.TTF") format("truetype");
   font-display: swap;
@@ -227,6 +234,9 @@
 }
 .steel-font {
   font-family: "Steel", sans-serif;
+}
+.tagbanwa-font {
+  font-family: "Tagbanwa", sans-serif;
 }
 .tengwar-font {
   font-family: "Tengwar", sans-serif;

@@ -1300,6 +1300,11 @@ button:hover:not(:disabled) {
   font-weight: normal;
 }
 
+.tagbanwa-letter {
+  font-family: "Tagbanwa", sans-serif;
+  font-weight: normal;
+}
+
 /* Aurebesh Letters */
 
 .aurebesh-letter {

@@ -4,6 +4,7 @@ import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
 import processHanunooText from "../utils/TextProcessors/HanunooTextProcessor";
 import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
+import processTagbanwaText from "../utils/TextProcessors/TagbanwaTextProcessor";
 import processText from "../utils/TextProcessors/DefaultTextProcessor";
 import { DEFAULT_BAYBAYIN_FONT_ID } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
 
@@ -173,6 +174,16 @@ export const ALPHABETS_DATA: Alphabet[] = [
     downloadName: "steel alphabet font - aligned.zip",
     processor: processText,
     outputFontClass: "steel-font",
+  },
+  {
+    name: "Tagbanwa",
+    description: "A traditional Filipino script used by the Tagbanwa people",
+    experimental: true,
+    fictional: false,
+    fontName: "Noto Sans Tagbanwa",
+    downloadName: "Noto_Sans_Tagbanwa.zip",
+    processor: processTagbanwaText,
+    outputFontClass: "tagbanwa-font",
   },
   {
     name: "Tengwar",

@@ -135,12 +135,19 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
   },
 };
 
-const UNICODE_ALPHABETS = new Set(["Buhid", "Deseret", "Hanunoo", "Ogham"]);
+const UNICODE_ALPHABETS = new Set([
+  "Buhid",
+  "Deseret",
+  "Hanunoo",
+  "Ogham",
+  "Tagbanwa",
+]);
 
 const ALPHABET_LICENSE: Record<string, string> = {
   Buhid: "Free",
   Deseret: "Free",
   Hanunoo: "Free",
+  Tagbanwa: "Free",
 };
 
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
@@ -155,6 +162,7 @@ const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Matoran: "matoran/matoran.zip",
   Ogham: "ogham/Noto_Sans_Ogham.zip",
   Steel: "steel/steel alphabet font - aligned.zip",
+  Tagbanwa: "tagbanwa/Noto_Sans_Tagbanwa.zip",
   Tengwar: "tengwar/tengwar_quenya.zip",
   Unown: "unown/unown.zip",
 };
@@ -226,6 +234,8 @@ function getDefaultSample(alphabetName: string): string {
       return "ᜋᜊᜓᜑᜌ";
     case "Ogham":
       return "Ogham";
+    case "Tagbanwa":
+      return "ᝫᝪᝳᝰᝮ";
     case "Tengwar":
       return "Tengwar";
     default:

@@ -25,6 +25,10 @@ import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
 import {
+  TAGBANWA_KEYBOARD_LAYOUT,
+  phoneticFromTagbanwaText,
+} from "../../data/TagbanwaData/tagbanwaKeyboardLayout";
+import {
   BUHID_KEYBOARD_LAYOUT,
   phoneticFromBuhidText,
 } from "../../data/BuhidData/buhidKeyboardLayout";
@@ -78,10 +82,12 @@ export default function Transliterator({
   const isBaybayin = currentAlphabet === "Baybayin";
   const isBuhid = currentAlphabet === "Buhid";
   const isHanunoo = currentAlphabet === "Hanunoo";
+  const isTagbanwa = currentAlphabet === "Tagbanwa";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
   const isAurebesh = currentAlphabet === "Aurebesh";
-  const usesSyllabicKeyboard = isBaybayin || isBuhid || isHanunoo;
+  const usesSyllabicKeyboard =
+    isBaybayin || isBuhid || isHanunoo || isTagbanwa;
   const showOnScreenKeyboard =
     isDeseret || usesSyllabicKeyboard || isAurebesh;
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
@@ -132,6 +138,7 @@ export default function Transliterator({
     if (isBaybayin) return phoneticFromBaybayinText(output);
     if (isBuhid) return phoneticFromBuhidText(output);
     if (isHanunoo) return phoneticFromHanunooText(output);
+    if (isTagbanwa) return phoneticFromTagbanwaText(output);
     // Aurebesh is a Latin font cipher — output text is already Latin.
     if (isAurebesh) return output;
     return null;
@@ -481,6 +488,17 @@ export default function Transliterator({
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
           fontClass="hanunoo-font"
+        />
+      )}
+      {isTagbanwa && showOnScreenKeyboard && (
+        <Keyboard
+          layout={TAGBANWA_KEYBOARD_LAYOUT}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
+          fontClass="tagbanwa-font"
         />
       )}
       {isBaybayin && showOnScreenKeyboard && (
