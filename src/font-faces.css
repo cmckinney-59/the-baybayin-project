@@ -71,6 +71,13 @@
 }
 
 @font-face {
+  font-family: "Buhid";
+  src: url("./assets/fonts/buhid/Noto_Sans_Buhid/NotoSansBuhid-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Cirth";
   src: url("./assets/fonts/cirth/Erebor.ttf") format("truetype");
   font-display: swap;
@@ -184,6 +191,9 @@
 }
 .baybayin-robotika-font {
   font-family: "Baybayin Robotika", sans-serif;
+}
+.buhid-font {
+  font-family: "Buhid", sans-serif;
 }
 .cirth-font {
   font-family: "Cirth", sans-serif;

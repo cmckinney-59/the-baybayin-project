@@ -1,4 +1,5 @@
 import processBaybayinText from "../utils/TextProcessors/BaybayinTextProcessor";
+import processBuhidText from "../utils/TextProcessors/BuhidTextProcessor";
 import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
 import processHanunooText from "../utils/TextProcessors/HanunooTextProcessor";
 import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
@@ -71,6 +72,16 @@ export const ALPHABETS_DATA: Alphabet[] = [
     processor: (word: string) =>
       processBaybayinText(word, false, DEFAULT_BAYBAYIN_FONT_ID),
     outputFontClass: "baybayin-font",
+  },
+  {
+    name: "Buhid",
+    description: "A traditional Filipino script used by the Buhid Mangyan people",
+    experimental: true,
+    fictional: false,
+    fontName: "Noto Sans Buhid",
+    downloadName: "Noto_Sans_Buhid.zip",
+    processor: processBuhidText,
+    outputFontClass: "buhid-font",
   },
   {
     name: "Cirth",

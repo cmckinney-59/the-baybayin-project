@@ -8,6 +8,7 @@ import WhatIsAurebesh from "../../components/HowToRead/AurebeshHTR/WhatIsAurebes
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible";
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
+import WhatIsBuhid from "../../components/HowToRead/BuhidHTR/WhatIsBuhid/WhatIsBuhid";
 import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret";
 import WhatIsHanunoo from "../../components/HowToRead/HanunooHTR/WhatIsHanunoo/WhatIsHanunoo";
 import WhatIsTengwar from "../../components/HowToRead/TengwarHTR/WhatIsTengwar/WhatIsTengwar";
@@ -17,6 +18,7 @@ import {
   alphabetNameToRouteSegment,
 } from "../../data/ALPHABETS_DATA";
 import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
+import BuhidHowToRead from "../../components/HowToRead/BuhidHTR/BuhidHowToRead/BuhidHowToRead";
 import HanunooHowToRead from "../../components/HowToRead/HanunooHTR/HanunooHowToRead/HanunooHowToRead";
 import MoreResources from "../../components/MoreResources/MoreResources";
 
@@ -34,6 +36,12 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
       <WhatIsBaybayin />
       <BaybayinHowToRead />
       <BaybayinBorrowedWordsCollapsible />
+    </>
+  ),
+  Buhid: () => (
+    <>
+      <WhatIsBuhid />
+      <BuhidHowToRead />
     </>
   ),
   Deseret: () => (

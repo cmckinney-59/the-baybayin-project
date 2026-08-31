@@ -1295,6 +1295,11 @@ button:hover:not(:disabled) {
   font-weight: normal;
 }
 
+.buhid-letter {
+  font-family: "Buhid", sans-serif;
+  font-weight: normal;
+}
+
 /* Aurebesh Letters */
 
 .aurebesh-letter {

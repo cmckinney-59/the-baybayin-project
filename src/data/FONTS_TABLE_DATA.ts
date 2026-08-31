@@ -135,9 +135,10 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
   },
 };
 
-const UNICODE_ALPHABETS = new Set(["Deseret", "Hanunoo", "Ogham"]);
+const UNICODE_ALPHABETS = new Set(["Buhid", "Deseret", "Hanunoo", "Ogham"]);
 
 const ALPHABET_LICENSE: Record<string, string> = {
+  Buhid: "Free",
   Deseret: "Free",
   Hanunoo: "Free",
 };
@@ -145,6 +146,7 @@ const ALPHABET_LICENSE: Record<string, string> = {
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Ancients: "ancients/ancients.zip",
   Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
+  Buhid: "buhid/Noto_Sans_Buhid.zip",
   Cirth: "cirth/cirth-erebor.zip",
   Deseret: "deseret/deseret.zip",
   Gallifreyan: "gallifreyan/ws_simple_gallifreyan.zip",
@@ -216,6 +218,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
 
 function getDefaultSample(alphabetName: string): string {
   switch (alphabetName) {
+    case "Buhid":
+      return "ᝋᝃᝒᝇ";
     case "Deseret":
       return "Deseret";
     case "Hanunoo":

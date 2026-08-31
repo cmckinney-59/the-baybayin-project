@@ -25,6 +25,10 @@ import Keyboard from "../Keyboard/Keyboard.tsx";
 import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
 import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
 import {
+  BUHID_KEYBOARD_LAYOUT,
+  phoneticFromBuhidText,
+} from "../../data/BuhidData/buhidKeyboardLayout";
+import {
   HANUNOO_KEYBOARD_LAYOUT,
   phoneticFromHanunooText,
 } from "../../data/HanunooData/hanunooKeyboardLayout";
@@ -72,11 +76,12 @@ export default function Transliterator({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const outputRef = useRef<HTMLTextAreaElement | null>(null);
   const isBaybayin = currentAlphabet === "Baybayin";
+  const isBuhid = currentAlphabet === "Buhid";
   const isHanunoo = currentAlphabet === "Hanunoo";
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
   const isAurebesh = currentAlphabet === "Aurebesh";
-  const usesSyllabicKeyboard = isBaybayin || isHanunoo;
+  const usesSyllabicKeyboard = isBaybayin || isBuhid || isHanunoo;
   const showOnScreenKeyboard =
     isDeseret || usesSyllabicKeyboard || isAurebesh;
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
@@ -125,6 +130,7 @@ export default function Transliterator({
   const reverseOutputToInput = (output: string): string | null => {
     if (isDeseret) return phoneticFromDeseretText(output);
     if (isBaybayin) return phoneticFromBaybayinText(output);
+    if (isBuhid) return phoneticFromBuhidText(output);
     if (isHanunoo) return phoneticFromHanunooText(output);
     // Aurebesh is a Latin font cipher — output text is already Latin.
     if (isAurebesh) return output;
@@ -453,6 +459,17 @@ export default function Transliterator({
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
           fontClass="deseret-font"
+        />
+      )}
+      {isBuhid && showOnScreenKeyboard && (
+        <Keyboard
+          layout={BUHID_KEYBOARD_LAYOUT}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
+          fontClass="buhid-font"
         />
       )}
       {isHanunoo && showOnScreenKeyboard && (
