@@ -394,6 +394,12 @@ button:hover:not(:disabled) {
   text-decoration-color: var(--link-hover-color, #1a3d6b);
 }
 
+.resource-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /* AlphabetPicker */
 #options {
   margin-top: 10px;

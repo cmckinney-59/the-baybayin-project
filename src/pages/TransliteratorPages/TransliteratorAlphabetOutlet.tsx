@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import AurebeshHowToRead from "../../components/HowToRead/AurebeshHTR/AurebeshHowToRead";
+import AurebeshResources from "../../components/HowToRead/AurebeshHTR/AurebeshResources";
 import WhatIsAurebesh from "../../components/HowToRead/AurebeshHTR/WhatIsAurebesh";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible";
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
@@ -31,6 +32,7 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
     <>
       <WhatIsAurebesh />
       <AurebeshHowToRead />
+      <AurebeshResources />
     </>
   ),
   Baybayin: () => (

@@ -1,4 +1,5 @@
 import CollapsibleSection from "../CollapsibleSection/CollapsibleSection";
+import ResourceLink from "../ResourceLink/ResourceLink";
 
 export default function HowToUse() {
   return (
@@ -7,16 +8,10 @@ export default function HowToUse() {
         Here are some more resources for learning about the different writing
         systems.
       </p>
-      <ul>
-        <li>
-          <a
-            href="https://www.deseretalphabet.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Deseret Alphabet
-          </a>
-        </li>
+      <ul className="resource-links">
+        <ResourceLink href="https://www.deseretalphabet.org/">
+          Deseret Alphabet
+        </ResourceLink>
       </ul>
     </CollapsibleSection>
   );
