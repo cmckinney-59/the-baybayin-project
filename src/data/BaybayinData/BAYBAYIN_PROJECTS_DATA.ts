@@ -82,7 +82,7 @@ export const PROJECTS_DATA: Project[] = [
   {
     name: "Ang Mga Saligan ng Pananampalataya",
     draft: "Final",
-    progress: 90,
+    progress: 95,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
