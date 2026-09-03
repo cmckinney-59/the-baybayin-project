@@ -5,6 +5,8 @@ import angBuhayNaCristoPdf from "../../assets/projects/Baybayin/AngBuhayNaCristo
 import angBuhayNaCristoParallelPdf from "../../assets/projects/Baybayin/AngBuhayNaCristo/AngBuhayNaCristo_Parallel.pdf";
 import angPagpapanumbalikPdf from "../../assets/projects/Baybayin/AngPagpapanumbalik/AngPagpapanumbalik.pdf";
 import angPagpapanumbalikParallelPdf from "../../assets/projects/Baybayin/AngPagpapanumbalik/AngPagpapanumbalik_Parallel.pdf";
+import angMgaSaliganPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya.pdf";
+import angMgaSaliganParallelPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya_Parallel.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [
@@ -61,6 +63,21 @@ export const PROJECTS_DATA: Project[] = [
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
   {
+    name: "Ang Mga Saligan ng Pananampalataya",
+    fileUrl: angMgaSaliganPdf,
+    fileName: "AngMgaSaliganNgPananampalataya.pdf",
+    fileType: "pdf",
+    description:
+      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
+  },
+  {
+    name: "Ang Mga Saligan ng Pananampalataya: Parallel",
+    fileUrl: angMgaSaliganParallelPdf,
+    fileName: "AngMgaSaliganNgPananampalataya_Parallel.pdf",
+    fileType: "pdf",
+    description: "Ang Mga Saligan ng Pananampalataya: Tagalog - Baybayin Parallel",
+  },
+  {
     name: "Ang Bagong Tipan",
     draft: "Second Draft",
     progress: 40,
@@ -78,12 +95,5 @@ export const PROJECTS_DATA: Project[] = [
     progress: 99,
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
-  },
-  {
-    name: "Ang Mga Saligan ng Pananampalataya",
-    draft: "Final",
-    progress: 95,
-    description:
-      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
-  },
+  }
 ];
