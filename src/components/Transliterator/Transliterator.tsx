@@ -12,7 +12,6 @@ import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcesso
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
   baybayinUsesUnicodeOutput,
-  getBaybayinFontClass,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
@@ -22,27 +21,43 @@ import {
 } from "../../data/BaybayinData/baybayinPhoneticMap";
 
 import Keyboard from "../Keyboard/Keyboard.tsx";
-import { DESERET_KEYBOARD_LAYOUT } from "../../data/DeseretData/deseretKeyboardLayout";
-import { getBaybayinKeyboardLayout } from "../../data/BaybayinData/baybayinKeyboardLayout";
 import {
-  TAGBANWA_KEYBOARD_LAYOUT,
-  phoneticFromTagbanwaText,
-} from "../../data/TagbanwaData/tagbanwaKeyboardLayout";
-import {
-  BUHID_KEYBOARD_LAYOUT,
-  phoneticFromBuhidText,
-} from "../../data/BuhidData/buhidKeyboardLayout";
-import {
-  HANUNOO_KEYBOARD_LAYOUT,
-  phoneticFromHanunooText,
-} from "../../data/HanunooData/hanunooKeyboardLayout";
-import {
-  getAurebeshFontClass,
-  getAurebeshKeyboardLayout,
-} from "../../data/AurebeshData/aurebeshKeyboardLayout";
+  isExperimentalAlphabet,
+  resolveAlphabetKeyboard,
+} from "../../data/alphabetKeyboardRegistry";
+import { AUREBESH_DIGRAPHS } from "../../data/AurebeshData/aurebeshKeyboardLayout";
+import { phoneticFromTagbanwaText } from "../../data/TagbanwaData/tagbanwaKeyboardLayout";
+import { phoneticFromBuhidText } from "../../data/BuhidData/buhidKeyboardLayout";
+import { phoneticFromHanunooText } from "../../data/HanunooData/hanunooKeyboardLayout";
+import { phoneticFromOghamText } from "../../data/OghamData/oghamKeyboardLayout";
+import { PLQAD_DIGRAPHS } from "../../data/PlqadData/plqadKeyboardLayout";
+import { isLatinSlotKeyboardAlphabet } from "../../data/shared/latinSlotKeyboardLayout";
 
 const processors: Record<string, (word: string) => string | Promise<string>> =
   Object.fromEntries(ALPHABETS_DATA.map((a) => [a.name, a.processor]));
+
+/** Length of a trailing digraph key unit, or 0 if none. */
+function matchKeyboardDigraph(
+  before: string,
+  alphabet: string,
+  useKlinzhai: boolean,
+): number {
+  if (alphabet === "Aurebesh") {
+    for (const digraph of AUREBESH_DIGRAPHS) {
+      if (before.toLowerCase().endsWith(digraph)) return digraph.length;
+    }
+  }
+  if (alphabet === "Plqad" && !useKlinzhai) {
+    // Prefer longer digraphs first (tlh before single letters).
+    const sorted = [...PLQAD_DIGRAPHS].sort((a, b) => b.length - a.length);
+    for (const digraph of sorted) {
+      if (before.endsWith(digraph) || before.toLowerCase().endsWith(digraph.toLowerCase())) {
+        return digraph.length;
+      }
+    }
+  }
+  return 0;
+}
 
 interface TransliteratorProps {
   currentAlphabet: string;
@@ -86,14 +101,27 @@ export default function Transliterator({
   const isPlqad = currentAlphabet === "Plqad";
   const isDeseret = currentAlphabet === "Deseret";
   const isAurebesh = currentAlphabet === "Aurebesh";
+  const isOgham = currentAlphabet === "Ogham";
   const usesSyllabicKeyboard =
     isBaybayin || isBuhid || isHanunoo || isTagbanwa;
-  const showOnScreenKeyboard =
-    isDeseret || usesSyllabicKeyboard || isAurebesh;
+  const usesLatinSlotKeyboard =
+    isAurebesh || isPlqad || isLatinSlotKeyboardAlphabet(currentAlphabet);
   const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
     selectedBaybayinFont,
     useUnicode,
   );
+  const keyboardConfig = resolveAlphabetKeyboard(currentAlphabet, {
+    useCombinedCharacters,
+    useTechNumbers,
+    useKlinzhai,
+    selectedBaybayinFont,
+    useHollowKudlits,
+    useXVowelKiller,
+  });
+  // Stable alphabets always show the keyboard; experimental ones need the flag.
+  const showOnScreenKeyboard =
+    !!keyboardConfig &&
+    (!isExperimentalAlphabet(currentAlphabet) || showExperimentalFeatures);
 
   useEffect(() => {
     if (!showOnScreenKeyboard && outputOnlyMode) {
@@ -139,8 +167,9 @@ export default function Transliterator({
     if (isBuhid) return phoneticFromBuhidText(output);
     if (isHanunoo) return phoneticFromHanunooText(output);
     if (isTagbanwa) return phoneticFromTagbanwaText(output);
-    // Aurebesh is a Latin font cipher — output text is already Latin.
-    if (isAurebesh) return output;
+    if (isOgham) return phoneticFromOghamText(output);
+    // Latin-slot font ciphers — output text is already Latin.
+    if (usesLatinSlotKeyboard) return output;
     return null;
   };
 
@@ -361,12 +390,13 @@ export default function Transliterator({
       }
       if (start === 0) return;
       const before = transliteratedText.slice(0, start);
-      // Aurebesh digraphs are two Latin chars that render as one glyph.
-      if (isAurebesh && /(ae|ch|eo|kh|ng|oo|sh|th)$/i.test(before)) {
+      // Digraphs are two+ Latin chars that render as one glyph.
+      const digraphMatch = matchKeyboardDigraph(before, currentAlphabet, useKlinzhai);
+      if (digraphMatch) {
         const nextText =
-          transliteratedText.slice(0, start - 2) +
+          transliteratedText.slice(0, start - digraphMatch) +
           transliteratedText.slice(start);
-        applyOutputAtCursor(nextText, start - 2);
+        applyOutputAtCursor(nextText, start - digraphMatch);
         return;
       }
       const chars = [...before];
@@ -416,10 +446,16 @@ export default function Transliterator({
       applyInputAtCursor(nextText, start - 2);
       return;
     }
-    // Aurebesh combined digraphs from keyboard (ae, ch, th, …).
-    if (isAurebesh && /(ae|ch|eo|kh|ng|oo|sh|th)$/i.test(before)) {
+    // Ogham "ng" inserts as one unit.
+    if (isOgham && /ng$/i.test(before)) {
       const nextText = text.slice(0, start - 2) + text.slice(start);
       applyInputAtCursor(nextText, start - 2);
+      return;
+    }
+    const digraphLen = matchKeyboardDigraph(before, currentAlphabet, useKlinzhai);
+    if (digraphLen) {
+      const nextText = text.slice(0, start - digraphLen) + text.slice(start);
+      applyInputAtCursor(nextText, start - digraphLen);
       return;
     }
 
@@ -457,80 +493,15 @@ export default function Transliterator({
         onInputCursorChange={setInputCursor}
         onOutputCursorChange={setOutputCursor}
       />
-      {isDeseret && showOnScreenKeyboard && (
+      {showOnScreenKeyboard && keyboardConfig && (
         <Keyboard
-          layout={DESERET_KEYBOARD_LAYOUT}
+          layout={keyboardConfig.layout}
           onInsert={handleKeyboardInsert}
           onBackspace={handleKeyboardBackspace}
           onEnter={() =>
             handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
           }
-          fontClass="deseret-font"
-        />
-      )}
-      {isBuhid && showOnScreenKeyboard && (
-        <Keyboard
-          layout={BUHID_KEYBOARD_LAYOUT}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass="buhid-font"
-        />
-      )}
-      {isHanunoo && showOnScreenKeyboard && (
-        <Keyboard
-          layout={HANUNOO_KEYBOARD_LAYOUT}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass="hanunoo-font"
-        />
-      )}
-      {isTagbanwa && showOnScreenKeyboard && (
-        <Keyboard
-          layout={TAGBANWA_KEYBOARD_LAYOUT}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass="tagbanwa-font"
-        />
-      )}
-      {isBaybayin && showOnScreenKeyboard && (
-        <Keyboard
-          layout={getBaybayinKeyboardLayout({
-            fontId: selectedBaybayinFont,
-            useUnicode: false,
-            useHollowKudlits,
-            useXVowelKiller,
-          })}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass={getBaybayinFontClass(selectedBaybayinFont)}
-        />
-      )}
-      {isAurebesh && showOnScreenKeyboard && (
-        <Keyboard
-          layout={getAurebeshKeyboardLayout({
-            useCombinedCharacters,
-          })}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass={getAurebeshFontClass(
-            useCombinedCharacters,
-            useTechNumbers,
-          )}
+          fontClass={keyboardConfig.fontClass}
         />
       )}
       {isBaybayin && text.toLowerCase().includes("c") && (
