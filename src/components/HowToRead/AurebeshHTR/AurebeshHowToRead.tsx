@@ -10,6 +10,10 @@ export default function AurebeshHowToRead() {
         data={AUREBESH_DATA}
         title="Basic Letters"
         headers={["Aurebesh Symbol", "Latin Letter", "Aurebesh Name"]}
+        description="
+        The basic letters in Aurebesh map 1:1 with the latin alphabet. 
+        These are the commonly used in most Canon Star Wars material.
+        "
       />
       <AurebeshTable
         type="punctuation"

@@ -31,7 +31,13 @@ export default function AurebeshTable({
             .map((letter) => (
               <tr key={letter.letter}>
                 <td className="aurebesh-letter">{letter.letter}</td>
-                <td>{letter.letter}</td>
+                <td
+                  className={
+                    type === "number" ? "aurebesh-letter-tech" : undefined
+                  }
+                >
+                  {letter.letter}
+                </td>
                 {type !== "number" && type !== "punctuation" ? (
                   <td>{letter.name}</td>
                 ) : null}
