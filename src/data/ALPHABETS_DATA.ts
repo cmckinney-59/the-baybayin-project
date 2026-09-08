@@ -99,7 +99,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     description: "An alphabet created by Brigham Young",
     experimental: false,
     fictional: false,
-    fontName: "Deseret",
+    fontName: "Noto Sans Deseret",
     downloadName: "deseret.zip",
     processor: processDeseretText,
     outputFontClass: "deseret-font",

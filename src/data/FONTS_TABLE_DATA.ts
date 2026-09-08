@@ -229,7 +229,7 @@ function getDefaultSample(alphabetName: string): string {
     case "Buhid":
       return "ᝋᝃᝒᝇ";
     case "Deseret":
-      return "Deseret";
+      return "𐐔𐐯𐑅𐐲𐑉𐐯𐐻";
     case "Hanunoo":
       return "ᜋᜊᜓᜑᜌ";
     case "Ogham":
