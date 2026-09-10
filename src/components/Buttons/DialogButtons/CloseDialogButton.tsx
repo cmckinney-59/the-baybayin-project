@@ -6,7 +6,15 @@ interface CloseDialogButtonProps {
 
 export default function CloseDialogButton({ onClose }: CloseDialogButtonProps) {
   return (
-    <button className="close-button" onClick={onClose} aria-label="Close">
+    <button
+      type="button"
+      className="close-button"
+      onClick={(e) => {
+        e.stopPropagation();
+        onClose();
+      }}
+      aria-label="Close"
+    >
       <AiOutlineClose />
     </button>
   );
