@@ -769,12 +769,209 @@ button:hover:not(:disabled) {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 12px 0;
 }
 
 @media (max-width: 720px) {
   .action-buttons {
     gap: 5px;
   }
+
+  .action-buttons .action-button-label {
+    display: none;
+  }
+
+  .action-buttons .action-icon-button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  .action-buttons .action-icon-button svg {
+    font-size: 20px;
+  }
+}
+
+.save-options-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.save-option-button {
+  width: 100%;
+  justify-content: flex-start !important;
+  text-align: left;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  gap: 12px !important;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  background-color: var(--bg-secondary, var(--button-bg)) !important;
+  border: 1px solid var(--button-border) !important;
+  box-shadow: none !important;
+}
+
+.save-option-button:hover:not(:disabled) {
+  border-color: rgb(26, 115, 232) !important;
+  background-color: var(--button-bg) !important;
+  opacity: 1;
+}
+
+.dark-mode .save-option-button:hover:not(:disabled) {
+  border-color: #64b5f6 !important;
+}
+
+.save-option-icon {
+  font-size: 22px !important;
+  flex-shrink: 0;
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .save-option-icon {
+  color: #64b5f6;
+}
+
+.save-option-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.save-option-title {
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.save-option-desc {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary, #666);
+  line-height: 1.3;
+}
+
+.dark-mode .save-option-desc {
+  color: #aaa;
+}
+
+.transliterator-panel-dialog {
+  width: min(420px, calc(100vw - 2rem)) !important;
+  max-width: 420px;
+  padding: 24px 22px 18px !important;
+  align-items: stretch !important;
+  text-align: left !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22) !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden;
+}
+
+.transliterator-panel-dialog .dialog-header {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding-right: 1.5rem;
+}
+
+.transliterator-panel-dialog .dialog-header-top-row {
+  justify-content: flex-start;
+}
+
+.transliterator-panel-dialog .dialog-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.transliterator-panel-subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  line-height: 1.4;
+}
+
+.dark-mode .transliterator-panel-subtitle {
+  color: #aaa;
+}
+
+.transliterator-panel-dialog .dialog-content {
+  width: 100%;
+  align-items: stretch;
+  margin: 0.5rem 0 0;
+}
+
+.transliterator-panel-dialog .dialog-buttons {
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.75rem 0 0;
+}
+
+.transliterator-settings-dialog .transliterator-settings-font-row {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0.85rem;
+  padding: 10px 12px;
+  border: 1px solid var(--button-border);
+  border-radius: 10px;
+  background: var(--bg-secondary, var(--button-bg));
+  overflow: hidden;
+}
+
+.transliterator-settings-dialog .baybayin-font-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.transliterator-settings-dialog .baybayin-font-selector-label {
+  font-weight: 600;
+}
+
+.transliterator-settings-dialog .baybayin-font-selector select {
+  flex: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.transliterator-settings-dialog .transliterator-settings-options {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.transliterator-settings-dialog .transliterator-settings-options .checkbox-label {
+  margin: 0;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.transliterator-settings-dialog
+  .transliterator-settings-options
+  .checkbox-label:hover {
+  background: var(--bg-secondary, var(--button-bg));
+  border-color: var(--button-border);
+  opacity: 1;
 }
 
 .clear-input-button,
@@ -1020,6 +1217,32 @@ button:hover:not(:disabled) {
   margin: 10px 0 0;
 }
 
+.transliterator-settings-button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #ccc);
+  background: var(--button-bg, #f5f5f5);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.transliterator-settings-button:hover {
+  background: var(--button-hover-bg, #ebebeb);
+}
+
+.dark-mode .transliterator-settings-button {
+  background: var(--button-bg, #2a2a2a);
+  border-color: var(--border-color, #555);
+}
+
+.dark-mode .transliterator-settings-button:hover {
+  background: var(--button-hover-bg, #3a3a3a);
+}
+
 .baybayin-font-selector {
   display: inline-flex;
   align-items: center;
@@ -1149,6 +1372,7 @@ button:hover:not(:disabled) {
     background-color 0.3s ease,
     color 0.3s ease;
   margin: 0;
+  z-index: 2;
 }
 
 .dialog-box button.close-button:hover {

@@ -7,7 +7,9 @@ import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
-import CheckBoxContainer from "../CheckBoxContainer/CheckBoxContainer.tsx";
+import CheckBoxContainer, {
+  hasTransliteratorSettings,
+} from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
@@ -76,6 +78,7 @@ export default function Transliterator({
   } = useWordsDictionary();
   const { showExperimentalFeatures } = useExperimentalFeatures();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [textContainsBorrowedWords, setTextContainsBorrowedWords] =
     useState<boolean>(false);
   const [useCombinedCharacters, setUseCombinedCharacters] =
@@ -493,17 +496,6 @@ export default function Transliterator({
         onInputCursorChange={setInputCursor}
         onOutputCursorChange={setOutputCursor}
       />
-      {showOnScreenKeyboard && keyboardConfig && (
-        <Keyboard
-          layout={keyboardConfig.layout}
-          onInsert={handleKeyboardInsert}
-          onBackspace={handleKeyboardBackspace}
-          onEnter={() =>
-            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
-          }
-          fontClass={keyboardConfig.fontClass}
-        />
-      )}
       {isBaybayin && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
           * The letter &apos;c&apos; does not show in baybayin font. Replace any
@@ -534,6 +526,8 @@ export default function Transliterator({
         showOutputOnlyOption={showOnScreenKeyboard}
         outputOnlyMode={outputOnlyMode}
         setOutputOnlyMode={setOutputOnlyMode}
+        isSettingsOpen={isSettingsOpen}
+        setIsSettingsOpen={setIsSettingsOpen}
       />
       <div className="action-buttons">
         {isBaybayin &&
@@ -550,8 +544,24 @@ export default function Transliterator({
         <SaveButtonContainter
           originalText={text}
           transliteratedText={transliteratedText}
+          showSettings={hasTransliteratorSettings(
+            currentAlphabet,
+            showOnScreenKeyboard,
+          )}
+          onOpenSettings={() => setIsSettingsOpen(true)}
         />
       </div>
+      {showOnScreenKeyboard && keyboardConfig && (
+        <Keyboard
+          layout={keyboardConfig.layout}
+          onInsert={handleKeyboardInsert}
+          onBackspace={handleKeyboardBackspace}
+          onEnter={() =>
+            handleKeyboardInsert({ inputValue: "\n", outputValue: "\n" })
+          }
+          fontClass={keyboardConfig.fontClass}
+        />
+      )}
       {isBaybayin && isDialogOpen && (
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}

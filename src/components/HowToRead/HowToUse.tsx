@@ -6,8 +6,7 @@ export default function HowToUse() {
     <CollapsibleSection title="How To Use" defaultExpanded={false}>
       <p>Type in text to transliterate in real-time.</p>
       <p>
-        Click a button below transliterator to save to Excel, Word, or copy to
-        clipboard.
+        Copy or Save your transliterated text as Excel, Word, or a Word Parallel document.
       </p>
       <p>Download and install the font to see it in Word or Excel.</p>
       <FontsTable />
