@@ -767,9 +767,9 @@ button:hover:not(:disabled) {
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-end;
   flex-wrap: wrap;
-  margin: 12px 0;
+  margin: 12px 10px;
 }
 
 @media (max-width: 720px) {
