@@ -1,4 +1,4 @@
-import { DESERET_DATA } from "../../../../data/DeseretData/DESERET_DATA";
+import { DESERET_DATA } from "../../../data/DeseretData/DESERET_DATA";
 
 export default function DeseretTable() {
   return (
@@ -7,6 +7,18 @@ export default function DeseretTable() {
       <p>
         Deseret is phonetic, meaning each letter has a unique sound and words
         are written as they sound.
+      </p>
+      <p>
+        For a deeper dive, read{" "}
+        <a
+          href="https://www.chem.ucla.edu/~jericks/Historical%20or%20Technical/Linguistics/Deseret_Guide.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link"
+        >
+          A Complete Guide to Reading and Writing in the Deseret Alphabet
+        </a>{" "}
+        by Neil Alexander Walker.
       </p>
       <table className="alphabet-table">
         <thead>

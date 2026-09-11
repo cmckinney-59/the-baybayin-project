@@ -10,7 +10,7 @@ import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/Baybayi
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
 import WhatIsBuhid from "../../components/HowToRead/BuhidHTR/WhatIsBuhid/WhatIsBuhid";
-import WhatIsDeseret from "../../components/HowToRead/DeseretHTR/WhatIsDeseret/WhatIsDeseret";
+import WhatIsDeseret from "../../components/HowToRead/Deseret/DeseretWhatIs";
 import WhatIsHanunoo from "../../components/HowToRead/HanunooHTR/WhatIsHanunoo/WhatIsHanunoo";
 import WhatIsTagbanwa from "../../components/HowToRead/TagbanwaHTR/WhatIsTagbanwa/WhatIsTagbanwa";
 import WhatIsTengwar from "../../components/HowToRead/TengwarHTR/WhatIsTengwar/WhatIsTengwar";
@@ -19,11 +19,11 @@ import {
   ALPHABETS_DATA,
   alphabetNameToRouteSegment,
 } from "../../data/ALPHABETS_DATA";
-import DeseretHowToRead from "../../components/HowToRead/DeseretHTR/DeseretHTR/DeserethHowToRead";
+import DeseretHowToRead from "../../components/HowToRead/Deseret/DeserethHowToRead";
 import BuhidHowToRead from "../../components/HowToRead/BuhidHTR/BuhidHowToRead/BuhidHowToRead";
 import HanunooHowToRead from "../../components/HowToRead/HanunooHTR/HanunooHowToRead/HanunooHowToRead";
 import TagbanwaHowToRead from "../../components/HowToRead/TagbanwaHTR/TagbanwaHowToRead/TagbanwaHowToRead";
-import MoreResources from "../../components/MoreResources/MoreResources";
+import DeseretMoreResources from "../../components/HowToRead/Deseret/DeseretMoreResources";
 
 type AlphabetName = (typeof ALPHABETS_DATA)[number]["name"];
 
@@ -52,7 +52,7 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
     <>
       <WhatIsDeseret />
       <DeseretHowToRead />
-      <MoreResources />
+      <DeseretMoreResources />
     </>
   ),
   Hanunoo: () => (

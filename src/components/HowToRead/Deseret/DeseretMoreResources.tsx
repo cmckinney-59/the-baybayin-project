@@ -1,7 +1,7 @@
-import CollapsibleSection from "../CollapsibleSection/CollapsibleSection";
-import ResourceLink from "../ResourceLink/ResourceLink";
+import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
+import ResourceLink from "../../ResourceLink/ResourceLink";
 
-export default function HowToUse() {
+export default function DeseretMoreResources() {
   return (
     <CollapsibleSection title="More Resources" defaultExpanded={false}>
       <p>

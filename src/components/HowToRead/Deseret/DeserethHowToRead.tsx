@@ -1,5 +1,5 @@
-import CollapsibleSection from "../../../CollapsibleSection/CollapsibleSection";
-import DeseretTable from "../DeseretTable/DeseretTable";
+import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
+import DeseretTable from "./DeseretTable";
 
 export default function DeseretHowToRead() {
   return (
