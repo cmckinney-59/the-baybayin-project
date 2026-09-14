@@ -20,6 +20,9 @@ export default function DeseretTable() {
         </a>{" "}
         by Neil Alexander Walker.
       </p>
+      <p>
+        ** NOTE: The characters aren't "𐐃" and "𐐉" are not commonly used in modern Deseret, especially in common english. "𐐂" is used instead.
+      </p>
       <table className="alphabet-table">
         <thead>
           <tr>
