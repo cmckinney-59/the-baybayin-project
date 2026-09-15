@@ -7,6 +7,7 @@ import angPagpapanumbalikPdf from "../../assets/projects/Baybayin/AngPagpapanumb
 import angPagpapanumbalikParallelPdf from "../../assets/projects/Baybayin/AngPagpapanumbalik/AngPagpapanumbalik_Parallel.pdf";
 import angMgaSaliganPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya.pdf";
 import angMgaSaliganParallelPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya_Parallel.pdf";
+import angMagAnakPdf from "../../assets/projects/Baybayin/AngMagAnak/AngMagAnak.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [
@@ -91,9 +92,10 @@ export const PROJECTS_DATA: Project[] = [
   },
   {
     name: "Ang Mag-anak",
-    draft: "Final",
-    progress: 99,
+    fileUrl: angMagAnakPdf,
+    fileName: "AngMagAnak.pdf",
+    fileType: "pdf",
     description:
       "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
-  }
+  },
 ];
