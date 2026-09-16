@@ -21,7 +21,7 @@ export default function DeseretTable() {
         by Neil Alexander Walker.
       </p>
       <p>
-        ** NOTE: The characters aren't "𐐃" and "𐐉" are not commonly used in modern Deseret, especially in common english. "𐐂" is used instead.
+        ** NOTE: The character "𐐉" is only found in Brittish English. In American/Common English, the character "𐐂" is used.
       </p>
       <table className="alphabet-table">
         <thead>
