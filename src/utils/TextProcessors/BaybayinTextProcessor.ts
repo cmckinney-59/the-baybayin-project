@@ -7,14 +7,29 @@ import {
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { baybayinFromPhoneticToken } from "../../data/BaybayinData/baybayinPhoneticMap";
 import { replaceLettersWithUnicode } from "./philippineAbugidaUnicode";
+import {
+  ensureDictionaryLoaded,
+  tagalizeIfEnglish,
+} from "./tagalizeEnglish";
 
-export default function processBaybayinText(
+/**
+ * Direct mode (default): orthographic Latin → Baybayin only.
+ * When direct mode is off, English words (CMU hit) are Tagalized from
+ * pronunciation first, then converted to Baybayin.
+ * Slash phonemes (`/b/`, `/a/`, …) map directly and skip Tagalization.
+ */
+export default async function processBaybayinText(
   text: string,
   useXVowelKiller = false,
   fontId: BaybayinFontId,
   useHollowKudlits = true,
   useUnicode = false,
-): string {
+  directMode = true,
+): Promise<string> {
+  if (!directMode) {
+    await ensureDictionaryLoaded();
+  }
+
   const phoneticOptions = {
     fontId,
     useUnicode,
@@ -37,6 +52,7 @@ export default function processBaybayinText(
         fontId,
         useHollowKudlits,
         useUnicode,
+        directMode,
       );
     }
     result += baybayinFromPhoneticToken(match[1], phoneticOptions) ?? match[0];
@@ -50,6 +66,7 @@ export default function processBaybayinText(
       fontId,
       useHollowKudlits,
       useUnicode,
+      directMode,
     );
   }
   return result;
@@ -61,8 +78,13 @@ function processPlainBaybayin(
   fontId: BaybayinFontId,
   useHollowKudlits: boolean,
   useUnicode: boolean,
+  directMode: boolean,
 ): string {
-  let transliteratedText = text.toLowerCase();
+  const prepared = directMode
+    ? text
+    : text.replace(/[A-Za-z']+/g, (word) => tagalizeIfEnglish(word) ?? word);
+
+  let transliteratedText = prepared.toLowerCase();
 
   if (baybayinUsesUnicodeOutput(fontId, useUnicode)) {
     return replaceLettersWithUnicode(transliteratedText, BAYBAYIN_ABUGIDA_CONFIG, {

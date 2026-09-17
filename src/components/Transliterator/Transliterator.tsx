@@ -90,6 +90,7 @@ export default function Transliterator({
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
+  const [directMode, setDirectMode] = useState<boolean>(true);
   const [useSingleLineInput, setUseSingleLineInput] = useState<boolean>(true);
   const [outputOnlyMode, setOutputOnlyMode] = useState<boolean>(false);
   const [activeField, setActiveField] = useState<"input" | "output">("input");
@@ -193,6 +194,7 @@ export default function Transliterator({
           selectedBaybayinFont,
           useHollowKudlits,
           baybayinUnicodeOutput,
+          directMode,
         );
     }
     if (processWord) {
@@ -240,25 +242,38 @@ export default function Transliterator({
     if (!isBaybayin) return;
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode]);
+  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode, directMode]);
 
   // Keep Baybayin dictionary-driven output in sync when reviewing borrowed words.
   useEffect(() => {
-    if (isBaybayin && text.trim() && Object.keys(wordsDictionary).length > 0) {
-      const words = text.trim().split(/\s+/);
-      const baybayinProcessor = (word: string) =>
-        processBaybayinText(
-          word,
-          useXVowelKiller,
-          selectedBaybayinFont,
-          useHollowKudlits,
-          baybayinUnicodeOutput,
-        );
-      const processedWords = words.map((word) => {
-        return wordsDictionary[word] || baybayinProcessor(word);
-      });
-      setTransliteratedText(processedWords.join(" "));
+    if (!isBaybayin || !text.trim() || Object.keys(wordsDictionary).length === 0) {
+      return;
     }
+    const words = text.trim().split(/\s+/);
+    let cancelled = false;
+    void (async () => {
+      const processedWords = await Promise.all(
+        words.map(async (word) => {
+          if (wordsDictionary[word]) {
+            return wordsDictionary[word];
+          }
+          return processBaybayinText(
+            word,
+            useXVowelKiller,
+            selectedBaybayinFont,
+            useHollowKudlits,
+            baybayinUnicodeOutput,
+            directMode,
+          );
+        }),
+      );
+      if (!cancelled) {
+        setTransliteratedText(processedWords.join(" "));
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [
     isBaybayin,
     wordsDictionary,
@@ -267,6 +282,7 @@ export default function Transliterator({
     selectedBaybayinFont,
     useHollowKudlits,
     useUnicode,
+    directMode,
   ]);
 
   const handleClearInput = () => {
@@ -512,6 +528,7 @@ export default function Transliterator({
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
         useUnicode={useUnicode}
+        directMode={directMode}
         useSingleLineInput={useSingleLineInput}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
@@ -521,6 +538,7 @@ export default function Transliterator({
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
         setUseUnicode={setUseUnicode}
+        setDirectMode={setDirectMode}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
         showOutputOnlyOption={showOnScreenKeyboard}
@@ -566,6 +584,7 @@ export default function Transliterator({
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}
           useXVowelKiller={useXVowelKiller}
+          directMode={directMode}
           wordsWithC={Object.keys(wordsDictionary).filter((word) => {
             const lowerWord = word.toLowerCase();
             return (

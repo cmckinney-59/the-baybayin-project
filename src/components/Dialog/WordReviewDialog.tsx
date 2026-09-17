@@ -9,6 +9,7 @@ interface WordReviewDialogProps {
   wordsWithC?: string[];
   wordContainsBorrowedSound?: boolean;
   useXVowelKiller?: boolean;
+  directMode?: boolean;
 }
 
 export default function WordReviewDialog({
@@ -16,6 +17,7 @@ export default function WordReviewDialog({
   wordsWithC = [],
   wordContainsBorrowedSound = false,
   useXVowelKiller = false,
+  directMode = true,
 }: WordReviewDialogProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
@@ -24,16 +26,19 @@ export default function WordReviewDialog({
   const currentWord = wordsWithC[currentWordIndex];
   const remainingWords = wordsWithC.length - currentWordIndex;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!inputValue.trim() || !currentWord) {
       return;
     }
 
     // Process the input through baybayintextprocessor
-    const processedValue = processBaybayinText(
+    const processedValue = await processBaybayinText(
       inputValue.trim(),
       useXVowelKiller,
       DEFAULT_BAYBAYIN_FONT_ID,
+      true,
+      false,
+      directMode,
     );
 
     // Update the dictionary with the processed value

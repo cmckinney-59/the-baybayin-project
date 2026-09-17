@@ -18,6 +18,7 @@ export type TransliteratorSettingsDialogProps = {
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
+  directMode: boolean;
   useSingleLineInput: boolean;
   showOutputOnlyOption?: boolean;
   outputOnlyMode: boolean;
@@ -29,6 +30,7 @@ export type TransliteratorSettingsDialogProps = {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
+  setDirectMode: (checked: boolean) => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
 };
@@ -50,6 +52,7 @@ export default function TransliteratorSettingsDialog({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
+  directMode,
   useSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -61,6 +64,7 @@ export default function TransliteratorSettingsDialog({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
+  setDirectMode,
   setUseSingleLineInput,
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
@@ -125,6 +129,12 @@ export default function TransliteratorSettingsDialog({
 
             {currentAlphabet === "Baybayin" && (
               <>
+                <Checkbox
+                  checked={directMode}
+                  onChange={setDirectMode}
+                  label="Direct mode"
+                  title="Skip English pronunciation lookup and Tagalization; transliterate Latin spelling as written."
+                />
                 {selectedBaybayinFont === "noto-sans" && (
                   <Checkbox
                     checked={useHollowKudlits}

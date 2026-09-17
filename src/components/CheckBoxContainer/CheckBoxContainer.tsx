@@ -11,6 +11,7 @@ interface CheckboxContainerProps {
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
+  directMode: boolean;
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
@@ -19,6 +20,7 @@ interface CheckboxContainerProps {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
+  setDirectMode: (checked: boolean) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
   showOutputOnlyOption?: boolean;
@@ -46,6 +48,7 @@ export default function CheckboxContainer({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
+  directMode,
   useSingleLineInput,
   setUseCombinedCharacters,
   setUseTechNumbers,
@@ -55,6 +58,7 @@ export default function CheckboxContainer({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
+  setDirectMode,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -77,6 +81,7 @@ export default function CheckboxContainer({
       useXVowelKiller={useXVowelKiller}
       useHollowKudlits={useHollowKudlits}
       useUnicode={useUnicode}
+      directMode={directMode}
       useSingleLineInput={useSingleLineInput}
       textContainsBorrowedWords={textContainsBorrowedWords}
       showOutputOnlyOption={showOutputOnlyOption}
@@ -88,6 +93,7 @@ export default function CheckboxContainer({
       setUseXVowelKiller={setUseXVowelKiller}
       setUseHollowKudlits={setUseHollowKudlits}
       setUseUnicode={setUseUnicode}
+      setDirectMode={setDirectMode}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       setOutputOnlyMode={setOutputOnlyMode}
