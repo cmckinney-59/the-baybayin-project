@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import {
-  AiOutlineTranslation,
   AiOutlineInfoCircle,
   AiOutlineProject,
   AiOutlineSetting,
 } from "react-icons/ai";
+import { PiTranslate } from "react-icons/pi";
 
 import "./HomePage.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -37,7 +37,7 @@ export default function HomePage() {
         <NavCard
           title="Transliterator"
           description="Convert text to various alphabets."
-          icon={<AiOutlineTranslation />}
+          icon={<PiTranslate />}
           onClick={handleTransliteratorClick}
         />
 
