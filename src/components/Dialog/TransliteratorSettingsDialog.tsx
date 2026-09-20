@@ -139,7 +139,7 @@ export default function TransliteratorSettingsDialog({
                   <Checkbox
                     checked={useHollowKudlits}
                     onChange={setUseHollowKudlits}
-                    label="Use hollow kudlits."
+                    label="Use hollow kudlits"
                     title="Use hollow kudlit marks for e/o (vs filled marks for i/u)."
                   />
                 )}
@@ -154,7 +154,7 @@ export default function TransliteratorSettingsDialog({
                 <Checkbox
                   checked={textContainsBorrowedWords}
                   onChange={setTextContainsBorrowedWords}
-                  label="Text contains borrowed words."
+                  label="Text contains borrowed words"
                 />
                 {selectedBaybayinFontEntry.supportsXVowelKiller && (
                   <Checkbox
