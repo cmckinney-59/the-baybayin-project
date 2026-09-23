@@ -90,7 +90,14 @@ export default function Transliterator({
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
-  const [directMode, setDirectMode] = useState<boolean>(true);
+  const [phoneticMode, setPhoneticMode] = useState<boolean>(false);
+  const [useEnglishPronunciation, setUseEnglishPronunciation] =
+    useState<boolean>(true);
+  const [useSpanishPronunciation, setUseSpanishPronunciation] =
+    useState<boolean>(true);
+  const [phoneticPriority, setPhoneticPriority] = useState<"english" | "spanish">(
+    "english",
+  );
   const [useSingleLineInput, setUseSingleLineInput] = useState<boolean>(true);
   const [outputOnlyMode, setOutputOnlyMode] = useState<boolean>(false);
   const [activeField, setActiveField] = useState<"input" | "output">("input");
@@ -194,7 +201,10 @@ export default function Transliterator({
           selectedBaybayinFont,
           useHollowKudlits,
           baybayinUnicodeOutput,
-          directMode,
+          phoneticMode,
+          useEnglishPronunciation,
+          useSpanishPronunciation,
+          phoneticPriority,
         );
     }
     if (processWord) {
@@ -242,7 +252,7 @@ export default function Transliterator({
     if (!isBaybayin) return;
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode, directMode]);
+  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode, phoneticMode, useEnglishPronunciation, useSpanishPronunciation, phoneticPriority]);
 
   // Keep Baybayin dictionary-driven output in sync when reviewing borrowed words.
   useEffect(() => {
@@ -263,7 +273,10 @@ export default function Transliterator({
             selectedBaybayinFont,
             useHollowKudlits,
             baybayinUnicodeOutput,
-            directMode,
+            phoneticMode,
+            useEnglishPronunciation,
+            useSpanishPronunciation,
+            phoneticPriority,
           );
         }),
       );
@@ -282,7 +295,10 @@ export default function Transliterator({
     selectedBaybayinFont,
     useHollowKudlits,
     useUnicode,
-    directMode,
+    phoneticMode,
+    useEnglishPronunciation,
+    useSpanishPronunciation,
+    phoneticPriority,
   ]);
 
   const handleClearInput = () => {
@@ -528,7 +544,10 @@ export default function Transliterator({
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
         useUnicode={useUnicode}
-        directMode={directMode}
+        phoneticMode={phoneticMode}
+        useEnglishPronunciation={useEnglishPronunciation}
+        useSpanishPronunciation={useSpanishPronunciation}
+        phoneticPriority={phoneticPriority}
         useSingleLineInput={useSingleLineInput}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
@@ -538,7 +557,10 @@ export default function Transliterator({
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
         setUseUnicode={setUseUnicode}
-        setDirectMode={setDirectMode}
+        setPhoneticMode={setPhoneticMode}
+        setUseEnglishPronunciation={setUseEnglishPronunciation}
+        setUseSpanishPronunciation={setUseSpanishPronunciation}
+        setPhoneticPriority={setPhoneticPriority}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
         showOutputOnlyOption={showOnScreenKeyboard}
@@ -584,7 +606,10 @@ export default function Transliterator({
         <WordReviewDialog
           onClose={() => setIsDialogOpen(false)}
           useXVowelKiller={useXVowelKiller}
-          directMode={directMode}
+          phoneticMode={phoneticMode}
+          useEnglishPronunciation={useEnglishPronunciation}
+          useSpanishPronunciation={useSpanishPronunciation}
+          phoneticPriority={phoneticPriority}
           wordsWithC={Object.keys(wordsDictionary).filter((word) => {
             const lowerWord = word.toLowerCase();
             return (

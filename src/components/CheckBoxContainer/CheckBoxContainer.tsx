@@ -1,5 +1,6 @@
 import TransliteratorSettingsDialog from "../Dialog/TransliteratorSettingsDialog";
 import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import type { PhoneticPriority } from "../../utils/TextProcessors/phoneticizeWord";
 
 interface CheckboxContainerProps {
   currentAlphabet: string;
@@ -11,7 +12,10 @@ interface CheckboxContainerProps {
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
-  directMode: boolean;
+  phoneticMode: boolean;
+  useEnglishPronunciation: boolean;
+  useSpanishPronunciation: boolean;
+  phoneticPriority: PhoneticPriority;
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
@@ -20,7 +24,10 @@ interface CheckboxContainerProps {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
-  setDirectMode: (checked: boolean) => void;
+  setPhoneticMode: (checked: boolean) => void;
+  setUseEnglishPronunciation: (checked: boolean) => void;
+  setUseSpanishPronunciation: (checked: boolean) => void;
+  setPhoneticPriority: (priority: PhoneticPriority) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
   showOutputOnlyOption?: boolean;
@@ -48,7 +55,10 @@ export default function CheckboxContainer({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
-  directMode,
+  phoneticMode,
+  useEnglishPronunciation,
+  useSpanishPronunciation,
+  phoneticPriority,
   useSingleLineInput,
   setUseCombinedCharacters,
   setUseTechNumbers,
@@ -58,7 +68,10 @@ export default function CheckboxContainer({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
-  setDirectMode,
+  setPhoneticMode,
+  setUseEnglishPronunciation,
+  setUseSpanishPronunciation,
+  setPhoneticPriority,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -81,7 +94,10 @@ export default function CheckboxContainer({
       useXVowelKiller={useXVowelKiller}
       useHollowKudlits={useHollowKudlits}
       useUnicode={useUnicode}
-      directMode={directMode}
+      phoneticMode={phoneticMode}
+      useEnglishPronunciation={useEnglishPronunciation}
+      useSpanishPronunciation={useSpanishPronunciation}
+      phoneticPriority={phoneticPriority}
       useSingleLineInput={useSingleLineInput}
       textContainsBorrowedWords={textContainsBorrowedWords}
       showOutputOnlyOption={showOutputOnlyOption}
@@ -93,7 +109,10 @@ export default function CheckboxContainer({
       setUseXVowelKiller={setUseXVowelKiller}
       setUseHollowKudlits={setUseHollowKudlits}
       setUseUnicode={setUseUnicode}
-      setDirectMode={setDirectMode}
+      setPhoneticMode={setPhoneticMode}
+      setUseEnglishPronunciation={setUseEnglishPronunciation}
+      setUseSpanishPronunciation={setUseSpanishPronunciation}
+      setPhoneticPriority={setPhoneticPriority}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       setOutputOnlyMode={setOutputOnlyMode}

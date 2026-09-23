@@ -18,7 +18,10 @@ export type TransliteratorSettingsDialogProps = {
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
-  directMode: boolean;
+  phoneticMode: boolean;
+  useEnglishPronunciation: boolean;
+  useSpanishPronunciation: boolean;
+  phoneticPriority: "english" | "spanish";
   useSingleLineInput: boolean;
   showOutputOnlyOption?: boolean;
   outputOnlyMode: boolean;
@@ -30,7 +33,10 @@ export type TransliteratorSettingsDialogProps = {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
-  setDirectMode: (checked: boolean) => void;
+  setPhoneticMode: (checked: boolean) => void;
+  setUseEnglishPronunciation: (checked: boolean) => void;
+  setUseSpanishPronunciation: (checked: boolean) => void;
+  setPhoneticPriority: (priority: "english" | "spanish") => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
 };
@@ -52,7 +58,10 @@ export default function TransliteratorSettingsDialog({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
-  directMode,
+  phoneticMode,
+  useEnglishPronunciation,
+  useSpanishPronunciation,
+  phoneticPriority,
   useSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -64,11 +73,16 @@ export default function TransliteratorSettingsDialog({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
-  setDirectMode,
+  setPhoneticMode,
+  setUseEnglishPronunciation,
+  setUseSpanishPronunciation,
+  setPhoneticPriority,
   setUseSingleLineInput,
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
   const selectedBaybayinFontEntry = getBaybayinFontById(selectedBaybayinFont);
+  const prioritizeEnabled =
+    phoneticMode && useEnglishPronunciation && useSpanishPronunciation;
 
   return (
     <dialog
@@ -129,12 +143,82 @@ export default function TransliteratorSettingsDialog({
 
             {currentAlphabet === "Baybayin" && (
               <>
-                <Checkbox
-                  checked={directMode}
-                  onChange={setDirectMode}
-                  label="Direct mode"
-                  title="Skip English pronunciation lookup and Tagalization; transliterate Latin spelling as written."
-                />
+                <div className="phonetic-mode-settings">
+                  <Checkbox
+                    checked={phoneticMode}
+                    onChange={setPhoneticMode}
+                    label="Phonetic mode"
+                    title="Look up English/Spanish pronunciation and Tagalize before converting to Baybayin. Off = transliterate Latin spelling as written."
+                  />
+                  <div
+                    className={`phonetic-mode-settings-collapse${phoneticMode ? " is-open" : ""}`}
+                    aria-hidden={!phoneticMode}
+                  >
+                    <div
+                      className="phonetic-mode-settings-collapse-inner"
+                      {...(!phoneticMode ? { inert: true as const } : {})}
+                    >
+                      <div className="phonetic-mode-settings-group">
+                        <Checkbox
+                          checked={useEnglishPronunciation}
+                          onChange={setUseEnglishPronunciation}
+                          label="Use English"
+                          title="Tagalize words found in the English pronunciation dictionary."
+                        />
+                        <Checkbox
+                          checked={useSpanishPronunciation}
+                          onChange={setUseSpanishPronunciation}
+                          label="Use Spanish"
+                          title="Tagalize words found in the Spanish pronunciation dictionary."
+                        />
+                        <div
+                          className={`phonetic-priority-row${prioritizeEnabled ? "" : " phonetic-priority-row--disabled"}`}
+                          title={
+                            prioritizeEnabled
+                              ? "Which language to try first when both dictionaries are enabled."
+                              : "Enable both Use English and Use Spanish to change priority."
+                          }
+                        >
+                          <span className="phonetic-priority-label">
+                            Prioritize
+                          </span>
+                          <div
+                            className="phonetic-priority-toggle"
+                            role="group"
+                            aria-label="Pronunciation priority"
+                          >
+                            <button
+                              type="button"
+                              className={
+                                phoneticPriority === "spanish"
+                                  ? "phonetic-priority-option active"
+                                  : "phonetic-priority-option"
+                              }
+                              disabled={!prioritizeEnabled}
+                              aria-pressed={phoneticPriority === "spanish"}
+                              onClick={() => setPhoneticPriority("spanish")}
+                            >
+                              Spanish
+                            </button>
+                            <button
+                              type="button"
+                              className={
+                                phoneticPriority === "english"
+                                  ? "phonetic-priority-option active"
+                                  : "phonetic-priority-option"
+                              }
+                              disabled={!prioritizeEnabled}
+                              aria-pressed={phoneticPriority === "english"}
+                              onClick={() => setPhoneticPriority("english")}
+                            >
+                              English
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 {selectedBaybayinFont === "noto-sans" && (
                   <Checkbox
                     checked={useHollowKudlits}

@@ -966,12 +966,115 @@ button:hover:not(:disabled) {
   box-sizing: border-box;
 }
 
-.transliterator-settings-dialog
-  .transliterator-settings-options
-  .checkbox-label:hover {
+.transliterator-settings-dialog .transliterator-settings-options .checkbox-label:hover {
   background: var(--bg-secondary, var(--button-bg));
   border-color: var(--button-border);
   opacity: 1;
+}
+
+.transliterator-settings-dialog .checkbox-label--disabled,
+.transliterator-settings-dialog .checkbox-label--disabled:hover {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: transparent;
+  border-color: transparent;
+}
+
+.transliterator-settings-dialog .phonetic-mode-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.transliterator-settings-dialog .phonetic-mode-settings-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+.transliterator-settings-dialog .phonetic-mode-settings-collapse.is-open {
+  grid-template-rows: 1fr;
+}
+
+.transliterator-settings-dialog .phonetic-mode-settings-collapse-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.transliterator-settings-dialog .phonetic-mode-settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-left: 1.35rem;
+  margin-top: 0.15rem;
+  padding-left: 0.65rem;
+  border-left: 2px solid var(--button-border, #ccc);
+}
+
+.transliterator-settings-dialog .phonetic-priority-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.transliterator-settings-dialog .phonetic-priority-row--disabled {
+  opacity: 0.45;
+}
+
+.transliterator-settings-dialog .phonetic-priority-label {
+  font-size: inherit;
+  white-space: nowrap;
+}
+
+.transliterator-settings-dialog .phonetic-priority-toggle {
+  display: inline-flex;
+  border: 1px solid var(--button-border, #ccc);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--bg-primary, #fff);
+}
+
+.transliterator-settings-dialog .phonetic-priority-option {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.4rem 0.75rem;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1.2;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.transliterator-settings-dialog .phonetic-priority-option + .phonetic-priority-option {
+  border-left: 1px solid var(--button-border, #ccc);
+}
+
+.transliterator-settings-dialog .phonetic-priority-option:hover:not(:disabled):not(.active) {
+  background-color: var(--bg-secondary, var(--button-bg));
+}
+
+.transliterator-settings-dialog .phonetic-priority-option.active {
+  background-color: rgb(26, 115, 232);
+  color: white;
+  font-weight: 600;
+}
+
+.dark-mode .transliterator-settings-dialog .phonetic-priority-option.active {
+  background-color: #64b5f6;
+  color: #1a1a1a;
+}
+
+.transliterator-settings-dialog .phonetic-priority-option:disabled {
+  cursor: not-allowed;
 }
 
 .clear-input-button,

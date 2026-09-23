@@ -3,13 +3,17 @@ import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor";
 import { DEFAULT_BAYBAYIN_FONT_ID } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import type { PhoneticPriority } from "../../utils/TextProcessors/phoneticizeWord";
 
 interface WordReviewDialogProps {
   onClose?: () => void;
   wordsWithC?: string[];
   wordContainsBorrowedSound?: boolean;
   useXVowelKiller?: boolean;
-  directMode?: boolean;
+  phoneticMode?: boolean;
+  useEnglishPronunciation?: boolean;
+  useSpanishPronunciation?: boolean;
+  phoneticPriority?: PhoneticPriority;
 }
 
 export default function WordReviewDialog({
@@ -17,7 +21,10 @@ export default function WordReviewDialog({
   wordsWithC = [],
   wordContainsBorrowedSound = false,
   useXVowelKiller = false,
-  directMode = true,
+  phoneticMode = false,
+  useEnglishPronunciation = true,
+  useSpanishPronunciation = true,
+  phoneticPriority = "english",
 }: WordReviewDialogProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
@@ -38,7 +45,10 @@ export default function WordReviewDialog({
       DEFAULT_BAYBAYIN_FONT_ID,
       true,
       false,
-      directMode,
+      phoneticMode,
+      useEnglishPronunciation,
+      useSpanishPronunciation,
+      phoneticPriority,
     );
 
     // Update the dictionary with the processed value
@@ -63,7 +73,7 @@ export default function WordReviewDialog({
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleSubmit();
+      void handleSubmit();
     }
   };
 
@@ -92,7 +102,7 @@ export default function WordReviewDialog({
           placeholder="Enter phonetic spelling..."
           autoFocus
         />
-        <button className="validate-button-style" onClick={handleSubmit}>
+        <button className="validate-button-style" onClick={() => void handleSubmit()}>
           Submit
         </button>
       </>
