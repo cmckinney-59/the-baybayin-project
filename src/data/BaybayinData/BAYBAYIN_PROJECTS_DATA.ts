@@ -8,6 +8,7 @@ import angPagpapanumbalikParallelPdf from "../../assets/projects/Baybayin/AngPag
 import angMgaSaliganPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya.pdf";
 import angMgaSaliganParallelPdf from "../../assets/projects/Baybayin/AngMgaSaliganNgPananampalataya/AngMgaSaliganNgPananampalataya_Parallel.pdf";
 import angMagAnakPdf from "../../assets/projects/Baybayin/AngMagAnak/AngMagAnak.pdf";
+import angMagAnakParallelPdf from "../../assets/projects/Baybayin/AngMagAnak/AngMagAnak_Parallel.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [
@@ -76,7 +77,23 @@ export const PROJECTS_DATA: Project[] = [
     fileUrl: angMgaSaliganParallelPdf,
     fileName: "AngMgaSaliganNgPananampalataya_Parallel.pdf",
     fileType: "pdf",
-    description: "Ang Mga Saligan ng Pananampalataya: Tagalog - Baybayin Parallel",
+    description:
+      "Ang Mga Saligan ng Pananampalataya: Tagalog - Baybayin Parallel",
+  },
+  {
+    name: "Ang Mag-anak",
+    fileUrl: angMagAnakPdf,
+    fileName: "AngMagAnak.pdf",
+    fileType: "pdf",
+    description:
+      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
+  },
+  {
+    name: "Ang Mag-anak: Parallel",
+    fileUrl: angMagAnakParallelPdf,
+    fileName: "AngMagAnak_Parallel.pdf",
+    fileType: "pdf",
+    description: "Ang Mag-anak: Tagalog - Baybayin Parallel",
   },
   {
     name: "Ang Bagong Tipan",
@@ -89,13 +106,5 @@ export const PROJECTS_DATA: Project[] = [
     draft: "Third Draft",
     progress: 30,
     description: "Tagalog Book of Mormon",
-  },
-  {
-    name: "Ang Mag-anak",
-    fileUrl: angMagAnakPdf,
-    fileName: "AngMagAnak.pdf",
-    fileType: "pdf",
-    description:
-      "A proclaimation originally published by The Church of Jesus Christ of Latter-day Saints.",
   },
 ];
