@@ -207,6 +207,14 @@ export const ALPHABETS_DATA: Alphabet[] = [
   },
 ];
 
+/** Philippine abugida scripts shown together in the alphabet picker. */
+export const FILIPINO_SCRIPT_NAMES: readonly string[] = [
+  "Baybayin",
+  "Buhid",
+  "Hanunoo",
+  "Tagbanwa",
+];
+
 /** URL segment under `/transliterator/` (kebab-case of `name`). */
 export function alphabetNameToRouteSegment(name: string): string {
   if (!name) return "";
