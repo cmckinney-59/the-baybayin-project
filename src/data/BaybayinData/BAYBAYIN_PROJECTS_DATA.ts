@@ -98,13 +98,13 @@ export const PROJECTS_DATA: Project[] = [
   {
     name: "Ang Bagong Tipan",
     draft: "Second Draft",
-    progress: 40,
+    progress: 55,
     description: "Tagalog New Testament",
   },
   {
     name: "Ang Aklat ni Mormon",
     draft: "Third Draft",
-    progress: 30,
+    progress: 47,
     description: "Tagalog Book of Mormon",
   },
 ];
