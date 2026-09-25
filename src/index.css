@@ -1640,6 +1640,17 @@ button:hover:not(:disabled) {
 
 /* Aurebesh Letters */
 
+.ancients-letter {
+  font-family: "Ancients", sans-serif;
+  font-weight: normal;
+  font-size: 1.4em;
+}
+
+.ogham-letter {
+  font-family: "Ogham", sans-serif;
+  font-size: 1.4em;
+}
+
 .aurebesh-letter {
   font-family: "Aurebesh Legends";
   font-weight: normal;
