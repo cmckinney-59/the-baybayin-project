@@ -47,35 +47,31 @@ function letterKey(id: string): KeyboardLayout[number][number] {
   };
 }
 
+/**
+ * Noto Sans Tagbanwa 2.001 has no outlines for the Unicode 14 additions
+ * la (U+176D), ra (U+1771), and virama (U+1774). Keys for those show as
+ * rectangles, so they are left off the keyboard.
+ */
+const TAGBANWA_FONT_CODE_POINTS = new Set<number>([
+  0x1760, 0x1761, 0x1762, 0x1763, 0x1764, 0x1765, 0x1766, 0x1767, 0x1768,
+  0x1769, 0x176a, 0x176b, 0x176c, 0x176e, 0x176f, 0x1770, 0x1772, 0x1773,
+]);
+
+function fontCanDraw(id: string): boolean {
+  const glyph = TAGBANWA_KEYBOARD_GLYPH[id];
+  const codePoint = glyph?.codePointAt(0);
+  return codePoint !== undefined && TAGBANWA_FONT_CODE_POINTS.has(codePoint);
+}
+
+function letterRow(ids: readonly string[]): KeyboardLayout[number] {
+  return ids.filter(fontCanDraw).map(letterKey);
+}
+
 /** On-screen Tagbanwa layout (Unicode glyphs; Latin syllabic input). */
 export const TAGBANWA_KEYBOARD_LAYOUT: KeyboardLayout = [
-  [
-    letterKey("b"),
-    letterKey("k"),
-    letterKey("d"),
-    letterKey("g"),
-    letterKey("h"),
-    letterKey("l"),
-    letterKey("m"),
-  ],
-  [
-    letterKey("n"),
-    letterKey("ng"),
-    letterKey("p"),
-    letterKey("r"),
-    letterKey("s"),
-    letterKey("t"),
-    letterKey("w"),
-    letterKey("y"),
-  ],
-  [
-    letterKey("a"),
-    letterKey("i"),
-    letterKey("u"),
-    letterKey("kudlit_e"),
-    letterKey("kudlit_o"),
-    letterKey("virama"),
-  ],
+  letterRow(["b", "k", "d", "g", "h", "l", "m"]),
+  letterRow(["n", "ng", "p", "r", "s", "t", "w", "y"]),
+  letterRow(["a", "i", "u", "kudlit_e", "kudlit_o", "virama"]),
   [
     {
       id: "space",
