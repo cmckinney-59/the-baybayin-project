@@ -528,7 +528,7 @@ export default function Transliterator({
         onInputCursorChange={setInputCursor}
         onOutputCursorChange={setOutputCursor}
       />
-      {isBaybayin && text.toLowerCase().includes("c") && (
+      {isBaybayin && !phoneticMode && text.toLowerCase().includes("c") && (
         <p className="note-paragraph">
           * The letter &apos;c&apos; does not show in baybayin font. Replace any
           c&apos;s with k&apos;s or s&apos;s accordingly. See the How To Read
