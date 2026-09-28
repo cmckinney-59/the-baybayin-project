@@ -7,6 +7,196 @@
   min-width: 0;
 }
 
+.projectsPageHeader {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.projectsPageHeader h1 {
+  margin-bottom: 0;
+}
+
+.projectsViewToggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  border: 1px solid var(--button-border, #ccc);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg-primary, #fff);
+}
+
+.projectsViewToggle button,
+.projectsViewToggle button.active {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.projectsViewToggle button svg,
+.projectsViewToggle button.active svg {
+  font-size: 1.15rem;
+}
+
+.projectsViewToggle button + button {
+  border-left: 1px solid var(--button-border, #ccc);
+}
+
+.projectsViewToggle button.active {
+  background-color: rgb(26, 115, 232);
+  color: white;
+}
+
+.dark-mode .projectsViewToggle button.active {
+  background-color: #64b5f6;
+  color: #1a1a1a;
+  box-shadow: none;
+}
+
+.projectTileGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.projectsTileSections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projectsTileSectionTitle {
+  margin: 0 0 0.85rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.projectTile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  min-width: 0;
+}
+
+.projectTilePreview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--button-border);
+  background: var(--bg-secondary);
+}
+
+.projectTilePreviewFrame {
+  width: 210%;
+  height: 210%;
+  border: 0;
+  transform: scale(0.476);
+  transform-origin: top left;
+  pointer-events: none;
+  background: white;
+}
+
+.projectTilePreviewOpen {
+  position: absolute;
+  inset: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: zoom-in;
+}
+
+.projectTilePreviewOpen:hover,
+.projectTilePreviewOpen.active {
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.projectTilePreviewFallback {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.projectTilePreviewKind {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .projectTilePreviewKind {
+  color: #64b5f6;
+}
+
+.projectTilePreviewFile {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.projectTileName {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.projectTileDescription {
+  margin: 0;
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.projectTileStatus {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.projectTile .downloadButton,
+.projectTile .previewButton {
+  display: inline-block;
+  margin: 0;
+  width: auto;
+}
+
 .projectProgressSections {
   display: flex;
   flex-direction: column;
@@ -95,6 +285,18 @@
 @media (max-width: 768px) {
   .projectsPage {
     padding: 0 0.5rem 1rem;
+  }
+
+  .projectsPageHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .projectsViewToggle {
+    position: static;
+    align-self: flex-end;
   }
 
   .projectProgressList {
