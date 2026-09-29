@@ -3,6 +3,7 @@ import theFamilyCanonPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamil
 import theFamilyCanonParallelPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Canon_Parallel.pdf";
 import theFamilyLegendsPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Legends.pdf";
 import theFamilyLegendsParallelPdf from "../../assets/projects/Aurebesh/TheFamily/TheFamily_Aurebesh_Legends_Parallel.pdf";
+import theLivingChristLegendsPdf from "../../assets/projects/Aurebesh/TheFamily/TheLivingChrist_Aurebesh_Legends.pdf";
 
 export const PROJECTS_DATA: Project[] = [
   {
@@ -32,6 +33,13 @@ export const PROJECTS_DATA: Project[] = [
     fileName: "TheFamily_Aurebesh_Legends_Parallel.pdf",
     fileType: "pdf",
     description: "The Family Proclamation in Legends Aurebesh.",
+  },
+  {
+    name: "The Living Christ (Legends)",
+    fileUrl: theLivingChristLegendsPdf,
+    fileName: "TheLivingChrist_Aurebesh_Legends.pdf",
+    fileType: "pdf",
+    description: "The Living Christ in Legends Aurebesh.",
   },
   {
     name: "The Book of Mormon",

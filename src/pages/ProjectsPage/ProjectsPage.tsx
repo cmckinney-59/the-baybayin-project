@@ -28,7 +28,7 @@ type AlphabetSection = {
 
 export default function ProjectsPage() {
   const { showExperimentalFeatures } = useExperimentalFeatures();
-  const [view, setView] = useState<ProjectsView>("tile");
+  const [view, setView] = useState<ProjectsView>("browse");
   const currentProjects = getCurrentProjects();
   const headers = showExperimentalFeatures
     ? ["Name", "Description", "Draft"]
