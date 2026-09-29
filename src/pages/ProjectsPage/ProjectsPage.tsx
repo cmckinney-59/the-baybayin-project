@@ -11,10 +11,15 @@ import type { Project } from "../../models/models";
 import ProjectStatusCell from "./ProjectStatusCell";
 import ProjectProgressList from "./ProjectProgressList";
 import ProjectTiles from "./ProjectTiles";
+import ProjectBrowse from "./ProjectBrowse";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
-import { AiOutlineAppstore, AiOutlineUnorderedList } from "react-icons/ai";
+import {
+  AiOutlineAppstore,
+  AiOutlineBook,
+  AiOutlineUnorderedList,
+} from "react-icons/ai";
 
-type ProjectsView = "tile" | "list";
+type ProjectsView = "tile" | "list" | "browse";
 
 type AlphabetSection = {
   title: string;
@@ -44,6 +49,16 @@ export default function ProjectsPage() {
         <div className="projectsViewToggle" role="group" aria-label="Projects view">
           <button
             type="button"
+            className={view === "browse" ? "active" : ""}
+            aria-label="Browse view"
+            aria-pressed={view === "browse"}
+            title="Browse"
+            onClick={() => setView("browse")}
+          >
+            <AiOutlineBook />
+          </button>
+          <button
+            type="button"
             className={view === "tile" ? "active" : ""}
             aria-label="Tile view"
             aria-pressed={view === "tile"}
@@ -65,7 +80,9 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {view === "tile" ? (
+      {view === "browse" ? (
+        <ProjectBrowse />
+      ) : view === "tile" ? (
         <div className="projectsTileSections">
           <section className="projectsTileSection">
             <h2 className="projectsTileSectionTitle">Current Projects</h2>

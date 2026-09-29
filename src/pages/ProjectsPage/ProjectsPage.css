@@ -60,6 +60,182 @@
   box-shadow: none;
 }
 
+.projectsBrowse {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projectsBrowseFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.projectsBrowseFilter,
+.projectsBrowseFilter.is-selected {
+  width: auto;
+  height: auto;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: none;
+  line-height: 1.2;
+}
+
+.projectsBrowseFilter.is-selected {
+  background-color: rgb(26, 115, 232);
+  color: white;
+  border-color: rgb(26, 115, 232);
+}
+
+.dark-mode .projectsBrowseFilter.is-selected {
+  background-color: #64b5f6;
+  color: #1a1a1a;
+  border-color: #64b5f6;
+  box-shadow: none;
+}
+
+.projectsBrowseList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projectsBrowseItem {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 0.75rem;
+  border: 1px solid var(--button-border);
+  border-radius: 10px;
+  background-color: var(--bg-primary);
+  min-width: 0;
+}
+
+.projectsBrowseThumb {
+  position: relative;
+  flex: 0 0 4.5rem;
+  width: 4.5rem;
+  height: 6rem;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--button-border);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectsBrowseThumbFrame {
+  width: 220%;
+  height: 220%;
+  border: 0;
+  transform: scale(0.45);
+  transform-origin: top left;
+  pointer-events: none;
+  background: white;
+}
+
+.projectsBrowseThumbLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .projectsBrowseThumbLabel {
+  color: #64b5f6;
+}
+
+.projectsBrowseBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+}
+
+.projectsBrowseKicker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .projectsBrowseKicker {
+  color: #64b5f6;
+}
+
+.projectsBrowseName {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.projectsBrowseDescription {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.projectsBrowseProgress {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.projectsBrowseProgressMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.projectsBrowseTrack {
+  height: 0.4rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--button-border) 40%, var(--bg-secondary));
+  overflow: hidden;
+}
+
+.projectsBrowseFill {
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(26, 115, 232);
+}
+
+.dark-mode .projectsBrowseFill {
+  background: #64b5f6;
+}
+
+.projectsBrowseActions {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.projectsBrowseActions .downloadButton,
+.projectsBrowseActions .previewButton {
+  display: inline-block;
+  margin: 0;
+  width: auto;
+}
+
 .projectTileGrid {
   list-style: none;
   margin: 0;
