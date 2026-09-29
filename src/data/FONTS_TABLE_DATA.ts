@@ -173,7 +173,7 @@ export function getFontDownloadUrl(downloadPath: string): string | undefined {
   return FONT_ASSETS[key];
 }
 
-/** Fonts available for the transliterator alphabet shown in How To Use. */
+/** Fonts available for the transliterator alphabet shown in the Fonts section. */
 export function getFontTableRows(alphabetName: string): FontTableRow[] {
   if (alphabetName === "Baybayin") {
     return BAYBAYIN_FONTS.map((font) => {

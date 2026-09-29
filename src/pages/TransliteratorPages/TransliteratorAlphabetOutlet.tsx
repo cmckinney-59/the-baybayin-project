@@ -37,6 +37,7 @@ import TengwarHowToAndResources from "../../components/HowToRead/TengwarHTR/Teng
 import WhatIsTengwar from "../../components/HowToRead/TengwarHTR/WhatIsTengwar/WhatIsTengwar";
 import UnownGuide from "../../components/HowToRead/UnownHTR/UnownGuide";
 import HowToUse from "../../components/HowToRead/HowToUse";
+import FontsSection from "../../components/HowToRead/FontsSection";
 import {
   ALPHABETS_DATA,
   alphabetNameToRouteSegment,
@@ -137,6 +138,7 @@ export default function TransliteratorAlphabetOutlet() {
     <>
       <HowToUse />
       {Extra ? <Extra /> : null}
+      <FontsSection />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { useAlphabet } from "../../contexts/AlphabetContext";
-import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
 import {
   getFontDownloadUrl,
   getFontTableRows,
@@ -7,11 +6,10 @@ import {
 import downloadFont from "../../utils/DownloadFont";
 
 export default function FontsTable() {
-  const { showExperimentalFeatures } = useExperimentalFeatures();
   const { currentAlphabet } = useAlphabet();
   const rows = getFontTableRows(currentAlphabet);
 
-  if (!showExperimentalFeatures || rows.length === 0) {
+  if (rows.length === 0) {
     return null;
   }
 
