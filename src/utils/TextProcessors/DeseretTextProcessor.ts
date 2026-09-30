@@ -7,6 +7,7 @@ import { wordToArpabet } from "@ingglish/g2p";
 import {
   DESERET_CONSONANTS_UPPER as _consonantsUpper,
   DESERET_VOWELS_UPPER as _vowelsUpper,
+  DESERET_MODERN_UPPER as _modernUpper,
 } from "../../data/DeseretData/DESERET_DATA";
 import { replacePhoneticSlashTokens } from "../../data/DeseretData/deseretPhoneticMap";
 
@@ -32,8 +33,11 @@ async function ensureDictionaryLoaded(): Promise<void> {
  * Example: "family" -> "𐑁𐐰𐑋𐐲𐑊𐐨"
  * Example: "/b//oo//k/" -> "𐐺𐐭𐐿"
  */
+export type DeseretMode = "classic" | "modern";
+
 export default async function processDeseretText(
   text: string,
+  mode: DeseretMode = "classic",
 ): Promise<string> {
   await ensureDictionaryLoaded();
 
@@ -52,9 +56,9 @@ export default async function processDeseretText(
 
     let processedWord = replaceER(phonemes.join(" "));
     processedWord = replaceYou(processedWord);
-    processedWord = replaceVowels(processedWord);
-    processedWord = replaceLigatures(processedWord);
-    processedWord = replaceConsonants(processedWord);
+    processedWord = replaceVowels(processedWord, mode);
+    processedWord = replaceLigatures(processedWord, mode);
+    processedWord = replaceConsonants(processedWord, mode);
     processedWord = removeExtraSpaces(processedWord);
     return applyWordCasing(word, processedWord);
   });
@@ -84,7 +88,7 @@ function mapStandaloneLetterWord(word: string): string | null {
   return applyWordCasing(word, capital);
 }
 
-function replaceConsonants(text: string): string {
+function replaceConsonants(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "B", _consonantsUpper.B);
   text = removeToneNumbers(text, "D", _consonantsUpper.D);
   text = removeToneNumbers(text, "F", _consonantsUpper.F);
@@ -95,50 +99,65 @@ function replaceConsonants(text: string): string {
   text = removeToneNumbers(text, "L", _consonantsUpper.L);
   text = removeToneNumbers(text, "M", _consonantsUpper.M);
   text = removeToneNumbers(text, "N", _consonantsUpper.N);
-  text = removeToneNumbers(text, "P", _consonantsUpper.P);
   text = removeToneNumbers(text, "R", _consonantsUpper.R);
-  text = removeToneNumbers(text, "S", _consonantsUpper.S);
   text = removeToneNumbers(text, "T", _consonantsUpper.T);
   text = removeToneNumbers(text, "V", _consonantsUpper.V);
   text = removeToneNumbers(text, "W", _consonantsUpper.W);
-  text = removeToneNumbers(text, "Y", _consonantsUpper.Y);
   text = removeToneNumbers(text, "Z", _consonantsUpper.Z);
+  if (mode === "modern") {
+    text = removeToneNumbers(text, "P", _vowelsUpper.SOO);
+    text = removeToneNumbers(text, "S", _vowelsUpper.LE);
+    text = removeToneNumbers(text, "Y", _vowelsUpper.SI);
+  } else {
+    text = removeToneNumbers(text, "P", _consonantsUpper.P);
+    text = removeToneNumbers(text, "S", _consonantsUpper.S);
+    text = removeToneNumbers(text, "Y", _consonantsUpper.Y);
+  }
   return text;
 }
 
-function replaceLigatures(text: string): string {
+function replaceLigatures(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "CH", _consonantsUpper.CH);
   text = removeToneNumbers(text, "DH", _consonantsUpper.DH);
   text = removeToneNumbers(text, "NG", _consonantsUpper.NG);
-  text = removeToneNumbers(text, "SH", _consonantsUpper.SH);
-  text = removeToneNumbers(text, "TH", _consonantsUpper.TH);
   text = removeToneNumbers(text, "ZH", _consonantsUpper.ZH);
+  if (mode === "modern") {
+  text = removeToneNumbers(text, "TH", _modernUpper.TH);
+  text = removeToneNumbers(text, "SH", _consonantsUpper.S);
+  } else {
+  text = removeToneNumbers(text, "TH", _consonantsUpper.TH);
+  text = removeToneNumbers(text, "SH", _consonantsUpper.SH);
+  }
   return text;
 }
 
-function replaceVowels(text: string): string {
-  text = removeToneNumbers(text, "AA", _vowelsUpper.LAH);
+function replaceVowels(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "AE", _vowelsUpper.SA);
   text = removeToneNumbers(text, "AH", _vowelsUpper.SU);
-  text = removeToneNumbers(text, "AO", _vowelsUpper.LAW);
   text = removeToneNumbers(text, "AW", _vowelsUpper.OW);
   text = removeToneNumbers(text, "AY", _vowelsUpper.EYE);
   text = removeToneNumbers(text, "EH", _vowelsUpper.SE);
   text = removeToneNumbers(text, "EY", _vowelsUpper.LA);
-  text = removeToneNumbers(text, "IH", _vowelsUpper.SI);
-  text = removeToneNumbers(text, "IY", _vowelsUpper.LE);
   text = removeToneNumbers(text, "OW", _vowelsUpper.LO);
   text = removeToneNumbers(text, "OY", _vowelsUpper.OI);
-  text = removeToneNumbers(text, "UH", _vowelsUpper.SOO);
   text = removeToneNumbers(text, "UW", _vowelsUpper.LOO);
+  if (mode === "modern") {
+  text = removeToneNumbers(text, "AA", _vowelsUpper.SO);
+  text = removeToneNumbers(text, "AO", _vowelsUpper.LAH);
+  text = removeToneNumbers(text, "IH", _modernUpper.SI);
+  text = removeToneNumbers(text, "IY", _vowelsUpper.SI);
+  text = removeToneNumbers(text, "UH", _vowelsUpper.LAW);
+} else {
+  text = removeToneNumbers(text, "AA", _vowelsUpper.LAH);
+  text = removeToneNumbers(text, "AO", _vowelsUpper.LAW);
+  text = removeToneNumbers(text, "IH", _vowelsUpper.SI);
+  text = removeToneNumbers(text, "IY", _vowelsUpper.LE);
+  text = removeToneNumbers(text, "UH", _vowelsUpper.SOO);
+}
   return text;
 }
 
 function replaceER(text: string): string {
-  // OG
-  // text = removeToneNumbers(text, "ER", _vowelsUpper.SO + _consonantsUpper.R);
-
-  // New
   text = removeToneNumbers(text, "ER", _vowelsUpper.SU + _consonantsUpper.R);
   return text;
 }

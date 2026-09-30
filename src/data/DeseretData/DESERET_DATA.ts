@@ -97,6 +97,16 @@ export const DESERET_VOWELS_LOWER = {
   ew: "𐑏",
 };
 
+export const DESERET_MODERN_UPPER = {
+  SI:"I",
+  TH:"Ⲑ",
+};
+
+export const DESERET_MODERN_LOWER = {
+  si:"ı",
+  th:"ⲑ",
+};
+
 export const DESERET_DATA: DeseretData[] = [
   {
     letter: DESERET_VOWELS_UPPER.LE,

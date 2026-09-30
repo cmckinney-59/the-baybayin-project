@@ -11,6 +11,8 @@ import CheckBoxContainer, {
   hasTransliteratorSettings,
 } from "../CheckBoxContainer/CheckBoxContainer.tsx";
 import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcessor.ts";
+import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
+import type { DeseretMode } from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
   baybayinUsesUnicodeOutput,
@@ -85,6 +87,7 @@ export default function Transliterator({
     useState<boolean>(false);
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
+  const [deseretMode, setDeseretMode] = useState<DeseretMode>("classic");
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
@@ -193,6 +196,13 @@ export default function Transliterator({
     if (isPlqad && useKlinzhai) {
       processWord = processPlqadTextKlinzhai;
     }
+    if (isDeseret) {
+      const mode: DeseretMode =
+        showExperimentalFeatures && deseretMode === "modern"
+          ? "modern"
+          : "classic";
+      processWord = (word: string) => processDeseretText(word, mode);
+    }
     if (isBaybayin) {
       processWord = (word: string) =>
         processBaybayinText(
@@ -240,7 +250,16 @@ export default function Transliterator({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only when alphabet changes
   }, [currentAlphabet]);
 
-  // Re-process Plqad when English-input mode toggles.
+  // Re-process Deseret when classic/modern mode changes.
+  useEffect(() => {
+    if (!isDeseret) return;
+    if (!showExperimentalFeatures && deseretMode === "modern") {
+      setDeseretMode("classic");
+      return;
+    }
+    void handleChange(text);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deseretMode, showExperimentalFeatures]);
   useEffect(() => {
     if (!isPlqad) return;
     void handleChange(text);
@@ -548,6 +567,8 @@ export default function Transliterator({
         useEnglishPronunciation={useEnglishPronunciation}
         useSpanishPronunciation={useSpanishPronunciation}
         phoneticPriority={phoneticPriority}
+        deseretMode={deseretMode}
+        showModernDeseret={showExperimentalFeatures}
         useSingleLineInput={useSingleLineInput}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
@@ -561,6 +582,7 @@ export default function Transliterator({
         setUseEnglishPronunciation={setUseEnglishPronunciation}
         setUseSpanishPronunciation={setUseSpanishPronunciation}
         setPhoneticPriority={setPhoneticPriority}
+        setDeseretMode={setDeseretMode}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
         showOutputOnlyOption={showOnScreenKeyboard}

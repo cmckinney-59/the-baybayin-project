@@ -22,6 +22,8 @@ export type TransliteratorSettingsDialogProps = {
   useEnglishPronunciation: boolean;
   useSpanishPronunciation: boolean;
   phoneticPriority: "english" | "spanish";
+  deseretMode: "classic" | "modern";
+  showModernDeseret?: boolean;
   useSingleLineInput: boolean;
   showOutputOnlyOption?: boolean;
   outputOnlyMode: boolean;
@@ -37,6 +39,7 @@ export type TransliteratorSettingsDialogProps = {
   setUseEnglishPronunciation: (checked: boolean) => void;
   setUseSpanishPronunciation: (checked: boolean) => void;
   setPhoneticPriority: (priority: "english" | "spanish") => void;
+  setDeseretMode: (mode: "classic" | "modern") => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
 };
@@ -62,6 +65,8 @@ export default function TransliteratorSettingsDialog({
   useEnglishPronunciation,
   useSpanishPronunciation,
   phoneticPriority,
+  deseretMode,
+  showModernDeseret = false,
   useSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -77,6 +82,7 @@ export default function TransliteratorSettingsDialog({
   setUseEnglishPronunciation,
   setUseSpanishPronunciation,
   setPhoneticPriority,
+  setDeseretMode,
   setUseSingleLineInput,
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
@@ -139,6 +145,44 @@ export default function TransliteratorSettingsDialog({
                 onChange={setUseKlinzhai}
                 label="Input language is English."
               />
+            )}
+
+            {currentAlphabet === "Deseret" && (
+              <div className="phonetic-priority-row" title="Classic uses the historical British er (short o + r). Modern uses the American er (short u + r).">
+                <span className="phonetic-priority-label">Mode</span>
+                <div
+                  className="phonetic-priority-toggle"
+                  role="group"
+                  aria-label="Deseret mode"
+                >
+                  <button
+                    type="button"
+                    className={
+                      deseretMode === "classic"
+                        ? "phonetic-priority-option active"
+                        : "phonetic-priority-option"
+                    }
+                    aria-pressed={deseretMode === "classic"}
+                    onClick={() => setDeseretMode("classic")}
+                  >
+                    Classic
+                  </button>
+                  {showModernDeseret && (
+                    <button
+                      type="button"
+                      className={
+                        deseretMode === "modern"
+                          ? "phonetic-priority-option active"
+                          : "phonetic-priority-option"
+                      }
+                      aria-pressed={deseretMode === "modern"}
+                      onClick={() => setDeseretMode("modern")}
+                    >
+                      Modern
+                    </button>
+                  )}
+                </div>
+              </div>
             )}
 
             {currentAlphabet === "Baybayin" && (
