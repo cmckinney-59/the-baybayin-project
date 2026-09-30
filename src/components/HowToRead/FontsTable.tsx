@@ -4,6 +4,7 @@ import {
   getFontTableRows,
 } from "../../data/FONTS_TABLE_DATA";
 import downloadFont from "../../utils/DownloadFont";
+import { AiOutlineDownload } from "react-icons/ai";
 
 export default function FontsTable() {
   const { currentAlphabet } = useAlphabet();
@@ -24,7 +25,7 @@ export default function FontsTable() {
 
   return (
     <>
-      <div className="table-scroll-wrapper">
+      <div className="table-scroll-wrapper fonts-table-desktop">
         <table className="alphabet-table fonts-table">
           <thead>
             <tr>
@@ -56,6 +57,11 @@ export default function FontsTable() {
                           ? `Download ${row.downloadName}`
                           : "No downloadable file available"
                       }
+                      aria-label={
+                        url
+                          ? `Download ${row.downloadName}`
+                          : "No downloadable file available"
+                      }
                       onClick={() =>
                         handleDownload(row.downloadPath, row.downloadName)
                       }
@@ -69,6 +75,40 @@ export default function FontsTable() {
           </tbody>
         </table>
       </div>
+      <ul className="fonts-mobile-list">
+        {rows.map((row) => {
+          const url = getFontDownloadUrl(row.downloadPath);
+          return (
+            <li key={row.id} className="fonts-mobile-card">
+              <div className="fonts-mobile-copy">
+                <p className="fonts-mobile-name">{row.name}</p>
+                <p className={`fonts-mobile-sample ${row.fontClass}`}>
+                  {row.sample}
+                </p>
+                <p className="fonts-mobile-meta">
+                  Unicode: {row.supportsUnicode} · {row.license}
+                </p>
+              </div>
+              <button
+                type="button"
+                className="downloadButton fonts-mobile-download"
+                disabled={!url}
+                aria-label={
+                  url
+                    ? `Download ${row.downloadName}`
+                    : "No downloadable file available"
+                }
+                onClick={() =>
+                  handleDownload(row.downloadPath, row.downloadName)
+                }
+              >
+                <AiOutlineDownload aria-hidden />
+                Download
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }
