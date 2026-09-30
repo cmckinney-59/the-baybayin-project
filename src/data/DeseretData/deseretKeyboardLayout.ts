@@ -1,7 +1,10 @@
+import type { KeyboardKey } from "../../components/Keyboard/Keyboard";
 import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
 import {
   DESERET_CONSONANTS_LOWER,
   DESERET_CONSONANTS_UPPER,
+  DESERET_MODERN_LOWER,
+  DESERET_MODERN_UPPER,
   DESERET_VOWELS_LOWER,
   DESERET_VOWELS_UPPER,
 } from "./DESERET_DATA";
@@ -18,7 +21,8 @@ function letterKey(
   id: string,
   lowerGlyph: string,
   upperGlyph: string,
-): KeyboardLayout[number][number] {
+  fontClass?: string,
+): KeyboardKey {
   const token = DESERET_KEYBOARD_PHONETIC_TOKEN[id] ?? id;
   return {
     id,
@@ -26,11 +30,19 @@ function letterKey(
     value: toPhoneticInput(token, false),
     shiftLabel: upperGlyph,
     shiftValue: toPhoneticInput(token, true),
+    ...(fontClass !== undefined ? { fontClass } : {}),
   };
 }
 
 /** On-screen Deseret alphabet layout (shift/caps for capitals). */
-export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
+export function getDeseretKeyboardLayout(modern = false): KeyboardLayout {
+  const siLower = modern ? DESERET_MODERN_LOWER.si : DESERET_VOWELS_LOWER.si;
+  const siUpper = modern ? DESERET_MODERN_UPPER.SI : DESERET_VOWELS_UPPER.SI;
+  const thLower = modern ? DESERET_MODERN_LOWER.th : DESERET_CONSONANTS_LOWER.th;
+  const thUpper = modern ? DESERET_MODERN_UPPER.TH : DESERET_CONSONANTS_UPPER.TH;
+  const modernFont = modern ? "" : undefined;
+
+  return [
   [
     letterKey("le", DESERET_VOWELS_LOWER.le, DESERET_VOWELS_UPPER.LE),
     letterKey("la", DESERET_VOWELS_LOWER.la, DESERET_VOWELS_UPPER.LA),
@@ -38,7 +50,7 @@ export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
     letterKey("law", DESERET_VOWELS_LOWER.law, DESERET_VOWELS_UPPER.LAW),
     letterKey("lo", DESERET_VOWELS_LOWER.lo, DESERET_VOWELS_UPPER.LO),
     letterKey("loo", DESERET_VOWELS_LOWER.loo, DESERET_VOWELS_UPPER.LOO),
-    letterKey("si", DESERET_VOWELS_LOWER.si, DESERET_VOWELS_UPPER.SI),
+    letterKey("si", siLower, siUpper, modernFont),
     letterKey("se", DESERET_VOWELS_LOWER.se, DESERET_VOWELS_UPPER.SE),
     letterKey("sa", DESERET_VOWELS_LOWER.sa, DESERET_VOWELS_UPPER.SA),
     letterKey("so", DESERET_VOWELS_LOWER.so, DESERET_VOWELS_UPPER.SO),
@@ -57,7 +69,7 @@ export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
   ],
   [
     letterKey("b", DESERET_CONSONANTS_LOWER.b, DESERET_CONSONANTS_UPPER.B),
-    letterKey("th", DESERET_CONSONANTS_LOWER.th, DESERET_CONSONANTS_UPPER.TH),
+    letterKey("th", thLower, thUpper, modernFont),
     letterKey("dh", DESERET_CONSONANTS_LOWER.dh, DESERET_CONSONANTS_UPPER.DH),
     letterKey("s", DESERET_CONSONANTS_LOWER.s, DESERET_CONSONANTS_UPPER.S),
     letterKey("z", DESERET_CONSONANTS_LOWER.z, DESERET_CONSONANTS_UPPER.Z),
@@ -111,4 +123,5 @@ export const DESERET_KEYBOARD_LAYOUT: KeyboardLayout = [
       width: 1.2,
     },
   ],
-];
+  ];
+}

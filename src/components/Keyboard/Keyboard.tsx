@@ -21,6 +21,8 @@ export type KeyboardKey = {
   shiftValue?: string;
   /** Flex grow relative to a normal key (default 1). */
   width?: number;
+  /** Optional font class for this key. Empty string uses the keyboard's default font. */
+  fontClass?: string;
   action?: KeyboardKeyAction;
 };
 
@@ -114,6 +116,8 @@ export default function Keyboard({
                 (key.action === "shift" && shift) ||
                 (key.action === "caps" && caps);
               const isLetterKey = !key.action;
+              const letterFont =
+                key.fontClass !== undefined ? key.fontClass : fontClass;
 
               return (
                 <button
@@ -121,7 +125,7 @@ export default function Keyboard({
                   type="button"
                   className={`${styles.key} ${isActive ? styles.keyActive : ""} ${
                     key.action ? styles.keyAction : styles.keyLetter
-                  } ${isLetterKey ? fontClass : ""}`.trim()}
+                  } ${isLetterKey ? letterFont : ""}`.trim()}
                   style={isLetterKey ? undefined : { flex: key.width ?? 1 }}
                   onPointerDown={(event) => {
                     // Keep focus off the device soft keyboard / avoid stealing

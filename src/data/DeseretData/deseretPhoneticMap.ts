@@ -1,5 +1,7 @@
 import {
   DESERET_CONSONANTS_UPPER,
+  DESERET_MODERN_LOWER,
+  DESERET_MODERN_UPPER,
   DESERET_VOWELS_UPPER,
 } from "./DESERET_DATA";
 
@@ -141,8 +143,18 @@ export function toPhoneticInput(token: string, capitalize = false): string {
  * Map a slash token body (without slashes) to a Deseret letter.
  * Uppercase / title-case tokens yield capital Deseret.
  */
-export function deseretFromPhoneticToken(token: string): string | null {
-  const upper = DESERET_PHONETIC_TO_UPPER[token.toLowerCase()];
+export function deseretFromPhoneticToken(
+  token: string,
+  modern = false,
+): string | null {
+  const key = token.toLowerCase();
+  const modernUpper =
+    modern && (key === "ih" || key === "th" || key === "eth")
+      ? key === "ih"
+        ? DESERET_MODERN_UPPER.SI
+        : DESERET_MODERN_UPPER.TH
+      : undefined;
+  const upper = modernUpper ?? DESERET_PHONETIC_TO_UPPER[key];
   if (!upper) {
     return null;
   }
@@ -152,15 +164,21 @@ export function deseretFromPhoneticToken(token: string): string | null {
   if (allUpper || titleCase) {
     return upper;
   }
+  if (modernUpper) {
+    return key === "ih" ? DESERET_MODERN_LOWER.si : DESERET_MODERN_LOWER.th;
+  }
   return toDeseretLower(upper);
 }
 
 /**
  * Replace `/oo/`, `/th/`, etc. with Deseret letters. Unknown `/tokens/` are left as-is.
  */
-export function replacePhoneticSlashTokens(text: string): string {
+export function replacePhoneticSlashTokens(
+  text: string,
+  modern = false,
+): string {
   return text.replace(/\/([^/\n]+)\//gu, (match, token: string) => {
-    return deseretFromPhoneticToken(token) ?? match;
+    return deseretFromPhoneticToken(token, modern) ?? match;
   });
 }
 
@@ -176,6 +194,10 @@ const DESERET_GLYPH_TO_TOKEN: Record<string, string> = (() => {
     if (!map[lower]) map[lower] = token;
     void id;
   }
+  map[DESERET_MODERN_UPPER.SI] = "ih";
+  map[DESERET_MODERN_LOWER.si] = "ih";
+  map[DESERET_MODERN_UPPER.TH] = "th";
+  map[DESERET_MODERN_LOWER.th] = "th";
   return map;
 })();
 
@@ -197,7 +219,11 @@ export function phoneticFromDeseretText(text: string): string {
     .map((char) => {
       const token = DESERET_GLYPH_TO_TOKEN[char];
       if (!token) return char;
-      return toPhoneticInput(token, isDeseretCapitalLetter(char));
+      const capital =
+        isDeseretCapitalLetter(char) ||
+        char === DESERET_MODERN_UPPER.SI ||
+        char === DESERET_MODERN_UPPER.TH;
+      return toPhoneticInput(token, capital);
     })
     .join("");
 }

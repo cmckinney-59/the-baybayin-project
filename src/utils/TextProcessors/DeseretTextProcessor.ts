@@ -41,7 +41,7 @@ export default async function processDeseretText(
 ): Promise<string> {
   await ensureDictionaryLoaded();
 
-  const withPhonetics = replacePhoneticSlashTokens(text);
+  const withPhonetics = replacePhoneticSlashTokens(text, mode === "modern");
 
   return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
     const standaloneLetter = mapStandaloneLetterWord(word, mode);

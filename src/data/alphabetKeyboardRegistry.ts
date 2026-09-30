@@ -10,7 +10,7 @@ import {
   type BaybayinFontId,
 } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
 import { BUHID_KEYBOARD_LAYOUT } from "./BuhidData/buhidKeyboardLayout";
-import { DESERET_KEYBOARD_LAYOUT } from "./DeseretData/deseretKeyboardLayout";
+import { getDeseretKeyboardLayout } from "./DeseretData/deseretKeyboardLayout";
 import { HANUNOO_KEYBOARD_LAYOUT } from "./HanunooData/hanunooKeyboardLayout";
 import { OGHAM_KEYBOARD_LAYOUT } from "./OghamData/oghamKeyboardLayout";
 import {
@@ -35,6 +35,7 @@ export type ResolveKeyboardOptions = {
   selectedBaybayinFont: BaybayinFontId;
   useHollowKudlits: boolean;
   useXVowelKiller: boolean;
+  deseretModern?: boolean;
 };
 
 /** Alphabets that always show a keyboard (not gated by experimental features). */
@@ -96,7 +97,7 @@ export function resolveAlphabetKeyboard(
 
   if (name === "Deseret") {
     return {
-      layout: DESERET_KEYBOARD_LAYOUT,
+      layout: getDeseretKeyboardLayout(options.deseretModern),
       fontClass: "deseret-font",
     };
   }

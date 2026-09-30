@@ -131,6 +131,8 @@ export default function Transliterator({
     selectedBaybayinFont,
     useHollowKudlits,
     useXVowelKiller,
+    deseretModern:
+      showExperimentalFeatures && deseretMode === "modern",
   });
   // Stable alphabets always show the keyboard; experimental ones need the flag.
   const showOnScreenKeyboard =
