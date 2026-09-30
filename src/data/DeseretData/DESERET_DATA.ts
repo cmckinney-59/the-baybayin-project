@@ -98,12 +98,28 @@ export const DESERET_VOWELS_LOWER = {
 };
 
 export const DESERET_MODERN_UPPER = {
+  P:"𐐋",
+  S: "𐐀",
+  Y: "𐐆",
+  LE: "𐐆",
+  LAH: "𐐉",
+  LAW: "𐐂",
   SI:"I",
+  SOO: "𐐃",
+  SH:"𐐝",
   TH:"Ⲑ",
 };
 
 export const DESERET_MODERN_LOWER = {
+  p:"𐐳",
+  s:"𐐨",
+  y:"𐐮",
+  le:"𐐮",
+  lah:"𐐱",
+  law:"𐐪",
   si:"ı",
+  soo:"𐐫",
+  sh:"𐑅",
   th:"ⲑ",
 };
 

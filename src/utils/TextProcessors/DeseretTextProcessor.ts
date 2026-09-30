@@ -44,7 +44,7 @@ export default async function processDeseretText(
   const withPhonetics = replacePhoneticSlashTokens(text);
 
   return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
-    const standaloneLetter = mapStandaloneLetterWord(word);
+    const standaloneLetter = mapStandaloneLetterWord(word, mode);
     if (standaloneLetter) {
       return standaloneLetter;
     }
@@ -74,14 +74,47 @@ function getPronunciation(word: string): string[] {
  * e.g. "the" → DH, "and" → SA+N+D (𐐰𐑌𐐼).
  */
 const FIXED_DESERET_WORDS: Record<string, string> = {
-  the: _consonantsUpper.DH,
   bee: _consonantsUpper.B,
   gay: _consonantsUpper.G,
+  the: _consonantsUpper.DH,
   and: _vowelsUpper.SA + _consonantsUpper.N + _consonantsUpper.D,
 };
 
-function mapStandaloneLetterWord(word: string): string | null {
-  const capital = FIXED_DESERET_WORDS[word.toLowerCase()];
+const FIXED_DESERET_MODERN_WORDS: Record<string, string> = {
+  // Common Small Words
+  a: _vowelsUpper.SU,
+  an: _vowelsUpper.SU,
+  and: _consonantsUpper.N,
+  are: _consonantsUpper.R,
+  at: _vowelsUpper.SA,
+  be: _consonantsUpper.B,
+  bee: _consonantsUpper.B,
+  do: _consonantsUpper.D,
+  gay: _consonantsUpper.G,
+  is: _consonantsUpper.Z,
+  not: _vowelsUpper.SO,
+  of: _consonantsUpper.V,
+  the: _consonantsUpper.DH,
+  to: _consonantsUpper.T,
+  will: _consonantsUpper.L,
+  with: _modernUpper.TH,
+
+  // Pronouns
+  i: _vowelsUpper.EYE,
+  you: _vowelsUpper.EW,
+  he: _consonantsUpper.H,
+  she: _consonantsUpper.S,
+  we: _consonantsUpper.W,
+  they: _consonantsUpper.M,
+};
+
+function mapStandaloneLetterWord(word: string, mode: DeseretMode): string | null {
+  let capital: string | undefined;
+  if (mode === "modern") {
+    capital = FIXED_DESERET_MODERN_WORDS[word.toLowerCase()];
+  } else {
+    capital = FIXED_DESERET_WORDS[word.toLowerCase()];
+  }
   if (!capital) {
     return null;
   }
@@ -105,9 +138,9 @@ function replaceConsonants(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "W", _consonantsUpper.W);
   text = removeToneNumbers(text, "Z", _consonantsUpper.Z);
   if (mode === "modern") {
-    text = removeToneNumbers(text, "P", _vowelsUpper.SOO);
-    text = removeToneNumbers(text, "S", _vowelsUpper.LE);
-    text = removeToneNumbers(text, "Y", _vowelsUpper.SI);
+    text = removeToneNumbers(text, "P", _modernUpper.P);
+    text = removeToneNumbers(text, "S", _modernUpper.S);
+    text = removeToneNumbers(text, "Y", _modernUpper.Y);
   } else {
     text = removeToneNumbers(text, "P", _consonantsUpper.P);
     text = removeToneNumbers(text, "S", _consonantsUpper.S);
@@ -123,7 +156,7 @@ function replaceLigatures(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "ZH", _consonantsUpper.ZH);
   if (mode === "modern") {
   text = removeToneNumbers(text, "TH", _modernUpper.TH);
-  text = removeToneNumbers(text, "SH", _consonantsUpper.S);
+  text = removeToneNumbers(text, "SH", _modernUpper.SH);
   } else {
   text = removeToneNumbers(text, "TH", _consonantsUpper.TH);
   text = removeToneNumbers(text, "SH", _consonantsUpper.SH);
@@ -142,11 +175,11 @@ function replaceVowels(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "OY", _vowelsUpper.OI);
   text = removeToneNumbers(text, "UW", _vowelsUpper.LOO);
   if (mode === "modern") {
-  text = removeToneNumbers(text, "AA", _vowelsUpper.SO);
-  text = removeToneNumbers(text, "AO", _vowelsUpper.LAH);
+  text = removeToneNumbers(text, "AA", _modernUpper.LAH);
+  text = removeToneNumbers(text, "AO", _modernUpper.LAW);
   text = removeToneNumbers(text, "IH", _modernUpper.SI);
-  text = removeToneNumbers(text, "IY", _vowelsUpper.SI);
-  text = removeToneNumbers(text, "UH", _vowelsUpper.LAW);
+  text = removeToneNumbers(text, "IY", _modernUpper.LE);
+  text = removeToneNumbers(text, "UH", _modernUpper.SOO);
 } else {
   text = removeToneNumbers(text, "AA", _vowelsUpper.LAH);
   text = removeToneNumbers(text, "AO", _vowelsUpper.LAW);
