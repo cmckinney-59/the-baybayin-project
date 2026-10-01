@@ -1,306 +1,105 @@
-export type DeseretData = {
-  letter: string;
+export type DeseretLetter = {
+  upper: string;
+  lower: string;
   name: string;
   sound: string;
   example: string;
 };
 
-/** Uppercase glyph, then lowercase glyph. */
-export const DESERET_CONSONANTS = {
-  B: ["𐐒", "𐐺"],
-  D: ["𐐔", "𐐼"],
-  F: ["𐐙", "𐑁"],
-  G: ["𐐘", "𐑀"],
-  H: ["𐐐", "𐐸"],
-  J: ["𐐖", "𐐾"],
-  K: ["𐐗", "𐐿"],
-  L: ["𐐢", "𐑊"],
-  M: ["𐐣", "𐑋"],
-  N: ["𐐤", "𐑌"],
-  P: ["𐐑", "𐐹"],
-  R: ["𐐡", "𐑉"],
-  S: ["𐐝", "𐑅"],
-  T: ["𐐓", "𐐻"],
-  V: ["𐐚", "𐑂"],
-  W: ["𐐎", "𐐶"],
-  Y: ["𐐏", "𐐷"],
-  Z: ["𐐞", "𐑆"],
-  CH: ["𐐕", "𐐽"],
-  TH: ["𐐛", "𐑃"],
-  DH: ["𐐜", "𐑄"],
-  SH: ["𐐟", "𐑇"],
-  ZH: ["𐐠", "𐑈"],
-  NG: ["𐐥", "𐑍"],
-} as const;
+/** Classic Deseret letters. Modern mode overrides a few of these glyphs. */
+export const DESERET_LETTERS = {
+  LE: { upper: "𐐀", lower: "𐐨", name: "Long E", sound: "ee", example: "eat" },
+  LA: { upper: "𐐁", lower: "𐐩", name: "Long A", sound: "ey", example: "ate" },
+  LAH: { upper: "𐐂", lower: "𐐪", name: "Long Ah", sound: "ah", example: "art" },
+  LAW: { upper: "𐐃", lower: "𐐫", name: "Long Aw", sound: "aw", example: "awe" },
+  LO: { upper: "𐐄", lower: "𐐬", name: "Long O", sound: "oh", example: "oat" },
+  LOO: { upper: "𐐅", lower: "𐐭", name: "Long OO", sound: "oo", example: "too" },
+  SI: { upper: "𐐆", lower: "𐐮", name: "Short I", sound: "ih", example: "it" },
+  SE: { upper: "𐐇", lower: "𐐯", name: "Short E", sound: "eh", example: "get" },
+  SA: { upper: "𐐈", lower: "𐐰", name: "Short A", sound: "a", example: "at" },
+  SO: { upper: "𐐉", lower: "𐐱", name: "Short O", sound: "ah", example: "hot" },
+  SU: { upper: "𐐊", lower: "𐐲", name: "Short U", sound: "uh", example: "but" },
+  SOO: { upper: "𐐋", lower: "𐐳", name: "Short OO", sound: "oo", example: "book" },
+  EYE: { upper: "𐐌", lower: "𐐴", name: "I", sound: "eye", example: "hide" },
+  OW: { upper: "𐐍", lower: "𐐵", name: "Ou", sound: "ou/ow", example: "out" },
+  W: { upper: "𐐎", lower: "𐐶", name: "Woo", sound: "w/woo", example: "with" },
+  Y: { upper: "𐐏", lower: "𐐷", name: "Yee", sound: "y/yee", example: "yes" },
+  H: { upper: "𐐐", lower: "𐐸", name: "H", sound: "h", example: "hat" },
+  P: { upper: "𐐑", lower: "𐐹", name: "Pee", sound: "p", example: "put" },
+  B: { upper: "𐐒", lower: "𐐺", name: "Bee", sound: "b/bee", example: "book" },
+  T: { upper: "𐐓", lower: "𐐻", name: "Tee", sound: "t", example: "time" },
+  D: { upper: "𐐔", lower: "𐐼", name: "Dee", sound: "d", example: "day" },
+  CH: { upper: "𐐕", lower: "𐐽", name: "Chee", sound: "ch", example: "chat" },
+  J: { upper: "𐐖", lower: "𐐾", name: "Jee", sound: "j", example: "joy" },
+  K: { upper: "𐐗", lower: "𐐿", name: "Kay", sound: "k", example: "kite" },
+  G: { upper: "𐐘", lower: "𐑀", name: "Gay", sound: "g", example: "go" },
+  F: { upper: "𐐙", lower: "𐑁", name: "Ef", sound: "f", example: "fun" },
+  V: { upper: "𐐚", lower: "𐑂", name: "Vee", sound: "v", example: "van" },
+  TH: { upper: "𐐛", lower: "𐑃", name: "Ehth", sound: "th (soft)", example: "think" },
+  DH: { upper: "𐐜", lower: "𐑄", name: "Thee", sound: "th (hard)", example: "this" },
+  S: { upper: "𐐝", lower: "𐑅", name: "Ess", sound: "s", example: "sit" },
+  Z: { upper: "𐐞", lower: "𐑆", name: "Zee", sound: "z", example: "zoo" },
+  SH: { upper: "𐐟", lower: "𐑇", name: "Sh", sound: "sh", example: "she" },
+  ZH: { upper: "𐐠", lower: "𐑈", name: "Zh", sound: "zh", example: "vision" },
+  R: { upper: "𐐡", lower: "𐑉", name: "r", sound: "r", example: "red" },
+  L: { upper: "𐐢", lower: "𐑊", name: "L", sound: "l", example: "life" },
+  M: { upper: "𐐣", lower: "𐑋", name: "M", sound: "m", example: "man" },
+  N: { upper: "𐐤", lower: "𐑌", name: "N", sound: "n", example: "not" },
+  NG: { upper: "𐐥", lower: "𐑍", name: "Eng", sound: "ng", example: "being" },
+  OI: { upper: "𐐦", lower: "𐑎", name: "Oi", sound: "oi", example: "oil" },
+  EW: { upper: "𐐧", lower: "𐑏", name: "You", sound: "you", example: "youth" },
+} as const satisfies Record<string, DeseretLetter>;
 
-type DeseretConsonant = keyof typeof DESERET_CONSONANTS;
-
-export const DESERET_CONSONANTS_UPPER = Object.fromEntries(
-  Object.entries(DESERET_CONSONANTS).map(([key, [upper]]) => [key, upper]),
-) as { [K in DeseretConsonant]: (typeof DESERET_CONSONANTS)[K][0] };
-
-export const DESERET_CONSONANTS_LOWER = Object.fromEntries(
-  Object.entries(DESERET_CONSONANTS).map(([key, [, lower]]) => [
-    key.toLowerCase(),
-    lower,
-  ]),
-) as {
-  [K in DeseretConsonant as Lowercase<K>]: (typeof DESERET_CONSONANTS)[K][1];
-};
-
-export const DESERET_VOWELS = {
-  LE: ["𐐀", "𐐨"],
-  LA: ["𐐁", "𐐩"],
-  LAH: ["𐐂", "𐐪"],
-  LAW: ["𐐃", "𐐫"],
-  LO: ["𐐄", "𐐬"],
-  LOO: ["𐐅", "𐐭"],
-  SI: ["𐐆", "𐐮"],
-  SE: ["𐐇", "𐐯"],
-  SA: ["𐐈", "𐐰"],
-  SO: ["𐐉", "𐐱"],
-  SU: ["𐐊", "𐐲"],
-  SOO: ["𐐋", "𐐳"],
-  EYE: ["𐐌", "𐐴"],
-  OW: ["𐐍", "𐐵"],
-  OI: ["𐐦", "𐑎"],
-  EW: ["𐐧", "𐑏"],
-} as const;
-
-type DeseretVowel = keyof typeof DESERET_VOWELS;
-
-export const DESERET_VOWELS_UPPER = Object.fromEntries(
-  Object.entries(DESERET_VOWELS).map(([key, [upper]]) => [key, upper]),
-) as { [K in DeseretVowel]: (typeof DESERET_VOWELS)[K][0] };
-
-export const DESERET_VOWELS_LOWER = Object.fromEntries(
-  Object.entries(DESERET_VOWELS).map(([key, [, lower]]) => [
-    key.toLowerCase(),
-    lower,
-  ]),
-) as {
-  [K in DeseretVowel as Lowercase<K>]: (typeof DESERET_VOWELS)[K][1];
-};
-
+/** Glyphs that replace the classic letter when Modern mode is on. */
 export const DESERET_MODERN = {
-  P: ["𐐋", "𐐳"],
-  S: ["𐐀", "𐐨"],
-  Y: ["𐐆", "𐐮"],
-  LE: ["𐐆", "𐐮"],
-  LAH: ["𐐉", "𐐱"],
-  LAW: ["𐐂", "𐐪"],
-  SI: ["I", "ı"],
-  SOO: ["𐐃", "𐐫"],
-  SH: ["𐐝", "𐑅"],
-  TH: ["Ⲑ", "ⲑ"],
+  P: { upper: "𐐋", lower: "𐐳" },
+  S: { upper: "𐐀", lower: "𐐨" },
+  Y: { upper: "𐐆", lower: "𐐮" },
+  LE: { upper: "𐐆", lower: "𐐮" },
+  LAH: { upper: "𐐉", lower: "𐐱" },
+  LAW: { upper: "𐐂", lower: "𐐪" },
+  SI: { upper: "I", lower: "ı" },
+  SOO: { upper: "𐐃", lower: "𐐫" },
+  SH: { upper: "𐐝", lower: "𐑅" },
+  TH: { upper: "Ⲑ", lower: "ⲑ" },
 } as const;
 
-type DeseretModern = keyof typeof DESERET_MODERN;
+/** How To Read order. Letters not listed here still exist on the keyboard. */
+const DESERET_GUIDE_ORDER = [
+  "LE",
+  "LA",
+  "LAH",
+  "LAW",
+  "LO",
+  "LOO",
+  "SI",
+  "SE",
+  "SA",
+  "SO",
+  "SU",
+  "SOO",
+  "EYE",
+  "OW",
+  "W",
+  "Y",
+  "H",
+  "P",
+  "B",
+  "TH",
+  "DH",
+  "S",
+  "Z",
+  "SH",
+  "ZH",
+  "R",
+  "L",
+  "M",
+  "N",
+  "NG",
+  "OI",
+  "EW",
+] as const satisfies readonly (keyof typeof DESERET_LETTERS)[];
 
-export const DESERET_MODERN_UPPER = Object.fromEntries(
-  Object.entries(DESERET_MODERN).map(([key, [upper]]) => [key, upper]),
-) as { [K in DeseretModern]: (typeof DESERET_MODERN)[K][0] };
-
-export const DESERET_MODERN_LOWER = Object.fromEntries(
-  Object.entries(DESERET_MODERN).map(([key, [, lower]]) => [
-    key.toLowerCase(),
-    lower,
-  ]),
-) as {
-  [K in DeseretModern as Lowercase<K>]: (typeof DESERET_MODERN)[K][1];
-};
-
-export const DESERET_DATA: DeseretData[] = [
-  {
-    letter: DESERET_VOWELS_UPPER.LE,
-    name: "Long E",
-    sound: "ee",
-    example: "eat",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.LA,
-    name: "Long A",
-    sound: "ey",
-    example: "ate",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.LAH,
-    name: "Long Ah",
-    sound: "ah",
-    example: "art",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.LAW,
-    name: "Long Aw",
-    sound: "aw",
-    example: "awe",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.LO,
-    name: "Long O",
-    sound: "oh",
-    example: "oat",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.LOO,
-    name: "Long OO",
-    sound: "oo",
-    example: "too",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SI,
-    name: "Short I",
-    sound: "ih",
-    example: "it",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SE,
-    name: "Short E",
-    sound: "eh",
-    example: "get",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SA,
-    name: "Short A",
-    sound: "a",
-    example: "at",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SO,
-    name: "Short O",
-    sound: "ah",
-    example: "hot",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SU,
-    name: "Short U",
-    sound: "uh",
-    example: "but",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.SOO,
-    name: "Short OO",
-    sound: "oo",
-    example: "book",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.EYE,
-    name: "I",
-    sound: "eye",
-    example: "hide",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.OW,
-    name: "Ou",
-    sound: "ou/ow",
-    example: "out",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.W,
-    name: "Woo",
-    sound: "w/woo",
-    example: "with",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.Y,
-    name: "Yee",
-    sound: "y/yee",
-    example: "yes",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.H,
-    name: "H",
-    sound: "h",
-    example: "hat",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.P,
-    name: "Pee",
-    sound: "p",
-    example: "put",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.B,
-    name: "Bee",
-    sound: "b/bee",
-    example: "book",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.TH,
-    name: "Ehth",
-    sound: "th (soft)",
-    example: "think",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.DH,
-    name: "Thee",
-    sound: "th (hard)",
-    example: "this",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.S,
-    name: "Ess",
-    sound: "s",
-    example: "sit",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.Z,
-    name: "Zee",
-    sound: "z",
-    example: "zoo",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.SH,
-    name: "Sh",
-    sound: "sh",
-    example: "she",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.ZH,
-    name: "Zh",
-    sound: "zh",
-    example: "vision",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.R,
-    name: "r",
-    sound: "r",
-    example: "red",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.L,
-    name: "L",
-    sound: "l",
-    example: "life",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.M,
-    name: "M",
-    sound: "m",
-    example: "man",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.N,
-    name: "N",
-    sound: "n",
-    example: "not",
-  },
-  {
-    letter: DESERET_CONSONANTS_UPPER.NG,
-    name: "Ng",
-    sound: "ng",
-    example: "being",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.OI,
-    name: "Oi",
-    sound: "oi",
-    example: "oil",
-  },
-  {
-    letter: DESERET_VOWELS_UPPER.EW,
-    name: "You",
-    sound: "you",
-    example: "youth",
-  },
-];
+export const DESERET_DATA = DESERET_GUIDE_ORDER.map(
+  (key) => DESERET_LETTERS[key],
+);

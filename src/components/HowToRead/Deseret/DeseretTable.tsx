@@ -33,8 +33,8 @@ export default function DeseretTable() {
         </thead>
         <tbody>
           {DESERET_DATA.map((letter) => (
-            <tr key={letter.letter}>
-              <td className="deseret-letter">{letter.letter}</td>
+            <tr key={letter.upper}>
+              <td className="deseret-letter">{letter.upper}</td>
               <td>{letter.sound}</td>
               <td>{letter.example}</td>
             </tr>

@@ -1,12 +1,8 @@
 import type { KeyboardKey } from "../../components/Keyboard/Keyboard";
 import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
 import {
-  DESERET_CONSONANTS_LOWER,
-  DESERET_CONSONANTS_UPPER,
-  DESERET_MODERN_LOWER,
-  DESERET_MODERN_UPPER,
-  DESERET_VOWELS_LOWER,
-  DESERET_VOWELS_UPPER,
+  DESERET_LETTERS,
+  DESERET_MODERN,
 } from "./DESERET_DATA";
 import {
   DESERET_KEYBOARD_PHONETIC_TOKEN,
@@ -36,60 +32,70 @@ function letterKey(
 
 /** On-screen Deseret alphabet layout (shift/caps for capitals). */
 export function getDeseretKeyboardLayout(modern = false): KeyboardLayout {
-  const siLower = modern ? DESERET_MODERN_LOWER.si : DESERET_VOWELS_LOWER.si;
-  const siUpper = modern ? DESERET_MODERN_UPPER.SI : DESERET_VOWELS_UPPER.SI;
-  const thLower = modern ? DESERET_MODERN_LOWER.th : DESERET_CONSONANTS_LOWER.th;
-  const thUpper = modern ? DESERET_MODERN_UPPER.TH : DESERET_CONSONANTS_UPPER.TH;
-  const modernFont = modern ? "" : undefined;
+  const glyph = (
+    id: keyof typeof DESERET_LETTERS,
+    fontClass?: string,
+  ) => {
+    const letter = DESERET_LETTERS[id];
+    const modernGlyph = modern
+      ? DESERET_MODERN[id as keyof typeof DESERET_MODERN]
+      : undefined;
+    return letterKey(
+      id.toLowerCase(),
+      modernGlyph?.lower ?? letter.lower,
+      modernGlyph?.upper ?? letter.upper,
+      modernGlyph ? "" : fontClass,
+    );
+  };
 
   return [
   [
-    letterKey("le", DESERET_VOWELS_LOWER.le, DESERET_VOWELS_UPPER.LE),
-    letterKey("la", DESERET_VOWELS_LOWER.la, DESERET_VOWELS_UPPER.LA),
-    letterKey("lah", DESERET_VOWELS_LOWER.lah, DESERET_VOWELS_UPPER.LAH),
-    letterKey("law", DESERET_VOWELS_LOWER.law, DESERET_VOWELS_UPPER.LAW),
-    letterKey("lo", DESERET_VOWELS_LOWER.lo, DESERET_VOWELS_UPPER.LO),
-    letterKey("loo", DESERET_VOWELS_LOWER.loo, DESERET_VOWELS_UPPER.LOO),
-    letterKey("si", siLower, siUpper, modernFont),
-    letterKey("se", DESERET_VOWELS_LOWER.se, DESERET_VOWELS_UPPER.SE),
-    letterKey("sa", DESERET_VOWELS_LOWER.sa, DESERET_VOWELS_UPPER.SA),
-    letterKey("so", DESERET_VOWELS_LOWER.so, DESERET_VOWELS_UPPER.SO),
+    glyph("LE"),
+    glyph("LA"),
+    glyph("LAH"),
+    glyph("LAW"),
+    glyph("LO"),
+    glyph("LOO"),
+    glyph("SI"),
+    glyph("SE"),
+    glyph("SA"),
+    glyph("SO"),
   ],
   [
-    letterKey("su", DESERET_VOWELS_LOWER.su, DESERET_VOWELS_UPPER.SU),
-    letterKey("soo", DESERET_VOWELS_LOWER.soo, DESERET_VOWELS_UPPER.SOO),
-    letterKey("eye", DESERET_VOWELS_LOWER.eye, DESERET_VOWELS_UPPER.EYE),
-    letterKey("ow", DESERET_VOWELS_LOWER.ow, DESERET_VOWELS_UPPER.OW),
-    letterKey("oi", DESERET_VOWELS_LOWER.oi, DESERET_VOWELS_UPPER.OI),
-    letterKey("ew", DESERET_VOWELS_LOWER.ew, DESERET_VOWELS_UPPER.EW),
-    letterKey("w", DESERET_CONSONANTS_LOWER.w, DESERET_CONSONANTS_UPPER.W),
-    letterKey("y", DESERET_CONSONANTS_LOWER.y, DESERET_CONSONANTS_UPPER.Y),
-    letterKey("h", DESERET_CONSONANTS_LOWER.h, DESERET_CONSONANTS_UPPER.H),
-    letterKey("p", DESERET_CONSONANTS_LOWER.p, DESERET_CONSONANTS_UPPER.P),
+    glyph("SU"),
+    glyph("SOO"),
+    glyph("EYE"),
+    glyph("OW"),
+    glyph("OI"),
+    glyph("EW"),
+    glyph("W"),
+    glyph("Y"),
+    glyph("H"),
+    glyph("P"),
   ],
   [
-    letterKey("b", DESERET_CONSONANTS_LOWER.b, DESERET_CONSONANTS_UPPER.B),
-    letterKey("th", thLower, thUpper, modernFont),
-    letterKey("dh", DESERET_CONSONANTS_LOWER.dh, DESERET_CONSONANTS_UPPER.DH),
-    letterKey("s", DESERET_CONSONANTS_LOWER.s, DESERET_CONSONANTS_UPPER.S),
-    letterKey("z", DESERET_CONSONANTS_LOWER.z, DESERET_CONSONANTS_UPPER.Z),
-    letterKey("sh", DESERET_CONSONANTS_LOWER.sh, DESERET_CONSONANTS_UPPER.SH),
-    letterKey("zh", DESERET_CONSONANTS_LOWER.zh, DESERET_CONSONANTS_UPPER.ZH),
-    letterKey("t", DESERET_CONSONANTS_LOWER.t, DESERET_CONSONANTS_UPPER.T),
-    letterKey("d", DESERET_CONSONANTS_LOWER.d, DESERET_CONSONANTS_UPPER.D),
-    letterKey("ch", DESERET_CONSONANTS_LOWER.ch, DESERET_CONSONANTS_UPPER.CH),
+    glyph("B"),
+    glyph("TH"),
+    glyph("DH"),
+    glyph("S"),
+    glyph("Z"),
+    glyph("SH"),
+    glyph("ZH"),
+    glyph("T"),
+    glyph("D"),
+    glyph("CH"),
   ],
   [
-    letterKey("j", DESERET_CONSONANTS_LOWER.j, DESERET_CONSONANTS_UPPER.J),
-    letterKey("k", DESERET_CONSONANTS_LOWER.k, DESERET_CONSONANTS_UPPER.K),
-    letterKey("g", DESERET_CONSONANTS_LOWER.g, DESERET_CONSONANTS_UPPER.G),
-    letterKey("f", DESERET_CONSONANTS_LOWER.f, DESERET_CONSONANTS_UPPER.F),
-    letterKey("v", DESERET_CONSONANTS_LOWER.v, DESERET_CONSONANTS_UPPER.V),
-    letterKey("r", DESERET_CONSONANTS_LOWER.r, DESERET_CONSONANTS_UPPER.R),
-    letterKey("l", DESERET_CONSONANTS_LOWER.l, DESERET_CONSONANTS_UPPER.L),
-    letterKey("m", DESERET_CONSONANTS_LOWER.m, DESERET_CONSONANTS_UPPER.M),
-    letterKey("n", DESERET_CONSONANTS_LOWER.n, DESERET_CONSONANTS_UPPER.N),
-    letterKey("ng", DESERET_CONSONANTS_LOWER.ng, DESERET_CONSONANTS_UPPER.NG),
+    glyph("J"),
+    glyph("K"),
+    glyph("G"),
+    glyph("F"),
+    glyph("V"),
+    glyph("R"),
+    glyph("L"),
+    glyph("M"),
+    glyph("N"),
+    glyph("NG"),
   ],
   [
     {

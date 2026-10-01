@@ -5,9 +5,8 @@ import {
 } from "@ingglish/dictionary";
 import { wordToArpabet } from "@ingglish/g2p";
 import {
-  DESERET_CONSONANTS_UPPER as _consonantsUpper,
-  DESERET_VOWELS_UPPER as _vowelsUpper,
-  DESERET_MODERN_UPPER as _modernUpper,
+  DESERET_LETTERS,
+  DESERET_MODERN,
 } from "../../data/DeseretData/DESERET_DATA";
 import { replacePhoneticSlashTokens } from "../../data/DeseretData/deseretPhoneticMap";
 
@@ -74,38 +73,38 @@ function getPronunciation(word: string): string[] {
  * e.g. "the" → DH, "and" → SA+N+D (𐐰𐑌𐐼).
  */
 const FIXED_DESERET_WORDS: Record<string, string> = {
-  bee: _consonantsUpper.B,
-  gay: _consonantsUpper.G,
-  the: _consonantsUpper.DH,
-  and: _vowelsUpper.SA + _consonantsUpper.N + _consonantsUpper.D,
+  bee: DESERET_LETTERS.B.upper,
+  gay: DESERET_LETTERS.G.upper,
+  the: DESERET_LETTERS.DH.upper,
+  and: DESERET_LETTERS.SA.upper + DESERET_LETTERS.N.upper + DESERET_LETTERS.D.upper,
 };
 
 const FIXED_DESERET_MODERN_WORDS: Record<string, string> = {
   // Common Small Words
-  a: _vowelsUpper.SU,
-  an: _vowelsUpper.SU,
-  and: _consonantsUpper.N,
-  are: _consonantsUpper.R,
-  at: _vowelsUpper.SA,
-  be: _consonantsUpper.B,
-  bee: _consonantsUpper.B,
-  do: _consonantsUpper.D,
-  gay: _consonantsUpper.G,
-  is: _consonantsUpper.Z,
-  not: _vowelsUpper.SO,
-  of: _consonantsUpper.V,
-  the: _consonantsUpper.DH,
-  to: _consonantsUpper.T,
-  will: _consonantsUpper.L,
-  with: _modernUpper.TH,
+  a: DESERET_LETTERS.SU.upper,
+  an: DESERET_LETTERS.SU.upper,
+  and: DESERET_LETTERS.N.upper,
+  are: DESERET_LETTERS.R.upper,
+  at: DESERET_LETTERS.SA.upper,
+  be: DESERET_LETTERS.B.upper,
+  bee: DESERET_LETTERS.B.upper,
+  do: DESERET_LETTERS.D.upper,
+  gay: DESERET_LETTERS.G.upper,
+  is: DESERET_LETTERS.Z.upper,
+  not: DESERET_LETTERS.SO.upper,
+  of: DESERET_LETTERS.V.upper,
+  the: DESERET_LETTERS.DH.upper,
+  to: DESERET_LETTERS.T.upper,
+  will: DESERET_LETTERS.L.upper,
+  with: DESERET_MODERN.TH.upper,
 
   // Pronouns
-  i: _vowelsUpper.EYE,
-  you: _vowelsUpper.EW,
-  he: _consonantsUpper.H,
-  she: _consonantsUpper.S,
-  we: _consonantsUpper.W,
-  they: _consonantsUpper.M,
+  i: DESERET_LETTERS.EYE.upper,
+  you: DESERET_LETTERS.EW.upper,
+  he: DESERET_LETTERS.H.upper,
+  she: DESERET_LETTERS.S.upper,
+  we: DESERET_LETTERS.W.upper,
+  they: DESERET_LETTERS.M.upper,
 };
 
 function mapStandaloneLetterWord(word: string, mode: DeseretMode): string | null {
@@ -122,81 +121,81 @@ function mapStandaloneLetterWord(word: string, mode: DeseretMode): string | null
 }
 
 function replaceConsonants(text: string, mode: DeseretMode): string {
-  text = removeToneNumbers(text, "B", _consonantsUpper.B);
-  text = removeToneNumbers(text, "D", _consonantsUpper.D);
-  text = removeToneNumbers(text, "F", _consonantsUpper.F);
-  text = removeToneNumbers(text, "G", _consonantsUpper.G);
-  text = removeToneNumbers(text, "HH", _consonantsUpper.H);
-  text = removeToneNumbers(text, "JH", _consonantsUpper.J);
-  text = removeToneNumbers(text, "K", _consonantsUpper.K);
-  text = removeToneNumbers(text, "L", _consonantsUpper.L);
-  text = removeToneNumbers(text, "M", _consonantsUpper.M);
-  text = removeToneNumbers(text, "N", _consonantsUpper.N);
-  text = removeToneNumbers(text, "R", _consonantsUpper.R);
-  text = removeToneNumbers(text, "T", _consonantsUpper.T);
-  text = removeToneNumbers(text, "V", _consonantsUpper.V);
-  text = removeToneNumbers(text, "W", _consonantsUpper.W);
-  text = removeToneNumbers(text, "Z", _consonantsUpper.Z);
+  text = removeToneNumbers(text, "B", DESERET_LETTERS.B.upper);
+  text = removeToneNumbers(text, "D", DESERET_LETTERS.D.upper);
+  text = removeToneNumbers(text, "F", DESERET_LETTERS.F.upper);
+  text = removeToneNumbers(text, "G", DESERET_LETTERS.G.upper);
+  text = removeToneNumbers(text, "HH", DESERET_LETTERS.H.upper);
+  text = removeToneNumbers(text, "JH", DESERET_LETTERS.J.upper);
+  text = removeToneNumbers(text, "K", DESERET_LETTERS.K.upper);
+  text = removeToneNumbers(text, "L", DESERET_LETTERS.L.upper);
+  text = removeToneNumbers(text, "M", DESERET_LETTERS.M.upper);
+  text = removeToneNumbers(text, "N", DESERET_LETTERS.N.upper);
+  text = removeToneNumbers(text, "R", DESERET_LETTERS.R.upper);
+  text = removeToneNumbers(text, "T", DESERET_LETTERS.T.upper);
+  text = removeToneNumbers(text, "V", DESERET_LETTERS.V.upper);
+  text = removeToneNumbers(text, "W", DESERET_LETTERS.W.upper);
+  text = removeToneNumbers(text, "Z", DESERET_LETTERS.Z.upper);
   if (mode === "modern") {
-    text = removeToneNumbers(text, "P", _modernUpper.P);
-    text = removeToneNumbers(text, "S", _modernUpper.S);
-    text = removeToneNumbers(text, "Y", _modernUpper.Y);
+    text = removeToneNumbers(text, "P", DESERET_MODERN.P.upper);
+    text = removeToneNumbers(text, "S", DESERET_MODERN.S.upper);
+    text = removeToneNumbers(text, "Y", DESERET_MODERN.Y.upper);
   } else {
-    text = removeToneNumbers(text, "P", _consonantsUpper.P);
-    text = removeToneNumbers(text, "S", _consonantsUpper.S);
-    text = removeToneNumbers(text, "Y", _consonantsUpper.Y);
+    text = removeToneNumbers(text, "P", DESERET_LETTERS.P.upper);
+    text = removeToneNumbers(text, "S", DESERET_LETTERS.S.upper);
+    text = removeToneNumbers(text, "Y", DESERET_LETTERS.Y.upper);
   }
   return text;
 }
 
 function replaceLigatures(text: string, mode: DeseretMode): string {
-  text = removeToneNumbers(text, "CH", _consonantsUpper.CH);
-  text = removeToneNumbers(text, "DH", _consonantsUpper.DH);
-  text = removeToneNumbers(text, "NG", _consonantsUpper.NG);
-  text = removeToneNumbers(text, "ZH", _consonantsUpper.ZH);
+  text = removeToneNumbers(text, "CH", DESERET_LETTERS.CH.upper);
+  text = removeToneNumbers(text, "DH", DESERET_LETTERS.DH.upper);
+  text = removeToneNumbers(text, "NG", DESERET_LETTERS.NG.upper);
+  text = removeToneNumbers(text, "ZH", DESERET_LETTERS.ZH.upper);
   if (mode === "modern") {
-  text = removeToneNumbers(text, "TH", _modernUpper.TH);
-  text = removeToneNumbers(text, "SH", _modernUpper.SH);
+  text = removeToneNumbers(text, "TH", DESERET_MODERN.TH.upper);
+  text = removeToneNumbers(text, "SH", DESERET_MODERN.SH.upper);
   } else {
-  text = removeToneNumbers(text, "TH", _consonantsUpper.TH);
-  text = removeToneNumbers(text, "SH", _consonantsUpper.SH);
+  text = removeToneNumbers(text, "TH", DESERET_LETTERS.TH.upper);
+  text = removeToneNumbers(text, "SH", DESERET_LETTERS.SH.upper);
   }
   return text;
 }
 
 function replaceVowels(text: string, mode: DeseretMode): string {
-  text = removeToneNumbers(text, "AE", _vowelsUpper.SA);
-  text = removeToneNumbers(text, "AH", _vowelsUpper.SU);
-  text = removeToneNumbers(text, "AW", _vowelsUpper.OW);
-  text = removeToneNumbers(text, "AY", _vowelsUpper.EYE);
-  text = removeToneNumbers(text, "EH", _vowelsUpper.SE);
-  text = removeToneNumbers(text, "EY", _vowelsUpper.LA);
-  text = removeToneNumbers(text, "OW", _vowelsUpper.LO);
-  text = removeToneNumbers(text, "OY", _vowelsUpper.OI);
-  text = removeToneNumbers(text, "UW", _vowelsUpper.LOO);
+  text = removeToneNumbers(text, "AE", DESERET_LETTERS.SA.upper);
+  text = removeToneNumbers(text, "AH", DESERET_LETTERS.SU.upper);
+  text = removeToneNumbers(text, "AW", DESERET_LETTERS.OW.upper);
+  text = removeToneNumbers(text, "AY", DESERET_LETTERS.EYE.upper);
+  text = removeToneNumbers(text, "EH", DESERET_LETTERS.SE.upper);
+  text = removeToneNumbers(text, "EY", DESERET_LETTERS.LA.upper);
+  text = removeToneNumbers(text, "OW", DESERET_LETTERS.LO.upper);
+  text = removeToneNumbers(text, "OY", DESERET_LETTERS.OI.upper);
+  text = removeToneNumbers(text, "UW", DESERET_LETTERS.LOO.upper);
   if (mode === "modern") {
-  text = removeToneNumbers(text, "AA", _modernUpper.LAH);
-  text = removeToneNumbers(text, "AO", _modernUpper.LAW);
-  text = removeToneNumbers(text, "IH", _modernUpper.SI);
-  text = removeToneNumbers(text, "IY", _modernUpper.LE);
-  text = removeToneNumbers(text, "UH", _modernUpper.SOO);
+  text = removeToneNumbers(text, "AA", DESERET_MODERN.LAH.upper);
+  text = removeToneNumbers(text, "AO", DESERET_MODERN.LAW.upper);
+  text = removeToneNumbers(text, "IH", DESERET_MODERN.SI.upper);
+  text = removeToneNumbers(text, "IY", DESERET_MODERN.LE.upper);
+  text = removeToneNumbers(text, "UH", DESERET_MODERN.SOO.upper);
 } else {
-  text = removeToneNumbers(text, "AA", _vowelsUpper.LAH);
-  text = removeToneNumbers(text, "AO", _vowelsUpper.LAW);
-  text = removeToneNumbers(text, "IH", _vowelsUpper.SI);
-  text = removeToneNumbers(text, "IY", _vowelsUpper.LE);
-  text = removeToneNumbers(text, "UH", _vowelsUpper.SOO);
+  text = removeToneNumbers(text, "AA", DESERET_LETTERS.LAH.upper);
+  text = removeToneNumbers(text, "AO", DESERET_LETTERS.LAW.upper);
+  text = removeToneNumbers(text, "IH", DESERET_LETTERS.SI.upper);
+  text = removeToneNumbers(text, "IY", DESERET_LETTERS.LE.upper);
+  text = removeToneNumbers(text, "UH", DESERET_LETTERS.SOO.upper);
 }
   return text;
 }
 
 function replaceER(text: string): string {
-  text = removeToneNumbers(text, "ER", _vowelsUpper.SU + _consonantsUpper.R);
+  text = removeToneNumbers(text, "ER", DESERET_LETTERS.SU.upper + DESERET_LETTERS.R.upper);
   return text;
 }
 
 function replaceYou(text: string): string {
-  text = removeToneNumbers(text, "Y UW", _vowelsUpper.EW);
+  text = removeToneNumbers(text, "Y UW", DESERET_LETTERS.EW.upper);
   return text;
 }
 

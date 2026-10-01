@@ -1,9 +1,4 @@
-import {
-  DESERET_CONSONANTS_UPPER,
-  DESERET_MODERN_LOWER,
-  DESERET_MODERN_UPPER,
-  DESERET_VOWELS_UPPER,
-} from "./DESERET_DATA";
+import { DESERET_LETTERS, DESERET_MODERN } from "./DESERET_DATA";
 
 /**
  * Slash-delimited phonetic tokens → Deseret capitals.
@@ -15,60 +10,60 @@ import {
  */
 export const DESERET_PHONETIC_TO_UPPER: Record<string, string> = {
   // Long vowels / diphthongs
-  ee: DESERET_VOWELS_UPPER.LE,
-  ey: DESERET_VOWELS_UPPER.LA,
-  ah: DESERET_VOWELS_UPPER.LAH,
-  aw: DESERET_VOWELS_UPPER.LAW,
-  oh: DESERET_VOWELS_UPPER.LO,
-  oo: DESERET_VOWELS_UPPER.LOO,
-  eye: DESERET_VOWELS_UPPER.EYE,
-  ow: DESERET_VOWELS_UPPER.OW,
-  ou: DESERET_VOWELS_UPPER.OW,
-  oi: DESERET_VOWELS_UPPER.OI,
-  yu: DESERET_VOWELS_UPPER.EW,
-  you: DESERET_VOWELS_UPPER.EW,
-  ew: DESERET_VOWELS_UPPER.EW,
+  ee: DESERET_LETTERS.LE.upper,
+  ey: DESERET_LETTERS.LA.upper,
+  ah: DESERET_LETTERS.LAH.upper,
+  aw: DESERET_LETTERS.LAW.upper,
+  oh: DESERET_LETTERS.LO.upper,
+  oo: DESERET_LETTERS.LOO.upper,
+  eye: DESERET_LETTERS.EYE.upper,
+  ow: DESERET_LETTERS.OW.upper,
+  ou: DESERET_LETTERS.OW.upper,
+  oi: DESERET_LETTERS.OI.upper,
+  yu: DESERET_LETTERS.EW.upper,
+  you: DESERET_LETTERS.EW.upper,
+  ew: DESERET_LETTERS.EW.upper,
 
   // Short vowels
-  ih: DESERET_VOWELS_UPPER.SI,
-  eh: DESERET_VOWELS_UPPER.SE,
-  a: DESERET_VOWELS_UPPER.SA,
-  ae: DESERET_VOWELS_UPPER.SA,
-  o: DESERET_VOWELS_UPPER.SO,
-  uh: DESERET_VOWELS_UPPER.SU,
-  uu: DESERET_VOWELS_UPPER.SOO,
+  ih: DESERET_LETTERS.SI.upper,
+  eh: DESERET_LETTERS.SE.upper,
+  a: DESERET_LETTERS.SA.upper,
+  ae: DESERET_LETTERS.SA.upper,
+  o: DESERET_LETTERS.SO.upper,
+  uh: DESERET_LETTERS.SU.upper,
+  uu: DESERET_LETTERS.SOO.upper,
 
   // Consonants
-  w: DESERET_CONSONANTS_UPPER.W,
-  woo: DESERET_CONSONANTS_UPPER.W,
-  y: DESERET_CONSONANTS_UPPER.Y,
-  yee: DESERET_CONSONANTS_UPPER.Y,
-  h: DESERET_CONSONANTS_UPPER.H,
-  p: DESERET_CONSONANTS_UPPER.P,
-  b: DESERET_CONSONANTS_UPPER.B,
-  bee: DESERET_CONSONANTS_UPPER.B,
-  t: DESERET_CONSONANTS_UPPER.T,
-  d: DESERET_CONSONANTS_UPPER.D,
-  ch: DESERET_CONSONANTS_UPPER.CH,
-  j: DESERET_CONSONANTS_UPPER.J,
-  k: DESERET_CONSONANTS_UPPER.K,
-  g: DESERET_CONSONANTS_UPPER.G,
-  gay: DESERET_CONSONANTS_UPPER.G,
-  f: DESERET_CONSONANTS_UPPER.F,
-  v: DESERET_CONSONANTS_UPPER.V,
-  th: DESERET_CONSONANTS_UPPER.TH,
-  eth: DESERET_CONSONANTS_UPPER.TH,
-  dh: DESERET_CONSONANTS_UPPER.DH,
-  the: DESERET_CONSONANTS_UPPER.DH,
-  s: DESERET_CONSONANTS_UPPER.S,
-  z: DESERET_CONSONANTS_UPPER.Z,
-  sh: DESERET_CONSONANTS_UPPER.SH,
-  zh: DESERET_CONSONANTS_UPPER.ZH,
-  r: DESERET_CONSONANTS_UPPER.R,
-  l: DESERET_CONSONANTS_UPPER.L,
-  m: DESERET_CONSONANTS_UPPER.M,
-  n: DESERET_CONSONANTS_UPPER.N,
-  ng: DESERET_CONSONANTS_UPPER.NG,
+  w: DESERET_LETTERS.W.upper,
+  woo: DESERET_LETTERS.W.upper,
+  y: DESERET_LETTERS.Y.upper,
+  yee: DESERET_LETTERS.Y.upper,
+  h: DESERET_LETTERS.H.upper,
+  p: DESERET_LETTERS.P.upper,
+  b: DESERET_LETTERS.B.upper,
+  bee: DESERET_LETTERS.B.upper,
+  t: DESERET_LETTERS.T.upper,
+  d: DESERET_LETTERS.D.upper,
+  ch: DESERET_LETTERS.CH.upper,
+  j: DESERET_LETTERS.J.upper,
+  k: DESERET_LETTERS.K.upper,
+  g: DESERET_LETTERS.G.upper,
+  gay: DESERET_LETTERS.G.upper,
+  f: DESERET_LETTERS.F.upper,
+  v: DESERET_LETTERS.V.upper,
+  th: DESERET_LETTERS.TH.upper,
+  eth: DESERET_LETTERS.TH.upper,
+  dh: DESERET_LETTERS.DH.upper,
+  the: DESERET_LETTERS.DH.upper,
+  s: DESERET_LETTERS.S.upper,
+  z: DESERET_LETTERS.Z.upper,
+  sh: DESERET_LETTERS.SH.upper,
+  zh: DESERET_LETTERS.ZH.upper,
+  r: DESERET_LETTERS.R.upper,
+  l: DESERET_LETTERS.L.upper,
+  m: DESERET_LETTERS.M.upper,
+  n: DESERET_LETTERS.N.upper,
+  ng: DESERET_LETTERS.NG.upper,
 };
 
 /** Primary token shown/inserted by the on-screen keyboard for each letter id. */
@@ -151,8 +146,8 @@ export function deseretFromPhoneticToken(
   const modernUpper =
     modern && (key === "ih" || key === "th" || key === "eth")
       ? key === "ih"
-        ? DESERET_MODERN_UPPER.SI
-        : DESERET_MODERN_UPPER.TH
+        ? DESERET_MODERN.SI.upper
+        : DESERET_MODERN.TH.upper
       : undefined;
   const upper = modernUpper ?? DESERET_PHONETIC_TO_UPPER[key];
   if (!upper) {
@@ -165,7 +160,7 @@ export function deseretFromPhoneticToken(
     return upper;
   }
   if (modernUpper) {
-    return key === "ih" ? DESERET_MODERN_LOWER.si : DESERET_MODERN_LOWER.th;
+    return key === "ih" ? DESERET_MODERN.SI.lower : DESERET_MODERN.TH.lower;
   }
   return toDeseretLower(upper);
 }
@@ -194,10 +189,10 @@ const DESERET_GLYPH_TO_TOKEN: Record<string, string> = (() => {
     if (!map[lower]) map[lower] = token;
     void id;
   }
-  map[DESERET_MODERN_UPPER.SI] = "ih";
-  map[DESERET_MODERN_LOWER.si] = "ih";
-  map[DESERET_MODERN_UPPER.TH] = "th";
-  map[DESERET_MODERN_LOWER.th] = "th";
+  map[DESERET_MODERN.SI.upper] = "ih";
+  map[DESERET_MODERN.SI.lower] = "ih";
+  map[DESERET_MODERN.TH.upper] = "th";
+  map[DESERET_MODERN.TH.lower] = "th";
   return map;
 })();
 
@@ -221,8 +216,8 @@ export function phoneticFromDeseretText(text: string): string {
       if (!token) return char;
       const capital =
         isDeseretCapitalLetter(char) ||
-        char === DESERET_MODERN_UPPER.SI ||
-        char === DESERET_MODERN_UPPER.TH;
+        char === DESERET_MODERN.SI.upper ||
+        char === DESERET_MODERN.TH.upper;
       return toPhoneticInput(token, capital);
     })
     .join("");
