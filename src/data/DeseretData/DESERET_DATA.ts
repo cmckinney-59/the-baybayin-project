@@ -5,122 +5,109 @@ export type DeseretData = {
   example: string;
 };
 
-export const DESERET_CONSONANTS_UPPER = {
-  B: "𐐒",
-  D: "𐐔",
-  F: "𐐙",
-  G: "𐐘",
-  H: "𐐐",
-  J: "𐐖",
-  K: "𐐗",
-  L: "𐐢",
-  M: "𐐣",
-  N: "𐐤",
-  P: "𐐑",
-  R: "𐐡",
-  S: "𐐝",
-  T: "𐐓",
-  V: "𐐚",
-  W: "𐐎",
-  Y: "𐐏",
-  Z: "𐐞",
-  CH: "𐐕",
-  TH: "𐐛",
-  DH: "𐐜",
-  SH: "𐐟",
-  ZH: "𐐠",
-  NG: "𐐥",
+/** Uppercase glyph, then lowercase glyph. */
+export const DESERET_CONSONANTS = {
+  B: ["𐐒", "𐐺"],
+  D: ["𐐔", "𐐼"],
+  F: ["𐐙", "𐑁"],
+  G: ["𐐘", "𐑀"],
+  H: ["𐐐", "𐐸"],
+  J: ["𐐖", "𐐾"],
+  K: ["𐐗", "𐐿"],
+  L: ["𐐢", "𐑊"],
+  M: ["𐐣", "𐑋"],
+  N: ["𐐤", "𐑌"],
+  P: ["𐐑", "𐐹"],
+  R: ["𐐡", "𐑉"],
+  S: ["𐐝", "𐑅"],
+  T: ["𐐓", "𐐻"],
+  V: ["𐐚", "𐑂"],
+  W: ["𐐎", "𐐶"],
+  Y: ["𐐏", "𐐷"],
+  Z: ["𐐞", "𐑆"],
+  CH: ["𐐕", "𐐽"],
+  TH: ["𐐛", "𐑃"],
+  DH: ["𐐜", "𐑄"],
+  SH: ["𐐟", "𐑇"],
+  ZH: ["𐐠", "𐑈"],
+  NG: ["𐐥", "𐑍"],
+} as const;
+
+type DeseretConsonant = keyof typeof DESERET_CONSONANTS;
+
+export const DESERET_CONSONANTS_UPPER = Object.fromEntries(
+  Object.entries(DESERET_CONSONANTS).map(([key, [upper]]) => [key, upper]),
+) as { [K in DeseretConsonant]: (typeof DESERET_CONSONANTS)[K][0] };
+
+export const DESERET_CONSONANTS_LOWER = Object.fromEntries(
+  Object.entries(DESERET_CONSONANTS).map(([key, [, lower]]) => [
+    key.toLowerCase(),
+    lower,
+  ]),
+) as {
+  [K in DeseretConsonant as Lowercase<K>]: (typeof DESERET_CONSONANTS)[K][1];
 };
 
-export const DESERET_CONSONANTS_LOWER = {
-  b: "𐐺",
-  d: "𐐼",
-  f: "𐑁",
-  g: "𐑀",
-  h: "𐐸",
-  j: "𐐾",
-  k: "𐐿",
-  l: "𐑊",
-  m: "𐑋",
-  n: "𐑌",
-  p: "𐐹",
-  r: "𐑉",
-  s: "𐑅",
-  t: "𐐻",
-  v: "𐑂",
-  w: "𐐶",
-  y: "𐐷",
-  z: "𐑆",
-  ch: "𐐽",
-  th: "𐑃",
-  dh: "𐑄",
-  sh: "𐑇",
-  zh: "𐑈",
-  ng: "𐑍",
+export const DESERET_VOWELS = {
+  LE: ["𐐀", "𐐨"],
+  LA: ["𐐁", "𐐩"],
+  LAH: ["𐐂", "𐐪"],
+  LAW: ["𐐃", "𐐫"],
+  LO: ["𐐄", "𐐬"],
+  LOO: ["𐐅", "𐐭"],
+  SI: ["𐐆", "𐐮"],
+  SE: ["𐐇", "𐐯"],
+  SA: ["𐐈", "𐐰"],
+  SO: ["𐐉", "𐐱"],
+  SU: ["𐐊", "𐐲"],
+  SOO: ["𐐋", "𐐳"],
+  EYE: ["𐐌", "𐐴"],
+  OW: ["𐐍", "𐐵"],
+  OI: ["𐐦", "𐑎"],
+  EW: ["𐐧", "𐑏"],
+} as const;
+
+type DeseretVowel = keyof typeof DESERET_VOWELS;
+
+export const DESERET_VOWELS_UPPER = Object.fromEntries(
+  Object.entries(DESERET_VOWELS).map(([key, [upper]]) => [key, upper]),
+) as { [K in DeseretVowel]: (typeof DESERET_VOWELS)[K][0] };
+
+export const DESERET_VOWELS_LOWER = Object.fromEntries(
+  Object.entries(DESERET_VOWELS).map(([key, [, lower]]) => [
+    key.toLowerCase(),
+    lower,
+  ]),
+) as {
+  [K in DeseretVowel as Lowercase<K>]: (typeof DESERET_VOWELS)[K][1];
 };
 
-export const DESERET_VOWELS_UPPER = {
-  LE: "𐐀",
-  LA: "𐐁",
-  LAH: "𐐂",
-  LAW: "𐐃",
-  LO: "𐐄",
-  LOO: "𐐅",
-  SI: "𐐆",
-  SE: "𐐇",
-  SA: "𐐈",
-  SO: "𐐉",
-  SU: "𐐊",
-  SOO: "𐐋",
-  EYE: "𐐌",
-  OW: "𐐍",
-  OI: "𐐦",
-  EW: "𐐧",
-};
+export const DESERET_MODERN = {
+  P: ["𐐋", "𐐳"],
+  S: ["𐐀", "𐐨"],
+  Y: ["𐐆", "𐐮"],
+  LE: ["𐐆", "𐐮"],
+  LAH: ["𐐉", "𐐱"],
+  LAW: ["𐐂", "𐐪"],
+  SI: ["I", "ı"],
+  SOO: ["𐐃", "𐐫"],
+  SH: ["𐐝", "𐑅"],
+  TH: ["Ⲑ", "ⲑ"],
+} as const;
 
-export const DESERET_VOWELS_LOWER = {
-  le: "𐐨",
-  la: "𐐩",
-  lah: "𐐪",
-  law: "𐐫",
-  lo: "𐐬",
-  loo: "𐐭",
-  si: "𐐮",
-  se: "𐐯",
-  sa: "𐐰",
-  so: "𐐱",
-  su: "𐐲",
-  soo: "𐐳",
-  eye: "𐐴",
-  ow: "𐐵",
-  oi: "𐑎",
-  ew: "𐑏",
-};
+type DeseretModern = keyof typeof DESERET_MODERN;
 
-export const DESERET_MODERN_UPPER = {
-  P:"𐐋",
-  S: "𐐀",
-  Y: "𐐆",
-  LE: "𐐆",
-  LAH: "𐐉",
-  LAW: "𐐂",
-  SI:"I",
-  SOO: "𐐃",
-  SH:"𐐝",
-  TH:"Ⲑ",
-};
+export const DESERET_MODERN_UPPER = Object.fromEntries(
+  Object.entries(DESERET_MODERN).map(([key, [upper]]) => [key, upper]),
+) as { [K in DeseretModern]: (typeof DESERET_MODERN)[K][0] };
 
-export const DESERET_MODERN_LOWER = {
-  p:"𐐳",
-  s:"𐐨",
-  y:"𐐮",
-  le:"𐐮",
-  lah:"𐐱",
-  law:"𐐪",
-  si:"ı",
-  soo:"𐐫",
-  sh:"𐑅",
-  th:"ⲑ",
+export const DESERET_MODERN_LOWER = Object.fromEntries(
+  Object.entries(DESERET_MODERN).map(([key, [, lower]]) => [
+    key.toLowerCase(),
+    lower,
+  ]),
+) as {
+  [K in DeseretModern as Lowercase<K>]: (typeof DESERET_MODERN)[K][1];
 };
 
 export const DESERET_DATA: DeseretData[] = [
