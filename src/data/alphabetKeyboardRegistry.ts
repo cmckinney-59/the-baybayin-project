@@ -9,6 +9,10 @@ import {
   getBaybayinFontClass,
   type BaybayinFontId,
 } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
+import {
+  getDeseretKeyboardFontClass,
+  type DeseretFontId,
+} from "./DeseretData/DESERET_FONTS_DATA";
 import { BUHID_KEYBOARD_LAYOUT } from "./BuhidData/buhidKeyboardLayout";
 import { getDeseretKeyboardLayout } from "./DeseretData/deseretKeyboardLayout";
 import { HANUNOO_KEYBOARD_LAYOUT } from "./HanunooData/hanunooKeyboardLayout";
@@ -33,6 +37,7 @@ export type ResolveKeyboardOptions = {
   useTechNumbers: boolean;
   useKlinzhai: boolean;
   selectedBaybayinFont: BaybayinFontId;
+  selectedDeseretFont?: DeseretFontId;
   useHollowKudlits: boolean;
   useXVowelKiller: boolean;
   deseretModern?: boolean;
@@ -98,7 +103,9 @@ export function resolveAlphabetKeyboard(
   if (name === "Deseret") {
     return {
       layout: getDeseretKeyboardLayout(options.deseretModern),
-      fontClass: "deseret-font",
+      fontClass: getDeseretKeyboardFontClass(
+        options.selectedDeseretFont ?? "noto-sans",
+      ),
     };
   }
 

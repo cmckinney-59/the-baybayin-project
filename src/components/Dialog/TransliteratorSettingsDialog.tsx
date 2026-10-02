@@ -1,11 +1,13 @@
 import Checkbox from "../CheckBox/Checkbox";
 import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
+import DeseretFontSelector from "../DeseretFontSelector/DeseretFontSelector";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 import {
   baybayinSupportsUnicodeOption,
   getBaybayinFontById,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import type { DeseretFontId } from "../../data/DeseretData/DESERET_FONTS_DATA";
 
 export type TransliteratorSettingsDialogProps = {
   currentAlphabet: string;
@@ -14,6 +16,7 @@ export type TransliteratorSettingsDialogProps = {
   useTechNumbers: boolean;
   useKlinzhai: boolean;
   selectedBaybayinFont: BaybayinFontId;
+  selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
@@ -31,6 +34,7 @@ export type TransliteratorSettingsDialogProps = {
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
   setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
+  setSelectedDeseretFont: (fontId: DeseretFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
@@ -57,6 +61,7 @@ export default function TransliteratorSettingsDialog({
   useTechNumbers,
   useKlinzhai,
   selectedBaybayinFont,
+  selectedDeseretFont,
   useXVowelKiller,
   textContainsBorrowedWords,
   useHollowKudlits,
@@ -74,6 +79,7 @@ export default function TransliteratorSettingsDialog({
   setUseTechNumbers,
   setUseKlinzhai,
   setSelectedBaybayinFont,
+  setSelectedDeseretFont,
   setUseXVowelKiller,
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
@@ -117,6 +123,15 @@ export default function TransliteratorSettingsDialog({
               <BaybayinFontSelector
                 selectedFontId={selectedBaybayinFont}
                 onChange={setSelectedBaybayinFont}
+              />
+            </div>
+          )}
+
+          {currentAlphabet === "Deseret" && (
+            <div className="transliterator-settings-font-row">
+              <DeseretFontSelector
+                selectedFontId={selectedDeseretFont}
+                onChange={setSelectedDeseretFont}
               />
             </div>
           )}

@@ -1,5 +1,7 @@
 import { ALPHABETS_DATA } from "./ALPHABETS_DATA";
 import { BAYBAYIN_FONTS } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
+import { DESERET_FONTS } from "./DeseretData/DESERET_FONTS_DATA";
+import { deseretUnicodeToLatin } from "./DeseretData/deseretLatinMap";
 
 export type FontTableRow = {
   id: string;
@@ -137,7 +139,6 @@ const BAYBAYIN_FONT_DOWNLOAD: Record<
 
 const UNICODE_ALPHABETS = new Set([
   "Buhid",
-  "Deseret",
   "Hanunoo",
   "Ogham",
   "Tagbanwa",
@@ -145,7 +146,6 @@ const UNICODE_ALPHABETS = new Set([
 
 const ALPHABET_LICENSE: Record<string, string> = {
   Buhid: "Free",
-  Deseret: "Free",
   Hanunoo: "Free",
   Tagbanwa: "Free",
 };
@@ -155,7 +155,6 @@ const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
   Buhid: "buhid/Noto_Sans_Buhid.zip",
   Cirth: "cirth/cirth-erebor.zip",
-  Deseret: "deseret/deseret.zip",
   Gallifreyan: "gallifreyan/ws_simple_gallifreyan.zip",
   Hanunoo: "hanunoo/Noto_Sans_Hanunoo.zip",
   MarasEye: "maras-eye/maras-eye-font.zip",
@@ -195,6 +194,22 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
     return AUREBESH_FONT_ROWS;
   }
 
+  if (alphabetName === "Deseret") {
+    const unicodeSample = "𐐔𐐯𐑅𐐲𐑉𐐯𐐻";
+    return DESERET_FONTS.map((font) => ({
+      id: font.id,
+      name: font.label,
+      fontClass: font.outputFontClass,
+      sample: font.supportsUnicode
+        ? unicodeSample
+        : deseretUnicodeToLatin(unicodeSample),
+      downloadPath: font.downloadPath,
+      downloadName: font.downloadName,
+      supportsUnicode: font.supportsUnicode ? "Yes" : "No",
+      license: font.license,
+    }));
+  }
+
   if (alphabetName === "Plqad") {
     return PLQAD_FONT_ROWS;
   }
@@ -228,8 +243,6 @@ function getDefaultSample(alphabetName: string): string {
   switch (alphabetName) {
     case "Buhid":
       return "ᝋᝃᝒᝇ";
-    case "Deseret":
-      return "𐐔𐐯𐑅𐐲𐑉𐐯𐐻";
     case "Hanunoo":
       return "ᜋᜊᜓᜑᜌ";
     case "Ogham":

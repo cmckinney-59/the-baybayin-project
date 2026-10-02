@@ -5,6 +5,10 @@ import {
   getBaybayinFontClass,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import {
+  getDeseretFontClass,
+  type DeseretFontId,
+} from "../../data/DeseretData/DESERET_FONTS_DATA";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -20,6 +24,7 @@ interface TransliteratorContainerProps {
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
   selectedBaybayinFont?: BaybayinFontId;
+  selectedDeseretFont?: DeseretFontId;
   useSingleLineInput?: boolean;
   /** Hide the Latin input and show only the transliterated output. */
   outputOnlyMode?: boolean;
@@ -45,6 +50,7 @@ export default function TransliteratorContainer({
   useCombinedCharacters = false,
   useKlinzhai = false,
   selectedBaybayinFont,
+  selectedDeseretFont,
   useSingleLineInput = false,
   outputOnlyMode = false,
   suppressSoftKeyboard = false,
@@ -88,6 +94,9 @@ export default function TransliteratorContainer({
     }
     if (alphabetEntry.name === "Baybayin" && selectedBaybayinFont) {
       return getBaybayinFontClass(selectedBaybayinFont);
+    }
+    if (alphabetEntry.name === "Deseret" && selectedDeseretFont) {
+      return getDeseretFontClass(selectedDeseretFont);
     }
     const matrixBinary = alphabetEntry.outputFontClassMatrixBinary;
     if (matrixBinary) {

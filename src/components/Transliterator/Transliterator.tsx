@@ -18,7 +18,16 @@ import {
   baybayinUsesUnicodeOutput,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import {
+  DEFAULT_DESERET_FONT_ID,
+  deseretFontSupportsUnicode,
+  type DeseretFontId,
+} from "../../data/DeseretData/DESERET_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
+import {
+  deseretLatinToUnicode,
+  deseretUnicodeToLatin,
+} from "../../data/DeseretData/deseretLatinMap";
 import {
   mergeBaybayinKudlit,
   phoneticFromBaybayinText,
@@ -90,6 +99,8 @@ export default function Transliterator({
   const [deseretMode, setDeseretMode] = useState<DeseretMode>("classic");
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
+  const [selectedDeseretFont, setSelectedDeseretFont] =
+    useState<DeseretFontId>(DEFAULT_DESERET_FONT_ID);
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
@@ -129,6 +140,7 @@ export default function Transliterator({
     useTechNumbers,
     useKlinzhai,
     selectedBaybayinFont,
+    selectedDeseretFont,
     useHollowKudlits,
     useXVowelKiller,
     deseretModern:
@@ -178,7 +190,12 @@ export default function Transliterator({
   }, [text, transliteratedText, useSingleLineInput, outputOnlyMode]);
 
   const reverseOutputToInput = (output: string): string | null => {
-    if (isDeseret) return phoneticFromDeseretText(output);
+    if (isDeseret) {
+      const unicode = deseretFontSupportsUnicode(selectedDeseretFont)
+        ? output
+        : deseretLatinToUnicode(output);
+      return phoneticFromDeseretText(unicode);
+    }
     if (isBaybayin) return phoneticFromBaybayinText(output);
     if (isBuhid) return phoneticFromBuhidText(output);
     if (isHanunoo) return phoneticFromHanunooText(output);
@@ -203,7 +220,11 @@ export default function Transliterator({
         showExperimentalFeatures && deseretMode === "modern"
           ? "modern"
           : "classic";
-      processWord = (word: string) => processDeseretText(word, mode);
+      const mapLatin = !deseretFontSupportsUnicode(selectedDeseretFont);
+      processWord = async (word: string) => {
+        const unicode = await processDeseretText(word, mode);
+        return mapLatin ? deseretUnicodeToLatin(unicode) : unicode;
+      };
     }
     if (isBaybayin) {
       processWord = (word: string) =>
@@ -252,7 +273,7 @@ export default function Transliterator({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only when alphabet changes
   }, [currentAlphabet]);
 
-  // Re-process Deseret when classic/modern mode changes.
+  // Re-process Deseret when classic/modern mode or font changes.
   useEffect(() => {
     if (!isDeseret) return;
     if (!showExperimentalFeatures && deseretMode === "modern") {
@@ -261,7 +282,7 @@ export default function Transliterator({
     }
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deseretMode, showExperimentalFeatures]);
+  }, [deseretMode, showExperimentalFeatures, selectedDeseretFont]);
   useEffect(() => {
     if (!isPlqad) return;
     void handleChange(text);
@@ -540,6 +561,7 @@ export default function Transliterator({
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
+        selectedDeseretFont={selectedDeseretFont}
         useKlinzhai={useKlinzhai}
         useSingleLineInput={useSingleLineInput}
         outputOnlyMode={outputOnlyMode}
@@ -562,6 +584,7 @@ export default function Transliterator({
         useTechNumbers={useTechNumbers}
         useKlinzhai={useKlinzhai}
         selectedBaybayinFont={selectedBaybayinFont}
+        selectedDeseretFont={selectedDeseretFont}
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
         useUnicode={useUnicode}
@@ -577,6 +600,7 @@ export default function Transliterator({
         setUseTechNumbers={setUseTechNumbers}
         setUseKlinzhai={setUseKlinzhai}
         setSelectedBaybayinFont={setSelectedBaybayinFont}
+        setSelectedDeseretFont={setSelectedDeseretFont}
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
         setUseUnicode={setUseUnicode}

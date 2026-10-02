@@ -1,5 +1,6 @@
 import TransliteratorSettingsDialog from "../Dialog/TransliteratorSettingsDialog";
 import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
+import type { DeseretFontId } from "../../data/DeseretData/DESERET_FONTS_DATA";
 import type { PhoneticPriority } from "../../utils/TextProcessors/phoneticizeWord";
 import type { DeseretMode } from "../../utils/TextProcessors/DeseretTextProcessor";
 
@@ -9,6 +10,7 @@ interface CheckboxContainerProps {
   useTechNumbers: boolean;
   useKlinzhai: boolean;
   selectedBaybayinFont: BaybayinFontId;
+  selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
   useUnicode: boolean;
   textContainsBorrowedWords: boolean;
@@ -23,6 +25,7 @@ interface CheckboxContainerProps {
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
   setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
+  setSelectedDeseretFont: (fontId: DeseretFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
@@ -55,6 +58,7 @@ export default function CheckboxContainer({
   useTechNumbers,
   useKlinzhai,
   selectedBaybayinFont,
+  selectedDeseretFont,
   useXVowelKiller,
   textContainsBorrowedWords,
   useHollowKudlits,
@@ -70,6 +74,7 @@ export default function CheckboxContainer({
   setUseTechNumbers,
   setUseKlinzhai,
   setSelectedBaybayinFont,
+  setSelectedDeseretFont,
   setUseXVowelKiller,
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
@@ -98,6 +103,7 @@ export default function CheckboxContainer({
       useTechNumbers={useTechNumbers}
       useKlinzhai={useKlinzhai}
       selectedBaybayinFont={selectedBaybayinFont}
+      selectedDeseretFont={selectedDeseretFont}
       useXVowelKiller={useXVowelKiller}
       useHollowKudlits={useHollowKudlits}
       useUnicode={useUnicode}
@@ -115,6 +121,7 @@ export default function CheckboxContainer({
       setUseTechNumbers={setUseTechNumbers}
       setUseKlinzhai={setUseKlinzhai}
       setSelectedBaybayinFont={setSelectedBaybayinFont}
+      setSelectedDeseretFont={setSelectedDeseretFont}
       setUseXVowelKiller={setUseXVowelKiller}
       setUseHollowKudlits={setUseHollowKudlits}
       setUseUnicode={setUseUnicode}

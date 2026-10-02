@@ -84,8 +84,169 @@
 }
 
 @font-face {
-  font-family: "Deseret";
-  src: url("./assets/fonts/deseret/noto-sans-deseret-deseret-400-normal.ttf")
+  font-family: "Noto Sans Deseret";
+  src: url("./assets/fonts/deseret/noto-sans-deseret/deseret/ttf/noto-sans-deseret-deseret-400-normal.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AdamicBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/AdamicBee3/_AdamicBee3_0.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TimesBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/TimesBee2/TimesBee2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TumbleBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/TumbleBee2/_TumbleBee2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "QueenBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/QueenBee2/_QueenBee_2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "QueenBee Star";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/QueenBeeStar2/_QueenBee Star 2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DeseretBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/DeseretBee2/_DeseretBee2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HoneyBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/HoneyBee2/_HoneyBee2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ReaderBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/ReaderBee2/_ReaderBee2_0.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ZarahemlaBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/ZarahelmlaBee2/_ZarahemlaBee2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Blunt";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeBlunt/_TuBee Blunt kern 2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Blunt Hollow Light";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeBlunt/_TuBee Blunt Hollow Light2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Blunt Hollow Medium";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeBlunt/_TuBee Blunt Hollow Medium2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Blunt Shadow";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeBlunt/_TuBee Blunt Shadow2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Round";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeRound/_TuBee Round3_0.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Round Hollow Light";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeRound/_TuBee Round Hollow Light2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Round Hollow Medium";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeRound/_TuBee Round Hollow Medium2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TuBee Round Shadow";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/SanSerif/TuBeeRound/_TuBee Round Shadow2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret HuneyBee";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/Huneybee.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bee Skep Serif";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/beeskeps.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Legacy";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/DESERET.TTF")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Legacy Alt";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/Deseret.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Legacy Underscore";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/Deseret_.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DeseretBee Legacy";
+  src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Other/_DeseretBee.ttf")
     format("truetype");
   font-display: swap;
 }
@@ -205,8 +366,78 @@
 .cirth-font {
   font-family: "Cirth", sans-serif;
 }
-.deseret-font {
-  font-family: "Deseret", sans-serif;
+.deseret-font,
+.deseret-font-noto-sans {
+  font-family: "Noto Sans Deseret", sans-serif;
+}
+.deseret-font-adamic-bee {
+  font-family: "AdamicBee", serif;
+}
+.deseret-font-times-bee {
+  font-family: "TimesBee", serif;
+}
+.deseret-font-tumble-bee {
+  font-family: "TumbleBee", serif;
+}
+.deseret-font-queen-bee {
+  font-family: "QueenBee", serif;
+}
+.deseret-font-queen-bee-star {
+  font-family: "QueenBee Star", serif;
+}
+.deseret-font-deseret-bee {
+  font-family: "DeseretBee", sans-serif;
+}
+.deseret-font-honey-bee {
+  font-family: "HoneyBee", sans-serif;
+}
+.deseret-font-reader-bee {
+  font-family: "ReaderBee", sans-serif;
+}
+.deseret-font-zarahemla-bee {
+  font-family: "ZarahemlaBee", sans-serif;
+}
+.deseret-font-tubee-blunt {
+  font-family: "TuBee Blunt", sans-serif;
+}
+.deseret-font-tubee-blunt-hollow-light {
+  font-family: "TuBee Blunt Hollow Light", sans-serif;
+}
+.deseret-font-tubee-blunt-hollow-medium {
+  font-family: "TuBee Blunt Hollow Medium", sans-serif;
+}
+.deseret-font-tubee-blunt-shadow {
+  font-family: "TuBee Blunt Shadow", sans-serif;
+}
+.deseret-font-tubee-round {
+  font-family: "TuBee Round", sans-serif;
+}
+.deseret-font-tubee-round-hollow-light {
+  font-family: "TuBee Round Hollow Light", sans-serif;
+}
+.deseret-font-tubee-round-hollow-medium {
+  font-family: "TuBee Round Hollow Medium", sans-serif;
+}
+.deseret-font-tubee-round-shadow {
+  font-family: "TuBee Round Shadow", sans-serif;
+}
+.deseret-font-huneybee {
+  font-family: "Deseret HuneyBee", sans-serif;
+}
+.deseret-font-bee-skep {
+  font-family: "Bee Skep Serif", serif;
+}
+.deseret-font-legacy {
+  font-family: "Deseret Legacy", sans-serif;
+}
+.deseret-font-legacy-alt {
+  font-family: "Deseret Legacy Alt", sans-serif;
+}
+.deseret-font-legacy-underscore {
+  font-family: "Deseret Legacy Underscore", sans-serif;
+}
+.deseret-font-deseret-bee-legacy {
+  font-family: "DeseretBee Legacy", sans-serif;
 }
 .gallifreyan-font {
   font-family: "Gallifreyan", sans-serif;
