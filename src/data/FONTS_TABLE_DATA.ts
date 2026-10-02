@@ -13,6 +13,8 @@ export type FontTableRow = {
   downloadName: string;
   supportsUnicode: string;
   license: string;
+  creator?: string;
+  sourceUrl?: string;
 };
 
 const FONT_ASSETS = import.meta.glob(
@@ -207,6 +209,8 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       downloadName: font.downloadName,
       supportsUnicode: font.supportsUnicode ? "Yes" : "No",
       license: font.license,
+      creator: font.creator,
+      sourceUrl: font.sourceUrl,
     }));
   }
 

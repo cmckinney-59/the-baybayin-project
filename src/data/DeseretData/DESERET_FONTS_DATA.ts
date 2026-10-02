@@ -40,9 +40,20 @@ export type DeseretFont = {
   supportsUnicode: boolean;
   license: string;
   category: "unicode" | "serif" | "sans-serif" | "other";
+  creator?: string;
+  /** Attribution / homepage for the font family. */
+  sourceUrl?: string;
 };
 
-export const DESERET_FONTS: DeseretFont[] = [
+/** Bee / Other fonts collected from Joshua Erickson's Deseret fonts page. */
+const JOSHUA_ERICKSON_META = {
+  creator: "Joshua Erickson",
+  sourceUrl: "https://www.chem.ucla.edu/~jericks/Fonts/",
+} as const;
+
+type DeseretFontBase = Omit<DeseretFont, "creator" | "sourceUrl">;
+
+const DESERET_FONTS_BASE: DeseretFontBase[] = [
   {
     id: "noto-sans",
     label: "Noto Sans Deseret",
@@ -331,6 +342,10 @@ export const DESERET_FONTS: DeseretFont[] = [
     category: "other",
   },
 ];
+
+export const DESERET_FONTS: DeseretFont[] = DESERET_FONTS_BASE.map((font) =>
+  font.id === "noto-sans" ? font : { ...font, ...JOSHUA_ERICKSON_META },
+);
 
 export const DEFAULT_DESERET_FONT_ID: DeseretFontId = "noto-sans";
 

@@ -1799,9 +1799,14 @@ button:hover:not(:disabled) {
 
 .fonts-table td:nth-child(3),
 .fonts-table td:nth-child(4),
-.fonts-table td:nth-child(5) {
+.fonts-table td:nth-child(5),
+.fonts-table td:nth-child(6) {
   font-family: inherit;
   font-weight: 400;
+}
+
+.fonts-table-creator-link {
+  white-space: nowrap;
 }
 
 .fonts-table-sample {

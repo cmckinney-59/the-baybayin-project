@@ -2,13 +2,34 @@ import { useAlphabet } from "../../contexts/AlphabetContext";
 import {
   getFontDownloadUrl,
   getFontTableRows,
+  type FontTableRow,
 } from "../../data/FONTS_TABLE_DATA";
 import downloadFont from "../../utils/DownloadFont";
 import { AiOutlineDownload } from "react-icons/ai";
 
+function FontCreatorCell({ row }: { row: FontTableRow }) {
+  if (!row.creator) {
+    return <span>—</span>;
+  }
+  if (!row.sourceUrl) {
+    return <span>{row.creator}</span>;
+  }
+  return (
+    <a
+      href={row.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link fonts-table-creator-link"
+    >
+      {row.creator}
+    </a>
+  );
+}
+
 export default function FontsTable() {
   const { currentAlphabet } = useAlphabet();
   const rows = getFontTableRows(currentAlphabet);
+  const showCreator = rows.some((row) => row.creator);
 
   if (rows.length === 0) {
     return null;
@@ -32,6 +53,7 @@ export default function FontsTable() {
               <th>Font</th>
               <th>Sample</th>
               <th>Unicode</th>
+              {showCreator && <th>Creator</th>}
               <th>License</th>
               <th>Download</th>
             </tr>
@@ -46,6 +68,11 @@ export default function FontsTable() {
                     {row.sample}
                   </td>
                   <td>{row.supportsUnicode}</td>
+                  {showCreator && (
+                    <td>
+                      <FontCreatorCell row={row} />
+                    </td>
+                  )}
                   <td>{row.license}</td>
                   <td>
                     <button
@@ -87,6 +114,23 @@ export default function FontsTable() {
                 </p>
                 <p className="fonts-mobile-meta">
                   Unicode: {row.supportsUnicode} · {row.license}
+                  {row.creator ? (
+                    <>
+                      {" · "}
+                      {row.sourceUrl ? (
+                        <a
+                          href={row.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link fonts-table-creator-link"
+                        >
+                          {row.creator}
+                        </a>
+                      ) : (
+                        row.creator
+                      )}
+                    </>
+                  ) : null}
                 </p>
               </div>
               <button
