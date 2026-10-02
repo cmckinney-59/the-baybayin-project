@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAlphabet } from "../../contexts/AlphabetContext";
 import {
   getFontDownloadUrl,
@@ -5,9 +6,10 @@ import {
   type FontTableRow,
 } from "../../data/FONTS_TABLE_DATA";
 import downloadFont from "../../utils/DownloadFont";
-import { AiOutlineDownload } from "react-icons/ai";
+import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import { AiOutlineDownload, AiOutlineInfoCircle } from "react-icons/ai";
 
-function FontCreatorCell({ row }: { row: FontTableRow }) {
+function FontCreatorValue({ row }: { row: FontTableRow }) {
   if (!row.creator) {
     return <span>—</span>;
   }
@@ -26,10 +28,55 @@ function FontCreatorCell({ row }: { row: FontTableRow }) {
   );
 }
 
+function FontInfoDialog({
+  row,
+  onClose,
+}: {
+  row: FontTableRow;
+  onClose: () => void;
+}) {
+  return (
+    <dialog
+      className="dialog-overlay"
+      open
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="dialog-box fonts-info-dialog" role="document">
+        <CloseDialogButton onClose={onClose} />
+        <div className="dialog-header">
+          <div className="dialog-header-top-row">
+            <h3>{row.name}</h3>
+          </div>
+        </div>
+        <div className="dialog-content">
+          <dl className="fonts-info-list">
+            <div className="fonts-info-row">
+              <dt>Unicode</dt>
+              <dd>{row.supportsUnicode}</dd>
+            </div>
+            <div className="fonts-info-row">
+              <dt>Creator</dt>
+              <dd>
+                <FontCreatorValue row={row} />
+              </dd>
+            </div>
+            <div className="fonts-info-row">
+              <dt>License</dt>
+              <dd>{row.license}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </dialog>
+  );
+}
+
 export default function FontsTable() {
   const { currentAlphabet } = useAlphabet();
   const rows = getFontTableRows(currentAlphabet);
-  const showCreator = rows.some((row) => row.creator);
+  const [infoRow, setInfoRow] = useState<FontTableRow | null>(null);
 
   if (rows.length === 0) {
     return null;
@@ -52,10 +99,7 @@ export default function FontsTable() {
             <tr>
               <th>Font</th>
               <th>Sample</th>
-              <th>Unicode</th>
-              {showCreator && <th>Creator</th>}
-              <th>License</th>
-              <th>Download</th>
+              <th aria-label="Actions" />
             </tr>
           </thead>
           <tbody>
@@ -67,34 +111,38 @@ export default function FontsTable() {
                   <td className={`fonts-table-sample ${row.fontClass}`}>
                     {row.sample}
                   </td>
-                  <td>{row.supportsUnicode}</td>
-                  {showCreator && (
-                    <td>
-                      <FontCreatorCell row={row} />
-                    </td>
-                  )}
-                  <td>{row.license}</td>
                   <td>
-                    <button
-                      type="button"
-                      className="downloadButton"
-                      disabled={!url}
-                      title={
-                        url
-                          ? `Download ${row.downloadName}`
-                          : "No downloadable file available"
-                      }
-                      aria-label={
-                        url
-                          ? `Download ${row.downloadName}`
-                          : "No downloadable file available"
-                      }
-                      onClick={() =>
-                        handleDownload(row.downloadPath, row.downloadName)
-                      }
-                    >
-                      Download
-                    </button>
+                    <div className="fonts-table-actions">
+                      <button
+                        type="button"
+                        className="fonts-table-icon-button"
+                        title={`Info for ${row.name}`}
+                        aria-label={`Info for ${row.name}`}
+                        onClick={() => setInfoRow(row)}
+                      >
+                        <AiOutlineInfoCircle aria-hidden />
+                      </button>
+                      <button
+                        type="button"
+                        className="downloadButton fonts-table-download"
+                        disabled={!url}
+                        title={
+                          url
+                            ? `Download ${row.downloadName}`
+                            : "No downloadable file available"
+                        }
+                        aria-label={
+                          url
+                            ? `Download ${row.downloadName}`
+                            : "No downloadable file available"
+                        }
+                        onClick={() =>
+                          handleDownload(row.downloadPath, row.downloadName)
+                        }
+                      >
+                        <AiOutlineDownload aria-hidden />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );
@@ -112,47 +160,45 @@ export default function FontsTable() {
                 <p className={`fonts-mobile-sample ${row.fontClass}`}>
                   {row.sample}
                 </p>
-                <p className="fonts-mobile-meta">
-                  Unicode: {row.supportsUnicode} · {row.license}
-                  {row.creator ? (
-                    <>
-                      {" · "}
-                      {row.sourceUrl ? (
-                        <a
-                          href={row.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="link fonts-table-creator-link"
-                        >
-                          {row.creator}
-                        </a>
-                      ) : (
-                        row.creator
-                      )}
-                    </>
-                  ) : null}
-                </p>
               </div>
-              <button
-                type="button"
-                className="downloadButton fonts-mobile-download"
-                disabled={!url}
-                aria-label={
-                  url
-                    ? `Download ${row.downloadName}`
-                    : "No downloadable file available"
-                }
-                onClick={() =>
-                  handleDownload(row.downloadPath, row.downloadName)
-                }
-              >
-                <AiOutlineDownload aria-hidden />
-                Download
-              </button>
+              <div className="fonts-mobile-actions">
+                <button
+                  type="button"
+                  className="fonts-table-icon-button fonts-mobile-info"
+                  title={`Info for ${row.name}`}
+                  aria-label={`Info for ${row.name}`}
+                  onClick={() => setInfoRow(row)}
+                >
+                  <AiOutlineInfoCircle aria-hidden />
+                </button>
+                <button
+                  type="button"
+                  className="downloadButton fonts-mobile-download"
+                  disabled={!url}
+                  title={
+                    url
+                      ? `Download ${row.downloadName}`
+                      : "No downloadable file available"
+                  }
+                  aria-label={
+                    url
+                      ? `Download ${row.downloadName}`
+                      : "No downloadable file available"
+                  }
+                  onClick={() =>
+                    handleDownload(row.downloadPath, row.downloadName)
+                  }
+                >
+                  <AiOutlineDownload aria-hidden />
+                </button>
+              </div>
             </li>
           );
         })}
       </ul>
+      {infoRow && (
+        <FontInfoDialog row={infoRow} onClose={() => setInfoRow(null)} />
+      )}
     </>
   );
 }

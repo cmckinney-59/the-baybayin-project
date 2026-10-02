@@ -1797,39 +1797,114 @@ button:hover:not(:disabled) {
   background-color: transparent;
 }
 
-.fonts-table td:nth-child(3),
-.fonts-table td:nth-child(4),
-.fonts-table td:nth-child(5),
-.fonts-table td:nth-child(6) {
+.fonts-table td:nth-child(3) {
   font-family: inherit;
   font-weight: 400;
+}
+
+.fonts-table-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
 }
 
 .fonts-table-creator-link {
   white-space: nowrap;
 }
 
-.fonts-table-sample {
-  font-size: 1.35rem;
+.alphabet-table.fonts-table td.fonts-table-sample {
+  font-size: 3rem;
+  line-height: 1.3;
   text-align: center;
+  font-weight: 400;
+}
+
+.fonts-table-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--button-border);
+  border-radius: 5px;
+  background: var(--bg-secondary, var(--button-bg));
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.fonts-table-icon-button:hover {
+  border-color: rgb(26, 115, 232);
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .fonts-table-icon-button:hover {
+  border-color: #64b5f6;
+  color: #64b5f6;
 }
 
 .fonts-table .downloadButton {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  width: auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
 .fonts-table .downloadButton:hover:not(:disabled) {
   background-color: #0056b3;
+}
+
+.fonts-table-download svg,
+.fonts-table-icon-button svg {
+  display: block;
+}
+
+.fonts-info-dialog {
+  max-width: 22rem;
+}
+
+.fonts-info-list {
+  margin: 0;
+  width: 100%;
+}
+
+.fonts-info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--button-border);
+}
+
+.fonts-info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fonts-info-row dt {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.fonts-info-row dd {
+  margin: 0;
+  text-align: right;
+  color: var(--text-primary);
 }
 
 .fonts-mobile-list {
@@ -1852,13 +1927,20 @@ button:hover:not(:disabled) {
 
   .fonts-mobile-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: 0.75rem;
     padding: 0.9rem;
     border: 1px solid var(--button-border);
     border-radius: 10px;
     background: var(--bg-primary);
     text-align: left;
+  }
+
+  .fonts-mobile-copy {
+    min-width: 0;
+    flex: 1;
   }
 
   .fonts-mobile-name {
@@ -1870,30 +1952,25 @@ button:hover:not(:disabled) {
 
   .fonts-mobile-sample {
     margin: 0.2rem 0 0;
-    font-size: 1.45rem;
+    font-size: 3rem;
     line-height: 1.3;
   }
 
-  .fonts-mobile-meta {
-    margin: 0.25rem 0 0;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-  }
-
-  .fonts-mobile-download {
+  .fonts-mobile-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.45rem;
-    width: 100%;
-    min-height: 2.75rem;
-    margin: 0;
-    padding: 0.7rem 1rem;
-    border-radius: 8px;
-    font-size: 1rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
 
-  .fonts-mobile-download svg {
+  .fonts-mobile-info,
+  .fonts-mobile-download {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
     font-size: 1.25rem;
   }
 
