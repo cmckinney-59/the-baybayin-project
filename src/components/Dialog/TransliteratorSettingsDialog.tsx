@@ -8,6 +8,10 @@ import {
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import type { DeseretFontId } from "../../data/DeseretData/DESERET_FONTS_DATA";
+import {
+  TRANSLITERATOR_FONT_SIZE_OPTIONS,
+  type TransliteratorFontSize,
+} from "../../data/transliteratorFontSize";
 
 export type TransliteratorSettingsDialogProps = {
   currentAlphabet: string;
@@ -27,6 +31,7 @@ export type TransliteratorSettingsDialogProps = {
   phoneticPriority: "english" | "spanish";
   deseretMode: "classic" | "modern";
   showModernDeseret?: boolean;
+  fontSize: TransliteratorFontSize;
   useSingleLineInput: boolean;
   showOutputOnlyOption?: boolean;
   outputOnlyMode: boolean;
@@ -44,6 +49,7 @@ export type TransliteratorSettingsDialogProps = {
   setUseSpanishPronunciation: (checked: boolean) => void;
   setPhoneticPriority: (priority: "english" | "spanish") => void;
   setDeseretMode: (mode: "classic" | "modern") => void;
+  setFontSize: (size: TransliteratorFontSize) => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
 };
@@ -72,6 +78,7 @@ export default function TransliteratorSettingsDialog({
   phoneticPriority,
   deseretMode,
   showModernDeseret = false,
+  fontSize,
   useSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -89,6 +96,7 @@ export default function TransliteratorSettingsDialog({
   setUseSpanishPronunciation,
   setPhoneticPriority,
   setDeseretMode,
+  setFontSize,
   setUseSingleLineInput,
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
@@ -308,6 +316,36 @@ export default function TransliteratorSettingsDialog({
                 )}
               </>
             )}
+
+            <div
+              className="phonetic-priority-row"
+              title="Size of text in the transliterator input and output."
+            >
+              <span className="phonetic-priority-label">Font size</span>
+              <div
+                className="phonetic-priority-toggle"
+                role="group"
+                aria-label="Font size"
+              >
+                {TRANSLITERATOR_FONT_SIZE_OPTIONS.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={
+                      fontSize === option.id
+                        ? "phonetic-priority-option active"
+                        : "phonetic-priority-option"
+                    }
+                    aria-label={option.title}
+                    title={option.title}
+                    aria-pressed={fontSize === option.id}
+                    onClick={() => setFontSize(option.id)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             <span className="mobile-only-control">
               <Checkbox

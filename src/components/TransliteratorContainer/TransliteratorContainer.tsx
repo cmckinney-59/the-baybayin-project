@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { RefObject } from "react";
+import type { CSSProperties, RefObject } from "react";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import {
   getBaybayinFontClass,
@@ -9,6 +9,11 @@ import {
   getDeseretFontClass,
   type DeseretFontId,
 } from "../../data/DeseretData/DESERET_FONTS_DATA";
+import {
+  DEFAULT_TRANSLITERATOR_FONT_SIZE,
+  getTransliteratorFontSizePx,
+  type TransliteratorFontSize,
+} from "../../data/transliteratorFontSize";
 
 interface TransliteratorContainerProps {
   text: string;
@@ -25,6 +30,7 @@ interface TransliteratorContainerProps {
   useKlinzhai?: boolean;
   selectedBaybayinFont?: BaybayinFontId;
   selectedDeseretFont?: DeseretFontId;
+  fontSize?: TransliteratorFontSize;
   useSingleLineInput?: boolean;
   /** Hide the Latin input and show only the transliterated output. */
   outputOnlyMode?: boolean;
@@ -51,6 +57,7 @@ export default function TransliteratorContainer({
   useKlinzhai = false,
   selectedBaybayinFont,
   selectedDeseretFont,
+  fontSize = DEFAULT_TRANSLITERATOR_FONT_SIZE,
   useSingleLineInput = false,
   outputOnlyMode = false,
   suppressSoftKeyboard = false,
@@ -113,11 +120,18 @@ export default function TransliteratorContainer({
     }
   };
 
+  const fontSizePx = getTransliteratorFontSizePx(fontSize);
+
   return (
     <div
       className={`transliteration-container${
         useSingleLineInput ? " single-line-mode" : ""
       }${outputOnlyMode ? " output-only-mode" : ""}`}
+      style={
+        {
+          "--transliterator-font-size": `${fontSizePx}px`,
+        } as CSSProperties
+      }
     >
       <div
         className={`textarea-wrapper${outputOnlyMode ? " input-hidden" : ""}`}

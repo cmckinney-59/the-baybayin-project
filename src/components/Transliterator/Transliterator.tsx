@@ -29,6 +29,10 @@ import {
   deseretUnicodeToLatin,
 } from "../../data/DeseretData/deseretLatinMap";
 import {
+  DEFAULT_TRANSLITERATOR_FONT_SIZE,
+  type TransliteratorFontSize,
+} from "../../data/transliteratorFontSize";
+import {
   mergeBaybayinKudlit,
   phoneticFromBaybayinText,
 } from "../../data/BaybayinData/baybayinPhoneticMap";
@@ -101,6 +105,9 @@ export default function Transliterator({
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [selectedDeseretFont, setSelectedDeseretFont] =
     useState<DeseretFontId>(DEFAULT_DESERET_FONT_ID);
+  const [fontSize, setFontSize] = useState<TransliteratorFontSize>(
+    DEFAULT_TRANSLITERATOR_FONT_SIZE,
+  );
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
@@ -562,6 +569,7 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         selectedBaybayinFont={selectedBaybayinFont}
         selectedDeseretFont={selectedDeseretFont}
+        fontSize={fontSize}
         useKlinzhai={useKlinzhai}
         useSingleLineInput={useSingleLineInput}
         outputOnlyMode={outputOnlyMode}
@@ -594,6 +602,7 @@ export default function Transliterator({
         phoneticPriority={phoneticPriority}
         deseretMode={deseretMode}
         showModernDeseret={showExperimentalFeatures}
+        fontSize={fontSize}
         useSingleLineInput={useSingleLineInput}
         textContainsBorrowedWords={textContainsBorrowedWords}
         setUseCombinedCharacters={setUseCombinedCharacters}
@@ -609,6 +618,7 @@ export default function Transliterator({
         setUseSpanishPronunciation={setUseSpanishPronunciation}
         setPhoneticPriority={setPhoneticPriority}
         setDeseretMode={setDeseretMode}
+        setFontSize={setFontSize}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}
         showOutputOnlyOption={showOnScreenKeyboard}

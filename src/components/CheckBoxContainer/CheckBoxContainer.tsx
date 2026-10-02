@@ -3,6 +3,7 @@ import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA
 import type { DeseretFontId } from "../../data/DeseretData/DESERET_FONTS_DATA";
 import type { PhoneticPriority } from "../../utils/TextProcessors/phoneticizeWord";
 import type { DeseretMode } from "../../utils/TextProcessors/DeseretTextProcessor";
+import type { TransliteratorFontSize } from "../../data/transliteratorFontSize";
 
 interface CheckboxContainerProps {
   currentAlphabet: string;
@@ -21,6 +22,7 @@ interface CheckboxContainerProps {
   phoneticPriority: PhoneticPriority;
   deseretMode: DeseretMode;
   showModernDeseret?: boolean;
+  fontSize: TransliteratorFontSize;
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
@@ -35,6 +37,7 @@ interface CheckboxContainerProps {
   setUseSpanishPronunciation: (checked: boolean) => void;
   setPhoneticPriority: (priority: PhoneticPriority) => void;
   setDeseretMode: (mode: DeseretMode) => void;
+  setFontSize: (size: TransliteratorFontSize) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
   showOutputOnlyOption?: boolean;
@@ -69,6 +72,7 @@ export default function CheckboxContainer({
   phoneticPriority,
   deseretMode,
   showModernDeseret = false,
+  fontSize,
   useSingleLineInput,
   setUseCombinedCharacters,
   setUseTechNumbers,
@@ -84,6 +88,7 @@ export default function CheckboxContainer({
   setUseSpanishPronunciation,
   setPhoneticPriority,
   setDeseretMode,
+  setFontSize,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
   outputOnlyMode,
@@ -113,6 +118,7 @@ export default function CheckboxContainer({
       phoneticPriority={phoneticPriority}
       deseretMode={deseretMode}
       showModernDeseret={showModernDeseret}
+      fontSize={fontSize}
       useSingleLineInput={useSingleLineInput}
       textContainsBorrowedWords={textContainsBorrowedWords}
       showOutputOnlyOption={showOutputOnlyOption}
@@ -130,6 +136,7 @@ export default function CheckboxContainer({
       setUseSpanishPronunciation={setUseSpanishPronunciation}
       setPhoneticPriority={setPhoneticPriority}
       setDeseretMode={setDeseretMode}
+      setFontSize={setFontSize}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}
       setOutputOnlyMode={setOutputOnlyMode}

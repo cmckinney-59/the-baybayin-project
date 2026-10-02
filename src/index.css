@@ -647,7 +647,7 @@ button:hover:not(:disabled) {
 .transliteration-textarea,
 .transliteration-output {
   text-align: left;
-  font-size: 20px;
+  font-size: var(--transliterator-font-size, 20px);
   width: 100%;
   box-sizing: border-box;
   min-height: 175px;
@@ -663,9 +663,13 @@ button:hover:not(:disabled) {
 @media (max-width: 720px) {
   .transliteration-container.single-line-mode .transliteration-textarea,
   .transliteration-container.single-line-mode .transliteration-output {
-    min-height: 44px;
-    height: 44px;
-    max-height: 44px;
+    --transliterator-single-line-height: max(
+      44px,
+      calc(var(--transliterator-font-size, 20px) * 1.4 + 16px)
+    );
+    min-height: var(--transliterator-single-line-height);
+    height: var(--transliterator-single-line-height);
+    max-height: var(--transliterator-single-line-height);
     resize: none;
     overflow-x: auto;
     overflow-y: hidden;
@@ -1044,7 +1048,8 @@ button:hover:not(:disabled) {
   border-radius: 0;
   background: transparent;
   color: var(--text-primary);
-  padding: 0.4rem 0.75rem;
+  padding: 0.4rem 0.65rem;
+  min-width: 2.25rem;
   font: inherit;
   font-weight: 500;
   cursor: pointer;
