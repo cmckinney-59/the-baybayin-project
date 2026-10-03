@@ -12,6 +12,20 @@ import {
   TRANSLITERATOR_FONT_SIZE_OPTIONS,
   type TransliteratorFontSize,
 } from "../../data/transliteratorFontSize";
+import {
+  useKeyboardKeySize,
+  type KeyboardKeySize,
+} from "../../contexts/KeyboardKeySizeContext";
+
+const KEYBOARD_KEY_SIZE_OPTIONS: {
+  id: KeyboardKeySize;
+  label: string;
+  title: string;
+}[] = [
+  { id: "small", label: "S", title: "Small" },
+  { id: "medium", label: "M", title: "Medium" },
+  { id: "large", label: "L", title: "Large" },
+];
 
 export type TransliteratorSettingsDialogProps = {
   currentAlphabet: string;
@@ -100,6 +114,7 @@ export default function TransliteratorSettingsDialog({
   setUseSingleLineInput,
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
+  const { keySize, setKeySize } = useKeyboardKeySize();
   const selectedBaybayinFontEntry = getBaybayinFontById(selectedBaybayinFont);
   const prioritizeEnabled =
     phoneticMode && useEnglishPronunciation && useSpanishPronunciation;
@@ -346,6 +361,38 @@ export default function TransliteratorSettingsDialog({
                 ))}
               </div>
             </div>
+
+            {showOutputOnlyOption && (
+              <div
+                className="phonetic-priority-row"
+                title="Size of keys on the on-screen keyboard."
+              >
+                <span className="phonetic-priority-label">Key size</span>
+                <div
+                  className="phonetic-priority-toggle"
+                  role="group"
+                  aria-label="Keyboard key size"
+                >
+                  {KEYBOARD_KEY_SIZE_OPTIONS.map((option) => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      className={
+                        keySize === option.id
+                          ? "phonetic-priority-option active"
+                          : "phonetic-priority-option"
+                      }
+                      aria-label={option.title}
+                      title={option.title}
+                      aria-pressed={keySize === option.id}
+                      onClick={() => setKeySize(option.id)}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <span className="mobile-only-control">
               <Checkbox

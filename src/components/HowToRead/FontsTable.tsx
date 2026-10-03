@@ -28,6 +28,12 @@ function FontCreatorValue({ row }: { row: FontTableRow }) {
   );
 }
 
+function getFontFileType(row: FontTableRow): string {
+  const name = row.downloadName || row.downloadPath;
+  const match = /\.([a-z0-9]+)$/i.exec(name);
+  return match ? match[1].toUpperCase() : "—";
+}
+
 function FontInfoDialog({
   row,
   onClose,
@@ -52,6 +58,10 @@ function FontInfoDialog({
         </div>
         <div className="dialog-content">
           <dl className="fonts-info-list">
+            <div className="fonts-info-row">
+              <dt>File type</dt>
+              <dd>{getFontFileType(row)}</dd>
+            </div>
             <div className="fonts-info-row">
               <dt>Unicode</dt>
               <dd>{row.supportsUnicode}</dd>
