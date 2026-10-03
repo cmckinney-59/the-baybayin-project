@@ -915,6 +915,24 @@ button:hover:not(:disabled) {
   margin: 0.75rem 0 0;
 }
 
+.transliterator-settings-dialog .transliterator-settings-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.1rem;
+}
+
+.transliterator-settings-dialog .transliterator-settings-section:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+.transliterator-settings-dialog .transliterator-settings-section-title {
+  margin: 0 0 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
 .transliterator-settings-dialog .transliterator-settings-font-row {
   display: flex;
   width: 100%;
