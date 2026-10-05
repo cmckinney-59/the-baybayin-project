@@ -45,11 +45,19 @@ export type DeseretFont = {
   sourceUrl?: string;
 };
 
-/** Bee / Other fonts collected from Joshua Erickson's Deseret fonts page. */
-const JOSHUA_ERICKSON_META = {
-  creator: "Joshua Erickson",
-  sourceUrl: "https://www.chem.ucla.edu/~jericks/Fonts/",
-} as const;
+/** Host page where these font files were collected. */
+const DESERET_FONT_SOURCE_URL =
+  "https://www.chem.ucla.edu/~jericks/Fonts/";
+
+/** Known creators for fonts that are not Joshua Erickson's Bee faces. */
+const DESERET_FONT_CREATORS: Partial<Record<DeseretFontId, string>> = {
+  "deseret-legacy": "Edward J. Bateman",
+  "deseret-legacy-alt": "Daniel U. Thibault / James Kass",
+  "deseret-legacy-underscore": "Unknown",
+  huneybee: "Daniel U. Thibault / James Kass",
+  "bee-skep": "Joseph Spicer",
+  "deseret-bee-legacy": "Joshua Erickson / Greg Kearney",
+};
 
 type DeseretFontBase = Omit<DeseretFont, "creator" | "sourceUrl">;
 
@@ -295,7 +303,7 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
   },
   {
     id: "deseret-legacy",
-    label: "Deseret (legacy)",
+    label: "Deseret (Bateman)",
     familyName: "Deseret Legacy",
     outputFontClass: "deseret-font-legacy",
     downloadPath:
@@ -307,7 +315,7 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
   },
   {
     id: "deseret-legacy-alt",
-    label: "Deseret (legacy alt)",
+    label: "Deseret (Thibault/Kass)",
     familyName: "Deseret Legacy Alt",
     outputFontClass: "deseret-font-legacy-alt",
     downloadPath:
@@ -319,7 +327,7 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
   },
   {
     id: "deseret-legacy-underscore",
-    label: "Deseret (legacy underscore)",
+    label: "Deseret (1991)",
     familyName: "Deseret Legacy Underscore",
     outputFontClass: "deseret-font-legacy-underscore",
     downloadPath:
@@ -343,9 +351,23 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
   },
 ];
 
-export const DESERET_FONTS: DeseretFont[] = DESERET_FONTS_BASE.map((font) =>
-  font.id === "noto-sans" ? font : { ...font, ...JOSHUA_ERICKSON_META },
-);
+export const DESERET_FONTS: DeseretFont[] = DESERET_FONTS_BASE.map((font) => {
+  if (font.id === "noto-sans") {
+    return font;
+  }
+
+  const creator =
+    DESERET_FONT_CREATORS[font.id] ??
+    (font.category === "serif" || font.category === "sans-serif"
+      ? "Joshua Erickson"
+      : undefined);
+
+  return {
+    ...font,
+    sourceUrl: DESERET_FONT_SOURCE_URL,
+    ...(creator ? { creator } : {}),
+  };
+});
 
 export const DEFAULT_DESERET_FONT_ID: DeseretFontId = "noto-sans";
 
