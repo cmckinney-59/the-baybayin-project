@@ -5,6 +5,7 @@ export type DeseretFontId =
   | "mph-2b-damase"
   | "desalph"
   | "xylocopa"
+  | "nomada"
   | "unifont-upper"
   | "adamic-bee"
   | "times-bee"
@@ -89,6 +90,10 @@ const DESERET_FONT_ATTRIBUTION: Partial<
     creator: "Illinois Deseret Consortium / sigilante",
     sourceUrl: "https://github.com/sigilante/idc-xylocopa",
   },
+  nomada: {
+    creator: "N E Davis / Illinois Deseret Consortium",
+    sourceUrl: "https://github.com/sigilante/idc-nomada",
+  },
   "unifont-upper": {
     creator: "Roman Czyborra / Paul Hardy et al.",
     sourceUrl: "https://unifoundry.com/unifont/",
@@ -172,6 +177,17 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     downloadName: "IDCXylocopa.otf",
     supportsUnicode: true,
     license: "Free",
+    category: "unicode",
+  },
+  {
+    id: "nomada",
+    label: "IDC Nomada",
+    familyName: "IDC Nomada Gothic",
+    outputFontClass: "deseret-font-nomada",
+    downloadPath: "deseret/Nomada/IDCNomada.otf",
+    downloadName: "IDCNomada.otf",
+    supportsUnicode: true,
+    license: "OFL",
     category: "unicode",
   },
   {

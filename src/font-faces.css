@@ -122,6 +122,12 @@
 }
 
 @font-face {
+  font-family: "IDC Nomada Gothic";
+  src: url("./assets/fonts/deseret/Nomada/IDCNomada.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Unifont Upper";
   src: url("./assets/fonts/deseret/UnifontUpper/unifont_upper-18.0.01.otf")
     format("opentype");
@@ -429,6 +435,10 @@
 }
 .deseret-font-xylocopa {
   font-family: "IDC Xylocopa", monospace;
+}
+.deseret-font-nomada {
+  /* Capitals only (40 glyphs); Noto fills lowercase Deseret. */
+  font-family: "IDC Nomada Gothic", "Noto Sans Deseret", sans-serif;
 }
 .deseret-font-unifont-upper {
   font-family: "Unifont Upper", monospace;
