@@ -5,6 +5,7 @@ export type DeseretFontId =
   | "mph-2b-damase"
   | "desalph"
   | "xylocopa"
+  | "unifont-upper"
   | "adamic-bee"
   | "times-bee"
   | "tumble-bee"
@@ -88,6 +89,10 @@ const DESERET_FONT_ATTRIBUTION: Partial<
     creator: "Illinois Deseret Consortium / sigilante",
     sourceUrl: "https://github.com/sigilante/idc-xylocopa",
   },
+  "unifont-upper": {
+    creator: "Roman Czyborra / Paul Hardy et al.",
+    sourceUrl: "https://unifoundry.com/unifont/",
+  },
   mellifera: {
     creator: "sigilante",
     sourceUrl: "https://github.com/sigilante/font-mellifera",
@@ -167,6 +172,17 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     downloadName: "IDCXylocopa.otf",
     supportsUnicode: true,
     license: "Free",
+    category: "unicode",
+  },
+  {
+    id: "unifont-upper",
+    label: "Unifont Upper",
+    familyName: "Unifont Upper",
+    outputFontClass: "deseret-font-unifont-upper",
+    downloadPath: "deseret/UnifontUpper/unifont_upper-18.0.01.otf",
+    downloadName: "unifont_upper-18.0.01.otf",
+    supportsUnicode: true,
+    license: "OFL / GPL",
     category: "unicode",
   },
   {

@@ -122,6 +122,13 @@
 }
 
 @font-face {
+  font-family: "Unifont Upper";
+  src: url("./assets/fonts/deseret/UnifontUpper/unifont_upper-18.0.01.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "AdamicBee";
   src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/AdamicBee3/_AdamicBee3_0.ttf")
     format("truetype");
@@ -422,6 +429,9 @@
 }
 .deseret-font-xylocopa {
   font-family: "IDC Xylocopa", monospace;
+}
+.deseret-font-unifont-upper {
+  font-family: "Unifont Upper", monospace;
 }
 .deseret-font-adamic-bee {
   font-family: "AdamicBee", serif;
