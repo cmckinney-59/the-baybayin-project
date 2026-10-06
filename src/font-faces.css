@@ -252,6 +252,13 @@
 }
 
 @font-face {
+  font-family: "Mellifera Deseret Master";
+  src: url("./assets/fonts/deseret/Mellifera/MelliferaDeseretMaster.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Gallifreyan";
   src: url("./assets/fonts/gallifreyan/ws_simple_gallifreyan.ttf")
     format("truetype");
@@ -420,6 +427,9 @@
 }
 .deseret-font-tubee-round-shadow {
   font-family: "TuBee Round Shadow", sans-serif;
+}
+.deseret-font-mellifera {
+  font-family: "Mellifera Deseret Master", serif;
 }
 .deseret-font-huneybee {
   font-family: "Deseret HuneyBee", sans-serif;

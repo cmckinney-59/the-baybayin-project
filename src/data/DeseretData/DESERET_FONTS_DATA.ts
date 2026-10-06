@@ -17,6 +17,7 @@ export type DeseretFontId =
   | "tubee-round-hollow-light"
   | "tubee-round-hollow-medium"
   | "tubee-round-shadow"
+  | "mellifera"
   | "huneybee"
   | "bee-skep"
   | "deseret-legacy"
@@ -45,18 +46,29 @@ export type DeseretFont = {
   sourceUrl?: string;
 };
 
-/** Host page where these font files were collected. */
+/** Host page where Joshua Erickson Bee/Other font files were collected. */
 const DESERET_FONT_SOURCE_URL =
   "https://www.chem.ucla.edu/~jericks/Fonts/";
 
-/** Known creators for fonts that are not Joshua Erickson's Bee faces. */
-const DESERET_FONT_CREATORS: Partial<Record<DeseretFontId, string>> = {
-  "deseret-legacy": "Edward J. Bateman",
-  "deseret-legacy-alt": "Daniel U. Thibault / James Kass",
-  "deseret-legacy-underscore": "Unknown",
-  huneybee: "Daniel U. Thibault / James Kass",
-  "bee-skep": "Joseph Spicer",
-  "deseret-bee-legacy": "Joshua Erickson / Greg Kearney",
+type DeseretFontAttribution = {
+  creator: string;
+  sourceUrl?: string;
+};
+
+/** Attribution overrides (Bee serif/sans default to Joshua Erickson). */
+const DESERET_FONT_ATTRIBUTION: Partial<
+  Record<DeseretFontId, DeseretFontAttribution>
+> = {
+  mellifera: {
+    creator: "sigilante",
+    sourceUrl: "https://github.com/sigilante/font-mellifera",
+  },
+  "deseret-legacy": { creator: "Edward J. Bateman" },
+  "deseret-legacy-alt": { creator: "Daniel U. Thibault / James Kass" },
+  "deseret-legacy-underscore": { creator: "Unknown" },
+  huneybee: { creator: "Daniel U. Thibault / James Kass" },
+  "bee-skep": { creator: "Joseph Spicer" },
+  "deseret-bee-legacy": { creator: "Joshua Erickson / Greg Kearney" },
 };
 
 type DeseretFontBase = Omit<DeseretFont, "creator" | "sourceUrl">;
@@ -278,6 +290,17 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     category: "sans-serif",
   },
   {
+    id: "mellifera",
+    label: "Mellifera Deseret",
+    familyName: "Mellifera Deseret Master",
+    outputFontClass: "deseret-font-mellifera",
+    downloadPath: "deseret/Mellifera/MelliferaDeseretMaster.otf",
+    downloadName: "MelliferaDeseretMaster.otf",
+    supportsUnicode: true,
+    license: "OFL",
+    category: "serif",
+  },
+  {
     id: "huneybee",
     label: "HuneyBee",
     familyName: "Deseret HuneyBee",
@@ -356,15 +379,16 @@ export const DESERET_FONTS: DeseretFont[] = DESERET_FONTS_BASE.map((font) => {
     return font;
   }
 
+  const attribution = DESERET_FONT_ATTRIBUTION[font.id];
   const creator =
-    DESERET_FONT_CREATORS[font.id] ??
+    attribution?.creator ??
     (font.category === "serif" || font.category === "sans-serif"
       ? "Joshua Erickson"
       : undefined);
 
   return {
     ...font,
-    sourceUrl: DESERET_FONT_SOURCE_URL,
+    sourceUrl: attribution?.sourceUrl ?? DESERET_FONT_SOURCE_URL,
     ...(creator ? { creator } : {}),
   };
 });
