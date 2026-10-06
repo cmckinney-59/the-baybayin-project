@@ -91,6 +91,37 @@
 }
 
 @font-face {
+  font-family: "Analecta";
+  src: url("./assets/fonts/deseret/Analecta/Analecta.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Code2001";
+  src: url("./assets/fonts/deseret/Code2001/CODE2001.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MPH 2B Damase";
+  src: url("./assets/fonts/deseret/MPH2BDamase/damase_v.2.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "desalph";
+  src: url("./assets/fonts/deseret/Desalph/desalph.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IDC Xylocopa";
+  src: url("./assets/fonts/deseret/Xylocopa/IDCXylocopa.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "AdamicBee";
   src: url("./assets/fonts/deseret/FontsFromJoshuaEricksonWebpage/Serif/AdamicBee3/_AdamicBee3_0.ttf")
     format("truetype");
@@ -376,6 +407,21 @@
 .deseret-font,
 .deseret-font-noto-sans {
   font-family: "Noto Sans Deseret", sans-serif;
+}
+.deseret-font-analecta {
+  font-family: "Analecta", serif;
+}
+.deseret-font-code2001 {
+  font-family: "Code2001", sans-serif;
+}
+.deseret-font-mph-2b-damase {
+  font-family: "MPH 2B Damase", sans-serif;
+}
+.deseret-font-desalph {
+  font-family: "desalph", serif;
+}
+.deseret-font-xylocopa {
+  font-family: "IDC Xylocopa", monospace;
 }
 .deseret-font-adamic-bee {
   font-family: "AdamicBee", serif;

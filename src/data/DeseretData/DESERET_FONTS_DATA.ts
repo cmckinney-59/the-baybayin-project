@@ -1,5 +1,10 @@
 export type DeseretFontId =
   | "noto-sans"
+  | "analecta"
+  | "code2001"
+  | "mph-2b-damase"
+  | "desalph"
+  | "xylocopa"
   | "adamic-bee"
   | "times-bee"
   | "tumble-bee"
@@ -59,13 +64,37 @@ type DeseretFontAttribution = {
 const DESERET_FONT_ATTRIBUTION: Partial<
   Record<DeseretFontId, DeseretFontAttribution>
 > = {
+  "noto-sans": {
+    creator: "Google",
+    sourceUrl: "https://fonts.google.com/noto/specimen/Noto+Sans+Deseret",
+  },
+  analecta: {
+    creator: "George Douros",
+    sourceUrl: "https://dn-works.com/ufas/",
+  },
+  code2001: {
+    creator: "James Kass",
+    sourceUrl: "https://www.code2001.com/code2001.htm",
+  },
+  "mph-2b-damase": {
+    creator: "Mark Williamson",
+    sourceUrl: "https://www.wazu.jp/gallery/Fonts_Deseret.html",
+  },
+  desalph: {
+    creator: "Kenneth R. Beesley / Fredrick R. Brennan",
+    sourceUrl: "https://github.com/ctrlcctrlv/desalph",
+  },
+  xylocopa: {
+    creator: "Illinois Deseret Consortium / sigilante",
+    sourceUrl: "https://github.com/sigilante/idc-xylocopa",
+  },
   mellifera: {
     creator: "sigilante",
     sourceUrl: "https://github.com/sigilante/font-mellifera",
   },
   "deseret-legacy": { creator: "Edward J. Bateman" },
   "deseret-legacy-alt": { creator: "Daniel U. Thibault / James Kass" },
-  "deseret-legacy-underscore": { creator: "Unknown" },
+  "deseret-legacy-underscore": { creator: "Greg Kearney" },
   huneybee: { creator: "Daniel U. Thibault / James Kass" },
   "bee-skep": { creator: "Joseph Spicer" },
   "deseret-bee-legacy": { creator: "Joshua Erickson / Greg Kearney" },
@@ -81,6 +110,61 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     outputFontClass: "deseret-font-noto-sans",
     downloadPath: "deseret/noto-sans-deseret/deseret.zip",
     downloadName: "deseret.zip",
+    supportsUnicode: true,
+    license: "OFL",
+    category: "unicode",
+  },
+  {
+    id: "analecta",
+    label: "Analecta",
+    familyName: "Analecta",
+    outputFontClass: "deseret-font-analecta",
+    downloadPath: "deseret/Analecta/Analecta.ttf",
+    downloadName: "Analecta.ttf",
+    supportsUnicode: true,
+    license: "Public domain",
+    category: "unicode",
+  },
+  {
+    id: "code2001",
+    label: "Code2001",
+    familyName: "Code2001",
+    outputFontClass: "deseret-font-code2001",
+    downloadPath: "deseret/Code2001/CODE2001.TTF",
+    downloadName: "CODE2001.TTF",
+    supportsUnicode: true,
+    license: "Freeware",
+    category: "unicode",
+  },
+  {
+    id: "mph-2b-damase",
+    label: "MPH 2B Damase",
+    familyName: "MPH 2B Damase",
+    outputFontClass: "deseret-font-mph-2b-damase",
+    downloadPath: "deseret/MPH2BDamase/damase_v.2.ttf",
+    downloadName: "damase_v.2.ttf",
+    supportsUnicode: true,
+    license: "Public domain",
+    category: "unicode",
+  },
+  {
+    id: "desalph",
+    label: "desalph",
+    familyName: "desalph",
+    outputFontClass: "deseret-font-desalph",
+    downloadPath: "deseret/Desalph/desalph.otf",
+    downloadName: "desalph.otf",
+    supportsUnicode: true,
+    license: "OFL",
+    category: "unicode",
+  },
+  {
+    id: "xylocopa",
+    label: "IDC Xylocopa",
+    familyName: "IDC Xylocopa",
+    outputFontClass: "deseret-font-xylocopa",
+    downloadPath: "deseret/Xylocopa/IDCXylocopa.otf",
+    downloadName: "IDCXylocopa.otf",
     supportsUnicode: true,
     license: "Free",
     category: "unicode",
@@ -375,10 +459,6 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
 ];
 
 export const DESERET_FONTS: DeseretFont[] = DESERET_FONTS_BASE.map((font) => {
-  if (font.id === "noto-sans") {
-    return font;
-  }
-
   const attribution = DESERET_FONT_ATTRIBUTION[font.id];
   const creator =
     attribution?.creator ??
