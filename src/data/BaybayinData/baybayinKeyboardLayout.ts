@@ -1,4 +1,5 @@
 import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
+import { getBaybayinFontById } from "./BAYBAYIN_FONTS_DATA";
 import {
   BAYBAYIN_KEYBOARD_GLYPH,
   BAYBAYIN_KEYBOARD_PHONETIC_TOKEN,
@@ -32,8 +33,10 @@ function letterKey(
 export function getBaybayinKeyboardLayout(
   options: BaybayinPhoneticOptions,
 ): KeyboardLayout {
+  const font = getBaybayinFontById(options.fontId);
+
   const showSeparateHollowKudlits =
-    options.useHollowKudlits && options.fontId === "noto-sans";
+    options.useHollowKudlits && !!font.supportsHollowKudlits;
 
   const kudlitKeys = showSeparateHollowKudlits
     ? [
@@ -44,9 +47,7 @@ export function getBaybayinKeyboardLayout(
       ]
     : [letterKey("kudlit_e", options), letterKey("kudlit_o", options)];
 
-  // Dedicated ra is only in Bagwis and Noto Sans Baybayin.
-  const showRaKey =
-    options.fontId === "bagwis" || options.fontId === "noto-sans";
+  const showRaKey = !!font.supportsRaKey;
 
   return [
     [

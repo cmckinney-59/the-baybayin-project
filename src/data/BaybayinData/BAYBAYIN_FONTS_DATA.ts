@@ -1,9 +1,18 @@
 export type BaybayinFontId =
-  | "tagalog-doctrina"
-  | "bagwis"
-  | "stylized"
   | "noto-sans"
-  | "robotika";
+  | "noto-serif"
+  | "open-baybayin"
+  | "tagalog-doctrina"
+  | "baybayin-lopez"
+  | "bikol-mintz"
+  | "bisaya-hervas"
+  | "stylized"
+  | "tayo"
+  | "bagwis"
+  | "robotika"
+  | "chochin"
+  | "malibata-neue"
+  | "matatas-one";
 
 export type BaybayinFont = {
   id: BaybayinFontId;
@@ -11,7 +20,13 @@ export type BaybayinFont = {
   outputFontClass: string;
   /** When true, the user can toggle Latin-mapped vs Unicode output. */
   supportsUnicodeOption?: boolean;
+  /** Always emit Unicode Tagalog code points (no Latin remap path). */
+  unicodeOnly?: boolean;
   supportsXVowelKiller?: boolean;
+  /** Hollow kudlit marks for e/o (Noto-style Unicode fonts). */
+  supportsHollowKudlits?: boolean;
+  /** Dedicated on-screen keyboard key for ra. */
+  supportsRaKey?: boolean;
 };
 
 export const BAYBAYIN_FONTS: BaybayinFont[] = [
@@ -19,6 +34,25 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     id: "noto-sans",
     label: "Noto Sans Baybayin",
     outputFontClass: "noto-sans-baybayin",
+    unicodeOnly: true,
+    supportsHollowKudlits: true,
+    supportsRaKey: true,
+  },
+  {
+    id: "noto-serif",
+    label: "Noto Serif Baybayin",
+    outputFontClass: "noto-serif-baybayin",
+    unicodeOnly: true,
+    supportsHollowKudlits: true,
+    supportsRaKey: true,
+  },
+  {
+    id: "open-baybayin",
+    label: "OpenBaybayin",
+    outputFontClass: "open-baybayin-font",
+    unicodeOnly: true,
+    supportsHollowKudlits: true,
+    supportsRaKey: true,
   },
   {
     id: "tagalog-doctrina",
@@ -27,10 +61,22 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     supportsUnicodeOption: true,
   },
   {
-    id: "bagwis",
-    label: "Bagwis Baybayin",
-    outputFontClass: "bagwis-font",
-    supportsXVowelKiller: true,
+    id: "baybayin-lopez",
+    label: "Baybayin Lopez",
+    outputFontClass: "baybayin-lopez-font",
+    supportsUnicodeOption: true,
+  },
+  {
+    id: "bikol-mintz",
+    label: "Bikol Mintz",
+    outputFontClass: "bikol-mintz-font",
+    supportsUnicodeOption: true,
+  },
+  {
+    id: "bisaya-hervas",
+    label: "Bisaya Hervás",
+    outputFontClass: "bisaya-hervas-font",
+    supportsUnicodeOption: true,
   },
   {
     id: "stylized",
@@ -39,13 +85,42 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     supportsUnicodeOption: true,
   },
   {
+    id: "tayo",
+    label: "Baybayin Tayo Handwriting",
+    outputFontClass: "baybayin-tayo-font",
+    supportsUnicodeOption: true,
+  },
+  {
+    id: "bagwis",
+    label: "Bagwis Baybayin",
+    outputFontClass: "bagwis-font",
+    supportsXVowelKiller: true,
+    supportsRaKey: true,
+  },
+  {
     id: "robotika",
     label: "Baybayin Robotika",
     outputFontClass: "baybayin-robotika-font",
   },
+  {
+    id: "chochin",
+    label: "Baybayin Chochin",
+    outputFontClass: "baybayin-chochin-font",
+  },
+  {
+    id: "malibata-neue",
+    label: "Malibata Neue",
+    outputFontClass: "malibata-neue-font",
+  },
+  {
+    id: "matatas-one",
+    label: "Matatas One",
+    outputFontClass: "matatas-one-font",
+    supportsXVowelKiller: true,
+  },
 ];
 
-/** Fonts that expose the "Use Unicode" checkbox (Tagalog Doctrina, Tagalog Stylized). */
+/** Fonts that expose the "Use Unicode" checkbox (Paul Morrow dual-encoded faces, etc.). */
 export function baybayinSupportsUnicodeOption(fontId: BaybayinFontId): boolean {
   return !!getBaybayinFontById(fontId).supportsUnicodeOption;
 }
@@ -55,7 +130,8 @@ export function baybayinUsesUnicodeOutput(
   fontId: BaybayinFontId,
   useUnicodeOption: boolean,
 ): boolean {
-  if (fontId === "noto-sans") return true;
+  const font = getBaybayinFontById(fontId);
+  if (font.unicodeOnly) return true;
   if (baybayinSupportsUnicodeOption(fontId)) return useUnicodeOption;
   return false;
 }

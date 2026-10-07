@@ -316,7 +316,7 @@ export default function TransliteratorSettingsDialog({
                         </div>
                       </div>
                     </div>
-                    {selectedBaybayinFont === "noto-sans" && (
+                    {selectedBaybayinFontEntry.supportsHollowKudlits && (
                       <Checkbox
                         checked={useHollowKudlits}
                         onChange={setUseHollowKudlits}

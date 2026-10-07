@@ -45,6 +45,24 @@
 }
 
 @font-face {
+  font-family: "Baybayin Lopez";
+  src: url("./assets/fonts/baybayin/PaulMorrow/BayLopez.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bikol Mintz";
+  src: url("./assets/fonts/baybayin/PaulMorrow/BikMintz.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bisaya Hervas";
+  src: url("./assets/fonts/baybayin/PaulMorrow/BisHerv.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Bagwis Baybayin";
   src: url("./assets/fonts/baybayin/BagwisBaybayinFontRegular-ZV3MK.ttf")
     format("truetype");
@@ -65,8 +83,47 @@
 }
 
 @font-face {
+  font-family: "Noto Serif Baybayin";
+  src: url("./assets/fonts/baybayin/NotoSerifTagalog/NotoSerifTagalog-Regular.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenBaybayin";
+  src: url("./assets/fonts/baybayin/OpenBaybayin/OpenBaybayin.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Baybayin Robotika";
   src: url("./assets/fonts/baybayin/BaybayinRobotika.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Chochin";
+  src: url("./assets/fonts/baybayin/BAYBAYIN CHOCHIN FREE_09242018.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Tayo Handwriting";
+  src: url("./assets/fonts/baybayin/Tayo/BaybayinBTB30.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Malibata Neue";
+  src: url("./assets/fonts/baybayin/Malibata-Neue.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Matatas One";
+  src: url("./assets/fonts/baybayin/matatas_one.otf") format("opentype");
   font-display: swap;
 }
 
@@ -399,6 +456,15 @@
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
+.baybayin-lopez-font {
+  font-family: "Baybayin Lopez", sans-serif;
+}
+.bikol-mintz-font {
+  font-family: "Bikol Mintz", sans-serif;
+}
+.bisaya-hervas-font {
+  font-family: "Bisaya Hervas", sans-serif;
+}
 .bagwis-font {
   font-family: "Bagwis Baybayin", "Baybayin", sans-serif;
 }
@@ -408,8 +474,26 @@
 .noto-sans-baybayin {
   font-family: "Noto Sans Baybayin", sans-serif;
 }
+.noto-serif-baybayin {
+  font-family: "Noto Serif Baybayin", serif;
+}
+.open-baybayin-font {
+  font-family: "OpenBaybayin", sans-serif;
+}
 .baybayin-robotika-font {
   font-family: "Baybayin Robotika", sans-serif;
+}
+.baybayin-chochin-font {
+  font-family: "Baybayin Chochin", sans-serif;
+}
+.baybayin-tayo-font {
+  font-family: "Baybayin Tayo Handwriting", cursive;
+}
+.malibata-neue-font {
+  font-family: "Malibata Neue", sans-serif;
+}
+.matatas-one-font {
+  font-family: "Matatas One", sans-serif;
 }
 .buhid-font {
   font-family: "Buhid", sans-serif;
