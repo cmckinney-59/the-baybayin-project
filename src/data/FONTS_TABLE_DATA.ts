@@ -19,7 +19,7 @@ export type FontTableRow = {
 };
 
 const FONT_ASSETS = import.meta.glob(
-  "../assets/fonts/**/*.{zip,ttf,otf,TTF,OTF}",
+  "../assets/fonts/**/*.{zip,ttf,otf,woff,woff2,TTF,OTF,WOFF,WOFF2}",
   {
     eager: true,
     query: "?url",

@@ -1,6 +1,7 @@
 /**
  * Aurebesh font catalog for the transliterator picker and Fonts table.
- * License strings distinguish personal-only vs personal+commercial use.
+ * License strings distinguish personal-only vs personal+commercial use,
+ * and web-only (WOFF/WOFF2) vs desktop-installable faces.
  */
 
 export type AurebeshFontId =
@@ -16,7 +17,31 @@ export type AurebeshFontId =
   | "ft-regular"
   | "ft-bold"
   | "droid"
-  | "english";
+  | "english"
+  | "bloops-af"
+  | "skyhook"
+  | "droidobesh-depot"
+  | "protobesh-af"
+  | "outer-rim-af"
+  | "aurek-besh"
+  | "aurek-besh-narrow"
+  | "aurek-besh-hand"
+  | "aurebesh-lu"
+  | "sg-aurebesh-heavy"
+  | "nirvanabesh"
+  | "maulobesh"
+  | "auraboo"
+  | "aurabesh"
+  | "ab-equinox"
+  | "aurebesh-old"
+  | "new-aurabesh"
+  | "kyber-crystal-aurebesh"
+  | "life-day-af"
+  | "remember-kamino"
+  | "prime-jedi"
+  | "imperial-broadcast-87"
+  | "sith-af"
+  | "umbara-af";
 
 export type AurebeshFont = {
   id: AurebeshFontId;
@@ -42,6 +67,8 @@ export type AurebeshFont = {
    * Aurebesh AF style faces (Canon / Legends × Arabic / Tech).
    */
   supportsStyleMatrix?: boolean;
+  /** WOFF/WOFF2 web build — not a desktop-installable OTF/TTF. */
+  webOnly?: boolean;
 };
 
 /** Downloadable faces shown in the Fonts table (includes AF style variants). */
@@ -56,10 +83,258 @@ export type AurebeshFontTableFace = {
   useScope: "commercial" | "personal";
   creator: string;
   sourceUrl?: string;
+  webOnly?: boolean;
 };
 
 const AUREK_SOURCE = "https://aurekfonts.github.io/";
 const SAMPLE = "Aurebesh 123";
+const PIPELINE =
+  "https://github.com/Taminoful/aurebesh-font-pipeline/releases/tag/v1.0.0";
+
+type WebFontDef = {
+  id: AurebeshFontId;
+  label: string;
+  familyName: string;
+  file: string;
+  creator: string;
+  license: string;
+  sourceUrl?: string;
+};
+
+const WEB_ONLY_FONTS: WebFontDef[] = [
+  {
+    id: "bloops-af",
+    label: "Aurebesh Bloops AF",
+    familyName: "Aurebesh Bloops AF",
+    file: "AurebeshBloopsAF.woff2",
+    creator: "AurekFonts",
+    license: "Public Domain (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=AurebeshBloopsAF`,
+  },
+  {
+    id: "skyhook",
+    label: "Skyhook",
+    familyName: "Skyhook",
+    file: "Skyhook.woff2",
+    creator: "AurekFonts",
+    license: "Freeware (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=Skyhook`,
+  },
+  {
+    id: "droidobesh-depot",
+    label: "Droidobesh Depot",
+    familyName: "Droidobesh Depot",
+    file: "DroidobeshDepot-Regular.woff2",
+    creator: "AurekFonts",
+    license: "Public Domain (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=DroidobeshDepot`,
+  },
+  {
+    id: "protobesh-af",
+    label: "Protobesh AF",
+    familyName: "Protobesh AF",
+    file: "ProtobeshAF.woff2",
+    creator: "AurekFonts",
+    license: "CC BY (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=ProtobeshAF`,
+  },
+  {
+    id: "outer-rim-af",
+    label: "Outer Rim AF",
+    familyName: "Outer Rim AF",
+    file: "OuterRimAF-Regular.woff2",
+    creator: "AurekFonts",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=OuterRimAF`,
+  },
+  {
+    id: "aurek-besh",
+    label: "Aurek-Besh",
+    familyName: "Aurek-Besh",
+    file: "Aurek-Besh.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=AurekBesh`,
+  },
+  {
+    id: "aurek-besh-narrow",
+    label: "Aurek-Besh Narrow",
+    familyName: "Aurek-Besh Narrow",
+    file: "Aurek-Besh.Narrow.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=AurekBesh`,
+  },
+  {
+    id: "aurek-besh-hand",
+    label: "Aurek-Besh Hand",
+    familyName: "Aurek-Besh Hand",
+    file: "Aurek-Besh.Hand.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=AurekBeshHand`,
+  },
+  {
+    id: "aurebesh-lu",
+    label: "Aurebesh LU",
+    familyName: "Aurebesh LU",
+    file: "AurebeshLU.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "sg-aurebesh-heavy",
+    label: "SG Aurebesh Heavy",
+    familyName: "SG Aurebesh Heavy",
+    file: "SGAurebesh-Heavy.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "nirvanabesh",
+    label: "Nirvanabesh",
+    familyName: "Nirvanabesh",
+    file: "Nirvanabesh.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "maulobesh",
+    label: "Maulobesh",
+    familyName: "Maulobesh",
+    file: "Maulobesh.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "auraboo",
+    label: "Auraboo",
+    familyName: "Auraboo",
+    file: "Auraboo.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=Auraboo`,
+  },
+  {
+    id: "aurabesh",
+    label: "AURABESH",
+    familyName: "AURABESH",
+    file: "AURABESH.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "ab-equinox",
+    label: "AB Equinox",
+    familyName: "AB Equinox",
+    file: "AB-Equinox.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "aurebesh-old",
+    label: "Aurebesh (old)",
+    familyName: "Aurebesh Old",
+    file: "aurebesh-old.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "new-aurabesh",
+    label: "New Aurabesh",
+    familyName: "New Aurabesh",
+    file: "newaure.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=NewAurabesh`,
+  },
+  {
+    id: "kyber-crystal-aurebesh",
+    label: "Kyber Crystal Display Aurebesh",
+    familyName: "Kyber Crystal Display Aurebesh",
+    file: "KyberCrystalDisplay-Aurebesh.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: `${AUREK_SOURCE}?font=KCDAurebesh`,
+  },
+  {
+    id: "life-day-af",
+    label: "Life Day AF",
+    familyName: "Life Day AF",
+    file: "LifeDayAFBETA.woff2",
+    creator: "AurekFonts",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "remember-kamino",
+    label: "Remember Kamino",
+    familyName: "Remember Kamino",
+    file: "RememberKamino.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "prime-jedi",
+    label: "Prime Jedi",
+    familyName: "Prime Jedi",
+    file: "PrimeJedi.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "imperial-broadcast-87",
+    label: "Imperial Broadcast 87",
+    familyName: "Imperial Broadcast 87",
+    file: "ImperialBroadcast87.woff2",
+    creator: "AurekFonts archive",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "sith-af",
+    label: "Sith AF",
+    familyName: "Sith AF",
+    file: "SithAF-BETA.woff2",
+    creator: "AurekFonts",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+  {
+    id: "umbara-af",
+    label: "Umbara AF",
+    familyName: "Umbara AF",
+    file: "UmbaraAF.woff2",
+    creator: "AurekFonts",
+    license: "Free (commercial OK; web only)",
+    sourceUrl: PIPELINE,
+  },
+];
+
+function webFont(def: WebFontDef): AurebeshFont {
+  return {
+    id: def.id,
+    label: def.label,
+    familyName: def.familyName,
+    outputFontClass: `aurebesh-font-${def.id}`,
+    downloadPath: `aurebesh/Web/${def.file}`,
+    downloadName: def.file,
+    license: def.license,
+    useScope: "commercial",
+    creator: def.creator,
+    sourceUrl: def.sourceUrl,
+    webOnly: true,
+  };
+}
 
 export const AUREBESH_FONTS: AurebeshFont[] = [
   {
@@ -219,6 +494,7 @@ export const AUREBESH_FONTS: AurebeshFont[] = [
     creator: "Cinematic Captures",
     sourceUrl: "https://www.dafont.com/aurebesh-hand.font",
   },
+  ...WEB_ONLY_FONTS.map(webFont),
 ];
 
 export const DEFAULT_AUREBESH_FONT_ID: AurebeshFontId = "af";
@@ -317,6 +593,7 @@ export function getAurebeshFontTableFaces(): AurebeshFontTableFace[] {
       useScope: font.useScope,
       creator: font.creator,
       sourceUrl: font.sourceUrl,
+      webOnly: font.webOnly,
     });
   }
 

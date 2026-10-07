@@ -121,6 +121,151 @@
 }
 
 @font-face {
+  font-family: "Aurebesh Bloops AF";
+  src: url("./assets/fonts/aurebesh/Web/AurebeshBloopsAF.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Skyhook";
+  src: url("./assets/fonts/aurebesh/Web/Skyhook.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Droidobesh Depot";
+  src: url("./assets/fonts/aurebesh/Web/DroidobeshDepot-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Protobesh AF";
+  src: url("./assets/fonts/aurebesh/Web/ProtobeshAF.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outer Rim AF";
+  src: url("./assets/fonts/aurebesh/Web/OuterRimAF-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurek-Besh";
+  src: url("./assets/fonts/aurebesh/Web/Aurek-Besh.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurek-Besh Narrow";
+  src: url("./assets/fonts/aurebesh/Web/Aurek-Besh.Narrow.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurek-Besh Hand";
+  src: url("./assets/fonts/aurebesh/Web/Aurek-Besh.Hand.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh LU";
+  src: url("./assets/fonts/aurebesh/Web/AurebeshLU.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SG Aurebesh Heavy";
+  src: url("./assets/fonts/aurebesh/Web/SGAurebesh-Heavy.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nirvanabesh";
+  src: url("./assets/fonts/aurebesh/Web/Nirvanabesh.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Maulobesh";
+  src: url("./assets/fonts/aurebesh/Web/Maulobesh.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Auraboo";
+  src: url("./assets/fonts/aurebesh/Web/Auraboo.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AURABESH";
+  src: url("./assets/fonts/aurebesh/Web/AURABESH.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AB Equinox";
+  src: url("./assets/fonts/aurebesh/Web/AB-Equinox.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh Old";
+  src: url("./assets/fonts/aurebesh/Web/aurebesh-old.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "New Aurabesh";
+  src: url("./assets/fonts/aurebesh/Web/newaure.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kyber Crystal Display Aurebesh";
+  src: url("./assets/fonts/aurebesh/Web/KyberCrystalDisplay-Aurebesh.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Life Day AF";
+  src: url("./assets/fonts/aurebesh/Web/LifeDayAFBETA.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Remember Kamino";
+  src: url("./assets/fonts/aurebesh/Web/RememberKamino.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Prime Jedi";
+  src: url("./assets/fonts/aurebesh/Web/PrimeJedi.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Imperial Broadcast 87";
+  src: url("./assets/fonts/aurebesh/Web/ImperialBroadcast87.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sith AF";
+  src: url("./assets/fonts/aurebesh/Web/SithAF-BETA.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Umbara AF";
+  src: url("./assets/fonts/aurebesh/Web/UmbaraAF.woff2") format("woff2");
+  font-display: swap;
+}
+
+
+@font-face {
   font-family: "Baybayin";
   src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
   font-display: swap;
@@ -820,6 +965,79 @@
 .aurebesh-font-english {
   font-family: "Aurebesh_english", sans-serif;
 }
+.aurebesh-font-bloops-af {
+  font-family: "Aurebesh Bloops AF", sans-serif;
+}
+.aurebesh-font-skyhook {
+  font-family: "Skyhook", sans-serif;
+}
+.aurebesh-font-droidobesh-depot {
+  font-family: "Droidobesh Depot", sans-serif;
+}
+.aurebesh-font-protobesh-af {
+  font-family: "Protobesh AF", sans-serif;
+}
+.aurebesh-font-outer-rim-af {
+  font-family: "Outer Rim AF", sans-serif;
+}
+.aurebesh-font-aurek-besh {
+  font-family: "Aurek-Besh", sans-serif;
+}
+.aurebesh-font-aurek-besh-narrow {
+  font-family: "Aurek-Besh Narrow", sans-serif;
+}
+.aurebesh-font-aurek-besh-hand {
+  font-family: "Aurek-Besh Hand", sans-serif;
+}
+.aurebesh-font-aurebesh-lu {
+  font-family: "Aurebesh LU", sans-serif;
+}
+.aurebesh-font-sg-aurebesh-heavy {
+  font-family: "SG Aurebesh Heavy", sans-serif;
+}
+.aurebesh-font-nirvanabesh {
+  font-family: "Nirvanabesh", sans-serif;
+}
+.aurebesh-font-maulobesh {
+  font-family: "Maulobesh", sans-serif;
+}
+.aurebesh-font-auraboo {
+  font-family: "Auraboo", sans-serif;
+}
+.aurebesh-font-aurabesh {
+  font-family: "AURABESH", sans-serif;
+}
+.aurebesh-font-ab-equinox {
+  font-family: "AB Equinox", sans-serif;
+}
+.aurebesh-font-aurebesh-old {
+  font-family: "Aurebesh Old", sans-serif;
+}
+.aurebesh-font-new-aurabesh {
+  font-family: "New Aurabesh", sans-serif;
+}
+.aurebesh-font-kyber-crystal-aurebesh {
+  font-family: "Kyber Crystal Display Aurebesh", sans-serif;
+}
+.aurebesh-font-life-day-af {
+  font-family: "Life Day AF", sans-serif;
+}
+.aurebesh-font-remember-kamino {
+  font-family: "Remember Kamino", sans-serif;
+}
+.aurebesh-font-prime-jedi {
+  font-family: "Prime Jedi", sans-serif;
+}
+.aurebesh-font-imperial-broadcast-87 {
+  font-family: "Imperial Broadcast 87", sans-serif;
+}
+.aurebesh-font-sith-af {
+  font-family: "Sith AF", sans-serif;
+}
+.aurebesh-font-umbara-af {
+  font-family: "Umbara AF", sans-serif;
+}
+
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }

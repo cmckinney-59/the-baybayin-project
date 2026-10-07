@@ -20,12 +20,18 @@ export default function AurebeshFontSelector({
         onChange={(e) => onChange(e.target.value as AurebeshFontId)}
         aria-label="Font"
       >
-        {AUREBESH_FONTS.map((font) => (
-          <option key={font.id} value={font.id}>
-            {font.label}
-            {font.useScope === "personal" ? " (personal use)" : ""}
-          </option>
-        ))}
+        {AUREBESH_FONTS.map((font) => {
+          const notes = [
+            font.useScope === "personal" ? "personal use" : null,
+            font.webOnly ? "web only" : null,
+          ].filter(Boolean);
+          return (
+            <option key={font.id} value={font.id}>
+              {font.label}
+              {notes.length ? ` (${notes.join(", ")})` : ""}
+            </option>
+          );
+        })}
       </select>
     </label>
   );
