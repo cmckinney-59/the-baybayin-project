@@ -39,6 +39,88 @@
 }
 
 @font-face {
+  font-family: "Aurebesh";
+  src: url("./assets/fonts/aurebesh/PixelSagas/Aurebesh.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh Cantina";
+  src: url("./assets/fonts/aurebesh/Cantina/AurebeshCantina.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AurebeshHand";
+  src: url("./assets/fonts/aurebesh/Hand/AurebeshHand-Regular.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh_Rodian";
+  src: url("./assets/fonts/aurebesh/Rodian/Aurebesh_Rodian.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh_Typewriter";
+  src: url("./assets/fonts/aurebesh/Typewriter/Aurebesh_Typewriter.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Docking Bay 94";
+  src: url("./assets/fonts/aurebesh/DockingBay94/DockingBay94.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh_OmaTres_beta";
+  src: url("./assets/fonts/aurebesh/OmaTres/Aurebesh_OmaTres.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Naboo AF Aurebesh";
+  src: url("./assets/fonts/aurebesh/NabooAF/NabooAFAurebesh-Regular.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FT Aurebesh";
+  src: url("./assets/fonts/aurebesh/FTAurebesh/FTAurebesh-Regular.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FT Aurebesh Bold";
+  src: url("./assets/fonts/aurebesh/FTAurebesh/FTAurebesh-Bold.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh_droid";
+  src: url("./assets/fonts/aurebesh/Droid/Aurebesh-Droid.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aurebesh_english";
+  src: url("./assets/fonts/aurebesh/English/Aurebesh-English.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Baybayin";
   src: url("./assets/fonts/baybayin/TagDoc93.ttf") format("truetype");
   font-display: swap;
@@ -702,6 +784,42 @@
 .aurebesh-font-legends-tech {
   font-family: "Aurebesh Legends Tech", sans-serif;
 }
+.aurebesh-font-pixel-sagas {
+  font-family: "Aurebesh", sans-serif;
+}
+.aurebesh-font-cantina {
+  font-family: "Aurebesh Cantina", sans-serif;
+}
+.aurebesh-font-hand {
+  font-family: "AurebeshHand", cursive;
+}
+.aurebesh-font-rodian {
+  font-family: "Aurebesh_Rodian", sans-serif;
+}
+.aurebesh-font-typewriter {
+  font-family: "Aurebesh_Typewriter", monospace;
+}
+.aurebesh-font-docking-bay-94 {
+  font-family: "Docking Bay 94", sans-serif;
+}
+.aurebesh-font-oma-tres {
+  font-family: "Aurebesh_OmaTres_beta", sans-serif;
+}
+.aurebesh-font-naboo-af {
+  font-family: "Naboo AF Aurebesh", sans-serif;
+}
+.aurebesh-font-ft-regular {
+  font-family: "FT Aurebesh", sans-serif;
+}
+.aurebesh-font-ft-bold {
+  font-family: "FT Aurebesh Bold", sans-serif;
+}
+.aurebesh-font-droid {
+  font-family: "Aurebesh_droid", sans-serif;
+}
+.aurebesh-font-english {
+  font-family: "Aurebesh_english", sans-serif;
+}
 .baybayin-font {
   font-family: "Baybayin", sans-serif;
 }
@@ -1012,7 +1130,9 @@
 .aurebesh-font-canon,
 .aurebesh-font-canon-tech,
 .aurebesh-font-legends,
-.aurebesh-font-legends-tech {
+.aurebesh-font-legends-tech,
+.aurebesh-font-ft-regular,
+.aurebesh-font-ft-bold {
   font-feature-settings:
     "calt" 1,
     "liga" 1,

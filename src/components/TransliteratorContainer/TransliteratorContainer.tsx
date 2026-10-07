@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import type { CSSProperties, RefObject } from "react";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import {
+  getAurebeshOutputFontClass,
+  type AurebeshFontId,
+} from "../../data/AurebeshData/AUREBESH_FONTS_DATA";
+import {
   getBaybayinFontClass,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
@@ -28,6 +32,7 @@ interface TransliteratorContainerProps {
   aurebeshTechNumbers?: boolean;
   useCombinedCharacters?: boolean;
   useKlinzhai?: boolean;
+  selectedAurebeshFont?: AurebeshFontId;
   selectedBaybayinFont?: BaybayinFontId;
   selectedDeseretFont?: DeseretFontId;
   fontSize?: TransliteratorFontSize;
@@ -55,6 +60,7 @@ export default function TransliteratorContainer({
   aurebeshTechNumbers = false,
   useCombinedCharacters = false,
   useKlinzhai = false,
+  selectedAurebeshFont,
   selectedBaybayinFont,
   selectedDeseretFont,
   fontSize = DEFAULT_TRANSLITERATOR_FONT_SIZE,
@@ -95,9 +101,12 @@ export default function TransliteratorContainer({
 
   const getFontClass = () => {
     if ((!textareaHasText && !transliteratedText) || !alphabetEntry) return "";
-    const matrix = alphabetEntry.outputFontClassMatrix;
-    if (matrix) {
-      return matrix[Number(useCombinedCharacters)][Number(aurebeshTechNumbers)];
+    if (alphabetEntry.name === "Aurebesh") {
+      return getAurebeshOutputFontClass(
+        selectedAurebeshFont ?? "af",
+        useCombinedCharacters,
+        aurebeshTechNumbers,
+      );
     }
     if (alphabetEntry.name === "Baybayin" && selectedBaybayinFont) {
       return getBaybayinFontClass(selectedBaybayinFont);

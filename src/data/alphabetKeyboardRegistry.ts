@@ -1,9 +1,10 @@
 import type { KeyboardLayout } from "../components/Keyboard/Keyboard";
 import { ALPHABETS_DATA } from "./ALPHABETS_DATA";
 import {
-  getAurebeshFontClass,
-  getAurebeshKeyboardLayout,
-} from "./AurebeshData/aurebeshKeyboardLayout";
+  getAurebeshOutputFontClass,
+  type AurebeshFontId,
+} from "./AurebeshData/AUREBESH_FONTS_DATA";
+import { getAurebeshKeyboardLayout } from "./AurebeshData/aurebeshKeyboardLayout";
 import { getBaybayinKeyboardLayout } from "./BaybayinData/baybayinKeyboardLayout";
 import {
   getBaybayinFontClass,
@@ -36,6 +37,7 @@ export type ResolveKeyboardOptions = {
   useCombinedCharacters: boolean;
   useTechNumbers: boolean;
   useKlinzhai: boolean;
+  selectedAurebeshFont?: AurebeshFontId;
   selectedBaybayinFont: BaybayinFontId;
   selectedDeseretFont?: DeseretFontId;
   useHollowKudlits: boolean;
@@ -81,7 +83,8 @@ export function resolveAlphabetKeyboard(
       layout: getAurebeshKeyboardLayout({
         useCombinedCharacters: options.useCombinedCharacters,
       }),
-      fontClass: getAurebeshFontClass(
+      fontClass: getAurebeshOutputFontClass(
+        options.selectedAurebeshFont ?? "af",
         options.useCombinedCharacters,
         options.useTechNumbers,
       ),

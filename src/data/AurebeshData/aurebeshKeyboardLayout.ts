@@ -1,4 +1,9 @@
 import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
+import {
+  DEFAULT_AUREBESH_FONT_ID,
+  getAurebeshOutputFontClass,
+  type AurebeshFontId,
+} from "./AUREBESH_FONTS_DATA";
 
 /** Aurebesh digraphs that ligate in Legends fonts (combined characters). */
 export const AUREBESH_DIGRAPHS = [
@@ -12,18 +17,17 @@ export const AUREBESH_DIGRAPHS = [
   "th",
 ] as const;
 
-const AUREBESH_FONT_MATRIX = [
-  ["aurebesh-font-canon", "aurebesh-font-canon-tech"],
-  ["aurebesh-font-legends", "aurebesh-font-legends-tech"],
-] as const;
-
+/** @deprecated Prefer getAurebeshOutputFontClass with an explicit font id. */
 export function getAurebeshFontClass(
   useCombinedCharacters: boolean,
   useTechNumbers: boolean,
+  fontId: AurebeshFontId = DEFAULT_AUREBESH_FONT_ID,
 ): string {
-  return AUREBESH_FONT_MATRIX[Number(useCombinedCharacters)][
-    Number(useTechNumbers)
-  ];
+  return getAurebeshOutputFontClass(
+    fontId,
+    useCombinedCharacters,
+    useTechNumbers,
+  );
 }
 
 /**

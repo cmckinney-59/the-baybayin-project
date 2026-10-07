@@ -14,6 +14,10 @@ import processBaybayinText from "../../utils/TextProcessors/BaybayinTextProcesso
 import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import type { DeseretMode } from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import {
+  DEFAULT_AUREBESH_FONT_ID,
+  type AurebeshFontId,
+} from "../../data/AurebeshData/AUREBESH_FONTS_DATA";
+import {
   DEFAULT_BAYBAYIN_FONT_ID,
   baybayinUsesUnicodeOutput,
   type BaybayinFontId,
@@ -101,6 +105,8 @@ export default function Transliterator({
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
   const [deseretMode, setDeseretMode] = useState<DeseretMode>("classic");
+  const [selectedAurebeshFont, setSelectedAurebeshFont] =
+    useState<AurebeshFontId>(DEFAULT_AUREBESH_FONT_ID);
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
     useState<BaybayinFontId>(DEFAULT_BAYBAYIN_FONT_ID);
   const [selectedDeseretFont, setSelectedDeseretFont] =
@@ -146,6 +152,7 @@ export default function Transliterator({
     useCombinedCharacters,
     useTechNumbers,
     useKlinzhai,
+    selectedAurebeshFont,
     selectedBaybayinFont,
     selectedDeseretFont,
     useHollowKudlits,
@@ -567,6 +574,7 @@ export default function Transliterator({
         onClear={handleClearInput}
         aurebeshTechNumbers={useTechNumbers}
         useCombinedCharacters={useCombinedCharacters}
+        selectedAurebeshFont={selectedAurebeshFont}
         selectedBaybayinFont={selectedBaybayinFont}
         selectedDeseretFont={selectedDeseretFont}
         fontSize={fontSize}
@@ -591,6 +599,7 @@ export default function Transliterator({
         useCombinedCharacters={useCombinedCharacters}
         useTechNumbers={useTechNumbers}
         useKlinzhai={useKlinzhai}
+        selectedAurebeshFont={selectedAurebeshFont}
         selectedBaybayinFont={selectedBaybayinFont}
         selectedDeseretFont={selectedDeseretFont}
         useXVowelKiller={useXVowelKiller}
@@ -608,6 +617,7 @@ export default function Transliterator({
         setUseCombinedCharacters={setUseCombinedCharacters}
         setUseTechNumbers={setUseTechNumbers}
         setUseKlinzhai={setUseKlinzhai}
+        setSelectedAurebeshFont={setSelectedAurebeshFont}
         setSelectedBaybayinFont={setSelectedBaybayinFont}
         setSelectedDeseretFont={setSelectedDeseretFont}
         setUseXVowelKiller={setUseXVowelKiller}

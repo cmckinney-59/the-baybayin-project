@@ -1,4 +1,5 @@
 import TransliteratorSettingsDialog from "../Dialog/TransliteratorSettingsDialog";
+import type { AurebeshFontId } from "../../data/AurebeshData/AUREBESH_FONTS_DATA";
 import type { BaybayinFontId } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import type { DeseretFontId } from "../../data/DeseretData/DESERET_FONTS_DATA";
 import type { PhoneticPriority } from "../../utils/TextProcessors/phoneticizeWord";
@@ -10,6 +11,7 @@ interface CheckboxContainerProps {
   useCombinedCharacters: boolean;
   useTechNumbers: boolean;
   useKlinzhai: boolean;
+  selectedAurebeshFont: AurebeshFontId;
   selectedBaybayinFont: BaybayinFontId;
   selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
@@ -26,6 +28,7 @@ interface CheckboxContainerProps {
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
+  setSelectedAurebeshFont: (fontId: AurebeshFontId) => void;
   setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
   setSelectedDeseretFont: (fontId: DeseretFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
@@ -60,6 +63,7 @@ export default function CheckboxContainer({
   useCombinedCharacters,
   useTechNumbers,
   useKlinzhai,
+  selectedAurebeshFont,
   selectedBaybayinFont,
   selectedDeseretFont,
   useXVowelKiller,
@@ -77,6 +81,7 @@ export default function CheckboxContainer({
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
+  setSelectedAurebeshFont,
   setSelectedBaybayinFont,
   setSelectedDeseretFont,
   setUseXVowelKiller,
@@ -107,6 +112,7 @@ export default function CheckboxContainer({
       useCombinedCharacters={useCombinedCharacters}
       useTechNumbers={useTechNumbers}
       useKlinzhai={useKlinzhai}
+      selectedAurebeshFont={selectedAurebeshFont}
       selectedBaybayinFont={selectedBaybayinFont}
       selectedDeseretFont={selectedDeseretFont}
       useXVowelKiller={useXVowelKiller}
@@ -126,6 +132,7 @@ export default function CheckboxContainer({
       setUseCombinedCharacters={setUseCombinedCharacters}
       setUseTechNumbers={setUseTechNumbers}
       setUseKlinzhai={setUseKlinzhai}
+      setSelectedAurebeshFont={setSelectedAurebeshFont}
       setSelectedBaybayinFont={setSelectedBaybayinFont}
       setSelectedDeseretFont={setSelectedDeseretFont}
       setUseXVowelKiller={setUseXVowelKiller}

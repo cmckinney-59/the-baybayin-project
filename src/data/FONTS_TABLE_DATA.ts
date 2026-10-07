@@ -1,4 +1,5 @@
 import { ALPHABETS_DATA } from "./ALPHABETS_DATA";
+import { getAurebeshFontTableFaces } from "./AurebeshData/AUREBESH_FONTS_DATA";
 import { BAYBAYIN_FONTS } from "./BaybayinData/BAYBAYIN_FONTS_DATA";
 import { DESERET_FONTS } from "./DeseretData/DESERET_FONTS_DATA";
 import { deseretUnicodeToLatin } from "./DeseretData/deseretLatinMap";
@@ -25,49 +26,6 @@ const FONT_ASSETS = import.meta.glob(
     import: "default",
   },
 ) as Record<string, string>;
-
-const AUREBESH_FONT_ROWS: FontTableRow[] = [
-  {
-    id: "canon",
-    name: "Aurebesh Canon",
-    fontClass: "aurebesh-font-canon",
-    sample: "Aurebesh 123",
-    downloadPath: "aurebesh/AurebeshAF-Canon.otf",
-    downloadName: "AurebeshAF-Canon.otf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-  {
-    id: "canon-tech",
-    name: "Aurebesh Canon Tech",
-    fontClass: "aurebesh-font-canon-tech",
-    sample: "Aurebesh 123",
-    downloadPath: "aurebesh/AurebeshAF-CanonTech.otf",
-    downloadName: "AurebeshAF-CanonTech.otf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-  {
-    id: "legends",
-    name: "Aurebesh Legends",
-    fontClass: "aurebesh-font-legends",
-    sample: "Aurebesh 123",
-    downloadPath: "aurebesh/AurebeshAF-Legends.otf",
-    downloadName: "AurebeshAF-Legends.otf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-  {
-    id: "legends-tech",
-    name: "Aurebesh Legends Tech",
-    fontClass: "aurebesh-font-legends-tech",
-    sample: "Aurebesh 123",
-    downloadPath: "aurebesh/AurebeshAF-LegendsTech.otf",
-    downloadName: "AurebeshAF-LegendsTech.otf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-];
 
 const PLQAD_FONT_ROWS: FontTableRow[] = [
   {
@@ -145,7 +103,18 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
   }
 
   if (alphabetName === "Aurebesh") {
-    return AUREBESH_FONT_ROWS;
+    return getAurebeshFontTableFaces().map((font) => ({
+      id: font.id,
+      name: font.label,
+      fontClass: font.fontClass,
+      sample: font.sample,
+      downloadPath: font.downloadPath,
+      downloadName: font.downloadName,
+      supportsUnicode: "No",
+      license: font.license,
+      creator: font.creator,
+      sourceUrl: font.sourceUrl,
+    }));
   }
 
   if (alphabetName === "Deseret") {

@@ -1,7 +1,12 @@
 import Checkbox from "../CheckBox/Checkbox";
+import AurebeshFontSelector from "../AurebeshFontSelector/AurebeshFontSelector";
 import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
 import DeseretFontSelector from "../DeseretFontSelector/DeseretFontSelector";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
+import {
+  aurebeshFontSupportsStyleMatrix,
+  type AurebeshFontId,
+} from "../../data/AurebeshData/AUREBESH_FONTS_DATA";
 import {
   baybayinSupportsUnicodeOption,
   getBaybayinFontById,
@@ -40,6 +45,7 @@ export type TransliteratorSettingsDialogProps = {
   useCombinedCharacters: boolean;
   useTechNumbers: boolean;
   useKlinzhai: boolean;
+  selectedAurebeshFont: AurebeshFontId;
   selectedBaybayinFont: BaybayinFontId;
   selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
@@ -59,6 +65,7 @@ export type TransliteratorSettingsDialogProps = {
   setUseCombinedCharacters: (checked: boolean) => void;
   setUseTechNumbers: (checked: boolean) => void;
   setUseKlinzhai: (checked: boolean) => void;
+  setSelectedAurebeshFont: (fontId: AurebeshFontId) => void;
   setSelectedBaybayinFont: (fontId: BaybayinFontId) => void;
   setSelectedDeseretFont: (fontId: DeseretFontId) => void;
   setUseXVowelKiller: (checked: boolean) => void;
@@ -87,6 +94,7 @@ export default function TransliteratorSettingsDialog({
   useCombinedCharacters,
   useTechNumbers,
   useKlinzhai,
+  selectedAurebeshFont,
   selectedBaybayinFont,
   selectedDeseretFont,
   useXVowelKiller,
@@ -106,6 +114,7 @@ export default function TransliteratorSettingsDialog({
   setUseCombinedCharacters,
   setUseTechNumbers,
   setUseKlinzhai,
+  setSelectedAurebeshFont,
   setSelectedBaybayinFont,
   setSelectedDeseretFont,
   setUseXVowelKiller,
@@ -153,6 +162,15 @@ export default function TransliteratorSettingsDialog({
                 {currentAlphabet} Settings
               </h4>
 
+              {currentAlphabet === "Aurebesh" && (
+                <div className="transliterator-settings-font-row">
+                  <AurebeshFontSelector
+                    selectedFontId={selectedAurebeshFont}
+                    onChange={setSelectedAurebeshFont}
+                  />
+                </div>
+              )}
+
               {currentAlphabet === "Baybayin" && (
                 <div className="transliterator-settings-font-row">
                   <BaybayinFontSelector
@@ -180,12 +198,14 @@ export default function TransliteratorSettingsDialog({
                       label="Include combined characters."
                       title="Maps digraphs such as ch, sh, ae, th, ng, and oo to combined symbols."
                     />
-                    <Checkbox
-                      checked={useTechNumbers}
-                      onChange={setUseTechNumbers}
-                      label="Use tech numbers."
-                      title="Use tech numbers instead of Arabic."
-                    />
+                    {aurebeshFontSupportsStyleMatrix(selectedAurebeshFont) && (
+                      <Checkbox
+                        checked={useTechNumbers}
+                        onChange={setUseTechNumbers}
+                        label="Use tech numbers."
+                        title="Use tech numbers instead of Arabic."
+                      />
+                    )}
                   </>
                 )}
 
