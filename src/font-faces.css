@@ -435,6 +435,255 @@
   font-display: swap;
 }
 
+
+/* Additional Baybayin faces */
+
+@font-face {
+  font-family: "Baybayin Neue";
+  src: url("./assets/fonts/baybayin/BaybayinNeue/BaybayinNeue-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hiraya_edl_b18x";
+  src: url("./assets/fonts/baybayin/Hiraya/Hiraya_Baybayin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mahiwaga_baybayin_font";
+  src: url("./assets/fonts/baybayin/Mahiwaga/Mahiwaga_Baybayin_Font.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Rounded";
+  src: url("./assets/fonts/baybayin/Rounded/BaybayinRoundedRegular-3VXy.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kasarinlan Baybayin Font";
+  src: url("./assets/fonts/baybayin/Kasarinlan/KasarinlanBaybayinFont-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TAAL";
+  src: url("./assets/fonts/baybayin/TAAL/TAAL.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tagalogika";
+  src: url("./assets/fonts/baybayin/Tagalogika/Tagalogika.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Doctrina";
+  src: url("./assets/fonts/baybayin/JohnrelLor/BaybayinDoctrina.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BaybayinDoctrinaClear";
+  src: url("./assets/fonts/baybayin/JohnrelLor/BaybayinDoctrinaClear.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Tawbid Pilipinas";
+  src: url("./assets/fonts/baybayin/Tawbid/TawbidPilipinas21R.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Alemania";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Alemania.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Alpabeta";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Alphabeta.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Bern";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Bern.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Block";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Bloc.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Bolats";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Bolats.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Brush 1";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Brush.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Club";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Club.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Damo";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Damo.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Divine";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Divine.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Doctrina";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Doctrina.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Gana";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Gana.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Impen";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Impen.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Jepoy";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Jepoy.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Kana";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Kana.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Kufic";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Kufic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Laso";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Laso.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Leets";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Leets.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern LoCaNo";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-LopezModern.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern McKudlit";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-McKudlit.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Mindoro";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Mindoro.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Script";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Modern.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Mono";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Mono.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Print";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Print.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Ringo";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Ringo.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Round";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Round.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Sinta";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Sinta.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Sulat";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Sulat.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Tanso";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Tanso.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Tulsok";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Tulsok.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Varsitita";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Varsitita.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baybayin Modern Varsitito";
+  src: url("./assets/fonts/baybayin/Nordenx/BaybayinModern-Varsitito.ttf") format("truetype");
+  font-display: swap;
+}
+
 .ancients-font {
   font-family: "Ancients", sans-serif;
 }
@@ -495,6 +744,130 @@
 .matatas-one-font {
   font-family: "Matatas One", sans-serif;
 }
+.baybayin-neue-font {
+  font-family: "Baybayin Neue", sans-serif;
+}
+.hiraya-baybayin-font {
+  font-family: "Hiraya_edl_b18x", sans-serif;
+}
+.mahiwaga-baybayin-font {
+  font-family: "Mahiwaga_baybayin_font", sans-serif;
+}
+.baybayin-rounded-font {
+  font-family: "Baybayin Rounded", sans-serif;
+}
+.kasarinlan-baybayin-font {
+  font-family: "Kasarinlan Baybayin Font", sans-serif;
+}
+.taal-baybayin-font {
+  font-family: "TAAL", sans-serif;
+}
+.tagalogika-font {
+  font-family: "Tagalogika", sans-serif;
+}
+.baybayin-doctrina-lor-font {
+  font-family: "Baybayin Doctrina", sans-serif;
+}
+.baybayin-doctrina-clear-font {
+  font-family: "BaybayinDoctrinaClear", sans-serif;
+}
+.tawbid-pilipinas-font {
+  font-family: "Tawbid Pilipinas", sans-serif;
+}
+.baybayin-font-nordenx-alemania {
+  font-family: "Baybayin Modern Alemania", sans-serif;
+}
+.baybayin-font-nordenx-alphabeta {
+  font-family: "Baybayin Modern Alpabeta", sans-serif;
+}
+.baybayin-font-nordenx-bern {
+  font-family: "Baybayin Modern Bern", sans-serif;
+}
+.baybayin-font-nordenx-bloc {
+  font-family: "Baybayin Modern Block", sans-serif;
+}
+.baybayin-font-nordenx-bolats {
+  font-family: "Baybayin Modern Bolats", sans-serif;
+}
+.baybayin-font-nordenx-brush {
+  font-family: "Baybayin Modern Brush 1", sans-serif;
+}
+.baybayin-font-nordenx-club {
+  font-family: "Baybayin Modern Club", sans-serif;
+}
+.baybayin-font-nordenx-damo {
+  font-family: "Baybayin Modern Damo", sans-serif;
+}
+.baybayin-font-nordenx-divine {
+  font-family: "Baybayin Modern Divine", sans-serif;
+}
+.baybayin-font-nordenx-doctrina {
+  font-family: "Baybayin Modern Doctrina", sans-serif;
+}
+.baybayin-font-nordenx-gana {
+  font-family: "Baybayin Modern Gana", sans-serif;
+}
+.baybayin-font-nordenx-impen {
+  font-family: "Baybayin Modern Impen", sans-serif;
+}
+.baybayin-font-nordenx-jepoy {
+  font-family: "Baybayin Modern Jepoy", sans-serif;
+}
+.baybayin-font-nordenx-kana {
+  font-family: "Baybayin Modern Kana", sans-serif;
+}
+.baybayin-font-nordenx-kufic {
+  font-family: "Baybayin Modern Kufic", sans-serif;
+}
+.baybayin-font-nordenx-laso {
+  font-family: "Baybayin Modern Laso", sans-serif;
+}
+.baybayin-font-nordenx-leets {
+  font-family: "Baybayin Modern Leets", sans-serif;
+}
+.baybayin-font-nordenx-lopezmodern {
+  font-family: "Baybayin Modern LoCaNo", sans-serif;
+}
+.baybayin-font-nordenx-mckudlit {
+  font-family: "Baybayin Modern McKudlit", sans-serif;
+}
+.baybayin-font-nordenx-mindoro {
+  font-family: "Baybayin Modern Mindoro", sans-serif;
+}
+.baybayin-font-nordenx-modern {
+  font-family: "Baybayin Modern Script", sans-serif;
+}
+.baybayin-font-nordenx-mono {
+  font-family: "Baybayin Modern Mono", sans-serif;
+}
+.baybayin-font-nordenx-print {
+  font-family: "Baybayin Modern Print", sans-serif;
+}
+.baybayin-font-nordenx-ringo {
+  font-family: "Baybayin Modern Ringo", sans-serif;
+}
+.baybayin-font-nordenx-round {
+  font-family: "Baybayin Modern Round", sans-serif;
+}
+.baybayin-font-nordenx-sinta {
+  font-family: "Baybayin Modern Sinta", sans-serif;
+}
+.baybayin-font-nordenx-sulat {
+  font-family: "Baybayin Modern Sulat", sans-serif;
+}
+.baybayin-font-nordenx-tanso {
+  font-family: "Baybayin Modern Tanso", sans-serif;
+}
+.baybayin-font-nordenx-tulsok {
+  font-family: "Baybayin Modern Tulsok", sans-serif;
+}
+.baybayin-font-nordenx-varsitita {
+  font-family: "Baybayin Modern Varsitita", sans-serif;
+}
+.baybayin-font-nordenx-varsitito {
+  font-family: "Baybayin Modern Varsitito", sans-serif;
+}
+
 .buhid-font {
   font-family: "Buhid", sans-serif;
 }

@@ -92,116 +92,6 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
   },
 ];
 
-const BAYBAYIN_FONT_DOWNLOAD: Record<
-  string,
-  {
-    downloadPath: string;
-    downloadName: string;
-    sample: string;
-    supportsUnicode: string;
-    license: string;
-  }
-> = {
-  "noto-sans": {
-    sample: "ᜋᜊᜓᜑᜌ᜔",
-    downloadPath: "baybayin/NotoSansTagalog-Regular.ttf",
-    downloadName: "NotoSansTagalog-Regular.ttf",
-    supportsUnicode: "Yes",
-    license: "OFL",
-  },
-  "noto-serif": {
-    sample: "ᜋᜊᜓᜑᜌ᜔",
-    downloadPath: "baybayin/NotoSerifTagalog/NotoSerifTagalog-Regular.ttf",
-    downloadName: "NotoSerifTagalog-Regular.ttf",
-    supportsUnicode: "Yes",
-    license: "OFL",
-  },
-  "open-baybayin": {
-    sample: "ᜋᜊᜓᜑᜌ᜔",
-    downloadPath: "baybayin/OpenBaybayin/OpenBaybayin.otf",
-    downloadName: "OpenBaybayin.otf",
-    supportsUnicode: "Yes",
-    license: "OFL",
-  },
-  "tagalog-doctrina": {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/TagDoc93.ttf",
-    downloadName: "TagDoc93.ttf",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  "baybayin-lopez": {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/PaulMorrow/BayLopez.ttf",
-    downloadName: "BayLopez.ttf",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  "bikol-mintz": {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/PaulMorrow/BikMintz.ttf",
-    downloadName: "BikMintz.ttf",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  "bisaya-hervas": {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/PaulMorrow/BisHerv.ttf",
-    downloadName: "BisHerv.ttf",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  stylized: {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/tagalog-stylized-font.zip",
-    downloadName: "tagalog-stylized-font.zip",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  tayo: {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/Tayo/BaybayinBTB30.ttf",
-    downloadName: "BaybayinBTB30.ttf",
-    supportsUnicode: "Both",
-    license: "Free",
-  },
-  bagwis: {
-    sample: "Mabuhayx",
-    downloadPath: "baybayin/bagwis-baybayin-font.zip",
-    downloadName: "bagwis-baybayin-font.zip",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-  robotika: {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/BaybayinRobotika.ttf",
-    downloadName: "BaybayinRobotika.ttf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-  chochin: {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/BAYBAYIN CHOCHIN FREE_09242018.ttf",
-    downloadName: "BaybayinChochin.ttf",
-    supportsUnicode: "No",
-    license: "Freeware",
-  },
-  "malibata-neue": {
-    sample: "Mbuhy+",
-    downloadPath: "baybayin/Malibata-Neue.ttf",
-    downloadName: "Malibata-Neue.ttf",
-    supportsUnicode: "No",
-    license: "CC BY-SA",
-  },
-  "matatas-one": {
-    sample: "Mabuhayx",
-    downloadPath: "baybayin/matatas_one.otf",
-    downloadName: "matatas_one.otf",
-    supportsUnicode: "No",
-    license: "Free",
-  },
-};
-
 const UNICODE_ALPHABETS = new Set([
   "Buhid",
   "Hanunoo",
@@ -240,19 +130,18 @@ export function getFontDownloadUrl(downloadPath: string): string | undefined {
 /** Fonts available for the transliterator alphabet shown in the Fonts section. */
 export function getFontTableRows(alphabetName: string): FontTableRow[] {
   if (alphabetName === "Baybayin") {
-    return BAYBAYIN_FONTS.map((font) => {
-      const download = BAYBAYIN_FONT_DOWNLOAD[font.id];
-      return {
-        id: font.id,
-        name: font.label,
-        fontClass: font.outputFontClass,
-        sample: download?.sample ?? "Aba",
-        downloadPath: download?.downloadPath ?? "",
-        downloadName: download?.downloadName ?? "",
-        supportsUnicode: download?.supportsUnicode ?? "No",
-        license: download?.license ?? "Personal",
-      };
-    });
+    return BAYBAYIN_FONTS.map((font) => ({
+      id: font.id,
+      name: font.label,
+      fontClass: font.outputFontClass,
+      sample: font.sample,
+      downloadPath: font.downloadPath,
+      downloadName: font.downloadName,
+      supportsUnicode: font.supportsUnicodeLabel,
+      license: font.license,
+      creator: font.creator,
+      sourceUrl: font.sourceUrl,
+    }));
   }
 
   if (alphabetName === "Aurebesh") {
