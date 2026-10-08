@@ -34,16 +34,42 @@ async function ensureDictionaryLoaded(): Promise<void> {
  */
 export type DeseretMode = "classic" | "modern";
 
+export type DeseretProcessOptions = {
+  /**
+   * When true, ARPAbet AO ("caught") maps to Long Aw 𐐃.
+   * When false, AO merges into Long Ah 𐐂 (Western American cot–caught merger).
+   */
+  includeLongAw?: boolean;
+  /**
+   * When true, ARPAbet AA ("hot") maps to Short O 𐐉 (British short-o).
+   * When false, AA maps to Long Ah 𐐂 (American).
+   */
+  includeShortO?: boolean;
+};
+
 export default async function processDeseretText(
   text: string,
   mode: DeseretMode = "classic",
+  options: DeseretProcessOptions = {},
 ): Promise<string> {
+  // Modern always includes both letters; classic honors the toggles.
+  const includeLongAw =
+    mode === "modern" ? true : (options.includeLongAw ?? true);
+  const includeShortO =
+    mode === "modern" ? true : (options.includeShortO ?? false);
+
   await ensureDictionaryLoaded();
 
-  const withPhonetics = replacePhoneticSlashTokens(text, mode === "modern");
+  const withPhonetics = replacePhoneticSlashTokens(text, {
+    modern: mode === "modern",
+    includeLongAw,
+    includeShortO,
+  });
 
   return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
-    const standaloneLetter = mapStandaloneLetterWord(word, mode);
+    const standaloneLetter = mapStandaloneLetterWord(word, mode, {
+      includeShortO,
+    });
     if (standaloneLetter) {
       return standaloneLetter;
     }
@@ -55,7 +81,10 @@ export default async function processDeseretText(
 
     let processedWord = replaceER(phonemes.join(" "));
     processedWord = replaceYou(processedWord);
-    processedWord = replaceVowels(processedWord, mode);
+    processedWord = replaceVowels(processedWord, mode, {
+      includeLongAw,
+      includeShortO,
+    });
     processedWord = replaceLigatures(processedWord, mode);
     processedWord = replaceConsonants(processedWord, mode);
     processedWord = removeExtraSpaces(processedWord);
@@ -107,10 +136,20 @@ const FIXED_DESERET_MODERN_WORDS: Record<string, string> = {
   they: DESERET_LETTERS.M.upper,
 };
 
-function mapStandaloneLetterWord(word: string, mode: DeseretMode): string | null {
+function mapStandaloneLetterWord(
+  word: string,
+  mode: DeseretMode,
+  options: { includeShortO: boolean },
+): string | null {
   let capital: string | undefined;
   if (mode === "modern") {
     capital = FIXED_DESERET_MODERN_WORDS[word.toLowerCase()];
+    if (
+      !options.includeShortO &&
+      capital === DESERET_LETTERS.SO.upper
+    ) {
+      capital = DESERET_LETTERS.LAH.upper;
+    }
   } else {
     capital = FIXED_DESERET_WORDS[word.toLowerCase()];
   }
@@ -163,7 +202,11 @@ function replaceLigatures(text: string, mode: DeseretMode): string {
   return text;
 }
 
-function replaceVowels(text: string, mode: DeseretMode): string {
+function replaceVowels(
+  text: string,
+  mode: DeseretMode,
+  options: { includeLongAw: boolean; includeShortO: boolean },
+): string {
   text = removeToneNumbers(text, "AE", DESERET_LETTERS.SA.upper);
   text = removeToneNumbers(text, "AH", DESERET_LETTERS.SU.upper);
   text = removeToneNumbers(text, "AW", DESERET_LETTERS.OW.upper);
@@ -173,19 +216,29 @@ function replaceVowels(text: string, mode: DeseretMode): string {
   text = removeToneNumbers(text, "OW", DESERET_LETTERS.LO.upper);
   text = removeToneNumbers(text, "OY", DESERET_LETTERS.OI.upper);
   text = removeToneNumbers(text, "UW", DESERET_LETTERS.LOO.upper);
+
+  // AA = "hot"/"father"; AO = "caught"/"awe".
+  // Defaults match Standard American (𐐉 off, 𐐃 on).
+  // Always use classic glyphs for these so the include-𐐃 / include-𐐉
+  // toggles stay meaningful even when Modern mode remaps other letters.
+  const aa = options.includeShortO
+    ? DESERET_LETTERS.SO.upper
+    : DESERET_LETTERS.LAH.upper;
+  const ao = options.includeLongAw
+    ? DESERET_LETTERS.LAW.upper
+    : DESERET_LETTERS.LAH.upper;
+  text = removeToneNumbers(text, "AA", aa);
+  text = removeToneNumbers(text, "AO", ao);
+
   if (mode === "modern") {
-  text = removeToneNumbers(text, "AA", DESERET_MODERN.LAH.upper);
-  text = removeToneNumbers(text, "AO", DESERET_MODERN.LAW.upper);
-  text = removeToneNumbers(text, "IH", DESERET_MODERN.SI.upper);
-  text = removeToneNumbers(text, "IY", DESERET_MODERN.LE.upper);
-  text = removeToneNumbers(text, "UH", DESERET_MODERN.SOO.upper);
-} else {
-  text = removeToneNumbers(text, "AA", DESERET_LETTERS.LAH.upper);
-  text = removeToneNumbers(text, "AO", DESERET_LETTERS.LAW.upper);
-  text = removeToneNumbers(text, "IH", DESERET_LETTERS.SI.upper);
-  text = removeToneNumbers(text, "IY", DESERET_LETTERS.LE.upper);
-  text = removeToneNumbers(text, "UH", DESERET_LETTERS.SOO.upper);
-}
+    text = removeToneNumbers(text, "IH", DESERET_MODERN.SI.upper);
+    text = removeToneNumbers(text, "IY", DESERET_MODERN.LE.upper);
+    text = removeToneNumbers(text, "UH", DESERET_MODERN.SOO.upper);
+  } else {
+    text = removeToneNumbers(text, "IH", DESERET_LETTERS.SI.upper);
+    text = removeToneNumbers(text, "IY", DESERET_LETTERS.LE.upper);
+    text = removeToneNumbers(text, "UH", DESERET_LETTERS.SOO.upper);
+  }
   return text;
 }
 

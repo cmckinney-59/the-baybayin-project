@@ -43,6 +43,8 @@ export type ResolveKeyboardOptions = {
   useHollowKudlits: boolean;
   useXVowelKiller: boolean;
   deseretModern?: boolean;
+  includeDeseretLongAw?: boolean;
+  includeDeseretShortO?: boolean;
 };
 
 /** Alphabets that always show a keyboard (not gated by experimental features). */
@@ -105,7 +107,11 @@ export function resolveAlphabetKeyboard(
 
   if (name === "Deseret") {
     return {
-      layout: getDeseretKeyboardLayout(options.deseretModern),
+      layout: getDeseretKeyboardLayout({
+        modern: options.deseretModern,
+        includeLongAw: options.includeDeseretLongAw,
+        includeShortO: options.includeDeseretShortO,
+      }),
       fontClass: getDeseretKeyboardFontClass(
         options.selectedDeseretFont ?? "noto-sans",
       ),

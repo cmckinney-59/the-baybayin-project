@@ -23,6 +23,8 @@ interface CheckboxContainerProps {
   useSpanishPronunciation: boolean;
   phoneticPriority: PhoneticPriority;
   deseretMode: DeseretMode;
+  includeDeseretLongAw: boolean;
+  includeDeseretShortO: boolean;
   showModernDeseret?: boolean;
   fontSize: TransliteratorFontSize;
   setUseCombinedCharacters: (checked: boolean) => void;
@@ -40,6 +42,8 @@ interface CheckboxContainerProps {
   setUseSpanishPronunciation: (checked: boolean) => void;
   setPhoneticPriority: (priority: PhoneticPriority) => void;
   setDeseretMode: (mode: DeseretMode) => void;
+  setIncludeDeseretLongAw: (checked: boolean) => void;
+  setIncludeDeseretShortO: (checked: boolean) => void;
   setFontSize: (size: TransliteratorFontSize) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
@@ -75,6 +79,8 @@ export default function CheckboxContainer({
   useSpanishPronunciation,
   phoneticPriority,
   deseretMode,
+  includeDeseretLongAw,
+  includeDeseretShortO,
   showModernDeseret = false,
   fontSize,
   useSingleLineInput,
@@ -93,6 +99,8 @@ export default function CheckboxContainer({
   setUseSpanishPronunciation,
   setPhoneticPriority,
   setDeseretMode,
+  setIncludeDeseretLongAw,
+  setIncludeDeseretShortO,
   setFontSize,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
@@ -123,6 +131,8 @@ export default function CheckboxContainer({
       useSpanishPronunciation={useSpanishPronunciation}
       phoneticPriority={phoneticPriority}
       deseretMode={deseretMode}
+      includeDeseretLongAw={includeDeseretLongAw}
+      includeDeseretShortO={includeDeseretShortO}
       showModernDeseret={showModernDeseret}
       fontSize={fontSize}
       useSingleLineInput={useSingleLineInput}
@@ -143,6 +153,8 @@ export default function CheckboxContainer({
       setUseSpanishPronunciation={setUseSpanishPronunciation}
       setPhoneticPriority={setPhoneticPriority}
       setDeseretMode={setDeseretMode}
+      setIncludeDeseretLongAw={setIncludeDeseretLongAw}
+      setIncludeDeseretShortO={setIncludeDeseretShortO}
       setFontSize={setFontSize}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}

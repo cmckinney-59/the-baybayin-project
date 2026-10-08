@@ -134,14 +134,31 @@ export function toPhoneticInput(token: string, capitalize = false): string {
   return `/${body}/`;
 }
 
+export type DeseretPhoneticOptions = {
+  modern?: boolean;
+  /** When false, `/aw/` falls back to Long Ah 𐐂. Default true. */
+  includeLongAw?: boolean;
+  /** When false, `/o/` falls back to Long Ah 𐐂. Default false. */
+  includeShortO?: boolean;
+};
+
 /**
  * Map a slash token body (without slashes) to a Deseret letter.
  * Uppercase / title-case tokens yield capital Deseret.
  */
 export function deseretFromPhoneticToken(
   token: string,
-  modern = false,
+  modernOrOptions: boolean | DeseretPhoneticOptions = false,
 ): string | null {
+  const options: DeseretPhoneticOptions =
+    typeof modernOrOptions === "boolean"
+      ? { modern: modernOrOptions }
+      : modernOrOptions;
+  const modern = options.modern ?? false;
+  // Modern always includes both letters; classic honors the toggles.
+  const includeLongAw = modern ? true : (options.includeLongAw ?? true);
+  const includeShortO = modern ? true : (options.includeShortO ?? false);
+
   const key = token.toLowerCase();
   const modernUpper =
     modern && (key === "ih" || key === "th" || key === "eth")
@@ -149,9 +166,15 @@ export function deseretFromPhoneticToken(
         ? DESERET_MODERN.SI.upper
         : DESERET_MODERN.TH.upper
       : undefined;
-  const upper = modernUpper ?? DESERET_PHONETIC_TO_UPPER[key];
+  let upper = modernUpper ?? DESERET_PHONETIC_TO_UPPER[key];
   if (!upper) {
     return null;
+  }
+  if (key === "aw" && !includeLongAw) {
+    upper = DESERET_LETTERS.LAH.upper;
+  }
+  if (key === "o" && !includeShortO) {
+    upper = DESERET_LETTERS.LAH.upper;
   }
   const hasLetter = /[A-Za-z]/.test(token);
   const allUpper = hasLetter && token === token.toUpperCase();
@@ -159,7 +182,7 @@ export function deseretFromPhoneticToken(
   if (allUpper || titleCase) {
     return upper;
   }
-  if (modernUpper) {
+  if (modernUpper && key !== "aw" && key !== "o") {
     return key === "ih" ? DESERET_MODERN.SI.lower : DESERET_MODERN.TH.lower;
   }
   return toDeseretLower(upper);
@@ -170,10 +193,14 @@ export function deseretFromPhoneticToken(
  */
 export function replacePhoneticSlashTokens(
   text: string,
-  modern = false,
+  modernOrOptions: boolean | DeseretPhoneticOptions = false,
 ): string {
+  const options: DeseretPhoneticOptions =
+    typeof modernOrOptions === "boolean"
+      ? { modern: modernOrOptions }
+      : modernOrOptions;
   return text.replace(/\/([^/\n]+)\//gu, (match, token: string) => {
-    return deseretFromPhoneticToken(token, modern) ?? match;
+    return deseretFromPhoneticToken(token, options) ?? match;
   });
 }
 

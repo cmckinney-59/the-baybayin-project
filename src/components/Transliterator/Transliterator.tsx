@@ -105,6 +105,10 @@ export default function Transliterator({
   const [useTechNumbers, setUseTechNumbers] = useState<boolean>(false);
   const [useKlinzhai, setUseKlinzhai] = useState<boolean>(false);
   const [deseretMode, setDeseretMode] = useState<DeseretMode>("classic");
+  /** Include Long Aw 𐐃 (caught/awe). Off merges into 𐐂. */
+  const [includeDeseretLongAw, setIncludeDeseretLongAw] = useState(true);
+  /** Include Short O 𐐉 (British hot). Off uses 𐐂 instead. */
+  const [includeDeseretShortO, setIncludeDeseretShortO] = useState(false);
   const [selectedAurebeshFont, setSelectedAurebeshFont] =
     useState<AurebeshFontId>(DEFAULT_AUREBESH_FONT_ID);
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
@@ -148,6 +152,13 @@ export default function Transliterator({
     selectedBaybayinFont,
     useUnicode,
   );
+  const deseretModernActive =
+    showExperimentalFeatures && deseretMode === "modern";
+  // Modern always includes 𐐃 and 𐐉; classic uses the settings toggles.
+  const effectiveIncludeDeseretLongAw =
+    deseretModernActive || includeDeseretLongAw;
+  const effectiveIncludeDeseretShortO =
+    deseretModernActive || includeDeseretShortO;
   const keyboardConfig = resolveAlphabetKeyboard(currentAlphabet, {
     useCombinedCharacters,
     useTechNumbers,
@@ -157,8 +168,9 @@ export default function Transliterator({
     selectedDeseretFont,
     useHollowKudlits,
     useXVowelKiller,
-    deseretModern:
-      showExperimentalFeatures && deseretMode === "modern",
+    deseretModern: deseretModernActive,
+    includeDeseretLongAw: effectiveIncludeDeseretLongAw,
+    includeDeseretShortO: effectiveIncludeDeseretShortO,
   });
   // Stable alphabets always show the keyboard; experimental ones need the flag.
   const showOnScreenKeyboard =
@@ -230,13 +242,13 @@ export default function Transliterator({
       processWord = processPlqadTextKlinzhai;
     }
     if (isDeseret) {
-      const mode: DeseretMode =
-        showExperimentalFeatures && deseretMode === "modern"
-          ? "modern"
-          : "classic";
+      const mode: DeseretMode = deseretModernActive ? "modern" : "classic";
       const mapLatin = !deseretFontSupportsUnicode(selectedDeseretFont);
       processWord = async (word: string) => {
-        const unicode = await processDeseretText(word, mode);
+        const unicode = await processDeseretText(word, mode, {
+          includeLongAw: effectiveIncludeDeseretLongAw,
+          includeShortO: effectiveIncludeDeseretShortO,
+        });
         return mapLatin ? deseretUnicodeToLatin(unicode) : unicode;
       };
     }
@@ -287,7 +299,7 @@ export default function Transliterator({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only when alphabet changes
   }, [currentAlphabet]);
 
-  // Re-process Deseret when classic/modern mode or font changes.
+  // Re-process Deseret when classic/modern mode, letter toggles, or font changes.
   useEffect(() => {
     if (!isDeseret) return;
     if (!showExperimentalFeatures && deseretMode === "modern") {
@@ -296,7 +308,13 @@ export default function Transliterator({
     }
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deseretMode, showExperimentalFeatures, selectedDeseretFont]);
+  }, [
+    deseretMode,
+    showExperimentalFeatures,
+    selectedDeseretFont,
+    includeDeseretLongAw,
+    includeDeseretShortO,
+  ]);
   useEffect(() => {
     if (!isPlqad) return;
     void handleChange(text);
@@ -610,6 +628,8 @@ export default function Transliterator({
         useSpanishPronunciation={useSpanishPronunciation}
         phoneticPriority={phoneticPriority}
         deseretMode={deseretMode}
+        includeDeseretLongAw={includeDeseretLongAw}
+        includeDeseretShortO={includeDeseretShortO}
         showModernDeseret={showExperimentalFeatures}
         fontSize={fontSize}
         useSingleLineInput={useSingleLineInput}
@@ -628,6 +648,8 @@ export default function Transliterator({
         setUseSpanishPronunciation={setUseSpanishPronunciation}
         setPhoneticPriority={setPhoneticPriority}
         setDeseretMode={setDeseretMode}
+        setIncludeDeseretLongAw={setIncludeDeseretLongAw}
+        setIncludeDeseretShortO={setIncludeDeseretShortO}
         setFontSize={setFontSize}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}

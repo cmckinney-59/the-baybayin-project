@@ -57,6 +57,8 @@ export type TransliteratorSettingsDialogProps = {
   useSpanishPronunciation: boolean;
   phoneticPriority: "english" | "spanish";
   deseretMode: "classic" | "modern";
+  includeDeseretLongAw: boolean;
+  includeDeseretShortO: boolean;
   showModernDeseret?: boolean;
   fontSize: TransliteratorFontSize;
   useSingleLineInput: boolean;
@@ -77,6 +79,8 @@ export type TransliteratorSettingsDialogProps = {
   setUseSpanishPronunciation: (checked: boolean) => void;
   setPhoneticPriority: (priority: "english" | "spanish") => void;
   setDeseretMode: (mode: "classic" | "modern") => void;
+  setIncludeDeseretLongAw: (checked: boolean) => void;
+  setIncludeDeseretShortO: (checked: boolean) => void;
   setFontSize: (size: TransliteratorFontSize) => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
@@ -106,6 +110,8 @@ export default function TransliteratorSettingsDialog({
   useSpanishPronunciation,
   phoneticPriority,
   deseretMode,
+  includeDeseretLongAw,
+  includeDeseretShortO,
   showModernDeseret = false,
   fontSize,
   useSingleLineInput,
@@ -126,6 +132,8 @@ export default function TransliteratorSettingsDialog({
   setUseSpanishPronunciation,
   setPhoneticPriority,
   setDeseretMode,
+  setIncludeDeseretLongAw,
+  setIncludeDeseretShortO,
   setFontSize,
   setUseSingleLineInput,
   setOutputOnlyMode,
@@ -218,44 +226,66 @@ export default function TransliteratorSettingsDialog({
                 )}
 
                 {currentAlphabet === "Deseret" && (
-                  <div
-                    className="phonetic-priority-row"
-                    title="Classic uses the historical British er (short o + r). Modern uses the American er (short u + r)."
-                  >
-                    <span className="phonetic-priority-label">Mode</span>
+                  <>
+                    {deseretMode !== "modern" && (
+                      <>
+                        <Checkbox
+                          checked={includeDeseretLongAw}
+                          onChange={setIncludeDeseretLongAw}
+                          label={'Include "𐐃" (Long Aw)'}
+                          title={
+                            'When on, the "caught/awe" sound uses 𐐃. When off, it merges into 𐐂 (Western American cot-caught merger).'
+                          }
+                        />
+                        <Checkbox
+                          checked={includeDeseretShortO}
+                          onChange={setIncludeDeseretShortO}
+                          label={'Include "𐐉" (Short O)'}
+                          title={
+                            'When on, the British "hot" vowel uses 𐐉. When off, American/common English uses 𐐂 instead.'
+                          }
+                        />
+                      </>
+                    )}
                     <div
-                      className="phonetic-priority-toggle"
-                      role="group"
-                      aria-label="Deseret mode"
+                      className="phonetic-priority-row"
+                      title="Classic uses the historical British er (short o + r). Modern uses the American er (short u + r)."
                     >
-                      <button
-                        type="button"
-                        className={
-                          deseretMode === "classic"
-                            ? "phonetic-priority-option active"
-                            : "phonetic-priority-option"
-                        }
-                        aria-pressed={deseretMode === "classic"}
-                        onClick={() => setDeseretMode("classic")}
+                      <span className="phonetic-priority-label">Mode</span>
+                      <div
+                        className="phonetic-priority-toggle"
+                        role="group"
+                        aria-label="Deseret mode"
                       >
-                        Classic
-                      </button>
-                      {showModernDeseret && (
                         <button
                           type="button"
                           className={
-                            deseretMode === "modern"
+                            deseretMode === "classic"
                               ? "phonetic-priority-option active"
                               : "phonetic-priority-option"
                           }
-                          aria-pressed={deseretMode === "modern"}
-                          onClick={() => setDeseretMode("modern")}
+                          aria-pressed={deseretMode === "classic"}
+                          onClick={() => setDeseretMode("classic")}
                         >
-                          Modern
+                          Classic
                         </button>
-                      )}
+                        {showModernDeseret && (
+                          <button
+                            type="button"
+                            className={
+                              deseretMode === "modern"
+                                ? "phonetic-priority-option active"
+                                : "phonetic-priority-option"
+                            }
+                            aria-pressed={deseretMode === "modern"}
+                            onClick={() => setDeseretMode("modern")}
+                          >
+                            Modern
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </>
                 )}
 
                 {currentAlphabet === "Baybayin" && (
