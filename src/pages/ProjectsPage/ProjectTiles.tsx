@@ -9,7 +9,7 @@ type ProjectTilesProps = {
 };
 
 function pdfPreviewSrc(fileUrl: string): string {
-  return `${fileUrl}#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0`;
+  return `${fileUrl}#page=1&view=Fit&toolbar=0&navpanes=0&scrollbar=0`;
 }
 
 function ProjectTilePreview({ project }: { project: Project }) {
