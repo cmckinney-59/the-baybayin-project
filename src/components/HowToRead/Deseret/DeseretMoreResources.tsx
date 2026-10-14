@@ -20,6 +20,9 @@ export default function DeseretMoreResources() {
         <ResourceLink href="https://restorethealphabet.com">
           Restore The Alphabet
         </ResourceLink>
+        <ResourceLink href="https://www.deseretalphabet.info/classics/">
+          Deseret Alphabet Classics Books
+        </ResourceLink>
       </ul>
     </CollapsibleSection>
   );
