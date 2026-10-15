@@ -26,6 +26,10 @@ const RESOURCE_LINKS = [
     href: "https://www.deseretalphabet.info/BoM/nav.xhtml",
     text: "Deseret Alphabet Book of Mormon Reader",
   },
+  {
+    href: "https://exhibits.lib.utah.edu/s/designing-deseret/page/home",
+    text: "University of Utah Exhibit on Designing the Deseret Alphabet",
+  },
 ];
 
 export default function DeseretMoreResources() {
