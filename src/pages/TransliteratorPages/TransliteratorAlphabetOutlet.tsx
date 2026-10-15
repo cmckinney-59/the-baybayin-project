@@ -19,6 +19,7 @@ import BuhidMoreResources from "../../components/HowToRead/BuhidHTR/BuhidMoreRes
 import WhatIsBuhid from "../../components/HowToRead/BuhidHTR/WhatIsBuhid/WhatIsBuhid";
 import CirthGuide from "../../components/HowToRead/CirthHTR/CirthGuide";
 import DeseretHowToRead from "../../components/HowToRead/Deseret/DeserethHowToRead";
+import DeseretDocuments from "../../components/HowToRead/Deseret/DeseretDocuments";
 import DeseretMoreResources from "../../components/HowToRead/Deseret/DeseretMoreResources";
 import WhatIsDeseret from "../../components/HowToRead/Deseret/DeseretWhatIs";
 import GallifreyanGuide from "../../components/HowToRead/GallifreyanHTR/GallifreyanGuide";
@@ -81,6 +82,7 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
     <>
       <WhatIsDeseret />
       <DeseretHowToRead />
+      <DeseretDocuments />
       <DeseretMoreResources />
     </>
   ),

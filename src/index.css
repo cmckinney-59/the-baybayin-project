@@ -1586,6 +1586,15 @@ button:hover:not(:disabled) {
   width: 90%;
 }
 
+.dialog-preview-image {
+  max-width: 100%;
+  max-height: min(70vh, 720px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 .dialog-buttons {
   margin: 20px auto 0 auto;
   display: flex;

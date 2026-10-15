@@ -3,10 +3,16 @@ interface PreviewDialogProps {
   onClose: () => void;
 }
 
+function isImageUrl(fileUrl: string): boolean {
+  return /\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i.test(fileUrl);
+}
+
 export default function PreviewDialog({
   fileUrl,
   onClose,
 }: PreviewDialogProps) {
+  const imagePreview = isImageUrl(fileUrl);
+
   return (
     <dialog className="dialog-overlay" open>
       <div className="dialog-box">
@@ -16,7 +22,11 @@ export default function PreviewDialog({
           </div>
         </div>
         <div className="dialog-content">
-          <iframe src={fileUrl} title="Preview" />
+          {imagePreview ? (
+            <img src={fileUrl} alt="Preview" className="dialog-preview-image" />
+          ) : (
+            <iframe src={fileUrl} title="Preview" />
+          )}
         </div>
         <div className="dialog-buttons">
           <button className="confirm-button" onClick={onClose}>

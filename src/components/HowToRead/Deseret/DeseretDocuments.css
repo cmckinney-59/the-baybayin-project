@@ -1,0 +1,111 @@
+.deseretDocumentCategory {
+  margin-top: 1.25rem;
+}
+
+.deseretDocumentCategory:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.deseretDocumentCategoryTitle {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.deseretDocumentGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.75rem;
+}
+
+.deseretDocumentCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.65rem;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  min-width: 0;
+}
+
+.deseretDocumentPreview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  padding: 0;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  cursor: zoom-in;
+}
+
+.deseretDocumentImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.deseretDocumentPdfBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgb(26, 115, 232);
+}
+
+.dark-mode .deseretDocumentPdfBadge {
+  color: #64b5f6;
+}
+
+.deseretDocumentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.deseretDocumentName {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.deseretDocumentActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.deseretDocumentButton {
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.25rem 0.55rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.deseretDocumentButton:hover {
+  border-color: rgb(26, 115, 232);
+}
+
+.dark-mode .deseretDocumentButton:hover {
+  border-color: #64b5f6;
+}
