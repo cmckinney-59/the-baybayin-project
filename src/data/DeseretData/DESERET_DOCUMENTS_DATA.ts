@@ -8,6 +8,7 @@ import triplePdf from "../../assets/documents/Deseret/Triple.pdf";
 import deseretFirstBookPdf from "../../assets/documents/Deseret/thedeseretfirstbook.pdf";
 import deseretSecondBookPdf from "../../assets/documents/Deseret/thedeseretsecondbook.pdf";
 import annualReportPdf from "../../assets/documents/Deseret/annualreportofte00utah.pdf";
+import mormonPassageGeorgeDWattPdf from "../../assets/documents/Deseret/MormonPassageofGeorgeDWatt.pdf";
 import alphabetChart0Pdf from "../../assets/documents/Deseret/deseretalphabetchart0.pdf";
 import alphabetChartPdf from "../../assets/documents/Deseret/deseretalphabetchart.pdf";
 import alphabetChart2Pdf from "../../assets/documents/Deseret/deseretalphabetchart2.pdf";
@@ -107,6 +108,13 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "Annual Report of the Territorial Superintendent",
     "annualreportofte00utah.pdf",
     annualReportPdf,
+    "pdf",
+    "Books & Scriptures",
+  ),
+  doc(
+    "Mormon Passage of George D. Watt",
+    "MormonPassageofGeorgeDWatt.pdf",
+    mormonPassageGeorgeDWattPdf,
     "pdf",
     "Books & Scriptures",
   ),
