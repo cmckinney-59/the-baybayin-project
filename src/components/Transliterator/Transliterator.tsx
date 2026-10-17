@@ -3,8 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import SaveButtonContainter from "../Buttons/SaveButtons/SaveButtonsContainer.tsx";
 import TransliteratorContainer from "../TransliteratorContainer/TransliteratorContainer.tsx";
 import WordReviewDialog from "../Dialog/WordReviewDialog.tsx";
+import WordFileTransliterator from "./WordFileTransliterator.tsx";
 import { useWordsDictionary } from "../../contexts/WordsDictionaryContext.tsx";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import { useAlphabet } from "../../contexts/AlphabetContext";
 import { ALPHABETS_DATA } from "../../data/ALPHABETS_DATA";
 import { processPlqadTextKlinzhai } from "../../utils/TextProcessors/PlqadTextProcessor";
 import CheckBoxContainer, {
@@ -15,16 +17,19 @@ import processDeseretText from "../../utils/TextProcessors/DeseretTextProcessor.
 import type { DeseretMode } from "../../utils/TextProcessors/DeseretTextProcessor.ts";
 import {
   DEFAULT_AUREBESH_FONT_ID,
+  getAurebeshFontById,
   type AurebeshFontId,
 } from "../../data/AurebeshData/AUREBESH_FONTS_DATA";
 import {
   DEFAULT_BAYBAYIN_FONT_ID,
   baybayinUsesUnicodeOutput,
+  getBaybayinFontById,
   type BaybayinFontId,
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import {
   DEFAULT_DESERET_FONT_ID,
   deseretFontSupportsUnicode,
+  getDeseretFontById,
   type DeseretFontId,
 } from "../../data/DeseretData/DESERET_FONTS_DATA";
 import { phoneticFromDeseretText } from "../../data/DeseretData/deseretPhoneticMap";
@@ -87,6 +92,7 @@ interface TransliteratorProps {
 export default function Transliterator({
   currentAlphabet,
 }: TransliteratorProps) {
+  const { currentFontName } = useAlphabet();
   const [text, setText] = useState<string>("");
   const [transliteratedText, setTransliteratedText] = useState<string>("");
   const {
@@ -232,12 +238,11 @@ export default function Transliterator({
     return null;
   };
 
-  const handleChange = async (currentText: string): Promise<void> => {
-    const words = currentText.trim().split(/\s+/);
-    const newDict: { [word: string]: string } = {};
-    let processWord: ((word: string) => string | Promise<string>) | undefined;
-
-    processWord = processors[currentAlphabet];
+  const getProcessWord = ():
+    | ((word: string) => string | Promise<string>)
+    | undefined => {
+    let processWord: ((word: string) => string | Promise<string>) | undefined =
+      processors[currentAlphabet];
     if (isPlqad && useKlinzhai) {
       processWord = processPlqadTextKlinzhai;
     }
@@ -266,9 +271,37 @@ export default function Transliterator({
           phoneticPriority,
         );
     }
+    return processWord;
+  };
+
+  const processPlainText = async (plain: string): Promise<string> => {
+    const processWord = getProcessWord();
+    if (!processWord) return plain;
+    const parts = plain.split(/(\s+)/);
+    const mapped = await Promise.all(
+      parts.map(async (part) => {
+        if (!part || /^\s+$/.test(part)) return part;
+        return processWord(part);
+      }),
+    );
+    return mapped.join("");
+  };
+
+  const wordExportFontName = isDeseret
+    ? getDeseretFontById(selectedDeseretFont).familyName
+    : isBaybayin
+      ? getBaybayinFontById(selectedBaybayinFont).familyName
+      : isAurebesh
+        ? getAurebeshFontById(selectedAurebeshFont).familyName
+        : currentFontName;
+
+  const handleChange = async (currentText: string): Promise<void> => {
+    const words = currentText.trim().split(/\s+/);
+    const newDict: { [word: string]: string } = {};
+    const processWord = getProcessWord();
     if (processWord) {
       const processedWords = await Promise.all(
-        words.map((word) => Promise.resolve(processWord!(word))),
+        words.map((word) => Promise.resolve(processWord(word))),
       );
       words.forEach((word, i) => {
         newDict[word] = processedWords[i];
@@ -681,6 +714,13 @@ export default function Transliterator({
           onOpenSettings={() => setIsSettingsOpen(true)}
         />
       </div>
+      {showExperimentalFeatures && (
+        <WordFileTransliterator
+          processText={processPlainText}
+          fontName={wordExportFontName}
+          alphabetName={currentAlphabet}
+        />
+      )}
       {showOnScreenKeyboard && keyboardConfig && (
         <Keyboard
           layout={keyboardConfig.layout}

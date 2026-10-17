@@ -1,0 +1,90 @@
+.wordFileTransliterator {
+  margin: 1rem 0.5rem 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+  text-align: left;
+}
+
+.wordFileTransliteratorHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.wordFileTransliteratorTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.wordFileTransliteratorHelp {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.wordFileTransliteratorActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.wordFileTransliteratorButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 0.45rem 0.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.wordFileTransliteratorButton:hover:not(:disabled) {
+  border-color: rgb(26, 115, 232);
+}
+
+.wordFileTransliteratorButton:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.dark-mode .wordFileTransliteratorButton:hover:not(:disabled) {
+  border-color: #64b5f6;
+}
+
+.wordFileTransliteratorFileName {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.wordFileTransliteratorStatus {
+  margin: 0.65rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.wordFileTransliteratorStatus.is-success {
+  color: #1b7a3d;
+}
+
+.wordFileTransliteratorStatus.is-error {
+  color: #c0392b;
+}
+
+.dark-mode .wordFileTransliteratorStatus.is-success {
+  color: #81c784;
+}
+
+.dark-mode .wordFileTransliteratorStatus.is-error {
+  color: #ef9a9a;
+}
