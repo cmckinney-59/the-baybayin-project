@@ -1,6 +1,7 @@
 import theFamilyPdf from "../../assets/projects/Deseret/TheFamily/The Family_Deseret.pdf";
 import theFamilyParallelPdf from "../../assets/projects/Deseret/TheFamily/The Family_Deseret_Parallel.pdf";
-import theRestorationPdf from "../../assets/projects/Deseret/The Restoration/TheRestoration_Deseret.pdf";
+import theLivingChristPdf from "../../assets/projects/Deseret/TheLivingChrist/TheLivingChrist_Deseret.pdf";
+import theRestorationPdf from "../../assets/projects/Deseret/TheRestoration/TheRestoration_Deseret.pdf";
 import type { Project } from "../../models/models";
 
 export const PROJECTS_DATA: Project[] = [
@@ -17,6 +18,13 @@ export const PROJECTS_DATA: Project[] = [
     fileName: "The Family_Deseret_Parallel.pdf",
     fileType: "pdf",
     description: "The Family Proclamation in Deseret (parallel text).",
+  },
+  {
+    name: "The Living Christ",
+    fileUrl: theLivingChristPdf,
+    fileName: "TheLivingChrist_Deseret.pdf",
+    fileType: "pdf",
+    description: "The Living Christ in Deseret.",
   },
   {
     name: "The Restoration",
