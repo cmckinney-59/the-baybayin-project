@@ -9,6 +9,7 @@ import deseretFirstBookPdf from "../../assets/documents/Deseret/thedeseretfirstb
 import deseretSecondBookPdf from "../../assets/documents/Deseret/thedeseretsecondbook.pdf";
 import annualReportPdf from "../../assets/documents/Deseret/annualreportofte00utah.pdf";
 import mormonPassageGeorgeDWattPdf from "../../assets/documents/Deseret/MormonPassageofGeorgeDWatt.pdf";
+import englishHopiVocabularyPdf from "../../assets/documents/Deseret/English-HopiVocabulary1860.pdf";
 import alphabetChart0Pdf from "../../assets/documents/Deseret/deseretalphabetchart0.pdf";
 import alphabetChartPdf from "../../assets/documents/Deseret/deseretalphabetchart.pdf";
 import alphabetChart2Pdf from "../../assets/documents/Deseret/deseretalphabetchart2.pdf";
@@ -32,6 +33,9 @@ import orsonPrattImg from "../../assets/documents/Deseret/OrsonPratt.png";
 import wilfordWoodruffImg from "../../assets/documents/Deseret/WilfordWoodruff.png";
 import williamFelpsImg from "../../assets/documents/Deseret/WilliamFelps.png";
 import deseretGoldCoinImg from "../../assets/documents/Deseret/DeseretGoldCoin.jpg";
+import generalElectionTicketImg from "../../assets/documents/Deseret/GeneralElectionPeoplesTicket.jpg";
+import improvementEraPageImg from "../../assets/documents/Deseret/ImprovementEraPage.jpg";
+import carnWithAFarkArticleImg from "../../assets/documents/Deseret/CarnWithAFarkArticle.jpg";
 
 export type DeseretDocumentKind = "pdf" | "image";
 
@@ -115,6 +119,13 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "Mormon Passage of George D. Watt",
     "MormonPassageofGeorgeDWatt.pdf",
     mormonPassageGeorgeDWattPdf,
+    "pdf",
+    "Books & Scriptures",
+  ),
+  doc(
+    "English–Hopi Vocabulary (1860)",
+    "English-HopiVocabulary1860.pdf",
+    englishHopiVocabularyPdf,
     "pdf",
     "Books & Scriptures",
   ),
@@ -248,6 +259,27 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "Deseret Gold Coin",
     "DeseretGoldCoin.jpg",
     deseretGoldCoinImg,
+    "image",
+    "Images",
+  ),
+  doc(
+    "General Election People's Ticket",
+    "GeneralElectionPeoplesTicket.jpg",
+    generalElectionTicketImg,
+    "image",
+    "Images",
+  ),
+  doc(
+    "Improvement Era Page",
+    "ImprovementEraPage.jpg",
+    improvementEraPageImg,
+    "image",
+    "Images",
+  ),
+  doc(
+    "Carn With A Fark Article",
+    "CarnWithAFarkArticle.jpg",
+    carnWithAFarkArticleImg,
     "image",
     "Images",
   ),
