@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {
+  AiOutlineHeart,
   AiOutlineInfoCircle,
   AiOutlineProject,
   AiOutlineSetting,
@@ -27,6 +28,10 @@ export default function HomePage() {
 
   const handleSettingsClick = () => {
     navigate("/settings");
+  };
+
+  const handleDonateClick = () => {
+    navigate("/donate");
   };
 
   return (
@@ -60,6 +65,13 @@ export default function HomePage() {
           description="Manage settings."
           icon={<AiOutlineSetting />}
           onClick={handleSettingsClick}
+        />
+
+        <NavCard
+          title="Donate"
+          description="Support the project."
+          icon={<AiOutlineHeart />}
+          onClick={handleDonateClick}
         />
       </div>
     </div>

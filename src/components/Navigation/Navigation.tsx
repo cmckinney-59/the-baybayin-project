@@ -9,6 +9,8 @@ import {
   AiFillProject,
   AiFillSetting,
   AiOutlineSetting,
+  AiFillHeart,
+  AiOutlineHeart,
 } from "react-icons/ai";
 import { PiTranslate, PiTranslateFill } from "react-icons/pi";
 import { useAlphabet } from "../../contexts/AlphabetContext";
@@ -85,6 +87,16 @@ export default function Navigation({
                 <AiOutlineInfoCircle className="nav-icon" />
               )}
               <span className="nav-text">About & Social</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/donate" onClick={onNavigate} title="Donate">
+              {isActiveRoute("/donate") ? (
+                <AiFillHeart className="nav-icon" />
+              ) : (
+                <AiOutlineHeart className="nav-icon" />
+              )}
+              <span className="nav-text">Donate</span>
             </Link>
           </li>
           <li>

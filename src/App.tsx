@@ -9,6 +9,7 @@ import TransliteratorPage from "./pages/TransliteratorPages/TransliteratorPage";
 import TransliteratorAlphabetOutlet from "./pages/TransliteratorPages/TransliteratorAlphabetOutlet";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import DonatePage from "./pages/DonatePage/DonatePage";
 
 const router = createHashRouter([
   {
@@ -35,6 +36,10 @@ const router = createHashRouter([
       {
         path: "/settings",
         element: <SettingsPage />,
+      },
+      {
+        path: "/donate",
+        element: <DonatePage />,
       },
       {
         path: "/transliterator",
