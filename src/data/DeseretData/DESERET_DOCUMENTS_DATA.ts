@@ -36,6 +36,7 @@ import deseretGoldCoinImg from "../../assets/documents/Deseret/DeseretGoldCoin.j
 import generalElectionTicketImg from "../../assets/documents/Deseret/GeneralElectionPeoplesTicket.jpg";
 import improvementEraPageImg from "../../assets/documents/Deseret/ImprovementEraPage.jpg";
 import carnWithAFarkArticleImg from "../../assets/documents/Deseret/CarnWithAFarkArticle.jpg";
+import plan10FloppyDiskImg from "../../assets/documents/Deseret/Plan10FloppyDisk.jpg";
 
 export type DeseretDocumentKind = "pdf" | "image";
 
@@ -280,6 +281,13 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "Carn With A Fark Article",
     "CarnWithAFarkArticle.jpg",
     carnWithAFarkArticleImg,
+    "image",
+    "Images",
+  ),
+  doc(
+    "Plan 10 Floppy Disk",
+    "Plan10FloppyDisk.jpg",
+    plan10FloppyDiskImg,
     "image",
     "Images",
   ),
