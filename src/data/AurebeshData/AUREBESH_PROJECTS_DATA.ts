@@ -136,7 +136,7 @@ export const PROJECTS_DATA: Project[] = [
   {
     name: "The Book of Mormon",
     draft: "Second Draft",
-    progress: 71,
+    progress: 72,
     description: "English Book of Mormon in Aurebesh.",
   },
 ];
