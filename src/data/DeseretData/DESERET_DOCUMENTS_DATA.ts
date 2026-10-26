@@ -39,6 +39,17 @@ import generalElectionTicketImg from "../../assets/documents/Deseret/GeneralElec
 import improvementEraPageImg from "../../assets/documents/Deseret/ImprovementEraPage.jpg";
 import carnWithAFarkArticleImg from "../../assets/documents/Deseret/CarnWithAFarkArticle.jpg";
 import plan10FloppyDiskImg from "../../assets/documents/Deseret/Plan10FloppyDisk.jpg";
+import deseretAlphabet1854Pdf from "../../assets/documents/Deseret/DeseretAlphabet1854.pdf";
+import deseretAlphabetBroadsidePdf from "../../assets/documents/Deseret/DeseretAlphabetBroadside.pdf";
+import deseretAlphabetCard1859Pdf from "../../assets/documents/Deseret/DeseretAlphabetCard1859.pdf";
+import cityOfTheSaintsPdf from "../../assets/documents/Deseret/CityOfTheSaints_Burton1862.pdf";
+import journeyToGreatSaltLakePdf from "../../assets/documents/Deseret/JourneyToGreatSaltLakeCity_Remy.pdf";
+import lifeInUtahBookPdf from "../../assets/documents/Deseret/LifeInUtah_Beadle.pdf";
+import dasBuchDerSchriftPdf from "../../assets/documents/Deseret/DasBuchDerSchrift_Faulmann.pdf";
+import sermonOnTheMountImg from "../../assets/documents/Deseret/SermonOnTheMount_DeseretNews_1859.jpg";
+import earlyCursiveLineupImg from "../../assets/documents/Deseret/EarlyDeseretCursiveLineup.svg";
+import earlySheltonLineupImg from "../../assets/documents/Deseret/EarlyDeseretSheltonLineup.svg";
+import deseretCursiveExamplesImg from "../../assets/documents/Deseret/DeseretCursiveExamples.svg";
 
 export type DeseretDocumentKind = "pdf" | "image";
 
@@ -53,6 +64,7 @@ export type DeseretDocument = {
   fileUrl: string;
   kind: DeseretDocumentKind;
   category: DeseretDocumentCategory;
+  attribution?: string;
 };
 
 function doc(
@@ -61,8 +73,9 @@ function doc(
   fileUrl: string,
   kind: DeseretDocumentKind,
   category: DeseretDocumentCategory,
+  attribution?: string,
 ): DeseretDocument {
-  return { name, fileName, fileUrl, kind, category };
+  return { name, fileName, fileUrl, kind, category, attribution };
 }
 
 export const DESERET_DOCUMENTS: DeseretDocument[] = [
@@ -145,6 +158,38 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     unicodeDeseretDocumentationPdf,
     "pdf",
     "Books & Scriptures",
+  ),
+  doc(
+    "The City of the Saints",
+    "CityOfTheSaints_Burton1862.pdf",
+    cityOfTheSaintsPdf,
+    "pdf",
+    "Books & Scriptures",
+    "Richard F. Burton. New York: Harper & Brothers, 1862. Public domain. Internet Archive scan of the University of Virginia copy.",
+  ),
+  doc(
+    "A Journey to Great Salt Lake City",
+    "JourneyToGreatSaltLakeCity_Remy.pdf",
+    journeyToGreatSaltLakePdf,
+    "pdf",
+    "Books & Scriptures",
+    "Jules Remy and Julius Brenchley. English edition, 1861. Public domain. Internet Archive scan.",
+  ),
+  doc(
+    "Life in Utah",
+    "LifeInUtah_Beadle.pdf",
+    lifeInUtahBookPdf,
+    "pdf",
+    "Books & Scriptures",
+    "J. H. Beadle, Life in Utah; or, The Mysteries and Crimes of Mormonism, 1870. Public domain. Internet Archive scan.",
+  ),
+  doc(
+    "Das Buch der Schrift",
+    "DasBuchDerSchrift_Faulmann.pdf",
+    dasBuchDerSchriftPdf,
+    "pdf",
+    "Books & Scriptures",
+    "Carl Faulmann, Das Buch der Schrift. Vienna, 1878. Public domain. Internet Archive scan.",
   ),
 
   doc(
@@ -252,6 +297,30 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "pdf",
     "Charts & Tables",
   ),
+  doc(
+    "The Deseret Alphabet (1854)",
+    "DeseretAlphabet1854.pdf",
+    deseretAlphabet1854Pdf,
+    "pdf",
+    "Charts & Tables",
+    "Anonymous 1854 imprint, 4 pages. Public domain. Scan from the Church History Library via Internet Archive.",
+  ),
+  doc(
+    "The Deseret Alphabet (broadside)",
+    "DeseretAlphabetBroadside.pdf",
+    deseretAlphabetBroadsidePdf,
+    "pdf",
+    "Charts & Tables",
+    "Broadside, about the 1860s. Public domain. Scan from the Church History Library via Internet Archive.",
+  ),
+  doc(
+    "Deseret Alphabet Card (1859)",
+    "DeseretAlphabetCard1859.pdf",
+    deseretAlphabetCard1859Pdf,
+    "pdf",
+    "Charts & Tables",
+    "1859 card. Public domain. Internet Archive scan.",
+  ),
 
   doc(
     "Albert Kerington",
@@ -306,6 +375,38 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     plan10FloppyDiskImg,
     "image",
     "Images",
+  ),
+  doc(
+    "Sermon on the Mount, Deseret News",
+    "SermonOnTheMount_DeseretNews_1859.jpg",
+    sermonOnTheMountImg,
+    "image",
+    "Images",
+    "Deseret News, 16 February 1859. Public domain. Wikimedia Commons.",
+  ),
+  doc(
+    "Early Deseret Cursive Lineup",
+    "EarlyDeseretCursiveLineup.svg",
+    earlyCursiveLineupImg,
+    "image",
+    "Images",
+    "Psiĥedelisto, 2017. CC0. A new drawing based on Church History Library manuscripts MS 4223 and CR 1234 1, not a scan.",
+  ),
+  doc(
+    "Marion J. Shelton Handwritten Lineup",
+    "EarlyDeseretSheltonLineup.svg",
+    earlySheltonLineupImg,
+    "image",
+    "Images",
+    "Psiĥedelisto. CC0. A new drawing based on Marion J. Shelton’s handwriting, not a scan.",
+  ),
+  doc(
+    "Deseret Cursive Examples",
+    "DeseretCursiveExamples.svg",
+    deseretCursiveExamplesImg,
+    "image",
+    "Images",
+    "Psiĥedelisto. CC0. A new drawing based on bishop’s meeting minutes recorded by George D. Watt, not a scan.",
   ),
 ];
 

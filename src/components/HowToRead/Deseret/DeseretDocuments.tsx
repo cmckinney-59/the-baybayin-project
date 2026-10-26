@@ -42,6 +42,9 @@ function DocumentCard({ document }: { document: DeseretDocument }) {
       </button>
       <div className="deseretDocumentBody">
         <h4 className="deseretDocumentName">{document.name}</h4>
+        {document.attribution ? (
+          <p className="deseretDocumentAttribution">{document.attribution}</p>
+        ) : null}
         <div className="deseretDocumentActions">
           <button
             type="button"
