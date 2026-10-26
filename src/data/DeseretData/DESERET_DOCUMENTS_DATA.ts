@@ -11,6 +11,7 @@ import annualReportPdf from "../../assets/documents/Deseret/annualreportofte00ut
 import mormonPassageGeorgeDWattPdf from "../../assets/documents/Deseret/MormonPassageofGeorgeDWatt.pdf";
 import englishHopiVocabularyPdf from "../../assets/documents/Deseret/English-HopiVocabulary1860.pdf";
 import unicodeChapter20AmericasPdf from "../../assets/documents/Deseret/UnicodeChapter20_Americas.pdf";
+import unicodeDeseretDocumentationPdf from "../../assets/documents/Deseret/UnicodeDeseretDocumentation.pdf";
 import alphabetChart0Pdf from "../../assets/documents/Deseret/deseretalphabetchart0.pdf";
 import alphabetChartPdf from "../../assets/documents/Deseret/deseretalphabetchart.pdf";
 import alphabetChart2Pdf from "../../assets/documents/Deseret/deseretalphabetchart2.pdf";
@@ -135,6 +136,13 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     "Unicode Chapter 20: Americas",
     "UnicodeChapter20_Americas.pdf",
     unicodeChapter20AmericasPdf,
+    "pdf",
+    "Books & Scriptures",
+  ),
+  doc(
+    "Unicode Deseret Documentation",
+    "UnicodeDeseretDocumentation.pdf",
+    unicodeDeseretDocumentationPdf,
     "pdf",
     "Books & Scriptures",
   ),
