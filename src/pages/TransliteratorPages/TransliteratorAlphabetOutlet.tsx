@@ -12,6 +12,7 @@ import AurebeshResources from "../../components/HowToRead/AurebeshHTR/AurebeshRe
 import WhatIsAurebesh from "../../components/HowToRead/AurebeshHTR/WhatIsAurebesh";
 import BaybayinBorrowedWordsCollapsible from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinBorrowedWordsCollapsible";
 import BaybayinHowToRead from "../../components/HowToRead/BaybayinHTR/BaybayinHowToRead/BaybayinHowToRead";
+import BaybayinDocuments from "../../components/HowToRead/BaybayinHTR/BaybayinDocuments";
 import BaybayinMoreResources from "../../components/HowToRead/BaybayinHTR/BaybayinMoreResources";
 import WhatIsBaybayin from "../../components/HowToRead/BaybayinHTR/WhatIsBaybayin/WhatIsBaybayin";
 import BuhidHowToRead from "../../components/HowToRead/BuhidHTR/BuhidHowToRead/BuhidHowToRead";
@@ -67,6 +68,7 @@ const HOW_TO_EXTRA_BY_ALPHABET: Partial<Record<AlphabetName, ComponentType>> = {
       <WhatIsBaybayin />
       <BaybayinHowToRead />
       <BaybayinBorrowedWordsCollapsible />
+      <BaybayinDocuments />
       <BaybayinMoreResources />
     </>
   ),
