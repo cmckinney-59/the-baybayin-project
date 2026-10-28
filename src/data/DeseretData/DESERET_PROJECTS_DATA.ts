@@ -3,6 +3,7 @@ import theFamilyParallelPdf from "../../assets/projects/Deseret/TheFamily/The Fa
 import theLivingChristPdf from "../../assets/projects/Deseret/TheLivingChrist/TheLivingChrist_Deseret.pdf";
 import theLivingChristParallelPdf from "../../assets/projects/Deseret/TheLivingChrist/TheLivingChrist_Deseret_Parallel.pdf";
 import theRestorationPdf from "../../assets/projects/Deseret/TheRestoration/TheRestoration_Deseret.pdf";
+import theRestorationParallelPdf from "../../assets/projects/Deseret/TheRestoration/TheRestoration_Deseret_Parallel.pdf";
 import theArticlesOfFaithPdf from "../../assets/projects/Deseret/TheArticlesOfFaith/TheArticlesOfFaith_Deseret.pdf";
 import theArticlesOfFaithParallelPdf from "../../assets/projects/Deseret/TheArticlesOfFaith/TheArticlesOfFaith_Deseret_Parallel.pdf";
 import type { Project } from "../../models/models";
@@ -43,6 +44,14 @@ export const PROJECTS_DATA: Project[] = [
     fileType: "pdf",
     description:
       "The Restoration of the Fulness of the Gospel of Jesus Christ in Deseret.",
+  },
+  {
+    name: "The Restoration Parallel",
+    fileUrl: theRestorationParallelPdf,
+    fileName: "TheRestoration_Deseret_Parallel.pdf",
+    fileType: "pdf",
+    description:
+      "The Restoration of the Fulness of the Gospel of Jesus Christ in Deseret (parallel text).",
   },
   {
     name: "The Articles of Faith",
