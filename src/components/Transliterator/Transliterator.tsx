@@ -127,6 +127,7 @@ export default function Transliterator({
   const [useXVowelKiller, setUseXVowelKiller] = useState<boolean>(false);
   const [useHollowKudlits, setUseHollowKudlits] = useState<boolean>(true);
   const [useUnicode, setUseUnicode] = useState<boolean>(false);
+  const [doktrinaLatinInput, setDoktrinaLatinInput] = useState<boolean>(false);
   const [phoneticMode, setPhoneticMode] = useState<boolean>(false);
   const [useEnglishPronunciation, setUseEnglishPronunciation] =
     useState<boolean>(true);
@@ -154,10 +155,9 @@ export default function Transliterator({
     isBaybayin || isBuhid || isHanunoo || isTagbanwa;
   const usesLatinSlotKeyboard =
     isAurebesh || isPlqad || isLatinSlotKeyboardAlphabet(currentAlphabet);
-  const baybayinUnicodeOutput = baybayinUsesUnicodeOutput(
-    selectedBaybayinFont,
-    useUnicode,
-  );
+  const baybayinUnicodeOutput =
+    doktrinaLatinInput ||
+    baybayinUsesUnicodeOutput(selectedBaybayinFont, useUnicode);
   const deseretModernActive =
     showExperimentalFeatures && deseretMode === "modern";
   // Modern always includes 𐐃 and 𐐉; classic uses the settings toggles.
@@ -269,6 +269,7 @@ export default function Transliterator({
           useEnglishPronunciation,
           useSpanishPronunciation,
           phoneticPriority,
+          doktrinaLatinInput,
         );
     }
     return processWord;
@@ -296,25 +297,29 @@ export default function Transliterator({
         : currentFontName;
 
   const handleChange = async (currentText: string): Promise<void> => {
-    const words = currentText.trim().split(/\s+/);
-    const newDict: { [word: string]: string } = {};
     const processWord = getProcessWord();
-    if (processWord) {
-      const processedWords = await Promise.all(
-        words.map((word) => Promise.resolve(processWord(word))),
-      );
-      words.forEach((word, i) => {
-        newDict[word] = processedWords[i];
-      });
-      setWordsDictionary(newDict);
-      const nextOutput = processedWords.join(" ");
-      setTransliteratedText(nextOutput);
-      setOutputCursor(nextOutput.length);
-    } else {
+    if (!processWord) {
       setWordsDictionary({});
       setTransliteratedText("");
       setOutputCursor(0);
+      return;
     }
+
+    // Preserve newlines/tabs (needed for Doktrina Latin pastes and multi-line input).
+    const parts = currentText.split(/(\s+)/);
+    const newDict: { [word: string]: string } = {};
+    const mapped = await Promise.all(
+      parts.map(async (part) => {
+        if (!part || /^\s+$/.test(part)) return part;
+        const processed = await Promise.resolve(processWord(part));
+        newDict[part] = processed;
+        return processed;
+      }),
+    );
+    setWordsDictionary(newDict);
+    const nextOutput = mapped.join("");
+    setTransliteratedText(nextOutput);
+    setOutputCursor(nextOutput.length);
   };
 
   const syncInputFromOutput = (output: string) => {
@@ -359,7 +364,7 @@ export default function Transliterator({
     if (!isBaybayin) return;
     void handleChange(text);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode, phoneticMode, useEnglishPronunciation, useSpanishPronunciation, phoneticPriority]);
+  }, [useXVowelKiller, useHollowKudlits, selectedBaybayinFont, useUnicode, doktrinaLatinInput, phoneticMode, useEnglishPronunciation, useSpanishPronunciation, phoneticPriority]);
 
   // Keep Baybayin dictionary-driven output in sync when reviewing borrowed words.
   useEffect(() => {
@@ -384,6 +389,7 @@ export default function Transliterator({
             useEnglishPronunciation,
             useSpanishPronunciation,
             phoneticPriority,
+            doktrinaLatinInput,
           );
         }),
       );
@@ -402,6 +408,7 @@ export default function Transliterator({
     selectedBaybayinFont,
     useHollowKudlits,
     useUnicode,
+    doktrinaLatinInput,
     phoneticMode,
     useEnglishPronunciation,
     useSpanishPronunciation,
@@ -656,6 +663,7 @@ export default function Transliterator({
         useXVowelKiller={useXVowelKiller}
         useHollowKudlits={useHollowKudlits}
         useUnicode={useUnicode}
+        doktrinaLatinInput={doktrinaLatinInput}
         phoneticMode={phoneticMode}
         useEnglishPronunciation={useEnglishPronunciation}
         useSpanishPronunciation={useSpanishPronunciation}
@@ -676,6 +684,7 @@ export default function Transliterator({
         setUseXVowelKiller={setUseXVowelKiller}
         setUseHollowKudlits={setUseHollowKudlits}
         setUseUnicode={setUseUnicode}
+        setDoktrinaLatinInput={setDoktrinaLatinInput}
         setPhoneticMode={setPhoneticMode}
         setUseEnglishPronunciation={setUseEnglishPronunciation}
         setUseSpanishPronunciation={setUseSpanishPronunciation}

@@ -16,6 +16,7 @@ interface CheckboxContainerProps {
   selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
   useUnicode: boolean;
+  doktrinaLatinInput: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
   phoneticMode: boolean;
@@ -37,6 +38,7 @@ interface CheckboxContainerProps {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
+  setDoktrinaLatinInput: (checked: boolean) => void;
   setPhoneticMode: (checked: boolean) => void;
   setUseEnglishPronunciation: (checked: boolean) => void;
   setUseSpanishPronunciation: (checked: boolean) => void;
@@ -74,6 +76,7 @@ export default function CheckboxContainer({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
+  doktrinaLatinInput,
   phoneticMode,
   useEnglishPronunciation,
   useSpanishPronunciation,
@@ -94,6 +97,7 @@ export default function CheckboxContainer({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
+  setDoktrinaLatinInput,
   setPhoneticMode,
   setUseEnglishPronunciation,
   setUseSpanishPronunciation,
@@ -126,6 +130,7 @@ export default function CheckboxContainer({
       useXVowelKiller={useXVowelKiller}
       useHollowKudlits={useHollowKudlits}
       useUnicode={useUnicode}
+      doktrinaLatinInput={doktrinaLatinInput}
       phoneticMode={phoneticMode}
       useEnglishPronunciation={useEnglishPronunciation}
       useSpanishPronunciation={useSpanishPronunciation}
@@ -148,6 +153,7 @@ export default function CheckboxContainer({
       setUseXVowelKiller={setUseXVowelKiller}
       setUseHollowKudlits={setUseHollowKudlits}
       setUseUnicode={setUseUnicode}
+      setDoktrinaLatinInput={setDoktrinaLatinInput}
       setPhoneticMode={setPhoneticMode}
       setUseEnglishPronunciation={setUseEnglishPronunciation}
       setUseSpanishPronunciation={setUseSpanishPronunciation}

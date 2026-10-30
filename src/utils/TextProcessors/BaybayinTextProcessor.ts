@@ -7,6 +7,7 @@ import {
 } from "../../data/BaybayinData/BAYBAYIN_FONTS_DATA";
 import { baybayinFromPhoneticToken } from "../../data/BaybayinData/baybayinPhoneticMap";
 import { replaceLettersWithUnicode } from "./philippineAbugidaUnicode";
+import { morrowLatinToUnicode } from "./morrowLatinToUnicode";
 import {
   ensurePhoneticDictionariesLoaded,
   phoneticizeIfKnown,
@@ -19,6 +20,7 @@ import {
  * (order set by phoneticPriority when both are on), then Baybayin.
  * Unknown words stay orthographic.
  * Slash phonemes (`/b/`, `/a/`, …) map directly and skip Tagalization.
+ * Doktrina Latin mode: Paul Morrow font encoding (e.g. `Mg+ank+`) → Unicode.
  */
 export default async function processBaybayinText(
   text: string,
@@ -30,7 +32,12 @@ export default async function processBaybayinText(
   useEnglish = true,
   useSpanish = true,
   phoneticPriority: PhoneticPriority = "english",
+  doktrinaLatinInput = false,
 ): Promise<string> {
+  if (doktrinaLatinInput) {
+    return morrowLatinToUnicode(text, { useHollowKudlits });
+  }
+
   if (phoneticMode && (useEnglish || useSpanish)) {
     await ensurePhoneticDictionariesLoaded({ useEnglish, useSpanish });
   }

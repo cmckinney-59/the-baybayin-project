@@ -50,6 +50,7 @@ export type TransliteratorSettingsDialogProps = {
   selectedDeseretFont: DeseretFontId;
   useXVowelKiller: boolean;
   useUnicode: boolean;
+  doktrinaLatinInput: boolean;
   textContainsBorrowedWords: boolean;
   useHollowKudlits: boolean;
   phoneticMode: boolean;
@@ -74,6 +75,7 @@ export type TransliteratorSettingsDialogProps = {
   setTextContainsBorrowedWords: (checked: boolean) => void;
   setUseHollowKudlits: (checked: boolean) => void;
   setUseUnicode: (checked: boolean) => void;
+  setDoktrinaLatinInput: (checked: boolean) => void;
   setPhoneticMode: (checked: boolean) => void;
   setUseEnglishPronunciation: (checked: boolean) => void;
   setUseSpanishPronunciation: (checked: boolean) => void;
@@ -105,6 +107,7 @@ export default function TransliteratorSettingsDialog({
   textContainsBorrowedWords,
   useHollowKudlits,
   useUnicode,
+  doktrinaLatinInput,
   phoneticMode,
   useEnglishPronunciation,
   useSpanishPronunciation,
@@ -127,6 +130,7 @@ export default function TransliteratorSettingsDialog({
   setTextContainsBorrowedWords,
   setUseHollowKudlits,
   setUseUnicode,
+  setDoktrinaLatinInput,
   setPhoneticMode,
   setUseEnglishPronunciation,
   setUseSpanishPronunciation,
@@ -296,14 +300,17 @@ export default function TransliteratorSettingsDialog({
                         onChange={setPhoneticMode}
                         label="Phonetic mode"
                         title="Look up English/Spanish pronunciation and Tagalize before converting to Baybayin. Off = transliterate Latin spelling as written."
+                        disabled={doktrinaLatinInput}
                       />
                       <div
-                        className={`phonetic-mode-settings-collapse${phoneticMode ? " is-open" : ""}`}
-                        aria-hidden={!phoneticMode}
+                        className={`phonetic-mode-settings-collapse${phoneticMode && !doktrinaLatinInput ? " is-open" : ""}`}
+                        aria-hidden={!phoneticMode || doktrinaLatinInput}
                       >
                         <div
                           className="phonetic-mode-settings-collapse-inner"
-                          {...(!phoneticMode ? { inert: true as const } : {})}
+                          {...(!phoneticMode || doktrinaLatinInput
+                            ? { inert: true as const }
+                            : {})}
                         >
                           <div className="phonetic-mode-settings-group">
                             <Checkbox
@@ -380,12 +387,26 @@ export default function TransliteratorSettingsDialog({
                         onChange={setUseUnicode}
                         label="Use Unicode"
                         title="Output real Baybayin Unicode characters while keeping the selected font."
+                        disabled={doktrinaLatinInput}
                       />
                     )}
+                    <Checkbox
+                      checked={doktrinaLatinInput}
+                      onChange={(checked) => {
+                        setDoktrinaLatinInput(checked);
+                        if (checked) {
+                          setPhoneticMode(false);
+                          setTextContainsBorrowedWords(false);
+                        }
+                      }}
+                      label="Doktrina Latin → Unicode"
+                      title="Input is already Paul Morrow / Tagalog Doctrina Latin encoding (e.g. Mg+ank+). Convert it to Unicode Baybayin."
+                    />
                     <Checkbox
                       checked={textContainsBorrowedWords}
                       onChange={setTextContainsBorrowedWords}
                       label="Text contains borrowed words"
+                      disabled={doktrinaLatinInput}
                     />
                     {selectedBaybayinFontEntry.supportsXVowelKiller && (
                       <Checkbox
