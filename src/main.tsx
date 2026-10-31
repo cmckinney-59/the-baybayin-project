@@ -5,18 +5,21 @@ import App from "./App.tsx";
 import { AlphabetProvider } from "./contexts/AlphabetContext.tsx";
 import { ExperimentalFeaturesProvider } from "./contexts/ExperimentalFeaturesContext.tsx";
 import { DarkModeProvider } from "./contexts/DarkModeContext.tsx";
+import { SpaceModeProvider } from "./contexts/SpaceModeContext.tsx";
 import { KeyboardKeySizeProvider } from "./contexts/KeyboardKeySizeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DarkModeProvider>
-      <AlphabetProvider>
-        <ExperimentalFeaturesProvider>
-          <KeyboardKeySizeProvider>
-            <App />
-          </KeyboardKeySizeProvider>
-        </ExperimentalFeaturesProvider>
-      </AlphabetProvider>
+      <SpaceModeProvider>
+        <AlphabetProvider>
+          <ExperimentalFeaturesProvider>
+            <KeyboardKeySizeProvider>
+              <App />
+            </KeyboardKeySizeProvider>
+          </ExperimentalFeaturesProvider>
+        </AlphabetProvider>
+      </SpaceModeProvider>
     </DarkModeProvider>
   </StrictMode>
 );

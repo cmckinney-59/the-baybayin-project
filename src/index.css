@@ -135,6 +135,140 @@
   --link-hover-color: #90caf9;
 }
 
+/* Space Mode — crawl yellow on deep space */
+.space-mode {
+  --bg-primary: #050608;
+  --bg-secondary: #12151c;
+  --text-primary: #f0ead8;
+  --text-secondary: #b8b09a;
+  --button-bg: #0c0f16;
+  --button-border: #8a7a3a;
+  --icon-color: #ffe81f;
+  --header-bg: #0a0c12;
+  --nav-bg: #0a0c12;
+  --nav-text: #f0ead8;
+  --link-color: #ffe81f;
+  --link-hover-color: #fff3a0;
+  --page-title-color: #ffe81f;
+  --page-title-font: "Orbitron", "Exo 2", sans-serif;
+  --page-title-tracking: 0.14em;
+  --page-title-transform: uppercase;
+  --sw-yellow: #ffe81f;
+  --sw-yellow-muted: rgba(255, 232, 31, 0.28);
+  font-family: "Exo 2", "Segoe UI", sans-serif;
+}
+
+body.space-mode {
+  background-color: var(--bg-primary);
+}
+
+body.space-mode::before,
+body.space-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body.space-mode::before {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(1px 1px at 8% 12%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 22% 38%, rgba(255, 255, 255, 0.85) 99%, transparent),
+    radial-gradient(1.5px 1.5px at 36% 18%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 48% 62%, rgba(255, 255, 255, 0.7) 99%, transparent),
+    radial-gradient(1px 1px at 61% 28%, #fff 99%, transparent),
+    radial-gradient(1.5px 1.5px at 74% 74%, rgba(255, 255, 255, 0.9) 99%, transparent),
+    radial-gradient(1px 1px at 88% 44%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 14% 78%, rgba(255, 255, 255, 0.75) 99%, transparent),
+    radial-gradient(1px 1px at 52% 88%, #fff 99%, transparent),
+    radial-gradient(1.5px 1.5px at 92% 16%, rgba(255, 255, 255, 0.8) 99%, transparent),
+    radial-gradient(1px 1px at 30% 54%, #fff 99%, transparent),
+    radial-gradient(1px 1px at 68% 8%, rgba(255, 255, 255, 0.65) 99%, transparent);
+  animation: sw-star-drift 140s linear infinite;
+}
+
+body.space-mode::after {
+  opacity: 0.35;
+  background-image:
+    radial-gradient(1px 1px at 18% 22%, #ffe81f 99%, transparent),
+    radial-gradient(1px 1px at 42% 48%, rgba(255, 232, 31, 0.7) 99%, transparent),
+    radial-gradient(1px 1px at 70% 33%, #ffe81f 99%, transparent),
+    radial-gradient(1px 1px at 85% 80%, rgba(255, 232, 31, 0.6) 99%, transparent),
+    radial-gradient(1px 1px at 55% 12%, #ffe81f 99%, transparent);
+  animation: sw-star-twinkle 6s ease-in-out infinite alternate;
+}
+
+body.space-mode #root {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes sw-star-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-2%, 3%, 0);
+  }
+}
+
+@keyframes sw-star-twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 0.45;
+  }
+}
+
+.space-mode .App-header {
+  border-bottom-color: var(--sw-yellow-muted);
+}
+
+.space-mode .App-Navigation {
+  border-right-color: var(--sw-yellow-muted);
+}
+
+.space-mode .Navigation-content ul li a:hover {
+  background-color: rgba(255, 232, 31, 0.08);
+  color: var(--sw-yellow);
+}
+
+.space-mode .Navigation-content ul li a:hover .nav-icon {
+  color: var(--sw-yellow);
+  transform: scale(1.08);
+}
+
+.space-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFE81F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.space-mode select:focus {
+  border-color: var(--sw-yellow);
+  box-shadow: 0 0 0 1px var(--sw-yellow-muted);
+}
+
+.space-mode button {
+  color: var(--sw-yellow);
+  border-color: var(--button-border);
+}
+
+.space-mode button.active {
+  background-color: var(--sw-yellow);
+  color: #050608;
+  box-shadow: none;
+}
+
+.space-mode a {
+  color: var(--link-color);
+}
+
+.space-mode a:hover {
+  color: var(--link-hover-color);
+}
+
 @media (max-width: 768px) {
   :root {
     --page-content-padding-top: 1.5rem;
@@ -329,6 +463,10 @@ button {
   color: #64b5f6;
 }
 
+body.space-mode button {
+  color: var(--sw-yellow);
+}
+
 button.active {
   background-color: rgb(26, 115, 232);
   color: white;
@@ -341,6 +479,12 @@ button.active {
   background-color: #64b5f6;
   color: #1a1a1a;
   box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
+}
+
+body.space-mode button.active {
+  background-color: var(--sw-yellow);
+  color: #050608;
+  box-shadow: none;
 }
 
 button svg {

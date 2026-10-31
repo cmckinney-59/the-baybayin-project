@@ -70,6 +70,10 @@
   background-color: #64b5f6;
 }
 
+.space-mode .toggle-switch input:checked + .toggle-slider {
+  background-color: #ffe81f;
+}
+
 .toggle-switch input:checked + .toggle-slider:before {
   transform: translateX(24px);
 }
@@ -80,6 +84,14 @@
 
 .dark-mode .toggle-switch input:focus + .toggle-slider {
   box-shadow: 0 0 1px #64b5f6;
+}
+
+.space-mode .toggle-switch input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #ffe81f;
+}
+
+.space-mode .toggle-switch input:checked + .toggle-slider:before {
+  background-color: #050608;
 }
 
 @media (max-width: 768px) {
