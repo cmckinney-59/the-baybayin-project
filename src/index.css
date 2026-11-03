@@ -616,21 +616,27 @@ button:hover:not(:disabled) {
 }
 
 .collapsible-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
 }
 
 .collapsible-content.expanded {
-  max-height: 10000px;
-  overflow-x: auto;
+  grid-template-rows: 1fr;
 }
 
 .collapsible-content-inner {
+  min-height: 0;
+  overflow: hidden;
   padding: 1.5rem;
   max-width: 100%;
   box-sizing: border-box;
   min-width: 0;
+}
+
+.collapsible-content.expanded .collapsible-content-inner {
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .table-scroll-wrapper {
