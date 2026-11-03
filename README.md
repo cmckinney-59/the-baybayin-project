@@ -1,4 +1,4 @@
-# The Baybayin Project
+# ScriptWorks
 
 Transliterating into the ancient alphabet of The Philippines
 

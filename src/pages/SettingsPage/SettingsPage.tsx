@@ -20,19 +20,18 @@ export default function SettingsPage() {
   return (
     <div className="settingsPage">
       <PageTitle title="Settings" />
-      <SettingsOption
-        type="checkbox"
-        label="Show Experimental Features"
-        checked={showExperimentalFeatures}
-        onChange={toggleExperimentalFeatures}
-      />
+      <p className="settings-intro">
+        Preferences stay on this device and apply across the app.
+      </p>
       <div className="setting-item setting-item--theme">
-        <h2>Theme</h2>
-        <div
-          className="theme-selector"
-          role="radiogroup"
-          aria-label="Theme"
-        >
+        <div className="setting-copy">
+          <h2>Theme</h2>
+          <p className="setting-help">
+            Light for daytime reading, Dark for low light, Space for a cinematic
+            look.
+          </p>
+        </div>
+        <div className="theme-selector" role="radiogroup" aria-label="Theme">
           {THEME_OPTIONS.map(({ value, label }) => (
             <label
               key={value}
@@ -50,6 +49,13 @@ export default function SettingsPage() {
           ))}
         </div>
       </div>
+      <SettingsOption
+        type="checkbox"
+        label="Experimental features"
+        description="Unlocks unfinished alphabets and tools that may change or break."
+        checked={showExperimentalFeatures}
+        onChange={toggleExperimentalFeatures}
+      />
     </div>
   );
 }

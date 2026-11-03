@@ -41,12 +41,25 @@ export default function Navigation({
     return location.pathname === path;
   };
 
+  const linkClass = (path: string) =>
+    isActiveRoute(path) ? "is-active" : undefined;
+
   return (
-    <nav className={`App-Navigation ${isOpen ? "open" : "collapsed"}`}>
+    <nav
+      id="app-navigation"
+      className={`App-Navigation ${isOpen ? "open" : "collapsed"}`}
+      aria-label="Main"
+    >
       <div className="Navigation-content">
         <ul>
           <li>
-            <Link to="/home" onClick={onNavigate} title="Home">
+            <Link
+              to="/home"
+              onClick={onNavigate}
+              title="Home"
+              className={linkClass("/home")}
+              aria-current={isActiveRoute("/home") ? "page" : undefined}
+            >
               {isActiveRoute("/home") ? (
                 <AiFillHome className="nav-icon" />
               ) : (
@@ -60,6 +73,10 @@ export default function Navigation({
               to={transliteratorPath}
               onClick={onNavigate}
               title="Transliterator"
+              className={linkClass("/transliterator")}
+              aria-current={
+                isActiveRoute("/transliterator") ? "page" : undefined
+              }
             >
               {isActiveRoute("/transliterator") ? (
                 <PiTranslateFill className="nav-icon" />
@@ -70,7 +87,13 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/projects" onClick={onNavigate} title="Projects">
+            <Link
+              to="/projects"
+              onClick={onNavigate}
+              title="Projects"
+              className={linkClass("/projects")}
+              aria-current={isActiveRoute("/projects") ? "page" : undefined}
+            >
               {isActiveRoute("/projects") ? (
                 <AiFillProject className="nav-icon" />
               ) : (
@@ -80,7 +103,13 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/about" onClick={onNavigate} title="About & Social">
+            <Link
+              to="/about"
+              onClick={onNavigate}
+              title="About & Social"
+              className={linkClass("/about")}
+              aria-current={isActiveRoute("/about") ? "page" : undefined}
+            >
               {isActiveRoute("/about") ? (
                 <AiFillInfoCircle className="nav-icon" />
               ) : (
@@ -90,7 +119,13 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/donate" onClick={onNavigate} title="Donate">
+            <Link
+              to="/donate"
+              onClick={onNavigate}
+              title="Donate"
+              className={linkClass("/donate")}
+              aria-current={isActiveRoute("/donate") ? "page" : undefined}
+            >
               {isActiveRoute("/donate") ? (
                 <AiFillHeart className="nav-icon" />
               ) : (
@@ -100,7 +135,13 @@ export default function Navigation({
             </Link>
           </li>
           <li>
-            <Link to="/settings" onClick={onNavigate} title="Settings">
+            <Link
+              to="/settings"
+              onClick={onNavigate}
+              title="Settings"
+              className={linkClass("/settings")}
+              aria-current={isActiveRoute("/settings") ? "page" : undefined}
+            >
               {isActiveRoute("/settings") ? (
                 <AiFillSetting className="nav-icon" />
               ) : (

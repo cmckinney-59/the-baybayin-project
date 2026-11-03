@@ -4,6 +4,7 @@ import {
   FILIPINO_SCRIPT_NAMES,
   type Alphabet,
 } from "../../data/ALPHABETS_DATA";
+import "./AlphabetPicker.css";
 
 interface AlphabetPickerProps {
   selectedAlphabet: string;
@@ -31,9 +32,17 @@ export default function AlphabetPicker({
   const otherExperimental = otherAlphabets.filter((a) => a.experimental);
 
   return (
-    <section>
-      <select id="options" value={selectedAlphabet} onChange={handleClick}>
-        <option value="">Select an alphabet</option>
+    <section className="alphabet-picker">
+      <label className="alphabet-picker-label" htmlFor="alphabet-options">
+        Writing system
+      </label>
+      <select
+        id="alphabet-options"
+        className="alphabet-picker-select"
+        value={selectedAlphabet}
+        onChange={handleClick}
+      >
+        <option value="">Select...</option>
         <optgroup label="Filipino Scripts">
           {filipinoScripts.map((alphabet) => (
             <option key={alphabet.name} value={alphabet.name}>

@@ -63,11 +63,7 @@
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: rgb(26, 115, 232);
-}
-
-.dark-mode .deseretDocumentPdfBadge {
-  color: #64b5f6;
+  color: var(--accent);
 }
 
 .deseretDocumentBody {
@@ -111,9 +107,12 @@
 }
 
 .deseretDocumentButton:hover {
-  border-color: rgb(26, 115, 232);
+  border-color: var(--accent);
 }
 
-.dark-mode .deseretDocumentButton:hover {
-  border-color: #64b5f6;
+@media (max-width: 768px) {
+  .deseretDocumentGrid {
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.65rem;
+  }
 }

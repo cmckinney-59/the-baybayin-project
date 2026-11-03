@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { Link } from "react-router-dom";
 import lightModeLogo from "../../assets/images/TBP_Horizontal_Black.png";
 import darkModeLogo from "../../assets/images/TBP_Horizontal_White.png";
 import "./Header.css";
@@ -20,7 +21,9 @@ export default function Header({
     <header className="App-header">
       <button
         className={`hamburger ${isSidebarOpen ? "open" : ""}`}
-        aria-label="Toggle navigation"
+        aria-label={isSidebarOpen ? "Close navigation" : "Open navigation"}
+        aria-expanded={isSidebarOpen}
+        aria-controls="app-navigation"
         onClick={onToggleSidebar}
       >
         {isSidebarOpen ? (
@@ -30,11 +33,13 @@ export default function Header({
         )}
       </button>
       <div className="header-content">
-        <img
-          src={useLightLogo ? darkModeLogo : lightModeLogo}
-          className="App-logo"
-          alt="logo"
-        />
+        <Link to="/home" className="header-logo-link" aria-label="Home">
+          <img
+            src={useLightLogo ? darkModeLogo : lightModeLogo}
+            className="App-logo"
+            alt="ScriptWorks"
+          />
+        </Link>
       </div>
     </header>
   );

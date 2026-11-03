@@ -11,9 +11,8 @@ export default function DonatePage() {
 
       <section className="donate-intro">
         <p>
-          The Baybayin Project is free to use. Donations help keep the
-          transliterator alive and give more time to transcriptions, fonts,
-          and new alphabets.
+          ScriptWorks is free to use. Donations help keep the transliterator
+          alive and give more time to transcriptions, fonts, and new alphabets.
         </p>
       </section>
 

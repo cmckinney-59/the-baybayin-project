@@ -2,13 +2,46 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .transliteratorPage {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+.transliterator-intro {
+  margin: -0.75rem auto 1.25rem;
+  max-width: 36rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
 
-  .transliteratorPage #options {
+.transliterator-empty {
+  margin: 1.5rem auto 0;
+  max-width: 28rem;
+  padding: 1.5rem 1.25rem;
+  border: 1px dashed var(--button-border);
+  border-radius: var(--radius-lg, 14px);
+  background: color-mix(in srgb, var(--bg-secondary) 80%, transparent);
+  text-align: center;
+}
+
+.transliterator-empty p {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.transliterator-empty-cta {
+  margin: 0 auto;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border: 1px solid var(--accent);
+}
+
+.transliterator-empty-cta:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+@media (max-width: 768px) {
+  .transliteratorPage .alphabet-picker-select {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;

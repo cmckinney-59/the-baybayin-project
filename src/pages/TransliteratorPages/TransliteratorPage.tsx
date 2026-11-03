@@ -40,12 +40,36 @@ export default function TransliteratorPage() {
     <WordsDictionaryProvider>
       <div className="transliteratorPage">
         <PageTitle title="Transliterator" />
+        <p className="transliterator-intro">
+          Choose a writing system, type below, and read the live transliteration.
+        </p>
         <AlphabetPicker
           selectedAlphabet={currentAlphabet}
           handleClick={handleClick}
         />
-        <Transliterator currentAlphabet={currentAlphabet} />
-        <Outlet />
+        {currentAlphabet ? (
+          <>
+            <Transliterator currentAlphabet={currentAlphabet} />
+            <Outlet />
+          </>
+        ) : (
+          <div className="transliterator-empty" role="status">
+            <p>
+              Select a writing system above to start transliterating. Baybayin
+              is a good place to begin.
+            </p>
+            <button
+              type="button"
+              className="transliterator-empty-cta"
+              onClick={() => {
+                setCurrentAlphabet("Baybayin");
+                navigate("/transliterator/baybayin");
+              }}
+            >
+              Start with Baybayin
+            </button>
+          </div>
+        )}
       </div>
     </WordsDictionaryProvider>
   );

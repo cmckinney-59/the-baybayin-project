@@ -1,60 +1,100 @@
 .navCard {
+  appearance: none;
+  font: inherit;
+  width: 100%;
   background: var(--bg-secondary);
   color: var(--text-primary);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg, 14px);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
   transition:
-    all 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     background-color 0.3s ease,
-    color 0.3s ease;
-  border: 2px solid transparent;
+    color 0.3s ease,
+    border-color 0.2s ease;
+  border: 1px solid var(--button-border);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: #007bff;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.navCard:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .navCard:active {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+}
+
+.featured {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--button-border));
+  background: linear-gradient(
+    160deg,
+    var(--bg-secondary) 0%,
+    color-mix(in srgb, var(--accent-soft) 70%, var(--bg-secondary)) 100%
+  );
+  padding: 2rem 1.75rem;
+}
+
+.featured .navCardTitle {
+  color: var(--accent);
 }
 
 .navCardIcon {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .navCardIcon svg {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   color: var(--icon-color);
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
+}
+
+.navCard:hover .navCardIcon svg,
+.featured .navCardIcon svg {
+  color: var(--accent);
 }
 
 .navCardTitle {
-  margin-bottom: 1rem;
+  margin: 0 0 0.65rem;
   color: var(--text-primary);
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .navCardDescription {
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.55;
   margin: 0;
+  font-size: 0.98rem;
+  max-width: 28ch;
 }
 
 @media (max-width: 768px) {
   .navCard {
-    padding: 1.5rem;
+    padding: 1.35rem 1.2rem;
+  }
+
+  .featured {
+    padding: 1.6rem 1.35rem;
   }
 
   .navCardIcon svg {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }

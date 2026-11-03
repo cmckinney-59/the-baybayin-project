@@ -1,7 +1,7 @@
 .donate-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  padding: 0 0 3rem;
   text-align: left;
 }
 
@@ -52,18 +52,27 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   text-decoration: none;
-  border-radius: 6px;
-  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-md, 10px);
+  padding: 0.8rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .donate-button:hover {
-  background-color: #0056b3;
-  color: white;
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+.donate-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @media (max-width: 768px) {

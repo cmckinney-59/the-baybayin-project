@@ -12,7 +12,7 @@ export default function AboutPage() {
         <div className="about-intro-content">
           <p className="about-intro-text">
             Hi, my name is Chaz. I am a husband, father and software engineer. I
-            am also the founder of The Baybayin Project. I was born and raised
+            am also the founder of ScriptWorks. I was born and raised
             in Utah. I currently live in Alberta, Canada with my wife and three
             children.
           </p>

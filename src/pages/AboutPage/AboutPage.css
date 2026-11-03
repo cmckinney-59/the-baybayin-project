@@ -2,7 +2,7 @@
 .about-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  padding: 0 0 3rem;
   text-align: left;
 }
 
@@ -130,7 +130,14 @@
 }
 
 .about-social-link:hover {
-  opacity: 0.85;
+  color: var(--accent);
+  opacity: 1;
+}
+
+.about-social-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 8px;
 }
 
 .about-social-icon {

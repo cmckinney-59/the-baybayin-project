@@ -14,64 +14,51 @@ import NavCard from "../../components/NavCard/NavCard";
 export default function HomePage() {
   const navigate = useNavigate();
 
-  const handleTransliteratorClick = () => {
-    navigate("/transliterator/baybayin");
-  };
-
-  const handleAboutClick = () => {
-    navigate("/about");
-  };
-
-  const handleProjectsClick = () => {
-    navigate("/projects");
-  };
-
-  const handleSettingsClick = () => {
-    navigate("/settings");
-  };
-
-  const handleDonateClick = () => {
-    navigate("/donate");
-  };
-
   return (
     <div className="homepage">
-      <PageTitle title="Welcome" />
+      <header className="homepage-hero">
+        <PageTitle title="ScriptWorks" />
+        <p className="homepage-tagline">
+          Transliterate Latin text into historical and fictional writing
+          systems — then explore fonts, documents, and transcriptions.
+        </p>
+      </header>
 
       <div className="cards-container">
         <NavCard
+          featured
           title="Transliterator"
-          description="Convert text to various alphabets."
+          description="Type in English or Latin letters and see Baybayin, Aurebesh, Deseret, and more."
           icon={<PiTranslate />}
-          onClick={handleTransliteratorClick}
+          onClick={() => navigate("/transliterator/baybayin")}
         />
 
         <NavCard
           title="Projects"
-          description="See our projects."
+          description="Browse completed and in-progress transcriptions and downloads."
           icon={<AiOutlineProject />}
-          onClick={handleProjectsClick}
+          onClick={() => navigate("/projects")}
         />
 
         <NavCard
           title="About"
-          description="Learn more and connect with us."
+          description="The story behind the project and where to follow along."
           icon={<AiOutlineInfoCircle />}
-          onClick={handleAboutClick}
+          onClick={() => navigate("/about")}
         />
 
         <NavCard
           title="Settings"
-          description="Manage settings."
+          description="Theme, experimental features, and preferences."
           icon={<AiOutlineSetting />}
-          onClick={handleSettingsClick}
+          onClick={() => navigate("/settings")}
         />
 
         <NavCard
           title="Donate"
-          description="Support the project."
+          description="Help keep the tools free and the transcriptions moving."
           icon={<AiOutlineHeart />}
-          onClick={handleDonateClick}
+          onClick={() => navigate("/donate")}
         />
       </div>
     </div>

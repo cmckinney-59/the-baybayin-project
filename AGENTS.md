@@ -2,7 +2,7 @@
 
 ## Cursor Cloud specific instructions
 
-The Baybayin Project is a single, purely client-side Vite + React 19 + TypeScript SPA that transliterates Latin/English text into historical/fictional writing systems (Baybayin, Aurebesh, Deseret, Tengwar, Ogham, Klingon, etc.). There is no backend, database, or external service; all state lives in React Context + `localStorage`.
+ScriptWorks is a single, purely client-side Vite + React 19 + TypeScript SPA that transliterates Latin/English text into historical/fictional writing systems (Baybayin, Aurebesh, Deseret, Tengwar, Ogham, Klingon, etc.). There is no backend, database, or external service; all state lives in React Context + `localStorage`.
 
 Standard scripts are in `package.json` (`dev`, `build`, `lint`, `preview`). Run them with `npm`.
 
