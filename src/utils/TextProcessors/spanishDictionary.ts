@@ -29,10 +29,6 @@ export async function ensureSpanishDictionaryLoaded(): Promise<void> {
   await loadPromise;
 }
 
-export function isSpanishDictionaryLoaded(): boolean {
-  return dict !== null;
-}
-
 /**
  * Look up MFA phones for a Spanish word. Tries exact lowercase, then
  * accent-stripped form. Returns null if not in the dictionary.

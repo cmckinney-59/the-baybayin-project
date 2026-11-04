@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px max(20px, env(safe-area-inset-right)) 20px
+  padding: 10px max(20px, env(safe-area-inset-right)) 10px
     max(56px, calc(12px + env(safe-area-inset-left)));
   background-color: var(--header-bg);
   flex-direction: row;
@@ -37,8 +37,9 @@
 .header-logo-link {
   display: inline-flex;
   align-items: center;
-  line-height: 0;
+  text-decoration: none;
   border-radius: 6px;
+  color: inherit;
 }
 
 .header-logo-link:focus-visible {
@@ -46,15 +47,44 @@
   outline-offset: 4px;
 }
 
-.App-Header-Text {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
 }
 
-.App-logo {
-  width: min(200px, 52vw);
-  height: auto;
+.header-wordmark {
+  margin: 0;
+  font-family: var(--page-title-font, "Segoe UI", sans-serif);
+  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--nav-text);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.header-tagline {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  font-size: clamp(0.65rem, 1.6vw, 0.78rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--text-secondary);
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.space-mode .header-wordmark {
+  color: var(--sw-yellow);
+  letter-spacing: 0.18em;
+}
+
+.space-mode .header-tagline {
+  color: var(--text-secondary);
 }
 
 .hamburger {

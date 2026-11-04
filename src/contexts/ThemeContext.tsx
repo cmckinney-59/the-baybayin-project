@@ -39,11 +39,11 @@ function readStoredTheme(): AppTheme {
   }
 
   const darkRaw = localStorage.getItem("darkMode");
-  if (darkRaw !== null && JSON.parse(darkRaw)) {
-    return "dark";
+  if (darkRaw !== null) {
+    return JSON.parse(darkRaw) ? "dark" : "light";
   }
 
-  return "light";
+  return "dark";
 }
 
 function clearLegacyThemeKeys() {

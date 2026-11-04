@@ -5,7 +5,7 @@ import { saveAs } from "file-saver";
  * Strip punctuation attached before/after a token, while keeping punctuation
  * that commonly forms part of a word (apostrophes, hyphens).
  */
-export function stripOuterPunctuation(token: string): string {
+function stripOuterPunctuation(token: string): string {
   return token
     .replace(/^[^\p{L}\p{N}'’ʼ\-]+/u, "")
     .replace(/[^\p{L}\p{N}'’ʼ\-]+$/u, "");

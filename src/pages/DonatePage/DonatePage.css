@@ -48,7 +48,9 @@
   margin-bottom: 1.1rem;
 }
 
-.donate-button {
+.donate-button,
+.space-mode a.donate-button,
+.space-mode a.donate-button:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -65,7 +67,8 @@
     transform 0.15s ease;
 }
 
-.donate-button:hover {
+.donate-button:hover,
+.space-mode a.donate-button:hover {
   background-color: var(--accent-hover);
   color: var(--on-accent);
 }

@@ -1,9 +1,4 @@
 import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
-import {
-  DEFAULT_AUREBESH_FONT_ID,
-  getAurebeshOutputFontClass,
-  type AurebeshFontId,
-} from "./AUREBESH_FONTS_DATA";
 
 /** Aurebesh digraphs that ligate in Legends fonts (combined characters). */
 export const AUREBESH_DIGRAPHS = [
@@ -16,19 +11,6 @@ export const AUREBESH_DIGRAPHS = [
   "sh",
   "th",
 ] as const;
-
-/** @deprecated Prefer getAurebeshOutputFontClass with an explicit font id. */
-export function getAurebeshFontClass(
-  useCombinedCharacters: boolean,
-  useTechNumbers: boolean,
-  fontId: AurebeshFontId = DEFAULT_AUREBESH_FONT_ID,
-): string {
-  return getAurebeshOutputFontClass(
-    fontId,
-    useCombinedCharacters,
-    useTechNumbers,
-  );
-}
 
 /**
  * Show Latin (rendered in Aurebesh font) on the key; insert the same Latin

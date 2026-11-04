@@ -79,16 +79,9 @@
 }
 
 .projectsBrowseFilter.is-selected {
-  background-color: rgb(26, 115, 232);
-  color: white;
-  border-color: rgb(26, 115, 232);
-}
-
-.dark-mode .projectsBrowseFilter.is-selected {
-  background-color: #64b5f6;
-  color: #1a1a1a;
-  border-color: #64b5f6;
-  box-shadow: none;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
 }
 
 .projectsBrowseList {
@@ -527,8 +520,8 @@
 }
 
 .downloadButton {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -536,20 +529,12 @@
   font-size: 14px;
   margin: 10px auto 0 auto;
   display: block;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .downloadButton:hover {
-  background-color: #0056b3;
-}
-
-.dark-mode .downloadButton {
-  background-color: #64b5f6;
-  color: #1a1a1a;
-}
-
-.dark-mode .downloadButton:hover {
-  background-color: #42a5f5;
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .downloadLink {

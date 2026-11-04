@@ -51,8 +51,8 @@
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 500;
-  color: white;
-  background: #007bff;
+  color: var(--on-accent);
+  background: var(--accent);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -60,9 +60,10 @@
 }
 
 .error-button:hover {
-  background: #0056b3;
+  background: var(--accent-hover);
+  color: var(--on-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 12px var(--accent-soft);
 }
 
 .error-button:active {

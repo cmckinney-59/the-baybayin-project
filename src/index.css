@@ -170,7 +170,7 @@
   --radius-lg: 14px;
   /* Space from sticky header to first line of main content (page titles) */
   --page-content-padding-top: 2rem;
-  --header-height: 60px;
+  --header-height: 72px;
   --nav-width-collapsed: 60px;
   --nav-width-expanded: 220px;
 }
@@ -321,22 +321,14 @@ body.space-mode #root {
   box-shadow: 0 0 0 1px var(--sw-yellow-muted);
 }
 
-.space-mode button {
-  color: var(--sw-yellow);
-  border-color: var(--button-border);
-}
+/* Default buttons already use --accent / --on-accent; don't force yellow text
+   onto filled accent CTAs (that made labels unreadable in Space mode). */
 
-.space-mode button.active {
-  background-color: var(--sw-yellow);
-  color: #050608;
-  box-shadow: none;
-}
-
-.space-mode a {
+.space-mode a:not(.donate-button) {
   color: var(--link-color);
 }
 
-.space-mode a:hover {
+.space-mode a:not(.donate-button):hover {
   color: var(--link-hover-color);
 }
 
@@ -630,16 +622,6 @@ button:hover:not(:disabled) {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-/* AlphabetPicker */
-#options {
-  margin-top: 10px;
-}
-
-/* TransliterateButton */
-.transliterate-button-icon {
-  margin-right: 5px;
 }
 
 /* CollapsibleSection */
@@ -1351,14 +1333,9 @@ button:hover:not(:disabled) {
 }
 
 .transliterator-settings-dialog .phonetic-priority-option.active {
-  background-color: rgb(26, 115, 232);
-  color: white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   font-weight: 600;
-}
-
-.dark-mode .transliterator-settings-dialog .phonetic-priority-option.active {
-  background-color: #64b5f6;
-  color: #1a1a1a;
 }
 
 .transliterator-settings-dialog .phonetic-priority-option:disabled {
@@ -1507,62 +1484,6 @@ button:hover:not(:disabled) {
 
 .dark-mode .experimental-features-banner-close:hover {
   background-color: rgba(0, 0, 0, 0.2);
-}
-
-.drag-drop-box {
-  border: 2px dashed var(--button-border);
-  border-radius: 10px;
-  padding: 30px;
-  margin: 20px 10px;
-  text-align: center;
-  background-color: var(--bg-secondary);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.drag-drop-box:hover {
-  border-color: rgba(0, 123, 255, 0.5);
-  background-color: var(--bg-primary);
-}
-
-.drag-drop-box.drag-over {
-  border-color: rgba(0, 123, 255, 1);
-  background-color: rgba(0, 123, 255, 0.1);
-  border-style: solid;
-}
-
-.drag-drop-content {
-  pointer-events: none;
-}
-
-.drag-drop-text {
-  color: var(--text-primary);
-  font-size: 16px;
-  margin: 0;
-  transition: color 0.3s ease;
-}
-
-.drag-drop-label {
-  pointer-events: all;
-  cursor: pointer;
-}
-
-.drag-drop-link {
-  color: rgb(26, 115, 232);
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.drag-drop-link:hover {
-  color: rgb(13, 85, 200);
-}
-
-.dark-mode .drag-drop-link {
-  color: #64b5f6;
-}
-
-.dark-mode .drag-drop-link:hover {
-  color: #42a5f5;
 }
 
 .note-paragraph {
@@ -1783,9 +1704,9 @@ dialog.dialog-overlay {
 }
 
 .dialog-box button.confirm-button {
-  background-color: rgb(26, 115, 232);
-  color: white;
-  border-color: rgb(26, 115, 232);
+  background-color: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
 }
 
 .dialog-box button.cancel-button {
@@ -1795,24 +1716,14 @@ dialog.dialog-overlay {
 }
 
 .dialog-box button.confirm-button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .dialog-box button.cancel-button:hover {
   background-color: var(--bg-primary);
   opacity: 0.8;
-}
-
-.dark-mode .dialog-box button.confirm-button {
-  background-color: #64b5f6;
-  color: #1a1a1a;
-  border-color: #64b5f6;
-}
-
-.dark-mode .dialog-box button.confirm-button:hover {
-  background-color: #42a5f5;
-  border-color: #42a5f5;
 }
 
 .dialog-box button.validate-button-style {
@@ -1943,6 +1854,10 @@ dialog.dialog-overlay {
   color: #64b5f6 !important;
 }
 
+.space-mode .baybayin-letter-blue {
+  color: var(--sw-yellow) !important;
+}
+
 .hanunoo-letter {
   font-family: "Hanunoo", sans-serif;
   font-weight: normal;
@@ -1991,10 +1906,14 @@ dialog.dialog-overlay {
   color: #64b5f6 !important;
 }
 
+.space-mode .aurebesh-letter-blue {
+  color: var(--sw-yellow) !important;
+}
+
 /* Baybayin how to use */
 .font-download-button {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   border: none;
   padding: 12px 24px;
   border-radius: 6px;
@@ -2003,41 +1922,27 @@ dialog.dialog-overlay {
   cursor: pointer;
   transition:
     background-color 0.2s ease,
+    color 0.2s ease,
     transform 0.1s ease;
   margin-top: 16px;
   display: inline-block;
 }
 
 .font-download-button:hover {
-  background-color: #0056b3;
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
   transform: translateY(-1px);
 }
 
 .font-download-button:active {
   transform: translateY(0);
-  background-color: #004085;
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .font-download-button:focus {
-  outline: 2px solid #007bff;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
-}
-
-.dark-mode .font-download-button {
-  background-color: #64b5f6;
-  color: #1a1a1a;
-}
-
-.dark-mode .font-download-button:hover {
-  background-color: #42a5f5;
-}
-
-.dark-mode .font-download-button:active {
-  background-color: #2196f3;
-}
-
-.dark-mode .font-download-button:focus {
-  outline-color: #64b5f6;
 }
 
 /* Alphabet Table */
@@ -2170,8 +2075,8 @@ dialog.dialog-overlay {
   width: 2.25rem;
   height: 2.25rem;
   padding: 0;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--accent);
+  color: var(--on-accent);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -2180,7 +2085,8 @@ dialog.dialog-overlay {
 }
 
 .fonts-table .downloadButton:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
 }
 
 .fonts-table-download svg,
@@ -2310,18 +2216,13 @@ dialog.dialog-overlay {
   cursor: not-allowed;
 }
 
-.dark-mode .fonts-table .downloadButton {
-  background-color: #64b5f6;
-  color: #1a1a1a;
-}
-
-.dark-mode .fonts-table .downloadButton:hover:not(:disabled) {
-  background-color: #42a5f5;
-}
-
 .letter-blue {
   font-weight: bold;
   color: #64b5f6 !important;
+}
+
+.space-mode .letter-blue {
+  color: var(--sw-yellow) !important;
 }
 
 /* Responsive */
