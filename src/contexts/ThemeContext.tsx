@@ -1,6 +1,6 @@
 /**
  * Theme Context
- * App theme: light | dark | space | deseret | deseret-dark, with localStorage persistence.
+ * App theme with localStorage persistence.
  */
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -10,6 +10,8 @@ export type AppTheme =
   | "light"
   | "dark"
   | "space"
+  | "jedi"
+  | "sith"
   | "deseret"
   | "deseret-dark";
 
@@ -28,6 +30,8 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
   light: null,
   dark: "dark-mode",
   space: "space-mode",
+  jedi: "jedi-mode",
+  sith: "sith-mode",
   deseret: "deseret-mode",
   "deseret-dark": "deseret-dark-mode",
 };
@@ -36,6 +40,8 @@ const VALID_THEMES: AppTheme[] = [
   "light",
   "dark",
   "space",
+  "jedi",
+  "sith",
   "deseret",
   "deseret-dark",
 ];
@@ -43,6 +49,8 @@ const VALID_THEMES: AppTheme[] = [
 const ALL_THEME_CLASSES = [
   "dark-mode",
   "space-mode",
+  "jedi-mode",
+  "sith-mode",
   "deseret-mode",
   "deseret-dark-mode",
 ];

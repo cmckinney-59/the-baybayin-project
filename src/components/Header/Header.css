@@ -103,6 +103,17 @@
   color: var(--text-secondary);
 }
 
+.jedi-mode .header-wordmark,
+.sith-mode .header-wordmark {
+  color: var(--sw-accent);
+  letter-spacing: 0.18em;
+}
+
+.jedi-mode .header-tagline,
+.sith-mode .header-tagline {
+  color: var(--text-secondary);
+}
+
 .hamburger {
   position: absolute;
   left: max(12px, calc(12px + env(safe-area-inset-left)));
