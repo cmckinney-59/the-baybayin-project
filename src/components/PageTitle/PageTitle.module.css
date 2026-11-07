@@ -12,7 +12,8 @@
 
 :global(body.space-mode) .page-title,
 :global(body.jedi-mode) .page-title,
-:global(body.sith-mode) .page-title {
+:global(body.sith-mode) .page-title,
+:global(body.windu-mode) .page-title {
   animation: sw-title-in 0.55s ease-out;
 }
 

@@ -141,13 +141,15 @@
 }
 
 .jedi-mode .header-wordmark,
-.sith-mode .header-wordmark {
+.sith-mode .header-wordmark,
+.windu-mode .header-wordmark {
   color: var(--sw-accent);
   letter-spacing: 0.18em;
 }
 
 .jedi-mode .header-tagline,
-.sith-mode .header-tagline {
+.sith-mode .header-tagline,
+.windu-mode .header-tagline {
   color: var(--text-secondary);
 }
 

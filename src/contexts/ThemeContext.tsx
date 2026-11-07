@@ -12,6 +12,7 @@ export type AppTheme =
   | "space"
   | "jedi"
   | "sith"
+  | "windu"
   | "deseret"
   | "deseret-dark"
   | "doctrina"
@@ -35,6 +36,7 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
   space: "space-mode",
   jedi: "jedi-mode",
   sith: "sith-mode",
+  windu: "windu-mode",
   deseret: "deseret-mode",
   "deseret-dark": "deseret-dark-mode",
   doctrina: "doctrina-mode",
@@ -48,6 +50,7 @@ const VALID_THEMES: AppTheme[] = [
   "space",
   "jedi",
   "sith",
+  "windu",
   "deseret",
   "deseret-dark",
   "doctrina",
@@ -60,6 +63,7 @@ const ALL_THEME_CLASSES = [
   "space-mode",
   "jedi-mode",
   "sith-mode",
+  "windu-mode",
   "deseret-mode",
   "deseret-dark-mode",
   "doctrina-mode",

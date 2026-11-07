@@ -54,7 +54,9 @@
 .jedi-mode a.donate-button,
 .jedi-mode a.donate-button:hover,
 .sith-mode a.donate-button,
-.sith-mode a.donate-button:hover {
+.sith-mode a.donate-button:hover,
+.windu-mode a.donate-button,
+.windu-mode a.donate-button:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -74,7 +76,8 @@
 .donate-button:hover,
 .space-mode a.donate-button:hover,
 .jedi-mode a.donate-button:hover,
-.sith-mode a.donate-button:hover {
+.sith-mode a.donate-button:hover,
+.windu-mode a.donate-button:hover {
   background-color: var(--accent-hover);
   color: var(--on-accent);
 }

@@ -94,6 +94,17 @@ const THEME_GROUPS: ThemeGroup[] = [
           text: "#f5e8e8",
         },
       },
+      {
+        value: "windu",
+        label: "Windu",
+        blurb: "Amethyst saber glow",
+        swatch: {
+          bg: "#09060f",
+          surface: "#120a1c",
+          accent: "#b44aff",
+          text: "#efe6ff",
+        },
+      },
     ],
   },
   {

@@ -824,15 +824,49 @@ body.space-mode #root {
   font-family: "Exo 2", "Segoe UI", sans-serif;
 }
 
+/* Windu Mode — amethyst saber on deep violet space */
+.windu-mode {
+  --bg-primary: #09060f;
+  --bg-secondary: #161022;
+  --text-primary: #efe6ff;
+  --text-secondary: #b7a6d4;
+  --button-bg: #120a1c;
+  --button-border: #6b3d9a;
+  --icon-color: #b44aff;
+  --header-bg: #0d0816;
+  --nav-bg: #0d0816;
+  --nav-text: #efe6ff;
+  --link-color: #b44aff;
+  --link-hover-color: #d4a0ff;
+  --accent: #b44aff;
+  --accent-hover: #d4a0ff;
+  --accent-soft: rgba(180, 74, 255, 0.16);
+  --on-accent: #120818;
+  --header-border: rgba(180, 74, 255, 0.35);
+  --nav-border: rgba(180, 74, 255, 0.28);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 8px 28px rgba(70, 20, 110, 0.5);
+  --page-title-color: #b44aff;
+  --page-title-font: "Orbitron", "Exo 2", sans-serif;
+  --page-title-tracking: 0.14em;
+  --page-title-transform: uppercase;
+  --sw-accent: #b44aff;
+  --sw-accent-muted: rgba(180, 74, 255, 0.3);
+  font-family: "Exo 2", "Segoe UI", sans-serif;
+}
+
 body.jedi-mode,
-body.sith-mode {
+body.sith-mode,
+body.windu-mode {
   background-color: var(--bg-primary);
 }
 
 body.jedi-mode::before,
 body.jedi-mode::after,
 body.sith-mode::before,
-body.sith-mode::after {
+body.sith-mode::after,
+body.windu-mode::before,
+body.windu-mode::after {
   content: "";
   position: fixed;
   inset: 0;
@@ -841,7 +875,8 @@ body.sith-mode::after {
 }
 
 body.jedi-mode::before,
-body.sith-mode::before {
+body.sith-mode::before,
+body.windu-mode::before {
   opacity: 0.7;
   background-image:
     radial-gradient(1px 1px at 8% 12%, #fff 99%, transparent),
@@ -883,31 +918,48 @@ body.sith-mode::after {
   animation: sw-star-twinkle 6s ease-in-out infinite alternate;
 }
 
+body.windu-mode::after {
+  opacity: 0.4;
+  background-image:
+    radial-gradient(1px 1px at 18% 22%, #b44aff 99%, transparent),
+    radial-gradient(1px 1px at 42% 48%, rgba(180, 74, 255, 0.75) 99%, transparent),
+    radial-gradient(1px 1px at 70% 33%, #b44aff 99%, transparent),
+    radial-gradient(1px 1px at 85% 80%, rgba(180, 74, 255, 0.65) 99%, transparent),
+    radial-gradient(1px 1px at 55% 12%, #d4a0ff 99%, transparent),
+    radial-gradient(ellipse 55% 35% at 50% 110%, rgba(100, 40, 160, 0.26), transparent 70%);
+  animation: sw-star-twinkle 6s ease-in-out infinite alternate;
+}
+
 body.jedi-mode #root,
-body.sith-mode #root {
+body.sith-mode #root,
+body.windu-mode #root {
   position: relative;
   z-index: 1;
 }
 
 .jedi-mode .App-header,
-.sith-mode .App-header {
+.sith-mode .App-header,
+.windu-mode .App-header {
   border-bottom-color: var(--sw-accent-muted);
   box-shadow: 0 0 24px var(--accent-soft);
 }
 
 .jedi-mode .App-Navigation,
-.sith-mode .App-Navigation {
+.sith-mode .App-Navigation,
+.windu-mode .App-Navigation {
   border-right-color: var(--sw-accent-muted);
 }
 
 .jedi-mode .Navigation-content ul li a:hover,
-.sith-mode .Navigation-content ul li a:hover {
+.sith-mode .Navigation-content ul li a:hover,
+.windu-mode .Navigation-content ul li a:hover {
   background-color: var(--accent-soft);
   color: var(--sw-accent);
 }
 
 .jedi-mode .Navigation-content ul li a:hover .nav-icon,
-.sith-mode .Navigation-content ul li a:hover .nav-icon {
+.sith-mode .Navigation-content ul li a:hover .nav-icon,
+.windu-mode .Navigation-content ul li a:hover .nav-icon {
   color: var(--sw-accent);
   transform: scale(1.08);
 }
@@ -920,19 +972,26 @@ body.sith-mode #root {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff3b3b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
 }
 
+.windu-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b44aff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
 .jedi-mode select:focus,
-.sith-mode select:focus {
+.sith-mode select:focus,
+.windu-mode select:focus {
   border-color: var(--sw-accent);
   box-shadow: 0 0 0 1px var(--sw-accent-muted);
 }
 
 .jedi-mode a:not(.donate-button),
-.sith-mode a:not(.donate-button) {
+.sith-mode a:not(.donate-button),
+.windu-mode a:not(.donate-button) {
   color: var(--link-color);
 }
 
 .jedi-mode a:not(.donate-button):hover,
-.sith-mode a:not(.donate-button):hover {
+.sith-mode a:not(.donate-button):hover,
+.windu-mode a:not(.donate-button):hover {
   color: var(--link-hover-color);
 }
 
@@ -1583,7 +1642,8 @@ button:hover:not(:disabled) {
 
 .space-mode .textarea-wrapper:has(.transliteration-output),
 .jedi-mode .textarea-wrapper:has(.transliteration-output),
-.sith-mode .textarea-wrapper:has(.transliteration-output) {
+.sith-mode .textarea-wrapper:has(.transliteration-output),
+.windu-mode .textarea-wrapper:has(.transliteration-output) {
   border-color: var(--button-border);
 }
 
@@ -2465,7 +2525,8 @@ dialog.dialog-overlay {
 }
 
 .jedi-mode .baybayin-letter-blue,
-.sith-mode .baybayin-letter-blue {
+.sith-mode .baybayin-letter-blue,
+.windu-mode .baybayin-letter-blue {
   color: var(--sw-accent) !important;
 }
 
@@ -2522,7 +2583,8 @@ dialog.dialog-overlay {
 }
 
 .jedi-mode .aurebesh-letter-blue,
-.sith-mode .aurebesh-letter-blue {
+.sith-mode .aurebesh-letter-blue,
+.windu-mode .aurebesh-letter-blue {
   color: var(--sw-accent) !important;
 }
 
@@ -2842,7 +2904,8 @@ dialog.dialog-overlay {
 }
 
 .jedi-mode .letter-blue,
-.sith-mode .letter-blue {
+.sith-mode .letter-blue,
+.windu-mode .letter-blue {
   color: var(--sw-accent) !important;
 }
 
