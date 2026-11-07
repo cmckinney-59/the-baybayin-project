@@ -1,12 +1,17 @@
 /**
  * Theme Context
- * App theme: light | dark | space, with localStorage persistence.
+ * App theme: light | dark | space | deseret | deseret-dark, with localStorage persistence.
  */
 
 import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 
-export type AppTheme = "light" | "dark" | "space";
+export type AppTheme =
+  | "light"
+  | "dark"
+  | "space"
+  | "deseret"
+  | "deseret-dark";
 
 interface ThemeContextType {
   theme: AppTheme;
@@ -23,12 +28,29 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
   light: null,
   dark: "dark-mode",
   space: "space-mode",
+  deseret: "deseret-mode",
+  "deseret-dark": "deseret-dark-mode",
 };
+
+const VALID_THEMES: AppTheme[] = [
+  "light",
+  "dark",
+  "space",
+  "deseret",
+  "deseret-dark",
+];
+
+const ALL_THEME_CLASSES = [
+  "dark-mode",
+  "space-mode",
+  "deseret-mode",
+  "deseret-dark-mode",
+];
 
 function readStoredTheme(): AppTheme {
   const saved = localStorage.getItem("theme");
-  if (saved === "light" || saved === "dark" || saved === "space") {
-    return saved;
+  if (saved && VALID_THEMES.includes(saved as AppTheme)) {
+    return saved as AppTheme;
   }
 
   // Migrate from previous independent toggles
@@ -57,7 +79,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     const body = document.body;
-    body.classList.remove("dark-mode", "space-mode");
+    body.classList.remove(...ALL_THEME_CLASSES);
     const nextClass = THEME_CLASSES[theme];
     if (nextClass) body.classList.add(nextClass);
 

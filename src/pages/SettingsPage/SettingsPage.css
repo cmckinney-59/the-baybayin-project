@@ -17,6 +17,8 @@
 
 .theme-selector {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   border: 1px solid var(--button-border);
   border-radius: 8px;
   overflow: hidden;
@@ -29,10 +31,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 4.5rem;
-  padding: 0.45rem 0.85rem;
+  min-width: 4rem;
+  padding: 0.45rem 0.7rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-secondary);
   border-right: 1px solid var(--button-border);

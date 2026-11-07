@@ -78,6 +78,22 @@
   white-space: nowrap;
 }
 
+.deseret-mode .header-wordmark,
+.deseret-dark-mode .header-wordmark {
+  font-family: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: #f4efe4;
+}
+
+.deseret-mode .header-tagline,
+.deseret-dark-mode .header-tagline {
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  letter-spacing: 0.12em;
+  color: var(--gold-soft);
+}
+
 .space-mode .header-wordmark {
   color: var(--sw-yellow);
   letter-spacing: 0.18em;

@@ -198,6 +198,175 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
+/* Deseret Modes — temple navy + soft gold (from Deseret Alphabet Society) */
+.deseret-mode,
+.deseret-dark-mode {
+  --navy: #0c2340;
+  --navy-mid: #163a5f;
+  --navy-soft: #2a4f73;
+  --gold: #c5a572;
+  --gold-deep: #9a7b4f;
+  --gold-soft: #e8d9b8;
+  --stone: #eef1f5;
+  --paper: #fafbfc;
+  --ink: #1c2430;
+  --ink-muted: #4a5563;
+
+  --accent: var(--gold);
+  --accent-hover: var(--gold-deep);
+  --accent-soft: rgba(197, 165, 114, 0.22);
+  --on-accent: #0c2340;
+  --header-border: var(--gold);
+  --nav-border: rgba(197, 165, 114, 0.45);
+  --page-title-font: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
+  --page-title-tracking: 0.03em;
+  --page-title-transform: none;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.deseret-mode {
+  --bg-primary: var(--paper);
+  --bg-secondary: #e6ebf2;
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-muted);
+  --button-bg: #ffffff;
+  --button-border: #c5ced9;
+  --icon-color: #f4efe4;
+  --header-bg: var(--navy);
+  --nav-bg: var(--navy);
+  --nav-text: #f4efe4;
+  --link-color: var(--navy-mid);
+  --link-hover-color: var(--gold-deep);
+  --shadow-sm: 0 1px 2px rgba(12, 35, 64, 0.08);
+  --shadow-md: 0 8px 24px rgba(12, 35, 64, 0.16);
+  --page-title-color: var(--navy);
+}
+
+.deseret-dark-mode {
+  --bg-primary: #0a1624;
+  --bg-secondary: #152538;
+  --text-primary: #f0ebe3;
+  --text-secondary: #b7c0cc;
+  --button-bg: #1a2f45;
+  --button-border: #3a536e;
+  --icon-color: var(--gold-soft);
+  --header-bg: #08131f;
+  --nav-bg: #08131f;
+  --nav-text: #f0ebe3;
+  --link-color: var(--gold);
+  --link-hover-color: var(--gold-soft);
+  --accent-hover: var(--gold-soft);
+  --accent-soft: rgba(197, 165, 114, 0.18);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --page-title-color: var(--gold-soft);
+}
+
+body.deseret-mode,
+body.deseret-dark-mode {
+  background-color: var(--bg-primary);
+  background-attachment: fixed;
+}
+
+body.deseret-mode {
+  background-image:
+    radial-gradient(
+      ellipse 120% 70% at 50% -10%,
+      rgba(12, 35, 64, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 100% 100%,
+      rgba(197, 165, 114, 0.12),
+      transparent 50%
+    ),
+    linear-gradient(180deg, var(--stone) 0%, var(--paper) 40%, var(--paper) 100%);
+}
+
+body.deseret-dark-mode {
+  background-image:
+    radial-gradient(
+      ellipse 120% 70% at 50% -10%,
+      rgba(197, 165, 114, 0.1),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #08131f 0%, #0a1624 45%, #0d1c2e 100%);
+}
+
+body.deseret-mode #root,
+body.deseret-dark-mode #root {
+  position: relative;
+  z-index: 1;
+}
+
+.deseret-mode .App-header,
+.deseret-dark-mode .App-header {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(197, 165, 114, 0.18) 0%,
+      transparent 42%
+    ),
+    var(--header-bg);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(12, 35, 64, 0.28);
+}
+
+.deseret-mode .App-Navigation,
+.deseret-dark-mode .App-Navigation {
+  border-right-color: var(--nav-border);
+}
+
+.deseret-mode .Navigation-content ul li a:hover,
+.deseret-dark-mode .Navigation-content ul li a:hover {
+  background-color: rgba(197, 165, 114, 0.14);
+  color: var(--gold-soft);
+}
+
+.deseret-mode .Navigation-content ul li a:hover .nav-icon,
+.deseret-mode .Navigation-content ul li a.is-active,
+.deseret-mode .Navigation-content ul li a.is-active .nav-icon,
+.deseret-dark-mode .Navigation-content ul li a:hover .nav-icon,
+.deseret-dark-mode .Navigation-content ul li a.is-active,
+.deseret-dark-mode .Navigation-content ul li a.is-active .nav-icon {
+  color: var(--gold-soft);
+}
+
+.deseret-mode .letter-blue,
+.deseret-mode .baybayin-letter-blue,
+.deseret-mode .aurebesh-letter-blue {
+  color: var(--gold-deep) !important;
+}
+
+.deseret-dark-mode .letter-blue,
+.deseret-dark-mode .baybayin-letter-blue,
+.deseret-dark-mode .aurebesh-letter-blue {
+  color: var(--gold) !important;
+}
+
+.deseret-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c2340' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.deseret-dark-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8d9b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.deseret-mode select:focus,
+.deseret-dark-mode select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(197, 165, 114, 0.35);
+}
+
+.deseret-mode select:hover {
+  border-color: var(--navy-soft);
+}
+
+.deseret-dark-mode select:hover {
+  border-color: var(--gold);
+}
+
 /* Space Mode — crawl yellow on deep space */
 .space-mode {
   --bg-primary: #050608;

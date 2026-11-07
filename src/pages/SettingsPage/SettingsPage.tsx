@@ -10,6 +10,8 @@ const THEME_OPTIONS: { value: AppTheme; label: string }[] = [
   { value: "light", label: "Light" },
   { value: "dark", label: "Dark" },
   { value: "space", label: "Space" },
+  { value: "deseret", label: "Deseret" },
+  { value: "deseret-dark", label: "Deseret Dark" },
 ];
 
 export default function SettingsPage() {
@@ -28,7 +30,7 @@ export default function SettingsPage() {
           <h2>Theme</h2>
           <p className="setting-help">
             Light for daytime reading, Dark for low light, Space for a cinematic
-            look.
+            look, Deseret and Deseret Dark for navy-and-gold pioneer styling.
           </p>
         </div>
         <div className="theme-selector" role="radiogroup" aria-label="Theme">
