@@ -79,19 +79,56 @@
 }
 
 .deseret-mode .header-wordmark,
-.deseret-dark-mode .header-wordmark {
+.deseret-dark-mode .header-wordmark,
+.doctrina-mode .header-wordmark,
+.pina-mode .header-wordmark {
   font-family: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: none;
+}
+
+.deseret-mode .header-wordmark,
+.deseret-dark-mode .header-wordmark {
   color: #f4efe4;
+}
+
+.doctrina-mode .header-wordmark {
+  color: #f3ead7;
+}
+
+.pina-mode .header-wordmark {
+  color: #f7f2e8;
+}
+
+.deseret-mode .header-tagline,
+.deseret-dark-mode .header-tagline,
+.doctrina-mode .header-tagline,
+.pina-mode .header-tagline {
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  letter-spacing: 0.12em;
 }
 
 .deseret-mode .header-tagline,
 .deseret-dark-mode .header-tagline {
-  font-family: "Source Sans 3", "Segoe UI", sans-serif;
-  letter-spacing: 0.12em;
   color: var(--gold-soft);
+}
+
+.doctrina-mode .header-tagline {
+  color: var(--copper-soft);
+}
+
+.pina-mode .header-tagline {
+  color: var(--champagne);
+}
+
+.mayon-mode .header-wordmark {
+  color: var(--ember);
+  letter-spacing: 0.12em;
+}
+
+.mayon-mode .header-tagline {
+  color: var(--smoke);
 }
 
 .space-mode .header-wordmark {

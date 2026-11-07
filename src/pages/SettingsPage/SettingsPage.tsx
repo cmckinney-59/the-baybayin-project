@@ -124,6 +124,45 @@ const THEME_GROUPS: ThemeGroup[] = [
       },
     ],
   },
+  {
+    id: "filipino",
+    title: "Filipino",
+    options: [
+      {
+        value: "doctrina",
+        label: "Doctrina",
+        blurb: "Manuscript parchment",
+        swatch: {
+          bg: "#f3ead7",
+          surface: "#2a2118",
+          accent: "#b87333",
+          text: "#f3ead7",
+        },
+      },
+      {
+        value: "pina",
+        label: "Piña",
+        blurb: "Ivory cloth and indigo",
+        swatch: {
+          bg: "#f7f2e8",
+          surface: "#1e3a5f",
+          accent: "#c9a46a",
+          text: "#f7f2e8",
+        },
+      },
+      {
+        value: "mayon",
+        label: "Mayon",
+        blurb: "Ash and lava amber",
+        swatch: {
+          bg: "#1a1614",
+          surface: "#2c2826",
+          accent: "#e8923a",
+          text: "#f2e6d8",
+        },
+      },
+    ],
+  },
 ];
 
 const ALL_THEME_OPTIONS = THEME_GROUPS.flatMap((group) => group.options);

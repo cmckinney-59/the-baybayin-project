@@ -13,7 +13,10 @@ export type AppTheme =
   | "jedi"
   | "sith"
   | "deseret"
-  | "deseret-dark";
+  | "deseret-dark"
+  | "doctrina"
+  | "pina"
+  | "mayon";
 
 interface ThemeContextType {
   theme: AppTheme;
@@ -34,6 +37,9 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
   sith: "sith-mode",
   deseret: "deseret-mode",
   "deseret-dark": "deseret-dark-mode",
+  doctrina: "doctrina-mode",
+  pina: "pina-mode",
+  mayon: "mayon-mode",
 };
 
 const VALID_THEMES: AppTheme[] = [
@@ -44,6 +50,9 @@ const VALID_THEMES: AppTheme[] = [
   "sith",
   "deseret",
   "deseret-dark",
+  "doctrina",
+  "pina",
+  "mayon",
 ];
 
 const ALL_THEME_CLASSES = [
@@ -53,6 +62,9 @@ const ALL_THEME_CLASSES = [
   "sith-mode",
   "deseret-mode",
   "deseret-dark-mode",
+  "doctrina-mode",
+  "pina-mode",
+  "mayon-mode",
 ];
 
 function readStoredTheme(): AppTheme {

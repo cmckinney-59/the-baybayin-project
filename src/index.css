@@ -367,6 +367,267 @@ body.deseret-dark-mode #root {
   border-color: var(--gold);
 }
 
+/* Filipino Modes — Doctrina, Piña, Mayon */
+.doctrina-mode,
+.pina-mode {
+  --page-title-font: "Cormorant Garamond", "Palatino Linotype", Palatino, serif;
+  --page-title-tracking: 0.02em;
+  --page-title-transform: none;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.doctrina-mode {
+  --parchment: #f3ead7;
+  --parchment-deep: #e6d7bb;
+  --ink: #2a2118;
+  --ink-muted: #6a5a48;
+  --copper: #b87333;
+  --copper-deep: #8f5524;
+  --copper-soft: #e2c19a;
+
+  --bg-primary: var(--parchment);
+  --bg-secondary: var(--parchment-deep);
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-muted);
+  --button-bg: #faf4e8;
+  --button-border: #cbb89a;
+  --icon-color: var(--copper-soft);
+  --header-bg: var(--ink);
+  --nav-bg: var(--ink);
+  --nav-text: #f3ead7;
+  --link-color: var(--copper-deep);
+  --link-hover-color: var(--copper);
+  --accent: var(--copper);
+  --accent-hover: var(--copper-deep);
+  --accent-soft: rgba(184, 115, 51, 0.2);
+  --on-accent: #fff8ef;
+  --header-border: var(--copper);
+  --nav-border: rgba(184, 115, 51, 0.4);
+  --shadow-sm: 0 1px 2px rgba(42, 33, 24, 0.1);
+  --shadow-md: 0 8px 24px rgba(42, 33, 24, 0.16);
+  --page-title-color: var(--ink);
+}
+
+.pina-mode {
+  --ivory: #f7f2e8;
+  --ivory-deep: #ebe2d0;
+  --indigo: #1e3a5f;
+  --indigo-mid: #2c4f7a;
+  --champagne: #c9a46a;
+  --champagne-deep: #a8844c;
+  --ink: #243044;
+
+  --bg-primary: var(--ivory);
+  --bg-secondary: var(--ivory-deep);
+  --text-primary: var(--ink);
+  --text-secondary: #5d6b7c;
+  --button-bg: #fffcf6;
+  --button-border: #d5c7ae;
+  --icon-color: #f7f2e8;
+  --header-bg: var(--indigo);
+  --nav-bg: var(--indigo);
+  --nav-text: #f7f2e8;
+  --link-color: var(--indigo-mid);
+  --link-hover-color: var(--champagne-deep);
+  --accent: var(--champagne);
+  --accent-hover: var(--champagne-deep);
+  --accent-soft: rgba(201, 164, 106, 0.22);
+  --on-accent: #1e3a5f;
+  --header-border: var(--champagne);
+  --nav-border: rgba(201, 164, 106, 0.4);
+  --shadow-sm: 0 1px 2px rgba(30, 58, 95, 0.08);
+  --shadow-md: 0 8px 24px rgba(30, 58, 95, 0.14);
+  --page-title-color: var(--indigo);
+}
+
+.mayon-mode {
+  --ash: #1a1614;
+  --ash-mid: #2c2826;
+  --ash-soft: #3a3431;
+  --ember: #e8923a;
+  --ember-deep: #c46f22;
+  --ember-soft: #f0c08a;
+  --smoke: #d8cfc4;
+
+  --bg-primary: var(--ash);
+  --bg-secondary: var(--ash-mid);
+  --text-primary: #f2e6d8;
+  --text-secondary: #b8ada0;
+  --button-bg: #241f1c;
+  --button-border: #5a4d42;
+  --icon-color: var(--ember);
+  --header-bg: #120f0e;
+  --nav-bg: #120f0e;
+  --nav-text: #f2e6d8;
+  --link-color: var(--ember);
+  --link-hover-color: var(--ember-soft);
+  --accent: var(--ember);
+  --accent-hover: var(--ember-soft);
+  --accent-soft: rgba(232, 146, 58, 0.18);
+  --on-accent: #1a1614;
+  --header-border: rgba(232, 146, 58, 0.45);
+  --nav-border: rgba(232, 146, 58, 0.28);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.5);
+  --page-title-color: var(--ember);
+  --page-title-font: "Exo 2", "Segoe UI", sans-serif;
+  --page-title-tracking: 0.08em;
+  --page-title-transform: uppercase;
+  font-family: "Exo 2", "Segoe UI", sans-serif;
+}
+
+body.doctrina-mode,
+body.pina-mode,
+body.mayon-mode {
+  background-color: var(--bg-primary);
+  background-attachment: fixed;
+}
+
+body.doctrina-mode {
+  background-image:
+    radial-gradient(
+      ellipse 90% 55% at 12% 0%,
+      rgba(184, 115, 51, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 100% 100%,
+      rgba(42, 33, 24, 0.08),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #e8dcc4 0%, var(--parchment) 42%, #f6efdf 100%);
+}
+
+body.pina-mode {
+  background-image:
+    radial-gradient(
+      ellipse 100% 60% at 50% -15%,
+      rgba(30, 58, 95, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 45% at 100% 100%,
+      rgba(201, 164, 106, 0.14),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #efe6d5 0%, var(--ivory) 45%, #faf6ee 100%);
+}
+
+body.mayon-mode {
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% 110%,
+      rgba(232, 146, 58, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 0% 0%,
+      rgba(90, 60, 30, 0.2),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #120f0e 0%, #1a1614 50%, #211b18 100%);
+}
+
+body.doctrina-mode #root,
+body.pina-mode #root,
+body.mayon-mode #root {
+  position: relative;
+  z-index: 1;
+}
+
+.doctrina-mode .App-header,
+.pina-mode .App-header {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(201, 164, 106, 0.16) 0%,
+      transparent 42%
+    ),
+    var(--header-bg);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--accent);
+}
+
+.mayon-mode .App-header {
+  border-bottom-color: var(--header-border);
+  box-shadow: 0 0 28px rgba(232, 146, 58, 0.12);
+}
+
+.doctrina-mode .App-Navigation,
+.pina-mode .App-Navigation,
+.mayon-mode .App-Navigation {
+  border-right-color: var(--nav-border);
+}
+
+.doctrina-mode .Navigation-content ul li a:hover,
+.pina-mode .Navigation-content ul li a:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.doctrina-mode .Navigation-content ul li a:hover .nav-icon,
+.doctrina-mode .Navigation-content ul li a.is-active,
+.doctrina-mode .Navigation-content ul li a.is-active .nav-icon,
+.pina-mode .Navigation-content ul li a:hover .nav-icon,
+.pina-mode .Navigation-content ul li a.is-active,
+.pina-mode .Navigation-content ul li a.is-active .nav-icon {
+  color: var(--accent);
+}
+
+.mayon-mode .Navigation-content ul li a:hover {
+  background-color: var(--accent-soft);
+  color: var(--ember-soft);
+}
+
+.mayon-mode .Navigation-content ul li a:hover .nav-icon,
+.mayon-mode .Navigation-content ul li a.is-active,
+.mayon-mode .Navigation-content ul li a.is-active .nav-icon {
+  color: var(--ember-soft);
+}
+
+.doctrina-mode .letter-blue,
+.doctrina-mode .baybayin-letter-blue,
+.doctrina-mode .aurebesh-letter-blue {
+  color: var(--copper-deep) !important;
+}
+
+.pina-mode .letter-blue,
+.pina-mode .baybayin-letter-blue,
+.pina-mode .aurebesh-letter-blue {
+  color: var(--champagne-deep) !important;
+}
+
+.mayon-mode .letter-blue,
+.mayon-mode .baybayin-letter-blue,
+.mayon-mode .aurebesh-letter-blue {
+  color: var(--ember) !important;
+}
+
+.doctrina-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2118' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.pina-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.mayon-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8923a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.doctrina-mode select:focus,
+.pina-mode select:focus,
+.mayon-mode select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.doctrina-mode select:hover,
+.pina-mode select:hover,
+.mayon-mode select:hover {
+  border-color: var(--accent);
+}
+
 /* Space Mode — crawl yellow on deep space */
 .space-mode {
   --bg-primary: #050608;
