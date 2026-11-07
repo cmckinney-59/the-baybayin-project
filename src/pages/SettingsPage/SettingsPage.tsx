@@ -55,6 +55,28 @@ const THEME_GROUPS: ThemeGroup[] = [
           text: "#ffffff",
         },
       },
+      {
+        value: "light-2",
+        label: "Light 2.0",
+        blurb: "Softer everyday light",
+        swatch: {
+          bg: "#f3f5f8",
+          surface: "#e6ebf2",
+          accent: "#2c5aa0",
+          text: "#1f2933",
+        },
+      },
+      {
+        value: "dark-2",
+        label: "Dark 2.0",
+        blurb: "Deeper everyday dark",
+        swatch: {
+          bg: "#121212",
+          surface: "#1e1e1e",
+          accent: "#74b9f7",
+          text: "#f2f4f7",
+        },
+      },
     ],
   },
   {

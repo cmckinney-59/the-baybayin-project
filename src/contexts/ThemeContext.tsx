@@ -9,6 +9,8 @@ import type { ReactNode } from "react";
 export type AppTheme =
   | "light"
   | "dark"
+  | "light-2"
+  | "dark-2"
   | "space"
   | "jedi"
   | "sith"
@@ -33,6 +35,8 @@ interface ThemeProviderProps {
 const THEME_CLASSES: Record<AppTheme, string | null> = {
   light: null,
   dark: "dark-mode",
+  "light-2": "light-2-mode",
+  "dark-2": "dark-2-mode",
   space: "space-mode",
   jedi: "jedi-mode",
   sith: "sith-mode",
@@ -47,6 +51,8 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
 const VALID_THEMES: AppTheme[] = [
   "light",
   "dark",
+  "light-2",
+  "dark-2",
   "space",
   "jedi",
   "sith",
@@ -60,6 +66,8 @@ const VALID_THEMES: AppTheme[] = [
 
 const ALL_THEME_CLASSES = [
   "dark-mode",
+  "light-2-mode",
+  "dark-2-mode",
   "space-mode",
   "jedi-mode",
   "sith-mode",

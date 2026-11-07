@@ -78,6 +78,16 @@
   white-space: nowrap;
 }
 
+.light-2-mode .header-wordmark,
+.dark-2-mode .header-wordmark {
+  letter-spacing: 0.1em;
+}
+
+.light-2-mode .header-tagline,
+.dark-2-mode .header-tagline {
+  color: var(--text-secondary);
+}
+
 .deseret-mode .header-wordmark,
 .deseret-dark-mode .header-wordmark,
 .doctrina-mode .header-wordmark,

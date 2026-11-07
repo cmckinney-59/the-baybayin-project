@@ -198,6 +198,149 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
+/* Everyday 2.0 — polished quiet defaults (originals unchanged) */
+.light-2-mode {
+  --bg-primary: #f7f8fa;
+  --bg-secondary: #eef1f5;
+  --text-primary: #1f2933;
+  --text-secondary: #5b6775;
+  --button-bg: #ffffff;
+  --button-border: #c9d1db;
+  --icon-color: #1f2933;
+  --header-bg: #e8edf3;
+  --nav-bg: #e8edf3;
+  --nav-text: #1f2933;
+  --link-color: #2c5aa0;
+  --link-hover-color: #1a3d6b;
+  --accent: #2c5aa0;
+  --accent-hover: #1a3d6b;
+  --accent-soft: rgba(44, 90, 160, 0.12);
+  --on-accent: #ffffff;
+  --header-border: #b7c2d0;
+  --nav-border: #d3dae4;
+  --shadow-sm: 0 1px 2px rgba(31, 41, 51, 0.06);
+  --shadow-md: 0 10px 28px rgba(31, 41, 51, 0.1);
+  --page-title-color: #1f2933;
+  --page-title-font: "Source Sans 3", "Segoe UI", sans-serif;
+  --page-title-tracking: 0.01em;
+  --page-title-transform: none;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.dark-2-mode {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #f2f4f7;
+  --text-secondary: #a8b0bc;
+  --button-bg: #2a2a2a;
+  --button-border: #3f3f3f;
+  --icon-color: #f2f4f7;
+  --header-bg: #181818;
+  --nav-bg: #181818;
+  --nav-text: #f2f4f7;
+  --link-color: #74b9f7;
+  --link-hover-color: #a6d4fb;
+  --accent: #74b9f7;
+  --accent-hover: #a6d4fb;
+  --accent-soft: rgba(116, 185, 247, 0.16);
+  --on-accent: #121212;
+  --header-border: #2f2f2f;
+  --nav-border: #2a2a2a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --page-title-color: #f2f4f7;
+  --page-title-font: "Source Sans 3", "Segoe UI", sans-serif;
+  --page-title-tracking: 0.01em;
+  --page-title-transform: none;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+body.light-2-mode,
+body.dark-2-mode {
+  background-color: var(--bg-primary);
+  background-attachment: fixed;
+}
+
+body.light-2-mode {
+  background-image:
+    radial-gradient(
+      ellipse 110% 65% at 50% -20%,
+      rgba(44, 90, 160, 0.07),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #eef2f7 0%, #f7f8fa 42%, #f9fafb 100%);
+}
+
+body.dark-2-mode {
+  background-image:
+    radial-gradient(
+      ellipse 110% 65% at 50% -20%,
+      rgba(116, 185, 247, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #0e0e0e 0%, #121212 48%, #161616 100%);
+}
+
+body.light-2-mode #root,
+body.dark-2-mode #root {
+  position: relative;
+  z-index: 1;
+}
+
+.light-2-mode .App-header,
+.dark-2-mode .App-header {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  box-shadow: var(--shadow-sm);
+}
+
+.light-2-mode .App-header {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      transparent 70%
+    ),
+    var(--header-bg);
+  border-bottom-color: var(--header-border);
+}
+
+.dark-2-mode .App-header {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(116, 185, 247, 0.06) 0%,
+      transparent 65%
+    ),
+    var(--header-bg);
+  border-bottom-color: var(--header-border);
+}
+
+.light-2-mode .App-Navigation,
+.dark-2-mode .App-Navigation {
+  border-right-color: var(--nav-border);
+}
+
+.light-2-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6775' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.dark-2-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a8b0bc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.light-2-mode .letter-blue,
+.light-2-mode .baybayin-letter-blue,
+.light-2-mode .aurebesh-letter-blue {
+  color: var(--accent) !important;
+}
+
+.dark-2-mode .letter-blue,
+.dark-2-mode .baybayin-letter-blue,
+.dark-2-mode .aurebesh-letter-blue {
+  color: var(--accent) !important;
+}
+
 /* Deseret Modes — temple navy + soft gold (from Deseret Alphabet Society) */
 .deseret-mode,
 .deseret-dark-mode {
