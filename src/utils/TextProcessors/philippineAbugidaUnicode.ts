@@ -325,6 +325,9 @@ export function replaceLettersWithUnicode(
   const eKudlits = activeKudlits(config, useHollowKudlits, "E");
   const oKudlits = activeKudlits(config, useHollowKudlits, "O");
 
+  // Explicit consonant+ must run before the special whole-word "ng" form,
+  // otherwise "ng+" is treated as word "ng" plus a leftover "+".
+  text = replaceExplicitPlusViramaUnicode(text, config);
   text = replaceNgAndMgaUnicode(text, config);
   text = removeAAfterConsonantUnicode(text, config);
   text = replaceEWithKudlitUnicode(text, config, eKudlits);
@@ -332,7 +335,6 @@ export function replaceLettersWithUnicode(
   text = replaceIWithKudlitUnicode(text, config, config.kudlits);
   text = replaceUWithKudlitUnicode(text, config, config.kudlits);
   text = replaceStandaloneVowelsUnicode(text, config);
-  text = replaceExplicitPlusViramaUnicode(text, config);
   text = replaceStandaloneConsonantsUnicode(text, config);
   text = text.replace(/\+/g, config.virama);
 
