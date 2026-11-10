@@ -412,6 +412,27 @@
 }
 
 @font-face {
+  font-family: "IDC Hesperapis";
+  src: url("./assets/fonts/deseret/Hesperapis/Hesperapis-Regular.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IDC Xenoglossa";
+  src: url("./assets/fonts/deseret/Xenoglossa/IDCXenoglossa.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IDC Xenoglossa Alt";
+  src: url("./assets/fonts/deseret/Xenoglossa/IDCXenoglossaAlt.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Unifont Upper";
   src: url("./assets/fonts/deseret/UnifontUpper/unifont_upper-18.0.01.otf")
     format("opentype");
@@ -1232,6 +1253,17 @@
 .deseret-font-nomada {
   /* Capitals only (40 glyphs); Noto fills lowercase Deseret. */
   font-family: "IDC Nomada Gothic", "Noto Sans Deseret", sans-serif;
+}
+.deseret-font-hesperapis {
+  font-family: "IDC Hesperapis", "Noto Sans Deseret", serif;
+}
+.deseret-font-xenoglossa,
+.deseret-font-xenoglossa-alt {
+  /* Oi and Ew are absent from the source patterns; Noto fills those two. */
+  font-family: "IDC Xenoglossa", "Noto Sans Deseret", monospace;
+}
+.deseret-font-xenoglossa-alt {
+  font-family: "IDC Xenoglossa Alt", "Noto Sans Deseret", monospace;
 }
 .deseret-font-unifont-upper {
   font-family: "Unifont Upper", monospace;

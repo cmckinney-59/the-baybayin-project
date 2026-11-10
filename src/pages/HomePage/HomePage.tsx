@@ -4,6 +4,7 @@ import {
   AiOutlineInfoCircle,
   AiOutlineProject,
   AiOutlineSetting,
+  AiOutlineShopping,
 } from "react-icons/ai";
 import { PiTranslate } from "react-icons/pi";
 
@@ -38,6 +39,13 @@ export default function HomePage() {
           description="Browse completed and in-progress transcriptions and downloads."
           icon={<AiOutlineProject />}
           onClick={() => navigate("/projects")}
+        />
+
+        <NavCard
+          title="Shop"
+          description="Pre-order proclamation prints in Baybayin, Deseret, and more."
+          icon={<AiOutlineShopping />}
+          onClick={() => navigate("/shop")}
         />
 
         <NavCard

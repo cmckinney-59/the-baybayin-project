@@ -1,0 +1,187 @@
+.shop-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0 3rem;
+  text-align: left;
+}
+
+.shop-intro,
+.shop-action,
+.shop-catalog {
+  margin-bottom: 2rem;
+}
+
+.shop-intro {
+  padding: 1.5rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--button-border);
+}
+
+.shop-intro p,
+.shop-action p,
+.shop-card-description {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.shop-section-title {
+  margin: 0 0 0.85rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--button-border);
+}
+
+.shop-action p {
+  margin-bottom: 1.1rem;
+}
+
+.shop-button,
+.shop-card-action,
+.space-mode a.shop-button,
+.space-mode a.shop-button:hover,
+.jedi-mode a.shop-button,
+.jedi-mode a.shop-button:hover,
+.sith-mode a.shop-button,
+.sith-mode a.shop-button:hover,
+.windu-mode a.shop-button,
+.windu-mode a.shop-button:hover,
+.space-mode a.shop-card-action,
+.space-mode a.shop-card-action:hover,
+.jedi-mode a.shop-card-action,
+.jedi-mode a.shop-card-action:hover,
+.sith-mode a.shop-card-action,
+.sith-mode a.shop-card-action:hover,
+.windu-mode a.shop-card-action,
+.windu-mode a.shop-card-action:hover {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+  border-radius: var(--radius-md, 10px);
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.shop-button:hover,
+.shop-card-action:hover,
+.space-mode a.shop-button:hover,
+.jedi-mode a.shop-button:hover,
+.sith-mode a.shop-button:hover,
+.windu-mode a.shop-button:hover,
+.space-mode a.shop-card-action:hover,
+.jedi-mode a.shop-card-action:hover,
+.sith-mode a.shop-card-action:hover,
+.windu-mode a.shop-card-action:hover {
+  background-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+.shop-button:focus-visible,
+.shop-card-action:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.shop-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.shop-card {
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--button-border);
+}
+
+.shop-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.shop-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
+  border: 1px solid var(--button-border);
+  background: var(--bg-secondary);
+}
+
+.shop-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.shop-card-status {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.shop-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.shop-card-script {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.shop-card-description {
+  margin: 0.2rem 0 0.75rem;
+}
+
+.shop-card-action {
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 700px) {
+  .shop-card {
+    grid-template-columns: minmax(11rem, 15rem) 1fr;
+    gap: 1.35rem;
+    align-items: start;
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-page {
+    padding: 0 1rem 2.5rem;
+  }
+
+  .shop-button,
+  .shop-card-action {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}

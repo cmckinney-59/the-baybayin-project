@@ -6,6 +6,9 @@ export type DeseretFontId =
   | "desalph"
   | "xylocopa"
   | "nomada"
+  | "hesperapis"
+  | "xenoglossa"
+  | "xenoglossa-alt"
   | "unifont-upper"
   | "adamic-bee"
   | "times-bee"
@@ -93,6 +96,18 @@ const DESERET_FONT_ATTRIBUTION: Partial<
   nomada: {
     creator: "N E Davis / Illinois Deseret Consortium",
     sourceUrl: "https://github.com/sigilante/idc-nomada",
+  },
+  hesperapis: {
+    creator: "N. E. Davis / Illinois Deseret Consortium",
+    sourceUrl: "https://github.com/sigilante/idc-hesperapis",
+  },
+  xenoglossa: {
+    creator: "Sigilante",
+    sourceUrl: "https://github.com/sigilante/idc-xenoglossa",
+  },
+  "xenoglossa-alt": {
+    creator: "Sigilante",
+    sourceUrl: "https://github.com/sigilante/idc-xenoglossa",
   },
   "unifont-upper": {
     creator: "Roman Czyborra / Paul Hardy et al.",
@@ -188,6 +203,39 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     downloadName: "IDCNomada.otf",
     supportsUnicode: true,
     license: "OFL",
+    category: "unicode",
+  },
+  {
+    id: "hesperapis",
+    label: "IDC Hesperapis",
+    familyName: "IDC Hesperapis",
+    outputFontClass: "deseret-font-hesperapis",
+    downloadPath: "deseret/Hesperapis/Hesperapis-Regular.otf",
+    downloadName: "Hesperapis-Regular.otf",
+    supportsUnicode: true,
+    license: "OFL",
+    category: "unicode",
+  },
+  {
+    id: "xenoglossa",
+    label: "IDC Xenoglossa",
+    familyName: "IDC Xenoglossa",
+    outputFontClass: "deseret-font-xenoglossa",
+    downloadPath: "deseret/Xenoglossa/IDCXenoglossa.ttf",
+    downloadName: "IDCXenoglossa.ttf",
+    supportsUnicode: true,
+    license: "MIT",
+    category: "unicode",
+  },
+  {
+    id: "xenoglossa-alt",
+    label: "IDC Xenoglossa Alt",
+    familyName: "IDC Xenoglossa Alt",
+    outputFontClass: "deseret-font-xenoglossa-alt",
+    downloadPath: "deseret/Xenoglossa/IDCXenoglossaAlt.ttf",
+    downloadName: "IDCXenoglossaAlt.ttf",
+    supportsUnicode: true,
+    license: "MIT",
     category: "unicode",
   },
   {

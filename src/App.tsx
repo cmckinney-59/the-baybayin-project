@@ -10,6 +10,7 @@ import TransliteratorAlphabetOutlet from "./pages/TransliteratorPages/Transliter
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import DonatePage from "./pages/DonatePage/DonatePage";
+import ShopPage from "./pages/ShopPage/ShopPage";
 
 const router = createHashRouter([
   {
@@ -36,6 +37,10 @@ const router = createHashRouter([
       {
         path: "/settings",
         element: <SettingsPage />,
+      },
+      {
+        path: "/shop",
+        element: <ShopPage />,
       },
       {
         path: "/donate",
