@@ -30,6 +30,10 @@ const RESOURCE_LINKS = [
     href: "https://exhibits.lib.utah.edu/s/designing-deseret/page/home",
     text: "University of Utah Exhibit on Designing the Deseret Alphabet",
   },
+  {
+    href: "http://faculty.las.illinois.edu/rshosted/deseret.html",
+    text: "Illinois Deseret Consortium",
+  },
 ];
 
 export default function DeseretMoreResources() {
