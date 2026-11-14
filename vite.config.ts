@@ -7,6 +7,14 @@ export default defineConfig({
   plugins: [react()],
   base: "/the-baybayin-project",
   assetsInclude: ["**/*.zip"],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:4243",
+        changeOrigin: true,
+      },
+    },
+  },
   build: {
     rollupOptions: {
       output: {

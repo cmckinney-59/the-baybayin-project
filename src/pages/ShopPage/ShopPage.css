@@ -6,9 +6,15 @@
 }
 
 .shop-intro,
-.shop-action,
 .shop-catalog {
   margin-bottom: 2rem;
+}
+
+.shop-status {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 .shop-intro {
@@ -19,7 +25,6 @@
 }
 
 .shop-intro p,
-.shop-action p,
 .shop-card-description {
   margin: 0;
   font-size: 1.05rem;
@@ -36,20 +41,7 @@
   border-bottom: 2px solid var(--button-border);
 }
 
-.shop-action p {
-  margin-bottom: 1.1rem;
-}
-
-.shop-button,
 .shop-card-action,
-.space-mode a.shop-button,
-.space-mode a.shop-button:hover,
-.jedi-mode a.shop-button,
-.jedi-mode a.shop-button:hover,
-.sith-mode a.shop-button,
-.sith-mode a.shop-button:hover,
-.windu-mode a.shop-button,
-.windu-mode a.shop-button:hover,
 .space-mode a.shop-card-action,
 .space-mode a.shop-card-action:hover,
 .jedi-mode a.shop-card-action,
@@ -61,6 +53,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  border: none;
   background-color: var(--accent);
   color: var(--on-accent);
   text-decoration: none;
@@ -68,18 +61,14 @@
   padding: 0.8rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
+  cursor: pointer;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
     transform 0.15s ease;
 }
 
-.shop-button:hover,
-.shop-card-action:hover,
-.space-mode a.shop-button:hover,
-.jedi-mode a.shop-button:hover,
-.sith-mode a.shop-button:hover,
-.windu-mode a.shop-button:hover,
+.shop-card-action:hover:not(:disabled),
 .space-mode a.shop-card-action:hover,
 .jedi-mode a.shop-card-action:hover,
 .sith-mode a.shop-card-action:hover,
@@ -88,7 +77,11 @@
   color: var(--on-accent);
 }
 
-.shop-button:focus-visible,
+.shop-card-action:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
 .shop-card-action:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -178,7 +171,6 @@
     padding: 0 1rem 2.5rem;
   }
 
-  .shop-button,
   .shop-card-action {
     width: 100%;
     justify-content: center;
