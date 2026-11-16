@@ -20,7 +20,10 @@ export type FontTableRow = {
 };
 
 const FONT_ASSETS = import.meta.glob(
-  "../assets/fonts/**/*.{zip,ttf,otf,woff,woff2,TTF,OTF,WOFF,WOFF2}",
+  [
+    "../assets/fonts/**/*.{zip,ttf,otf,woff,woff2,TTF,OTF,WOFF,WOFF2}",
+    "!../assets/fonts/**/unicode added/**",
+  ],
   {
     eager: true,
     query: "?url",
