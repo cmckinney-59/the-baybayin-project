@@ -34,6 +34,10 @@ const RESOURCE_LINKS = [
     href: "http://faculty.las.illinois.edu/rshosted/deseret.html",
     text: "Illinois Deseret Consortium",
   },
+  {
+    href: "https://www.chem.ucla.edu/~jericks/Historical%20or%20Technical/Linguistics/Deseret_Guide.pdf",
+    text: "A Complete Guide to Reading and Writing in the Deseret Alphabet",
+  },
 ];
 
 export default function DeseretMoreResources() {

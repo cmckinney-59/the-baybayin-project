@@ -17,13 +17,15 @@ export type FontTableRow = {
   license: string;
   creator?: string;
   sourceUrl?: string;
+  /**
+   * Optional table grouping. Unicode-remapped legacy faces are shown in a
+   * separate section with a short disclosure.
+   */
+  section?: "unicode-remapped";
 };
 
 const FONT_ASSETS = import.meta.glob(
-  [
-    "../assets/fonts/**/*.{zip,ttf,otf,woff,woff2,TTF,OTF,WOFF,WOFF2}",
-    "!../assets/fonts/**/unicode added/**",
-  ],
+  "../assets/fonts/**/*.{zip,ttf,otf,woff,woff2,TTF,OTF,WOFF,WOFF2}",
   {
     eager: true,
     query: "?url",
@@ -138,6 +140,9 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       license: font.license,
       creator: font.creator,
       sourceUrl: font.sourceUrl,
+      ...(font.downloadPath.includes("unicode added/")
+        ? { section: "unicode-remapped" as const }
+        : {}),
     }));
   }
 

@@ -601,6 +601,48 @@
 }
 
 @font-face {
+  font-family: "HuneyBee unicode";
+  src: url("./assets/fonts/deseret/unicode added/Huneybee-unicode-added.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bee Skep Serif unicode";
+  src: url("./assets/fonts/deseret/unicode added/beeskeps-unicode-added.otf")
+    format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Bateman unicode";
+  src: url("./assets/fonts/deseret/unicode added/DESERET-unicode-added.TTF")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Thibault unicode";
+  src: url("./assets/fonts/deseret/unicode added/Deseret-unicode-added.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Deseret Kearney unicode";
+  src: url("./assets/fonts/deseret/unicode added/Deseret_-unicode-added.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DeseretBee unicode";
+  src: url("./assets/fonts/deseret/unicode added/_DeseretBee-unicode-added.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Mellifera Deseret Master";
   src: url("./assets/fonts/deseret/Mellifera/MelliferaDeseretMaster.otf")
     format("opentype");
@@ -1339,6 +1381,24 @@
 }
 .deseret-font-deseret-bee-legacy {
   font-family: "DeseretBee Legacy", sans-serif;
+}
+.deseret-font-huneybee-unicode {
+  font-family: "HuneyBee unicode", "Noto Sans Deseret", sans-serif;
+}
+.deseret-font-bee-skep-unicode {
+  font-family: "Bee Skep Serif unicode", "Noto Sans Deseret", serif;
+}
+.deseret-font-legacy-unicode {
+  font-family: "Deseret Bateman unicode", "Noto Sans Deseret", serif;
+}
+.deseret-font-legacy-alt-unicode {
+  font-family: "Deseret Thibault unicode", "Noto Sans Deseret", serif;
+}
+.deseret-font-legacy-underscore-unicode {
+  font-family: "Deseret Kearney unicode", "Noto Sans Deseret", serif;
+}
+.deseret-font-deseret-bee-legacy-unicode {
+  font-family: "DeseretBee unicode", "Noto Sans Deseret", sans-serif;
 }
 .gallifreyan-font {
   font-family: "Gallifreyan", sans-serif;

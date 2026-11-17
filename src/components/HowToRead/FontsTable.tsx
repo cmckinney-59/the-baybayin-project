@@ -83,6 +83,153 @@ function FontInfoDialog({
   );
 }
 
+function FontTableBody({
+  rows,
+  onInfo,
+  onDownload,
+}: {
+  rows: FontTableRow[];
+  onInfo: (row: FontTableRow) => void;
+  onDownload: (downloadPath: string, downloadName: string) => void;
+}) {
+  return (
+    <tbody>
+      {rows.map((row) => {
+        const url = getFontDownloadUrl(row.downloadPath);
+        return (
+          <tr key={row.id}>
+            <td>{row.name}</td>
+            <td className={`fonts-table-sample ${row.fontClass}`}>
+              {row.sample}
+            </td>
+            <td>
+              <div className="fonts-table-actions">
+                <button
+                  type="button"
+                  className="fonts-table-icon-button"
+                  title={`Info for ${row.name}`}
+                  aria-label={`Info for ${row.name}`}
+                  onClick={() => onInfo(row)}
+                >
+                  <AiOutlineInfoCircle aria-hidden />
+                </button>
+                <button
+                  type="button"
+                  className="downloadButton fonts-table-download"
+                  disabled={!url}
+                  title={
+                    url
+                      ? `Download ${row.downloadName}`
+                      : "No downloadable file available"
+                  }
+                  aria-label={
+                    url
+                      ? `Download ${row.downloadName}`
+                      : "No downloadable file available"
+                  }
+                  onClick={() => onDownload(row.downloadPath, row.downloadName)}
+                >
+                  <AiOutlineDownload aria-hidden />
+                </button>
+              </div>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  );
+}
+
+function FontsDesktopTable({
+  rows,
+  onInfo,
+  onDownload,
+}: {
+  rows: FontTableRow[];
+  onInfo: (row: FontTableRow) => void;
+  onDownload: (downloadPath: string, downloadName: string) => void;
+}) {
+  if (rows.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="table-scroll-wrapper fonts-table-desktop">
+      <table className="alphabet-table fonts-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Sample</th>
+            <th aria-label="Actions" />
+          </tr>
+        </thead>
+        <FontTableBody rows={rows} onInfo={onInfo} onDownload={onDownload} />
+      </table>
+    </div>
+  );
+}
+
+function FontsMobileList({
+  rows,
+  onInfo,
+  onDownload,
+}: {
+  rows: FontTableRow[];
+  onInfo: (row: FontTableRow) => void;
+  onDownload: (downloadPath: string, downloadName: string) => void;
+}) {
+  if (rows.length === 0) {
+    return null;
+  }
+
+  return (
+    <ul className="fonts-mobile-list">
+      {rows.map((row) => {
+        const url = getFontDownloadUrl(row.downloadPath);
+        return (
+          <li key={row.id} className="fonts-mobile-card">
+            <div className="fonts-mobile-copy">
+              <p className="fonts-mobile-name">{row.name}</p>
+              <p className={`fonts-mobile-sample ${row.fontClass}`}>
+                {row.sample}
+              </p>
+            </div>
+            <div className="fonts-mobile-actions">
+              <button
+                type="button"
+                className="fonts-table-icon-button fonts-mobile-info"
+                title={`Info for ${row.name}`}
+                aria-label={`Info for ${row.name}`}
+                onClick={() => onInfo(row)}
+              >
+                <AiOutlineInfoCircle aria-hidden />
+              </button>
+              <button
+                type="button"
+                className="downloadButton fonts-mobile-download"
+                disabled={!url}
+                title={
+                  url
+                    ? `Download ${row.downloadName}`
+                    : "No downloadable file available"
+                }
+                aria-label={
+                  url
+                    ? `Download ${row.downloadName}`
+                    : "No downloadable file available"
+                }
+                onClick={() => onDownload(row.downloadPath, row.downloadName)}
+              >
+                <AiOutlineDownload aria-hidden />
+              </button>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export default function FontsTable() {
   const { currentAlphabet } = useAlphabet();
   const rows = getFontTableRows(currentAlphabet);
@@ -91,6 +238,11 @@ export default function FontsTable() {
   if (rows.length === 0) {
     return null;
   }
+
+  const standardRows = rows.filter((row) => row.section !== "unicode-remapped");
+  const unicodeRemappedRows = rows.filter(
+    (row) => row.section === "unicode-remapped",
+  );
 
   const handleDownload = (downloadPath: string, downloadName: string) => {
     const url = getFontDownloadUrl(downloadPath);
@@ -103,109 +255,37 @@ export default function FontsTable() {
 
   return (
     <>
-      <div className="table-scroll-wrapper fonts-table-desktop">
-        <table className="alphabet-table fonts-table">
-          <thead>
-            <tr>
-              <th>Font</th>
-              <th>Sample</th>
-              <th aria-label="Actions" />
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => {
-              const url = getFontDownloadUrl(row.downloadPath);
-              return (
-                <tr key={row.id}>
-                  <td>{row.name}</td>
-                  <td className={`fonts-table-sample ${row.fontClass}`}>
-                    {row.sample}
-                  </td>
-                  <td>
-                    <div className="fonts-table-actions">
-                      <button
-                        type="button"
-                        className="fonts-table-icon-button"
-                        title={`Info for ${row.name}`}
-                        aria-label={`Info for ${row.name}`}
-                        onClick={() => setInfoRow(row)}
-                      >
-                        <AiOutlineInfoCircle aria-hidden />
-                      </button>
-                      <button
-                        type="button"
-                        className="downloadButton fonts-table-download"
-                        disabled={!url}
-                        title={
-                          url
-                            ? `Download ${row.downloadName}`
-                            : "No downloadable file available"
-                        }
-                        aria-label={
-                          url
-                            ? `Download ${row.downloadName}`
-                            : "No downloadable file available"
-                        }
-                        onClick={() =>
-                          handleDownload(row.downloadPath, row.downloadName)
-                        }
-                      >
-                        <AiOutlineDownload aria-hidden />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <ul className="fonts-mobile-list">
-        {rows.map((row) => {
-          const url = getFontDownloadUrl(row.downloadPath);
-          return (
-            <li key={row.id} className="fonts-mobile-card">
-              <div className="fonts-mobile-copy">
-                <p className="fonts-mobile-name">{row.name}</p>
-                <p className={`fonts-mobile-sample ${row.fontClass}`}>
-                  {row.sample}
-                </p>
-              </div>
-              <div className="fonts-mobile-actions">
-                <button
-                  type="button"
-                  className="fonts-table-icon-button fonts-mobile-info"
-                  title={`Info for ${row.name}`}
-                  aria-label={`Info for ${row.name}`}
-                  onClick={() => setInfoRow(row)}
-                >
-                  <AiOutlineInfoCircle aria-hidden />
-                </button>
-                <button
-                  type="button"
-                  className="downloadButton fonts-mobile-download"
-                  disabled={!url}
-                  title={
-                    url
-                      ? `Download ${row.downloadName}`
-                      : "No downloadable file available"
-                  }
-                  aria-label={
-                    url
-                      ? `Download ${row.downloadName}`
-                      : "No downloadable file available"
-                  }
-                  onClick={() =>
-                    handleDownload(row.downloadPath, row.downloadName)
-                  }
-                >
-                  <AiOutlineDownload aria-hidden />
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <FontsDesktopTable
+        rows={standardRows}
+        onInfo={setInfoRow}
+        onDownload={handleDownload}
+      />
+      <FontsMobileList
+        rows={standardRows}
+        onInfo={setInfoRow}
+        onDownload={handleDownload}
+      />
+
+      {unicodeRemappedRows.length > 0 && (
+        <section className="fonts-table-section fonts-table-section--unicode-remapped">
+          <p className="fonts-table-section-note">
+            These are remapped versions of fonts listed above. They place the
+            same letterforms on Unicode Deseret code points so the glyphs work
+            with standard Deseret text.
+          </p>
+          <FontsDesktopTable
+            rows={unicodeRemappedRows}
+            onInfo={setInfoRow}
+            onDownload={handleDownload}
+          />
+          <FontsMobileList
+            rows={unicodeRemappedRows}
+            onInfo={setInfoRow}
+            onDownload={handleDownload}
+          />
+        </section>
+      )}
+
       {infoRow && (
         <FontInfoDialog row={infoRow} onClose={() => setInfoRow(null)} />
       )}

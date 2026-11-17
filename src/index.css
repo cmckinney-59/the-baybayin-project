@@ -2832,15 +2832,30 @@ dialog.dialog-overlay {
   color: var(--text-primary);
 }
 
-.alphabet-table.fonts-table {
-  table-layout: fixed;
-  outline-offset: 0;
+.table-scroll-wrapper.fonts-table-desktop {
+  /* Keep the table outline from being clipped by overflow-x. */
+  padding: 3px;
+  box-sizing: border-box;
 }
 
-.fonts-table th:first-child,
-.fonts-table td:first-child {
+.alphabet-table.fonts-table {
+  table-layout: fixed;
+}
+
+.alphabet-table.fonts-table th:first-child {
+  width: 9.75rem;
+  /* Match other header cells; override alphabet letter-column styles. */
+  font-size: inherit;
+  text-align: center;
+  background-color: var(--header-bg);
+  color: var(--nav-text);
+  overflow-wrap: anywhere;
+}
+
+.alphabet-table.fonts-table td:first-child {
   width: 9.75rem;
   font-size: 14px;
+  font-weight: 400;
   text-align: left;
   background-color: transparent;
   overflow-wrap: anywhere;
@@ -2999,6 +3014,28 @@ dialog.dialog-overlay {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.fonts-table-section {
+  margin-top: 1.5rem;
+}
+
+.fonts-table-section-note {
+  margin: 0 0 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--button-border);
+  border-left: 3px solid var(--accent, #007bff);
+  border-radius: 4px;
+  background: var(--bg-secondary, #f8f9fa);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.dark-mode .fonts-table-section-note {
+  background: var(--bg-secondary, #2a2a2a);
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
