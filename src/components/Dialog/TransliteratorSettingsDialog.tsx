@@ -244,7 +244,7 @@ export default function TransliteratorSettingsDialog({
                         <Checkbox
                           checked={includeDeseretShortO}
                           onChange={setIncludeDeseretShortO}
-                          label={'Include "𐐉" (Short O)'}
+                          label={'Include "𐐉" (Short Aw)'}
                           title={
                             'When on, the British "hot" vowel uses 𐐉. When off, American/common English uses 𐐂 instead.'
                           }

@@ -17,7 +17,7 @@ export const DESERET_LETTERS = {
   SI: { upper: "𐐆", lower: "𐐮", name: "Short I", sound: "ih", example: "it" },
   SE: { upper: "𐐇", lower: "𐐯", name: "Short E", sound: "eh", example: "get" },
   SA: { upper: "𐐈", lower: "𐐰", name: "Short A", sound: "a", example: "at" },
-  SO: { upper: "𐐉", lower: "𐐱", name: "Short O", sound: "ah", example: "hot" },
+  SO: { upper: "𐐉", lower: "𐐱", name: "Short Aw", sound: "ah", example: "hot" },
   SU: { upper: "𐐊", lower: "𐐲", name: "Short U", sound: "uh", example: "but" },
   SOO: { upper: "𐐋", lower: "𐐳", name: "Short OO", sound: "oo", example: "book" },
   EYE: { upper: "𐐌", lower: "𐐴", name: "I", sound: "eye", example: "hide" },
