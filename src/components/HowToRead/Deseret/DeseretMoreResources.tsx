@@ -20,6 +20,10 @@ const RESOURCE_LINK_SECTIONS: ResourceLinkSection[] = [
         text: "Deseret Alphabet on Wikipedia",
       },
       {
+        href: "https://www.deseretalphabet.info/About.html",
+        text: "About the Deseret Alphabet",
+      },
+      {
         href: "https://www.omniglot.com/writing/deseret.htm",
         text: "Deseret Alphabet on Omniglot",
       },

@@ -26,6 +26,8 @@ interface CheckboxContainerProps {
   deseretMode: DeseretMode;
   includeDeseretLongAw: boolean;
   includeDeseretShortO: boolean;
+  includeDeseretOi: boolean;
+  includeDeseretEw: boolean;
   showModernDeseret?: boolean;
   fontSize: TransliteratorFontSize;
   setUseCombinedCharacters: (checked: boolean) => void;
@@ -46,6 +48,8 @@ interface CheckboxContainerProps {
   setDeseretMode: (mode: DeseretMode) => void;
   setIncludeDeseretLongAw: (checked: boolean) => void;
   setIncludeDeseretShortO: (checked: boolean) => void;
+  setIncludeDeseretOi: (checked: boolean) => void;
+  setIncludeDeseretEw: (checked: boolean) => void;
   setFontSize: (size: TransliteratorFontSize) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
@@ -84,6 +88,8 @@ export default function CheckboxContainer({
   deseretMode,
   includeDeseretLongAw,
   includeDeseretShortO,
+  includeDeseretOi,
+  includeDeseretEw,
   showModernDeseret = false,
   fontSize,
   useSingleLineInput,
@@ -105,6 +111,8 @@ export default function CheckboxContainer({
   setDeseretMode,
   setIncludeDeseretLongAw,
   setIncludeDeseretShortO,
+  setIncludeDeseretOi,
+  setIncludeDeseretEw,
   setFontSize,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
@@ -138,6 +146,8 @@ export default function CheckboxContainer({
       deseretMode={deseretMode}
       includeDeseretLongAw={includeDeseretLongAw}
       includeDeseretShortO={includeDeseretShortO}
+      includeDeseretOi={includeDeseretOi}
+      includeDeseretEw={includeDeseretEw}
       showModernDeseret={showModernDeseret}
       fontSize={fontSize}
       useSingleLineInput={useSingleLineInput}
@@ -161,6 +171,8 @@ export default function CheckboxContainer({
       setDeseretMode={setDeseretMode}
       setIncludeDeseretLongAw={setIncludeDeseretLongAw}
       setIncludeDeseretShortO={setIncludeDeseretShortO}
+      setIncludeDeseretOi={setIncludeDeseretOi}
+      setIncludeDeseretEw={setIncludeDeseretEw}
       setFontSize={setFontSize}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}

@@ -113,8 +113,12 @@ export default function Transliterator({
   const [deseretMode, setDeseretMode] = useState<DeseretMode>("classic");
   /** Include Long Aw 𐐃 (caught/awe). Off merges into 𐐂. */
   const [includeDeseretLongAw, setIncludeDeseretLongAw] = useState(true);
-  /** Include Short O 𐐉 (British hot). Off uses 𐐂 instead. */
-  const [includeDeseretShortO, setIncludeDeseretShortO] = useState(false);
+  /** Include Short Aw 𐐉 (British hot). Off uses 𐐂 instead. */
+  const [includeDeseretShortO, setIncludeDeseretShortO] = useState(true);
+  /** Include Oi 𐑎 (oil/boy). Off spells it 𐐃𐐀. */
+  const [includeDeseretOi, setIncludeDeseretOi] = useState(true);
+  /** Include You 𐑏. Off spells "you" as 𐐏𐐅. */
+  const [includeDeseretEw, setIncludeDeseretEw] = useState(true);
   const [selectedAurebeshFont, setSelectedAurebeshFont] =
     useState<AurebeshFontId>(DEFAULT_AUREBESH_FONT_ID);
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
@@ -160,11 +164,13 @@ export default function Transliterator({
     baybayinUsesUnicodeOutput(selectedBaybayinFont, useUnicode);
   const deseretModernActive =
     showExperimentalFeatures && deseretMode === "modern";
-  // Modern always includes 𐐃 and 𐐉; classic uses the settings toggles.
+  // Modern always includes these letters; classic uses the settings toggles.
   const effectiveIncludeDeseretLongAw =
     deseretModernActive || includeDeseretLongAw;
   const effectiveIncludeDeseretShortO =
     deseretModernActive || includeDeseretShortO;
+  const effectiveIncludeDeseretOi = deseretModernActive || includeDeseretOi;
+  const effectiveIncludeDeseretEw = deseretModernActive || includeDeseretEw;
   const keyboardConfig = resolveAlphabetKeyboard(currentAlphabet, {
     useCombinedCharacters,
     useTechNumbers,
@@ -177,6 +183,8 @@ export default function Transliterator({
     deseretModern: deseretModernActive,
     includeDeseretLongAw: effectiveIncludeDeseretLongAw,
     includeDeseretShortO: effectiveIncludeDeseretShortO,
+    includeDeseretOi: effectiveIncludeDeseretOi,
+    includeDeseretEw: effectiveIncludeDeseretEw,
   });
   // Stable alphabets always show the keyboard; experimental ones need the flag.
   const showOnScreenKeyboard =
@@ -253,6 +261,8 @@ export default function Transliterator({
         const unicode = await processDeseretText(word, mode, {
           includeLongAw: effectiveIncludeDeseretLongAw,
           includeShortO: effectiveIncludeDeseretShortO,
+          includeOi: effectiveIncludeDeseretOi,
+          includeEw: effectiveIncludeDeseretEw,
         });
         return mapLatin ? deseretUnicodeToLatin(unicode) : unicode;
       };
@@ -352,6 +362,8 @@ export default function Transliterator({
     selectedDeseretFont,
     includeDeseretLongAw,
     includeDeseretShortO,
+    includeDeseretOi,
+    includeDeseretEw,
   ]);
   useEffect(() => {
     if (!isPlqad) return;
@@ -671,6 +683,8 @@ export default function Transliterator({
         deseretMode={deseretMode}
         includeDeseretLongAw={includeDeseretLongAw}
         includeDeseretShortO={includeDeseretShortO}
+        includeDeseretOi={includeDeseretOi}
+        includeDeseretEw={includeDeseretEw}
         showModernDeseret={showExperimentalFeatures}
         fontSize={fontSize}
         useSingleLineInput={useSingleLineInput}
@@ -692,6 +706,8 @@ export default function Transliterator({
         setDeseretMode={setDeseretMode}
         setIncludeDeseretLongAw={setIncludeDeseretLongAw}
         setIncludeDeseretShortO={setIncludeDeseretShortO}
+        setIncludeDeseretOi={setIncludeDeseretOi}
+        setIncludeDeseretEw={setIncludeDeseretEw}
         setFontSize={setFontSize}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}

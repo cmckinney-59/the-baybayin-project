@@ -41,10 +41,20 @@ export type DeseretProcessOptions = {
    */
   includeLongAw?: boolean;
   /**
-   * When true, ARPAbet AA ("hot") maps to Short O 𐐉 (British short-o).
+   * When true, ARPAbet AA ("hot") maps to Short Aw 𐐉 (British short-o).
    * When false, AA maps to Long Ah 𐐂 (American).
    */
   includeShortO?: boolean;
+  /**
+   * When true, ARPAbet OY ("oil") maps to Oi 𐐦.
+   * When false, OY is spelled Long Aw + Long E (𐐃𐐀), or Long Ah + Long E when Long Aw is off.
+   */
+  includeOi?: boolean;
+  /**
+   * When true, "you" (Y UW) maps to 𐐧.
+   * When false, it is spelled Yee + Long OO (𐐏𐐅).
+   */
+  includeEw?: boolean;
 };
 
 export default async function processDeseretText(
@@ -52,11 +62,13 @@ export default async function processDeseretText(
   mode: DeseretMode = "classic",
   options: DeseretProcessOptions = {},
 ): Promise<string> {
-  // Modern always includes both letters; classic honors the toggles.
+  // Modern always includes these letters; classic honors the toggles.
   const includeLongAw =
     mode === "modern" ? true : (options.includeLongAw ?? true);
   const includeShortO =
     mode === "modern" ? true : (options.includeShortO ?? false);
+  const includeOi = mode === "modern" ? true : (options.includeOi ?? true);
+  const includeEw = mode === "modern" ? true : (options.includeEw ?? true);
 
   await ensureDictionaryLoaded();
 
@@ -64,6 +76,8 @@ export default async function processDeseretText(
     modern: mode === "modern",
     includeLongAw,
     includeShortO,
+    includeOi,
+    includeEw,
   });
 
   return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
@@ -80,10 +94,11 @@ export default async function processDeseretText(
     }
 
     let processedWord = replaceER(phonemes.join(" "));
-    processedWord = replaceYou(processedWord);
+    processedWord = replaceYou(processedWord, includeEw);
     processedWord = replaceVowels(processedWord, mode, {
       includeLongAw,
       includeShortO,
+      includeOi,
     });
     processedWord = replaceLigatures(processedWord, mode);
     processedWord = replaceConsonants(processedWord, mode);
@@ -205,7 +220,11 @@ function replaceLigatures(text: string, mode: DeseretMode): string {
 function replaceVowels(
   text: string,
   mode: DeseretMode,
-  options: { includeLongAw: boolean; includeShortO: boolean },
+  options: {
+    includeLongAw: boolean;
+    includeShortO: boolean;
+    includeOi: boolean;
+  },
 ): string {
   text = removeToneNumbers(text, "AE", DESERET_LETTERS.SA.upper);
   text = removeToneNumbers(text, "AH", DESERET_LETTERS.SU.upper);
@@ -214,7 +233,12 @@ function replaceVowels(
   text = removeToneNumbers(text, "EH", DESERET_LETTERS.SE.upper);
   text = removeToneNumbers(text, "EY", DESERET_LETTERS.LA.upper);
   text = removeToneNumbers(text, "OW", DESERET_LETTERS.LO.upper);
-  text = removeToneNumbers(text, "OY", DESERET_LETTERS.OI.upper);
+  const oi = options.includeOi
+    ? DESERET_LETTERS.OI.upper
+    : (options.includeLongAw
+        ? DESERET_LETTERS.LAW.upper
+        : DESERET_LETTERS.LAH.upper) + DESERET_LETTERS.LE.upper;
+  text = removeToneNumbers(text, "OY", oi);
   text = removeToneNumbers(text, "UW", DESERET_LETTERS.LOO.upper);
 
   // AA = "hot"/"father"; AO = "caught"/"awe".
@@ -247,7 +271,10 @@ function replaceER(text: string): string {
   return text;
 }
 
-function replaceYou(text: string): string {
+function replaceYou(text: string, includeEw: boolean): string {
+  if (!includeEw) {
+    return text;
+  }
   text = removeToneNumbers(text, "Y UW", DESERET_LETTERS.EW.upper);
   return text;
 }

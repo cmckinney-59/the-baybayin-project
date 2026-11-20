@@ -34,8 +34,12 @@ export type DeseretKeyboardOptions = {
   modern?: boolean;
   /** When false, omit Long Aw 𐐃 from the keyboard. Default true. */
   includeLongAw?: boolean;
-  /** When false, omit Short O 𐐉 from the keyboard. Default false. */
+  /** When false, omit Short Aw 𐐉 from the keyboard. Default false. */
   includeShortO?: boolean;
+  /** When false, omit Oi 𐑎 from the keyboard. Default true. */
+  includeOi?: boolean;
+  /** When false, omit You 𐑏 from the keyboard. Default true. */
+  includeEw?: boolean;
 };
 
 /** On-screen Deseret alphabet layout (shift/caps for capitals). */
@@ -47,9 +51,11 @@ export function getDeseretKeyboardLayout(
       ? { modern: modernOrOptions }
       : modernOrOptions;
   const modern = options.modern ?? false;
-  // Modern always shows both letters; classic honors the toggles.
+  // Modern always shows these letters; classic honors the toggles.
   const includeLongAw = modern ? true : (options.includeLongAw ?? true);
   const includeShortO = modern ? true : (options.includeShortO ?? false);
+  const includeOi = modern ? true : (options.includeOi ?? true);
+  const includeEw = modern ? true : (options.includeEw ?? true);
 
   const glyph = (
     id: keyof typeof DESERET_LETTERS,
@@ -87,8 +93,8 @@ export function getDeseretKeyboardLayout(
     glyph("SOO"),
     glyph("EYE"),
     glyph("OW"),
-    glyph("OI"),
-    glyph("EW"),
+    ...(includeOi ? [glyph("OI")] : []),
+    ...(includeEw ? [glyph("EW")] : []),
     glyph("W"),
     glyph("Y"),
     glyph("H"),

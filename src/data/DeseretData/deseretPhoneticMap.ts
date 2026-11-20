@@ -140,6 +140,10 @@ export type DeseretPhoneticOptions = {
   includeLongAw?: boolean;
   /** When false, `/o/` falls back to Long Ah 𐐂. Default false. */
   includeShortO?: boolean;
+  /** When false, `/oi/` is spelled Long Aw + Long E. Default true. */
+  includeOi?: boolean;
+  /** When false, `/yu/`, `/you/`, and `/ew/` are spelled Yee + Long OO. Default true. */
+  includeEw?: boolean;
 };
 
 /**
@@ -155,9 +159,11 @@ export function deseretFromPhoneticToken(
       ? { modern: modernOrOptions }
       : modernOrOptions;
   const modern = options.modern ?? false;
-  // Modern always includes both letters; classic honors the toggles.
+  // Modern always includes these letters; classic honors the toggles.
   const includeLongAw = modern ? true : (options.includeLongAw ?? true);
   const includeShortO = modern ? true : (options.includeShortO ?? false);
+  const includeOi = modern ? true : (options.includeOi ?? true);
+  const includeEw = modern ? true : (options.includeEw ?? true);
 
   const key = token.toLowerCase();
   const modernUpper =
@@ -176,16 +182,31 @@ export function deseretFromPhoneticToken(
   if (key === "o" && !includeShortO) {
     upper = DESERET_LETTERS.LAH.upper;
   }
+  if (key === "oi" && !includeOi) {
+    const aw = includeLongAw
+      ? DESERET_LETTERS.LAW.upper
+      : DESERET_LETTERS.LAH.upper;
+    upper = aw + DESERET_LETTERS.LE.upper;
+  }
+  if ((key === "yu" || key === "you" || key === "ew") && !includeEw) {
+    upper = DESERET_LETTERS.Y.upper + DESERET_LETTERS.LOO.upper;
+  }
   const hasLetter = /[A-Za-z]/.test(token);
   const allUpper = hasLetter && token === token.toUpperCase();
-  const titleCase = /^[A-Z]/.test(token);
-  if (allUpper || titleCase) {
+  const titleCase = /^[A-Z]/.test(token) && !allUpper;
+  if (allUpper) {
     return upper;
   }
-  if (modernUpper && key !== "aw" && key !== "o") {
+  if (titleCase) {
+    const chars = [...upper];
+    return chars
+      .map((char, index) => (index === 0 ? char : toDeseretLower(char)))
+      .join("");
+  }
+  if (modernUpper && key !== "aw" && key !== "o" && key !== "oi") {
     return key === "ih" ? DESERET_MODERN.SI.lower : DESERET_MODERN.TH.lower;
   }
-  return toDeseretLower(upper);
+  return [...upper].map(toDeseretLower).join("");
 }
 
 /**

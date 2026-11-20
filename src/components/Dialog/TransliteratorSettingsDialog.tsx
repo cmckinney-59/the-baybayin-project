@@ -60,6 +60,8 @@ export type TransliteratorSettingsDialogProps = {
   deseretMode: "classic" | "modern";
   includeDeseretLongAw: boolean;
   includeDeseretShortO: boolean;
+  includeDeseretOi: boolean;
+  includeDeseretEw: boolean;
   showModernDeseret?: boolean;
   fontSize: TransliteratorFontSize;
   useSingleLineInput: boolean;
@@ -83,6 +85,8 @@ export type TransliteratorSettingsDialogProps = {
   setDeseretMode: (mode: "classic" | "modern") => void;
   setIncludeDeseretLongAw: (checked: boolean) => void;
   setIncludeDeseretShortO: (checked: boolean) => void;
+  setIncludeDeseretOi: (checked: boolean) => void;
+  setIncludeDeseretEw: (checked: boolean) => void;
   setFontSize: (size: TransliteratorFontSize) => void;
   setUseSingleLineInput: (checked: boolean) => void;
   setOutputOnlyMode: (checked: boolean) => void;
@@ -115,6 +119,8 @@ export default function TransliteratorSettingsDialog({
   deseretMode,
   includeDeseretLongAw,
   includeDeseretShortO,
+  includeDeseretOi,
+  includeDeseretEw,
   showModernDeseret = false,
   fontSize,
   useSingleLineInput,
@@ -138,6 +144,8 @@ export default function TransliteratorSettingsDialog({
   setDeseretMode,
   setIncludeDeseretLongAw,
   setIncludeDeseretShortO,
+  setIncludeDeseretOi,
+  setIncludeDeseretEw,
   setFontSize,
   setUseSingleLineInput,
   setOutputOnlyMode,
@@ -247,6 +255,22 @@ export default function TransliteratorSettingsDialog({
                           label={'Include "𐐉" (Short Aw)'}
                           title={
                             'When on, the British "hot" vowel uses 𐐉. When off, American/common English uses 𐐂 instead.'
+                          }
+                        />
+                        <Checkbox
+                          checked={includeDeseretOi}
+                          onChange={setIncludeDeseretOi}
+                          label={'Include "𐐦" (Oi)'}
+                          title={
+                            'When on, the "oil/boy" sound uses 𐐦. When off, it is spelled 𐐃𐐀.'
+                          }
+                        />
+                        <Checkbox
+                          checked={includeDeseretEw}
+                          onChange={setIncludeDeseretEw}
+                          label={'Include "𐐧" (You)'}
+                          title={
+                            'When on, the "you" sound uses 𐐧. When off, it is spelled 𐐏𐐅.'
                           }
                         />
                       </>
