@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import ExperimentalFeaturesBanner from "./components/ExperimentalFeaturesBanner/ExperimentalFeaturesBanner";
+import LivingBackground from "./components/LivingBackground/LivingBackground";
 
 function RootLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -21,6 +22,7 @@ function RootLayout() {
 
   return (
     <>
+      <LivingBackground />
       <div className="App">
         <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
         <ExperimentalFeaturesBanner />

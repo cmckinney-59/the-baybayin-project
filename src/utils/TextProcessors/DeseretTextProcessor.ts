@@ -55,6 +55,15 @@ export type DeseretProcessOptions = {
    * When false, it is spelled Yee + Long OO (𐐏𐐅).
    */
   includeEw?: boolean;
+  /**
+   * When true, "the" and "thee" are the single letter 𐐜.
+   * When false, those words are spelled from their sounds.
+   */
+  useSingleCharacterThee?: boolean;
+  /** When true, "gay" is the single letter 𐐘. When false, it is spelled out. */
+  useSingleCharacterGay?: boolean;
+  /** When true, "bee" is the single letter 𐐒. When false, it is spelled out. */
+  useSingleCharacterBee?: boolean;
 };
 
 export default async function processDeseretText(
@@ -69,6 +78,9 @@ export default async function processDeseretText(
     mode === "modern" ? true : (options.includeShortO ?? false);
   const includeOi = mode === "modern" ? true : (options.includeOi ?? true);
   const includeEw = mode === "modern" ? true : (options.includeEw ?? true);
+  const useSingleCharacterThee = options.useSingleCharacterThee ?? true;
+  const useSingleCharacterGay = options.useSingleCharacterGay ?? true;
+  const useSingleCharacterBee = options.useSingleCharacterBee ?? true;
 
   await ensureDictionaryLoaded();
 
@@ -83,6 +95,9 @@ export default async function processDeseretText(
   return withPhonetics.replace(/[A-Za-z']+/g, (word) => {
     const standaloneLetter = mapStandaloneLetterWord(word, mode, {
       includeShortO,
+      useSingleCharacterThee,
+      useSingleCharacterGay,
+      useSingleCharacterBee,
     });
     if (standaloneLetter) {
       return standaloneLetter;
@@ -115,11 +130,13 @@ function getPronunciation(word: string): string[] {
 /**
  * Words with a fixed Deseret spelling (stored in capitals; casing applied from English).
  * e.g. "the" → DH, "and" → SA+N+D (𐐰𐑌𐐼).
+ * "bee", "gay", "the", and "thee" are optional single-letter spellings.
  */
 const FIXED_DESERET_WORDS: Record<string, string> = {
   bee: DESERET_LETTERS.B.upper,
   gay: DESERET_LETTERS.G.upper,
   the: DESERET_LETTERS.DH.upper,
+  thee: DESERET_LETTERS.DH.upper,
   and: DESERET_LETTERS.SA.upper + DESERET_LETTERS.N.upper + DESERET_LETTERS.D.upper,
 };
 
@@ -134,6 +151,7 @@ const FIXED_DESERET_MODERN_WORDS: Record<string, string> = {
   bee: DESERET_LETTERS.B.upper,
   do: DESERET_LETTERS.D.upper,
   gay: DESERET_LETTERS.G.upper,
+  thee: DESERET_LETTERS.DH.upper,
   is: DESERET_LETTERS.Z.upper,
   not: DESERET_LETTERS.SO.upper,
   of: DESERET_LETTERS.V.upper,
@@ -154,11 +172,25 @@ const FIXED_DESERET_MODERN_WORDS: Record<string, string> = {
 function mapStandaloneLetterWord(
   word: string,
   mode: DeseretMode,
-  options: { includeShortO: boolean },
+  options: {
+    includeShortO: boolean;
+    useSingleCharacterThee: boolean;
+    useSingleCharacterGay: boolean;
+    useSingleCharacterBee: boolean;
+  },
 ): string | null {
+  const key = word.toLowerCase();
+  if (
+    ((key === "the" || key === "thee") && !options.useSingleCharacterThee) ||
+    (key === "gay" && !options.useSingleCharacterGay) ||
+    (key === "bee" && !options.useSingleCharacterBee)
+  ) {
+    return null;
+  }
+
   let capital: string | undefined;
   if (mode === "modern") {
-    capital = FIXED_DESERET_MODERN_WORDS[word.toLowerCase()];
+    capital = FIXED_DESERET_MODERN_WORDS[key];
     if (
       !options.includeShortO &&
       capital === DESERET_LETTERS.SO.upper
@@ -166,7 +198,7 @@ function mapStandaloneLetterWord(
       capital = DESERET_LETTERS.LAH.upper;
     }
   } else {
-    capital = FIXED_DESERET_WORDS[word.toLowerCase()];
+    capital = FIXED_DESERET_WORDS[key];
   }
   if (!capital) {
     return null;

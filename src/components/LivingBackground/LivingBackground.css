@@ -1,0 +1,79 @@
+.living-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.living-bg,
+.living-bg * {
+  pointer-events: none;
+}
+
+.living-bg-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+
+.living-bg-layer.is-visible {
+  opacity: 1;
+}
+
+.living-glyph {
+  position: absolute;
+  left: var(--left);
+  top: 0;
+  font-size: var(--size);
+  font-weight: 400;
+  font-style: normal;
+  font-synthesis: none;
+  line-height: 1;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: 0;
+  animation: living-glyph-drift var(--duration) linear var(--delay) infinite;
+}
+
+@keyframes living-glyph-drift {
+  0% {
+    transform: translate3d(0, 108vh, 0);
+    opacity: 0;
+  }
+
+  14% {
+    opacity: var(--ink);
+  }
+
+  76% {
+    opacity: var(--ink);
+  }
+
+  100% {
+    transform: translate3d(var(--drift), -24vh, 0);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .living-glyph:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-bg-layer,
+  .living-bg-layer.is-visible {
+    transition: none;
+  }
+
+  .living-glyph {
+    top: var(--top);
+    animation: none;
+    opacity: var(--ink);
+    transform: none;
+  }
+}

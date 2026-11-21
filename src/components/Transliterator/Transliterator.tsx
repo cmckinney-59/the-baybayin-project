@@ -119,6 +119,12 @@ export default function Transliterator({
   const [includeDeseretOi, setIncludeDeseretOi] = useState(true);
   /** Include You 𐑏. Off spells "you" as 𐐏𐐅. */
   const [includeDeseretEw, setIncludeDeseretEw] = useState(true);
+  /** Write "the"/"thee" as 𐐜. Off spells them out. */
+  const [useDeseretThee, setUseDeseretThee] = useState(true);
+  /** Write "gay" as 𐐘. Off spells it out. */
+  const [useDeseretGay, setUseDeseretGay] = useState(true);
+  /** Write "bee" as 𐐒. Off spells it out. */
+  const [useDeseretBee, setUseDeseretBee] = useState(true);
   const [selectedAurebeshFont, setSelectedAurebeshFont] =
     useState<AurebeshFontId>(DEFAULT_AUREBESH_FONT_ID);
   const [selectedBaybayinFont, setSelectedBaybayinFont] =
@@ -263,6 +269,9 @@ export default function Transliterator({
           includeShortO: effectiveIncludeDeseretShortO,
           includeOi: effectiveIncludeDeseretOi,
           includeEw: effectiveIncludeDeseretEw,
+          useSingleCharacterThee: useDeseretThee,
+          useSingleCharacterGay: useDeseretGay,
+          useSingleCharacterBee: useDeseretBee,
         });
         return mapLatin ? deseretUnicodeToLatin(unicode) : unicode;
       };
@@ -364,6 +373,9 @@ export default function Transliterator({
     includeDeseretShortO,
     includeDeseretOi,
     includeDeseretEw,
+    useDeseretThee,
+    useDeseretGay,
+    useDeseretBee,
   ]);
   useEffect(() => {
     if (!isPlqad) return;
@@ -685,6 +697,9 @@ export default function Transliterator({
         includeDeseretShortO={includeDeseretShortO}
         includeDeseretOi={includeDeseretOi}
         includeDeseretEw={includeDeseretEw}
+        useDeseretThee={useDeseretThee}
+        useDeseretGay={useDeseretGay}
+        useDeseretBee={useDeseretBee}
         showModernDeseret={showExperimentalFeatures}
         fontSize={fontSize}
         useSingleLineInput={useSingleLineInput}
@@ -708,6 +723,9 @@ export default function Transliterator({
         setIncludeDeseretShortO={setIncludeDeseretShortO}
         setIncludeDeseretOi={setIncludeDeseretOi}
         setIncludeDeseretEw={setIncludeDeseretEw}
+        setUseDeseretThee={setUseDeseretThee}
+        setUseDeseretGay={setUseDeseretGay}
+        setUseDeseretBee={setUseDeseretBee}
         setFontSize={setFontSize}
         setUseSingleLineInput={setUseSingleLineInput}
         setTextContainsBorrowedWords={setTextContainsBorrowedWords}

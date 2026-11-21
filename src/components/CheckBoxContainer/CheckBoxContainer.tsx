@@ -28,6 +28,9 @@ interface CheckboxContainerProps {
   includeDeseretShortO: boolean;
   includeDeseretOi: boolean;
   includeDeseretEw: boolean;
+  useDeseretThee: boolean;
+  useDeseretGay: boolean;
+  useDeseretBee: boolean;
   showModernDeseret?: boolean;
   fontSize: TransliteratorFontSize;
   setUseCombinedCharacters: (checked: boolean) => void;
@@ -50,6 +53,9 @@ interface CheckboxContainerProps {
   setIncludeDeseretShortO: (checked: boolean) => void;
   setIncludeDeseretOi: (checked: boolean) => void;
   setIncludeDeseretEw: (checked: boolean) => void;
+  setUseDeseretThee: (checked: boolean) => void;
+  setUseDeseretGay: (checked: boolean) => void;
+  setUseDeseretBee: (checked: boolean) => void;
   setFontSize: (size: TransliteratorFontSize) => void;
   useSingleLineInput: boolean;
   setUseSingleLineInput: (checked: boolean) => void;
@@ -90,6 +96,9 @@ export default function CheckboxContainer({
   includeDeseretShortO,
   includeDeseretOi,
   includeDeseretEw,
+  useDeseretThee,
+  useDeseretGay,
+  useDeseretBee,
   showModernDeseret = false,
   fontSize,
   useSingleLineInput,
@@ -113,6 +122,9 @@ export default function CheckboxContainer({
   setIncludeDeseretShortO,
   setIncludeDeseretOi,
   setIncludeDeseretEw,
+  setUseDeseretThee,
+  setUseDeseretGay,
+  setUseDeseretBee,
   setFontSize,
   setUseSingleLineInput,
   showOutputOnlyOption = false,
@@ -148,6 +160,9 @@ export default function CheckboxContainer({
       includeDeseretShortO={includeDeseretShortO}
       includeDeseretOi={includeDeseretOi}
       includeDeseretEw={includeDeseretEw}
+      useDeseretThee={useDeseretThee}
+      useDeseretGay={useDeseretGay}
+      useDeseretBee={useDeseretBee}
       showModernDeseret={showModernDeseret}
       fontSize={fontSize}
       useSingleLineInput={useSingleLineInput}
@@ -173,6 +188,9 @@ export default function CheckboxContainer({
       setIncludeDeseretShortO={setIncludeDeseretShortO}
       setIncludeDeseretOi={setIncludeDeseretOi}
       setIncludeDeseretEw={setIncludeDeseretEw}
+      setUseDeseretThee={setUseDeseretThee}
+      setUseDeseretGay={setUseDeseretGay}
+      setUseDeseretBee={setUseDeseretBee}
       setFontSize={setFontSize}
       setUseSingleLineInput={setUseSingleLineInput}
       setTextContainsBorrowedWords={setTextContainsBorrowedWords}
