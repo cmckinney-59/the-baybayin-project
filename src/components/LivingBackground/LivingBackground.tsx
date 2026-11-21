@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useAlphabet } from "../../contexts/AlphabetContext";
+import { useLivingBackground } from "../../contexts/LivingBackgroundContext";
 import {
   SIGNATURE_SCRIPTS,
   alphabetFromPathname,
@@ -54,6 +55,7 @@ function usePrefersReducedMotion(): boolean {
 export default function LivingBackground() {
   const { pathname } = useLocation();
   const { currentAlphabet } = useAlphabet();
+  const { livingBackground } = useLivingBackground();
   const reducedMotion = usePrefersReducedMotion();
 
   const routeAlphabet = alphabetFromPathname(pathname);
@@ -65,12 +67,12 @@ export default function LivingBackground() {
   const [signatureIndex, setSignatureIndex] = useState(0);
 
   useEffect(() => {
-    if (lockedAlphabet || reducedMotion) return;
+    if (!livingBackground || lockedAlphabet || reducedMotion) return;
     const id = window.setInterval(() => {
       setSignatureIndex((index) => (index + 1) % SIGNATURE_SCRIPTS.length);
     }, ROTATE_MS);
     return () => window.clearInterval(id);
-  }, [lockedAlphabet, reducedMotion]);
+  }, [livingBackground, lockedAlphabet, reducedMotion]);
 
   const activeName = lockedAlphabet ?? SIGNATURE_SCRIPTS[signatureIndex];
   const [layers, setLayers] = useState<Layer[]>(() => [makeLayer(activeName)]);
@@ -95,11 +97,15 @@ export default function LivingBackground() {
     return () => window.clearTimeout(timeout);
   }, [activeName]);
 
+  if (!livingBackground) return null;
+
   return (
     <div className="living-bg" aria-hidden="true">
-      {layers.map((layer) => (
-        <GlyphLayer key={layer.id} layer={layer} />
-      ))}
+      <div className="living-bg-field">
+        {layers.map((layer) => (
+          <GlyphLayer key={layer.id} layer={layer} />
+        ))}
+      </div>
     </div>
   );
 }

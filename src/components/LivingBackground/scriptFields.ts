@@ -180,7 +180,7 @@ export function particlesFor(name: string, glyphs: string[]): GlyphParticle[] {
       duration: `${duration.toFixed(1)}s`,
       delay: `${(-rand() * duration).toFixed(1)}s`,
       drift: `${(-42 + rand() * 84).toFixed(1)}px`,
-      ink: (0.17 - depth * 0.07).toFixed(3),
+      ink: (0.46 - depth * 0.16).toFixed(3),
       top: `${rand() * 86}%`,
     };
   });

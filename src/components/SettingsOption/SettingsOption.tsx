@@ -22,7 +22,12 @@ export default function SettingsOption({
         {description ? <p className="setting-help">{description}</p> : null}
       </div>
       <label className="toggle-switch">
-        <input type={type} checked={checked} onChange={onChange} />
+        <input
+          type={type}
+          aria-label={label}
+          checked={checked}
+          onChange={onChange}
+        />
         <span className="toggle-slider"></span>
       </label>
     </div>

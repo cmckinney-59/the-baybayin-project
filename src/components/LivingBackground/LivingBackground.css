@@ -12,6 +12,25 @@
   pointer-events: none;
 }
 
+.living-bg-field {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(
+    ellipse 68% 62% at 56% 44%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.14) 34%,
+    rgba(0, 0, 0, 0.62) 58%,
+    #000 84%
+  );
+  mask-image: radial-gradient(
+    ellipse 68% 62% at 56% 44%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.14) 34%,
+    rgba(0, 0, 0, 0.62) 58%,
+    #000 84%
+  );
+}
+
 .living-bg-layer {
   position: absolute;
   inset: 0;
@@ -59,7 +78,22 @@
 }
 
 @media (max-width: 768px) {
-  .living-glyph:nth-child(n + 9) {
+  .living-bg-field {
+    -webkit-mask-image: radial-gradient(
+      ellipse 108% 70% at 50% 40%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 46%,
+      #000 88%
+    );
+    mask-image: radial-gradient(
+      ellipse 108% 70% at 50% 40%,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 46%,
+      #000 88%
+    );
+  }
+
+  .living-bg-field .living-glyph:nth-child(n + 9) {
     display: none;
   }
 }

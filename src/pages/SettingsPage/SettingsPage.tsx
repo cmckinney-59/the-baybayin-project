@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useId, useState } from "react";
 import SettingsOption from "../../components/SettingsOption/SettingsOption";
 import { useExperimentalFeatures } from "../../contexts/ExperimentalFeaturesContext";
+import { useLivingBackground } from "../../contexts/LivingBackgroundContext";
 import { useTheme } from "../../contexts/ThemeContext";
 import type { AppTheme } from "../../contexts/ThemeContext";
 import "./SettingsPage.css";
@@ -222,6 +223,7 @@ function ThemeSwatchPreview({ swatch }: { swatch: ThemeSwatch }) {
 export default function SettingsPage() {
   const { showExperimentalFeatures, toggleExperimentalFeatures } =
     useExperimentalFeatures();
+  const { livingBackground, toggleLivingBackground } = useLivingBackground();
   const { theme, setTheme } = useTheme();
   const [pickerOpen, setPickerOpen] = useState(false);
   const pickerId = useId();
@@ -316,6 +318,13 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
+      <SettingsOption
+        type="checkbox"
+        label="Living background"
+        description="Drifting glyphs from the current script behind the page."
+        checked={livingBackground}
+        onChange={toggleLivingBackground}
+      />
       <SettingsOption
         type="checkbox"
         label="Experimental features"

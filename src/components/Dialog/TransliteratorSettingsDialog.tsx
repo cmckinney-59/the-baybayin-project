@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import Checkbox from "../CheckBox/Checkbox";
 import AurebeshFontSelector from "../AurebeshFontSelector/AurebeshFontSelector";
 import BaybayinFontSelector from "../BaybayinFontSelector/BaybayinFontSelector";
@@ -164,9 +164,9 @@ export default function TransliteratorSettingsDialog({
   setOutputOnlyMode,
 }: TransliteratorSettingsDialogProps) {
   const { keySize, setKeySize } = useKeyboardKeySize();
-  const [singleCharacterMenuOpen, setSingleCharacterMenuOpen] = useState(false);
-  const singleCharacterMenuRef = useRef<HTMLDivElement>(null);
-  const singleCharacterMenuId = useId();
+  const [singleCharacterSectionOpen, setSingleCharacterSectionOpen] =
+    useState(false);
+  const singleCharacterSectionId = useId();
   const selectedBaybayinFontEntry = getBaybayinFontById(selectedBaybayinFont);
   const prioritizeEnabled =
     phoneticMode && useEnglishPronunciation && useSpanishPronunciation;
@@ -179,35 +179,6 @@ export default function TransliteratorSettingsDialog({
     setUseDeseretGay(checked);
     setUseDeseretBee(checked);
   };
-  const singleCharacterSummary = allDeseretSingleCharacterWords
-    ? "All"
-    : !someDeseretSingleCharacterWords
-      ? "None"
-      : [
-          useDeseretThee ? "The/Thee" : "",
-          useDeseretGay ? "Gay" : "",
-          useDeseretBee ? "Bee" : "",
-        ]
-          .filter(Boolean)
-          .join(", ");
-
-  useEffect(() => {
-    if (!singleCharacterMenuOpen) return;
-    const onPointerDown = (event: MouseEvent) => {
-      if (!singleCharacterMenuRef.current?.contains(event.target as Node)) {
-        setSingleCharacterMenuOpen(false);
-      }
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSingleCharacterMenuOpen(false);
-    };
-    document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [singleCharacterMenuOpen]);
   const showAlphabetSettings =
     ALPHABETS_WITH_SPECIFIC_SETTINGS.has(currentAlphabet);
 
@@ -329,76 +300,88 @@ export default function TransliteratorSettingsDialog({
                         />
                       </>
                     )}
-                    <div
-                      className="deseret-word-dropdown"
-                      ref={singleCharacterMenuRef}
-                    >
-                      <span className="deseret-word-dropdown-label">
-                        Single-character words
-                      </span>
-                      <button
-                        type="button"
-                        className="deseret-word-dropdown-trigger"
-                        aria-expanded={singleCharacterMenuOpen}
-                        aria-haspopup="true"
-                        aria-controls={singleCharacterMenuId}
-                        aria-label={`Single-character words: ${singleCharacterSummary}`}
-                        title="Choose which of The/Thee, Gay, and Bee are written as one letter."
-                        onClick={() =>
-                          setSingleCharacterMenuOpen((open) => !open)
-                        }
-                      >
-                        <span className="deseret-word-dropdown-value">
-                          {singleCharacterSummary}
-                        </span>
-                        <span
-                          className="deseret-word-dropdown-caret"
-                          aria-hidden="true"
+                    <div className="deseret-word-section">
+                      <div className="deseret-word-section-header">
+                        <Checkbox
+                          checked={allDeseretSingleCharacterWords}
+                          indeterminate={
+                            someDeseretSingleCharacterWords &&
+                            !allDeseretSingleCharacterWords
+                          }
+                          onChange={setAllDeseretSingleCharacterWords}
+                          label="Single-character words"
+                          title="Select or clear The/Thee, Gay, and Bee together."
                         />
-                      </button>
-                      {singleCharacterMenuOpen && (
-                        <div
-                          id={singleCharacterMenuId}
-                          className="deseret-word-dropdown-menu"
-                          role="group"
-                          aria-label="Single-character words"
+                        <button
+                          type="button"
+                          className="deseret-word-section-toggle"
+                          aria-expanded={singleCharacterSectionOpen}
+                          aria-controls={singleCharacterSectionId}
+                          aria-label={
+                            singleCharacterSectionOpen
+                              ? "Hide The/Thee, Gay, and Bee"
+                              : "Show The/Thee, Gay, and Bee"
+                          }
+                          title={
+                            singleCharacterSectionOpen
+                              ? "Hide The/Thee, Gay, and Bee"
+                              : "Show The/Thee, Gay, and Bee"
+                          }
+                          onClick={() =>
+                            setSingleCharacterSectionOpen((open) => !open)
+                          }
                         >
-                          <Checkbox
-                            checked={allDeseretSingleCharacterWords}
-                            indeterminate={
-                              someDeseretSingleCharacterWords &&
-                              !allDeseretSingleCharacterWords
-                            }
-                            onChange={setAllDeseretSingleCharacterWords}
-                            label="Select all"
-                            title="Select or clear The/Thee, Gay, and Bee together."
-                          />
-                          <Checkbox
-                            checked={useDeseretThee}
-                            onChange={setUseDeseretThee}
-                            label={'"𐐜" (The/Thee)'}
-                            title={
-                              'When on, "the" and "thee" are written as 𐐜. When off, they are spelled out.'
-                            }
-                          />
-                          <Checkbox
-                            checked={useDeseretGay}
-                            onChange={setUseDeseretGay}
-                            label={'"𐐘" (Gay)'}
-                            title={
-                              'When on, "gay" is written as 𐐘. When off, it is spelled out.'
-                            }
-                          />
-                          <Checkbox
-                            checked={useDeseretBee}
-                            onChange={setUseDeseretBee}
-                            label={'"𐐒" (Bee)'}
-                            title={
-                              'When on, "bee" is written as 𐐒. When off, it is spelled out.'
-                            }
-                          />
+                          <span
+                            className={`deseret-word-section-icon${singleCharacterSectionOpen ? " is-open" : ""}`}
+                            aria-hidden="true"
+                          >
+                            ▼
+                          </span>
+                        </button>
+                      </div>
+                      <div
+                        id={singleCharacterSectionId}
+                        className={`phonetic-mode-settings-collapse${singleCharacterSectionOpen ? " is-open" : ""}`}
+                        aria-hidden={!singleCharacterSectionOpen}
+                      >
+                        <div
+                          className="phonetic-mode-settings-collapse-inner"
+                          {...(!singleCharacterSectionOpen
+                            ? { inert: true as const }
+                            : {})}
+                        >
+                          <div
+                            className="phonetic-mode-settings-group"
+                            role="group"
+                            aria-label="Single-character words"
+                          >
+                            <Checkbox
+                              checked={useDeseretThee}
+                              onChange={setUseDeseretThee}
+                              label={'"𐐜" (The/Thee)'}
+                              title={
+                                'When on, "the" and "thee" are written as 𐐜. When off, they are spelled out.'
+                              }
+                            />
+                            <Checkbox
+                              checked={useDeseretGay}
+                              onChange={setUseDeseretGay}
+                              label={'"𐐘" (Gay)'}
+                              title={
+                                'When on, "gay" is written as 𐐘. When off, it is spelled out.'
+                              }
+                            />
+                            <Checkbox
+                              checked={useDeseretBee}
+                              onChange={setUseDeseretBee}
+                              label={'"𐐒" (Bee)'}
+                              title={
+                                'When on, "bee" is written as 𐐒. When off, it is spelled out.'
+                              }
+                            />
+                          </div>
                         </div>
-                      )}
+                      </div>
                     </div>
                     <div
                       className="phonetic-priority-row"
