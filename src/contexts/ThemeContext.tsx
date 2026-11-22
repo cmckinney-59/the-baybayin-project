@@ -17,6 +17,8 @@ export type AppTheme =
   | "windu"
   | "deseret"
   | "deseret-dark"
+  | "utah"
+  | "byu"
   | "doctrina"
   | "pina"
   | "mayon";
@@ -43,6 +45,8 @@ const THEME_CLASSES: Record<AppTheme, string | null> = {
   windu: "windu-mode",
   deseret: "deseret-mode",
   "deseret-dark": "deseret-dark-mode",
+  utah: "utah-mode",
+  byu: "byu-mode",
   doctrina: "doctrina-mode",
   pina: "pina-mode",
   mayon: "mayon-mode",
@@ -59,6 +63,8 @@ const VALID_THEMES: AppTheme[] = [
   "windu",
   "deseret",
   "deseret-dark",
+  "utah",
+  "byu",
   "doctrina",
   "pina",
   "mayon",
@@ -74,6 +80,8 @@ const ALL_THEME_CLASSES = [
   "windu-mode",
   "deseret-mode",
   "deseret-dark-mode",
+  "utah-mode",
+  "byu-mode",
   "doctrina-mode",
   "pina-mode",
   "mayon-mode",

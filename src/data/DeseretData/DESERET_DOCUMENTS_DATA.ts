@@ -79,13 +79,21 @@ function doc(
 }
 
 export const DESERET_DOCUMENTS: DeseretDocument[] = [
-  doc("Book of Mormon", "BoM.pdf", bomPdf, "pdf", "Books & Scriptures"),
+  doc(
+    "Book of Mormon",
+    "BoM.pdf",
+    bomPdf,
+    "pdf",
+    "Books & Scriptures",
+    "LuaLaTeX edition from deseretalphabet.info, set in Gentium Plus (SIL International) with Deseret additions. Follows the 1920 Book of Mormon published by The Church of Jesus Christ of Latter-day Saints. The edition states that text is in the public domain.",
+  ),
   doc(
     "Book of Mormon (Deseret Alphabet)",
     "bookofmormdeseretalpha00.pdf",
     bookOfMormonDeseretPdf,
     "pdf",
     "Books & Scriptures",
+    "1869 Deseret alphabet edition. Internet Archive scan (archive.org/details/bookofmormdeseretalpha00). The file notes a 1990 facsimile reproduction.",
   ),
   doc(
     "New Testament",
@@ -93,6 +101,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     newTestamentPdf,
     "pdf",
     "Books & Scriptures",
+    "LuaLaTeX edition from deseretalphabet.info, set in Gentium Plus (SIL International) with Deseret additions. King James Version. The edition states the text is in the public domain.",
   ),
   doc(
     "Old Testament",
@@ -100,22 +109,39 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     oldTestamentPdf,
     "pdf",
     "Books & Scriptures",
+    "LuaLaTeX edition from deseretalphabet.info, set in Gentium Plus (SIL International) with Deseret additions. King James Version. The edition states the text is in the public domain.",
   ),
-  doc("Apocrypha", "Apocrypha.pdf", apocryphaPdf, "pdf", "Books & Scriptures"),
+  doc(
+    "Apocrypha",
+    "Apocrypha.pdf",
+    apocryphaPdf,
+    "pdf",
+    "Books & Scriptures",
+    "LuaLaTeX edition from deseretalphabet.info, set in Gentium Plus (SIL International) with Deseret additions. King James Apocrypha and “The Translators to the Reader.” The edition states the text is in the public domain.",
+  ),
   doc(
     "Double Combination",
     "DoubleCombination.pdf",
     doubleCombinationPdf,
     "pdf",
     "Books & Scriptures",
+    "LuaLaTeX edition from deseretalphabet.info, set in Gentium Plus (SIL International) with Deseret additions. Follows the 1921 Doctrine and Covenants and Pearl of Great Price. Official Declaration 2 is omitted because that text remains under copyright.",
   ),
-  doc("Triple Combination", "Triple.pdf", triplePdf, "pdf", "Books & Scriptures"),
+  doc(
+    "Triple Combination",
+    "Triple.pdf",
+    triplePdf,
+    "pdf",
+    "Books & Scriptures",
+    "John Jenkins, 1997.",
+  ),
   doc(
     "The Deseret First Book",
     "thedeseretfirstbook.pdf",
     deseretFirstBookPdf,
     "pdf",
     "Books & Scriptures",
+    "Regents of the Deseret University. Public domain. Internet Archive scan (archive.org/details/thedeseretfirstb00unse).",
   ),
   doc(
     "The Deseret Second Book",
@@ -123,6 +149,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     deseretSecondBookPdf,
     "pdf",
     "Books & Scriptures",
+    "Regents of the Deseret University. Public domain. Internet Archive scan (archive.org/details/thedeseretsecond00unse).",
   ),
   doc(
     "Annual Report of the Territorial Superintendent",
@@ -130,6 +157,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     annualReportPdf,
     "pdf",
     "Books & Scriptures",
+    "Utah Territory Office of the Commissioner of Schools, 1868. Public domain. Internet Archive scan (archive.org/details/annualreportofte00utah).",
   ),
   doc(
     "Mormon Passage of George D. Watt",
@@ -137,6 +165,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     mormonPassageGeorgeDWattPdf,
     "pdf",
     "Books & Scriptures",
+    "Ronald G. Watt, Mormon Passage of George D. Watt: First British Convert, Scribe for Zion. Utah State University Press, 2009. Creative Commons Attribution 4.0 (creativecommons.org/licenses/by/4.0/). Project MUSE: muse.jhu.edu/book/9408.",
   ),
   doc(
     "English–Hopi Vocabulary (1860)",
@@ -144,6 +173,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     englishHopiVocabularyPdf,
     "pdf",
     "Books & Scriptures",
+    "Kenneth R. Beesley and Dirk Elzinga, An 1860 English-Hopi Vocabulary Written in the Deseret Alphabet. The University of Utah Press, 2015. Copyright © 2015 by The University of Utah Press. All rights reserved.",
   ),
   doc(
     "Unicode Chapter 20: Americas",
@@ -151,6 +181,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     unicodeChapter20AmericasPdf,
     "pdf",
     "Books & Scriptures",
+    "The Unicode Consortium, The Unicode Standard, Version 14.0, Chapter 20: Americas. © 2021 Unicode, Inc.",
   ),
   doc(
     "Unicode Deseret Documentation",
@@ -158,6 +189,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     unicodeDeseretDocumentationPdf,
     "pdf",
     "Books & Scriptures",
+    "The Unicode Consortium, Deseret code chart from The Unicode Standard, Version 18.0. © 1991–2026 Unicode, Inc.",
   ),
   doc(
     "The City of the Saints",
@@ -198,6 +230,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     alphabetChartPdf,
     "pdf",
     "Charts & Tables",
+    "Broadside, about the 1860s. Public domain. Scan from the Church History Library via Internet Archive (archive.org/details/deseretalphabet02unse).",
   ),
   doc(
     "Deseret Alphabet Chart 0",
@@ -205,6 +238,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     alphabetChart0Pdf,
     "pdf",
     "Charts & Tables",
+    "Internet Archive scan (archive.org/details/deseretalphabet00unse).",
   ),
   doc(
     "Deseret Alphabet Chart 2",
@@ -212,6 +246,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     alphabetChart2Pdf,
     "pdf",
     "Charts & Tables",
+    "Anonymous 1854 imprint. Public domain. Scan from the Church History Library via Internet Archive (archive.org/details/deseretalphabet03unse).",
   ),
   doc(
     "An Early Version of the Alphabet",
@@ -219,6 +254,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     earlyAlphabetPdf,
     "pdf",
     "Charts & Tables",
+    "Interlibrary-loan scan dated 19 March 2007 (ILL 1564027). The holding institution is not named in the file.",
   ),
   doc(
     "Early Version of the Alphabet 2",
@@ -226,6 +262,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     earlyAlphabet2Pdf,
     "pdf",
     "Charts & Tables",
+    "Microtek scan. The source institution is not recorded in the file.",
   ),
   doc(
     "Table from All 3 Readers",
@@ -233,6 +270,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableAll3ReadersPdf,
     "pdf",
     "Charts & Tables",
+    "Compiled by John Erickson (jericks) from the Deseret First Book, Second Book, and 1868 reader.",
   ),
   doc(
     "Table from 1868 (Shape Ordered)",
@@ -240,6 +278,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     table1868ShapePdf,
     "pdf",
     "Charts & Tables",
+    "Shape-ordered table of the 1868 Deseret reader alphabet. Prepared in OpenOffice. The compiler is not named in the file.",
   ),
   doc(
     "Table from City of the Saints",
@@ -247,6 +286,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableCityOfTheSaintsPdf,
     "pdf",
     "Charts & Tables",
+    "Excerpt from Richard F. Burton, The City of the Saints (Harper & Brothers, 1862). See the full book in this collection.",
   ),
   doc(
     "Table from Deseret News",
@@ -254,6 +294,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableDeseretNewsPdf,
     "pdf",
     "Charts & Tables",
+    "Scan of a Deseret News notice introducing the alphabet. The date is not recorded in the file.",
   ),
   doc(
     "Table from German Book",
@@ -261,6 +302,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableGermanBookPdf,
     "pdf",
     "Charts & Tables",
+    "Excerpt from Karl Faulmann, Das Buch der Schrift. Google Books PDF. See the full book in this collection.",
   ),
   doc(
     "Table from Journey to Great Salt Lake City",
@@ -268,6 +310,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableJourneyPdf,
     "pdf",
     "Charts & Tables",
+    "Excerpt from Jules Remy and Julius Brenchley, A Journey to Great Salt Lake City (1861). See the full book in this collection.",
   ),
   doc(
     "Table from Life in Utah",
@@ -275,6 +318,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableLifeInUtahPdf,
     "pdf",
     "Charts & Tables",
+    "Compiled by John Erickson (jericks) from J. H. Beadle, Life in Utah (1870). See the full book in this collection.",
   ),
   doc(
     "Table from New (Shape Ordered)",
@@ -282,6 +326,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableNewShapePdf,
     "pdf",
     "Charts & Tables",
+    "Compiled by Charlotte Erickson.",
   ),
   doc(
     "Table from New (Sound Ordered)",
@@ -289,6 +334,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableNewSoundPdf,
     "pdf",
     "Charts & Tables",
+    "Compiled by Charlotte Erickson.",
   ),
   doc(
     "Table from New York Times",
@@ -296,6 +342,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     tableNewYorkTimesPdf,
     "pdf",
     "Charts & Tables",
+    "The New York Times, 2 October 1857. The PDF carries a New York Times copyright notice.",
   ),
   doc(
     "The Deseret Alphabet (1854)",
@@ -328,25 +375,63 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     albertKeringtonImg,
     "image",
     "Images",
+    "Portrait card, 1813–1889. The photographer and the card’s publisher are not recorded with this file.",
   ),
-  doc("Brigham Young", "BrighamYoung.png", brighamYoungImg, "image", "Images"),
-  doc("Erastus Snow", "ErastusSnow.jpeg", erastusSnowImg, "image", "Images"),
-  doc("Isaac Bullock", "IsaacBullock.png", isaacBullockImg, "image", "Images"),
-  doc("Orson Pratt", "OrsonPratt.png", orsonPrattImg, "image", "Images"),
+  doc(
+    "Brigham Young",
+    "BrighamYoung.png",
+    brighamYoungImg,
+    "image",
+    "Images",
+    "Portrait card of Brigham Young, 1801–1877. The photographer and the card’s publisher are not recorded with this file.",
+  ),
+  doc(
+    "Erastus Snow",
+    "ErastusSnow.jpeg",
+    erastusSnowImg,
+    "image",
+    "Images",
+    "Portrait card. The photographer and the card’s publisher are not recorded with this file.",
+  ),
+  doc(
+    "Isaac Bullock",
+    "IsaacBullock.png",
+    isaacBullockImg,
+    "image",
+    "Images",
+    "Portrait card. The photographer and the card’s publisher are not recorded with this file.",
+  ),
+  doc(
+    "Orson Pratt",
+    "OrsonPratt.png",
+    orsonPrattImg,
+    "image",
+    "Images",
+    "Portrait card. The photographer and the card’s publisher are not recorded with this file.",
+  ),
   doc(
     "Wilford Woodruff",
     "WilfordWoodruff.png",
     wilfordWoodruffImg,
     "image",
     "Images",
+    "Portrait card. The photographer and the card’s publisher are not recorded with this file.",
   ),
-  doc("William Felps", "WilliamFelps.png", williamFelpsImg, "image", "Images"),
+  doc(
+    "William Felps",
+    "WilliamFelps.png",
+    williamFelpsImg,
+    "image",
+    "Images",
+    "Portrait card. The photographer and the card’s publisher are not recorded with this file.",
+  ),
   doc(
     "Deseret Gold Coin",
     "DeseretGoldCoin.jpg",
     deseretGoldCoinImg,
     "image",
     "Images",
+    "1860 Deseret Assay Office five-dollar gold piece, marked 5 D. The photographer is not recorded with this file.",
   ),
   doc(
     "General Election People's Ticket",
@@ -354,6 +439,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     generalElectionTicketImg,
     "image",
     "Images",
+    "People’s Ticket for the general election of Monday, 2 August 1875. The scan source is not recorded with this file.",
   ),
   doc(
     "Improvement Era Page",
@@ -361,6 +447,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     improvementEraPageImg,
     "image",
     "Images",
+    "Albert L. Zobell Jr., “Deseret Alphabet Manuscript Found,” Improvement Era, May 1967, pp. 10–11. The photo caption names Albert L. Zobell Jr. and Earl E. Olson with a Church Historian’s Office manuscript.",
   ),
   doc(
     "Carn With A Fark Article",
@@ -368,6 +455,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     carnWithAFarkArticleImg,
     "image",
     "Images",
+    "Ken Connaughton, United Press International, “Is Deseret Alphabet to Blame for Eating ‘Carn’ With a ‘Fark’?,” The Herald (Provo, Utah), 4 April 1976, p. 23.",
   ),
   doc(
     "Plan 10 Floppy Disk",
@@ -375,6 +463,7 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
     plan10FloppyDiskImg,
     "image",
     "Images",
+    "Plan 10 from Outer Space Deseret alphabet font, shown as a Windows TrueType package and a Macintosh PostScript floppy. The photographer is not recorded with this file.",
   ),
   doc(
     "Sermon on the Mount, Deseret News",

@@ -222,11 +222,12 @@ export const BAYBAYIN_FONTS: BaybayinFont[] = [
     outputFontClass: "baybayin-tayo-font",
     downloadPath: "baybayin/Tayo/BaybayinBTB30.ttf",
     downloadName: "BaybayinBTB30.ttf",
-    license: "Free",
+    license: "OFL",
     supportsUnicodeLabel: "Yes",
     sample: "ᜋᜊᜓᜑᜌ᜔",
     unicodeOnly: true,
     creator: "Elijah Bayles",
+    sourceUrl: "https://www.facebook.com/groups/BaybayinTayo/",
   },
   {
     id: "bagwis",

@@ -156,6 +156,28 @@ const THEME_GROUPS: ThemeGroup[] = [
           text: "#f0ebe3",
         },
       },
+      {
+        value: "utah",
+        label: "University of Utah",
+        blurb: "Red and black",
+        swatch: {
+          bg: "#f6f3f3",
+          surface: "#111111",
+          accent: "#cc0000",
+          text: "#1a1a1a",
+        },
+      },
+      {
+        value: "byu",
+        label: "BYU",
+        blurb: "Navy and white",
+        swatch: {
+          bg: "#f3f6fa",
+          surface: "#002e5d",
+          accent: "#d6e4f5",
+          text: "#002e5d",
+        },
+      },
     ],
   },
   {

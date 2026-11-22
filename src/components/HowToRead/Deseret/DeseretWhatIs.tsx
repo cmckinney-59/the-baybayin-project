@@ -12,6 +12,12 @@ export default function WhatIsDeseret() {
         This alphabet has seen an influx of artistic use in recent years and many Deseret "easter eggs" can be found throughout the state of Utah.
       </p>
       <p>
+        This transliterator spells English words from the Carnegie Mellon
+        University Pronouncing Dictionary, through the ingglish package. Words
+        the dictionary does not contain fall back to that package&apos;s
+        pronunciation rules.
+      </p>
+      <p>
         To explore Deseret further, go to the "How To Read" section or follow the
         link below.
       </p>

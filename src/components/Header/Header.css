@@ -132,6 +132,20 @@
   color: var(--champagne);
 }
 
+.utah-mode .header-wordmark,
+.byu-mode .header-wordmark {
+  color: #ffffff;
+  letter-spacing: 0.12em;
+}
+
+.utah-mode .header-tagline {
+  color: #f0d0d0;
+}
+
+.byu-mode .header-tagline {
+  color: #d5e3f2;
+}
+
 .mayon-mode .header-wordmark {
   color: var(--ember);
   letter-spacing: 0.12em;

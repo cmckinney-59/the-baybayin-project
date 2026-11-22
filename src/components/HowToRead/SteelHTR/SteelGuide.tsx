@@ -12,8 +12,10 @@ export default function SteelGuide() {
           letters are often drawn like the metal symbols used in the books.
         </p>
         <p>
-          This transliterator uses a Steel font as a letter-for-letter stand-in
-          for the Latin alphabet.
+          This transliterator uses the Steel font by Claincy (Colin M.) as a
+          letter-for-letter stand-in for the Latin alphabet. Claincy credits
+          the letter assignments to the 17th Shard translation of the cover of
+          Treatise on Metallurgics.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>
@@ -27,6 +29,9 @@ export default function SteelGuide() {
         <ul className="resource-links">
           <ResourceLink href="https://coppermind.net/wiki/Steel_alphabet">
             Coppermind: Steel alphabet
+          </ResourceLink>
+          <ResourceLink href="http://www.17thshard.com/forum/topic/1905-translation-of-the-cover-page-of-the-treatise-metallurgic/">
+            17th Shard: letter assignments
           </ResourceLink>
         </ul>
       </CollapsibleSection>

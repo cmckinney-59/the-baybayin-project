@@ -501,6 +501,37 @@ export default function TransliteratorSettingsDialog({
                                 </button>
                               </div>
                             </div>
+                            <p className="phonetic-mode-credit">
+                              English pronunciations come from the{" "}
+                              <a
+                                href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="link"
+                              >
+                                Carnegie Mellon University Pronouncing Dictionary
+                              </a>{" "}
+                              through the ingglish package. Spanish
+                              pronunciations come from the{" "}
+                              <a
+                                href="https://mfa-models.readthedocs.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="link"
+                              >
+                                Montreal Forced Aligner Spanish dictionary
+                              </a>{" "}
+                              (
+                              <a
+                                href="https://creativecommons.org/licenses/by/4.0/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="link"
+                              >
+                                CC BY 4.0
+                              </a>
+                              ).
+                            </p>
                           </div>
                         </div>
                       </div>

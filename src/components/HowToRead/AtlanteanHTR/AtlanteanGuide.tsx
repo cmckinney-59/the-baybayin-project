@@ -16,7 +16,8 @@ export default function AtlanteanGuide() {
         <p>
           This transliterator uses an Atlantean font as a letter-for-letter
           stand-in for the Latin alphabet, so you can type English and read it
-          in those glyphs.
+          in those glyphs. The font file is copyright 1999, The Walt Disney
+          Company.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>

@@ -42,7 +42,9 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     downloadPath: "klingon/klingon.zip",
     downloadName: "klingon.zip",
     supportsUnicode: "No",
-    license: "Personal",
+    license: "Personal use only",
+    creator: "kaiserzharkhan",
+    sourceUrl: "http://truefonts.blogspot.com",
   },
   {
     id: "klinzhai",
@@ -52,7 +54,20 @@ const PLQAD_FONT_ROWS: FontTableRow[] = [
     downloadPath: "klingon/Klinzhai.ttf",
     downloadName: "Klinzhai.ttf",
     supportsUnicode: "No",
-    license: "Personal",
+    license: "All rights reserved",
+    creator: "PsychoGlyph",
+  },
+  {
+    id: "plqad-mandel",
+    name: "Klingon pIqaD Mandel",
+    fontClass: "plqad-font-mandel",
+    sample: "tlhIngan",
+    downloadPath: "klingon/Klingon-pIqaD-Mandel.ttf",
+    downloadName: "Klingon-pIqaD-Mandel.ttf",
+    supportsUnicode: "No",
+    license: "OFL",
+    creator: "Mike Neff / Michael Everson",
+    sourceUrl: "https://www.evertype.com/",
   },
 ];
 
@@ -63,10 +78,70 @@ const UNICODE_ALPHABETS = new Set([
   "Tagbanwa",
 ]);
 
-const ALPHABET_LICENSE: Record<string, string> = {
-  Buhid: "Free",
-  Hanunoo: "Free",
-  Tagbanwa: "Free",
+type AlphabetFontCredit = {
+  creator?: string;
+  sourceUrl?: string;
+  license: string;
+};
+
+/** Credits for scripts that ship a single face. Taken from each font's name table or readme. */
+const ALPHABET_FONT_CREDIT: Record<string, AlphabetFontCredit> = {
+  Ancients: {
+    creator: "Joseph Spicer",
+    license: "All rights reserved",
+  },
+  Atlantean: {
+    creator: "The Walt Disney Company",
+    license: "All rights reserved",
+  },
+  Buhid: {
+    creator: "Noto Project Authors / Monotype",
+    sourceUrl: "https://github.com/notofonts/buhid",
+    license: "OFL",
+  },
+  Cirth: {
+    creator: "Daniel Steven Smith",
+    license: "Copyright 1998",
+  },
+  Gallifreyan: {
+    creator: "Melanie J. Cook (Wiccked)",
+    license: "Personal use only; no redistribution",
+  },
+  Hanunoo: {
+    creator: "Noto Project Authors / Monotype",
+    sourceUrl: "https://github.com/notofonts/hanunoo",
+    license: "OFL",
+  },
+  MarasEye: {
+    creator: "Neale Davidson (Pixel Sagas)",
+    sourceUrl: "http://www.pixelsagas.com",
+    license: "Personal use only",
+  },
+  Matoran: {
+    creator: "Daniel U. Thibault",
+    license: "Freeware",
+  },
+  Ogham: {
+    creator: "Noto Project Authors / Monotype",
+    sourceUrl: "https://github.com/notofonts/ogham",
+    license: "OFL",
+  },
+  Steel: {
+    creator: "Claincy (Colin M.)",
+    license: "Unspecified",
+  },
+  Tagbanwa: {
+    creator: "Noto Project Authors / Monotype",
+    sourceUrl: "https://github.com/notofonts/tagbanwa",
+    license: "OFL",
+  },
+  Tengwar: {
+    creator: "Daniel Steven Smith",
+    license: "Copyright 1998",
+  },
+  Unown: {
+    license: "Unspecified",
+  },
 };
 
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
@@ -160,6 +235,7 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
   const downloadPath =
     ALPHABET_DOWNLOAD_PATH[alphabetName] ??
     `${alphabetName.toLowerCase()}/${entry.downloadName}`;
+  const credit = ALPHABET_FONT_CREDIT[alphabetName];
 
   return [
     {
@@ -170,7 +246,9 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       downloadPath,
       downloadName: entry.downloadName,
       supportsUnicode: UNICODE_ALPHABETS.has(alphabetName) ? "Yes" : "No",
-      license: ALPHABET_LICENSE[alphabetName] ?? "Personal",
+      license: credit?.license ?? "Unspecified",
+      ...(credit?.creator ? { creator: credit.creator } : {}),
+      ...(credit?.sourceUrl ? { sourceUrl: credit.sourceUrl } : {}),
     },
   ];
 }

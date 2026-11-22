@@ -13,9 +13,12 @@ export default function PlqadGuide() {
           spoken language, which Marc Okrand invented for the films.
         </p>
         <p>
-          This page offers two fonts. The default pIqaD font remaps a few
-          Klingon letter pairs before drawing. Klinzhai mode treats the input
-          as English and substitutes a glyph for each Latin letter.
+          This page offers two typing fonts. The default pIqaD font, by
+          kaiserzharkhan, remaps a few Klingon letter pairs before drawing.
+          Klinzhai mode, using the PsychoGlyph font, treats the input as
+          English and substitutes a glyph for each Latin letter. The Fonts
+          section also includes Klingon pIqaD Mandel, by Mike Neff and Michael
+          Everson.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>

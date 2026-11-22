@@ -93,6 +93,10 @@ const RESOURCE_LINK_SECTIONS: ResourceLinkSection[] = [
         href: "https://www.unicode.org/charts/PDF/U10400.pdf",
         text: "Official Unicode Deseret Character Chart (PDF)",
       },
+      {
+        href: "http://www.speech.cs.cmu.edu/cgi-bin/cmudict",
+        text: "Carnegie Mellon University Pronouncing Dictionary",
+      },
     ],
   },
 ];

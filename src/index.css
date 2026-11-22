@@ -510,6 +510,179 @@ body.deseret-dark-mode #root {
   border-color: var(--gold);
 }
 
+/* Campus — University of Utah red/black, BYU navy/white */
+.utah-mode,
+.byu-mode {
+  --page-title-font: "Source Sans 3", "Segoe UI", sans-serif;
+  --page-title-tracking: 0.02em;
+  --page-title-transform: none;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.utah-mode {
+  --utah-red: #cc0000;
+  --utah-red-deep: #990000;
+  --utah-black: #111111;
+  --utah-paper: #f7f5f5;
+
+  --bg-primary: var(--utah-paper);
+  --bg-secondary: #efe8e8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5c5353;
+  --button-bg: #ffffff;
+  --button-border: #d9cfcf;
+  --icon-color: #ffffff;
+  --header-bg: var(--utah-black);
+  --nav-bg: var(--utah-black);
+  --nav-text: #f7f4f4;
+  --link-color: var(--utah-red);
+  --link-hover-color: var(--utah-red-deep);
+  --accent: var(--utah-red);
+  --accent-hover: var(--utah-red-deep);
+  --accent-soft: rgba(204, 0, 0, 0.12);
+  --on-accent: #ffffff;
+  --header-border: var(--utah-red);
+  --nav-border: rgba(204, 0, 0, 0.45);
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.08);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.14);
+  --page-title-color: var(--utah-red-deep);
+}
+
+.byu-mode {
+  --byu-navy: #002e5d;
+  --byu-navy-deep: #001f40;
+  --byu-white: #ffffff;
+  --byu-paper: #f4f7fb;
+
+  --bg-primary: var(--byu-paper);
+  --bg-secondary: #e6eef6;
+  --text-primary: #102033;
+  --text-secondary: #4d6074;
+  --button-bg: #ffffff;
+  --button-border: #c5d3e2;
+  --icon-color: #ffffff;
+  --header-bg: var(--byu-navy);
+  --nav-bg: var(--byu-navy);
+  --nav-text: #f4f7fb;
+  --link-color: var(--byu-navy);
+  --link-hover-color: var(--byu-navy-deep);
+  --accent: var(--byu-navy);
+  --accent-hover: var(--byu-navy-deep);
+  --accent-soft: rgba(0, 46, 93, 0.12);
+  --on-accent: #ffffff;
+  --header-border: #ffffff;
+  --nav-border: rgba(255, 255, 255, 0.28);
+  --shadow-sm: 0 1px 2px rgba(0, 46, 93, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 46, 93, 0.14);
+  --page-title-color: var(--byu-navy);
+}
+
+body.utah-mode,
+body.byu-mode {
+  background-color: var(--bg-primary);
+  background-attachment: fixed;
+}
+
+body.utah-mode {
+  background-image:
+    radial-gradient(
+      ellipse 110% 60% at 50% -12%,
+      rgba(204, 0, 0, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #f3ecec 0%, var(--utah-paper) 42%, #faf7f7 100%);
+}
+
+body.byu-mode {
+  background-image:
+    radial-gradient(
+      ellipse 110% 60% at 50% -12%,
+      rgba(0, 46, 93, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #e8eef5 0%, var(--byu-paper) 42%, #f7f9fc 100%);
+}
+
+body.utah-mode #root,
+body.byu-mode #root {
+  position: relative;
+  z-index: 1;
+}
+
+.utah-mode .App-header,
+.byu-mode .App-header {
+  border-bottom-width: 3px;
+  border-bottom-color: var(--header-border);
+  box-shadow: var(--shadow-md);
+}
+
+.utah-mode .App-Navigation,
+.byu-mode .App-Navigation {
+  border-right-color: var(--nav-border);
+}
+
+.utah-mode .Navigation-content ul li a:hover,
+.utah-mode .Navigation-content ul li a.is-active {
+  background-color: rgba(204, 0, 0, 0.28);
+  color: #ffffff;
+}
+
+.utah-mode .Navigation-content ul li a:hover .nav-icon,
+.utah-mode .Navigation-content ul li a.is-active .nav-icon {
+  color: #ffffff;
+}
+
+.byu-mode .Navigation-content ul li a:hover,
+.byu-mode .Navigation-content ul li a.is-active {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.byu-mode .Navigation-content ul li a:hover .nav-icon,
+.byu-mode .Navigation-content ul li a.is-active .nav-icon {
+  color: #ffffff;
+}
+
+.utah-mode .hamburger:focus-visible,
+.utah-mode .header-logo-link:focus-visible,
+.utah-mode .Navigation-content ul li a:focus-visible,
+.byu-mode .hamburger:focus-visible,
+.byu-mode .header-logo-link:focus-visible,
+.byu-mode .Navigation-content ul li a:focus-visible {
+  outline-color: #ffffff;
+}
+
+.utah-mode .letter-blue,
+.utah-mode .baybayin-letter-blue,
+.utah-mode .aurebesh-letter-blue {
+  color: var(--utah-red-deep) !important;
+}
+
+.byu-mode .letter-blue,
+.byu-mode .baybayin-letter-blue,
+.byu-mode .aurebesh-letter-blue {
+  color: var(--byu-navy) !important;
+}
+
+.utah-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.byu-mode select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23002e5d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.utah-mode select:focus,
+.byu-mode select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.utah-mode select:hover,
+.byu-mode select:hover {
+  border-color: var(--accent);
+}
+
 /* Filipino Modes — Doctrina, Piña, Mayon */
 .doctrina-mode,
 .pina-mode {
@@ -2119,6 +2292,13 @@ button:hover:not(:disabled) {
   margin-top: 0.15rem;
   padding-left: 0.65rem;
   border-left: 2px solid var(--button-border, #ccc);
+}
+
+.transliterator-settings-dialog .phonetic-mode-credit {
+  margin: 0.45rem 0 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-secondary, #555);
 }
 
 .transliterator-settings-dialog .phonetic-priority-row {

@@ -12,9 +12,11 @@ export default function GallifreyanGuide() {
           circular diagrams where letter shapes stack into words.
         </p>
         <p>
-          This transliterator uses a simplified Gallifreyan font. Each Latin
-          letter becomes one glyph in a straight line, so it is easier to type
-          than the circular charts.
+          This transliterator uses WS Simple Gallifreyan by Melanie J. Cook
+          (Wiccked). Each Latin letter becomes one glyph in a straight line, so
+          it is easier to type than the circular charts. That font is licensed
+          for personal use only and may not be redistributed. Sherman&apos;s
+          circular Gallifreyan is a different system.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>
