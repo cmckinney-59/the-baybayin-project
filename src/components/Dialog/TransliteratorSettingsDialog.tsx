@@ -383,29 +383,29 @@ export default function TransliteratorSettingsDialog({
                         </div>
                       </div>
                     </div>
-                    <div
-                      className="phonetic-priority-row"
-                      title="Classic uses the historical British er (short o + r). Modern uses the American er (short u + r)."
-                    >
-                      <span className="phonetic-priority-label">Mode</span>
+                    {showModernDeseret && (
                       <div
-                        className="phonetic-priority-toggle"
-                        role="group"
-                        aria-label="Deseret mode"
+                        className="phonetic-priority-row"
+                        title="Classic uses the historical British er (short o + r). Modern uses the American er (short u + r)."
                       >
-                        <button
-                          type="button"
-                          className={
-                            deseretMode === "classic"
-                              ? "phonetic-priority-option active"
-                              : "phonetic-priority-option"
-                          }
-                          aria-pressed={deseretMode === "classic"}
-                          onClick={() => setDeseretMode("classic")}
+                        <span className="phonetic-priority-label">Mode</span>
+                        <div
+                          className="phonetic-priority-toggle"
+                          role="group"
+                          aria-label="Deseret mode"
                         >
-                          Classic
-                        </button>
-                        {showModernDeseret && (
+                          <button
+                            type="button"
+                            className={
+                              deseretMode === "classic"
+                                ? "phonetic-priority-option active"
+                                : "phonetic-priority-option"
+                            }
+                            aria-pressed={deseretMode === "classic"}
+                            onClick={() => setDeseretMode("classic")}
+                          >
+                            Classic
+                          </button>
                           <button
                             type="button"
                             className={
@@ -418,9 +418,9 @@ export default function TransliteratorSettingsDialog({
                           >
                             Modern
                           </button>
-                        )}
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </>
                 )}
 
