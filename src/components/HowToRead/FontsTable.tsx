@@ -7,7 +7,11 @@ import {
 } from "../../data/FONTS_TABLE_DATA";
 import downloadFont from "../../utils/DownloadFont";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
-import { AiOutlineDownload, AiOutlineInfoCircle } from "react-icons/ai";
+import {
+  AiOutlineDownload,
+  AiOutlineInfoCircle,
+  AiOutlineLink,
+} from "react-icons/ai";
 
 function FontCreatorValue({ row }: { row: FontTableRow }) {
   if (!row.creator) {
@@ -29,6 +33,7 @@ function FontCreatorValue({ row }: { row: FontTableRow }) {
 }
 
 function getFontFileType(row: FontTableRow): string {
+  if (row.externalUrl) return "—";
   const name = row.downloadName || row.downloadPath;
   const match = /\.([a-z0-9]+)$/i.exec(name);
   return match ? match[1].toUpperCase() : "—";
@@ -83,6 +88,50 @@ function FontInfoDialog({
   );
 }
 
+function FontFileAction({
+  row,
+  onDownload,
+  className,
+}: {
+  row: FontTableRow;
+  onDownload: (downloadPath: string, downloadName: string) => void;
+  className: string;
+}) {
+  if (row.externalUrl) {
+    const label = row.externalLabel ?? "Source";
+    return (
+      <a
+        className="fonts-table-icon-button"
+        href={row.externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={`${row.name} at ${label}`}
+        aria-label={`${row.name} at ${label}`}
+      >
+        <AiOutlineLink aria-hidden />
+      </a>
+    );
+  }
+
+  const url = getFontDownloadUrl(row.downloadPath);
+  return (
+    <button
+      type="button"
+      className={className}
+      disabled={!url}
+      title={
+        url ? `Download ${row.downloadName}` : "No downloadable file available"
+      }
+      aria-label={
+        url ? `Download ${row.downloadName}` : "No downloadable file available"
+      }
+      onClick={() => onDownload(row.downloadPath, row.downloadName)}
+    >
+      <AiOutlineDownload aria-hidden />
+    </button>
+  );
+}
+
 function FontTableBody({
   rows,
   onInfo,
@@ -94,9 +143,7 @@ function FontTableBody({
 }) {
   return (
     <tbody>
-      {rows.map((row) => {
-        const url = getFontDownloadUrl(row.downloadPath);
-        return (
+      {rows.map((row) => (
           <tr key={row.id}>
             <td>{row.name}</td>
             <td className={`fonts-table-sample ${row.fontClass}`}>
@@ -113,29 +160,15 @@ function FontTableBody({
                 >
                   <AiOutlineInfoCircle aria-hidden />
                 </button>
-                <button
-                  type="button"
+                <FontFileAction
+                  row={row}
+                  onDownload={onDownload}
                   className="downloadButton fonts-table-download"
-                  disabled={!url}
-                  title={
-                    url
-                      ? `Download ${row.downloadName}`
-                      : "No downloadable file available"
-                  }
-                  aria-label={
-                    url
-                      ? `Download ${row.downloadName}`
-                      : "No downloadable file available"
-                  }
-                  onClick={() => onDownload(row.downloadPath, row.downloadName)}
-                >
-                  <AiOutlineDownload aria-hidden />
-                </button>
+                />
               </div>
             </td>
           </tr>
-        );
-      })}
+        ))}
     </tbody>
   );
 }
@@ -184,9 +217,7 @@ function FontsMobileList({
 
   return (
     <ul className="fonts-mobile-list">
-      {rows.map((row) => {
-        const url = getFontDownloadUrl(row.downloadPath);
-        return (
+      {rows.map((row) => (
           <li key={row.id} className="fonts-mobile-card">
             <div className="fonts-mobile-copy">
               <p className="fonts-mobile-name">{row.name}</p>
@@ -204,28 +235,14 @@ function FontsMobileList({
               >
                 <AiOutlineInfoCircle aria-hidden />
               </button>
-              <button
-                type="button"
+              <FontFileAction
+                row={row}
+                onDownload={onDownload}
                 className="downloadButton fonts-mobile-download"
-                disabled={!url}
-                title={
-                  url
-                    ? `Download ${row.downloadName}`
-                    : "No downloadable file available"
-                }
-                aria-label={
-                  url
-                    ? `Download ${row.downloadName}`
-                    : "No downloadable file available"
-                }
-                onClick={() => onDownload(row.downloadPath, row.downloadName)}
-              >
-                <AiOutlineDownload aria-hidden />
-              </button>
+              />
             </div>
           </li>
-        );
-      })}
+        ))}
     </ul>
   );
 }

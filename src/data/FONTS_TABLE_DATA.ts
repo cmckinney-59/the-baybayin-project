@@ -17,6 +17,9 @@ export type FontTableRow = {
   license: string;
   creator?: string;
   sourceUrl?: string;
+  /** When set, the font file is not hosted here. The table links out instead. */
+  externalUrl?: string;
+  externalLabel?: string;
   /**
    * Optional table grouping. Unicode-remapped legacy faces are shown in a
    * separate section with a short disclosure.
@@ -82,6 +85,8 @@ type AlphabetFontCredit = {
   creator?: string;
   sourceUrl?: string;
   license: string;
+  externalUrl?: string;
+  externalLabel?: string;
 };
 
 /** Credits for scripts that ship a single face. Taken from each font's name table or readme. */
@@ -105,7 +110,10 @@ const ALPHABET_FONT_CREDIT: Record<string, AlphabetFontCredit> = {
   },
   Gallifreyan: {
     creator: "Melanie J. Cook (Wiccked)",
+    sourceUrl: "https://www.dafont.com/ws-simple-gallifreyan.font",
     license: "Personal use only; no redistribution",
+    externalUrl: "https://www.dafont.com/ws-simple-gallifreyan.font",
+    externalLabel: "DaFont",
   },
   Hanunoo: {
     creator: "Noto Project Authors / Monotype",
@@ -149,7 +157,6 @@ const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
   Buhid: "buhid/Noto_Sans_Buhid.zip",
   Cirth: "cirth/cirth-erebor.zip",
-  Gallifreyan: "gallifreyan/ws_simple_gallifreyan.zip",
   Hanunoo: "hanunoo/Noto_Sans_Hanunoo.zip",
   MarasEye: "maras-eye/maras-eye-font.zip",
   Matoran: "matoran/matoran.zip",
@@ -232,10 +239,11 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
     return [];
   }
 
-  const downloadPath =
-    ALPHABET_DOWNLOAD_PATH[alphabetName] ??
-    `${alphabetName.toLowerCase()}/${entry.downloadName}`;
   const credit = ALPHABET_FONT_CREDIT[alphabetName];
+  const downloadPath = credit?.externalUrl
+    ? ""
+    : (ALPHABET_DOWNLOAD_PATH[alphabetName] ??
+      `${alphabetName.toLowerCase()}/${entry.downloadName}`);
 
   return [
     {
@@ -249,6 +257,12 @@ export function getFontTableRows(alphabetName: string): FontTableRow[] {
       license: credit?.license ?? "Unspecified",
       ...(credit?.creator ? { creator: credit.creator } : {}),
       ...(credit?.sourceUrl ? { sourceUrl: credit.sourceUrl } : {}),
+      ...(credit?.externalUrl
+        ? {
+            externalUrl: credit.externalUrl,
+            externalLabel: credit.externalLabel,
+          }
+        : {}),
     },
   ];
 }

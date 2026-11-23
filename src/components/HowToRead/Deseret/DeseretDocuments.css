@@ -46,12 +46,29 @@
   cursor: zoom-in;
 }
 
-.deseretDocumentImage {
+.deseretDocumentImage,
+.deseretDocumentPdfThumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
+}
+
+.deseretDocumentPdfThumb {
+  object-fit: contain;
+  object-position: center;
+  background: #f6f3ec;
+}
+
+.deseretDocumentPreview--external {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a.deseretDocumentButton {
+  display: inline-block;
+  text-decoration: none;
 }
 
 .deseretDocumentPdfBadge {

@@ -9,9 +9,6 @@ import deseretFirstBookPdf from "../../assets/documents/Deseret/thedeseretfirstb
 import deseretSecondBookPdf from "../../assets/documents/Deseret/thedeseretsecondbook.pdf";
 import annualReportPdf from "../../assets/documents/Deseret/annualreportofte00utah.pdf";
 import mormonPassageGeorgeDWattPdf from "../../assets/documents/Deseret/MormonPassageofGeorgeDWatt.pdf";
-import englishHopiVocabularyPdf from "../../assets/documents/Deseret/English-HopiVocabulary1860.pdf";
-import unicodeChapter20AmericasPdf from "../../assets/documents/Deseret/UnicodeChapter20_Americas.pdf";
-import unicodeDeseretDocumentationPdf from "../../assets/documents/Deseret/UnicodeDeseretDocumentation.pdf";
 import alphabetChart0Pdf from "../../assets/documents/Deseret/deseretalphabetchart0.pdf";
 import alphabetChartPdf from "../../assets/documents/Deseret/deseretalphabetchart.pdf";
 import alphabetChart2Pdf from "../../assets/documents/Deseret/deseretalphabetchart2.pdf";
@@ -51,7 +48,7 @@ import earlyCursiveLineupImg from "../../assets/documents/Deseret/EarlyDeseretCu
 import earlySheltonLineupImg from "../../assets/documents/Deseret/EarlyDeseretSheltonLineup.svg";
 import deseretCursiveExamplesImg from "../../assets/documents/Deseret/DeseretCursiveExamples.svg";
 
-export type DeseretDocumentKind = "pdf" | "image";
+export type DeseretDocumentKind = "pdf" | "image" | "link";
 
 export type DeseretDocumentCategory =
   | "Books & Scriptures"
@@ -65,6 +62,8 @@ export type DeseretDocument = {
   kind: DeseretDocumentKind;
   category: DeseretDocumentCategory;
   attribution?: string;
+  linkLabel?: string;
+  linkBadge?: string;
 };
 
 function doc(
@@ -74,8 +73,19 @@ function doc(
   kind: DeseretDocumentKind,
   category: DeseretDocumentCategory,
   attribution?: string,
+  linkLabel?: string,
+  linkBadge?: string,
 ): DeseretDocument {
-  return { name, fileName, fileUrl, kind, category, attribution };
+  return {
+    name,
+    fileName,
+    fileUrl,
+    kind,
+    category,
+    attribution,
+    linkLabel,
+    linkBadge,
+  };
 }
 
 export const DESERET_DOCUMENTS: DeseretDocument[] = [
@@ -169,27 +179,31 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
   ),
   doc(
     "English–Hopi Vocabulary (1860)",
-    "English-HopiVocabulary1860.pdf",
-    englishHopiVocabularyPdf,
-    "pdf",
+    "english-hopi-vocabulary",
+    "https://uofupress.com/books/an-1860-english-hopi-vocabulary-written-in-the-deseret-alphabet/",
+    "link",
     "Books & Scriptures",
-    "Kenneth R. Beesley and Dirk Elzinga, An 1860 English-Hopi Vocabulary Written in the Deseret Alphabet. The University of Utah Press, 2015. Copyright © 2015 by The University of Utah Press. All rights reserved.",
+    "Kenneth R. Beesley and Dirk Elzinga, An 1860 English-Hopi Vocabulary Written in the Deseret Alphabet. University of Utah Press, 2015. This site links to the publisher instead of hosting the book.",
+    "University of Utah Press",
+    "Press",
   ),
   doc(
     "Unicode Chapter 20: Americas",
-    "UnicodeChapter20_Americas.pdf",
-    unicodeChapter20AmericasPdf,
-    "pdf",
+    "unicode-chapter-20",
+    "https://www.unicode.org/versions/Unicode18.0.0/core-spec/chapter-20/",
+    "link",
     "Books & Scriptures",
-    "The Unicode Consortium, The Unicode Standard, Version 14.0, Chapter 20: Americas. © 2021 Unicode, Inc.",
+    "The Unicode Consortium, The Unicode Standard, Version 18.0, Chapter 20: Americas. This site links to Unicode instead of hosting the chapter.",
+    "Unicode",
   ),
   doc(
-    "Unicode Deseret Documentation",
-    "UnicodeDeseretDocumentation.pdf",
-    unicodeDeseretDocumentationPdf,
-    "pdf",
+    "Unicode Deseret Chart",
+    "unicode-deseret-chart",
+    "https://www.unicode.org/charts/PDF/U10400.pdf",
+    "link",
     "Books & Scriptures",
-    "The Unicode Consortium, Deseret code chart from The Unicode Standard, Version 18.0. © 1991–2026 Unicode, Inc.",
+    "The Unicode Consortium, Deseret code chart from The Unicode Standard, Version 18.0. © 1991–2026 Unicode, Inc. This site links to Unicode instead of hosting the chart.",
+    "Unicode",
   ),
   doc(
     "The City of the Saints",

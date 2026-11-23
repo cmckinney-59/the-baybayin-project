@@ -13,21 +13,33 @@ export default function GallifreyanGuide() {
         </p>
         <p>
           This transliterator uses WS Simple Gallifreyan by Melanie J. Cook
-          (Wiccked). Each Latin letter becomes one glyph in a straight line, so
-          it is easier to type than the circular charts. That font is licensed
-          for personal use only and may not be redistributed. Sherman&apos;s
-          circular Gallifreyan is a different system.
+          (Wiccked). Each Latin letter becomes one glyph in a straight line,
+          so it is easier to type than the circular charts. The font is
+          licensed for personal use only. Her{" "}
+          <a
+            className="link"
+            href="https://www.dafont.com/ws-simple-gallifreyan.font"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DaFont page
+          </a>{" "}
+          is where to get a copy for Word or Excel. Sherman&apos;s circular
+          Gallifreyan is a different system.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>
         <LatinCipherTable
           symbolHeader="Gallifreyan Symbol"
-          fontFamily="Gallifreyan"
+          fontFamily="WS Simple Gallifreyan"
           description="Each Latin letter maps to one simplified Gallifreyan glyph. Read left to right. Circular Gallifreyan charts use a different system."
         />
       </CollapsibleSection>
       <CollapsibleSection title="More Resources" defaultExpanded={false}>
         <ul className="resource-links">
+          <ResourceLink href="https://www.dafont.com/ws-simple-gallifreyan.font">
+            WS Simple Gallifreyan on DaFont
+          </ResourceLink>
           <ResourceLink href="https://www.shermansplanet.com/gallifreyan/">
             Sherman&apos;s Gallifreyan
           </ResourceLink>

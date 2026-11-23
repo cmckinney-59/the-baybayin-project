@@ -94,6 +94,10 @@ const RESOURCE_LINK_SECTIONS: ResourceLinkSection[] = [
         text: "Official Unicode Deseret Character Chart (PDF)",
       },
       {
+        href: "https://www.unicode.org/versions/Unicode18.0.0/core-spec/chapter-20/",
+        text: "Unicode Standard, Chapter 20: Americas",
+      },
+      {
         href: "http://www.speech.cs.cmu.edu/cgi-bin/cmudict",
         text: "Carnegie Mellon University Pronouncing Dictionary",
       },

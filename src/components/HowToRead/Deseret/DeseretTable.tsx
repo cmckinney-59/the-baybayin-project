@@ -21,7 +21,10 @@ export default function DeseretTable() {
         by Neil Alexander Walker.
       </p>
       <p>
-        ** NOTE: The character "𐐉" is only found in Brittish English. In American/Common English, the character "𐐂" is used.
+        ** NOTE:
+        The character "𐐉" is used in Brittish and early American English.
+        "𐐉" and "𐐃" were subsequently merged into just "𐐃" and is used in Modern Eastern American English. This is often known as the "cot caught merger".
+        In Modern Western American and Canadian English, the character "𐐂" is used instead of "𐐉" and "𐐃".
       </p>
       <table className="alphabet-table">
         <thead>

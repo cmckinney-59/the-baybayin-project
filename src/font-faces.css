@@ -650,9 +650,8 @@
 }
 
 @font-face {
-  font-family: "Gallifreyan";
-  src: url("./assets/fonts/gallifreyan/ws_simple_gallifreyan.ttf")
-    format("truetype");
+  font-family: "WS Simple Gallifreyan";
+  src: url("./assets/fonts/gallifreyan/ws_simple_gallifreyan.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -1401,7 +1400,7 @@
   font-family: "DeseretBee unicode", "Noto Sans Deseret", sans-serif;
 }
 .gallifreyan-font {
-  font-family: "Gallifreyan", sans-serif;
+  font-family: "WS Simple Gallifreyan", sans-serif;
 }
 .hanunoo-font {
   font-family: "Hanunoo", sans-serif;

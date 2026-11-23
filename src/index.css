@@ -1625,7 +1625,8 @@ button:hover:not(:disabled) {
   padding-bottom: 0.3rem;
 }
 
-.dark-mode .resource-link-section-title {
+.dark-mode .resource-link-section-title,
+.deseret-dark-mode .resource-link-section-title {
   color: var(--gold-soft, var(--text-primary));
 }
 
@@ -3182,6 +3183,10 @@ dialog.dialog-overlay {
 
 .alphabet-table.fonts-table td.fonts-table-sample.deseret-font-xylocopa {
   font-size: 0.6rem;
+}
+
+a.fonts-table-icon-button {
+  text-decoration: none;
 }
 
 .fonts-table-icon-button {
