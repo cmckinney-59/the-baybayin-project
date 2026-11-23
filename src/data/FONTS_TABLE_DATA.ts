@@ -97,7 +97,9 @@ const ALPHABET_FONT_CREDIT: Record<string, AlphabetFontCredit> = {
   },
   Atlantean: {
     creator: "The Walt Disney Company",
-    license: "All rights reserved",
+    license: "Copyright 1999; all rights reserved",
+    externalUrl: "https://omniglot.com/conscripts/atlantean.htm",
+    externalLabel: "Omniglot",
   },
   Buhid: {
     creator: "Noto Project Authors / Monotype",
@@ -122,8 +124,10 @@ const ALPHABET_FONT_CREDIT: Record<string, AlphabetFontCredit> = {
   },
   MarasEye: {
     creator: "Neale Davidson (Pixel Sagas)",
-    sourceUrl: "http://www.pixelsagas.com",
-    license: "Personal use only",
+    sourceUrl: "https://www.pixelsagas.com",
+    license: "Personal use only; no direct download",
+    externalUrl: "https://www.pixelsagas.com",
+    externalLabel: "Pixel Sagas",
   },
   Matoran: {
     creator: "Daniel U. Thibault",
@@ -154,11 +158,9 @@ const ALPHABET_FONT_CREDIT: Record<string, AlphabetFontCredit> = {
 
 const ALPHABET_DOWNLOAD_PATH: Record<string, string> = {
   Ancients: "ancients/ancients.zip",
-  Atlantean: "atlantean/atlantean-regular_xMmTX.zip",
   Buhid: "buhid/Noto_Sans_Buhid.zip",
   Cirth: "cirth/cirth-erebor.zip",
   Hanunoo: "hanunoo/Noto_Sans_Hanunoo.zip",
-  MarasEye: "maras-eye/maras-eye-font.zip",
   Matoran: "matoran/matoran.zip",
   Ogham: "ogham/Noto_Sans_Ogham.zip",
   Steel: "steel/steel alphabet font - aligned.zip",

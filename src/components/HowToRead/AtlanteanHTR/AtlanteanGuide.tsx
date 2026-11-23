@@ -2,6 +2,8 @@ import CollapsibleSection from "../../CollapsibleSection/CollapsibleSection";
 import ResourceLink from "../../ResourceLink/ResourceLink";
 import LatinCipherTable from "../LatinCipherTable";
 
+const OMNIGLOT_URL = "https://omniglot.com/conscripts/atlantean.htm";
+
 export default function AtlanteanGuide() {
   return (
     <>
@@ -14,10 +16,19 @@ export default function AtlanteanGuide() {
           right and the next right to left.
         </p>
         <p>
-          This transliterator uses an Atlantean font as a letter-for-letter
+          This transliterator uses the Atlantean font as a letter-for-letter
           stand-in for the Latin alphabet, so you can type English and read it
           in those glyphs. The font file is copyright 1999, The Walt Disney
-          Company.
+          Company.{" "}
+          <a
+            className="link"
+            href={OMNIGLOT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Omniglot
+          </a>{" "}
+          describes the letters.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>
@@ -29,9 +40,7 @@ export default function AtlanteanGuide() {
       </CollapsibleSection>
       <CollapsibleSection title="More Resources" defaultExpanded={false}>
         <ul className="resource-links">
-          <ResourceLink href="https://omniglot.com/conscripts/atlantean.htm">
-            Omniglot
-          </ResourceLink>
+          <ResourceLink href={OMNIGLOT_URL}>Omniglot</ResourceLink>
         </ul>
       </CollapsibleSection>
     </>

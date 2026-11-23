@@ -28,6 +28,35 @@ export default function FontsSection() {
             </a>
             .
           </>
+        ) : currentAlphabet === "Atlantean" ? (
+          <>
+            The transliterator on this page uses the Atlantean font. The file
+            is copyright 1999, The Walt Disney Company. A description of the
+            letters is on{" "}
+            <a
+              className="link"
+              href="https://omniglot.com/conscripts/atlantean.htm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Omniglot
+            </a>
+            .
+          </>
+        ) : currentAlphabet === "MarasEye" ? (
+          <>
+            The transliterator on this page uses Mara&apos;s Eye. A copy for
+            Word or Excel is on Neale Davidson&apos;s{" "}
+            <a
+              className="link"
+              href="https://www.pixelsagas.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pixel Sagas page
+            </a>
+            .
+          </>
         ) : (
           <>Download and install a font to see this alphabet in Word or Excel.</>
         )}
