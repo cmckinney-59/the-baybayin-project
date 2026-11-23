@@ -1,4 +1,48 @@
+import Table from "../../Table/Table";
 import { DESERET_DATA } from "../../../data/DeseretData/DESERET_DATA";
+
+function DeseretGlyph({ children }: { children: string }) {
+  return <span className="deseret-font">{children}</span>;
+}
+
+const VOWEL_USE = [
+  {
+    name: "british-early-american",
+    letters: "𐐉 𐐃 𐐂",
+    use: "Brittish and early American English",
+  },
+  {
+    name: "modern-eastern",
+    letters: "𐐃 𐐂",
+    use: "Modern Eastern American English",
+  },
+  {
+    name: "modern-western",
+    letters: "𐐂",
+    use: "Modern Western American and Canadian English",
+  },
+];
+
+const INTRODUCED_CHARACTERS = [
+  {
+    name: "you",
+    letter: "𐐧",
+    combined: "𐐏𐐅",
+    sound: "You",
+  },
+  {
+    name: "oi",
+    letter: "𐐦",
+    combined: "𐐉𐐆",
+    sound: "Oi",
+  },
+];
+
+const WORD_CHARACTERS = [
+  { name: "the", letter: "𐐜", word: "The/Thee" },
+  { name: "gay", letter: "𐐘", word: "Gay" },
+  { name: "bee", letter: "𐐒", word: "Bee" },
+];
 
 export default function DeseretTable() {
   return (
@@ -20,104 +64,55 @@ export default function DeseretTable() {
         </a>{" "}
         by Neil Alexander Walker.
       </p>
-      <table className="alphabet-table">
-        <thead>
-          <tr>
-            <th>Letter</th>
-            <th>Sound</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          {DESERET_DATA.map((letter) => (
-            <tr key={letter.upper}>
-              <td className="deseret-letter deseret-font">{letter.upper}</td>
-              <td>{letter.sound}</td>
-              <td>{letter.example}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table
+        data={DESERET_DATA}
+        headers={["Letter", "Sound", "Example"]}
+        rows={DESERET_DATA.map((letter) => [
+          <DeseretGlyph key={letter.upper}>{letter.upper}</DeseretGlyph>,
+          letter.sound,
+          letter.example,
+        ])}
+      />
       <h3>Use of the characters "𐐉", "𐐃", and "𐐂"</h3>
       <p>
         The character "𐐉" is used in Brittish and early American English.
         "𐐉" and "𐐃" were subsequently merged into just "𐐃" and is used in Modern Eastern American English. This is often known as the "cot caught merger".
         In Modern Western American and Canadian English, the character "𐐂" is used instead of "𐐉" and "𐐃".
       </p>
-      <table className="alphabet-table">
-        <thead>
-          <tr>
-            <th>Letter</th>
-            <th>Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐉 𐐃 𐐂</td>
-            <td>Brittish and early American English</td>
-          </tr>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐃 𐐂</td>
-            <td>Modern Eastern American English</td>
-          </tr>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐂</td>
-            <td>Modern Western American and Canadian English</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table
+        data={VOWEL_USE}
+        headers={["Letter", "Use"]}
+        rows={VOWEL_USE.map((row) => [
+          <DeseretGlyph key={row.name}>{row.letters}</DeseretGlyph>,
+          row.use,
+        ])}
+      />
       <h3>Introduction of the characters "𐐧" and "𐐦"</h3>
       <p>
         The characters "𐐧" and "𐐦" were introduced in 1859 to The Deseret Alphabet to represent the sounds "you" and "oi" respectively.
         These characters were a combination of 𐐏𐐅 and 𐐉𐐆.
       </p>
-      <table className="alphabet-table">
-        <thead>
-          <tr>
-            <th>Letter</th>
-            <th>Characters Combined</th>
-            <th>Sound</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐧</td>
-            <td>𐐏𐐅</td>
-            <td>You</td>
-          </tr>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐦</td>
-            <td>𐐉𐐆</td>
-            <td>Oi</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table
+        data={INTRODUCED_CHARACTERS}
+        headers={["Letter", "Characters Combined", "Sound"]}
+        rows={INTRODUCED_CHARACTERS.map((row) => [
+          <DeseretGlyph key={row.name}>{row.letter}</DeseretGlyph>,
+          row.combined,
+          row.sound,
+        ])}
+      />
       <h3>Characters "𐐜", "𐐘", and "𐐒" as words</h3>
       <p>
         There are a few characters in the Deseret Alphabet that can be used as words when written by themselves.
       </p>
-      <table className="alphabet-table">
-        <thead>
-          <tr>
-            <th>Letter</th>
-            <th>Word</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐜</td>
-            <td>The/Thee</td>
-          </tr>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐘</td>
-            <td>Gay</td>
-          </tr>
-          <tr>
-            <td className="deseret-letter deseret-font">𐐒</td>
-            <td>Bee</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table
+        data={WORD_CHARACTERS}
+        headers={["Letter", "Word"]}
+        rows={WORD_CHARACTERS.map((row) => [
+          <DeseretGlyph key={row.name}>{row.letter}</DeseretGlyph>,
+          row.word,
+        ])}
+      />
     </>
   );
 }
