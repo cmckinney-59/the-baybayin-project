@@ -14,9 +14,18 @@ export default function CirthGuide() {
           the same sound.
         </p>
         <p>
-          This transliterator uses a Cirth font as a letter-for-letter stand-in
-          for the Latin alphabet, which is the usual way fans write English in
-          Cirth.
+          This transliterator uses Cirth Erebor by Daniel Steven Smith as a
+          letter-for-letter stand-in for the Latin alphabet, which is the usual
+          way fans write English in Cirth. A copy for Word or Excel is on his{" "}
+          <a
+            className="link"
+            href="https://www.acondia.com/fonts/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fantasy Fonts page
+          </a>
+          .
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>

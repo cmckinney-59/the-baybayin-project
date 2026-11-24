@@ -15,7 +15,8 @@ export default function WhatIsAncients() {
         The spoken Ancients language (sometimes called Lingua Anquietas) is a
         separate invention, treated in the show as a distant cousin of Latin.
         This transliterator covers the written alphabet, not the spoken
-        language.
+        language. It draws the letters with Ancients by Joseph Spicer. The
+        font is all rights reserved.
       </p>
       <p>
         To explore the script further, see the &quot;How To Read&quot; and

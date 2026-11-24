@@ -1,5 +1,4 @@
 import bomPdf from "../../assets/documents/Deseret/BoM.pdf";
-import bookOfMormonDeseretPdf from "../../assets/documents/Deseret/bookofmormdeseretalpha00.pdf";
 import newTestamentPdf from "../../assets/documents/Deseret/NewTestament.pdf";
 import oldTestamentPdf from "../../assets/documents/Deseret/OldTestament.pdf";
 import apocryphaPdf from "../../assets/documents/Deseret/Apocrypha.pdf";
@@ -99,11 +98,13 @@ export const DESERET_DOCUMENTS: DeseretDocument[] = [
   ),
   doc(
     "Book of Mormon (Deseret Alphabet)",
-    "bookofmormdeseretalpha00.pdf",
-    bookOfMormonDeseretPdf,
-    "pdf",
+    "bookofmormdeseretalpha00",
+    "https://archive.org/details/bookofmormdeseretalpha00",
+    "link",
     "Books & Scriptures",
-    "1869 Deseret alphabet edition. Internet Archive scan (archive.org/details/bookofmormdeseretalpha00). The file notes a 1990 facsimile reproduction.",
+    "The 1869 Deseret alphabet Book of Mormon is in the public domain. The scan of it is a 1990 facsimile reprint, so this site links to the Internet Archive copy.",
+    "Internet Archive",
+    "Archive",
   ),
   doc(
     "New Testament",

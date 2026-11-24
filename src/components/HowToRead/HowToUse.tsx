@@ -10,8 +10,10 @@ export default function HowToUse() {
       <p>
         Copy or Save your transliterated text as Excel, Word, or a Word Parallel document.
       </p>
-      {currentAlphabet === "Atlantean" ? (
-        <p>The Atlantean letters show in the transliterator on this page.</p>
+      {currentAlphabet === "Atlantean" ||
+      currentAlphabet === "Ancients" ||
+      currentAlphabet === "Unown" ? (
+        <p>The letters show in the transliterator on this page.</p>
       ) : (
         <p>Download and install the font to see it in Word or Excel.</p>
       )}

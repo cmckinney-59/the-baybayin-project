@@ -62,6 +62,8 @@ export type AurebeshFont = {
   useScope: "commercial" | "personal";
   creator: string;
   sourceUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
   /**
    * When true, digraph + tech-number checkboxes select among the four
    * Aurebesh AF style faces (Canon / Legends × Arabic / Tech).
@@ -83,6 +85,8 @@ export type AurebeshFontTableFace = {
   useScope: "commercial" | "personal";
   creator: string;
   sourceUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
   webOnly?: boolean;
 };
 
@@ -405,7 +409,7 @@ export const AUREBESH_FONTS: AurebeshFont[] = [
     outputFontClass: "aurebesh-font-docking-bay-94",
     downloadPath: "aurebesh/DockingBay94/DockingBay94.ttf",
     downloadName: "DockingBay94.ttf",
-    license: "MIT (commercial OK)",
+    license: "MIT / CC BY-SA (commercial OK)",
     useScope: "commercial",
     creator: "AurekFonts",
     sourceUrl: "https://github.com/AurekFonts/DockingBay94",
@@ -465,10 +469,12 @@ export const AUREBESH_FONTS: AurebeshFont[] = [
     outputFontClass: "aurebesh-font-pixel-sagas",
     downloadPath: "aurebesh/PixelSagas/Aurebesh.otf",
     downloadName: "Aurebesh.otf",
-    license: "Personal use only",
+    license: "Personal use only; no direct download",
     useScope: "personal",
     creator: "Pixel Sagas (Neale Davidson)",
-    sourceUrl: "https://www.dafont.com/aurebesh.font",
+    sourceUrl: "https://www.pixelsagas.com",
+    externalUrl: "https://www.pixelsagas.com",
+    externalLabel: "Pixel Sagas",
   },
   {
     id: "cantina",
@@ -477,10 +483,12 @@ export const AUREBESH_FONTS: AurebeshFont[] = [
     outputFontClass: "aurebesh-font-cantina",
     downloadPath: "aurebesh/Cantina/AurebeshCantina.otf",
     downloadName: "AurebeshCantina.otf",
-    license: "Personal use only",
+    license: "Personal use only; no direct download",
     useScope: "personal",
     creator: "Pixel Sagas (Neale Davidson)",
-    sourceUrl: "https://www.dafont.com/aurebesh-cantina.font",
+    sourceUrl: "https://www.pixelsagas.com",
+    externalUrl: "https://www.pixelsagas.com",
+    externalLabel: "Pixel Sagas",
   },
   {
     id: "hand",
@@ -493,6 +501,8 @@ export const AUREBESH_FONTS: AurebeshFont[] = [
     useScope: "personal",
     creator: "Cinematic Captures",
     sourceUrl: "https://www.dafont.com/aurebesh-hand.font",
+    externalUrl: "https://www.dafont.com/aurebesh-hand.font",
+    externalLabel: "DaFont",
   },
   ...WEB_ONLY_FONTS.map(webFont),
 ];
@@ -593,6 +603,8 @@ export function getAurebeshFontTableFaces(): AurebeshFontTableFace[] {
       useScope: font.useScope,
       creator: font.creator,
       sourceUrl: font.sourceUrl,
+      externalUrl: font.externalUrl,
+      externalLabel: font.externalLabel,
       webOnly: font.webOnly,
     });
   }

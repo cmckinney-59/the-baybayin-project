@@ -14,6 +14,9 @@ export default function TengwarHowToAndResources() {
       </CollapsibleSection>
       <CollapsibleSection title="More Resources" defaultExpanded={false}>
         <ul className="resource-links">
+          <ResourceLink href="https://www.acondia.com/fonts/">
+            Dan Smith&apos;s Fantasy Fonts
+          </ResourceLink>
           <ResourceLink href="https://www.omniglot.com/conscripts/tengwar.htm">
             Omniglot
           </ResourceLink>

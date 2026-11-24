@@ -207,7 +207,7 @@ const DESERET_FONTS_BASE: DeseretFontBase[] = [
     downloadPath: "deseret/Xylocopa/IDCXylocopa.otf",
     downloadName: "IDCXylocopa.otf",
     supportsUnicode: true,
-    license: "Free",
+    license: "MIT / OFL",
     category: "unicode",
   },
   {

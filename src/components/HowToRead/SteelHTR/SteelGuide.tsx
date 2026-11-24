@@ -27,6 +27,9 @@ export default function SteelGuide() {
       </CollapsibleSection>
       <CollapsibleSection title="More Resources" defaultExpanded={false}>
         <ul className="resource-links">
+          <ResourceLink href="https://www.17thshard.com/blogs/entry/455-steel-alphabet-font/">
+            Claincy: Steel Alphabet Font
+          </ResourceLink>
           <ResourceLink href="https://coppermind.net/wiki/Steel_alphabet">
             Coppermind: Steel alphabet
           </ResourceLink>

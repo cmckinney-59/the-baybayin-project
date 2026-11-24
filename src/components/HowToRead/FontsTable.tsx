@@ -3,9 +3,12 @@ import { useAlphabet } from "../../contexts/AlphabetContext";
 import {
   getFontDownloadUrl,
   getFontTableRows,
+  getLicenseNoticeUrl,
   type FontTableRow,
 } from "../../data/FONTS_TABLE_DATA";
-import downloadFont from "../../utils/DownloadFont";
+import downloadFont, {
+  downloadFontWithLicense,
+} from "../../utils/DownloadFont";
 import CloseDialogButton from "../Buttons/DialogButtons/CloseDialogButton";
 import {
   AiOutlineDownload,
@@ -94,9 +97,13 @@ function FontFileAction({
   className,
 }: {
   row: FontTableRow;
-  onDownload: (downloadPath: string, downloadName: string) => void;
+  onDownload: (row: FontTableRow) => void;
   className: string;
 }) {
+  if (!row.externalUrl && !row.downloadPath) {
+    return null;
+  }
+
   if (row.externalUrl) {
     const label = row.externalLabel ?? "Source";
     return (
@@ -125,7 +132,7 @@ function FontFileAction({
       aria-label={
         url ? `Download ${row.downloadName}` : "No downloadable file available"
       }
-      onClick={() => onDownload(row.downloadPath, row.downloadName)}
+      onClick={() => onDownload(row)}
     >
       <AiOutlineDownload aria-hidden />
     </button>
@@ -139,7 +146,7 @@ function FontTableBody({
 }: {
   rows: FontTableRow[];
   onInfo: (row: FontTableRow) => void;
-  onDownload: (downloadPath: string, downloadName: string) => void;
+  onDownload: (row: FontTableRow) => void;
 }) {
   return (
     <tbody>
@@ -180,7 +187,7 @@ function FontsDesktopTable({
 }: {
   rows: FontTableRow[];
   onInfo: (row: FontTableRow) => void;
-  onDownload: (downloadPath: string, downloadName: string) => void;
+  onDownload: (row: FontTableRow) => void;
 }) {
   if (rows.length === 0) {
     return null;
@@ -209,7 +216,7 @@ function FontsMobileList({
 }: {
   rows: FontTableRow[];
   onInfo: (row: FontTableRow) => void;
-  onDownload: (downloadPath: string, downloadName: string) => void;
+  onDownload: (row: FontTableRow) => void;
 }) {
   if (rows.length === 0) {
     return null;
@@ -261,13 +268,33 @@ export default function FontsTable() {
     (row) => row.section === "unicode-remapped",
   );
 
-  const handleDownload = (downloadPath: string, downloadName: string) => {
-    const url = getFontDownloadUrl(downloadPath);
+  const handleDownload = (row: FontTableRow) => {
+    const url = getFontDownloadUrl(row.downloadPath);
     if (!url) {
-      window.alert(`No downloadable file is available for "${downloadName}".`);
+      window.alert(`No downloadable file is available for "${row.downloadName}".`);
       return;
     }
-    downloadFont(url, downloadName);
+    if (!row.licenseNoticePath) {
+      downloadFont(url, row.downloadName);
+      return;
+    }
+    const noticeUrl = getLicenseNoticeUrl(row.licenseNoticePath);
+    const fontFileName = row.downloadPath.split("/").pop() ?? row.downloadName;
+    const noticeFileName =
+      row.licenseNoticePath.split("/").pop() ?? "LICENSE.txt";
+    if (!noticeUrl) {
+      window.alert(`No license notice is available for "${row.downloadName}".`);
+      return;
+    }
+    void downloadFontWithLicense(
+      url,
+      fontFileName,
+      noticeUrl,
+      noticeFileName,
+      row.downloadName,
+    ).catch(() => {
+      window.alert(`Could not prepare the download for "${row.downloadName}".`);
+    });
   };
 
   return (

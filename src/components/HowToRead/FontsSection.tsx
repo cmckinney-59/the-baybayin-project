@@ -43,6 +43,65 @@ export default function FontsSection() {
             </a>
             .
           </>
+        ) : currentAlphabet === "Ancients" ? (
+          <>
+            The transliterator on this page uses Ancients by Joseph Spicer.
+            The font is all rights reserved.
+          </>
+        ) : currentAlphabet === "Cirth" || currentAlphabet === "Tengwar" ? (
+          <>
+            The transliterator on this page uses{" "}
+            {currentAlphabet === "Cirth" ? "Cirth Erebor" : "Tengwar Quenya"}{" "}
+            by Daniel Steven Smith. A copy for Word or Excel is on his{" "}
+            <a
+              className="link"
+              href="https://www.acondia.com/fonts/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Fantasy Fonts page
+            </a>
+            .
+          </>
+        ) : currentAlphabet === "Steel" ? (
+          <>
+            The transliterator on this page uses the Steel font by Claincy
+            (Colin M.). His write-up is on the{" "}
+            <a
+              className="link"
+              href="https://www.17thshard.com/blogs/entry/455-steel-alphabet-font/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              17th Shard
+            </a>
+            .
+          </>
+        ) : currentAlphabet === "Unown" ? (
+          <>The Unown letters show in the transliterator on this page.</>
+        ) : currentAlphabet === "Plqad" ? (
+          <>
+            The transliterator uses the pIqaD font by kaiserzharkhan and
+            Klinzhai by PsychoGlyph. A copy of pIqaD is on{" "}
+            <a
+              className="link"
+              href="https://truefonts.blogspot.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              truefonts
+            </a>
+            , and Klinzhai&apos;s author pointed readers to the{" "}
+            <a
+              className="link"
+              href="https://www.kli.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Klingon Language Institute
+            </a>
+            . Klingon pIqaD Mandel can be downloaded below.
+          </>
         ) : currentAlphabet === "MarasEye" ? (
           <>
             The transliterator on this page uses Mara&apos;s Eye. A copy for
@@ -82,6 +141,20 @@ export default function FontsSection() {
               Chapter 20 of the Unicode Standard
             </a>{" "}
             describe the characters these fonts use.
+          </>
+        ) : null}
+        {currentAlphabet === "Baybayin" ? (
+          <>
+            {" "}
+            Baybayin Modern, TAAL, Baybayin Doctrina, Baybayin Doctrina Clear,
+            and Tawbid Pilipinas link to the designer&apos;s page.
+          </>
+        ) : null}
+        {currentAlphabet === "Aurebesh" ? (
+          <>
+            {" "}
+            Aurebesh and Aurebesh Cantina link to Pixel Sagas. Aurebesh Hand
+            links to DaFont.
           </>
         ) : null}
       </p>

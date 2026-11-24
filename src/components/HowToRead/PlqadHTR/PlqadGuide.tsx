@@ -14,11 +14,29 @@ export default function PlqadGuide() {
         </p>
         <p>
           This page offers two typing fonts. The default pIqaD font, by
-          kaiserzharkhan, remaps a few Klingon letter pairs before drawing.
-          Klinzhai mode, using the PsychoGlyph font, treats the input as
-          English and substitutes a glyph for each Latin letter. The Fonts
-          section also includes Klingon pIqaD Mandel, by Mike Neff and Michael
-          Everson.
+          kaiserzharkhan, remaps a few Klingon letter pairs before drawing. A
+          copy is on his{" "}
+          <a
+            className="link"
+            href="https://truefonts.blogspot.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            truefonts page
+          </a>
+          . Klinzhai mode, using the PsychoGlyph font, treats the input as
+          English and substitutes a glyph for each Latin letter. Lawrence M.
+          Schoen, who made Klinzhai, later pointed readers to the{" "}
+          <a
+            className="link"
+            href="https://www.kli.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Klingon Language Institute
+          </a>
+          . The Fonts section also includes Klingon pIqaD Mandel, by Mike Neff
+          and Michael Everson.
         </p>
       </CollapsibleSection>
       <CollapsibleSection title="How To Read" defaultExpanded={false}>
