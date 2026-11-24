@@ -18,6 +18,7 @@ import { BUHID_KEYBOARD_LAYOUT } from "./BuhidData/buhidKeyboardLayout";
 import { getDeseretKeyboardLayout } from "./DeseretData/deseretKeyboardLayout";
 import { HANUNOO_KEYBOARD_LAYOUT } from "./HanunooData/hanunooKeyboardLayout";
 import { OGHAM_KEYBOARD_LAYOUT } from "./OghamData/oghamKeyboardLayout";
+import { TENGWAR_KEYBOARD_LAYOUT } from "./TengwarData/tengwarKeyboardLayout";
 import {
   getPlqadFontClass,
   getPlqadKeyboardLayout,
@@ -66,7 +67,8 @@ export function alphabetHasKeyboard(name: string): boolean {
     name === "Hanunoo" ||
     name === "Tagbanwa" ||
     name === "Ogham" ||
-    name === "Plqad"
+    name === "Plqad" ||
+    name === "Tengwar"
   );
 }
 
@@ -143,6 +145,10 @@ export function resolveAlphabetKeyboard(
       layout: getPlqadKeyboardLayout({ useKlinzhai: options.useKlinzhai }),
       fontClass: getPlqadFontClass(options.useKlinzhai),
     };
+  }
+
+  if (name === "Tengwar") {
+    return { layout: TENGWAR_KEYBOARD_LAYOUT, fontClass: "tengwar-font" };
   }
 
   if (isLatinSlotKeyboardAlphabet(name)) {

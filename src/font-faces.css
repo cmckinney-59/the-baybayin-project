@@ -1431,6 +1431,7 @@
 }
 .tengwar-font {
   font-family: "Tengwar", sans-serif;
+  line-height: 1.65;
 }
 .unown-font {
   font-family: "Unown", sans-serif;

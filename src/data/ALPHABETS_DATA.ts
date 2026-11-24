@@ -3,6 +3,7 @@ import processBuhidText from "../utils/TextProcessors/BuhidTextProcessor";
 import processDeseretText from "../utils/TextProcessors/DeseretTextProcessor";
 import processHanunooText from "../utils/TextProcessors/HanunooTextProcessor";
 import processOghamText from "../utils/TextProcessors/OghamTextProcessor";
+import processTengwarText from "../utils/TextProcessors/TengwarTextProcessor";
 import processPlqadText from "../utils/TextProcessors/PlqadTextProcessor";
 import processTagbanwaText from "../utils/TextProcessors/TagbanwaTextProcessor";
 import processText from "../utils/TextProcessors/DefaultTextProcessor";
@@ -192,7 +193,7 @@ export const ALPHABETS_DATA: Alphabet[] = [
     fictional: true,
     fontName: "Tengwar Quenya",
     downloadName: "tengwar_quenya.zip",
-    processor: processText,
+    processor: processTengwarText,
     outputFontClass: "tengwar-font",
   },
   {

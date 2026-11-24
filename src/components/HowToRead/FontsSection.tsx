@@ -52,7 +52,11 @@ export default function FontsSection() {
           <>
             The transliterator on this page uses{" "}
             {currentAlphabet === "Cirth" ? "Cirth Erebor" : "Tengwar Quenya"}{" "}
-            by Daniel Steven Smith. A copy for Word or Excel is on his{" "}
+            by Daniel Steven Smith.
+            {currentAlphabet === "Tengwar"
+              ? " English is spelled in the mode of the Lord of the Rings title page, so vowel marks sit on the following consonant."
+              : ""}{" "}
+            A copy for Word or Excel is on his{" "}
             <a
               className="link"
               href="https://www.acondia.com/fonts/"

@@ -492,9 +492,14 @@ export default function Transliterator({
     return { start: fallback, end: fallback };
   };
 
-  const targetField: "input" | "output" = outputOnlyMode
-    ? "output"
-    : activeField;
+  // Tengwar spelling depends on the letters around a vowel, so the keyboard
+  // always edits the Latin input and the processor rebuilds the output.
+  const targetField: "input" | "output" =
+    currentAlphabet === "Tengwar"
+      ? "input"
+      : outputOnlyMode
+        ? "output"
+        : activeField;
 
   const handleKeyboardInsert = (payload: {
     inputValue: string;

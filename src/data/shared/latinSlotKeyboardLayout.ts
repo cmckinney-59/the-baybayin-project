@@ -2,7 +2,7 @@ import type { KeyboardLayout } from "../../components/Keyboard/Keyboard";
 
 /**
  * Latin-slot font ciphers: key label and insert value are the same Latin letter,
- * rendered in the alphabet's font (Ancients, Cirth, Tengwar, Unown, etc.).
+ * rendered in the alphabet's font (Ancients, Cirth, Unown, etc.).
  */
 function letterKey(ch: string): KeyboardLayout[number][number] {
   const lower = ch.toLowerCase();
@@ -99,7 +99,6 @@ export const LATIN_SLOT_KEYBOARD_ALPHABETS = [
   "MarasEye",
   "Matoran",
   "Steel",
-  "Tengwar",
   "Unown",
 ] as const;
 

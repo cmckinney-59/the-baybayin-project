@@ -2965,6 +2965,12 @@ dialog.dialog-overlay {
   font-size: 1.4em;
 }
 
+.tengwar-letter {
+  font-family: "Tengwar", sans-serif;
+  font-size: 1.7em;
+  line-height: 1.7;
+}
+
 .aurebesh-letter {
   font-family: "Aurebesh Legends";
   font-weight: normal;

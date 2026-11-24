@@ -15,6 +15,7 @@ import {
   HANUNOO_VOWELS,
 } from "../../data/HanunooData/HANUNOO_DATA";
 import { OGHAM_LETTER } from "../../data/OghamData/oghamKeyboardLayout";
+import { TENGWAR_PARTICLE_GLYPHS } from "../../data/TengwarData/tengwarEncoding";
 import {
   TAGBANWA_CONSONANTS,
   TAGBANWA_KUDLITS,
@@ -121,6 +122,7 @@ const GLYPHS_BY_ALPHABET: Record<string, string[]> = {
   ),
   Deseret: codePoints(0x10428, 0x1044f, 2),
   Ogham: unique(Object.values(OGHAM_LETTER)),
+  Tengwar: TENGWAR_PARTICLE_GLYPHS,
 };
 
 function hashString(value: string): number {
